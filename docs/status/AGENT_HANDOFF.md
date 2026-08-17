@@ -6,6 +6,53 @@
 
 ---
 
+## 2026-08-18 · 第三方 routing 語料稽核與補抓
+
+**Session 目標** 確認 `core12345/MoE_expert_selection_trace` 的可使用性與完整性；owner 懷疑先前有不完整或錯誤使用。
+
+**方法** 全資料集 metadata 掃描（不下載內容；以已知 60 檔建立 `bytes = a×prefill + b` 換算，四模型 R²=1.0000）+ 本地已轉換資料逐項核對 + live API 與登記結構比對。
+
+**七項缺陷，六項已修正**
+
+```text
+1 取樣覆蓋 0.06%，3 個 benchmark 完全未碰   已修正（補抓）
+  根因：hf_sample_download.py 用 sorted(subjects)[:N]，永遠只取字母序第一個
+2 自訂 k*=14 但僅 1/11 cell 達標             已修正（21/21）
+3 Kimi-K2 hold-out 僅 6 檔卻宣稱 validated   已修正（62 檔），H5 宣稱待重跑後重評
+4 Llama top_k=1、24/48 MoE 層，不宜並列      已標註，待 C1 處理
+5 n=3 時跨 benchmark 變異 >= 效應量           資料已補，待 C1 重跑
+6 全資料集最長 query 約 721 tokens            無法修正，資料集本身缺乏
+7 dataset_structure.json 分頁截斷             已修正
+```
+
+**缺陷 6 是定案結論**：prefill 上限 593（Qwen mmlu/professional_law）+ decode 硬上限 128 = 約 721 tokens，距 1M context 約 1,386 倍。專案自產的 Mixtral 量測是 159 tokens。**因此本專案全部 routing 證據，第三方與自產加總，皆限於約 150–721 tokens。長上下文只能自己量。**
+
+**缺陷 7 的實際危害**：登記記 Kimi mmlu 45 科、實際 57 科（缺的 12 科在字母序上連續，是分頁截斷）。這使補抓時 Kimi 的 `professional_law` 被**靜默跳過**——WARN 只進 stderr，程序仍 exit 0。若非逐 cell 核對不會被發現。已修正並補抓。
+
+**補抓結果** 60 → 354 檔、147 → 805 MB（政策上限 10 GB 的 7.9%）；cell 達標 1/11 → 21/21；新增序列長度軸（`professional_law`，prefill 比 `abstract_algebra` 長 4–6 倍）與工作負載類型軸（`aime_2024`）。
+
+**新增／修改**
+```text
+新增 docs/status/EXTERNAL_CORPUS_AUDIT_20260818.md
+     configs/sampling/round3_{convergence_topup,long_prefill,math_reasoning}.json
+修改 scripts/hf_sample_download.py（新增可選 subjects 欄位，向後相容）
+     data/registry/{dataset_structure,hf_downloads}.json
+     PLATFORM_FLOW_SPECIFICATION.md §10.3、docs/session_guides/STAGE_{A2,C1}_*.md、dse/README.md
+     docs/status/{CURRENT_STATUS,DECISION_LOG,ASSUMPTION_REGISTER,VALIDATION_MATRIX}.md
+```
+
+**降級處置** 語料衍生的 13 份 `w3_*` 結果全部標註 `n=3 per cell, below own k*=14, pending C1 re-run`，已在規格 §10.3、C1 指引、`dse/README.md` 三處加註。**補抓只解決資料可得性，不自動修正已發表結論。**
+
+**新增決策** P-010（稽核、補抓與登記修正）。**新增假設** PA-301–304（語料事實）、PA-311–313（待重跑驗證）。
+
+**這份語料的保留價值** 它是唯一能提供**架構規模**證據的來源：expert 物件數 3,072–23,040，而自產量測的 Mixtral 只有 256（90× 差距）。直接決定 `HW0-RESIDENCY-IDENTITY-WIDTH`、`HW0-METADATA-CAPACITY`、`HW0-METADATA-BANDWIDTH` 三個 row。**若規格只從 Mixtral 推導，會為現代 MoE 中最小的一個定規格。**
+
+**仍然禁止的主張** 任何基於未重跑 `w3_*` 數字的結論；任何長上下文主張；calibrated PASS；break-even；accelerator 收益。
+
+**下一個最高資訊增益的動作** A2（不受本次影響，可立即開始）或 GPU 軌（長上下文量測已升級為唯一來源）。C1 開始時必須先重跑全部 `w3_*`。
+
+---
+
 ## 2026-08-17 · Stage A1 · Calibration 模型形式修復與重擬合
 
 **Session 目標** 修復四項已知模型形式缺陷、用既有微基準重新擬合，不做 held-out 判定。

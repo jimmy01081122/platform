@@ -602,6 +602,2946 @@
       "bytes": 3070826,
       "sha256": "1458afaf701759f7d11093ccfb8f6116e3ec408bdcc3824d02ea995e73996fea",
       "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/0.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "bytes": 4096986,
+      "sha256": "becbc8c7c3b47bb131702ea2ceef9b101bdc469bbb204269677e2ff653fae437",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/1.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "bytes": 4362635,
+      "sha256": "af26c315e56feac8a338b7764b90fdf083e28156de67c640c1fb8e398fa9a002",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/2.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "bytes": 3652952,
+      "sha256": "ca443b3321ac638d975fa5a49910387c252d2d262034a24be4517f28ebd016c1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/3.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "3",
+      "bytes": 4079691,
+      "sha256": "df4b63c4b2b6d9617bbf715e615a2c792b10a7812a1f3b68a25f0e3975df5333",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/4.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "4",
+      "bytes": 4434324,
+      "sha256": "706908a2c8d78818f32d9492be6072d7e126356500b79a40e25716a1803acfde",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/5.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "5",
+      "bytes": 3618162,
+      "sha256": "87b966fb5fe14583a2623daebcffd939c4b257ed2e0366ef868c64cf562d68ff",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/6.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "6",
+      "bytes": 6103878,
+      "sha256": "3236581d3b9b282a91d0dedf01d303e520cf235c788ca17443a3fbe2012cad1a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/7.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "7",
+      "bytes": 6086535,
+      "sha256": "b1b291de7496b56d088e05d3e349f5c0eaeb9a10eaf17b4daaae4a77b8a0c931",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/8.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "8",
+      "bytes": 5268709,
+      "sha256": "205d4c0459bda4c242a62539b0a1f3c9e02ab339f62e7c34a553bba51cd5f7f1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/9.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "9",
+      "bytes": 5394140,
+      "sha256": "b70a52ec5ae5449f331e52e22d5e7f19645a11fccbb0e9ab23a7aa358914bc76",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/10.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "10",
+      "bytes": 6284192,
+      "sha256": "372cad1b6da1a82de40e62c4bcd39983aaa5639e805af82cc19f2104d2b61df1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/11.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "11",
+      "bytes": 5820101,
+      "sha256": "3c9bb7a6b33b71c0106f1cc41eb929c347960f99bcbd554167b61b6e83c2d5be",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/12.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "12",
+      "bytes": 5092680,
+      "sha256": "afa4fb7543179d1002bcc2dee66bb2f4d8e338a7c495d28b23338f6e5190aeea",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/13.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "13",
+      "bytes": 3919831,
+      "sha256": "b2b3f728650e1c360727b0ab2c57b8236ff9956fa48f54f0ebaeb628b48389a9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/0.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "bytes": 3035165,
+      "sha256": "19f09986b8288d1bc09fb356f1df8199f1fbe348c5670a7324a79189f294e149",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/1.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "bytes": 3249772,
+      "sha256": "51586971176a8edb268d4a0b511c62a930b6849f938165054ef88536f6be2b80",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/2.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "bytes": 3265624,
+      "sha256": "61b95f6d2e8ee50ff8d67d269a3da8d2ec0ed49ed8254d2d406d8c6c300648b1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/3.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "3",
+      "bytes": 3479749,
+      "sha256": "1fb31e5550fe3f3f2c8b2985cf2362955a5a01085e27528fbabef0b3c4c2c346",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/4.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "4",
+      "bytes": 3390292,
+      "sha256": "d639d9e5a9c371fa881bd11a5913c978e9e61f69a856b300acd7b6444eadd0d7",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/5.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "5",
+      "bytes": 3639989,
+      "sha256": "18a3b2616f818cdf1a95f8988abd4c34cab369d16c8dfd72345f688bc28bd4fc",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/6.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "6",
+      "bytes": 3425847,
+      "sha256": "5e1df2dbe1516b52878e888cada49672cd7192f3de7b143340c5f4fd7e12770b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/7.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "7",
+      "bytes": 3106099,
+      "sha256": "74dad343a1a175496538d35febfe5eeeba382c2ecff44992d356470a805470a9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/8.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "8",
+      "bytes": 2750655,
+      "sha256": "580342b7d63ecb80dc74508911cf1f9e7ede2d8d1c64f94eee439f862d2f2cb0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/9.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "9",
+      "bytes": 2804421,
+      "sha256": "9128a25575114114704cd71251d57873f84a468e0192e37720931526b6b3ad37",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/10.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "10",
+      "bytes": 3478488,
+      "sha256": "9e895dd3edac84a935f919ec363fd4d0aa150ed82ce272aa77cb98a46017b24e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/11.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "11",
+      "bytes": 3106862,
+      "sha256": "2769b6d80b960e89fb4d03f0f5b8a225f2b3bb0d40a20029a573461db751ed7b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/12.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "12",
+      "bytes": 2981466,
+      "sha256": "37acb9dae185972d034f9702f869a78968af89118ecd453048673d58df06782d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/13.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "13",
+      "bytes": 3230958,
+      "sha256": "2518e79a1c0335b2487e7affb0d758eccd8c17ae4d3747e9ab23ba75ad8dc4d4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/0.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "bytes": 3018227,
+      "sha256": "5d37f01bc00df9c17e21cbd80882a607f6f30f138f9e688548ddc266eed8cd5d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/1.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "bytes": 3232562,
+      "sha256": "8c29ea8137bd4054d8eff8b7593a1a0e20e2b699e2c6663818465189d8c21bab",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/2.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "bytes": 3251555,
+      "sha256": "47a120c62c057ded2b0a497146e39660ba43834e901a632b420b8a81675df494",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/3.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "3",
+      "bytes": 3429266,
+      "sha256": "f03f6682825af99ae165d217b8d81cc1e3af9669aa4741cf5800912b955d394c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/4.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "4",
+      "bytes": 3444869,
+      "sha256": "7fd869d3b40a4950877a57b6559e905b8be1d4a7b68d0244d6ec03e10d46e969",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/5.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "5",
+      "bytes": 3821073,
+      "sha256": "16a8ab20bd87f19dd618324639bb89d42565bdbf3bae9afeeb85a4fe7c415db0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/6.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "6",
+      "bytes": 3339617,
+      "sha256": "dace88a48807683daad86995819b96f93cae695c09dd7ee8855d7d23f6a3041c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/7.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "7",
+      "bytes": 3144900,
+      "sha256": "ea8ad5985274bf137caa237e7e20513dfad08abcb243c9f89c7e27813012e3e6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/8.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "8",
+      "bytes": 2751577,
+      "sha256": "1e81596ab1aa42bbd1a57b4e63c628c1b7ab04215d9afed804e27440bf31a1d2",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/9.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "9",
+      "bytes": 2822611,
+      "sha256": "04e6af02829cbb59ed3dd8b9f9b5954a1d0a451e5e5c08d1f65b55638751cd48",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/10.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "10",
+      "bytes": 3605982,
+      "sha256": "d3aa3b81fa79ffd7aa4ff3a6a74015e7b204956c77754af4867ae0378ac1e9b1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/11.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "11",
+      "bytes": 3125551,
+      "sha256": "cce6930ee2ef4fffaa940ed765d5ce92d73cb1ef62570c31bb5bc35495b22572",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/12.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "12",
+      "bytes": 2983277,
+      "sha256": "c24db54d6612dbc7299503923178fdb9ac7c72d60f1034b1b3db9dd523bf1c09",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/13.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "13",
+      "bytes": 3268388,
+      "sha256": "71b9aae17cb412c47665bd2ec2a3d4a685ec8989d5a63bc0404bc9cbff118a90",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4228.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4228",
+      "bytes": 3873837,
+      "sha256": "f11f5076b0a85210e3cf22426986bb9e97fe0a7c8709bb7584995091d14bad94",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4229.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4229",
+      "bytes": 3180239,
+      "sha256": "59c3c748f3d485625cbb69cee359b76975430716fb9059606fe7a12591768384",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4230.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4230",
+      "bytes": 3251304,
+      "sha256": "4496f71528cb7f355dc6d165388d72d694bc23062688d0f87e091d0a7da98117",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4231.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4231",
+      "bytes": 3287337,
+      "sha256": "dab24d1424e9b8b42b450200dfd2a2004c7604976f2e7e2021e616e70b8a8ad3",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4232.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4232",
+      "bytes": 4459650,
+      "sha256": "f86e029e0b2506456f9a5df7077c8eb27a915ad73774d03e23f09fc872c1ce73",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4233.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4233",
+      "bytes": 3446824,
+      "sha256": "24ebd85c2b6141a054ea685d08e3320ce53fd7ffdf205634bdce59c6a5f2ee44",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4234.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4234",
+      "bytes": 3197280,
+      "sha256": "0dd1278a7f589406c3c312f8c72998011640d580c60b1d5a2f42d3ff167eefc6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4235.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4235",
+      "bytes": 2984551,
+      "sha256": "b84dece65c9db6bc3b30a9b21a2fac20869ef99d6f8694a21ac4da42e398ccba",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4236.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4236",
+      "bytes": 3126045,
+      "sha256": "d0513e9ba99ae1c858fb1867daa775df80ac3b8e8d14c57a8e1b0e87894b3c46",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4237.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4237",
+      "bytes": 2894811,
+      "sha256": "cb3a153b9c7342b3e1358f513ea475f8f8043eae3b89328b1800d79b949d4ec5",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4238.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4238",
+      "bytes": 3499481,
+      "sha256": "7fe1d207f111f7b3e35a9637cd7beabb29240e839a5bf777f9fae9527ff805bf",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4239.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4239",
+      "bytes": 3038057,
+      "sha256": "8e97a3c2644383aac6e511644ff7e39c0972d3a41cb17812bb5a098ac8480ee1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4240.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4240",
+      "bytes": 2876974,
+      "sha256": "ad5a42c4c0e7a856be2d2300212b17264f31b4fb98c81c00e17a94522b8728a5",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/high_school_mathematics/4241.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4241",
+      "bytes": 3107974,
+      "sha256": "ac93559d794c2c6a41a47e4e80b680f927a45ba0d794da77c05a3ca3ae76d2f6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/0.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "bytes": 2614269,
+      "sha256": "f3b935f32cae3a79755b74b12645fa5e2db57fef6b330ccde4412352499f3664",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/1.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "bytes": 2770700,
+      "sha256": "250c8eeb8904cbc01177c4a075c7dc0563a3a359f38bc191c25c251f8d37a390",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/2.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "bytes": 2324283,
+      "sha256": "87caf5a57852a3652ca28176b3f77715dbc41586bd0fa940e6b22ed270ae8e35",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/3.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "3",
+      "bytes": 2603729,
+      "sha256": "33d61b7d37d6883d11ca7f4cf1ad37aa5d350dc5010a497396f3d0c0ed6db740",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/4.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "4",
+      "bytes": 2849017,
+      "sha256": "edbcfb704582f3d575b0077edd36a4de1243d9dc82e4b4724f74cc591d6c417c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/5.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "5",
+      "bytes": 2301559,
+      "sha256": "c014974d965a41313dad6fe47ddc9964f2abaa977d3c0ce5e82c0d278e5a0e1a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/6.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "6",
+      "bytes": 3864371,
+      "sha256": "fdd55c673f34b6d71e90cd5d4112fb76afbec992d0150a6f469177b7639c5f99",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/7.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "7",
+      "bytes": 3808042,
+      "sha256": "c08f7fb50c721fc513500674d98fb9eb02de7ef1fbd3ce47307eba35fac76f0c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/8.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "8",
+      "bytes": 3294763,
+      "sha256": "1b2958828a7d5033b7c57000051fe8ea73d908435e85696a8489a9e3555f387f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/9.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "9",
+      "bytes": 3372723,
+      "sha256": "7ed4da94f94cd06e08792474d46973b3b657ed23fc8149443a79e69de16145db",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/10.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "10",
+      "bytes": 3976988,
+      "sha256": "a991a56f1ac674626175f45fa5a371fbe66ce07ea1782cb6c9ddf5aed88393c4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/11.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "11",
+      "bytes": 3685337,
+      "sha256": "8f55fa5aa6c7f9330957375d292d7bd5ef827c4509f85c8d17ab5e3900443ab7",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/12.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "12",
+      "bytes": 3262401,
+      "sha256": "688f4bd7ac7e2d6c5eb70015d29e6664a4402dc8c6d072c5f0a2af1f39c7d092",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/13.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "13",
+      "bytes": 2525282,
+      "sha256": "f5f48921f173d8bc0a329883d06afd414d286401bd3021fe7376b309c242e538",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/0.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "bytes": 1922982,
+      "sha256": "eb34107bacbd9eae88e475952e08d2beb4ea898e3fbf6d11165555023833e238",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/1.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "bytes": 2046738,
+      "sha256": "2034f7ce869e57d0c145c8ae560fc08cb9a05273338e70f93249ff928d392ddd",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/2.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "bytes": 2056770,
+      "sha256": "84f52223d92037f8ae71646c43695526ed3b765685dc9ac25deb490f8056bd00",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/3.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "3",
+      "bytes": 2191359,
+      "sha256": "68d19bdd9f45c278e2740c104ad71ab783aba425ba43b4870bbe22b6288d50a1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/4.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "4",
+      "bytes": 2124024,
+      "sha256": "c14dbc2d099ec93bb31d85f701eac3ef69ca3a37526143641077a4b74036a931",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/5.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "5",
+      "bytes": 2236114,
+      "sha256": "3a26f10f2ce0abf60f7869835ceba22087f3a11afb94a5cac3b65129face69bb",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/6.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "6",
+      "bytes": 2124401,
+      "sha256": "21739ccb56bc664d31611e991ce636dc81f849281791d269cc2c0b74b7dc3ce3",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/7.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "7",
+      "bytes": 493074,
+      "sha256": "d16d05ff461e161b68cb0bceee401784b983632c0a4fd2a4852d0dc402cf1361",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/8.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "8",
+      "bytes": 1732989,
+      "sha256": "d6e66d14cffd09d9894abc3c7cda02214a2021e1d4c14bdf7a295ea9f26bdd53",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/9.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "9",
+      "bytes": 1766634,
+      "sha256": "7aa373569232f88743b4253661afcbd2e98d04e66c938992a7723a225be6f2f8",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/10.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "10",
+      "bytes": 2191678,
+      "sha256": "1489a3c89a4ce0b850501e7e004e3b57baa8dba7b4aa18da2a142ca8ae5dbd89",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/11.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "11",
+      "bytes": 1955705,
+      "sha256": "a70c5355d57481d6d62c82541320b176875f2f4823cb3dfc49c5f9427283d7dc",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/12.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "12",
+      "bytes": 1855975,
+      "sha256": "fcb01bebfea4d56ec4e3cda8965949c46999a079e391c46eac9d62dfe91b9413",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/13.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "13",
+      "bytes": 2012066,
+      "sha256": "89a0a8290a13226cb497522f9024f671b565f82fc167701ae39dc53d804bcf18",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4387.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4387",
+      "bytes": 2012594,
+      "sha256": "5d04e7b4dbaec91981cf7eec0f7a4b8f8c3d1c0b50fe9b21c0ce53d3134beafd",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4388.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4388",
+      "bytes": 1956833,
+      "sha256": "7a7b73d9b56661e129cd66e30a33acf8b4775891effb4683de55ee1ae632bc66",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4389.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4389",
+      "bytes": 2012742,
+      "sha256": "650a8c72e6b2215e1853fc837730cea2645eb33f9f8264aea81f046116b6b19d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4390.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4390",
+      "bytes": 1811783,
+      "sha256": "d131ebdec1427c37be2f47cd09c8afe6fd0a6dae9fe85160a80fd22640a429bc",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4391.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4391",
+      "bytes": 1889958,
+      "sha256": "5ed9aa65e3b8df1ad622a1f9b4e26571007080ae6098ee7729a2d89e8476f8e4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4392.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4392",
+      "bytes": 1956793,
+      "sha256": "4aa705ec87c3a622fef487eae9ca8d94d5cdcae3ee80eddcfb1d6d888fe0e8f5",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4393.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4393",
+      "bytes": 2538207,
+      "sha256": "884e3da9d9a1d72f6909ad245f81b674d1db74271dd14b59d9345329e3c39c8d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4394.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4394",
+      "bytes": 1967754,
+      "sha256": "81b849d9ff0ea4cc9d990a8916f058dbc9615ce526b331b95bb8c04461015e91",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4395.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4395",
+      "bytes": 2536983,
+      "sha256": "e1367ff94d9387f7626d255d04240e61ce4509f5a6ae37495158e7735c988ae6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4396.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4396",
+      "bytes": 1934332,
+      "sha256": "8828500ac5995646a76e465890cb240836c5797ca545e62ee874c4e3d82904de",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4397.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4397",
+      "bytes": 1721408,
+      "sha256": "569c19e3730c50ef5de855a430079b2f5f5a5d6e801f5c2ea1d5938ecb614011",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4398.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4398",
+      "bytes": 2135106,
+      "sha256": "85298146cc0dc46a22c83914211d1d88fb65a0f32f75ed44b98a1d944dc1e405",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4399.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4399",
+      "bytes": 2202931,
+      "sha256": "c9a413874aad3ed4bc8987a50f662f16b7251eacf34e54e1f2404915ae6571be",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4400.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4400",
+      "bytes": 2213208,
+      "sha256": "2a78d0c6d6128f7b03deab8653b088111d076d3d20fe46d29981f06f258edc74",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/0.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "bytes": 388692,
+      "sha256": "05e19d0f9da7e52eaecc72163b0eebf7818f667ed8d7dbdbe66d3b08cae8d885",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/1.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "bytes": 406082,
+      "sha256": "841de75b0bcaf23f5c535e78a535eb4824bb72d06d8aba69261d569963fb916d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/2.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "bytes": 359781,
+      "sha256": "00667dedbedf805573ae2bb4764ee7198e08b22ab0a13a8c1a19388cd040919c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/3.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "3",
+      "bytes": 388688,
+      "sha256": "98fa1c90d0f0c6b358bcb74d58bcab982d55865a327d1ce6ad143cdc81e609a2",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/4.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "4",
+      "bytes": 414140,
+      "sha256": "c3e9738e5006dccf062d51250b20b81bb9dc82b3921a339a06c7d2a0b7c8f5a9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/5.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "5",
+      "bytes": 248981,
+      "sha256": "4e573230aac89e451f185d9e1b1db3580dda9e17604606beadb106fea3f096a9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/6.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "6",
+      "bytes": 514344,
+      "sha256": "445dbeab5c6bf0bf0f4febeb9fa34b602f3cc1ebb8a635fe1c42529a09d3ba3e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/7.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "7",
+      "bytes": 513049,
+      "sha256": "3a4bbaad22f1c7115e1361cd3321b57fa61e9777f40f038eb3cc7eaa5e78604c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/8.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "8",
+      "bytes": 460114,
+      "sha256": "5f09f7df41da1a6ae05484326505f5a205d76824ebb6fc1bda97f40a9588b97a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/9.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "9",
+      "bytes": 468237,
+      "sha256": "81cdba5490546f26ec3f12174712a89723c1e21db28035bbd088b7d8d7f08bdc",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/10.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "10",
+      "bytes": 530164,
+      "sha256": "db51e2c4201b7982b8b0422e3283069ff11052cb1014872a8342ab80d5329226",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/11.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "11",
+      "bytes": 500427,
+      "sha256": "40194e729f1fab2df62251acc7565a40f3e7ab51224f61d366e7ec36643109a4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/12.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "12",
+      "bytes": 453207,
+      "sha256": "a705b02db57df0f0187ba74c6e6cff3848421b506af729c71c8dbddd2c34d2a4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/13.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "13",
+      "bytes": 377053,
+      "sha256": "d3f2a0e371ce8b1b4ec9d3e5c39249685fcb728e44a44350db7c730f7948cf06",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/0.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "bytes": 319593,
+      "sha256": "c095e372fc1249f85cb914f9007a7a01b92824d84009156454b5bc388424e4b4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/1.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "bytes": 333193,
+      "sha256": "9268f54f8f17176732269860f14a26a5c813366d886e21ed7edff9e6c6d24719",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/2.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "bytes": 334438,
+      "sha256": "5ab24e330dcc1a486c3046cdaeeeecee92d82099aa1f7d3ac4837b0a4f76c779",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/3.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "3",
+      "bytes": 345795,
+      "sha256": "880d9aa034ce47a19d5b0898f6919a8909afd103829bd977476f54bbca7f199c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/4.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "4",
+      "bytes": 341441,
+      "sha256": "6bbe76c9f3cb23c3fa28a3eb2379d02128fc1950c8cc606a7d0aa1fcaa81e5e4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/5.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "5",
+      "bytes": 352775,
+      "sha256": "a29dac65288059cb31fd7ac71316f66f3e876f10e5ab8e9a6a40555596372ee1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/6.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "6",
+      "bytes": 341337,
+      "sha256": "77b5ae5b919541e3ecece4032f64fca0c0cb4869956dede45e6c4e25987ae1a7",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/7.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "7",
+      "bytes": 321703,
+      "sha256": "d9518b837fab99bd937cb7424997f808254b3737a87da75c38b650c9e952bea2",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/8.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "8",
+      "bytes": 301090,
+      "sha256": "8875406cba97c81ee9e8bcf069f75ca937d75d908f519843f7e264a26f65cd5e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/9.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "9",
+      "bytes": 304511,
+      "sha256": "da9e3bc7c7ec538f689bb1627e339dcffadc2c0b59beea1257200d23bd6e8672",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/10.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "10",
+      "bytes": 347048,
+      "sha256": "a4d68aea410f2ccf50fca4ab3ec5a0e58739806fbbcbbd4b9acb1f233d879d6d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/11.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "11",
+      "bytes": 323813,
+      "sha256": "a89522090e863022e4017bd348edbbab8fa5d3480c9d3f4e747036a028fd796d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/12.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "12",
+      "bytes": 313861,
+      "sha256": "392b04b2c89f64cccc64df030cb0d28a43e9af3cb8848898f45bb45f5f8ed8ff",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/13.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "13",
+      "bytes": 329904,
+      "sha256": "f661c583b6a606fa4efee26a402f397db152e979a751786ada1f1f7dbdc3f1f5",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/0.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "bytes": 317144,
+      "sha256": "ff9ccf98de2e263c49332e8ecdf5034d6e303e7445f57cfebcb47e42905a53f0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/1.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "bytes": 331861,
+      "sha256": "337f6fb8a86ee4b9fe8137c9dd0b6c61d2c70c895ded1f944f3d74bfeab1849a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/2.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "bytes": 333265,
+      "sha256": "380ea17f22e13bfa9f8ecdd694d4754f694cdaaeaa07ba8f995d2af3f9473566",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/3.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "3",
+      "bytes": 344792,
+      "sha256": "f680ea8e53b485538f3d87400e666d9bcf8a5e8ec65ef7ef56d0c202be825c12",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/4.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "4",
+      "bytes": 345885,
+      "sha256": "d1ba93bcc46d7a9e100bd126c82990775d2957ff9316d54bd226e774291531fd",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/5.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "5",
+      "bytes": 356351,
+      "sha256": "490a17b72149bc373875fb880cb44e164000032525efb17ae91cf2857f720263",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/6.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "6",
+      "bytes": 335527,
+      "sha256": "4c51bf88b35393d810f9794b96851b4163fe3c5fb09b2c79e6b864e0c0a1c744",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/7.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "7",
+      "bytes": 326187,
+      "sha256": "afb54a8ad0774cd9e7224afec92164522555d87ec720f2c978d9bb650d4ac9be",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/8.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "8",
+      "bytes": 300927,
+      "sha256": "2b45a2df7ca5d29fa3ce7118c950ce30058347eb6f4357c0d647bfd1f5e40527",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/9.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "9",
+      "bytes": 305541,
+      "sha256": "a703feb007b3aeef324870274992ddf8ef2d602304e16f27bd67d86b6f977ee6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/10.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "10",
+      "bytes": 350538,
+      "sha256": "a24f2662be56ceb1c34ffb3f427042e0dd6b65b09524c1405c19dbeac3f69d02",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/11.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "11",
+      "bytes": 325012,
+      "sha256": "aa83f1a313cee64fdb8d4b764a2791d57175bd147b3d709c4e969fecc605040b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/12.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "12",
+      "bytes": 313655,
+      "sha256": "c0d85d09f0745f2f62bf58ef55ffc5c3bca8bab0cd022e7d16fdf3def2e0c7b5",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/13.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "13",
+      "bytes": 333175,
+      "sha256": "0a2680f9d69202088ff62df8a6c2a1183735bb05651f87891401dc434e1350c8",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4228.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4228",
+      "bytes": 365520,
+      "sha256": "a26f0e017772c2ff88319e7ef2be59af2045d0eb342b67465a84cc3a66929bc2",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4229.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4229",
+      "bytes": 322681,
+      "sha256": "3cc02a8f22c9b28a93fbf3ab50eb9d0afe95fb82b31c4555a5a94c6e195b893d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4230.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4230",
+      "bytes": 328488,
+      "sha256": "d16ab9118c484732629fc1140b26f69eb1d30e0dc0145b8ce02daf2195129dad",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4231.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4231",
+      "bytes": 338999,
+      "sha256": "6732461140102fdb63d155ec1b5ab552f5f041e82874a5b820ccd0bfb03a8efe",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4232.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4232",
+      "bytes": 409391,
+      "sha256": "1705cf26384905e30449d8c027cb0e8908e9370161c7e09f55586c3019113e0a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4233.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4233",
+      "bytes": 343711,
+      "sha256": "5edde49e89a2fb5e8a1bf69c7c862914170d625bf0f0555bd75135e632a0db4e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4234.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4234",
+      "bytes": 331033,
+      "sha256": "e1ab0b483bed548078db69551176936ca3cfb4dbe416544d7ed922cd9d6594bf",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4235.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4235",
+      "bytes": 312255,
+      "sha256": "e74d086a51dcb67b1a287991506ab167be55c5aca2e17d38c2dcc58eacd7d15b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4236.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4236",
+      "bytes": 321441,
+      "sha256": "88addb7b3119de04b7da4ef7d9e0b2519213a5b448a41336f7974c03d095f2bf",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4237.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4237",
+      "bytes": 306376,
+      "sha256": "b8c533aee458634a9d4e7dc250a34c154a4210a33292576cf160174fc285bacf",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4238.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4238",
+      "bytes": 342421,
+      "sha256": "f454f71cd111750d9d35c841f9c35d7aefd9e3f510f3af42d391b1f8da170e5b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4239.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4239",
+      "bytes": 315891,
+      "sha256": "f47b86fcb3f085ee123034cd4b6aaf89a5737f321e20d3fb52c713a6736f427c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4240.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4240",
+      "bytes": 307736,
+      "sha256": "870282bb115ecc3e63691247eaf6ab1c480f528f0f3e6969ab3c0ce35e44ea71",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/high_school_mathematics/4241.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4241",
+      "bytes": 318130,
+      "sha256": "e3b5c8ec9fd1ecdcf1369e568f87df2241e731eaa6b310cfe26b5be2c55ed87d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/0.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "bytes": 2679088,
+      "sha256": "1bb4a46380cc31966d1e9bb6b1005034dc56af7b8acc74bffd17678f50f6a45c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/1.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "bytes": 2853171,
+      "sha256": "33bf1c0c811d49042a5c8ce54d97ab9329e95e5a96d4b701c9a67ffd13750605",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/2.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "bytes": 2388842,
+      "sha256": "57340a4e0f1b2f23ca60f34df30af3300274c401ab144c1239712e445e8971fe",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/3.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "3",
+      "bytes": 2667897,
+      "sha256": "8269c725b965e979966b5880ef27d7555c3c0079a3222046e362075091f8e31c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/4.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "4",
+      "bytes": 2899520,
+      "sha256": "2a614106d28e691652cafe7ca8c0c4078752d76700ddf8979fbc6bc23a1cf17d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/5.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "5",
+      "bytes": 2365669,
+      "sha256": "cbfeaf779286e746da3affbffef44df25d94203135159853515dc93928e93516",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/6.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "6",
+      "bytes": 3946304,
+      "sha256": "38531c1db1f167e496d5b9af004c15deb63373f5c404a051a8bb26b678e5ab2c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/7.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "7",
+      "bytes": 3935055,
+      "sha256": "f862eaf4a00debe8459bde692dfbded682d99bd72a2536ee57b3e807af4f5ef8",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/8.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "8",
+      "bytes": 3400668,
+      "sha256": "85a8c11f16711d63038a9f493068971c23007258e035a03de80570eef844fd55",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/9.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "9",
+      "bytes": 3481370,
+      "sha256": "12066ce4599eb9de8277b4e0d5dc77206da239d3834f14688b04808859b106ee",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/10.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "10",
+      "bytes": 4109305,
+      "sha256": "d92aa034be08bedd0d4b63bc78cc4a8bb08ba2df9e57c4bf2362908a4a650a8c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/11.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "11",
+      "bytes": 3807070,
+      "sha256": "dd5c8a7bfe9d8c5bb392d61bc6614f39542deb78e8fc8907f3c8c1cf0debbb4a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/12.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "12",
+      "bytes": 3329660,
+      "sha256": "950d8882d0f07ae1a1c270ff69654e3708843fa4d4a40d0696c4d22e4bae7f50",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/13.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "13",
+      "bytes": 2563096,
+      "sha256": "ab846a2ec29a8e1ba82b8734ccfe513aa12ee60e25acccf3065bb239b7e03e2b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/0.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "bytes": 1982430,
+      "sha256": "1714134b7539a2407cb92347401b7b0e3939d70224888d3eefbc61276507202b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/1.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "bytes": 2121330,
+      "sha256": "2d42ffda21209cd7c5ad1d9140231dc5d79e7bc3c990738674c3af338c40cf1b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/2.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "bytes": 2133727,
+      "sha256": "79cc7b89bf121f40dc5ae692c2dccb55b06522203fda2f77a8ae03fd72eabf94",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/3.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "3",
+      "bytes": 2272207,
+      "sha256": "2175c5cd17745b241285ecf2e0398c2c7f6a03b7c3413577692f5d24117dbca0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/4.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "4",
+      "bytes": 2203326,
+      "sha256": "d044585a8cc227f888a9402507051e5e6a626609dd74067f213bc132a90c4c0d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/5.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "5",
+      "bytes": 2318839,
+      "sha256": "6a156d70a71b5fd36ee8e58f8d8e5f298cc4d546ae083509ff78ad80e0bbb26f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/6.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "6",
+      "bytes": 2214401,
+      "sha256": "d570a42b593db8ae5a0f3a1ffe52502673462dbd008487085d13858f7b3aac4f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/7.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "7",
+      "bytes": 2005350,
+      "sha256": "f0a3594657fabe9bbb433fd3b275c5eb7bac98c88433b33130db794265fb2cec",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/8.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "8",
+      "bytes": 1796303,
+      "sha256": "3a4f3e0806d0e948dfd087c995dca0155dcdc9a97ceaaa63c406c8a57b477d00",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/9.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "9",
+      "bytes": 1831709,
+      "sha256": "dfb68e35cc9fa06efe256b4b76c52046732616d94916cd735bda98ce1237cda1",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/10.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "10",
+      "bytes": 2272987,
+      "sha256": "554fc2706efa22c21c6bbe75964db40c9b0ebf551cfe025459202da7aa4092b3",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/11.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "11",
+      "bytes": 2028548,
+      "sha256": "bcd2c3816bb78556f6cedd7e665ec9eec34eb4c3529777c1968f41b9f42e818b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/12.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "12",
+      "bytes": 1923897,
+      "sha256": "9d3235cfcf1ba32bce710c6bc6e521643f6ed6add60973aaa01fe4e5ad59d58a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/13.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "13",
+      "bytes": 2110520,
+      "sha256": "aa2f3716347ca428447e4c7b2c3b2a87e72f182e4103bac23e1ce51c08cb12cb",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10631.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10631",
+      "bytes": 5892710,
+      "sha256": "4cfd050a88db45abeb206db6e0c7a0f868c33a9345fd149d5dcccff0190f7a81",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10632.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10632",
+      "bytes": 6586063,
+      "sha256": "9d0c4e8d18948866779295db55909d5a08d87b879d9374a8f26ce0dbb549a29f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10633.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10633",
+      "bytes": 5094608,
+      "sha256": "35f8cb5dd341c749315b3b9ceeb4b4222f7e2b79417662f889ae1c0cae411ba4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10634.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10634",
+      "bytes": 4564204,
+      "sha256": "7229274645c60bf3d58551a34fb46332c562c7b764ffe7840b2d597f1b9e40f0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10635.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10635",
+      "bytes": 5199144,
+      "sha256": "def591440d73c828d71d5eed16c1d2005b63e38fe43f6f13e3de8efcfa717d63",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10636.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10636",
+      "bytes": 3248451,
+      "sha256": "8fc7a47da1477fb4943635176905f806eb6f75741226c640a5d728ea58fb7b82",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10637.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10637",
+      "bytes": 6265058,
+      "sha256": "88c6f5313101b7c71afed1d8ba84006eab68818ba4a61a3dc4190e6cd4bac40b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10638.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10638",
+      "bytes": 2678975,
+      "sha256": "bb95bd19b1226d16bd66aa345a810c2eee6609ca5b3ca8831e27170afdfd654e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10639.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10639",
+      "bytes": 4561120,
+      "sha256": "7cb6002136dfffe5101a9fbb2db0d442c4338bf3c0863410677dfc33c08b6fbf",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10640.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10640",
+      "bytes": 5234122,
+      "sha256": "cd42f14a1776acfea46c3e81c266aa88b47ba49b41d22c19c2f35be8d069ee38",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10641.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10641",
+      "bytes": 5697379,
+      "sha256": "4e69f310af1ae1d8ab81d9493b0442f358121b519ac38e197cee97a6d4f95d06",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10642.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10642",
+      "bytes": 8937309,
+      "sha256": "e37b18d2f9b5a8081725ead97fc19cea1e87e8ce1ede0b802dbb195f290a6757",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10643.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10643",
+      "bytes": 6571310,
+      "sha256": "b020b7dc721cd0057841aa2af4483955f49b3f38e756fbe3bc372aa012fe1f7c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/professional_law/10644.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10644",
+      "bytes": 3994393,
+      "sha256": "87d032b2d20f574d30c324f83e20dc1d6b9abf8d41cbc4f193ad0b8a5d4e4a5b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10631.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10631",
+      "bytes": 3287376,
+      "sha256": "ea17ae47134d1bc38d2904c1e9ed8ef6af04cbc7aecf8a33ab5296cf54e5fad5",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10632.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10632",
+      "bytes": 3441220,
+      "sha256": "29ca4210dca35858ac0c86af92e0157dcaeb6dfb6c40fde7687c2014a570d659",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10633.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10633",
+      "bytes": 3173058,
+      "sha256": "89f7e13b24888a6ef9a70868f8ec9576398491a190af7cee7f59b5ed22310955",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10634.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10634",
+      "bytes": 2871494,
+      "sha256": "f86288fbc88fc687bef4eaea795631f99b0d4ddbbafd80bcf32a1f9e9dd38949",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10635.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10635",
+      "bytes": 3217435,
+      "sha256": "040c58b29c71b47597275116bcea664653c4a576fe5eaad95a454fd3c6e4067a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10636.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10636",
+      "bytes": 2023238,
+      "sha256": "62f8b8f1ed9bfe71167e6437aef957c27938f6d7eb0c6164c32f48e0e2d9778d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10637.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10637",
+      "bytes": 2338922,
+      "sha256": "0a50ee65a59b635fb5c003687a6c2003b02268652c1f71862f7e253cb2423bc6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10638.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10638",
+      "bytes": 1688989,
+      "sha256": "4d743992f05b1038cb9573e30ef278d000430c3268ba6b9b96e175466b3e2024",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10639.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10639",
+      "bytes": 2860467,
+      "sha256": "17db59d3b116927a54eb95234d67e40c40820e493e70a5b86b90e0d6fded6291",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10640.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10640",
+      "bytes": 3273772,
+      "sha256": "279391c3a2f465a52c92972d0ee7014bbe7f403abfc0c032057b394d676c11fa",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10641.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10641",
+      "bytes": 2103011,
+      "sha256": "99ca20f309882d5b52a29be1391a8fcac11be8b25afc4b7059015f2f2a982031",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10642.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10642",
+      "bytes": 4967389,
+      "sha256": "dfe481810d9b4f41803c1555bc7668d51e33a1a33e65f2f79a5313ffd7fafb79",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10643.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10643",
+      "bytes": 4022997,
+      "sha256": "6e583b3ee12d4581fbb2898ce5ce6d77e6eda31d35c9090c4a9497d4d18088dc",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/professional_law/10644.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10644",
+      "bytes": 895882,
+      "sha256": "373467d66f1d89243dd1c54b8b4554e3fea56dcf1a1b966c5baf8b7ea12c7858",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10631.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10631",
+      "bytes": 506858,
+      "sha256": "4462a5d2fc82576b35a650ca1e9c08d5c07bd6864a1041665ab0874654fdb51c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10632.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10632",
+      "bytes": 558781,
+      "sha256": "e9e4d0e2dcbb59f1605b0357174e0d48019154338e281bd6f964774749facad9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10633.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10633",
+      "bytes": 449146,
+      "sha256": "902430076b4f1026ca4ad8a85a84853d0b8c9ce815d03a189952d3f39214bf56",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10634.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10634",
+      "bytes": 420187,
+      "sha256": "fed85bb4194bbc9529747a81d12571959c565120cd69c1508f95b77235a5bb9e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10635.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10635",
+      "bytes": 457076,
+      "sha256": "0c23d5e52b572de23a036eecd34dbbb71c5dee480cd953b667d04ef052952543",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10636.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10636",
+      "bytes": 332242,
+      "sha256": "bd13338ca5ef492037eea82e423444c80d6874101b79ce6c2350a9e1cb964a97",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10637.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10637",
+      "bytes": 474300,
+      "sha256": "8871f9692240b8c5387c907e5b7bc2feeb7c8de155ccc96bd4a30fe1cb4129a0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10638.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10638",
+      "bytes": 296294,
+      "sha256": "97729363e8b60b501074852cb397a4dda68e3b034d07380c1eaa0fbd540f77eb",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10639.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10639",
+      "bytes": 421420,
+      "sha256": "c81cc0a8229b152dc60beac35987ed18eb24ae674fa603e4fd852413dade30da",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10640.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10640",
+      "bytes": 464164,
+      "sha256": "09edd596dca8cb1670fd1d281235414a60b7eedf791d94d2b3658221ab73b518",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10641.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10641",
+      "bytes": 499871,
+      "sha256": "824dedf2e690c227e3abdbcd865ef88207fbac7699a823cc254430f1a46a1913",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10642.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10642",
+      "bytes": 713087,
+      "sha256": "36260f57ab87a81fdcd641745ba1cb7e5b3d0b3149a9de363f4e0f16ad0a0d09",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10643.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10643",
+      "bytes": 537019,
+      "sha256": "60e224e95c7f956bea73ede22cbb6764779735ed32295f52e356fdf9760bfb09",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/professional_law/10644.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10644",
+      "bytes": 380868,
+      "sha256": "ec5b4bcbe39b272c2a6a640066139b2b058168f40b1597d1409cde1234e9fdac",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/0.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "0",
+      "bytes": 4956713,
+      "sha256": "82b016601a72c09d09c11c6eecb01db71207d49f9b184dc3fed19f34e79550e6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/1.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "1",
+      "bytes": 4473424,
+      "sha256": "872fa3c1c490892905edf6469a7a1ae1c050e7cf48d1310b153fcac367bf7f09",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/2.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "2",
+      "bytes": 3942616,
+      "sha256": "18aa1c26d1de62a47bfd2e6fb6f94ad4eebebcf33a547e67c36656f8ad0db752",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/3.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "3",
+      "bytes": 4028016,
+      "sha256": "aaa8b001b362154cba67264502709afaf61c56fa673765f1230d12ad5957c809",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/4.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "4",
+      "bytes": 3710260,
+      "sha256": "84f2ae1412c33a6dd518184546f384613bfc7489595aff5511710f25822c020d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/5.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "5",
+      "bytes": 5239224,
+      "sha256": "1592eb2d6910b389fe47c8f71fee6f6ccc24f8be8b40865cd811d7bc68e1c60b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/6.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "6",
+      "bytes": 4280633,
+      "sha256": "baeb0b8bc802acbfb11000974e4124f17f7e8c1e5b0fe3c104056f1afd2c4b27",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/7.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "7",
+      "bytes": 3460907,
+      "sha256": "086ab5a4960520ffacde26d67bfe24902cca3ea112d0a9ed156cf57d978a6b49",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/8.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "8",
+      "bytes": 4332343,
+      "sha256": "2b2c173ff5b5ffce8a64cac4540e988f85b6e05cfdd76362ffc37aa14a5a9462",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/9.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "9",
+      "bytes": 4793943,
+      "sha256": "2711a37a169812022643be978b78c9ac3d2a961300ecfa691f41fae95e44856b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/10.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "10",
+      "bytes": 3959665,
+      "sha256": "f7e9ea7f97100c5860c8f690ae0b3e706f8f0fbce4cfad28f21d51e01d48863c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/11.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "11",
+      "bytes": 3550741,
+      "sha256": "b0a2af712342a0948d14b3b832d0a66697ee705c88fad9ea108aaf90c33056bb",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/12.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "12",
+      "bytes": 3426152,
+      "sha256": "446e5bc4ce4bd78339a17ef9c799ee60c856a3ef7a955ea9b07eae10fbae0d90",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "Qwen/Qwen3-235B-A22B-FP8/HuggingFaceH4/aime_2024/13.json",
+      "variant": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "13",
+      "bytes": 4244263,
+      "sha256": "39b7913c6916827516b25f65c2498ae3bc9dfc87f6ff70cc036b79353e8e5467",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/0.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "0",
+      "bytes": 3105993,
+      "sha256": "d2400fdad3b8d319661f3e9f15ba949b7ed03d71f3a65f49d920078c105a29ff",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/1.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "1",
+      "bytes": 2760396,
+      "sha256": "70171f066c6508a61e17c521ac60eefadd7aa31a3c974554e5ae1892028383f4",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/2.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "2",
+      "bytes": 829517,
+      "sha256": "4d87842dd2a9b1dbe96dc374af7d381f3a339f86ef5a59ed38a6ab045ab8ad96",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/3.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "3",
+      "bytes": 2493632,
+      "sha256": "014118610d3838f9eeb7b6dd5962ef195319aef7803efc021ece3500c86c947b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/4.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "4",
+      "bytes": 673489,
+      "sha256": "d2f8471e139520f201b94d489d42bb369c95f2bef65e865e46edefdb8b4b8a72",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/5.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "5",
+      "bytes": 1511462,
+      "sha256": "eec846b97d80b4fa9902fa08ac4f3a0cc1d6681b8eef7b2ab2e02f1b41818244",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/6.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "6",
+      "bytes": 964475,
+      "sha256": "5fe42cac9a392e1256e40613b616268ca2b76f2c62aac3368090ae2a073c375a",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/7.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "7",
+      "bytes": 2112494,
+      "sha256": "8d344e53941a289d88782d6e4f0c3576b2cc6dda4f6078f80bc2fa6cf47c913e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/8.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "8",
+      "bytes": 2705123,
+      "sha256": "69729b9b7cfab6c6d0012b3c2edd68237ff1ede4fa7a1371461ada434190c5a0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/9.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "9",
+      "bytes": 2940302,
+      "sha256": "853b76f58c0bf21519924f043004e433a51e568a9107fbccc75e85bf214b2803",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/10.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "10",
+      "bytes": 796506,
+      "sha256": "d2d9203068fdce5df6a17300f51ce8d75bd4c63c5d3e34cb28424421627de37c",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/11.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "11",
+      "bytes": 2212729,
+      "sha256": "1b6fe74a20a056612fdb4e2d30b030bb8e3b82a9ac5649a8af2a5f7970c6ba17",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/12.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "12",
+      "bytes": 2079423,
+      "sha256": "af0793c1fbe854f319032873a37298e26ba0b5c6c353d878f7e7f86c2bb2ef9d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "cognitivecomputations/DeepSeek-R1-AWQ/HuggingFaceH4/aime_2024/13.json",
+      "variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "13",
+      "bytes": 997598,
+      "sha256": "f2ef153cc9e42da4a94732564b411a648dfac8f2aef53e0c526a439c5a874d1f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/0.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "0",
+      "bytes": 442064,
+      "sha256": "49083bf0ebb4ad06a9a6e0bb64b64c82ae3d765ccfe3d2d894fd41b0d850f32f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/1.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "1",
+      "bytes": 406256,
+      "sha256": "4523333e3e016debc3356a21c7e9c463965b492970842f93967e380c23fda2ed",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/2.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "2",
+      "bytes": 375817,
+      "sha256": "a8fac364f2d681d1257a1b2ef12eeddc2360f2f63a35916534d28dd49ebf2b0d",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/3.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "3",
+      "bytes": 380846,
+      "sha256": "23f2668ed76cf28bc5c9467e61a81c1387225f9069fb2e504c97987a46d3bfc2",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/4.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "4",
+      "bytes": 358771,
+      "sha256": "2a28d9d01dfe60841aa471adba7a4b3e6af352f11cd67df394a97c2a0239abad",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/5.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "5",
+      "bytes": 445460,
+      "sha256": "40b184f5f93cef4cee03ab27d044b22541e6636d5e411ba4d55c570aca005c64",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/6.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "6",
+      "bytes": 388823,
+      "sha256": "06c15e3449ebcad033fc7430a2ab24b7a3593d1c761067075092e5414eac5c30",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/7.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "7",
+      "bytes": 340461,
+      "sha256": "9655baa23d3dc7afff27c6718a1ce097d9c817773c04b315140ed444dea35fa3",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/8.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "8",
+      "bytes": 401301,
+      "sha256": "2e7cb2ed07e470cbe2e0ffabcb9277c3d5499efd3fb21dae2034894afea48644",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/9.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "9",
+      "bytes": 427842,
+      "sha256": "e5f068045841c048b5171af744b9a51523cf279ef3f7e0789ba51fc8ae210713",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/10.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "10",
+      "bytes": 370468,
+      "sha256": "5bfc47bbc648adb3d76f8d1b8876c41fa97d27348823878303580688849c7017",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/11.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "11",
+      "bytes": 350577,
+      "sha256": "bed56b82f10f19e6c3690d44770c0b94d2eff1cbe015bafd9e8eb2c91808bcc2",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/12.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "12",
+      "bytes": 334602,
+      "sha256": "3be4ea32a984000b84d593900cca1d6c5fb904b9a5fd7441559fbe7ecbe40ddc",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/HuggingFaceH4/aime_2024/13.json",
+      "variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "13",
+      "bytes": 392386,
+      "sha256": "b8d794529ff66aada382cbb4f82184f676609f98ba5ac05720179e84f52dfbcd",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/0.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "0",
+      "bytes": 3213521,
+      "sha256": "d90f18c7e23c86bb48b54c52252205364ff9cb8106fb70c6c104170c1a34da58",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/1.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "1",
+      "bytes": 2877988,
+      "sha256": "48db3595285b0cbd2399d8af0c8167b8ac8d06dc0acee1d2439eeda2eff2bd48",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/2.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "2",
+      "bytes": 2551267,
+      "sha256": "786dd261550e35e7c75c927788c1444d235ef44f745c035ae5cf52a86a63f570",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/3.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "3",
+      "bytes": 2598465,
+      "sha256": "72d1b07187ffccccf9546a5bf868da8cd2516488f373bd98fb4655207cee60c0",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/4.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "4",
+      "bytes": 2400299,
+      "sha256": "5967cb8149819d32fc09c47c293813bc3ac5be9828623d786c202976d36d46e7",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/5.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "5",
+      "bytes": 3306781,
+      "sha256": "89cc74e1160fbb736a51ca36b4b1595e9359cba32a48870fd4e6b846779b91b9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/6.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "6",
+      "bytes": 2691331,
+      "sha256": "0327ffe17e621e62df3e37bf26c894e0a421006261d9f46ce15c020e5b628f5f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/7.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "7",
+      "bytes": 2191429,
+      "sha256": "c4a9fb99e098817c8d1af94a24a97f6c4e8801e8b69d02543d1911f48da5d3e6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/8.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "8",
+      "bytes": 2818739,
+      "sha256": "f6ee4c26ab19d0e72ecf410708425254f993d185f911a4b558a7f3637af5dbce",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/9.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "9",
+      "bytes": 3085800,
+      "sha256": "945ae00c4b5994e18ac592e0088fe7450be67fb2f21303f5e55453629667b076",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/10.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "10",
+      "bytes": 2505418,
+      "sha256": "ba774f70e56eb6237819a4490b281e284cfe7a575047b3e204ce205c588c9e9b",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/11.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "11",
+      "bytes": 2307750,
+      "sha256": "a5a93d4f88b1c7f299c5ab80e0b03208d92ebf7427b716b4666f3ad2a18b728e",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/12.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "12",
+      "bytes": 2156420,
+      "sha256": "df04df660fb0842c03c796ee1a4d2a7b11daed10106fb624d16c260c523ef4c2",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/HuggingFaceH4/aime_2024/13.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "HuggingFaceH4",
+      "subject": "aime_2024",
+      "query_id": "13",
+      "bytes": 2714383,
+      "sha256": "a9163bc59d26f695eb4e7e30f83b20d5cf4dd8a8daa2e76fcc8523fa136d7c28",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10631.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10631",
+      "bytes": 3877457,
+      "sha256": "f62a0825a084cec9f58c90a8c0413ee738881dad0ac6698e4d409f5e13bbfbf9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10632.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10632",
+      "bytes": 3546125,
+      "sha256": "019a5e9214e38326b076918d4124a294a88863eb3df20e4eab6f16a3532e6195",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10633.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10633",
+      "bytes": 2661924,
+      "sha256": "8047b4d42a3ffff030efcbda4f02706cb9d8bb2e62f4e98279722237375afb75",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10634.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10634",
+      "bytes": 2982415,
+      "sha256": "d070584743a295565c3dc98a7ffaf7b1a020fcef097895ec08f9d0cb58f1a265",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10635.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10635",
+      "bytes": 2483677,
+      "sha256": "5056b0117f40274653d7f0cbde02cd8f5f500435bc9484d10fc9acb4f8f514e9",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10636.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10636",
+      "bytes": 2145333,
+      "sha256": "bf95007f4f368c6672f12e4e4d63be9a090655f30ae34b2eb0268e3aeb2502f8",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10637.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10637",
+      "bytes": 4108654,
+      "sha256": "9b2b2a7452e514e3cb2ebe30ef3a6b0398e8d22be853a866141a667caac163fb",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10638.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10638",
+      "bytes": 543573,
+      "sha256": "f01a25dcea5855646dc21687f64eccb42b428bf3c7235982332c03abcc52b4d3",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10639.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10639",
+      "bytes": 2947492,
+      "sha256": "0357fd24bb81f548b9b8bb965ad185e6cf8a57a0af6d50a28af8106a1347ede3",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10640.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10640",
+      "bytes": 3435628,
+      "sha256": "d09fe356d053c067f49b58b2c0af572eae7a9db3e20547fab0ca7b99423d4f2f",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10641.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10641",
+      "bytes": 3714692,
+      "sha256": "2bbff6eb46ea052f621904d656a7a7f0ece9e17ffea0bf0addf15956bc4ac282",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10642.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10642",
+      "bytes": 5854360,
+      "sha256": "92033f00b3d2b8f9ac7c7eabaee3dcecb37a45ae84d0d29819744d499bfb95ab",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10643.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10643",
+      "bytes": 3354389,
+      "sha256": "f575a95012e81cf37e526407d1b6120190da7f16bffe0b401871f162c44180c6",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
+    },
+    {
+      "path": "moonshotai/Kimi-K2-Thinking/mmlu/professional_law/10644.json",
+      "variant": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "professional_law",
+      "query_id": "10644",
+      "bytes": 2053982,
+      "sha256": "a482de6b68f2cf3b16ab486d85c7b9a2f1aa833d5868eef39cf4325edd078220",
+      "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf"
     }
   ]
 }

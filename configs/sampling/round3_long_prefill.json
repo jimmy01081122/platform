@@ -1,0 +1,15 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "description": "Round-3B long-prefill axis. mmlu/professional_law has the longest prefill in the entire dataset (Qwen p50 151 / p90 287 / max 593 tokens, from a metadata-only scan of all 99540 files) versus abstract_algebra which is 4-6x shorter. This gives a within-dataset sequence-length sensitivity axis. It is NOT long context: the dataset caps decode at 128 tokens, so the longest possible query is about 721 tokens, three orders of magnitude short of 1M.",
+  "seed": 12345,
+  "max_bytes": 2147483648,
+  "variants": [
+    "Qwen/Qwen3-235B-A22B-FP8",
+    "cognitivecomputations/DeepSeek-R1-AWQ",
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+    "moonshotai/Kimi-K2-Thinking"
+  ],
+  "domains": ["mmlu"],
+  "subjects": {"mmlu": ["professional_law"]},
+  "queries_per_subject": 14
+}

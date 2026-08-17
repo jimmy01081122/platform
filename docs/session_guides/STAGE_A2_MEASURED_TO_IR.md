@@ -168,6 +168,16 @@ runtime_cache_shape       = [2308, 8, 32, 2, 16, 128]，dtype bfloat16
 | OFF-E-PR3 單一物件代理 | `physical_transfer_semantics` 明載：每次 miss 都搬**同一個** layer-0 expert-0 物件。位元組與時間為實測，但 per-object 搬移多樣性未被實測 |
 | SWAP-K2 事件缺陷 | 事件 `block_size = 0`，位元組帳目由 runtime shape/dtype 推導而非事件本身 |
 
+若本階段也把第三方 routing 語料（`data/canonical/moe_routing_v1/`）納入 IR，還必須寫入下列限制（來源 `docs/status/EXTERNAL_CORPUS_AUDIT_20260818.md`）：
+
+| 限制 | 內容 |
+|---|---|
+| 無 router scores | 資料集本身不含 gate 分數／logits／機率。任何需要信心值的 predictor 不可能實作 |
+| 無時序 | 只有 expert ID。時間必須由 service model 提供 |
+| 序列長度上限 | 全資料集單一 query 最長約 **721 tokens**（prefill ≤593 + decode 硬上限 128）。**不得用於任何長上下文推論** |
+| 每 cell 樣本數 | 語料已於 2026-08-18 補抓至 21/21 cell 達 k\*=14，但既有的 `w3_*` 衍生結果仍是舊的 n=3 樣本產物，尚未重跑（屬 C1） |
+| 架構差異 | Llama-4-Maverick 是 top_k=1、24/48 層為 MoE，與其餘三個 top_k=8 的模型結構不同，不得並列後取平均 |
+
 ---
 
 ## 5. 工作步驟

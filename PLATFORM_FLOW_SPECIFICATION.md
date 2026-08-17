@@ -414,6 +414,8 @@ Raw 一律唯讀。轉換產物另存，並帶 provenance。轉換前後須重�
 
 即最好的 causal predictor 只保留約 15% 的 oracle 收益，最差為負值。用 oracle 當主結論會系統性且大幅高估加速器價值。
 
+> **⚠ 此組數字已降級，引用時必須標註。** 2026-08-18 的語料稽核發現：上述數字基於每 cell **n=3**，低於專案自訂收斂門檻 k\*=14 達 4.7 倍，且跨 benchmark 變異與效應量同量級（Llama 在不同 benchmark 間甚至變號：livecodebench −1.3% vs mmlu_ZH_CN +2.5%）。語料已補抓至 21/21 cell 達標，但 **`w3_*` 分析尚未重跑**。在 C1 重跑前，引用一律加註 `n=3 per cell, below own k*=14, pending C1 re-run`。詳見 `docs/status/EXTERNAL_CORPUS_AUDIT_20260818.md`。
+
 ### 10.4 Break-even 分解
 
 ```text

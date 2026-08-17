@@ -99,6 +99,16 @@ grep -A3 'id: STAGE_B2' governance/stage_ledger.yaml   # 預期：status: COMPLE
 
 這個差距大到足以翻轉結論——用 oracle 當主結論會系統性、且大幅高估加速器價值。
 
+### 4.2b 但上表本身必須先重跑 ← 本階段的前置工作
+
+2026-08-18 的語料稽核（`docs/status/EXTERNAL_CORPUS_AUDIT_20260818.md`）發現上表基於每 cell **n=3**，低於專案自訂收斂門檻 k\*=14 達 4.7 倍，且跨 benchmark 變異與效應量同量級——Llama 在 livecodebench 是 −1.3%、在 mmlu_ZH_CN 是 +2.5%，**連正負號都不穩定**。
+
+語料已於同日補抓：60 → 354 檔，cell 達標 1/11 → **21/21**，並新增兩條分析軸（`professional_law` 的序列長度軸、`aime_2024` 的數學推理工作負載）。
+
+**因此本階段的第一件事，是用補抓後的語料重跑 `data/canonical/moe_routing_v1/` 下全部 13 份 `w3_*` 分析**，包括 `w3_prefetch_predictability`、`w3_capacity_dse`、`w3_copy_engine_dse`、`w3_compression_dse`、`w3_robustness`、`convergence`。在重跑完成前，上表與其他所有語料衍生數字一律標註 `n=3 per cell, below own k*=14, pending C1 re-run`，不得作為結論引用。
+
+重跑後應一併重新評估 `LARGE_MOE_CALIBRATION.md` §5 的 H5 hold-out 宣稱——先前該宣稱建立在 Kimi-K2 僅 6 檔的基礎上，現為 62 檔／4 cell／每 cell n≥14。
+
 ### 4.3 Break-even 必須用完整分解，輸出是面不是勝負
 
 ```text

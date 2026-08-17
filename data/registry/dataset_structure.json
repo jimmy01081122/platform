@@ -4,7 +4,7 @@
   "last_modified": "2026-05-16T00:27:17.000Z",
   "gated": "auto",
   "discovered_at": "2026-07-16T21:00:26.642829Z",
-  "total_json_files": 99540,
+  "total_json_files": 103961,
   "path_schema": "<model_family>/<model_variant>/<benchmark>/<subject>/<query_index>.json",
   "trace_format": {
     "file_unit": "one query/request",
@@ -423,7 +423,7 @@
         }
       },
       "mmlu": {
-        "files": 9621,
+        "files": 14042,
         "subjects": {
           "abstract_algebra": 100,
           "anatomy": 135,
@@ -469,9 +469,35 @@
           "miscellaneous": 783,
           "moral_disputes": 346,
           "moral_scenarios": 895,
-          "nutrition": 213
+          "nutrition": 306,
+          "philosophy": 311,
+          "prehistory": 324,
+          "professional_accounting": 282,
+          "professional_law": 1534,
+          "professional_medicine": 272,
+          "professional_psychology": 612,
+          "public_relations": 110,
+          "security_studies": 245,
+          "sociology": 201,
+          "us_foreign_policy": 100,
+          "virology": 166,
+          "world_religions": 171
         }
       }
     }
-  }
+  },
+  "corrections": [
+    {
+      "date": "2026-08-18",
+      "path": "model_variants/moonshotai/Kimi-K2-Thinking/mmlu",
+      "defect": "discovery pass truncated the subject listing at 45 of 57 subjects; the 12 missing names were alphabetically contiguous (philosophy..world_religions), indicating pagination truncation rather than dataset drift",
+      "verified_same_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+      "subjects_before": 45,
+      "subjects_after": 57,
+      "files_before": 9621,
+      "files_after": 14042,
+      "total_json_files_delta": 4421,
+      "impact": "round3_long_prefill silently skipped Kimi-K2 professional_law because the subject was absent from this registry; the WARN went to stderr and the run still exited 0"
+    }
+  ]
 }

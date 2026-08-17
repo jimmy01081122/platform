@@ -1,7 +1,7 @@
 # CURRENT_STATUS
 
 ```text
-updated       : 2026-08-17
+updated       : 2026-08-18
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
 current stage : Stage 0 完成；A1 完成（模型形式修復，FIT 側殘差，未做 held-out 判定）
@@ -56,9 +56,25 @@ workspace    make doctor -> workspace_contract: pass
 
 量測 domain（目前主力，非永久假設）：single RTX PRO 6000 96 GB · Mixtral-8x7B-Instruct-v0.1 rev `eba92302…` · vLLM 0.23.0 · BF16/BF16 · TP/PP/EP 1/1/1。
 
+## 第三方 routing 語料（2026-08-18 稽核 + 補抓）
+
+`core12345/MoE_expert_selection_trace` 稽核發現七項缺陷，六項已修正。完整記錄見 `EXTERNAL_CORPUS_AUDIT_20260818.md`。
+
+```text
+檔數      60 -> 354        位元組  147 MB -> 805 MB
+cell 達標  1/11 -> 21/21   （專案自訂門檻 k* = 14）
+新增軸     序列長度（professional_law）、工作負載類型（aime_2024 數學推理）
+登記修正   Kimi mmlu 45->57 科；total_json_files 99,540 -> 103,961（原為分頁截斷）
+```
+
+**兩項未解**：
+
+1. **`w3_*` 分析尚未用新語料重跑**——`data/canonical/moe_routing_v1/` 下 13 份結果仍是 60 檔、多數 cell n=3 的產物。引用時一律標註 `n=3 per cell, below own k*=14, pending C1 re-run`。這是 C1 的第一件事。
+2. **長上下文無解**——全資料集單一 query 最長約 721 tokens，距 1M context 三個數量級，且**無法靠補抓解決**。長上下文 routing 證據只能自行量測，這使 GPU 軌的長上下文量測成為唯一來源。
+
 ## 已知缺口
 
-- **掛載點 A2（MoE dispatch 資料搬運）與 A6（offloaded KV 上的 attention）完全沒有量測。** 兩者都在 GPU 軌的最高優先序。
+- **掛載點 A2（MoE dispatch 資料搬運）與 A6（offloaded KV 上的 attention）完全沒有量測。** 兩者都在 GPU 軌的最高優先序；A6 因語料缺乏長上下文而升級為唯一可行來源。
 - 長上下文與高並發區間沒有量測；目前所有 expert residency 結論都限於單請求、eager、159 tokens、`max_num_seqs=1`。
 - `accelerator/`、`dse/` 目前只有 README 骨架，無實作。`calibration/` 現有 `refit_v2.py` 與 `fits/v2/` 輸出（A1 產出），仍缺 A4 的 sealed held-out 實作。
 - A1 殘差分析發現的新缺口（見 `calibration/fits/v2/measurement_gaps.json`）：dequant 延遲的真正驅動變數是 expert 權重位元組數而非 token 數，本階段量測無法把兩者分離；小尺寸 PCIe 傳輸在多 stream 下仍有未建模的延遲成長（大尺寸區間已驗證修復，小尺寸區間相反方向的殘留效應是新發現，不在本階段四項缺陷登記範圍內）；moe_replay 的 `cpu_calls`/`expert_tokens` 兩種量測慣例之間有約 8 倍的正規化落差，尚未釐清換算關係。

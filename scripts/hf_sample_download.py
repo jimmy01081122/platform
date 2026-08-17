@@ -146,7 +146,19 @@ def main() -> int:
             if not dinfo:
                 print(f"skip {variant}/{dom}: not present", file=sys.stderr)
                 continue
-            subjects = sorted(dinfo["subjects"].keys())[:spd]
+            # Explicit subject selection overrides the alphabetical default.
+            # Without this, sorted(...)[:spd] always yields the alphabetically
+            # first subject (e.g. mmlu -> abstract_algebra), which silently
+            # excludes long-prefill subjects such as professional_law.
+            named = cfg.get("subjects", {}).get(dom)
+            if named:
+                available = set(dinfo["subjects"].keys())
+                subjects = [s for s in named if s in available]
+                for s in named:
+                    if s not in available:
+                        print(f"WARN: subject not in {variant}/{dom}: {s}", file=sys.stderr)
+            else:
+                subjects = sorted(dinfo["subjects"].keys())[:spd]
             for subj in subjects:
                 subject_path = f"{variant}/{dom}/{subj}"
                 qpaths = resolve_queries(dataset, subject_path, qps, token)

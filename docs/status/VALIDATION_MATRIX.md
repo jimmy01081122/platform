@@ -53,6 +53,22 @@
 
 非收斂／新缺口：dequant（GAP-1）、聚合 contention 模型未被評估點驗證（GAP-2）、floor_ms 樣本量少（GAP-3）、component_latency 評估點原始 schema 缺 shape 特徵（GAP-4）、moe_replay `cpu_calls`/`expert_tokens` 正規化落差約 8 倍（GAP-5）、小尺寸 PCIe 傳輸多 stream 交互作用未建模（GAP-6）。完整說明見 `calibration/fits/v2/measurement_gaps.json`。
 
+## 第三方 routing 語料（2026-08-18 稽核）
+
+完整稽核見 `EXTERNAL_CORPUS_AUDIT_20260818.md`。
+
+| 項目 | 判定 | 證據 |
+|---|---|---|
+| 轉換正確性（prefill/decode、dense layer、router_scores=null） | **PASS** | 354 檔 `validation_errors` 全部為 0 |
+| 每檔 provenance（sha256 + source_revision） | **PASS** | `data/registry/hf_downloads.json` |
+| revision 一致性 | **PASS** | live `main` = `27febb7b…` = 登記值，無漂移 |
+| 取樣充分性（專案自訂 k\*=14） | **PASS**（補抓後） | 21/21 cells n≥14。**補抓前為 1/11** |
+| 分析已用新語料重跑 | **NOT_RUN** | `data/canonical/moe_routing_v1/` 下 13 份 `w3_*` 結果仍是 60 檔舊樣本產物 → C1 |
+| `dataset_structure.json` 完整性 | **PASS**（修正後） | Kimi mmlu 45→57 科；`total_json_files` 99,540→103,961。原缺漏為分頁截斷 |
+| 長上下文覆蓋 | **FAIL** | 全資料集最長 query 約 721 tokens，距 1M context 三個數量級。**無法靠補抓解決** |
+
+**目前禁止引用的語料衍生數字**：`w3_prefetch_predictability`、`w3_capacity_dse`、`w3_copy_engine_dse`、`w3_compression_dse`、`w3_robustness`、`convergence` 等 13 份結果。它們基於每 cell n=3（低於自訂 k\*=14 達 4.7 倍），且跨 benchmark 變異與效應量同量級。引用時必須標註 `n=3 per cell, below own k*=14, pending C1 re-run`。
+
 ## 掛載點的證據覆蓋
 
 | 掛載點 | 功能 | 優先序 | 證據狀態 |

@@ -1,0 +1,15 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "description": "Round-3C math-reasoning workload class. HuggingFaceH4/aime_2024 was completely unsampled in rounds 1-2. It is a distinct reasoning regime from coding (livecodebench) and knowledge recall (mmlu), and only 30 files exist per variant so it is cheap to cover.",
+  "seed": 12345,
+  "max_bytes": 2147483648,
+  "variants": [
+    "Qwen/Qwen3-235B-A22B-FP8",
+    "cognitivecomputations/DeepSeek-R1-AWQ",
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+    "moonshotai/Kimi-K2-Thinking"
+  ],
+  "domains": ["HuggingFaceH4"],
+  "subjects": {"HuggingFaceH4": ["aime_2024"]},
+  "queries_per_subject": 14
+}

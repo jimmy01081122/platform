@@ -26,6 +26,8 @@
 
 oracle 本身的 stall reduction median 為 90–99.9%。最好的 causal predictor 只保留約 15%，最差為負值，persistence 在四個模型上完全無效。用 oracle 當主結論會系統性且大幅高估加速器價值。
 
+> **⚠ 已降級**：上表基於每 cell n=3，低於專案自訂 k\*=14 達 4.7 倍，跨 benchmark 變異與效應量同量級（Llama 變號）。語料已補抓至 21/21 cell 達標，但分析尚未重跑——**C1 的第一件事就是重跑**。詳見 `docs/status/EXTERNAL_CORPUS_AUDIT_20260818.md`。
+
 **3. Break-even 必須用完整分解，輸出是面不是勝負。**
 
 ```text

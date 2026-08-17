@@ -1,0 +1,19 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "description": "Round-3A convergence top-up. Raises every previously sampled (variant, domain, subject) cell from n=3 to n=14, the project's own convergence threshold k*=14 established in data/canonical/moe_routing_v1/convergence.json (bootstrap 500, L1 tolerance 0.05). Before this round only 1 of 11 cells met k*. Already-registered files are skipped by the downloader.",
+  "seed": 12345,
+  "max_bytes": 2147483648,
+  "variants": [
+    "Qwen/Qwen3-235B-A22B-FP8",
+    "cognitivecomputations/DeepSeek-R1-AWQ",
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+    "moonshotai/Kimi-K2-Thinking"
+  ],
+  "domains": ["livecodebench", "mmlu", "mmlu_ZH_CN"],
+  "subjects": {
+    "livecodebench": ["execution"],
+    "mmlu": ["abstract_algebra"],
+    "mmlu_ZH_CN": ["abstract_algebra", "high_school_mathematics"]
+  },
+  "queries_per_subject": 14
+}

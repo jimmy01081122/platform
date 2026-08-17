@@ -36,6 +36,25 @@ swept        以範圍掃描處理
 | PA-103 | C++ 引擎在接上 phase4 service model 後可重現 15 點的 hit/miss/evict | `assumed` | A3 的 SIM0 驗收 |
 | PA-104 | 既有 PCIe 服務模型可用於 2 MiB KV block 的時序 | `assumed` | A1 已修小尺寸 intercept 低估問題（floor_ms，見 PA-101），但殘差分析顯示 2 MiB 附近（bytes=1048576 校準點）在 streams>1 時仍有 30–60% 的 FIT 側誤差（GAP-6 的中間尺度延伸）。**2 MiB KV block 的時序仍不可視為已由 A1 修復**，須待更多量測或 A4 判定 |
 
+## 第三方 routing 語料（`core12345/MoE_expert_selection_trace`）
+
+完整稽核見 `EXTERNAL_CORPUS_AUDIT_20260818.md`。
+
+| ID | 假設／事實 | 標籤 | 來源／後果 |
+|---|---|---|---|
+| PA-301 | 四個模型的架構參數（experts 128–384、top_k 1 或 8、MoE 層 24–94） | `measured` | `data/canonical/moe_routing_v1/routing_stats.json`。expert 物件數跨度 3,072–23,040，而自產量測的 Mixtral 只有 256（90× 差距）。**這是 HW0 metadata 相關 row 的主要證據來源** |
+| PA-302 | decode 階段每層每 token 恰好 top_k 個 expert（`ws_decode_mean` == top_k） | `measured` | 同上。後果：任意架構的控制負載可直接算為 `MoE層 × top_k` 查表/token，不需重新量測 |
+| PA-303 | 全資料集單一 query 最長約 721 tokens（prefill ≤593 + decode 固定 128） | `measured` | 全部 103,961 檔的 metadata 掃描（`bytes = a×prefill + b`，四模型 R²=1.0000）。**距 1M context 三個數量級，且無法靠補抓解決** |
+| PA-304 | 語料無 router scores、無時序 | `measured` | 資料集本身性質。後果：不可能有基於 gate 分數的 predictor；時序須由 service model 提供，因此本語料的時序價值受 A1／A4 收斂狀況牽制 |
+
+## 待驗證（語料補抓後需重跑）
+
+| ID | 假設 | 標籤 | 驗證方式 |
+|---|---|---|---|
+| PA-311 | causal predictor 僅保留 oracle 收益的 ≤15%，top_k=1 為負 | `assumed` | 補抓前數字（persistence 全 0.0%、frequency 0.0–2.6%、markov1 −0.5%–15.4%）**基於每 cell n=3，低於專案自訂 k\*=14 達 4.7 倍**，且跨 benchmark 變異與效應量同量級（Llama 甚至變號）。語料已補到 21/21 cell 達標，**須由 C1 重跑 `w3_prefetch_predictability` 後才可引用** |
+| PA-312 | 既有 `w3_*` 容量／copy-engine／壓縮 DSE 結論 | `assumed` | 同上，全部基於 60 檔舊樣本。C1 須以 354 檔重跑 |
+| PA-313 | Kimi-K2 可作為跨架構 hold-out（H5 宣稱） | `assumed` | 補抓前僅 6 檔／2 cell／n=3。現為 62 檔／4 cell／n≥14，但 **H5 效力須待重跑後重新評估** |
+
 ## 明確標為不可得
 
 | ID | 項目 | 狀態 | 後果 |
