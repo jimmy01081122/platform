@@ -1,0 +1,27 @@
+schema_version: gpu-split-v1
+source_root: ../data/canonical/moe_routing_v1
+source_manifest: ../data/canonical/moe_routing_v1/manifest.json
+model: cognitivecomputations/DeepSeek-R1-AWQ
+calibration:
+  target_gpu_regex: 'RTX PRO 6000'
+  window_steps: 32
+  queries:
+    - {benchmark: livecodebench, subject: execution, query_id: '0'}
+    - {benchmark: mmlu, subject: abstract_algebra, query_id: '0'}
+    - {benchmark: mmlu_ZH_CN, subject: high_school_mathematics, query_id: '4387'}
+validation:
+  target_gpu_regex: 'RTX PRO 6000'
+  window_steps: 64
+  queries:
+    - {benchmark: livecodebench, subject: execution, query_id: '1'}
+    - {benchmark: mmlu, subject: abstract_algebra, query_id: '1'}
+    - {benchmark: mmlu_ZH_CN, subject: high_school_mathematics, query_id: '4388'}
+holdout:
+  target_gpu_regex: 'H100'
+  frozen: true
+  blind_during_calibration: true
+  window_steps: 128
+  queries:
+    - {benchmark: livecodebench, subject: execution, query_id: '2'}
+    - {benchmark: mmlu, subject: abstract_algebra, query_id: '2'}
+    - {benchmark: mmlu_ZH_CN, subject: high_school_mathematics, query_id: '4389'}

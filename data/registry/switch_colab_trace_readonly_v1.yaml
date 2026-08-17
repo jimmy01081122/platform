@@ -1,0 +1,129 @@
+schema_version: 1
+registry_id: switch_colab_trace_readonly_v1
+complete: false
+read_only: true
+
+source:
+  root_alias: SWITCH_COLAB_TRACE_ROOT
+  default_path: /home/a/prototype/trace_data
+  access: read_only
+
+inventory:
+  default_path: /home/a/prototype/data/manifests/TRACE_INVENTORY.csv
+  sha256: 9046f970ebf58459a11cf2aca1d1189e4dac9f08f3fcdd23b93448fe2d8f91eb
+  content_set_sha256: 2378bd769156e8884008bd7f42a40b1572b9d2e6312c3f8886a7e03e37ee2b6e
+  content_set_hash_algorithm: "sha256 over rows sorted by relative_path, each encoded as UTF-8 relative_path + NUL + decimal bytes + NUL + lowercase file sha256 + LF"
+  file_count: 1527
+  total_bytes: 11159735788
+
+corpus:
+  run_count: 168
+  models:
+    - name: google/switch-base-8
+      num_experts: 8
+    - name: google/switch-base-16
+      num_experts: 16
+    - name: google/switch-base-32
+      num_experts: 32
+  benchmarks:
+    - humaneval
+    - mbpp
+    - wikitext
+    - arxiv_summarization
+    - cnn_dailymail
+    - gsm8k
+
+trace_types:
+  - name: router_token
+    file_name: router_token_trace.csv
+    evidence_class: measured
+    schema_relation:
+      inventory_kind: event_trace
+      required_columns: [batch_id, sample_id, dataset_name, stage, router_layer_index, token_id, top1_expert, top1_prob, top2_expert, top2_prob, entropy, margin, router_value_kind]
+  - name: hardware_event
+    file_name: hardware_event_trace.csv
+    evidence_class: derived_logical
+    schema_relation:
+      inventory_kind: event_trace
+      required_columns: [batch_id, sample_id, dataset_name, stage, router_layer_index, token_id, expert_id, event_type]
+  - name: expert_load
+    file_name: expert_load_trace.csv
+    evidence_class: measured
+    schema_relation:
+      inventory_kind: load_trace
+      required_columns: [sample_id, dataset_name, stage, router_layer_index, expert_id, assigned_tokens, total_tokens, load_fraction, expert_capacity, overflow_tokens]
+  - name: batch_expert_load
+    file_name: batch_expert_load_trace.csv
+    evidence_class: measured
+    schema_relation:
+      inventory_kind: load_trace
+      required_columns: [batch_id, dataset_name, stage, router_layer_index, expert_id, assigned_tokens, total_tokens, load_fraction, expert_capacity, overflow_tokens]
+  - name: run_metadata
+    file_name: run_metadata.json
+    evidence_class: metadata
+    schema_relation:
+      inventory_kind: run_metadata
+      required_columns: []
+  - name: router_diagnostics
+    file_name: router_diagnostics.json
+    evidence_class: diagnostic
+    schema_relation:
+      inventory_kind: diagnostics
+      required_columns: []
+
+candidate_mapping:
+  T1:
+    status: candidate
+    source_trace: "math_reasoning/gsm8k"
+    use: "GSM8K routing and expert-load shape candidate for the formal T1 exact-math workload"
+    limitations:
+      - "No sample-ID or prompt-hash join to the frozen T1 benchmark registry is recorded."
+      - "These traces do not provide exact-answer quality evidence."
+  T3:
+    status: candidate
+    source_trace: "coding/humaneval"
+    use: "HumanEval routing and expert-load shape candidate for the formal T3 static-code workload"
+    limitations:
+      - "No sample-ID or prompt-hash join to the frozen T3 benchmark registry is recorded."
+      - "These traces do not provide code-execution or correctness evidence."
+  T6:
+    status: candidate
+    source_trace: "long_text/{arxiv_summarization,cnn_dailymail}"
+    use: "Long-prefill routing and expert-load shape candidate for the formal T6 context buckets"
+    limitations:
+      - "Observed max_input_length values stop at 256 and do not cover formal T6 buckets through 8192."
+      - "No sample-ID or prompt-hash join to the frozen T6 benchmark registry is recorded."
+
+semantics:
+  top1: "top1_expert is the argmax expert under captured router values; top1_prob is the corresponding normalized router probability and is not an execution-time or quality score."
+  runner_up: "top2_expert/top2_prob are runner-up diagnostics only; Switch top-1 dispatch executes top1, so top2 must not be counted as a second selected or executed expert."
+  teacher_forced_decode: "Decoder routing uses teacher_forced_shift_right_from_input_ids_for_tracing_only. It is not autoregressive free-running decode and cannot support TPOT, generation quality, KV-cache evolution, or deployment decode claims."
+  hardware_event: "hardware_event_trace.csv expands routing into derived logical route/dispatch/expert_compute/gather labels. It contains no measured timestamps, durations, counters, profiler events, bandwidth, power, or device timing and must not be classified as hardware measurement."
+
+missing_provenance_fields:
+  - collector_repository_url
+  - collector_git_commit
+  - collector_source_tree_hash
+  - collector_script_path_and_sha256
+  - exact_collection_command_and_arguments
+  - container_image_digest
+  - operating_system_and_kernel
+  - host_cpu_and_memory_identity
+  - gpu_model_uuid_and_vbios
+  - gpu_driver_cuda_cudnn_versions
+  - model_checkpoint_revision_or_content_hash
+  - tokenizer_revision_or_content_hash
+  - dataset_revision_or_snapshot_hash
+  - dataset_split_and_row_identifiers
+  - prompt_or_input_content_hashes
+  - preprocessing_code_revision_and_parameters
+  - random_seeds_and_determinism_settings
+  - warmup_and_repeat_protocol
+  - collector_operator_or_service_identity
+  - original_colab_notebook_url_and_revision
+  - source_upload_or_transfer_chain_of_custody
+  - source_file_creation_timestamps_before_transfer
+  - licenses_and_redistribution_permissions
+  - per_run_failure_and_retry_history
+  - independent_accuracy_or_quality_results
+  - profiler_or_physical_hardware_measurement_provenance

@@ -1,0 +1,10 @@
+{
+  "contract_sha256": "026f99939ffbfedda6ca8238449161fe05dfbc58597dc53679524e6688d7eef6",
+  "experiment_id": "SWAP-K5-V1-MASTER",
+  "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "model_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "runtime_class": "SERVING_VARIANT_DIAGNOSTIC",
+  "schema_version": "phase7-swap-k5-manifest-v1",
+  "started_at_utc": "2026-08-14T01:49:23Z",
+  "status": "RUNNING"
+}

@@ -1,0 +1,16 @@
+{
+  "attempt_id": "SWAP-K1-V1-MASTER",
+  "expected_fixture_base_token_count": 128,
+  "failure": "Engine core initialization failed. See root cause above. Failed core proc(s): {}",
+  "failure_class": "TECHNICAL_SETUP_FAILURE",
+  "fixture_base_token_count": 153,
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V1-MASTER",
+  "next_ready_unit": "SWAP-K1",
+  "promotion_status": "REPAIR_REQUIRED",
+  "raw_file_count": 12,
+  "raw_file_set_sha256": "401cce32484295af6f1187b3ac8e5750d8cf0be86a9854be03c20f9032fa38db",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V1-MASTER",
+  "reviewed_at_utc": "2026-08-14T00:12:31Z",
+  "schema_version": "phase7-combined-master-swap-k1-failure-review-v1",
+  "validation_state": "UNVERIFIED"
+}

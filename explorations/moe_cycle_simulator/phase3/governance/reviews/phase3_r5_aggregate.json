@@ -1,0 +1,26 @@
+{
+  "schema_version": "moe-simulator-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r5-20260728",
+  "ledger_sha256": "c4b9209d95bbf91c607d65a70062e3bbb03a5892807ce08d8a4a370000535e42",
+  "member_count": 408,
+  "roles": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "blockers": [],
+  "verdict": "GO",
+  "phase3_freeze": "PASS",
+  "authorized_next_stage": "Phase 4 single-discrete-GPU resource-model implementation using CPU synthetic replay only.",
+  "not_authorized": [
+    "GPU query or execution",
+    "Mixtral, model or benchmark download or execution",
+    "runtime or live-trace profiling",
+    "platform qualification",
+    "performance or model-quality claim",
+    "formal calibration PASS",
+    "old-session resume",
+    "modification or reinterpretation of frozen G3/S4 or immutable Phase 3 historical evidence"
+  ],
+  "gpu_authority": "NONE"
+}

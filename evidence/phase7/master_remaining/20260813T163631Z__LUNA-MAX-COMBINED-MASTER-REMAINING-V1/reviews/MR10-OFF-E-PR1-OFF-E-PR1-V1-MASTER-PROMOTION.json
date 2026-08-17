@@ -1,0 +1,10 @@
+{
+  "dependency_gate": "PASS",
+  "expert_object_bytes": 352321536,
+  "immutable_discard": "PASS",
+  "next_ready_unit": "OFF-E-PR2",
+  "raw_file_set_sha256": "c321fa594150722b043e9ee2f5d37f07dae2137b6cbdb176226e5024cf2d6b82",
+  "reviewed_at_utc": "2026-08-14T02:51:38Z",
+  "schema_version": "phase7-combined-master-off-e-pr1-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

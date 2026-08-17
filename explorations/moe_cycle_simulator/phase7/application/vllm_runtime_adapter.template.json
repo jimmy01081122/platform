@@ -1,0 +1,32 @@
+{
+  "schema_version": "moe-simulator-phase7-vllm-runtime-adapter-v1",
+  "status": "DRAFT_WITH_BLOCKING_FIELDS",
+  "adapter_id": "vllm-exact-version-kv-cache-bf16-v1",
+  "implementation_path": "[BLOCKING:ABSOLUTE_VLLM_RUNTIME_ADAPTER_PATH]",
+  "implementation_sha256": "[BLOCKING:VLLM_RUNTIME_ADAPTER_SHA256]",
+  "qualified_runtime": {
+    "version": "[BLOCKING:EXACT_VLLM_VERSION]",
+    "git_commit": "[BLOCKING:EXACT_VLLM_SOURCE_GIT_COMMIT]"
+  },
+  "llm_constructor_binding": {
+    "callable": "vllm.LLM",
+    "parameter": "kv_cache_dtype",
+    "bf16_value": "bfloat16",
+    "signature_requirement": "EXPLICIT_OR_VAR_KEYWORD",
+    "probe_evidence_field": "engine.constructor_arguments.kv_cache_dtype"
+  },
+  "resolved_kv_cache_evidence": {
+    "method": "FROZEN_VERSION_ATTRIBUTE_PATH",
+    "attribute_path": [
+      "[BLOCKING:EXACT_VERSION_RESOLVED_KV_CACHE_DTYPE_ATTRIBUTE_PATH]"
+    ],
+    "expected_normalized_value": "bfloat16"
+  },
+  "loaded_module_binding": {
+    "distribution_name": "vllm",
+    "module_prefix": "vllm",
+    "isolated_python": true,
+    "bind_all_loaded_modules": true,
+    "bind_all_loaded_binary_modules": true
+  }
+}

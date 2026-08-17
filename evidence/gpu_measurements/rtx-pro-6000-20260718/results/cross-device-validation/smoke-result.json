@@ -1,0 +1,381 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "evidence": "measured",
+  "metric_scope": "MoE-replay; not full-model TPOT/throughput",
+  "experiment": {
+    "split": "validation",
+    "target_gpu_regex": "RTX PRO 6000",
+    "trust": "validation"
+  },
+  "device": {
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "capability": [
+      12,
+      0
+    ],
+    "total_memory_bytes": 101973491712
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "torch": "2.7.1+cu128",
+    "cuda_runtime": "12.8"
+  },
+  "timestamp_utc": "2026-07-18T02:38:16Z",
+  "raw_profiler_output": "/root/gpu-results/cross-device-validation/smoke-profiler.json",
+  "raw_benchmarks": [
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 801,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.042131054862757006,
+        0.041204216774929775,
+        0.04104229930634802
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04145919031467827,
+        "variance": 3.4510579488176663e-07,
+        "stdev": 0.0005874570579044621,
+        "ci95": [
+          0.03999974829997722,
+          0.04291863232937932
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 896,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.04065964477402823,
+        0.04079424909182957,
+        0.04073953628540039
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04073114338375273,
+        "variance": 4.582411191241322e-09,
+        "stdev": 6.769350922534096e-05,
+        "ci95": [
+          0.04056296981232875,
+          0.04089931695517671
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 528,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.04096096934694232,
+        0.04058272549600312,
+        0.04012745438200055
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.040557049741648664,
+        "variance": 1.7418123246672398e-07,
+        "stdev": 0.000417350251547455,
+        "ci95": [
+          0.039520210565476124,
+          0.0415938889178212
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 682,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.039316974427343464,
+        0.03883579958918507,
+        0.03846761418227926
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.03887346273293593,
+        "variance": 1.8141709077178016e-07,
+        "stdev": 0.00042593085210134774,
+        "ci95": [
+          0.037815306442957,
+          0.039931619022914866
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 624,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.051044152333186224,
+        0.05076056260329027,
+        0.05070205223865998
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.05083558905837882,
+        "variance": 3.3479845391082927e-08,
+        "stdev": 0.0001829749856977257,
+        "ci95": [
+          0.050381017310242616,
+          0.05129016080651503
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 1330,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.016165533997958764,
+        0.016290165607194255,
+        0.016126893696032072
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.016194197767061696,
+        "variance": 7.280637988027695e-09,
+        "stdev": 8.53266546164075e-05,
+        "ci95": [
+          0.015982217498809778,
+          0.016406178035313614
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816,group=128",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 288,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.14555222458309597,
+        0.14275810453626844,
+        0.14541289541456434
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.14457440817797626,
+        "variance": 2.4790723434617124e-06,
+        "stdev": 0.0015745070160090467,
+        "ci95": [
+          0.1406628002388324,
+          0.14848601611712012
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 498,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.06455415319726171,
+        0.06399248115508911,
+        0.06358824197547024
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.06404495877594035,
+        "variance": 2.3531154761332942e-07,
+        "stdev": 0.0004850892161379486,
+        "ci95": [
+          0.0628398331018434,
+          0.0652500844500373
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 636,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.05115164750776951,
+        0.051029235312024,
+        0.050950692134833185
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.0510438583182089,
+        "variance": 1.0256139710406828e-08,
+        "stdev": 0.00010127260098569024,
+        "ci95": [
+          0.050792262926123904,
+          0.0512954537102939
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 1520,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.01612463122919986,
+        0.016088210908990156,
+        0.01605183199832314
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.016088224712171053,
+        "variance": 1.3249321469564344e-09,
+        "stdev": 3.639961740123699e-05,
+        "ci95": [
+          0.01599779575189282,
+          0.016178653672449285
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 303,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.14166716773911278,
+        0.1408913489615563,
+        0.14187416857225274
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.14147756175764062,
+        "variance": 2.684464179498917e-07,
+        "stdev": 0.000518118150569821,
+        "ci95": [
+          0.1401903810397544,
+          0.14276474247552684
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 540,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.06317914326985677,
+        0.06329937687626591,
+        0.06309392717149523
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.06319081577253931,
+        "variance": 1.0654580786745495e-08,
+        "stdev": 0.00010322102880104177,
+        "ci95": [
+          0.06293437982678647,
+          0.06344725171829214
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "validation-livecodebench-execution-q1,concurrency=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 145,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms_per_token": [
+        0.15979607680748248,
+        0.16159337800124596,
+        0.16007845648403826
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.16048930376425555,
+        "variance": 9.341695110223735e-07,
+        "stdev": 0.0009665244492626006,
+        "ci95": [
+          0.15808813014567416,
+          0.16289047738283693
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        6257.975915170746,
+        6188.372397241981,
+        6246.936795643778
+      ],
+      "throughput_statistics": {
+        "n": 3,
+        "mean": 6231.095036018835,
+        "variance": 1399.3834380258236,
+        "stdev": 37.40833380445891,
+        "ci95": [
+          6138.160083038719,
+          6324.029988998952
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    }
+  ]
+}

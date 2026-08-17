@@ -1,0 +1,40 @@
+{
+  "batch_status": {
+    "completed_runs": 15,
+    "current_experiment": null,
+    "message": "All frozen natural workload runs passed; local backup pending",
+    "status": "PASS",
+    "total_runs": 15,
+    "updated_at_utc": "2026-08-11T16:09:18.165999+00:00"
+  },
+  "checksum_files_verified": 200,
+  "errors": [
+    "missing unique profiler repair run: K6-W1-WORKER-PROFILE",
+    "missing unique profiler repair run: K7-W2-WORKER-PROFILE"
+  ],
+  "invalid_parent_profiler_runs_preserved": [
+    "W1-KERNEL-PROFILE",
+    "W2-KERNEL-PROFILE"
+  ],
+  "request_count_by_class": {
+    "CLEAN": 108,
+    "KERNEL_PROFILE": 2,
+    "MEMORY_PROFILE": 2,
+    "ROUTING": 3,
+    "TELEMETRY": 99
+  },
+  "residency_monitor": {
+    "historical_count": 1,
+    "live_count": 14,
+    "raw_sample_count": 6501,
+    "status": "PASS"
+  },
+  "routing_array_count": 3,
+  "run_count": 15,
+  "status": "FAIL",
+  "telemetry_sample_count": 1922,
+  "warnings": [
+    "Original W1/W2 parent-process torch.profiler runs are preserved but are not accepted as K6/K7; only worker-profiler repair runs satisfy deep kernel evidence."
+  ],
+  "worker_profiler_repairs": {}
+}

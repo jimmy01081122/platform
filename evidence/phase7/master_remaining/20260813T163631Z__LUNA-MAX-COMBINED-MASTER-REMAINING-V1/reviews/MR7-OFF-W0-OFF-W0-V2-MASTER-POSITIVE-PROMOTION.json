@@ -1,0 +1,17 @@
+{
+  "capability_status": "RUNTIME_NATIVE_CPU_WEIGHT_OFFLOAD_AVAILABLE",
+  "next_ready_unit": "OFF-W1",
+  "raw_backup": "VERIFIED",
+  "repair_lineage": "OFF-W0-V1-MASTER -> OFF-W0-V2-MASTER",
+  "request_correctness": "PASS",
+  "reviewed_at_utc": "2026-08-14T02:17:07Z",
+  "routing_evidence": "PASS",
+  "runtime_log_offloaded_gib": 1.75,
+  "schema_version": "phase7-combined-master-off-w0-review-v1",
+  "triggered_children": [
+    "OFF-W1",
+    "OFF-W2",
+    "OFF-W3"
+  ],
+  "validation_state": "VALIDATION_PASS"
+}

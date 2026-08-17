@@ -1,0 +1,24 @@
+schema_version: granite-expected-artifacts-v1
+artifact_contract_revision: granite-c1-artifacts-v1
+per_repetition:
+  required:
+    - session_manifest.json
+    - generation_results.jsonl
+    - runtime_metadata.json
+    - quality_results.jsonl
+    - pass_manifest.json
+  by_pass:
+    P0: [baseline_metrics.json]
+    P1: [runtime_timeline.json]
+    P2: [routing_dispatch.jsonl]
+    P3: [memory_observations.json]
+    P5_BASIC: [telemetry_availability.json]
+integrity:
+  sha256_per_artifact: true
+  atomic_completion_marker: WORK_UNIT_MANIFEST.json
+  empty_routing_trace_allowed: false
+evidence_boundary:
+  actual_dispatch_required_for_P2: true
+  reconstructed_topk_from_logits_accepted_as_actual_dispatch: false
+  cycle_accurate_claim_allowed: false
+  large_moe_offload_claim_allowed: false

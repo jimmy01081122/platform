@@ -1,0 +1,21 @@
+{
+  "schema_version": "platform-profile-v1",
+  "profile_id": "P-D-RTX3050",
+  "name": "Discrete CPU-GPU with NVIDIA RTX 3050 6GB",
+  "class": "discrete",
+  "fidelity": {
+    "hardware": "H2",
+    "status": "uncalibrated"
+  },
+  "provenance": "H2 target: component-calibrated on real RTX 3050.",
+  "measurement_plan": {
+    "h2d_d2h_bandwidth": "cudaMemcpyAsync pinned host<->device, sizes 2^16..2^28 B, report effective GB/s vs size; use the plateau for large experts.",
+    "copy_engine_latency": "linear fit of transfer_time vs bytes; intercept = launch/DMA latency_s.",
+    "copy_engines": "concurrent stream copy scaling until bandwidth saturates.",
+    "expert_kernel_time": "time one MoE expert (grouped GEMM: 3*hidden*intermediate) at the model's precision for batch=1 (decode) and batch=prefill; per-MoE-layer compute = sum over resident experts -> resolves A-017."
+  },
+  "link_latency_s": null,
+  "copy_engines": null,
+  "link_bandwidth_bytes_per_s": null,
+  "per_moe_layer_compute_time_s": null
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "phase7-off-e-rt0-capability-contract-v1",
+  "contract_state": "FROZEN_BEFORE_EXECUTION",
+  "canonical_experiment_id": "OFF-E-RT0",
+  "scientific_question": "Does the installed and authorized vLLM runtime expose a route-conditioned, object-observable dynamic expert host/device residency path for this Mixtral build?",
+  "required_positive_semantics": [
+    "route- or expert-demand-conditioned residency decision",
+    "layer/expert object identity mapped to the 256-object catalog",
+    "host/device initial residency and capacity",
+    "miss, transfer issue, completion, ready, expert compute and fallback lineage",
+    "output and routing equivalence under an actual trigger canary"
+  ],
+  "non_equivalent_features": {
+    "UVA_cpu_offload": "Static/selective parameter placement with zero-copy access each model forward; not route-conditioned expert residency.",
+    "prefetch_weight_offload": "Static layer-group selection and layer-ahead prefetch; parameter filters may select experts but selection is not routed-expert demand.",
+    "weight_transfer": "NCCL/IPC weight update transport for RL training; not inference host/device residency.",
+    "EPLB": "Expert redistribution/load balancing across expert-parallel ranks; not single-GPU host expert residency."
+  },
+  "model": {
+    "path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "dtype": "bfloat16"
+  },
+  "expert_catalog": {
+    "source_sha256": "9e7548cf9349972368b423a3fa8273dd30dc77c23722c99bc5e57ee99dc0a104",
+    "object_count": 256,
+    "object_bytes": 352321536,
+    "total_expert_bytes": 90194313216,
+    "object_granularity": "layer_expert_three_tensor_bundle"
+  },
+  "canary": {
+    "runtime_class": "ROUTING",
+    "input_tokens": 128,
+    "output_tokens": 32,
+    "sampling_mode": "FORCED_LENGTH_CONTROLLED",
+    "warmup_count": 0,
+    "measured_count": 1,
+    "max_num_seqs": 1,
+    "max_num_batched_tokens": 256,
+    "gpu_memory_utilization": 0.97,
+    "cpu_offload_gb": 0,
+    "enable_expert_parallel": false,
+    "enable_prefix_caching": false,
+    "enforce_eager": true
+  },
+  "predeclared_outcomes": [
+    "RUNTIME_DYNAMIC_EXPERT_RESIDENCY_AVAILABLE_REQUIRES_TRIGGER_MATRIX",
+    "RUNTIME_EXPERT_OFFLOAD_UNAVAILABLE_WITH_CONSEQUENCE",
+    "TECHNICAL_AUDIT_FAILURE_REQUIRES_REPAIR"
+  ],
+  "negative_evidence_rule": "If source/API semantics expose only the non-equivalent features and the actual routing canary completes without an object-level residency lifecycle, close OFF-E-RT0 as validated negative evidence and close OFF-E-RT1/2/3 as NOT_TRIGGERED_WITH_EVIDENCE; continue compute-integrated OFF-E-PR and shared-fabric OFFKV work.",
+  "source_contract": [
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/config/offload.py", "sha256": "6f2db3d9a2730588473d5155811690c6241b167a21dcb62fbbd9ebb6386de42c"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/prefetch.py", "sha256": "a0ce337686f504c4ab3492aa4dc24451e6f3b4dc8b99b478259fb6138fa8adbe"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/uva.py", "sha256": "3694e031dd231566671eadf61c27bd4ac14b66878ca3d16e0bef34f50e4f72ec"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/engine/arg_utils.py", "sha256": "3ade2488897d08b5c1fd4ddb815eb5743169907d59741a47867185caab7f250d"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/config/weight_transfer.py", "sha256": "a05458dbb87ceff700c1da3ea1ee791f15aec9c1d47bb330c12fca0ead78af0f"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/distributed/eplb/eplb_state.py", "sha256": "43908a311bfa9dc119d9edc63bc197dc56c5e823dc0be21cf006496cd5fa5ac0"}
+  ],
+  "claim_boundary": "Capability/semantics and negative-evidence canary only; no expert-offload performance claim. Generic/static weight offload must not be relabeled dynamic expert residency."
+}

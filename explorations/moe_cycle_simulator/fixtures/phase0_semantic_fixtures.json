@@ -1,0 +1,270 @@
+{
+  "schema_version": "moe-simulator-phase0-semantic-fixtures-v1",
+  "clocks": [
+    {
+      "schema_version": "clock-domain-v1",
+      "clock_id": "cpu",
+      "frequency_numerator_hz": "1000000000",
+      "frequency_denominator_hz": "1",
+      "phase_offset_fs": "0",
+      "local_cycle": "0",
+      "fractional_remainder": "0"
+    },
+    {
+      "schema_version": "clock-domain-v1",
+      "clock_id": "gpu-rank0",
+      "frequency_numerator_hz": "2400000000",
+      "frequency_denominator_hz": "1",
+      "phase_offset_fs": "0",
+      "local_cycle": "3",
+      "fractional_remainder": "0"
+    }
+  ],
+  "calibration_records": [
+    {
+      "record_id": "synthetic-shortest",
+      "duration_fs": "1000000"
+    }
+  ],
+  "bridges": [
+    {
+      "schema_version": "bridge-v1",
+      "bridge_id": "cpu-gpu-command",
+      "source_clock_id": "cpu",
+      "target_clock_id": "gpu-rank0",
+      "protocol": "ONE_WAY",
+      "forward_latency_fs": "1000",
+      "reverse_latency_fs": "0",
+      "receiver_sync_cycles": 2,
+      "ack_sync_cycles": 0,
+      "queue_capacity": 4,
+      "backpressure_policy": "STALL_SOURCE"
+    }
+  ],
+  "alignments": [
+    {
+      "schema_version": "clock-alignment-v1",
+      "alignment_id": "gpu-rank0-to-global",
+      "source_clock_id": "gpu-rank0-device",
+      "target_clock_id": "gpu-rank0",
+      "source_rank": 0,
+      "target_rank": null,
+      "transform_type": "IDENTITY",
+      "scale_numerator": "1",
+      "scale_denominator": "1",
+      "offset_fs": "0",
+      "calibration_method": "synthetic-phase0-anchor",
+      "calibration_points": [
+        {"source_time": "0", "target_time": "0"}
+      ],
+      "residual_error_fs": "0",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "-10000",
+        "upper_error_fs": "10000"
+      },
+      "valid_time_range": {
+        "source_start": "0",
+        "source_end": "10000000"
+      },
+      "drift_bound_ppm": "0",
+      "grading_inputs": {
+        "target_clock_profile_hash": "6ad324fa15be03b709e3b625839750aa2ae9fd0570f8d6e4a6eac05a0c6a413b",
+        "target_period_numerator_fs": "1250000",
+        "target_period_denominator": "3",
+        "shortest_component_record_hash": "ebc5d6b8a5afea1dad31ca76df59aad5a9061ab8fbd8b4cfa5e71b88df53837d",
+        "shortest_component_duration_fs": "1000000"
+      },
+      "provenance": {
+        "producer": "phase0-synthetic-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      },
+      "claimed_grade": "CYCLE_GRADE"
+    }
+  ],
+  "observability": [
+    {
+      "schema_version": "observability-v1",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "schema_version": "observability-v1",
+      "availability": "CONDITIONAL",
+      "evidence_mode": "NONE",
+      "expected_evidence_modes": ["MEASURED", "DERIVED"],
+      "reason": "platform collector feasibility is not yet established"
+    }
+  ],
+  "result_evidence": [
+    {
+      "schema_version": "result-evidence-v1",
+      "fidelity": "MEASURED",
+      "range_status": "IN_CALIBRATION_ENVELOPE",
+      "envelope_distance": null,
+      "nearest_calibration_point": null,
+      "calibration_profile_hash": null
+    },
+    {
+      "schema_version": "result-evidence-v1",
+      "fidelity": "CALIBRATED_SURROGATE",
+      "range_status": "INTERPOLATED",
+      "envelope_distance": {"value": "0.25", "unit": "normalized_l2"},
+      "nearest_calibration_point": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "calibration_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "routing": [
+    {
+      "schema_version": "routing-ir-v1",
+      "request_id": "request-01",
+      "token_index": 0,
+      "layer_index": 0,
+      "num_experts": 8,
+      "top_k": 2,
+      "canonical_scores": [
+        "1",
+        "0.89999997615814208984375",
+        "0.89999902248382568359375",
+        "0.5",
+        "0.4000000059604644775390625",
+        "0.300000011920928955078125",
+        "0.20000000298023223876953125",
+        "0.100000001490116119384765625"
+      ],
+      "score_dtype": "float32",
+      "score_tolerance_absolute": "0.000000238418579101562500",
+      "score_tolerance_relative": "0.00001",
+      "selected_experts": [0, 1],
+      "k_boundary_score": "0.89999997615814208984375",
+      "ambiguity_set": [1, 2],
+      "observability": {
+        "schema_version": "observability-v1",
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      },
+      "model_profile_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "semantic_descriptor_hash": "d344c1333f821e37cf9f505751e74869bf22fddfb6670a65eeb37a44e07eca3f"
+    }
+  ],
+  "runtime_variants": [
+    {
+      "schema_version": "runtime-variant-v1",
+      "variant_id": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e",
+      "runtime": {"name": "vllm-mock", "revision": "phase1-cpu-fixture"},
+      "container": {"name": "none", "revision": "host-cpu-mock"},
+      "cuda": {"name": "not-applicable", "revision": "none"},
+      "driver": {"name": "not-applicable", "revision": "none"},
+      "attention_backend": "cpu-mock",
+      "fused_moe_backend": "cpu-mock",
+      "tensor_parallel_size": 1,
+      "expert_parallel_size": 1,
+      "pipeline_parallel_size": 1,
+      "distributed_executor": "single-process",
+      "execution_mode": "EAGER",
+      "max_model_length": 32768,
+      "max_batched_tokens": 4096,
+      "max_sequences": 1,
+      "scheduler_policy": "fcfs",
+      "kv_cache_dtype": "bf16-mock-contract-only",
+      "nccl_environment": {},
+      "placement": {"mode": "cpu-mock"},
+      "offload": {"enabled": false},
+      "kernel_backend": "synthetic",
+      "seed": 0,
+      "generation": {"do_sample": false},
+      "collector_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+      "adapter_hash": "4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  ],
+  "events": [
+    {
+      "schema_version": "event-ir-v1",
+      "trace_id": "phase0-trace",
+      "event_id": "arrival-01",
+      "event_type": "REQUEST_ARRIVAL",
+      "time_fs": "0",
+      "event_priority": 60,
+      "request_id": "request-01",
+      "token_index": null,
+      "layer_index": null,
+      "component_id": "admission",
+      "clock_id": "cpu",
+      "rank": null,
+      "stream_id": null,
+      "correlation_id": "correlation-01",
+      "semantic_descriptor_hash": "a9e1c149da76e38bd86c1d617ee601cf763a65b3cee0a8d2d3d47a374f7ed35c",
+      "duration_fs": null,
+      "dependencies": [],
+      "observability": {
+        "schema_version": "observability-v1",
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      },
+      "provenance": {
+        "producer": "phase0-synthetic-fixture",
+        "producer_version": "1",
+        "raw_content_ids": [
+          "1111111111111111111111111111111111111111111111111111111111111111"
+        ]
+      },
+      "attributes": {"kind": "synthetic"}
+    },
+    {
+      "schema_version": "event-ir-v1",
+      "trace_id": "phase0-trace",
+      "event_id": "compute-01",
+      "event_type": "COMPUTE_START",
+      "time_fs": "1250000",
+      "event_priority": 100,
+      "request_id": "request-01",
+      "token_index": 0,
+      "layer_index": 0,
+      "component_id": "gpu-rank0",
+      "clock_id": "gpu-rank0",
+      "rank": 0,
+      "stream_id": "stream-0",
+      "correlation_id": "correlation-01",
+      "semantic_descriptor_hash": "a9e1c149da76e38bd86c1d617ee601cf763a65b3cee0a8d2d3d47a374f7ed35c",
+      "duration_fs": null,
+      "dependencies": ["arrival-01"],
+      "observability": {
+        "schema_version": "observability-v1",
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      },
+      "provenance": {
+        "producer": "phase0-synthetic-fixture",
+        "producer_version": "1",
+        "raw_content_ids": [
+          "2222222222222222222222222222222222222222222222222222222222222222"
+        ]
+      },
+      "attributes": {"kernel_class": "synthetic-surrogate"}
+    }
+  ],
+  "semantic_hash": {
+    "descriptor": {
+      "schema_id": "phase0-golden-row",
+      "schema_version": "1",
+      "field_order": ["request_id", "token_index", "label"],
+      "logical_types": ["utf8", "uint64", "utf8"],
+      "nullability": [false, false, true],
+      "units": [null, "token", null],
+      "semantic_metadata": {"unicode": "NFC"},
+      "primary_key": ["request_id", "token_index"]
+    },
+    "rows": [
+      {"request_id": "réquest-02", "token_index": 1, "label": null},
+      {"request_id": "request-01", "token_index": 0, "label": "alpha"}
+    ],
+    "expected_schema_fingerprint": "1ac30d893b81c9fd30a1c356350ab1f74f29afc22d206305139c8e4fc6b17386",
+    "expected_row_hashes": [
+      "5a10e5c0b8b66693eaf5870191893adbb46838ab643b2afb5479e6bffc9e7a5b",
+      "2b69d242c2c169a4d9e9a4d98d396e5ab537ea5c6906abce4b54f385c9f30162"
+    ],
+    "expected_aggregate_hash": "f1ae2feca59dc3b3805836d658f3403573a1613ba83d7b7159c62180a9646390"
+  }
+}

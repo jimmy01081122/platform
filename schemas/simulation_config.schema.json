@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "simulation_config.schema.json",
+  "title": "Multi-Fidelity Simulation Configuration",
+  "type": "object",
+  "required": ["schema_version", "simulation"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "simulation-config-v2"
+    },
+    "simulation": {
+      "type": "object",
+      "required": ["fidelity", "backend"],
+      "additionalProperties": false,
+      "properties": {
+        "fidelity": {
+          "enum": ["fast", "calibrated", "detailed", "rtl-transaction", "rtl-cycle"]
+        },
+        "backend": {
+          "type": "string",
+          "minLength": 1
+        },
+        "calibration_pack": {
+          "type": ["string", "null"]
+        },
+        "workload_window": {
+          "type": ["string", "object", "null"]
+        },
+        "checkpoint": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"fidelity": {"const": "calibrated"}}
+          },
+          "then": {
+            "required": ["calibration_pack"],
+            "properties": {"calibration_pack": {"type": "string", "minLength": 1}}
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r4-20260802",
+  "source_commit_sha1": "4f8fd4f3cfc94348a340357ca52dbfb56dae1e7d",
+  "source_tree_sha1": "bedf1edccc38a3594035fb259ab675c536060b3c",
+  "ledger_sha256": "4241d872975bbf9f375316765dd5bb159028c1c8fa0cc1bd2d84c1425d339f2a",
+  "member_count": 181,
+  "exact_set_verification": "PASS",
+  "tests": {
+    "phase7_cpu_unit_tests": "PASS_125_OF_125",
+    "draft_fail_closed_validation": "PASS_217_BLOCKING_FIELDS",
+    "gate_m_parent_post_validation_substitution": "ACCEPTED_POST_VALIDATION_PARENT_SUBSTITUTION",
+    "originless_loaded_vllm_module": "ACCEPTED_ORIGINLESS_VLLM_MODULE_SKIPPED"
+  },
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "MODEL-P7-R12R4-B1",
+      "location": "explorations/moe_cycle_simulator/phase7/application/executor/driver.py:69",
+      "summary": "Gate M parent approval hashing, live validation and M0 model binding use separate reads; an adversarial replacement after validation was accepted."
+    },
+    {
+      "id": "MODEL-P7-R12R4-B2",
+      "location": "explorations/moe_cycle_simulator/phase7/application/executor/runtime_attestation.py:180",
+      "summary": "Loaded vllm or vllm.* module entries without __file__ and spec.origin are silently skipped; an originless injected module was omitted without failure."
+    }
+  ],
+  "observations": [
+    "Gate M/M0 model-ledger and prompt-fixture equality exists, but the driver multi-read TOCTOU prevents closure.",
+    "PYTHONPATH removal, isolated -I launch and file-backed loaded-module validation are otherwise effective.",
+    "Every model-ledger validation binds the exact frozen model ID and revision.",
+    "The Mixtral BF16/no-quantization/no-offload 28672+4096 by three-launch contract is unchanged."
+  ],
+  "claim_boundary": "CPU-only same-hash governance and adversarial mock evidence; no actual vLLM, model, GPU or measured capacity evidence.",
+  "gpu_authority": "NONE"
+}

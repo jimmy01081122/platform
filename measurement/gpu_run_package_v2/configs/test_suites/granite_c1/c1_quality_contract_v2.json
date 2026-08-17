@@ -1,0 +1,49 @@
+{
+  "schema_version": "c1-quality-contract-v2",
+  "contract_revision": "granite-c1-quality-v2.0.0",
+  "evaluator_revision": "granite-c1-evaluator-v2",
+  "evaluator_source_path": "scripts/c1_evaluator.py",
+  "quality_engine_path": "scripts/c1_quality.py",
+  "prospective_only": true,
+  "historical_decisions": {
+    "G3-R3": "PERMANENT_FAIL"
+  },
+  "legal_stop_reasons": [
+    "eos_token"
+  ],
+  "unknown_stop_reason_policy": "blocking",
+  "unknown_task_policy": "blocking",
+  "quality_gates": {
+    "QG-1": {
+      "scope": "execution_integrity",
+      "disposition": "blocking"
+    },
+    "QG-2": {
+      "scope": "cross_pass_exact_generation_and_classification",
+      "disposition": "blocking",
+      "baseline_pass": "P0"
+    },
+    "QG-3": {
+      "scope": "T0_task_correctness",
+      "disposition": "blocking"
+    },
+    "QG-4": {
+      "scope": "T1_T2_task_correctness",
+      "disposition": "recorded_nonblocking"
+    }
+  },
+  "task_contracts": {
+    "T0": {
+      "evaluator": "t0_integer_semantics_v1",
+      "correctness_gate": "QG-3"
+    },
+    "T1": {
+      "evaluator": "gsm8k_last_number",
+      "correctness_gate": "QG-4"
+    },
+    "T2": {
+      "evaluator": "mmlu_choice",
+      "correctness_gate": "QG-4"
+    }
+  }
+}

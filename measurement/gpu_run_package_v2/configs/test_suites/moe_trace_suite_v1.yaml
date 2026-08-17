@@ -1,0 +1,105 @@
+schema_version: moe-trace-suite-v1
+suite_id: moe-trace-suite
+suite_revision: v1.4.0
+seed: 20260718
+manifest: configs/test_suites/sample_manifest_v1.jsonl
+enabled_models: [tiny_random_qwen2moe_m0, switch_small, olmoe_1b_7b, deepseek_moe_16b, qwen3_30b_a3b, mixtral_8x7b, deepseek_r1, qwen3_235b]
+model_eligibility_overrides:
+  tiny_random_qwen2moe_m0:
+    identity: M0_pipeline_only
+    tasks: [T1, T2]
+    splits: [smoke]
+    expected_pairings: 8
+    release_eligible: false
+required_sample_fields:
+  - sample_id
+  - task_id
+  - role
+  - split
+  - raw_sample_hash
+  - prompt_hash
+  - enabled_models
+tasks:
+  T0:
+    version: T0-v1
+    name: deterministic_micro_fixtures
+    source: fixed_contract
+    evaluator: exact_expected_token_fixture
+    content_policy: immutable_literal_prompt_tokens_expected
+    status: enabled
+  T1:
+    version: T1-v1
+    name: gsm8k_exact_math
+    source: gsm8k
+    evaluator: gsm8k_exact_extraction
+    status: enabled_local_snapshot
+  T2:
+    version: T2-v1
+    name: mmlu_subject_stratified
+    source: mmlu
+    evaluator: mmlu_choice
+    status: enabled_local_snapshot
+  T3:
+    version: T3-v1
+    name: humaneval_static_code
+    source: humaneval
+    evaluator: code_static_or_isolated_adapter
+    status: enabled_local_snapshot
+  T4:
+    version: T4-v1
+    name: fixed_instruction_and_conversation
+    source: fixed_contract
+    evaluator: instruction_validity
+    content_policy: immutable_literal_content
+    status: enabled
+  T5:
+    version: T5-v1
+    name: ceval_chinese
+    source: ceval
+    evaluator: chinese_choice_and_language_validity
+    status: enabled_local_snapshot
+  T6:
+    version: T6-v1
+    name: long_prefill_context_buckets
+    source: deterministic_generator
+    evaluator: instruction_validity
+    buckets: [128, 512, 2048, 4096, 8192]
+    token_semantics: whitespace_token_proxy_not_model_tokenizer_count
+    status: enabled
+  T7:
+    version: T7-v1
+    name: serving_schedule_replay
+    source: serving_schedules/v1.yaml
+    evaluator: request_contract_validity
+    status: enabled
+  T8:
+    version: T8-v1
+    name: moe_router_stress
+    source: deterministic_generator
+    evaluator: stress_contract_validity
+    patterns:
+      - uniform
+      - single_expert_hotspot
+      - alternating_hotspots
+      - zipfian
+      - bursty
+      - layer_shift
+      - adversarial_capacity
+      - empty_then_burst
+    status: enabled
+freeze_policy:
+  immutable_revision_directory: true
+  merkle_hash: sha256
+  root_contract: manifest_merkle_plus_domain_separated_source_hashes
+  required_source_hashes:
+    - configs/test_suites/prompt_templates/v1.yaml
+    - configs/test_suites/generation_configs/v1.yaml
+    - configs/test_suites/serving_schedules/v1.yaml
+    - configs/test_suites/model_benchmark_matrix.yaml
+    - datasets/snapshots/snapshot_inventory_v1.json
+    - configs/test_suites/splits/v1.4.0/sample_split.yaml
+    - configs/test_suites/splits/v1.4.0/domain_split.yaml
+    - configs/test_suites/splits/v1.4.0/model_holdout.yaml
+    - configs/test_suites/splits/v1.4.0/hardware_holdout.yaml
+  odd_leaf_rule: duplicate_last
+  reject_revision_overwrite: true

@@ -1,0 +1,48 @@
+{
+  "attempt_id": "SWAP-K1-V4-MASTER",
+  "checksum_manifest_sha256": "76e780654e3d3ec127a1ffa5512690ba7916f98a9bcf9d565ebbc794366d9820",
+  "claims_forbidden": [
+    "verified block swap-out/in",
+    "exact moved bytes or block lineage",
+    "swap latency/throughput/performance"
+  ],
+  "event_summary": {
+    "block_stored_hash_counts": [
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128
+    ],
+    "block_stored_media": [
+      "CPU"
+    ],
+    "declared_block_removed_event_count": 0,
+    "declared_block_stored_event_count": 7,
+    "decode_errors": null,
+    "decoded_block_stored_message_count": 8,
+    "decoded_message_counts": {
+      "BlockStored": 8
+    },
+    "event_envelopes": 7,
+    "message_field_counts": [
+      11
+    ]
+  },
+  "execution_state": "EXECUTION_COMPLETE",
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V4-MASTER",
+  "next_ready_unit": "SWAP-K1",
+  "promotion_status": "SUPPLEMENT_REQUIRED",
+  "raw_backup": "VERIFIED",
+  "raw_file_count": 18,
+  "raw_file_set_sha256": "458acc77f4610625018437a39eb84142eaa9fca6df419782a6a63f9ab7f0925d",
+  "remote_local_hashes_verified": true,
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V4-MASTER",
+  "request_correctness": "PASS",
+  "reviewed_at_utc": "2026-08-14T00:28:49Z",
+  "schema_version": "phase7-combined-master-swap-k1-event-review-v1",
+  "validation_state": "UNVERIFIED"
+}

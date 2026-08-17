@@ -1,0 +1,735 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "evidence": "measured",
+  "metric_scope": "MoE-replay; not full-model TPOT/throughput",
+  "split": "validation",
+  "experiment": {
+    "split": "validation",
+    "target_gpu_regex": "RTX PRO 6000",
+    "trust": "validation"
+  },
+  "seed": 20260718,
+  "command": [
+    "/root/edge-credibility-run/gpu_run_package/.venv/bin/python3",
+    "/root/edge-credibility-run-v3/gpu_run_package/scripts/benchmark.py",
+    "--smoke",
+    "--experiment",
+    "cross-device-validation",
+    "--output",
+    "/root/gpu-results-v3/cross-device-validation/smoke-result.json",
+    "--profiler-output",
+    "/root/gpu-results-v3/cross-device-validation/smoke-profiler.json"
+  ],
+  "package_id": "edgehetero-rtxpro6000-h100-20260718",
+  "package_revision": "paired-holdout-calibration-probes-v3",
+  "package_manifest_sha256": "ec894fa5ee95c3bece38b25ff3eb59571c96fd78e1ebabfdae0e5feeee243ab7",
+  "checksums_sha256": "b7f1776897152c081b4ed7e3984ea70c1095fdbadaecbe1322e059bbf67a1765",
+  "device": {
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "capability": [
+      12,
+      0
+    ],
+    "total_memory_bytes": 101973491712
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "torch": "2.7.1+cu128",
+    "cuda_runtime": "12.8"
+  },
+  "timestamp_utc": "2026-07-18T03:02:31Z",
+  "raw_profiler_output": "smoke-profiler.json",
+  "raw_benchmarks": [
+    {
+      "record_id": "validation-c8911669acdca6637554dbd9",
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 817,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.042502306374371274,
+        0.04120440815770349,
+        0.040947347988843044
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04155135417363927,
+        "variance": 6.947525486614231e-07,
+        "stdev": 0.0008335181753635748,
+        "ci95": [
+          0.0394806131232519,
+          0.04362209522402664
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 65536,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "validation-dae451f82faadce827ee76e6",
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 722,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.040716055027335635,
+        0.04066796712267762,
+        0.040542095321697544
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04064203915723693,
+        "variance": 8.069689340342843e-09,
+        "stdev": 8.983144961728516e-05,
+        "ci95": [
+          0.04041886745464367,
+          0.04086521085983019
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 65536,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "validation-7ff9716e6b3ed32ed8249b90",
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 630,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.041565713428315665,
+        0.041283655923510354,
+        0.041360558403862845
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04140330925189629,
+        "variance": 2.1259835259933408e-08,
+        "stdev": 0.0001458075281318952,
+        "ci95": [
+          0.0410410740386971,
+          0.04176554446509548
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 1048576,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "validation-3055ab8889cfa15bb16ae822",
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 671,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.04117889802253371,
+        0.04106396534403817,
+        0.04086910310338755
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04103732215665314,
+        "variance": 2.4525617557718634e-08,
+        "stdev": 0.00015660656933129795,
+        "ci95": [
+          0.04064825847278902,
+          0.04142638584051726
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 1048576,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "validation-f9704e5e71de34ffe018f7c6",
+      "operation": "selected_expert",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 626,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.05163833813164562,
+        0.05151616422513042,
+        0.05179982292004667
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.0516514417589409,
+        "variance": 2.024434258661866e-08,
+        "stdev": 0.0001422826151946142,
+        "ci95": [
+          0.05129796362163281,
+          0.052004919896248995
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "validation-430d3e3c89689bad91da3235",
+      "operation": "gather_scatter",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 1376,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.016202488610910816,
+        0.016315047131028285,
+        0.016196069329283958
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.016237868357074355,
+        "variance": 4.4777241559252935e-09,
+        "stdev": 6.691579900087343e-05,
+        "ci95": [
+          0.016071626880876027,
+          0.016404109833272684
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "validation-bb542744aa23a823851ddb3e",
+      "operation": "dequant",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816,group=128",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 290,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.14413550804401265,
+        0.14435641847807787,
+        0.14471702575683593
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.14440298409297547,
+        "variance": 8.616697994989817e-08,
+        "stdev": 0.000293542126363318,
+        "ci95": [
+          0.14367372617269872,
+          0.14513224201325223
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "validation-4c24e5cfba54524957a1fa8b",
+      "operation": "grouped_gemm",
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 565,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.0646247661219234,
+        0.06472150414390901,
+        0.06494923819482853
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.06476516948688699,
+        "variance": 2.775052815687643e-08,
+        "stdev": 0.0001665848977454932,
+        "ci95": [
+          0.06435131626048829,
+          0.06517902271328568
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "validation-37ed892a210f9008631342c0",
+      "operation": "selected_expert",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 670,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.05256869187995569,
+        0.052563106479929456,
+        0.05219519885618295
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.052442332405356035,
+        "variance": 4.581404251852684e-08,
+        "stdev": 0.0002140421512658823,
+        "ci95": [
+          0.05191057931077456,
+          0.05297408549993751
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "validation-8d2bf1089f15711a513e9afd",
+      "operation": "gather_scatter",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 1491,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.016411729501766458,
+        0.016432504378893806,
+        0.016599458148222015
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.016481230676294093,
+        "variance": 1.0591200218764848e-08,
+        "stdev": 0.00010291355702124404,
+        "ci95": [
+          0.016225558594431793,
+          0.016736902758156393
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "validation-a3f11d9d7b26246661d76c74",
+      "operation": "dequant",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 288,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.14432855447133383,
+        0.14370699723561606,
+        0.14445688989427355
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.14416414720040782,
+        "variance": 1.6085706292710624e-07,
+        "stdev": 0.0004010698978072354,
+        "ci95": [
+          0.14316775392907713,
+          0.14516054047173851
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "validation-0f1eb3f86e88b513dc5181f0",
+      "operation": "grouped_gemm",
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 579,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.06438853209500486,
+        0.06413015388660069,
+        0.06436852305252523
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.06429573634471027,
+        "variance": 2.066325327044378e-08,
+        "stdev": 0.00014374718526094269,
+        "ci95": [
+          0.06393861972002762,
+          0.06465285296939291
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "validation-024a3a5cc58f513fdfab4961",
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "validation-livecodebench-execution-q1,concurrency=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 143,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms_per_token": [
+        0.16303551947320258,
+        0.17302746539349323,
+        0.17852005591759315
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.17152768026142964,
+        "variance": 6.162973380618418e-05,
+        "stdev": 0.007850460738465239,
+        "ci95": [
+          0.15202448069592117,
+          0.19103087982693812
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        6133.63273985437,
+        5779.429281506457,
+        5601.611510034543
+      ],
+      "throughput_statistics": {
+        "n": 3,
+        "mean": 5838.224510465123,
+        "variance": 73354.3064559767,
+        "stdev": 270.84000158022576,
+        "ci95": [
+          5165.366346197117,
+          6511.082674733128
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      },
+      "tokens": 2,
+      "cpu_calls": 2,
+      "gpu_operations": {
+        "grouped_gemm": 2,
+        "gather_scatter": 2
+      },
+      "memory_bytes": 8192,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "queue_depth": 1,
+      "transfers": [],
+      "phase": "decode",
+      "concurrency": 1
+    }
+  ],
+  "evaluation_points": [
+    {
+      "point_id": "point-171adaaf95f408d12dfd9b36",
+      "source_record_id": "validation-c8911669acdca6637554dbd9",
+      "metric": "pcie_transfer_latency",
+      "measured": 0.04155135417363927,
+      "features": {
+        "direction": "h2d",
+        "bytes": 65536,
+        "copy_streams": 1
+      },
+      "domain": {
+        "split": "validation",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-983aec7f707dee80370c85f5",
+      "source_record_id": "validation-dae451f82faadce827ee76e6",
+      "metric": "pcie_transfer_latency",
+      "measured": 0.04064203915723693,
+      "features": {
+        "direction": "d2h",
+        "bytes": 65536,
+        "copy_streams": 1
+      },
+      "domain": {
+        "split": "validation",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-f3f2929a1ab713b53cde6136",
+      "source_record_id": "validation-7ff9716e6b3ed32ed8249b90",
+      "metric": "pcie_transfer_latency",
+      "measured": 0.04140330925189629,
+      "features": {
+        "direction": "h2d",
+        "bytes": 1048576,
+        "copy_streams": 1
+      },
+      "domain": {
+        "split": "validation",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-6c269945542bfabe3701ef0a",
+      "source_record_id": "validation-3055ab8889cfa15bb16ae822",
+      "metric": "pcie_transfer_latency",
+      "measured": 0.04103732215665314,
+      "features": {
+        "direction": "d2h",
+        "bytes": 1048576,
+        "copy_streams": 1
+      },
+      "domain": {
+        "split": "validation",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-55e0286f74cb95a7db7ada9f",
+      "source_record_id": "validation-f9704e5e71de34ffe018f7c6",
+      "metric": "component_latency",
+      "measured": 0.0516514417589409,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "prefill",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-dd7b62d19f96546b79b50902",
+      "source_record_id": "validation-430d3e3c89689bad91da3235",
+      "metric": "component_latency",
+      "measured": 0.016237868357074355,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "prefill",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-9a4eae07f8cda8cf91cd4d59",
+      "source_record_id": "validation-bb542744aa23a823851ddb3e",
+      "metric": "component_latency",
+      "measured": 0.14440298409297547,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "prefill",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-f813e3dd9eeed991a8b90db9",
+      "source_record_id": "validation-4c24e5cfba54524957a1fa8b",
+      "metric": "component_latency",
+      "measured": 0.06476516948688699,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "prefill",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-b6e2748ddaac7fde28297b73",
+      "source_record_id": "validation-37ed892a210f9008631342c0",
+      "metric": "component_latency",
+      "measured": 0.052442332405356035,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "decode",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-b889b18bddf6c495e2a8144a",
+      "source_record_id": "validation-8d2bf1089f15711a513e9afd",
+      "metric": "component_latency",
+      "measured": 0.016481230676294093,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "decode",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-dc40fa19681426131e94c988",
+      "source_record_id": "validation-a3f11d9d7b26246661d76c74",
+      "metric": "component_latency",
+      "measured": 0.14416414720040782,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "decode",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-a75ef0d1d9f4f73945db7e0a",
+      "source_record_id": "validation-0f1eb3f86e88b513dc5181f0",
+      "metric": "component_latency",
+      "measured": 0.06429573634471027,
+      "features": {
+        "cpu_calls": 0,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0,
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "decode",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-9b53daf5b0a4a664d8f90d33",
+      "source_record_id": "validation-024a3a5cc58f513fdfab4961",
+      "metric": "moe_replay_tpot",
+      "measured": 0.17152768026142964,
+      "features": {
+        "tokens": 2,
+        "cpu_calls": 2,
+        "gpu_operations": {
+          "grouped_gemm": 2,
+          "gather_scatter": 2
+        },
+        "memory_bytes": 8192,
+        "queue_depth": 1,
+        "transfers": [],
+        "phase": "decode",
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "decode",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    },
+    {
+      "point_id": "point-9e019ee64210a229df5503d2",
+      "source_record_id": "validation-024a3a5cc58f513fdfab4961",
+      "metric": "moe_replay_throughput",
+      "measured": 5838.224510465123,
+      "features": {
+        "tokens": 2,
+        "cpu_calls": 2,
+        "gpu_operations": {
+          "grouped_gemm": 2,
+          "gather_scatter": 2
+        },
+        "memory_bytes": 8192,
+        "queue_depth": 1,
+        "transfers": [],
+        "phase": "decode",
+        "concurrency": 1
+      },
+      "domain": {
+        "split": "validation",
+        "phase": "decode",
+        "concurrency": 1,
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+      }
+    }
+  ]
+}

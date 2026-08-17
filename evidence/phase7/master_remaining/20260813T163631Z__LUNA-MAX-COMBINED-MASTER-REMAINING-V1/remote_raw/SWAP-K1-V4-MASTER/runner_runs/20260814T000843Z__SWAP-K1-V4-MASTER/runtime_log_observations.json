@@ -1,0 +1,14 @@
+{
+  "stderr": {
+    "actual_block_swap_event": "NOT_ESTABLISHED_BY_LOG_TEXT",
+    "event_gate": "UNAVAILABLE_UNLESS_RUNTIME_EXPOSES_OBJECT_LEVEL_BLOCK_TRACE",
+    "line_count": 0,
+    "matching_lines": []
+  },
+  "stdout": {
+    "actual_block_swap_event": "NOT_ESTABLISHED_BY_LOG_TEXT",
+    "event_gate": "UNAVAILABLE_UNLESS_RUNTIME_EXPOSES_OBJECT_LEVEL_BLOCK_TRACE",
+    "line_count": 0,
+    "matching_lines": []
+  }
+}

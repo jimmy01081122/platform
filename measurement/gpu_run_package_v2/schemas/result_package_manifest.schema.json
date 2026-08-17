@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "result_package_manifest.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "release_class",
+    "release_eligible",
+    "created_utc",
+    "session_root_name",
+    "source_verification_exit_code",
+    "source_verification_status",
+    "measurement_claim_inferred_by_packager",
+    "file_coverage"
+  ],
+  "properties": {
+    "schema_version": {"const": "gpu-result-archive-v2"},
+    "release_class": {
+      "enum": ["pipeline_smoke", "formal_candidate", "formal_release"]
+    },
+    "release_eligible": {"type": "boolean"},
+    "created_utc": {"type": "string", "format": "date-time"},
+    "session_root_name": {"type": "string", "minLength": 1},
+    "source_verification_exit_code": {"enum": [0, 10]},
+    "source_verification_status": {
+      "enum": ["complete", "approved_incomplete"]
+    },
+    "measurement_claim_inferred_by_packager": {"const": false},
+    "file_coverage": {
+      "type": "object",
+      "required": ["excluded", "file_count", "files"],
+      "properties": {
+        "excluded": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "file_count": {"type": "integer", "minimum": 0},
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "sha256", "bytes"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"$ref": "#/$defs/hash"},
+              "bytes": {"type": "integer", "minimum": 0}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

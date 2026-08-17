@@ -1,0 +1,33 @@
+{
+  "bootstrap_resamples": 10000,
+  "current_state": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_serving_p1_65_extension_monitor_state.json",
+  "poll_seconds": 45,
+  "schema_version": "phase7-serving-extension-queue-v1",
+  "status": "WAITING_CURRENT_EXTENSION",
+  "tasks": [
+    {
+      "arrival_rate_rps": 1.0472460793856333,
+      "condition": "P0-25",
+      "parent_run": "20260811T195121Z__SERV-P0-25-SHORT-C8-NATURAL-V1",
+      "status": "PENDING"
+    },
+    {
+      "arrival_rate_rps": 2.0944921587712666,
+      "condition": "P0-50",
+      "parent_run": "20260811T200818Z__SERV-P0-50-SHORT-C8-NATURAL-V1",
+      "status": "PENDING"
+    },
+    {
+      "arrival_rate_rps": 3.1417382381568997,
+      "condition": "P0-75",
+      "parent_run": "20260811T201710Z__SERV-P0-75-SHORT-C8-NATURAL-V1",
+      "status": "PENDING"
+    },
+    {
+      "arrival_rate_rps": 1.6755937270170131,
+      "condition": "P1-40",
+      "parent_run": "20260811T202346Z__SERV-P1-40-SHORT-C8-NATURAL-V1",
+      "status": "PENDING"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "frozen_sample_count": 810,
+  "gates": [],
+  "materialized": {
+    "ceval": {
+      "available_rows": 186,
+      "by_split": {
+        "calibration": 32,
+        "domain_holdout": 20,
+        "sample_holdout": 64,
+        "smoke": 4,
+        "validation": 32
+      },
+      "selected_rows": 152,
+      "status": "materialized",
+      "subjects": [
+        "advanced_mathematics",
+        "chinese_language_and_literature",
+        "civil_servant",
+        "high_school_chinese",
+        "high_school_history",
+        "high_school_mathematics",
+        "logic",
+        "probability_and_statistics"
+      ],
+      "unused_rows": 34
+    },
+    "gsm8k": {
+      "available_rows": 1319,
+      "by_split": {
+        "calibration": 32,
+        "domain_holdout": 0,
+        "sample_holdout": 64,
+        "smoke": 4,
+        "validation": 32
+      },
+      "selected_rows": 132,
+      "status": "materialized",
+      "subjects": [
+        "main"
+      ],
+      "unused_rows": 1187
+    },
+    "humaneval": {
+      "available_rows": 164,
+      "by_split": {
+        "calibration": 32,
+        "domain_holdout": 0,
+        "sample_holdout": 64,
+        "smoke": 4,
+        "validation": 32
+      },
+      "selected_rows": 132,
+      "status": "materialized",
+      "subjects": [
+        "openai_humaneval"
+      ],
+      "unused_rows": 32
+    },
+    "mmlu": {
+      "available_rows": 1368,
+      "by_split": {
+        "calibration": 32,
+        "domain_holdout": 237,
+        "sample_holdout": 64,
+        "smoke": 4,
+        "validation": 32
+      },
+      "selected_rows": 369,
+      "status": "materialized",
+      "subjects": [
+        "abstract_algebra",
+        "business_ethics",
+        "clinical_knowledge",
+        "high_school_psychology",
+        "high_school_world_history",
+        "international_law"
+      ],
+      "unused_rows": 999
+    }
+  },
+  "schema_version": "benchmark-unresolved-gates-v1",
+  "suite_revision": "v1.4.0",
+  "unresolved_gate_count": 0
+}

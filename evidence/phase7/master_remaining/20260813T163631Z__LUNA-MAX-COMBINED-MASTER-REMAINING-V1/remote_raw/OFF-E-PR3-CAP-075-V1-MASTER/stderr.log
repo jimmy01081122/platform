@@ -1,0 +1,27 @@
+(EngineCore pid=58563) Loading safetensors checkpoint shards:   0% Completed | 0/19 [00:00<?, ?it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:   5% Completed | 1/19 [00:05<01:42,  5.70s/it]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  11% Completed | 2/19 [00:06<00:45,  2.69s/it]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  16% Completed | 3/19 [00:06<00:27,  1.73s/it]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  21% Completed | 4/19 [00:07<00:19,  1.28s/it]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  26% Completed | 5/19 [00:08<00:14,  1.03s/it]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  32% Completed | 6/19 [00:08<00:11,  1.13it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  37% Completed | 7/19 [00:09<00:09,  1.27it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  42% Completed | 8/19 [00:09<00:07,  1.39it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  47% Completed | 9/19 [00:10<00:06,  1.48it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  53% Completed | 10/19 [00:10<00:05,  1.55it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  58% Completed | 11/19 [00:11<00:05,  1.60it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  63% Completed | 12/19 [00:12<00:04,  1.63it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  68% Completed | 13/19 [00:12<00:03,  1.67it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  74% Completed | 14/19 [00:13<00:02,  1.74it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  79% Completed | 15/19 [00:13<00:02,  1.81it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  84% Completed | 16/19 [00:14<00:01,  1.86it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  89% Completed | 17/19 [00:14<00:01,  1.90it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards:  95% Completed | 18/19 [00:15<00:00,  1.93it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:15<00:00,  2.00it/s]
+(EngineCore pid=58563) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:15<00:00,  1.21it/s]
+(EngineCore pid=58563) 
+(EngineCore pid=58563) 2026-08-14 03:08:49,616 - INFO - autotuner.py:622 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=58563) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   0%|          | 0/1 [00:00<?, ?profile/s]2026-08-14 03:08:49,662 - INFO - autotuner.py:1287 - flashinfer.jit: [Autotuner]: Skipped 2 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(EngineCore pid=58563) [AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 1/1 [00:00<00:00, 24.18profile/s]
+(EngineCore pid=58563) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:   0%|          | 0/1 [00:00<?, ?profile/s][AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 1/1 [00:00<00:00, 34.50profile/s]
+(EngineCore pid=58563) 2026-08-14 03:08:49,717 - INFO - autotuner.py:641 - flashinfer.jit: [Autotuner]: Autotuning process ends

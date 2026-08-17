@@ -1,0 +1,5 @@
+{
+  "endpoint": "tcp://127.0.0.1:5601",
+  "listener_status": "LISTENING",
+  "started_at_utc": "2026-08-14T00:33:16.214550Z"
+}

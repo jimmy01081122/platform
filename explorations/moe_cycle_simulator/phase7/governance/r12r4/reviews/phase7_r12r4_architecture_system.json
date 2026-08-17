@@ -1,0 +1,32 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r4-20260802",
+  "source_commit_sha1": "4f8fd4f3cfc94348a340357ca52dbfb56dae1e7d",
+  "source_tree_sha1": "bedf1edccc38a3594035fb259ab675c536060b3c",
+  "ledger_sha256": "4241d872975bbf9f375316765dd5bb159028c1c8fa0cc1bd2d84c1425d339f2a",
+  "member_count": 181,
+  "exact_set_verification": "PASS",
+  "tests": {
+    "candidate_member_hashes": "PASS_181_OF_181",
+    "candidate_archive_cpu_regression": "PASS_125_OF_125",
+    "fresh_no_git_archive_runner": "PASS",
+    "fresh_archive_source_identity": "EXPLICIT_ARCHIVE_BINDING",
+    "fresh_archive_run_contract": "PASS",
+    "application_ledger_members": 72,
+    "application_ledger_sha256": "99f9e5aafbc2a1b0339d80ad85a203f1e495034f71eb09b10074386283744384",
+    "draft_validation": "PASS_FAIL_CLOSED_217_BLOCKING_FIELDS",
+    "ssh_network_model_gpu_actions": "NOT_RUN"
+  },
+  "verdict": "GO",
+  "blockers": [],
+  "observations": [
+    "R12-R3 architecture blockers are closed by pre-exec RLIMIT_AS, bounded nonblocking logs, absolute deadline and process-tree cleanup.",
+    "Remote timeout/Python canonical absolute paths and SHA-256 identities are bound across plan, approval, SSH argv, bootstrap, remote entry, summary and local replay.",
+    "The unavoidable pre-self-check kernel exec boundary is explicitly retained rather than claimed away.",
+    "Formal stage arithmetic is 21000 of 21600 seconds; provider post-window grace has zero formal credit.",
+    "D0, Gate M and M0 remain separate one-shot authorities; retry, resume, extension, added cost, Gate M GPU compute and M1-M4 remain forbidden.",
+    "R12-R3 governance/review bytes remain unchanged."
+  ],
+  "claim_boundary": "CPU/mock architecture governance and no-.git reproducibility only; no live provider, runtime, model, GPU, capacity, performance, calibration or profiling fact.",
+  "gpu_authority": "NONE"
+}

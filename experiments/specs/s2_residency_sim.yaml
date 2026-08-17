@@ -1,0 +1,44 @@
+experiment_id: s2_residency_sim
+revision: 1
+status: active
+question: >-
+  How does the critical-path expert miss rate depend on fast-memory capacity C
+  and router-guided prefetch depth d for Switch-base-8, and under registered/
+  swept PCIe bandwidth, when does prefetch materially reduce transfer stall?
+  Falsifiable: if prefetch never lowers miss rate below on-demand at feasible C,
+  the mechanism has no value.
+platform_profile: discrete_edge_workstation
+workload:
+  id: moe_switch8_mbpp_s64_bs8_len64
+  canonical_ref: runs/20260716T182532Z__s1_moe_expert_demand_char__S1/artifacts/canonical.jsonl
+  access_class: measured
+algorithm:
+  semantic_revision: 1     # frozen residency/prefetch interface (SEMANTICS.md)
+  baseline_ids: [on_demand, lru]
+  proposed_id: prefetch
+model:
+  ref: configs/model/switch_base_8.yaml
+  expert_weight_bytes: 9437184   # A-005 derived (2*d_model*d_ff*2, fp16)
+stages: [S2]
+parameters:
+  fixed:
+    link_latency_us: 2.0            # registered small fixed PCIe DMA setup latency
+    copy_engines: 2
+    compute_time_per_layer_us: 200  # placeholder swept axis for overlap (A-004, not a claim)
+  sweep:
+    capacity_experts: [1, 2, 3, 4, 5, 6, 7, 8]   # A-008
+    prefetch_depth: [0, 1, 2]                      # A-009
+    link_bandwidth_gbytes_per_s: [16, 32, 64]     # A-006 (PCIe Gen3/4/5 x16, vendor_spec/swept)
+metrics:
+  primary: [miss_rate]
+  secondary: [transfers, wasted_prefetches, total_stall_time_s, total_time_s]
+repetitions:
+  warmup: 0
+  measured: 1
+provenance:
+  unregistered_parameters_allowed: false
+notes: >-
+  Miss rate is robust (depends only on measured demand order, C, policy).
+  Timing columns are assumption-dependent (swept bandwidth + placeholder compute
+  time) and are NOT end-to-end performance claims. compute_time_per_layer_us is
+  a placeholder overlap axis pending a measured/calibrated GPU service time (A-004).

@@ -1,0 +1,8 @@
+{
+  "promotion_status": "PENDING_REVIEW",
+  "raw_capture_status": "RAW_CAPTURED",
+  "runner_dir": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1/runner_runs/20260813T153633Z__MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1",
+  "runner_returncode": 0,
+  "schema_version": "phase7-special-mechanism-guard-terminal-v1",
+  "um_claim_status": "UNAVAILABLE_UNLESS_RUNTIME_OR_PROFILER_EVIDENCE_PRESENT"
+}

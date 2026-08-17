@@ -1,0 +1,99 @@
+{
+  "entries": [
+    {
+      "master_ids": [
+        "SERV-C0",
+        "SERV-B0",
+        "SERV-U0",
+        "SERV-M0"
+      ],
+      "relationship": "historical serving candidates; not direct replacement for patch rows",
+      "source_ids": [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    {
+      "master_ids": [
+        "POL0",
+        "POL1",
+        "POL2",
+        "POL3",
+        "POL4",
+        "POL5",
+        "OFF-E-PR0",
+        "OFF-E-PR1",
+        "OFF-E-PR2",
+        "OFF-E-PR3"
+      ],
+      "relationship": "policy semantics reused only with compute/dependency evidence",
+      "source_ids": [
+        "POL0",
+        "POL1",
+        "POL2",
+        "POL3",
+        "POL4",
+        "POL5"
+      ]
+    },
+    {
+      "master_ids": [
+        "SERV-P0-25"
+      ],
+      "relationship": "exact base serving cell; not OFF-E-PR3-CAP-025",
+      "source_ids": [
+        "SERV-P0-25-SHORT-C8-NATURAL-V1"
+      ]
+    },
+    {
+      "master_ids": [
+        "OFF-E-PR3-CAP-025"
+      ],
+      "relationship": "expert-budget 25% replay cell; distinct from serving P0 25% saturation rate",
+      "source_ids": [
+        "OFF-E-PR3-CAP-025"
+      ]
+    },
+    {
+      "master_ids": [
+        "XFER-L0",
+        "XFER-L1",
+        "XFER-L2",
+        "XFER-L3",
+        "XFER-E0",
+        "XFER-E1",
+        "XFER-E2",
+        "XFER-E3",
+        "XFER-Q0",
+        "XFER-Q1",
+        "XFER-O0",
+        "XFER-O1",
+        "XFER-O2",
+        "XFER-O3"
+      ],
+      "relationship": "existing transfer candidates require catalog/lineage adoption",
+      "source_ids": [
+        "XFER-L/E/Q/O"
+      ]
+    },
+    {
+      "master_ids": [
+        "W0-FORCED",
+        "W1-FORCED",
+        "W2-FORCED",
+        "W3-SEQUENCE-01",
+        "W3-SEQUENCE-02",
+        "W3-SEQUENCE-03"
+      ],
+      "relationship": "forced fixture evidence; never natural output distribution",
+      "source_ids": [
+        "W0-W3 forced"
+      ]
+    }
+  ],
+  "schema_version": "phase7-combined-master-alias-lineage-v1"
+}

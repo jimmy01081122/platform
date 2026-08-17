@@ -1,0 +1,17 @@
+{
+  "captured_at_utc": "2026-08-14T02:19:59Z",
+  "claim_boundary": "Correctness/equivalence disabled control only. One canary is not performance evidence. OFF-W2 byte-budget and OFF-W3 representative profiling remain independent requirements. Generic CPU weight offload is not dynamic expert residency.",
+  "contract_sha256": "fcf9c490cefc7222c577edf00fbe354a3a8b9348f62296829341c16ff25abdee",
+  "gpu_terminal_cleanup": {
+    "compute_apps": [],
+    "gpu": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 2, 97249, 0"
+  },
+  "no_runtime_offload_gate": "PASS",
+  "off_w0_output_and_routing_equivalence": "PASS",
+  "request_correctness": "PASS",
+  "requested_disabled_gate": "PASS",
+  "resolved_disabled_gate": "PASS",
+  "routing_array_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+  "runtime_log_offloaded_gib_values": [],
+  "schema_version": "phase7-off-w1-disabled-control-audit-v1"
+}

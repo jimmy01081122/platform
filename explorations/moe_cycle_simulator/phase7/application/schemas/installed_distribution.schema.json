@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "installed_distribution.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "distribution_name", "distribution_version", "member_count", "total_size_bytes", "members", "ledger_sha256"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-installed-distribution-ledger-v1"},
+    "distribution_name": {"const": "vllm"},
+    "distribution_version": {"type": "string", "minLength": 1},
+    "member_count": {"type": "integer", "minimum": 1},
+    "total_size_bytes": {"type": "integer", "minimum": 1},
+    "members": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["declared_path", "size_bytes", "sha256"],
+        "properties": {
+          "declared_path": {"type": "string", "minLength": 1},
+          "size_bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

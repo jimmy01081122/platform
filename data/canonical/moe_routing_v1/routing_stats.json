@@ -1,0 +1,1138 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+  "variants": {
+    "Qwen/Qwen3-235B-A22B-FP8": {
+      "num_experts": 128,
+      "num_layers": 94,
+      "num_moe_layers": 94,
+      "top_k": 8,
+      "queries": 36,
+      "aggregate": {
+        "num_experts": 128,
+        "active_experts": 128,
+        "coverage_fraction": 1.0,
+        "gini_load_imbalance": 0.1272
+      },
+      "per_query": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9918,
+          "gini": 0.153,
+          "ws_prefill_mean": 85.99,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9913,
+          "gini": 0.1545,
+          "ws_prefill_mean": 86.45,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9908,
+          "gini": 0.1609,
+          "ws_prefill_mean": 79.44,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9905,
+          "gini": 0.1709,
+          "ws_prefill_mean": 48.95,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9904,
+          "gini": 0.1725,
+          "ws_prefill_mean": 50.97,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "10",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9927,
+          "gini": 0.1492,
+          "ws_prefill_mean": 54.79,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "11",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9903,
+          "gini": 0.171,
+          "ws_prefill_mean": 45.3,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "12",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9894,
+          "gini": 0.1809,
+          "ws_prefill_mean": 38.02,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "13",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9917,
+          "gini": 0.1602,
+          "ws_prefill_mean": 57.68,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "14",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9906,
+          "gini": 0.1702,
+          "ws_prefill_mean": 37.94,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "15",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9928,
+          "gini": 0.1469,
+          "ws_prefill_mean": 48.68,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "16",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9932,
+          "gini": 0.1434,
+          "ws_prefill_mean": 40.84,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "17",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.993,
+          "gini": 0.1491,
+          "ws_prefill_mean": 46.21,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "18",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.993,
+          "gini": 0.1462,
+          "ws_prefill_mean": 34.34,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "19",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9927,
+          "gini": 0.1486,
+          "ws_prefill_mean": 62.22,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.992,
+          "gini": 0.1573,
+          "ws_prefill_mean": 50.49,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "20",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9917,
+          "gini": 0.1611,
+          "ws_prefill_mean": 57.66,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "21",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9924,
+          "gini": 0.1548,
+          "ws_prefill_mean": 54.49,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "22",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9927,
+          "gini": 0.1494,
+          "ws_prefill_mean": 58.54,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "23",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9921,
+          "gini": 0.1525,
+          "ws_prefill_mean": 30.44,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "24",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9922,
+          "gini": 0.1548,
+          "ws_prefill_mean": 49.18,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "25",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9904,
+          "gini": 0.1728,
+          "ws_prefill_mean": 45.29,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "26",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.992,
+          "gini": 0.1564,
+          "ws_prefill_mean": 51.36,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "27",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9921,
+          "gini": 0.157,
+          "ws_prefill_mean": 60.02,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "28",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9925,
+          "gini": 0.1509,
+          "ws_prefill_mean": 59.21,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "29",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.993,
+          "gini": 0.146,
+          "ws_prefill_mean": 47.49,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "3",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9916,
+          "gini": 0.1593,
+          "ws_prefill_mean": 62.32,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "4",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9937,
+          "gini": 0.1412,
+          "ws_prefill_mean": 53.4,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "5",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9921,
+          "gini": 0.1551,
+          "ws_prefill_mean": 58.36,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "6",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.992,
+          "gini": 0.1557,
+          "ws_prefill_mean": 55.53,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "7",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9934,
+          "gini": 0.1427,
+          "ws_prefill_mean": 50.48,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "8",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9906,
+          "gini": 0.1689,
+          "ws_prefill_mean": 28.31,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "9",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9917,
+          "gini": 0.1612,
+          "ws_prefill_mean": 30.33,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9865,
+          "gini": 0.2055,
+          "ws_prefill_mean": 48.36,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9885,
+          "gini": 0.1863,
+          "ws_prefill_mean": 48.57,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.989,
+          "gini": 0.1864,
+          "ws_prefill_mean": 49.36,
+          "ws_decode_mean": 8.0
+        }
+      ],
+      "sampling_convergence": [
+        {
+          "k_queries": 1,
+          "l1_vs_full": 0.2029
+        },
+        {
+          "k_queries": 2,
+          "l1_vs_full": 0.2051
+        },
+        {
+          "k_queries": 3,
+          "l1_vs_full": 0.2051
+        },
+        {
+          "k_queries": 4,
+          "l1_vs_full": 0.1595
+        },
+        {
+          "k_queries": 5,
+          "l1_vs_full": 0.1282
+        },
+        {
+          "k_queries": 6,
+          "l1_vs_full": 0.1079
+        },
+        {
+          "k_queries": 7,
+          "l1_vs_full": 0.0962
+        },
+        {
+          "k_queries": 8,
+          "l1_vs_full": 0.0835
+        },
+        {
+          "k_queries": 9,
+          "l1_vs_full": 0.0743
+        },
+        {
+          "k_queries": 10,
+          "l1_vs_full": 0.0671
+        },
+        {
+          "k_queries": 11,
+          "l1_vs_full": 0.0573
+        },
+        {
+          "k_queries": 12,
+          "l1_vs_full": 0.0531
+        },
+        {
+          "k_queries": 13,
+          "l1_vs_full": 0.0507
+        },
+        {
+          "k_queries": 14,
+          "l1_vs_full": 0.0459
+        },
+        {
+          "k_queries": 15,
+          "l1_vs_full": 0.0403
+        },
+        {
+          "k_queries": 16,
+          "l1_vs_full": 0.0376
+        },
+        {
+          "k_queries": 17,
+          "l1_vs_full": 0.0344
+        },
+        {
+          "k_queries": 18,
+          "l1_vs_full": 0.0331
+        },
+        {
+          "k_queries": 19,
+          "l1_vs_full": 0.0293
+        },
+        {
+          "k_queries": 20,
+          "l1_vs_full": 0.0255
+        },
+        {
+          "k_queries": 21,
+          "l1_vs_full": 0.0226
+        },
+        {
+          "k_queries": 22,
+          "l1_vs_full": 0.0213
+        },
+        {
+          "k_queries": 23,
+          "l1_vs_full": 0.0189
+        },
+        {
+          "k_queries": 24,
+          "l1_vs_full": 0.0162
+        },
+        {
+          "k_queries": 25,
+          "l1_vs_full": 0.0154
+        },
+        {
+          "k_queries": 26,
+          "l1_vs_full": 0.0147
+        },
+        {
+          "k_queries": 27,
+          "l1_vs_full": 0.0149
+        },
+        {
+          "k_queries": 28,
+          "l1_vs_full": 0.0136
+        },
+        {
+          "k_queries": 29,
+          "l1_vs_full": 0.0134
+        },
+        {
+          "k_queries": 30,
+          "l1_vs_full": 0.0152
+        },
+        {
+          "k_queries": 31,
+          "l1_vs_full": 0.0168
+        },
+        {
+          "k_queries": 32,
+          "l1_vs_full": 0.0145
+        },
+        {
+          "k_queries": 33,
+          "l1_vs_full": 0.0128
+        },
+        {
+          "k_queries": 34,
+          "l1_vs_full": 0.0093
+        },
+        {
+          "k_queries": 35,
+          "l1_vs_full": 0.0057
+        },
+        {
+          "k_queries": 36,
+          "l1_vs_full": 0.0
+        }
+      ],
+      "residency_baseline_query": {
+        "stimulus": "livecodebench/0",
+        "sweep": [
+          {
+            "capacity": 32,
+            "capacity_frac": 0.25,
+            "total_demands": 104339,
+            "on_demand_miss_rate": 0.7809,
+            "prefetch_miss_rate": 0.0743,
+            "on_demand_transfers": 81480,
+            "prefetch_transfers": 79454,
+            "prefetch_hits": 71699,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.9048
+          },
+          {
+            "capacity": 64,
+            "capacity_frac": 0.5,
+            "total_demands": 104339,
+            "on_demand_miss_rate": 0.5393,
+            "prefetch_miss_rate": 0.0708,
+            "on_demand_transfers": 56266,
+            "prefetch_transfers": 54905,
+            "prefetch_hits": 47517,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.8687
+          },
+          {
+            "capacity": 96,
+            "capacity_frac": 0.75,
+            "total_demands": 104339,
+            "on_demand_miss_rate": 0.1966,
+            "prefetch_miss_rate": 0.0182,
+            "on_demand_transfers": 20512,
+            "prefetch_transfers": 19239,
+            "prefetch_hits": 17341,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.9075
+          }
+        ]
+      }
+    },
+    "cognitivecomputations/DeepSeek-R1-AWQ": {
+      "num_experts": 256,
+      "num_layers": 61,
+      "num_moe_layers": 58,
+      "top_k": 8,
+      "queries": 9,
+      "aggregate": {
+        "num_experts": 256,
+        "active_experts": 256,
+        "coverage_fraction": 1.0,
+        "gini_load_imbalance": 0.0477
+      },
+      "per_query": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9981,
+          "gini": 0.0808,
+          "ws_prefill_mean": 187.91,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9984,
+          "gini": 0.073,
+          "ws_prefill_mean": 198.69,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9982,
+          "gini": 0.0791,
+          "ws_prefill_mean": 162.79,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9974,
+          "gini": 0.0967,
+          "ws_prefill_mean": 92.12,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.998,
+          "gini": 0.082,
+          "ws_prefill_mean": 111.78,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9984,
+          "gini": 0.0758,
+          "ws_prefill_mean": 109.97,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4387",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9959,
+          "gini": 0.1184,
+          "ws_prefill_mean": 109.5,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4388",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9976,
+          "gini": 0.0914,
+          "ws_prefill_mean": 96.05,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4389",
+          "active_experts": 256,
+          "coverage": 1.0,
+          "entropy_norm": 0.9975,
+          "gini": 0.0921,
+          "ws_prefill_mean": 104.97,
+          "ws_decode_mean": 8.0
+        }
+      ],
+      "sampling_convergence": [
+        {
+          "k_queries": 1,
+          "l1_vs_full": 0.0823
+        },
+        {
+          "k_queries": 2,
+          "l1_vs_full": 0.069
+        },
+        {
+          "k_queries": 3,
+          "l1_vs_full": 0.0677
+        },
+        {
+          "k_queries": 4,
+          "l1_vs_full": 0.0524
+        },
+        {
+          "k_queries": 5,
+          "l1_vs_full": 0.0412
+        },
+        {
+          "k_queries": 6,
+          "l1_vs_full": 0.0336
+        },
+        {
+          "k_queries": 7,
+          "l1_vs_full": 0.0218
+        },
+        {
+          "k_queries": 8,
+          "l1_vs_full": 0.0126
+        },
+        {
+          "k_queries": 9,
+          "l1_vs_full": 0.0
+        }
+      ],
+      "residency_baseline_query": {
+        "stimulus": "livecodebench/0",
+        "sweep": [
+          {
+            "capacity": 64,
+            "capacity_frac": 0.25,
+            "total_demands": 70291,
+            "on_demand_miss_rate": 0.7978,
+            "prefetch_miss_rate": 0.1511,
+            "on_demand_transfers": 56078,
+            "prefetch_transfers": 55497,
+            "prefetch_hits": 44879,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.8107
+          },
+          {
+            "capacity": 128,
+            "capacity_frac": 0.5,
+            "total_demands": 70291,
+            "on_demand_miss_rate": 0.5817,
+            "prefetch_miss_rate": 0.1472,
+            "on_demand_transfers": 40888,
+            "prefetch_transfers": 40533,
+            "prefetch_hits": 30186,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.7469
+          },
+          {
+            "capacity": 192,
+            "capacity_frac": 0.75,
+            "total_demands": 70291,
+            "on_demand_miss_rate": 0.2976,
+            "prefetch_miss_rate": 0.0534,
+            "on_demand_transfers": 20918,
+            "prefetch_transfers": 19388,
+            "prefetch_hits": 15637,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.8207
+          }
+        ]
+      }
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+      "num_experts": 128,
+      "num_layers": 48,
+      "num_moe_layers": 24,
+      "top_k": 1,
+      "queries": 9,
+      "aggregate": {
+        "num_experts": 128,
+        "active_experts": 128,
+        "coverage_fraction": 1.0,
+        "gini_load_imbalance": 0.3259
+      },
+      "per_query": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9548,
+          "gini": 0.3517,
+          "ws_prefill_mean": 25.62,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9454,
+          "gini": 0.3907,
+          "ws_prefill_mean": 25.92,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.951,
+          "gini": 0.3684,
+          "ws_prefill_mean": 19.42,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9048,
+          "gini": 0.5155,
+          "ws_prefill_mean": 10.12,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9145,
+          "gini": 0.4932,
+          "ws_prefill_mean": 11.29,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "active_experts": 126,
+          "coverage": 0.9844,
+          "entropy_norm": 0.9322,
+          "gini": 0.4244,
+          "ws_prefill_mean": 12.04,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9042,
+          "gini": 0.5174,
+          "ws_prefill_mean": 9.75,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9136,
+          "gini": 0.4907,
+          "ws_prefill_mean": 10.0,
+          "ws_decode_mean": 1.0
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "active_experts": 128,
+          "coverage": 1.0,
+          "entropy_norm": 0.9287,
+          "gini": 0.4397,
+          "ws_prefill_mean": 12.21,
+          "ws_decode_mean": 1.0
+        }
+      ],
+      "sampling_convergence": [
+        {
+          "k_queries": 1,
+          "l1_vs_full": 0.36
+        },
+        {
+          "k_queries": 2,
+          "l1_vs_full": 0.3352
+        },
+        {
+          "k_queries": 3,
+          "l1_vs_full": 0.3333
+        },
+        {
+          "k_queries": 4,
+          "l1_vs_full": 0.2196
+        },
+        {
+          "k_queries": 5,
+          "l1_vs_full": 0.1599
+        },
+        {
+          "k_queries": 6,
+          "l1_vs_full": 0.1298
+        },
+        {
+          "k_queries": 7,
+          "l1_vs_full": 0.0833
+        },
+        {
+          "k_queries": 8,
+          "l1_vs_full": 0.0455
+        },
+        {
+          "k_queries": 9,
+          "l1_vs_full": 0.0
+        }
+      ],
+      "residency_baseline_query": {
+        "stimulus": "livecodebench/0",
+        "sweep": [
+          {
+            "capacity": 32,
+            "capacity_frac": 0.25,
+            "total_demands": 3687,
+            "on_demand_miss_rate": 0.591,
+            "prefetch_miss_rate": 0.0247,
+            "on_demand_transfers": 2179,
+            "prefetch_transfers": 2115,
+            "prefetch_hits": 2024,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.9582
+          },
+          {
+            "capacity": 64,
+            "capacity_frac": 0.5,
+            "total_demands": 3687,
+            "on_demand_miss_rate": 0.3298,
+            "prefetch_miss_rate": 0.0103,
+            "on_demand_transfers": 1216,
+            "prefetch_transfers": 1180,
+            "prefetch_hits": 1142,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.9688
+          },
+          {
+            "capacity": 96,
+            "capacity_frac": 0.75,
+            "total_demands": 3687,
+            "on_demand_miss_rate": 0.1543,
+            "prefetch_miss_rate": 0.0103,
+            "on_demand_transfers": 569,
+            "prefetch_transfers": 558,
+            "prefetch_hits": 520,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.9332
+          }
+        ]
+      }
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "num_experts": 384,
+      "num_layers": 61,
+      "num_moe_layers": 60,
+      "top_k": 8,
+      "queries": 6,
+      "aggregate": {
+        "num_experts": 384,
+        "active_experts": 384,
+        "coverage_fraction": 1.0,
+        "gini_load_imbalance": 0.1057
+      },
+      "per_query": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "active_experts": 384,
+          "coverage": 1.0,
+          "entropy_norm": 0.9948,
+          "gini": 0.1379,
+          "ws_prefill_mean": 184.42,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "active_experts": 384,
+          "coverage": 1.0,
+          "entropy_norm": 0.9949,
+          "gini": 0.137,
+          "ws_prefill_mean": 202.75,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "active_experts": 384,
+          "coverage": 1.0,
+          "entropy_norm": 0.9952,
+          "gini": 0.132,
+          "ws_prefill_mean": 156.47,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "active_experts": 384,
+          "coverage": 1.0,
+          "entropy_norm": 0.9928,
+          "gini": 0.165,
+          "ws_prefill_mean": 83.08,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "active_experts": 384,
+          "coverage": 1.0,
+          "entropy_norm": 0.9929,
+          "gini": 0.1641,
+          "ws_prefill_mean": 107.43,
+          "ws_decode_mean": 8.0
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "active_experts": 384,
+          "coverage": 1.0,
+          "entropy_norm": 0.9931,
+          "gini": 0.1605,
+          "ws_prefill_mean": 102.97,
+          "ws_decode_mean": 8.0
+        }
+      ],
+      "sampling_convergence": [
+        {
+          "k_queries": 1,
+          "l1_vs_full": 0.1175
+        },
+        {
+          "k_queries": 2,
+          "l1_vs_full": 0.1096
+        },
+        {
+          "k_queries": 3,
+          "l1_vs_full": 0.1037
+        },
+        {
+          "k_queries": 4,
+          "l1_vs_full": 0.0626
+        },
+        {
+          "k_queries": 5,
+          "l1_vs_full": 0.031
+        },
+        {
+          "k_queries": 6,
+          "l1_vs_full": 0.0
+        }
+      ],
+      "residency_baseline_query": {
+        "stimulus": "livecodebench/0",
+        "sweep": [
+          {
+            "capacity": 96,
+            "capacity_frac": 0.25,
+            "total_demands": 72505,
+            "on_demand_miss_rate": 0.7926,
+            "prefetch_miss_rate": 0.1313,
+            "on_demand_transfers": 57470,
+            "prefetch_transfers": 57075,
+            "prefetch_hits": 47553,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.8343
+          },
+          {
+            "capacity": 192,
+            "capacity_frac": 0.5,
+            "total_demands": 72505,
+            "on_demand_miss_rate": 0.5296,
+            "prefetch_miss_rate": 0.0465,
+            "on_demand_transfers": 38400,
+            "prefetch_transfers": 37131,
+            "prefetch_hits": 33761,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.9122
+          },
+          {
+            "capacity": 288,
+            "capacity_frac": 0.75,
+            "total_demands": 72505,
+            "on_demand_miss_rate": 0.2226,
+            "prefetch_miss_rate": 0.0025,
+            "on_demand_transfers": 16137,
+            "prefetch_transfers": 14997,
+            "prefetch_hits": 14819,
+            "prefetch_wasted": 0,
+            "miss_reduction": 0.989
+          }
+        ]
+      }
+    }
+  }
+}

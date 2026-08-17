@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_qualification_session.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "status", "evidence_role", "synthetic",
+    "gpu_used", "formal_c1_evidence", "contract_sha256", "profile_map_sha256",
+    "candidate_manifest_sha256", "execution_identity_set_sha256",
+    "expected_cell_count", "completed_cell_count",
+    "artifacts", "selected_common_ceiling", "gpu_pilot_authorized"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-qualification-session-v1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["synthetic_governance_complete", "qualification_execution_complete"]},
+    "evidence_role": {"const": "termination_qualification_non_formal"},
+    "synthetic": {"type": "boolean"},
+    "gpu_used": {"type": "boolean"},
+    "formal_c1_evidence": {"const": false},
+    "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile_map_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "candidate_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "execution_identity_set_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "expected_cell_count": {"const": 12},
+    "completed_cell_count": {"const": 12},
+    "artifacts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ledger", "verdict"],
+      "properties": {
+        "ledger": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "verdict": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "selected_common_ceiling": {"type": ["integer", "null"], "enum": [256, 384, 512, null]},
+    "gpu_pilot_authorized": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"synthetic": {"const": true}}, "required": ["synthetic"]},
+      "then": {
+        "properties": {
+          "status": {"const": "synthetic_governance_complete"},
+          "gpu_used": {"const": false}
+        }
+      },
+      "else": {
+        "properties": {
+          "status": {"const": "qualification_execution_complete"},
+          "gpu_used": {"const": true}
+        }
+      }
+    }
+  ]
+}

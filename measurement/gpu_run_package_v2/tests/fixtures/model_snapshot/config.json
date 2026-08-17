@@ -1,0 +1,7 @@
+{
+  "architectures": [
+    "FixtureMoeForCausalLM"
+  ],
+  "model_type": "fixture_moe",
+  "revision": "unit-test-snapshot-v1"
+}

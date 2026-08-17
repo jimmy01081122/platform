@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "capacity_prompt.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "add_special_tokens": {"const": false},
+    "model_id": {"const": "mistralai/Mixtral-8x7B-Instruct-v0.1"},
+    "model_ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "repository_commit": {"const": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61"},
+    "schema_version": {"const": "moe-simulator-phase7-capacity-prompt-v1"},
+    "seed_text": {"type": "string"},
+    "token_count": {"const": 28672},
+    "token_ids": {"items": {"minimum": 0, "type": "integer"}, "maxItems": 28672, "minItems": 28672, "type": "array"},
+    "token_ids_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "tokenizer_builder": {"type": "object"},
+    "tokenizer_config_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "tokenizer_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"}
+  },
+  "required": ["schema_version", "model_id", "repository_commit", "model_ledger_sha256", "tokenizer_builder", "seed_text", "add_special_tokens", "token_count", "token_ids", "token_ids_sha256", "tokenizer_config_sha256", "tokenizer_sha256"],
+  "type": "object"
+}

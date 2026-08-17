@@ -1,0 +1,13 @@
+Serial workload request 16. This is a project-authored mixed-length context. Use only the records below. Preserve record identifiers when answering.
+
+Record 00001: station Birch; shipment code SERIAL16-00001-07919; marker green; quantity 170; observed delay 13 minutes; validation state accepted.
+Record 00002: station Cedar; shipment code SERIAL16-00002-15838; marker violet; quantity 267; observed delay 26 minutes; validation state accepted.
+Record 00003: station Dogwood; shipment code SERIAL16-00003-23757; marker blue; quantity 364; observed delay 39 minutes; validation state accepted.
+Record 00004: station Elm; shipment code SERIAL16-00004-31676; marker indigo; quantity 461; observed delay 5 minutes; validation state accepted.
+Record 00005: station Fir; shipment code SERIAL16-00005-39595; marker white; quantity 558; observed delay 18 minutes; validation state accepted.
+Record 00006: station Grove; shipment code SERIAL16-00006-47514; marker copper; quantity 655; observed delay 31 minutes; validation state accepted.
+Record 00007: station Hazel; shipment code SERIAL16-00007-55433; marker silver; quantity 752; observed delay 44 minutes; validation state accepted.
+Record 00008: station Alder; shipment code SERIAL16-00008-63352; marker amber; quantity 849; observed delay 10 minutes; validation state accepted.
+Record 00009: station Birch; shipment code SERIAL16-00009-71271; marker green; quantity 946; observed delay 23 minutes; validation state accepted.
+
+Task for request 16: identify the record with the largest quantity among the final five records, state its shipment code, and give one sentence comparing its delay with the first record.

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session_manifest.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "release_class",
+    "identity",
+    "required_repetitions",
+    "frozen_matrix",
+    "capture_plan",
+    "expected_runs",
+    "accepted_incomplete",
+    "artifacts"
+  ],
+  "properties": {
+    "schema_version": {"const": "trace-session-manifest-v2"},
+    "release_class": {
+      "enum": ["pipeline_smoke", "formal_candidate", "formal_release"]
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "session_id",
+        "model_revision",
+        "workload_hash",
+        "configuration_hash",
+        "environment_hash"
+      ],
+      "properties": {
+        "session_id": {"type": "string", "minLength": 1},
+        "model_revision": {"type": "string", "minLength": 1},
+        "workload_hash": {"$ref": "#/$defs/hash"},
+        "configuration_hash": {"$ref": "#/$defs/hash"},
+        "environment_hash": {"$ref": "#/$defs/hash"}
+      },
+      "additionalProperties": true
+    },
+    "required_repetitions": {"type": "integer", "minimum": 1},
+    "capture_profile": {"enum": ["legacy", "standard", "maximal_paid"]},
+    "required_passes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/pass"}
+    },
+    "conditional_optional_passes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/pass"}
+    },
+    "expected_runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "run_group_id",
+          "model_revision",
+          "workload_hash",
+          "configuration_hash",
+          "environment_hash",
+          "planned_passes"
+        ],
+        "properties": {
+          "run_group_id": {"type": "string", "minLength": 1},
+          "model_revision": {"type": "string", "minLength": 1},
+          "workload_hash": {"$ref": "#/$defs/hash"},
+          "configuration_hash": {"$ref": "#/$defs/hash"},
+          "environment_hash": {"$ref": "#/$defs/hash"},
+          "planned_passes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"enum": ["P0", "P1", "P2", "P3", "P4", "P5", "P6"]}
+          },
+          "required_passes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/pass"}
+          },
+          "conditional_optional_passes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/pass"}
+          }
+        }
+      }
+    },
+    "accepted_incomplete": {"type": "boolean"},
+    "frozen_matrix": {
+      "type": "object",
+      "required": ["schema_version", "matrix_hash", "path"],
+      "properties": {
+        "schema_version": {"const": "benchmark-capture-matrix-v1"},
+        "matrix_hash": {"$ref": "#/$defs/hash"},
+        "path": {"type": "string", "minLength": 1}
+      }
+    },
+    "capture_plan": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "approval": {
+      "type": "object",
+      "required": ["approved_by", "approved_utc", "reason"],
+      "properties": {
+        "approved_by": {"type": "string", "minLength": 1},
+        "approved_utc": {"type": "string", "format": "date-time"},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "required": ["environment", "workload", "configuration", "raw_inventory"],
+      "additionalProperties": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "release_class": {
+            "enum": ["formal_candidate", "formal_release"]
+          }
+        },
+        "required": ["release_class"]
+      },
+      "then": {
+        "properties": {
+          "required_repetitions": {"type": "integer", "minimum": 3}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "pass": {"enum": ["P0", "P1", "P2", "P3", "P4", "P5", "P6"]}
+  },
+  "additionalProperties": true
+}

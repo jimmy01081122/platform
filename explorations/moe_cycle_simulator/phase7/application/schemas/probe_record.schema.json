@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "probe_record.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "authority": {"type": "object"},
+    "contract_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "elapsed_monotonic_ns": {"minimum": 0, "type": "integer"},
+    "engine": {"type": "object"},
+    "finished_at_utc": {"type": "string"},
+    "gpu": {"type": "object"},
+    "launch_index": {"maximum": 3, "minimum": 1, "type": "integer"},
+    "memory": {"type": "object"},
+    "model_ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "probe": {"type": "object"},
+    "process_identity": {"type": "object"},
+    "runtime_variant_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "runtime_qualified_version": {"minLength": 1, "type": "string"},
+    "runtime_qualified_git_commit": {"pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$", "type": "string"},
+    "schema_version": {"const": "moe-simulator-phase7-m0-probe-record-v1"},
+    "session_id": {"type": "string"},
+    "software": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vllm_version", "vllm_init_sha256", "vllm_import_evidence", "vllm_source_git_commit", "installed_distribution_ledger_sha256", "build_attestation_file_sha256", "runtime_adapter_contract_sha256", "torch_version", "transformers_version"],
+      "properties": {
+        "vllm_version": {"type": "string", "minLength": 1},
+        "vllm_init_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "vllm_import_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "distribution_name", "distribution_version", "distribution_ledger_sha256", "module_prefix", "loaded_module_count", "loaded_modules", "binary_module_count", "binary_modules", "evidence_sha256"],
+          "properties": {
+            "schema_version": {"const": "moe-simulator-phase7-loaded-vllm-modules-v1"},
+            "distribution_name": {"const": "vllm"},
+            "distribution_version": {"type": "string", "minLength": 1},
+            "distribution_ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "module_prefix": {"const": "vllm"},
+            "loaded_module_count": {"type": "integer", "minimum": 1},
+            "loaded_modules": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["module_name", "declared_path", "resolved_path", "size_bytes", "sha256", "binary"],
+                "properties": {
+                  "module_name": {"type": "string", "pattern": "^vllm($|\\..+)"},
+                  "declared_path": {"type": "string", "minLength": 1},
+                  "resolved_path": {"type": "string", "pattern": "^/"},
+                  "size_bytes": {"type": "integer", "minimum": 0},
+                  "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                  "binary": {"type": "boolean"}
+                }
+              }
+            },
+            "binary_module_count": {"type": "integer", "minimum": 0},
+            "binary_modules": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "string", "pattern": "^vllm($|\\..+)"}
+            },
+            "evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        },
+        "vllm_source_git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"},
+        "installed_distribution_ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "build_attestation_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "runtime_adapter_contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "torch_version": {"type": "string", "minLength": 1},
+        "transformers_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "started_at_utc": {"type": "string"},
+    "status": {"const": "COMPLETE"}
+  },
+  "required": ["schema_version", "status", "session_id", "launch_index", "contract_sha256", "runtime_variant_sha256", "runtime_qualified_version", "runtime_qualified_git_commit", "model_ledger_sha256", "process_identity", "started_at_utc", "finished_at_utc", "elapsed_monotonic_ns", "software", "engine", "gpu", "memory", "probe", "authority"],
+  "type": "object"
+}

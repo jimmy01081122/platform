@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/moe-simulator/phase7/adapter-output-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_class",
+    "formal_runtime_evidence",
+    "gpu_used",
+    "model_downloaded",
+    "runtime_variant",
+    "pass_contracts",
+    "clock_alignments",
+    "observations",
+    "events",
+    "routing_records",
+    "identity_contracts",
+    "v0",
+    "semantic_hashes"
+  ],
+  "properties": {
+    "schema_version": {"const": "moe-phase7-adapter-output-v1"},
+    "evidence_class": {"const": "SYNTHETIC_CPU_MOCK"},
+    "formal_runtime_evidence": {"const": false},
+    "gpu_used": {"const": false},
+    "model_downloaded": {"const": false},
+    "runtime_variant": {"type": "object"},
+    "pass_contracts": {"type": "array"},
+    "clock_alignments": {"type": "array"},
+    "observations": {"type": "array", "minItems": 1},
+    "events": {"type": "array", "minItems": 1},
+    "routing_records": {"type": "array", "minItems": 1},
+    "identity_contracts": {"type": "array", "minItems": 2},
+    "v0": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_role", "gpu_execution", "runtime_pass", "status", "findings"],
+      "properties": {
+        "execution_role": {"const": "OFFLINE_VALIDATION"},
+        "gpu_execution": {"const": false},
+        "runtime_pass": {"const": false},
+        "status": {"const": "PASS"},
+        "findings": {"type": "array", "maxItems": 0}
+      }
+    },
+    "semantic_hashes": {"type": "object"}
+  }
+}

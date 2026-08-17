@@ -1,0 +1,23 @@
+{
+  "schema_version": "moe-simulator-phase6-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r3-20260729",
+  "ledger_sha256": "ea5ce045072efda9a6cbf852f71733de5800b985e9385301b1baaedf0b115b9f",
+  "member_count": 240,
+  "exact_set_verification": "PASS",
+  "roles": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "MODIFY"
+  },
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "TRACE-P6-R3-B1",
+      "description": "TOKEN_ONLY route identity accepts frozen missing-value sentinels."
+    }
+  ],
+  "phase6_freeze": false,
+  "phase7_authorized": false,
+  "authorized_next_stage": "Phase 6 CPU-only remediation and a fresh immutable same-hash candidate review only.",
+  "gpu_authority": "NONE"
+}

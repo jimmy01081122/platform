@@ -1,0 +1,19 @@
+model_id: google/switch-base-32
+source_config: configs/model/switch_base_32.config.json
+provenance: vendor_spec
+params:
+  d_model: 768
+  d_ff: 3072
+  num_experts: 32
+  expert_capacity: 64
+  num_layers: 12
+  num_decoder_layers: 12
+dtype:
+  name: float16
+  bytes_per_element: 2
+derived:
+  expert_params: 4718592
+  expert_weight_bytes: 9437184     # same FFN shape as base-8; only expert count differs
+  expert_weight_mib: 9.0
+  total_expert_bytes_all_experts: 301989888   # 32 * 9437184 = 288 MiB
+  derivation: "2 * d_model * d_ff * bytes_per_element"

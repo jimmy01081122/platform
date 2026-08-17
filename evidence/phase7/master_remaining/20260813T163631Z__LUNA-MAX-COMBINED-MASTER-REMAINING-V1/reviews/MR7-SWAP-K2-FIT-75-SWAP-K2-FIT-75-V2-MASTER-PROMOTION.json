@@ -1,0 +1,96 @@
+{
+  "attempt_id": "SWAP-K2-FIT-75-V2-MASTER",
+  "claims_forbidden": [
+    "complete K2 matrix",
+    "K2/K3/K5 performance or serving benefit"
+  ],
+  "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V2-MASTER/derived_swap_k2_fit-75_swap-k2-fit-75-v2-master_event_lineage_and_capacity.json",
+  "derived_sidecar_sha256": "fcc09c29731e911a9cb5af1fc2b4278b6ad135aa4ed2c0a63cebcb0563b1ef08",
+  "execution_state": "EXECUTION_COMPLETE",
+  "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V2-MASTER",
+  "matrix_complete": false,
+  "missing_points": [
+    "FIT-100",
+    "HELDOUT-37.5",
+    "HELDOUT-62.5",
+    "HELDOUT-87.5"
+  ],
+  "next_ready_unit": "SWAP-K2",
+  "point_id": "FIT-75",
+  "point_result": {
+    "attempt_id": "SWAP-K2-FIT-75-V2-MASTER",
+    "checksum_manifest_sha256": "0a41d08a6b9900bf06c9c4c83fd86f584095b2c77cd3c74af3d56d6ecdf70e3c",
+    "derived_bytes_per_full_block": 2097152,
+    "dtype": "bfloat16",
+    "event_analysis": {
+      "declared_block_removed_event_count": 14,
+      "declared_block_stored_event_count": 25,
+      "decode_errors": null,
+      "decoded_block_removed_message_count": 14,
+      "decoded_block_stored_message_count": 26,
+      "event_envelope_count": 28,
+      "removed_hash_count_groups": [
+        1,
+        127,
+        128
+      ],
+      "removed_hash_record_count": 1536,
+      "removed_hashes_not_previously_stored": [],
+      "removed_hashes_subset_of_stored": true,
+      "removed_media": [
+        "CPU"
+      ],
+      "removed_unique_hash_count": 1536,
+      "stored_event_block_size_values": [
+        0
+      ],
+      "stored_hash_count_groups": [
+        1,
+        127,
+        128
+      ],
+      "stored_hash_record_count": 3072,
+      "stored_hashes_without_remove": 1536,
+      "stored_media": [
+        "CPU"
+      ],
+      "stored_parent_null_count": 26,
+      "stored_token_id_count_values": [
+        0
+      ],
+      "stored_unique_hash_count": 3072
+    },
+    "expected_host_blocks": 1536,
+    "expected_rounded_bytes": 3221225472,
+    "fraction": 0.75,
+    "host_capacity_bytes": 3221225472,
+    "host_capacity_gib": 3.0,
+    "movement_observed": true,
+    "point_id": "FIT-75",
+    "raw_file_count": 19,
+    "raw_file_set_sha256": "366369e56aeabb736b89cb21c08552fa38447850f2ed60ef56750ec59fd6b91a",
+    "reference_full_block_bytes": 2097152,
+    "reference_working_set_bytes": 4294967296,
+    "role": "FIT",
+    "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+    "runtime_block_size_tokens": 16,
+    "runtime_cache_shape": [
+      2308,
+      8,
+      32,
+      2,
+      16,
+      128
+    ],
+    "stderr_sha256": "e45ef832c2fb79eb8949fd018cb79cf66504e41ef597b4fc68952d02f03697a5",
+    "stdout_sha256": "86d91f111a2df95cf7bd23580035f52ea07235750cca75688766743fb869c6a8",
+    "validation_state": "VALIDATION_PASS"
+  },
+  "raw_backup": "VERIFIED",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-75-V2-MASTER",
+  "request_correctness": "PASS",
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T01:02:31Z",
+  "schema_version": "phase7-combined-master-swap-k2-point-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

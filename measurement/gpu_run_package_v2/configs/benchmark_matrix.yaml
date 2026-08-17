@@ -1,0 +1,47 @@
+schema_version: gpu-benchmark-matrix-v1
+defaults:
+  warmup: 10
+  outer_repeats: 5
+  minimum_inner_seconds: 1.0
+  confidence_level: 0.95
+  activation_dtype: bfloat16
+  weight_format: awq_int4_group128
+  transfer_sizes_bytes: [65536, 1048576, 22020096, 44040192, 88080384]
+  copy_streams: [1, 2, 4]
+  hidden_size: 7168
+  intermediate_size: 2048
+  num_experts: 256
+  top_k: 8
+  moe_layers: 58
+  concurrency: [1, 4]
+  token_shape_quantiles: [p10, p50, p90, p99]
+  seed: 20260718
+  device_memory_sizes_bytes: [1048576, 22020096]
+  queue_depths: [1, 4]
+  contention_fixed_expert_tokens: 32
+operations:
+  - h2d_pinned
+  - d2h_pinned
+  - selected_expert
+  - grouped_gemm
+  - gather_scatter
+  - dequant
+  - window_replay
+  - cpu_runtime
+  - device_memory
+  - queue_depth
+  - contention_fixed_shape
+experiments:
+  rtx-pro-6000-calibration:
+    split: calibration
+    target_gpu_regex: 'RTX PRO 6000'
+    trust: hardware-calibration
+  cross-device-validation:
+    split: validation
+    target_gpu_regex: 'RTX PRO 6000'
+    trust: validation
+  h100-frozen-blind-holdout:
+    split: holdout
+    target_gpu_regex: 'H100'
+    trust: frozen-blind-holdout
+    prohibit_prior_result_merge: true

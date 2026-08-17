@@ -1,0 +1,35 @@
+{
+  "schema_version": "moe-simulator-phase7-archive-replay-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r3-20260802",
+  "source_commit_sha1": "72bbf2f684ea4e24369da582e45ea5ab0988cb67",
+  "source_tree_sha1": "d0a6abdb45d0a99c7e1ca48feb4885bcbc3f8ad8",
+  "git_metadata_present": false,
+  "source_identity_method": "EXPLICIT_ARCHIVE_BINDING",
+  "fresh_run_status": "PASS",
+  "unit_tests": {
+    "passed": 119,
+    "failed": 0
+  },
+  "draft_validation": "PASS_FAIL_CLOSED_212_BLOCKERS",
+  "prior_committed_run_contract": "PASS",
+  "fresh_archive_run_contract": "PASS",
+  "application_ledger_sha256": "948bc13df904df9134dbfacbeba4948cb4d8d34a2c5e96c2165be43ee4bba7dd",
+  "archive_run_ledger_sha256": "ddae4d0a3f295c3d16e76e9de4db58dbaa2a52075f83aae7775434a8e82cc29a",
+  "diagnostic_attempts": [
+    {
+      "source_commit_prefix": "098c920",
+      "status": "FAIL",
+      "failure_class": "UNCONDITIONAL_GIT_METADATA_DEPENDENCY"
+    },
+    {
+      "source_commit_prefix": "0b1c75e",
+      "status": "FAIL",
+      "failure_class": "NON_SELF_CONTAINED_ARCHIVE_REGRESSION_TEST"
+    }
+  ],
+  "network_used": false,
+  "gpu_queried": false,
+  "gpu_used": false,
+  "model_downloaded": false,
+  "claim_boundary": "CPU/mock governance and clean-archive reproducibility only; no provider, runtime, model, GPU, capacity, calibration or profiling evidence."
+}

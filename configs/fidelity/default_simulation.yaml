@@ -1,0 +1,7 @@
+schema_version: simulation-config-v2
+simulation:
+  fidelity: calibrated
+  backend: edgeflow
+  calibration_pack: configs/calibration/phase1_discrete_moe.yaml
+  workload_window: null
+  checkpoint: false

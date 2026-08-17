@@ -1,0 +1,28 @@
+{
+  "schema_version": "moe-simulator-three-role-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r1-20260728",
+  "ledger_sha256": "ef12fc0d8396544aaa63635fa83a14841ea9e5cbeb664382093939d278e25cb0",
+  "member_count": 54,
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P6-R1-B1",
+    "ARCH-P6-R1-B2",
+    "ARCH-P6-R1-B3",
+    "ARCH-P6-R1-B4",
+    "ARCH-P6-R1-B5",
+    "MODEL-P6-R1-B1",
+    "MODEL-P6-R1-B2",
+    "TRACE-P6-R1-B1",
+    "TRACE-P6-R1-B2",
+    "TRACE-P6-R1-B3"
+  ],
+  "role_verdicts": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "MODIFY",
+    "Trace/Provenance": "MODIFY"
+  },
+  "phase6_freeze": false,
+  "phase7_authorized": false,
+  "next_legal_action": "Phase 6 CPU-only remediation and a fresh immutable same-hash candidate/review only.",
+  "gpu_authority": "NONE"
+}

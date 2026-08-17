@@ -1,0 +1,8 @@
+{
+  "clk4": "UNAVAILABLE_NOT_VALIDATED",
+  "cuda_point_count": 64,
+  "finished_at_utc": "2026-08-11T16:43:07.900741+00:00",
+  "nvml_point_count": 64,
+  "profiler_anchor_count": 64,
+  "status": "PASS"
+}

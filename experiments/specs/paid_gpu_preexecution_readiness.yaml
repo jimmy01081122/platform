@@ -1,0 +1,167 @@
+experiment_id: paid_gpu_preexecution_readiness_v1
+stage: PRE_PAID_GPU
+status: PREPARATION_ONLY_NOT_READY_NOT_SUBMITTED_NOT_AUTHORIZED
+decision_baseline:
+  active_stop_decision: D-062
+  paid_gpu_execution: NO_GO
+  h100: REMOVED_NOT_RUN
+  exact_command: null
+  gpu_authority: NONE
+purpose: >
+  Pre-register every offline, local, calibration, validation, packaging and
+  approval dependency required before a future paid-GPU application can be
+  considered. This file does not select, rent, start or authorize a GPU.
+claim_boundary:
+  establishes:
+    - planned task, flow, evidence and decision fields
+    - fail-closed paid-GPU entry criteria
+  does_not_establish:
+    - platform availability or price
+    - exact GPU compatibility
+    - calibration or validation pass
+    - paid-GPU authorization
+upstream_gates:
+  - g25_s4_r4_immutable_source_freeze
+  - g25_fresh_s4_r4_three_role_go_on_same_hashes
+  - g25_gpt_5_6_sol_go_on_same_hashes_and_exact_command
+  - g25_owner_exact_command_approval
+  - local_rtx3050_g25_qualification_complete_and_qualified
+  - fresh_g3_r5_pass
+  - c1a_and_c1b_ir_audit_package_cleanroom_closure
+  - cross_model_compatibility_and_bounded_local_rehearsal
+candidate_gpus:
+  primary_conditional:
+    exact_product_name: NVIDIA RTX PRO 6000 Blackwell Workstation Edition
+    vram_bytes: 103079215104
+    role: existing_q0_q1_platform_or_bounded_repair_candidate
+    status: STOPPED_NO_GO
+    reason: Q1 failed all four MAPE gates; reuse requires a prospective missing-variable hypothesis
+  alternatives:
+    - exact_product_name: NVIDIA GeForce RTX 3090
+      vram_bytes: 25769803776
+      status: UNSELECTED
+      qualification_needed: model capacity, BF16/layout/backend, profiler and runtime
+    - exact_product_name: NVIDIA GeForce RTX 4090
+      vram_bytes: 25769803776
+      status: UNSELECTED
+      qualification_needed: model capacity, layout/kernel/profiler and no-NVLink profile
+    - exact_product_name: NVIDIA GeForce RTX 5090
+      vram_bytes: 34359738368
+      status: UNSELECTED
+      qualification_needed: exact SKU/runtime and bounded model-capacity proof
+    - exact_product_name: NVIDIA RTX A6000
+      vram_bytes: 51539607552
+      status: UNSELECTED
+      qualification_needed: exact runtime, topology, capacity and collector compatibility
+    - exact_product_name: NVIDIA A100 40GB PCIe
+      vram_bytes: 42949672960
+      status: UNSELECTED
+      qualification_needed: exact form factor, MIG/topology, runtime and model capacity
+    - exact_product_name: NVIDIA A100 80GB PCIe
+      vram_bytes: 85899345920
+      status: UNSELECTED
+      qualification_needed: exact form factor, MIG/topology, runtime and model capacity
+  forbidden_or_inactive:
+    - exact_product_name: NVIDIA H100
+      status: REMOVED_NOT_RUN
+      reason: D-062 does not authorize restoration
+selection_rule: >
+  Select one exact profile only after capability, capacity, runtime, collector,
+  storage, price and availability evidence are non-null and reviewed. Similar
+  SKU, precision, layout, kernel, backend or CPU fallback is not equivalent.
+planned_tasks:
+  offline_repair:
+    - complete Q1 raw and post-processing inventory with checksums
+    - audit leakage and fit only on calibration groups
+    - freeze Q2 blind workload and all denominators before scoring
+    - pre-register the missing-variable hypothesis and falsification rule
+  compatibility:
+    - qualify exact model, checkpoint, precision, layout, kernel and backend
+    - prove no CPU fallback and record weight-resident and peak memory bytes
+    - verify exact collector and profiler support before paid execution
+  calibration_and_validation:
+    - CAL_FIT component latency, PCIe, queue, memory and overlap terms
+    - CAL_CV grouped cross-validation without Q2 exposure
+    - Q2_BLIND one-shot scoring of component MAPE, PCIe MAPE, replay TPOT MAPE and throughput MAPE
+    - preserve invalid points and negative regions instead of retuning on Q2
+  trace_and_quality:
+    - execute frozen P0 clean baseline and P1 through P5 instrumented passes
+    - retain exact generation, task-quality and pass-alignment evidence
+    - capture native raw routing, profiler, telemetry and environment data
+    - declare P6 optional or unsupported truthfully; never synthesize completion
+  package_and_reproduction:
+    - session-local source and config snapshots
+    - immutable raw inventory and hash-chained journal
+    - complete audit, archive, sidecar checksum and extraction verification
+    - clean-room replay and claim-boundary adjudication
+execution_flow:
+  - offline_inventory_and_q1_forensics
+  - grouped_cv_and_q2_freeze
+  - exact_model_and_gpu_profile_qualification
+  - bounded_local_failure_injection_rehearsal
+  - freeze_matrix_splits_package_estimates_and_command
+  - architecture_model_trace_same_hash_review
+  - explicit_decision_supersedes_d062_for_named_scope
+  - owner_approves_exact_application_and_command
+  - lease_and_dynamic_preflight
+  - sequential_dispatch_until_105_minute_boundary
+  - audit_package_and_verify_by_120_minutes
+  - stop_instance_and_preserve_evidence
+data_to_collect:
+  identity:
+    - provider, instance_id, region, exact_product_name, uuid, pci_bus_id
+    - form_factor, vram_bytes, mig_state, topology, driver, cuda, torch, transformers
+    - model_id, model_revision, tokenizer_revision, checkpoint_inventory_sha256
+    - package, matrix, split, generation, collector and exact-command hashes
+  runtime:
+    - monotonic start and end, per-cell wall time, OS exit code, signals and timeout stage
+    - GPU memory allocated/reserved/peak, host memory, load time and warmup state
+    - kernel, queue, copy, compute, overlap, PCIe bytes and effective bandwidth
+    - tokens, TPOT, throughput, latency distributions and repetition identifiers
+  quality_and_alignment:
+    - input and output token IDs and hashes, stop reason and legal-stop classification
+    - task parser/evaluator result, P0 versus instrumented exact alignment
+    - invalid, timeout, unsupported and missing classifications with denominators
+  telemetry_and_provenance:
+    - GPU clocks, power, temperature, utilization and memory utilization time series
+    - native profiler and routing files with hashes and tool versions
+    - journal, immutable raw inventory, audit findings, terminal record and archive sidecar
+  calibration:
+    - calibration group, validation group and untouched Q2 membership
+    - model predictions, measured values, residuals and invalid-region flags
+    - component, PCIe, replay TPOT and throughput MAPE with bootstrap intervals
+resource_application:
+  gpu_count: 1
+  selected_exact_profile: null
+  provider: null
+  region: null
+  availability_evidence: null
+  price_per_quantum: null
+  billing_quantum: null
+  maximum_budget: null
+  currency: null
+  persistent_storage_gib_requested: 200
+  persistent_storage_gib_hard_minimum: 160
+  maximum_duration_minutes: 120
+  stop_new_dispatch_minutes: 105
+  audit_and_package_reserve_minutes: 15
+  approval_expires_at: null
+  exact_command: null
+  exact_command_sha256: null
+  authorized_retries: 0
+  authorized_fallbacks: []
+fail_closed_rules:
+  - any null required application field prevents submission
+  - any upstream gate failure preserves paid_gpu_execution NO_GO
+  - any identity, hash, runtime or capacity drift stops before dispatch
+  - any CPU fallback, unregistered precision/layout/backend or missing cell invalidates the session
+  - Q2 results cannot be used to refit or select the service model
+  - deadline expiry yields incomplete evidence and cannot be repaired after the session
+  - no resume, retry, additional GPU, larger model or H100 without a new reviewed decision
+readiness:
+  offline_and_local: INCOMPLETE
+  estimate_and_review: INCOMPLETE
+  authority: INCOMPLETE
+  application: NOT_SUBMITTED
+  execution: NOT_AUTHORIZED
+human_readable_plan: docs/status/PAID_GPU_PREEXECUTION_READINESS_AND_APPLICATION_20260719.md

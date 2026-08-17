@@ -1,0 +1,30 @@
+{
+  "schema_version": "moe-simulator-phase7-candidate-set-policy-v1",
+  "include": [
+    "experiments/specs/moe_cycle_simulator_phase7.yaml",
+    "experiments/specs/moe_cycle_simulator_phase7_cpu_framework.yaml",
+    "every non-ephemeral regular file recursively below explorations/moe_cycle_simulator/phase7",
+    "explorations/moe_cycle_simulator/phase6/governance/checksums.sha256",
+    "explorations/moe_cycle_simulator/phase6/governance/reviews/phase6_r4_checksums.sha256",
+    "explorations/moe_cycle_simulator/phase6/governance/reviews/phase6_r4_aggregate.json",
+    "the seven Phase 7 status, application and deployment-governance documents",
+    "every regular file recursively below runs/20260801T173446Z__moe_cycle_simulator_phase7_cpu_governance_r12r3_final__S2"
+  ],
+  "exclude_exact_paths": [
+    "explorations/moe_cycle_simulator/phase7/governance/checksums.sha256"
+  ],
+  "exclude_name_prefixes": [
+    "explorations/moe_cycle_simulator/phase7/governance/reviews/phase7_r12r3_"
+  ],
+  "exclude_ephemeral": [
+    "any __pycache__ directory",
+    "any .pyc file"
+  ],
+  "symlinks": "FORBIDDEN",
+  "special_entries": "FORBIDDEN",
+  "duplicates": "FORBIDDEN",
+  "hash": "SHA-256",
+  "path_order": "LC_ALL=C lexical",
+  "nested_checksum_ledgers": "INCLUDED",
+  "review_results_are_not_reviewed_source": true
+}

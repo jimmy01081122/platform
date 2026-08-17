@@ -1,0 +1,12 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "description": "Hold-out generalization sample: moonshotai/Kimi-K2-Thinking is NOT in the round-1 calibration set. Used to test whether the residency/prefetch conclusion generalizes to an unseen model family (charter H5 / success-criterion generalization). Domains overlap the train protocol: code (livecodebench) + general knowledge (mmlu).",
+  "seed": 12345,
+  "max_bytes": 2147483648,
+  "variants": [
+    "moonshotai/Kimi-K2-Thinking"
+  ],
+  "domains": ["livecodebench", "mmlu"],
+  "subjects_per_domain": 1,
+  "queries_per_subject": 3
+}

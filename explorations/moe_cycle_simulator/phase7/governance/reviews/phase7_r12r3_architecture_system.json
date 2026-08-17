@@ -1,0 +1,32 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r3-20260802",
+  "source_commit_sha1": "d850648378bd2360fbb606c3714c0f378bd75ffe",
+  "source_tree_sha1": "0d01cf408f46e2533e3596694a1adb291aabf447",
+  "ledger_sha256": "924eb51b816a7b1da15ffa22e0bdf3828980c8a3b34a96ccfd6e48c4a9ad8f5e",
+  "member_count": 169,
+  "exact_set_verification": "PASS",
+  "archive_regression": "PASS_119_OF_119_CPU_MOCK",
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "ARCH-P7-R12R3-B1",
+      "location": "explorations/moe_cycle_simulator/phase7/application/executor/deployment_controller.py:443",
+      "summary": "Gate M decode RSS ceiling is checked only after full stdout load, parse and local replay, so it is not an OOM-preventing runtime resource boundary; the claimed RSS-overflow adversarial coverage is absent."
+    },
+    {
+      "id": "ARCH-P7-R12R3-B2",
+      "location": "explorations/moe_cycle_simulator/phase7/application/executor/deployment.py:410",
+      "summary": "The approved remote argv resolves timeout and Python through PATH without absolute executable paths, hashes or pre-execution revalidation, so actual deadline/interpreter identity can drift."
+    }
+  ],
+  "observations": [
+    "The 21600-second contract closes with 600 seconds internal slack and zero provider-grace credit.",
+    "D0, Gate M and M0 remain separate one-shot authorities.",
+    "Remote completion does not replace local exact-set and semantic replay.",
+    "No SSH, network, model download, GPU query or GPU workload occurred."
+  ],
+  "claim_boundary": "CPU/mock governance and clean-archive reproducibility only; no live platform, runtime, model, capacity, calibration or profiling evidence.",
+  "authorized_next_stage": "CPU-only prospective repair and fresh same-hash review only.",
+  "gpu_authority": "NONE"
+}

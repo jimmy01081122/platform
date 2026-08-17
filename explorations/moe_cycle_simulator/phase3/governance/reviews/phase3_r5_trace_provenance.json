@@ -1,0 +1,20 @@
+{
+  "schema_version": "moe-simulator-role-review-v1",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r5-20260728",
+  "role": "Trace/Provenance",
+  "ledger_sha256": "c4b9209d95bbf91c607d65a70062e3bbb03a5892807ce08d8a4a370000535e42",
+  "member_count": 408,
+  "verdict": "GO",
+  "blockers": [],
+  "findings": [
+    "The outer 408-member ledger and exact filesystem set independently verify.",
+    "The R6 26-member nested ledger exact-set verifies and binds source root c4bf4e7c3a24f588357b639a880d7bbe3d2bbe54c26afdb3ce85afab5dadb9ea.",
+    "R1, R3 and R4 immutable snapshots verify, including the original reviewed ledgers.",
+    "Checkpoint identity covers the canonical body and restore validates digest, trace/state, waiter/state, counters, terminal state, clock remainder, resource conservation and reachable scheduler prefix.",
+    "Independent probes confirm legitimate private-path blocked-waiter restore, public fresh-waiter rejection and non-wrapping full-range holder conservation.",
+    "No GPU query, model download, profiling or calibration evidence was found."
+  ],
+  "claim_boundary": "CPU-only REPLAY_VALIDATE deterministic event/resource core and checkpoint provenance; not Phase 4 performance, GPU, Mixtral, benchmark, profiling or calibration evidence.",
+  "authorized_next_stage": "After unanimous same-hash GO aggregate, Phase 4 CPU synthetic single-discrete-GPU resource-model implementation only.",
+  "gpu_authority": "NONE"
+}

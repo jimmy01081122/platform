@@ -1,0 +1,71 @@
+{
+  "adjudication": {
+    "adjudication_basis": "vLLM offloading scheduler line 802 logs prepare_store=None as 'cannot store blocks'; CPU manager source returns None when protected-key eviction cannot satisfy capacity.",
+    "affected_logical_request_ids": [
+      "swap-k5-00",
+      "swap-k5-01",
+      "swap-k5-02",
+      "swap-k5-03",
+      "swap-k5-04",
+      "swap-k5-05",
+      "swap-k5-06",
+      "swap-k5-07"
+    ],
+    "attempt_id": "SWAP-K5-V1-MASTER",
+    "block_removed_message_count": 0,
+    "block_stored_message_count": 0,
+    "cannot_store_warning_count": 287,
+    "censored_request_count": 0,
+    "checksum_manifest_sha256": "857fb706422d370879a962c88d3c1a05bcaccfbb088a0528591139f4aba31f49",
+    "completion_latency_ns": {
+      "count": 8,
+      "max": 26398442797,
+      "median": 17812985082.5,
+      "min": 6573683014
+    },
+    "failed_request_count": 0,
+    "finish_reasons": [
+      "length"
+    ],
+    "kv_event_batch_count": 0,
+    "output_token_counts": [
+      32
+    ],
+    "passed_request_count": 8,
+    "peak_process_vmpin_kib": 0,
+    "peak_process_vmrss_kib": 1018248,
+    "peak_system_mlocked_kib": 26588,
+    "raw_file_count": 17,
+    "raw_file_set_sha256": "4d11d357e04d69bab53d3e30e70d6524020f8a4ca779f2e45f5dc38a241a7a23",
+    "rejected_request_count": 0,
+    "request_denominator": 8,
+    "runner_initial_outcome": "NO_EXHAUSTION_RESPONSE_OBSERVED",
+    "scientific_outcome": "HOST_POOL_STORE_REFUSED_FALLBACK_OBSERVED",
+    "stderr_sha256": "7be2ac9aa4486a319c088d3eae81783586e7ef5ed929b18a37c50395f92be31f",
+    "stdout_sha256": "be2ffc81cb1ccf9b5bffb4363a0e1a79d6ab679be60cb9198f076ca15eb17ec4",
+    "telemetry_sample_count": 83,
+    "ttft_ns": {
+      "count": 8,
+      "max": 25529124283,
+      "median": 14161423247.5,
+      "min": 2862390070
+    },
+    "validation_state": "VALIDATION_PASS",
+    "zero_event_interpretation": "Expected for prepare_store=None: no store is issued and therefore no BlockStored/BlockRemoved event is published."
+  },
+  "limitations": [
+    "The public KV event stream has no explicit StoreRefused event; fallback is bound to source hash and scheduler warning.",
+    "No scheduler preemption/recompute or request rejection occurred in this attempt.",
+    "Diagnostic one-burst evidence; not a formal serving tail-CI or bandwidth/latency result.",
+    "VmPin remained zero and cannot prove CUDA pinned-pool residency; system Mlocked and process RSS are retained."
+  ],
+  "measurement_field_mapping": {
+    "host_and_gpu_telemetry": "telemetry.jsonl",
+    "host_pool_request": "requested_engine_args.json kv_offloading_size_gib",
+    "request_denominator_and_terminal_semantics": "requests.json records",
+    "source_semantics": "k5_contract.json source_contract",
+    "store_refusal": "stdout.log scheduler.py:802 cannot store blocks",
+    "zero_kv_event_confirmation": "kv_events.json"
+  },
+  "schema_version": "phase7-swap-k5-derived-v1"
+}

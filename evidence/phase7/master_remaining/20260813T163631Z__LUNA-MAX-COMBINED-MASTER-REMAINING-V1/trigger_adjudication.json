@@ -1,0 +1,337 @@
+{
+  "entries": [
+    {
+      "claims_forbidden_until_closed": [
+        "formal OFF-E-RT1 claim"
+      ],
+      "observed_evidence": [
+        "OFF-E-RT0-V1-MASTER: no route-conditioned object-observable dynamic expert residency path in installed vLLM 0.23.0."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "b27e112ddeb12deb7f5596817b1a9bd11a37cf9d57ceafdd342498a86be8da32"
+      ],
+      "trigger_id": "OFF-E-RT1",
+      "trigger_state": "NOT_TRIGGERED_WITH_EVIDENCE",
+      "triggered_child_ids": [
+        "OFF-E-RT1"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal OFF-E-RT2 claim"
+      ],
+      "observed_evidence": [
+        "OFF-E-RT0-V1-MASTER: no route-conditioned object-observable dynamic expert residency path in installed vLLM 0.23.0."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "b27e112ddeb12deb7f5596817b1a9bd11a37cf9d57ceafdd342498a86be8da32"
+      ],
+      "trigger_id": "OFF-E-RT2",
+      "trigger_state": "NOT_TRIGGERED_WITH_EVIDENCE",
+      "triggered_child_ids": [
+        "OFF-E-RT2"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal OFF-E-RT3 claim"
+      ],
+      "observed_evidence": [
+        "OFF-E-RT0-V1-MASTER: no route-conditioned object-observable dynamic expert residency path in installed vLLM 0.23.0."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "b27e112ddeb12deb7f5596817b1a9bd11a37cf9d57ceafdd342498a86be8da32"
+      ],
+      "trigger_id": "OFF-E-RT3",
+      "trigger_state": "NOT_TRIGGERED_WITH_EVIDENCE",
+      "triggered_child_ids": [
+        "OFF-E-RT3"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal SWAP-K1 claim"
+      ],
+      "observed_evidence": [
+        "SWAP-K0 native offload capability initialized; no block event promoted from bounded canary.",
+        "SWAP-K1-V5 forced distinct-prompt pressure captured CPU BlockStored/BlockRemoved events with removed-hash subset lineage."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "c560b58f93e2e67b5da840faee9d93a3ae51aa6e9008db19f35305d710d8e239",
+        "3f03ff125785b108dc658be2fda17816f6a2f4d01f8f21d92b7b7e61a5dacd9e"
+      ],
+      "trigger_id": "SWAP-K1",
+      "trigger_state": "TRIGGERED",
+      "triggered_child_ids": [
+        "SWAP-K1"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal SWAP-K2 claim"
+      ],
+      "observed_evidence": [
+        "SWAP-K0 native offload capability initialized; no block event promoted from bounded canary."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "c560b58f93e2e67b5da840faee9d93a3ae51aa6e9008db19f35305d710d8e239"
+      ],
+      "trigger_id": "SWAP-K2",
+      "trigger_state": "TRIGGERED",
+      "triggered_child_ids": [
+        "SWAP-K2"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal SWAP-K3 claim"
+      ],
+      "observed_evidence": [
+        "SWAP-K0 native offload capability initialized; no block event promoted from bounded canary.",
+        "SWAP-K3-LONG-PREFILL-V3-MASTER validated LONG-PREFILL serving-pressure events under native KV offload; matrix complete=False.",
+        "SWAP-K3-DECODE-HEAVY-V1-MASTER validated DECODE-HEAVY serving-pressure events under native KV offload; matrix complete=False.",
+        "SWAP-K3-MIXED-V1-MASTER validated MIXED serving-pressure events under native KV offload; matrix complete=False.",
+        "SWAP-K3-BURST-V1-MASTER validated BURST serving-pressure events under native KV offload; matrix complete=True."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "c560b58f93e2e67b5da840faee9d93a3ae51aa6e9008db19f35305d710d8e239",
+        "a06579655006d223a5abcdb94a3bead0e7e0216edd0cb7fc345004fee5c1a531",
+        "59632645e7a3e662078105834bdb426f0849cb383473cf18b134d8bfaab51b22",
+        "907624034634eea9756223bcaf94aa5f4712fb7b9cd9c2a7a51ebf672a655b6b",
+        "620b826e9f29f723440c46eb0dc53244b265368bf5cb85b5db6968746b71acef"
+      ],
+      "trigger_id": "SWAP-K3",
+      "trigger_state": "TRIGGERED",
+      "triggered_child_ids": [
+        "SWAP-K3"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal SWAP-K5 claim"
+      ],
+      "observed_evidence": [
+        "SWAP-K0 native offload capability initialized; no block event promoted from bounded canary.",
+        "SWAP-K5-V1-MASTER: native 0.25-GiB host pool store refusal observed for all eight requests; all requests completed."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "c560b58f93e2e67b5da840faee9d93a3ae51aa6e9008db19f35305d710d8e239",
+        "4d11d357e04d69bab53d3e30e70d6524020f8a4ca779f2e45f5dc38a241a7a23"
+      ],
+      "trigger_id": "SWAP-K5",
+      "trigger_state": "TRIGGERED",
+      "triggered_child_ids": [
+        "SWAP-K5"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal OFF-W1 claim"
+      ],
+      "observed_evidence": [
+        "OFF-W0-V2-MASTER: runtime-native UVA selective CPU weight offload available; 1.75 GiB logged and canonical routing canary passed."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "ac8a84f9af23df521dd0beeebbaba8ddf55e89045542bd4a7abd112d99b85978"
+      ],
+      "trigger_id": "OFF-W1",
+      "trigger_state": "TRIGGERED",
+      "triggered_child_ids": [
+        "OFF-W1"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal OFF-W2 claim"
+      ],
+      "observed_evidence": [
+        "OFF-W0-V2-MASTER: runtime-native UVA selective CPU weight offload available; 1.75 GiB logged and canonical routing canary passed."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "ac8a84f9af23df521dd0beeebbaba8ddf55e89045542bd4a7abd112d99b85978"
+      ],
+      "trigger_id": "OFF-W2",
+      "trigger_state": "TRIGGERED",
+      "triggered_child_ids": [
+        "OFF-W2"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal OFF-W3 claim"
+      ],
+      "observed_evidence": [
+        "OFF-W0-V2-MASTER: runtime-native UVA selective CPU weight offload available; 1.75 GiB logged and canonical routing canary passed."
+      ],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [
+        "ac8a84f9af23df521dd0beeebbaba8ddf55e89045542bd4a7abd112d99b85978"
+      ],
+      "trigger_id": "OFF-W3",
+      "trigger_state": "TRIGGERED",
+      "triggered_child_ids": [
+        "OFF-W3"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal COMP0 claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "COMP0",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "COMP0"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal COMP1 claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "COMP1",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "COMP1"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal COMP2 claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "COMP2",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "COMP2"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal COMP3 claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "COMP3",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "COMP3"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal COMP4 claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "COMP4",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "COMP4"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal PREFIX-CACHE-ON-OFF claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "PREFIX-CACHE-ON-OFF",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "PREFIX-CACHE-ON-OFF"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal CHUNKED-PREFILL-ON-OFF claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "CHUNKED-PREFILL-ON-OFF",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "CHUNKED-PREFILL-ON-OFF"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal CUDA-GRAPH-ON-OFF claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "CUDA-GRAPH-ON-OFF",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "CUDA-GRAPH-ON-OFF"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal POWER-FORMAL claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "POWER-FORMAL",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "POWER-FORMAL"
+      ]
+    },
+    {
+      "claims_forbidden_until_closed": [
+        "formal SPECULATIVE-DECODING-EXPANSION claim"
+      ],
+      "observed_evidence": [],
+      "required_capability_or_owner_decision": "Capability evidence or explicit owner decision",
+      "scope_question": "Does this capability/owner scope enter the formal calibrated domain?",
+      "source_evidence_hashes": [],
+      "trigger_id": "SPECULATIVE-DECODING-EXPANSION",
+      "trigger_state": "PENDING",
+      "triggered_child_ids": [
+        "SPECULATIVE-DECODING-EXPANSION"
+      ]
+    }
+  ],
+  "schema_version": "phase7-combined-master-trigger-adjudication-v1"
+}

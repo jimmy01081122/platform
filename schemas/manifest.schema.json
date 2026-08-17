@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment Run Manifest",
+  "type": "object",
+  "required": [
+    "run_id",
+    "experiment_id",
+    "stage",
+    "platform_profile",
+    "created_at",
+    "git",
+    "command",
+    "status"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "experiment_id": {
+      "type": "string"
+    },
+    "stage": {
+      "type": "string",
+      "pattern": "^S[0-7]$"
+    },
+    "platform_profile": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "git": {
+      "type": "object"
+    },
+    "command": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "initialized",
+        "running",
+        "passed",
+        "failed",
+        "partial",
+        "invalid"
+      ]
+    },
+    "parameter_sources": {
+      "type": "array"
+    },
+    "simulation": {
+      "type": "object",
+      "required": ["fidelity"],
+      "properties": {
+        "fidelity": {
+          "enum": [
+            "fast",
+            "calibrated",
+            "detailed",
+            "rtl-transaction",
+            "rtl-cycle"
+          ]
+        },
+        "backend": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "calibration_pack": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "parent_runs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "array_path": "routing/CE2-31744x1024-routing__measured-01.npy",
+  "array_sha256": "7e1ba2dba35a655bc713411df43f1ad32cb2a76d0b59d124e9c9fe94ade4fe22",
+  "dtype": "uint8",
+  "excluded_trailing_sampled_token_count": 1,
+  "expected_forwarded_token_count": 32767,
+  "experts_from_model_config": 8,
+  "input_token_count": 31744,
+  "layers_from_model_config": 32,
+  "logical_request_id": "CE2-31744x1024-routing__measured-01",
+  "maximum_expert_id": 7,
+  "minimum_expert_id": 0,
+  "output_token_count": 1024,
+  "semantics": "per token that completed a model forward pass, actual model layer, top-k expert IDs; the final sampled output token is excluded because it is not forwarded again",
+  "shape": [
+    32767,
+    32,
+    2
+  ],
+  "source_field": "vllm.CompletionOutput.routed_experts",
+  "top_k_from_model_config": 2,
+  "validation_errors": [],
+  "validation_status": "PASS"
+}

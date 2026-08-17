@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "preflight_evidence.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "application_ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "evidence_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "gpu": {"type": "object"},
+    "host": {"type": "object"},
+    "mode": {"enum": ["materialization", "execution"]},
+    "network": {"type": "object"},
+    "raw_commands": {"items": {"type": "object"}, "minItems": 2, "type": "array"},
+    "schema_version": {"const": "moe-simulator-phase7-m0-preflight-evidence-v1"},
+    "software": {"type": "object"},
+    "status": {"const": "PASS"}
+  },
+  "required": ["schema_version", "status", "mode", "application_ledger_sha256", "gpu", "host", "software", "network", "raw_commands", "evidence_sha256"],
+  "type": "object"
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "phase7-gputw-provider-adaptation-r1/candidate-manifest/v1",
+  "candidate_id": "moe-simulator-phase7-gputw-provider-adaptation-r1-bdb610f",
+  "reviewed_commit": "bdb610fca5470e21556b1509ed22db6f55295995",
+  "reviewed_tree": "a471b8bd588c1e574fefae811f3e13d951d411b2",
+  "candidate_member_count": 12,
+  "candidate_ledger": "explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/candidate_ledger.sha256",
+  "candidate_ledger_sha256": "67fcf4cc8b17b122efa230b95c4a162fe8582be515ce23a307efe2bea5c23762",
+  "review_artifact_root": "explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1",
+  "review_artifacts_excluded_from_candidate": true,
+  "historical_authority": {
+    "reviewed_commit": "da3d33238365664435664e6ae1d18714e6b68ee2",
+    "reviewed_tree": "4bb9c4d6d462338f43eb0d4e63cc129a44be887b",
+    "candidate_member_count": 192,
+    "candidate_ledger_sha256": "61d95a0886b54ce35799002f322836260d1feb703ec31deee8c9430a0555fba3",
+    "review_closure_commit": "87c8a866e44387100dadf9a087cf55a37c7cc9e0"
+  },
+  "replay_evidence": {
+    "provider_adaptation_validator": "PASS",
+    "focused_pytest": "17 passed",
+    "phase7_cpu_mock_suite": "126 tests passed",
+    "gpu_authority": "NONE",
+    "network_free": true
+  },
+  "review_closure": "IMMUTABLE_GO/GO/GO",
+  "claim_boundary": [
+    "This is a CPU-contract and governance review of a prospective GPUtw adaptation.",
+    "No live GPUtw instance, SSH session, model download, GPU query, workload, price lock, host-key trust, or capacity observation is claimed.",
+    "R12-R5 historical evidence remains immutable and is checked independently."
+  ],
+  "side_effects": false
+}

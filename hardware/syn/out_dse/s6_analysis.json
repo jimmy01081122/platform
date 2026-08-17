@@ -1,0 +1,245 @@
+{
+  "operating_point": {
+    "fixture": "switch-base-32",
+    "capacity": 28,
+    "depth": 1
+  },
+  "measured_cycles_per_step": 63.3958,
+  "a013_validation": {
+    "assumed_hw_cycles_per_step": 64,
+    "measured_hw_cycles_per_step": 63.3958,
+    "verdict": "validated (measured 63.4 vs assumed ~64)"
+  },
+  "evidence_classes": {
+    "cells_gates_dff_ltp": "synthesis proxy (Yosys generic; not um^2/ns)",
+    "cycles_per_step": "measured (Verilator cycle-accurate)",
+    "per_gate_delay_ps": "assumed/swept",
+    "target_fmax_mhz": "swept (A-012)",
+    "power": "unavailable (no activity+power methodology)"
+  },
+  "dse_points_total": 12,
+  "dse_points_valid": 4,
+  "pareto_front": [
+    {
+      "max_experts": 32,
+      "ts_w": 16,
+      "area_proxy_gates": 27399,
+      "ltp_len": 988,
+      "fmax_proxy_mhz": {
+        "30.0ps": 33.74,
+        "50.0ps": 20.24
+      }
+    }
+  ],
+  "recommended_operating_point": {
+    "max_experts": 32,
+    "ts_w": 16,
+    "area_proxy_gates": 27399,
+    "dff": 997,
+    "ltp_len": 988,
+    "fmax_proxy_mhz": {
+      "30.0ps": 33.74,
+      "50.0ps": 20.24
+    },
+    "measured_cycles_per_step": 63.3958,
+    "rationale": "smallest area proxy AND shortest critical-path proxy among functionally-valid points that support 32 experts"
+  },
+  "boundaries": [
+    "TS_W=8 wraps the recency counter for this trace (LRU incorrect) -> functionally invalid despite smallest area; TS_W>=16 required.",
+    "No valid point meets the 200 MHz target under the AIG-depth proxy: the single-cycle combinational argmin (dual LRU victim search over the whole table) yields a long topological path. NOTE: AIG depth over-estimates real stdcell depth; a PDK liberty + STA, or a pipelined/registered argmin, is required to confirm/achieve timing. Timing feasibility at target freq: NOT demonstrated (proxy pessimistic)."
+  ],
+  "all_points": [
+    {
+      "max_experts": 8,
+      "ts_w": 8,
+      "cells": 5929,
+      "dff": 441,
+      "area_proxy_gates": 5488,
+      "ltp_len": 196,
+      "fmax_proxy_mhz": {
+        "30.0ps": 170.07,
+        "50.0ps": 102.04
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": false,
+      "supports_workload": false,
+      "status": "boundary_ts_wrap"
+    },
+    {
+      "max_experts": 8,
+      "ts_w": 16,
+      "cells": 8466,
+      "dff": 513,
+      "area_proxy_gates": 7953,
+      "ltp_len": 258,
+      "fmax_proxy_mhz": {
+        "30.0ps": 129.2,
+        "50.0ps": 77.52
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": false,
+      "status": "insufficient_experts"
+    },
+    {
+      "max_experts": 8,
+      "ts_w": 32,
+      "cells": 13610,
+      "dff": 657,
+      "area_proxy_gates": 12953,
+      "ltp_len": 285,
+      "fmax_proxy_mhz": {
+        "30.0ps": 116.96,
+        "50.0ps": 70.18
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": false,
+      "status": "insufficient_experts"
+    },
+    {
+      "max_experts": 16,
+      "ts_w": 8,
+      "cells": 9170,
+      "dff": 539,
+      "area_proxy_gates": 8631,
+      "ltp_len": 398,
+      "fmax_proxy_mhz": {
+        "30.0ps": 83.75,
+        "50.0ps": 50.25
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": false,
+      "supports_workload": false,
+      "status": "boundary_ts_wrap"
+    },
+    {
+      "max_experts": 16,
+      "ts_w": 16,
+      "cells": 14829,
+      "dff": 675,
+      "area_proxy_gates": 14154,
+      "ltp_len": 519,
+      "fmax_proxy_mhz": {
+        "30.0ps": 64.23,
+        "50.0ps": 38.54
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": false,
+      "status": "insufficient_experts"
+    },
+    {
+      "max_experts": 16,
+      "ts_w": 32,
+      "cells": 25697,
+      "dff": 947,
+      "area_proxy_gates": 24750,
+      "ltp_len": 593,
+      "fmax_proxy_mhz": {
+        "30.0ps": 56.21,
+        "50.0ps": 33.73
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": false,
+      "status": "insufficient_experts"
+    },
+    {
+      "max_experts": 32,
+      "ts_w": 8,
+      "cells": 16655,
+      "dff": 733,
+      "area_proxy_gates": 15922,
+      "ltp_len": 755,
+      "fmax_proxy_mhz": {
+        "30.0ps": 44.15,
+        "50.0ps": 26.49
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": false,
+      "supports_workload": true,
+      "status": "boundary_ts_wrap"
+    },
+    {
+      "max_experts": 32,
+      "ts_w": 16,
+      "cells": 28396,
+      "dff": 997,
+      "area_proxy_gates": 27399,
+      "ltp_len": 988,
+      "fmax_proxy_mhz": {
+        "30.0ps": 33.74,
+        "50.0ps": 20.24
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": true,
+      "status": "valid"
+    },
+    {
+      "max_experts": 32,
+      "ts_w": 32,
+      "cells": 51410,
+      "dff": 1525,
+      "area_proxy_gates": 49885,
+      "ltp_len": 1151,
+      "fmax_proxy_mhz": {
+        "30.0ps": 28.96,
+        "50.0ps": 17.38
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": true,
+      "status": "valid"
+    },
+    {
+      "max_experts": 64,
+      "ts_w": 8,
+      "cells": 29882,
+      "dff": 1119,
+      "area_proxy_gates": 28763,
+      "ltp_len": 1603,
+      "fmax_proxy_mhz": {
+        "30.0ps": 20.79,
+        "50.0ps": 12.48
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": false,
+      "supports_workload": true,
+      "status": "boundary_ts_wrap"
+    },
+    {
+      "max_experts": 64,
+      "ts_w": 16,
+      "cells": 53658,
+      "dff": 1639,
+      "area_proxy_gates": 52019,
+      "ltp_len": 2109,
+      "fmax_proxy_mhz": {
+        "30.0ps": 15.81,
+        "50.0ps": 9.48
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": true,
+      "status": "valid"
+    },
+    {
+      "max_experts": 64,
+      "ts_w": 32,
+      "cells": 100257,
+      "dff": 2679,
+      "area_proxy_gates": 97578,
+      "ltp_len": 2397,
+      "fmax_proxy_mhz": {
+        "30.0ps": 13.91,
+        "50.0ps": 8.34
+      },
+      "meets_200mhz_proxy": false,
+      "func_valid": true,
+      "supports_workload": true,
+      "status": "valid"
+    }
+  ]
+}

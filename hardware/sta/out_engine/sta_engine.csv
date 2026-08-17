@@ -1,0 +1,8 @@
+variant,max_experts,banks,ts_w,abc,buffered,fmax_mhz,area_um2
+seq_flat,128,-,16,light,yes,113.54,
+banked,128,16,16,light,no,1.43,47998.104
+banked,128,16,16,light,yes,129.73,66495.744
+banked_binary,128,16,16,default,no,23.92,
+banked_onehot,128,16,16,default,no,22.23,
+banked_binary,128,16,16,mapF16,yes,0.70,
+banked_onehot,128,16,16,mapF16,yes,0.71,

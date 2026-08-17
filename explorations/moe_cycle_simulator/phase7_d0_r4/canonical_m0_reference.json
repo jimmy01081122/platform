@@ -1,0 +1,18 @@
+{
+  "schema_version": "moe-simulator-phase7-d0-r4-canonical-m0-reference-v1",
+  "reference_scope": "MODEL_RUNTIME_PROBE_ONLY_NOT_ALLOCATION_AUTHORITY",
+  "historical_contract_path": "explorations/moe_cycle_simulator/phase7/application/m0_execution_contract.json",
+  "historical_contract_file_sha256": "d2b9a9487ffe9404b441beec6d2ae8065e2b0564eeaf164a8de846b9c31734a2",
+  "canonical_boundary_semantic_sha256": "3d842b4bbeceaf06a07a78f5efad42928e137b3ce8d03c44da8b661bc056884d",
+  "model_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "precision": "BF16",
+  "runtime": "vLLM",
+  "quantization": null,
+  "cpu_offload_gb": 0,
+  "swap_space_gb": 0,
+  "max_model_length": 32768,
+  "input_tokens": 28672,
+  "output_tokens": 4096,
+  "repetitions": 3,
+  "authority": "REFERENCE_ONLY_NOT_D0_GATE_M_OR_M0_AUTHORITY"
+}

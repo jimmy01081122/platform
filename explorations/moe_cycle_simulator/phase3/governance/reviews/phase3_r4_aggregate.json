@@ -1,0 +1,23 @@
+{
+  "schema_version": "moe-simulator-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r4-20260728",
+  "ledger_sha256": "6ade9bbfaefacd8cbebbc30fe2181c95b54635fb3da0af581b5e349cf2e6d956",
+  "roles": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P3-R4-B1",
+    "ARCH-P3-R4-B2"
+  ],
+  "promotion_eligible": false,
+  "authorized_next_stage": "Phase 3 checked-arithmetic and fresh-state corrective implementation.",
+  "not_authorized": [
+    "Phase 3 freeze",
+    "Phase 4 promotion",
+    "GPU/model/benchmark/profiling work",
+    "calibration PASS"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": "moe-simulator-phase6-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r4-20260729",
+  "goal": "Freeze one deterministic CPU-synthetic scheduler for directed two-GPU P2P and two-agent coherent UMA semantics.",
+  "scope": [
+    "one global MultiDomainSchedulerV1",
+    "two private-VRAM compute domains and directed single-hop P2P",
+    "two compute agents sharing one coherent UMA domain",
+    "exact CDC, finite queues, CREDIT and REQUEST_ACK",
+    "per-domain pressure, fail-atomic whole-expert placement and live pins",
+    "verified Phase5 CompiledAction and ExpertKey/content identity",
+    "exact request, token and layer identity across each token routing chain",
+    "explicit rejection of frozen missing request, token and layer sentinels",
+    "object-granular serialized coherent visibility and checked versions",
+    "distinct ACK_OR_CREDIT terminal transition at frozen priority 40",
+    "synthetic alignment and live checkpoint"
+  ],
+  "non_goals": [
+    "measured hardware timing, bandwidth or coherence",
+    "adaptive placement, multi-hop, collectives or cache-line protocol",
+    "Mixtral, runtime, model or benchmark execution",
+    "calibration, DSE ranking or production-scale validation"
+  ],
+  "inputs": {
+    "phase5_ledger_sha256": "b6b593a1fe79f1ddb60706c5c4af17470608c08589cd654eb7ea006d71ded834",
+    "phase5_review_ledger_sha256": "fb08d88c0f7ea381492a067ea10ee8286e24e63ca205e706bf0805967f10d93e",
+    "phase5_review_aggregate_sha256": "c4e3140a301721f13d1b33c111ca9dd09388247b06db84e1cdf11433ca703370",
+    "phase6_source_root_sha256": "dad66c54d0f84e2ad24926f3e614589fac22f1e5f3aa08aa5305ec9ff8c23c74",
+    "build_authority_sha256": "e5c730b98d3bc0e3588780531269e6e129b861dd294011651d20911b8af4d41b",
+    "topology_contract_sha256": "6499e96c3a4b74d3097f27c0506eee83ed7a3cedf3713bcfb36f8a1bc043589b",
+    "cdc_contract_sha256": "9cdb23d0b91c0f61a3df7bb9bd2839ec4dbb07a11388563a2d999cdeed45f28a",
+    "p2p_contract_sha256": "8d003152ede06fdda1218339c18acc6d00babe4dc185813a14455004ab26fd88",
+    "uma_contract_sha256": "d85159e78f4aac44e0185efc866c7d2b8147e8380dbfcdbe86f57aa82ade9c16",
+    "checkpoint_schema_sha256": "422c82a80e65763783bc47593b44800f152be13e97f91ce0ccceefdc4c8dc840",
+    "claim_boundary_sha256": "a1a2221baeb8610330e84fa9aeff1551aa80b575bad54ba2f8ea7127a3fe354e"
+  },
+  "outputs": {
+    "formal_run": "20260729T105347Z__moe_cycle_simulator_phase6_multi_domain_r4__S4",
+    "run_ledger_sha256": "6933d64c5a02927efdf35847bcd5131bb4db89a62bebcce40231d75e2c933a8c",
+    "scheduler": "MultiDomainSchedulerV1",
+    "profile_origin": "CPU_SYNTHETIC",
+    "range_status": "RANGE_UNKNOWN",
+    "gpu_used": false,
+    "model_downloaded": false,
+    "calibration_pass": false
+  },
+  "dependencies": {
+    "phase3": "exact clocks, bridge, EventKey, U128 and SHA-256 primitives",
+    "phase4": "integer service and atomic reservation semantics only",
+    "phase5": "frozen routing, residency and authority identities",
+    "language": "C++20",
+    "build": "CMake"
+  },
+  "assumptions": [
+    "All operation and placement decisions are compiled before execution.",
+    "Synthetic payload bytes and service rates are hash-bound assumptions.",
+    "Whole-object functional coherence is sufficient for the Phase 6 minimum."
+  ],
+  "unknowns": [
+    "measured P2P, NVLink and UMA service curves",
+    "actual hardware coherence and contention",
+    "production trace scale and adaptive placement value"
+  ],
+  "alternative_designs": [
+    "Multiple per-GPU Phase 4 schedulers were rejected because they create multiple time authorities.",
+    "Aggregate VRAM pooling was rejected because it hides local capacity failure.",
+    "Cache-line coherence was deferred in favor of object-granular functional visibility."
+  ],
+  "risks": [
+    "Synthetic rates cannot support hardware latency or bandwidth claims.",
+    "Pinned MOVE is rejected rather than delayed in the minimal implementation.",
+    "Only two-domain direct paths are validated; multi-hop and collectives remain future work."
+  ],
+  "validation_method": [
+    "source contract validator",
+    "clean Release build and CTest",
+    "native Phase 6 and inherited Phase 3/4/5 ASAN/UBSAN execution",
+    "directed topology, duplex, credit, capacity and exact routing-chain tests",
+    "CDC rational edge and synthetic alignment tests",
+    "UMA alias, immutable, version and visibility tests",
+    "live object and wire checkpoint tests",
+    "R1 blocker regressions for fail-atomic rejection, alignment ranges, frozen priorities, topology IDs, action proofs, expert identity, UMA serialization/invariants and route-key ties",
+    "MODEL-P6-R2-B1 negative regressions for missing token identity, route/expert layer mismatch and operation-to-route token mismatch",
+    "TRACE-P6-R3-B1 negative regressions for empty request and UINT64_MAX/UINT32_MAX token/layer sentinels",
+    "authority, tamper, trailing-byte and topology-mismatch negative tests",
+    "1000-operation comparison-count envelope",
+    "sealed run and candidate exact-set validation"
+  ],
+  "acceptance_criteria": [
+    "source root equals dad66c54d0f84e2ad24926f3e614589fac22f1e5f3aa08aa5305ec9ff8c23c74",
+    "formal R4 run validator PASS",
+    "normal CTest 5/5 PASS",
+    "native ASAN and UBSAN PASS",
+    "run ledger exact-set PASS",
+    "three roles GO on one candidate ledger with empty blockers"
+  ],
+  "estimated_resources": {
+    "execution": "CPU-only, under three minutes",
+    "storage": "under ten MiB"
+  },
+  "owner_decisions": [
+    "Phase 5 GO authorizes Phase 6 CPU-synthetic multi-domain implementation.",
+    "Push is permitted after each completed phase."
+  ],
+  "next_legal_action": "After same-hash GO, freeze Phase 6 and implement Phase 7 adapter, collector and profiling application framework locally; any model/GPU execution requires a separate owner-approved server application.",
+  "forbidden_actions": [
+    "GPU query or execution",
+    "model or benchmark download",
+    "formal profiling",
+    "calibration or platform qualification claims",
+    "aggregate VRAM capacity substitution",
+    "modification or reinterpretation of frozen G3 or S4 evidence"
+  ],
+  "status": "candidate_r4_unreviewed"
+}

@@ -1,0 +1,51 @@
+{
+  "bins": {
+    "max": 9555,
+    "p10": 75,
+    "p50": 312,
+    "p90": 4403
+  },
+  "deterministic_rule": "per-layer expert forwarded-token counts; nearest-rank quantiles q=0.10/0.50/0.90 and maximum",
+  "model_dimensions": {
+    "num_experts_per_tok": 2,
+    "num_hidden_layers": 32,
+    "num_local_experts": 8
+  },
+  "sample_count": 1024,
+  "schema_version": "phase7-cmp-m3-fit-occupancy-v1",
+  "source_role": "fit_only",
+  "source_shapes": [
+    {
+      "path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T152600Z__phase7_remote_controlled_matrix_backup/controlled_runs/20260811T140246Z__CTRL-P0-8192-routing/routing/P0-8192-routing__measured-01.npy",
+      "shape": [
+        8223,
+        32,
+        2
+      ]
+    },
+    {
+      "path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T152600Z__phase7_remote_controlled_matrix_backup/controlled_runs/20260811T141410Z__CTRL-DEC0-512x32-routing/routing/DEC0-512x32-routing__measured-01.npy",
+      "shape": [
+        543,
+        32,
+        2
+      ]
+    },
+    {
+      "path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T161000Z__phase7_remote_natural_matrix_backup/natural_runs/20260811T154214Z__W0-ROUTING/routing/w0-routing__measured-01.npy",
+      "shape": [
+        366,
+        32,
+        2
+      ]
+    },
+    {
+      "path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T161000Z__phase7_remote_natural_matrix_backup/natural_runs/20260811T154434Z__W1-ROUTING/routing/w1-routing__measured-01.npy",
+      "shape": [
+        16470,
+        32,
+        2
+      ]
+    }
+  ]
+}

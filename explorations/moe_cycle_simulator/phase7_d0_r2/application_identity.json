@@ -1,0 +1,24 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r2-application-identity-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r2",
+  "identity_status": "FROZEN_CPU_ONLY",
+  "identity_preimage": {
+    "application_id": "phase7-gputw-d0-7f9804d4-20260809-r2",
+    "revision": "D0-R2",
+    "historical_d0_r1_commit": "d0de3dc8ba068b924627cd2ad5915dcbc9fa0792",
+    "historical_d0_r1_tree": "c94e3087cdfd71c617a879eda7d7d1cc78f049c1",
+    "overlay_sha256": "0422469b07c64e9854cb55ee675ece712103d379369172a2b5fcc952d4216794",
+    "owner_authority_sha256": "ceeb5875e5d4a2642bfa26b49687a6510e7dd8fb9fab0b62515e8686a2e3646c",
+    "d0_plan_sha256": "f14b9065c8722d4cfa8515b5008436cba46e6f1fbb1b4c29b1e1e0af69f4b373",
+    "controller_sha256": "14e228413e594848254b0c30edaa74f2e120a391bf97b55c47253ebb77d82b8c",
+    "probe_sha256": "9bfe3e36d9e4ca7bc78928b78e219472d39ffad01589672160e3d41d6bd0345c",
+    "schema_sha256": "7eb3764b727543744515ab4e3ad7972e7bbe0a80788c500cfbf797f230d9f427",
+    "authority_boundary": {
+      "d0": "NOT_AUTHORIZED",
+      "gate_m": "NOT_AUTHORIZED",
+      "m0": "NOT_AUTHORIZED",
+      "gpu": "NONE"
+    }
+  },
+  "application_identity_sha256": "3e0c43616affd2013dea2c1a8b2ff65dbc91d55b6d9708bdf340e01206ce1e55"
+}

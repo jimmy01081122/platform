@@ -1,0 +1,25 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r1-20260726",
+  "ledger_sha256": "abeafed5b02929d0a592eb45c0aebfce3f24c2da97aaa34d9afbbc525154ab2e",
+  "member_count": 45,
+  "verdict": "MODIFY",
+  "blockers": [
+    "MB-P3-R1-B1: state_digest omits Event definitions and Resource kind/arbitration, allowing well-formed pending workload or resource semantic mutation to pass restore. Bind the complete canonical event/resource program and add mutation tests."
+  ],
+  "findings": [
+    "The outer ledger, all 45 members, nested run ledger and its exact set verified.",
+    "Source root and all normal/sanitizer/binding evidence agree.",
+    "No GPU, model, benchmark, profiling, accuracy or calibration claim was made.",
+    "REPLAY_VALIDATE does not invent model completion latency or reinterpret Phase 2 model/routing semantics."
+  ],
+  "claim_boundary": "Evidence supports only a CPU REPLAY_VALIDATE candidate; checkpoint replay identity and Phase 3 freeze remain unqualified.",
+  "authorized_next_stage": "Correct the blocker under CPU-only scope, create a fresh candidate and repeat three-role review.",
+  "not_authorized": [
+    "Phase 3 freeze or Phase 4 promotion",
+    "GPU query or workload",
+    "model or benchmark execution",
+    "formal profiling or calibration",
+    "modification or reinterpretation of frozen G3/S4 evidence"
+  ]
+}

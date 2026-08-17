@@ -1,0 +1,55 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-s2-plan-v1",
+  "application_id": "phase7-gputw-d0-s2-20260809",
+  "status": "CPU_ONLY_DISCOVERY_PLAN",
+  "execution_mode": "READ_ONLY_DISCOVERY",
+  "fresh_session_required": true,
+  "retry_allowed": false,
+  "resume_allowed": false,
+  "provider_live_execution": false,
+  "remote_writes": false,
+  "package_install": false,
+  "model_access": false,
+  "inference": false,
+  "cuda_benchmark": false,
+  "gpu_workload": false,
+  "network_access": false,
+  "required_observations": [
+    "GPU exact product, count, memory, driver and query status",
+    "CUDA runtime version from an observed source",
+    "PyTorch import, version, CUDA build and query-only availability",
+    "vLLM, Transformers, tokenizers and Hugging Face Hub versions",
+    "installed-distribution RECORD/inventory hashes for each required package",
+    "Python executable path, version and SHA-256",
+    "Vault mount identity and free bytes",
+    "provider image and container digest when exposed"
+  ],
+  "nonblocking_observations": [
+    "handoff UTC and derived deadline",
+    "provider billing state and remaining time",
+    "container image or digest when the provider does not expose one",
+    "provider instance metadata when not present in the runtime environment"
+  ],
+  "hash_method": "RECORD_BYTES_PLUS_PATH_SIZE_INVENTORY",
+  "cuda_query_policy": "IMPORT_AND_DRIVER_AVAILABILITY_ONLY_NO_TENSOR_KERNEL_OR_BENCHMARK",
+  "source_binding": {
+    "probe_path": "probe.py",
+    "schema_paths": ["schemas/probe.schema.json", "schemas/classification.schema.json", "schemas/evidence_ledger.schema.json"]
+  },
+  "hard_stop": [
+    "PROBE_SCHEMA_INVALID",
+    "GPU_IDENTITY_OR_CAPACITY_MISMATCH",
+    "CUDA_RUNTIME_BELOW_12_8_OR_UNOBSERVED",
+    "PYTORCH_CUDA_RUNTIME_UNAVAILABLE",
+    "REQUIRED_RUNTIME_DISTRIBUTION_MISSING_OR_UNHASHED",
+    "PYTHON_EXECUTABLE_UNHASHED",
+    "VAULT_UNAVAILABLE_OR_BELOW_PLANNING_MARGIN",
+    "REMOTE_SIDE_EFFECT_OR_MODEL_ACCESS"
+  ],
+  "authority": {
+    "d0": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu": "NONE"
+  }
+}

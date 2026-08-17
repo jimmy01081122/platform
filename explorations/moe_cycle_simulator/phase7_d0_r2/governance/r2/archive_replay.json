@@ -1,0 +1,22 @@
+{
+  "schema_version": "phase7-gputw-d0-r2/archive-replay/v1",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r2-4643f2e",
+  "reviewed_commit": "4643f2e46be4caedd1219c316a3ffd0d9adf45ca",
+  "reviewed_tree": "d63d63b77d631260fe415d43fef62d9b77a5a175",
+  "candidate_ledger_sha256": "24aeb8650ecf90ba603d3f0b2214e6a84a3b442019514253337167b4ac48de26",
+  "archive_source": "git archive of reviewed commit",
+  "archive_has_git_metadata": false,
+  "d0_r2_validator": "PASS",
+  "d0_r2_focused_pytest": "9 passed",
+  "application_identity_sha256": "3e0c43616affd2013dea2c1a8b2ff65dbc91d55b6d9708bdf340e01206ce1e55",
+  "application_ledger_sha256": "49eb203077c1171d54ff00237a4b0bbc7f787af0be0f3d53c5271e5e0090ae32",
+  "authority_boundary": {
+    "d0_execution": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE",
+    "ssh": "NOT_AUTHORIZED"
+  },
+  "network_free": true,
+  "side_effects": false
+}

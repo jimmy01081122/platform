@@ -1,0 +1,30 @@
+experiment_id: s6_synth_dse
+stage: S6
+mechanism: C1 expert-prefetch / residency scheduling (MoE)
+description: >
+  Physical-feasibility proxies + design-space exploration for moe_residency_top.
+  Synthesize across two independent architecture axes (residency-table width
+  MAX_EXPERTS x recency-timestamp width TS_W), collect area/critical-path proxies,
+  combine with RTL-measured cycles/step, derive throughput/latency under swept
+  gate delay and target frequency, and build a Pareto + boundary analysis.
+flow:
+  lower: sv2v v0.0.12
+  synth: yosys 0.23 (synth -flatten; abc -g AND; stat; ltp -noff)
+  cycles: edgehetero-rtl:1 Verilator (measured)
+dse_axes:
+  max_experts: [8, 16, 32, 64]
+  ts_w: [8, 16, 32]
+proxies_and_evidence:
+  area_proxy_gates: synthesis proxy (2-input gate count; NOT um^2)
+  ltp_len: synthesis proxy (longest topological AIG path; NOT ns)
+  dff: synthesis proxy (register count)
+  cycles_per_step: measured (Verilator)
+  per_gate_delay_ps: assumed/swept [30, 50]
+  target_fmax_mhz: swept [200, 500]  # A-012
+  power: unavailable
+outputs:
+  - dse_synth.csv
+  - cycles.jsonl
+  - s6_analysis.json
+  - pareto.csv
+container: edgehetero-syn:1 (dedicated; not shared)

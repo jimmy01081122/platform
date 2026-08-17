@@ -1,0 +1,15 @@
+{
+  "batch_count": 0,
+  "block_removed_message_count": 0,
+  "block_stored_message_count": 0,
+  "decode_errors": [],
+  "endpoint": "tcp://127.0.0.1:5625",
+  "events": [],
+  "reconstructed_peak_host_block_count": 0,
+  "reconstructed_terminal_host_block_count": 0,
+  "removed_block_occurrence_count": 0,
+  "removed_hashes_subset_of_stored": true,
+  "removed_unique_block_count": 0,
+  "stored_block_occurrence_count": 0,
+  "stored_unique_block_count": 0
+}

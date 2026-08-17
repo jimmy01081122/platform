@@ -1,0 +1,49 @@
+schema_version: fidelity-ladders-v1
+description: >-
+  Formal workload (W) and hardware (H) fidelity ladders. Every simulation result
+  MUST be tagged with both a workload and a hardware level (see result_tag).
+
+workload_ladder:
+  W0:
+    name: Deterministic Fixtures
+    purpose: [simulator_correctness, ordering, dependency, queue, dma, backpressure, rtl_equivalence]
+    realistic_perf_inference: false
+    artifacts: [data/fixtures/, rtl/verification/]
+    status: complete
+  W1:
+    name: Local Executable Small MoE
+    purpose: [profiling_pipeline, cpu_gpu_timeline, kernel_launch, runtime_overhead, trace_collector, component_calibration]
+    represents_large_moe: false
+    artifacts: [data/registry/sources.yaml#switch_base8_multiworkload, data/fixtures/moe_switch*]
+    status: available (prototype traces registered read-only)
+  W2:
+    name: Large MoE Routing Trace
+    purpose: [routing_behavior, locality, skew, reuse, burstiness, request_diversity, algorithm_workload_validation]
+    source: core12345/MoE_expert_selection_trace
+    artifacts: [data/canonical/moe_routing_v1/, schemas/moe_routing.schema.json, explorations/moe_orchestration/ROUTING_BASELINE.md]
+    status: complete (Qwen3, DeepSeek-R1, Llama-4; Kimi-K2 hold-out)
+  W3:
+    name: Expanded Large MoE System Workload
+    composition: [W2_routing_trace, model_architecture_config, expert_tensor_dimensions, request_schedule, calibrated_device_models]
+    produces: [expert_execution_requests, weight_accesses, dma_offload_events, queue_dependency_events]
+    artifacts: [scripts/w3_device_timing.py, data/canonical/moe_routing_v1/w3_device_timing.json, explorations/moe_orchestration/W3_DEVICE_TIMING.md]
+    status: complete (device-timed at H1)
+  W4:
+    name: Large Model or Partial Replay Calibration
+    purpose: [full_model_run, single_layer_replay, grouped_gemm_replay, expert_kernel_replay, offload_replay, copy_compute_overlap]
+    role: calibrate_or_validate_W3
+    status: pending (requires A6000/A100 or replay data)
+
+hardware_ladder:
+  H0: {name: analytical_uncalibrated, status: complete}
+  H1: {name: vendor_spec_constrained, note: "swept bandwidth ranges; no bare vendor point as truth", status: complete, artifacts: [configs/platform/]}
+  H2: {name: rtx3050_component_calibrated, status: pending (requires local RTX 3050 profiling), artifacts: [scripts/calibration/]}
+  H3: {name: a6000_a100_component_calibrated, status: pending (profiles created, all unknowns null/sweep), artifacts: [configs/platform/p_d_a6000_uncalibrated.json, configs/platform/p_d_a100_uncalibrated.json]}
+  H4: {name: moe_layer_kernel_replay_calibrated, status: pending}
+  H5: {name: holdout_workload_and_platform_validated, status: partial, note: "Kimi-K2 hold-out model generalization validated at W2/W3; platform hold-out pending real HW"}
+
+result_tag:
+  required_fields: [workload, hardware]
+  example:
+    workload: W3
+    hardware: H1

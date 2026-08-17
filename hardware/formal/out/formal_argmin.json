@@ -1,0 +1,10 @@
+{
+  "note": "Yosys native sat BMC; reach=done reachable (property non-vacuous); prove=prop_ok holds for all inputs to depth.",
+  "results": [
+    {"dut":"banked","N":16,"TSW":4,"B":4,"depth":20,"reachable":"reachable","proof":"PROVEN","sat_variables":431575},
+    {"dut":"banked","N":32,"TSW":5,"B":4,"depth":28,"reachable":"reachable","proof":"PROVEN","sat_variables":1322895},
+    {"dut":"banked","N":64,"TSW":6,"B":8,"depth":28,"reachable":"reachable","proof":"PROVEN","sat_variables":5125195},
+    {"dut":"seq","N":16,"TSW":4,"B":4,"depth":24,"reachable":"reachable","proof":"PROVEN","sat_variables":211212},
+    {"dut":"seq","N":32,"TSW":5,"B":4,"depth":40,"reachable":"reachable","proof":"PROVEN","sat_variables":839219}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "next_ready_unit": "OFF-E-PR3-CAP-025",
+  "oracle_label": "SIMULATED_UPPER_BOUND",
+  "policy_counts": {
+    "CAUSAL_HISTORY": {
+      "cancelled": 0,
+      "issued": 11,
+      "late": 0,
+      "useful": 11,
+      "wasted": 0
+    },
+    "COPY_AWARE_CAUSAL": {
+      "cancelled": 10,
+      "issued": 1,
+      "late": 0,
+      "useful": 1,
+      "wasted": 0
+    },
+    "STATIC": {
+      "cancelled": 0,
+      "issued": 11,
+      "late": 0,
+      "useful": 0,
+      "wasted": 11
+    }
+  },
+  "raw_file_set_sha256": "d04d8170c760b6fc555f176a15ecb4b9a30a806c56dc3d505cc680f0e939917b",
+  "reviewed_at_utc": "2026-08-14T02:56:11Z",
+  "schema_version": "phase7-combined-master-off-e-pr2-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "moe-simulator-phase1-observability-matrix-v1",
+  "evidence_class": "synthetic-cpu-mock",
+  "formal_runtime_observability_established": false,
+  "records": [
+    {
+      "shape": "request",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "tokenization",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "allocator",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "copy",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "kernel",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "router",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "collective",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "p2p",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "kernel_complete",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    },
+    {
+      "shape": "telemetry",
+      "availability": "CONFIRMED",
+      "evidence_mode": "INSTRUMENTED"
+    }
+  ],
+  "scope_note": "CONFIRMED applies only to the synthetic fixture producer; real platform entries remain CONDITIONAL or UNAVAILABLE until separately qualified."
+}

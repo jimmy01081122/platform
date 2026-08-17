@@ -1,0 +1,34 @@
+{
+  "attempt_id": "SWAP-K0-V1-MASTER",
+  "blocked_gpu_units": {
+    "OFF-E-RT0": "ADOPT-EXPERT-CATALOG",
+    "OFF-W0": "ADOPT-EXPERT-CATALOG"
+  },
+  "checksum_manifest_mismatches": [
+    "stdout.log"
+  ],
+  "checksum_manifest_sha256": "69b20ce3e8bde7769a54a30cd94d1d05993d033ef0a5ed00098a73265f52f5e3",
+  "claims_forbidden": [
+    "verified block-level swap-out/in event",
+    "exact moved KV bytes or block lineage",
+    "runtime KV-swap performance, preemption, recompute, or fallback claim"
+  ],
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K0-V1-MASTER",
+  "native_kv_offload_initialization": "OBSERVED",
+  "next_ready_unit": "SWAP-K1",
+  "raw_file_count": 15,
+  "raw_file_set_sha256": "c560b58f93e2e67b5da840faee9d93a3ae51aa6e9008db19f35305d710d8e239",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K0-V1-MASTER",
+  "request_correctness": "PASS",
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T00:08:31Z",
+  "runner_status": "PASS",
+  "schema_version": "phase7-combined-master-swap-k0-review-v1",
+  "triggered_children": [
+    "SWAP-K1",
+    "SWAP-K2",
+    "SWAP-K3",
+    "SWAP-K5"
+  ],
+  "validation_state": "VALIDATION_PASS_FOR_CAPABILITY_ONLY"
+}

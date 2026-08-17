@@ -1,0 +1,41 @@
+{
+  "schema_version": "moe-simulator-phase7-vllm-build-attestation-v1",
+  "status": "DRAFT_WITH_BLOCKING_FIELDS",
+  "package": {
+    "name": "vllm",
+    "version": "[BLOCKING:EXACT_VLLM_VERSION]"
+  },
+  "source": {
+    "repository": "https://github.com/vllm-project/vllm",
+    "git_commit": "[BLOCKING:FULL_VLLM_SOURCE_GIT_COMMIT]",
+    "tree_sha256": "[BLOCKING:COMPLETE_SOURCE_TREE_LEDGER_SHA256]"
+  },
+  "wheel": {
+    "path": "[BLOCKING:ABSOLUTE_RETAINED_VLLM_WHEEL_PATH]",
+    "sha256": "[BLOCKING:VLLM_WHEEL_SHA256]"
+  },
+  "build": {
+    "command_argv": [
+      "[BLOCKING:EXACT_BUILD_COMMAND_EXECUTABLE]",
+      "[BLOCKING:EXACT_BUILD_COMMAND_ARGUMENTS]"
+    ],
+    "environment_ledger_path": "[BLOCKING:ABSOLUTE_BUILD_ENVIRONMENT_LEDGER_PATH]",
+    "environment_ledger_sha256": "[BLOCKING:BUILD_ENVIRONMENT_LEDGER_SHA256]"
+  },
+  "installed_distribution": {
+    "manifest_path": "[BLOCKING:ABSOLUTE_INSTALLED_VLLM_DISTRIBUTION_MANIFEST_PATH]",
+    "manifest_file_sha256": "[BLOCKING:INSTALLED_VLLM_MANIFEST_FILE_SHA256]",
+    "ledger_sha256": "[BLOCKING:COMPLETE_INSTALLED_VLLM_LEDGER_SHA256]"
+  },
+  "container": {
+    "image": "[BLOCKING:CONTAINER_IMAGE]",
+    "digest": "[BLOCKING:IMMUTABLE_CONTAINER_DIGEST]",
+    "sbom_path": "[BLOCKING:ABSOLUTE_CONTAINER_SBOM_JSON_PATH]",
+    "sbom_sha256": "[BLOCKING:CONTAINER_SBOM_SHA256]"
+  },
+  "provenance": {
+    "builder_identity": "[BLOCKING:BUILDER_IDENTITY]",
+    "build_timestamp_utc": "[BLOCKING:BUILD_TIMESTAMP_UTC]",
+    "attestation_method": "[BLOCKING:ATTESTATION_METHOD]"
+  }
+}

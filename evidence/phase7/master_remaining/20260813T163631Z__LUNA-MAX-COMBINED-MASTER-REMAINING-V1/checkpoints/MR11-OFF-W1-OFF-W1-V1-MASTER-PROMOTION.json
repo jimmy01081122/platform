@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR11-OFF-W1-OFF-W1-V1-MASTER-PROMOTION",
+  "execution_ledger_sha256": "bc9ce3827fd99d5795163d18adba77bea38969debd7430451f4ff5f215f9b680",
+  "next_ready_gpu_unit": "OFF-W2",
+  "raw_file_set_sha256": "1a54e48ff475f83139eb52e3f0a9afebf02d819fd5a98d8cfae9df5121904bdc",
+  "remaining_ledger_sha256": "7c11d56f826658d6822756b50e90bbfb2f8a473681dcaefb3d762e60a653cd83",
+  "required_closed_count": 23,
+  "required_remaining_count": 263,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T02:21:38Z"
+}

@@ -1,0 +1,10 @@
+{
+  "blockers": [
+    "Synthetic bundles can claim CALIBRATED_SURROGATE, IN_CALIBRATION_ENVELOPE, CONFIRMED, and formal_pass without ResultIR-to-CalibrationIR lineage.",
+    "RoutingIR omits the frozen absolute/relative tolerances and boundary score and does not rederive top-k or ambiguity."
+  ],
+  "ledger_sha256": "f12a8178e6070d64c14b4c573ab1bbf35b5d8a3425008776bffcd5a15d9d2ed9",
+  "role": "Model/Benchmark",
+  "schema_version": "moe-simulator-role-review-v1",
+  "verdict": "MODIFY"
+}

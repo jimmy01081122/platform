@@ -1,0 +1,52 @@
+schema_version: calibration-pack-v1
+pack_id: phase1-discrete-moe-rtxpro6000
+status: failed
+calibrated_domain:
+  workload: DeepSeek-R1-AWQ MoE replay
+  phase: [prefill, decode]
+  concurrency: [1, 4]
+  platforms: [RTX_PRO_6000]
+  metrics:
+    - component_latency
+    - pcie_transfer_latency
+    - moe_replay_tpot
+    - moe_replay_throughput
+
+data_split:
+  calibration:
+    selector: "DeepSeek-R1 query-index 0 per domain; trace windows declared in gpu_run_package/configs/splits.yaml"
+    artifact: null
+    sha256: null
+    evidence: unknown
+  validation:
+    selector: "DeepSeek-R1 query-index 1 per domain; disjoint whole-query split"
+    artifact: null
+    sha256: null
+    evidence: unknown
+  holdout_workload:
+    selector: "RTX PRO 6000 DeepSeek-R1 query-index 2 per domain; score-only after q0 fitting and q1 validation freeze"
+    artifact: null
+    sha256: null
+    evidence: unknown
+  holdout_platform:
+    selector: "removed by user decision D-062; not run and not an active execution item"
+    artifact: null
+    sha256: null
+    evidence: unknown
+
+measurement_contract:
+  warmup_policy: "microbench: 10 warmups; replay: one unmeasured warmup"
+  repetition_count: 5
+  raw_measurements: gpu_run_package/results/raw/
+  per_repetition_results: gpu_run_package/results/normalized/repetitions.jsonl
+  uncertainty: both
+  tool_versions: null
+  hardware_identification: null
+  software_versions: null
+  clock_power_temperature: null
+  environment_manifest: gpu_run_package/results/environment.json
+  random_seed: 20260718
+  command:
+    - ./run.sh
+    - --experiment
+    - phase1-discrete-moe

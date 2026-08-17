@@ -1,0 +1,45 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-remote-payload-v1",
+  "status": "FROZEN_NOT_EXECUTED",
+  "transport": "SSH_STDIN_EXACT_SOURCE_BYTES",
+  "source_path": "explorations/moe_cycle_simulator/phase7/application/executor/environment_probe.py",
+  "source_commit": "a94f336ad57707c1eca0be10e3d6da257ff7fb46",
+  "source_tree": "2ab20af3291a9554ad2dae972b7f32891c29e7bc",
+  "payload_sha256": "87b7da0f6acddcfe6b5bfe33c4e90ac49a57f3dea3701b980194a215a3d2bbf1",
+  "payload_bytes_binding": "git show <source_commit>:<source_path>",
+  "remote_argv": [
+    "env",
+    "MOE_PHASE7_CONTAINER_DIGEST=UNOBSERVED",
+    "python3",
+    "-I",
+    "-B",
+    "-"
+  ],
+  "timeout_seconds": 120,
+  "max_stdout_bytes": 1048576,
+  "max_stderr_bytes": 262144,
+  "allowed_observation_files": [
+    "/etc/os-release",
+    "/proc/cpuinfo",
+    "/proc/meminfo",
+    "/proc/sys/kernel/random/boot_id",
+    "/proc/self/mountinfo",
+    "/vault",
+    "/workspace"
+  ],
+  "allowed_observation_commands": [
+    "nvidia-smi --query-gpu=name,memory.total,uuid,pci.bus_id,driver_version,compute_mode,mig.mode.current --format=csv,noheader,nounits"
+  ],
+  "prohibitions": [
+    "remote file write",
+    "package installation",
+    "model download",
+    "model access",
+    "vLLM model load",
+    "inference",
+    "CUDA benchmark",
+    "GPU workload",
+    "Gate M",
+    "M0"
+  ]
+}

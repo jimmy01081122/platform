@@ -1,0 +1,47 @@
+{
+  "schema_version": "phase7-gputw-d0-r2/candidate-set-policy/v1",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r2-4643f2e",
+  "reviewed_commit": "4643f2e46be4caedd1219c316a3ffd0d9adf45ca",
+  "reviewed_tree": "d63d63b77d631260fe415d43fef62d9b77a5a175",
+  "hash_algorithm": "SHA-256",
+  "member_order": "LC_ALL=C lexical path order",
+  "candidate_member_count": 22,
+  "candidate_ledger": "explorations/moe_cycle_simulator/phase7_d0_r2/governance/r2/candidate_ledger.sha256",
+  "candidate_ledger_sha256": "24aeb8650ecf90ba603d3f0b2214e6a84a3b442019514253337167b4ac48de26",
+  "candidate_paths": [
+    "docs/status/MOE_SIMULATOR_PHASE7_D0_R2_CPU_CLOSURE_20260809.md",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/README.md",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/__init__.py",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/application_identity.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/application_ledger.sha256",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/application_manifest.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/approval.template.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/controller.py",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/d0_plan.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/d0_r2.schema.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/dependency_manifest.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/overlay.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/owner_authority.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/probe.py",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/schemas/approval.schema.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/schemas/failure.schema.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/schemas/owner_authority.schema.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/schemas/probe.schema.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/schemas/result.schema.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/schemas/terminal_ledger.schema.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/validate_d0_r2.py",
+    "tests/test_phase7_d0_r2.py"
+  ],
+  "exclusion_rules": [
+    "review artifacts under explorations/moe_cycle_simulator/phase7_d0_r2/governance/r2 are excluded",
+    "the guide draft, gpu_run_package_v2, runs, unrelated tracked changes and unrelated untracked files are excluded",
+    "symlinks, special files, duplicate paths, pycache and generated files are rejected"
+  ],
+  "replay_rule": "reconstruct every member with git show <reviewed_commit>:<path> and compare its SHA-256 to the ledger",
+  "external_execution_blockers": [
+    "owner environment and zero-spend authority confirmation are pending",
+    "fresh time origin, lease deadline, authenticated host-key source and credential selector are pending",
+    "immutable container digest is unobserved; this candidate is discovery-only and non-promotable"
+  ],
+  "side_effects": false
+}

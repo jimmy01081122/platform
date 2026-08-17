@@ -1,0 +1,12 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r3-20260729",
+  "ledger_sha256": "ea5ce045072efda9a6cbf852f71733de5800b985e9385301b1baaedf0b115b9f",
+  "member_count": 240,
+  "exact_set_verification": "PASS",
+  "verdict": "GO",
+  "blockers": [],
+  "claim_boundary": "MODEL-P6-R2-B1 is closed for ordinary values: route priority and request/token/layer fields, expert layer, and operation identity propagation are enforced. Evidence remains CPU_SYNTHETIC, FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER and RANGE_UNKNOWN; no model-quality, hardware or performance inference is authorized.",
+  "authorized_next_stage": "After identical-ledger GO from the other two roles, freeze Phase 6 and begin only local Phase 7 framework preparation.",
+  "gpu_authority": "NONE"
+}

@@ -1,0 +1,170 @@
+{
+  "actual_runtime_config": {
+    "cache_config.cache_dtype": "bfloat16",
+    "cache_config.cpu_offload_gb": null,
+    "cache_config.gpu_memory_utilization": 0.97,
+    "cache_config.swap_space": null,
+    "compilation_config.level": null,
+    "load_config.ignore_patterns": "['consolidated.*.pt']",
+    "load_config.load_format": "safetensors",
+    "model_config.dtype": "torch.bfloat16",
+    "model_config.max_model_len": 32768,
+    "model_config.model": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+    "model_config.quantization": null,
+    "model_config.tokenizer": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+    "parallel_config.data_parallel_size": 1,
+    "parallel_config.enable_expert_parallel": false,
+    "parallel_config.pipeline_parallel_size": 1,
+    "parallel_config.tensor_parallel_size": 1,
+    "scheduler_config.max_num_batched_tokens": 256,
+    "scheduler_config.max_num_seqs": 1
+  },
+  "completed_at_utc": "2026-08-09T17:08:18.571864Z",
+  "cpu_offload_activated": false,
+  "cuda_vllm_error": null,
+  "expected_repo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "expected_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "generation_seconds": 83.79787476407364,
+  "gpu_postgeneration": {
+    "captured_at_utc": "2026-08-09T17:08:18.497362Z",
+    "processes": {
+      "argv": [
+        "nvidia-smi",
+        "--query-compute-apps=gpu_uuid,pid,process_name,used_memory",
+        "--format=csv,noheader,nounits"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, 45015, VLLM::EngineCore, 94912\n"
+    },
+    "query": {
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=index,uuid,name,driver_version,memory.total,memory.used,memory.free,utilization.gpu,temperature.gpu",
+        "--format=csv,noheader,nounits"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "0, GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 595.71.05, 97887, 94922, 2329, 0, 42\n"
+    }
+  },
+  "gpu_postload": {
+    "captured_at_utc": "2026-08-09T17:06:54.624670Z",
+    "processes": {
+      "argv": [
+        "nvidia-smi",
+        "--query-compute-apps=gpu_uuid,pid,process_name,used_memory",
+        "--format=csv,noheader,nounits"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, 45015, VLLM::EngineCore, 94912\n"
+    },
+    "query": {
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=index,uuid,name,driver_version,memory.total,memory.used,memory.free,utilization.gpu,temperature.gpu",
+        "--format=csv,noheader,nounits"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "0, GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 595.71.05, 97887, 94922, 2329, 3, 44\n"
+    }
+  },
+  "gpu_preload": {
+    "captured_at_utc": "2026-08-09T17:06:36.557430Z",
+    "processes": {
+      "argv": [
+        "nvidia-smi",
+        "--query-compute-apps=gpu_uuid,pid,process_name,used_memory",
+        "--format=csv,noheader,nounits"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "query": {
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=index,uuid,name,driver_version,memory.total,memory.used,memory.free,utilization.gpu,temperature.gpu",
+        "--format=csv,noheader,nounits"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "0, GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 595.71.05, 97887, 2, 97249, 0, 41\n"
+    }
+  },
+  "load_seconds": 12.839880526997149,
+  "model_dir": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "output": {
+    "finish_reason": "stop",
+    "request_finished": true,
+    "stop_reason": null,
+    "text": " 4",
+    "token_count": 3,
+    "token_ids": [
+      28705,
+      28781,
+      2
+    ]
+  },
+  "prompt": {
+    "matches_pre_tokenization": false,
+    "rendered_text": "<s> [INST] Answer with only the number: 2 + 2 = [/INST]",
+    "token_count": 21,
+    "token_ids": [
+      1,
+      1,
+      733,
+      16289,
+      28793,
+      26307,
+      395,
+      865,
+      272,
+      1474,
+      28747,
+      28705,
+      28750,
+      648,
+      28705,
+      28750,
+      327,
+      733,
+      28748,
+      16289,
+      28793
+    ],
+    "user_text": "Answer with only the number: 2 + 2 ="
+  },
+  "quantization_activated": false,
+  "requested_engine_args": {
+    "cpu_offload_gb": 0,
+    "data_parallel_size": 1,
+    "dtype": "bfloat16",
+    "enable_expert_parallel": false,
+    "enable_prefix_caching": false,
+    "enforce_eager": true,
+    "generation_config": "vllm",
+    "gpu_memory_utilization": 0.97,
+    "ignore_patterns": [
+      "consolidated.*.pt"
+    ],
+    "kv_cache_dtype": "bfloat16",
+    "load_format": "safetensors",
+    "max_model_len": 32768,
+    "max_num_batched_tokens": 256,
+    "max_num_seqs": 1,
+    "model": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+    "offload_group_size": 0,
+    "pipeline_parallel_size": 1,
+    "quantization": null,
+    "seed": 0,
+    "tensor_parallel_size": 1,
+    "tokenizer": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+    "tokenizer_mode": "auto",
+    "trust_remote_code": false
+  },
+  "status": "MODEL_SMOKE_TEST_PASS",
+  "swap_backed_fallback_activated": false
+}

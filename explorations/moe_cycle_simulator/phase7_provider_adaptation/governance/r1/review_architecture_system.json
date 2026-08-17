@@ -1,0 +1,44 @@
+{
+  "schema_version": "phase7-gputw-provider-adaptation-r1/reviewer-output/v1",
+  "role": "Architecture/System",
+  "candidate_id": "moe-simulator-phase7-gputw-provider-adaptation-r1-bdb610f",
+  "reviewed_commit": "bdb610fca5470e21556b1509ed22db6f55295995",
+  "reviewed_tree": "a471b8bd588c1e574fefae811f3e13d951d411b2",
+  "reviewed_candidate_ledger_sha256": "67fcf4cc8b17b122efa230b95c4a162fe8582be515ce23a307efe2bea5c23762",
+  "candidate_member_count": 12,
+  "verdict": "GO",
+  "blockers": [],
+  "non_blocking_findings": [
+    "Live price, availability, owner cost-cap values, instance/node/GPU identity and authenticated gateway host-key provenance remain unresolved and must be refreshed before any future D0.",
+    "The implementation package remains content-frozen; this reviewer output is the separate governance closure overlay and does not rewrite its internal review_status field."
+  ],
+  "review_focus": [
+    "21600 seconds is represented as an owner-imposed hard cap and not as a provider lease or grace credit.",
+    "STOP and DELETE terminate future compute billing and compute authority; RESTART requires live identity revalidation and does not inherit old D0 authority.",
+    "Provider, instance, gateway, client-authentication and server-authentication identities are separated; unresolved host-key provenance leaves D0 SSH authority at NONE.",
+    "The prospective cost fields fail closed when live price and owner caps are absent, and the authority ordering cannot reach D0 from CPU validation alone."
+  ],
+  "commands_executed": [
+    "git grep -n -i -E '21600|OWNER_IMPOSED_EXECUTION_ENVELOPE|provider_fixed_lease|provider_grace|STOP|DELETE|RESTART|ssh.gputw.ai|pod-<instance-id>|StrictHostKeyChecking|D0_SSH_AUTHORITY|personal_known_hosts|TOFU' bdb610fca5470e21556b1509ed22db6f55295995 -- candidate paths",
+    "python3 explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/validate_provider_adaptation.py",
+    "python3 -m pytest -q tests/test_phase7_gputw_provider_adaptation.py",
+    "python3 -c '<assert gateway host-key policy, strict checking, and personal known_hosts prohibition>'",
+    "if git grep -n -F 'StrictHostKeyChecking=no' bdb610fca5470e21556b1509ed22db6f55295995 -- candidate paths; then exit 1; else echo PASS; fi",
+    "git diff --check"
+  ],
+  "command_results": [
+    "Provider validator PASS: network_free=true, gpu_authority=NONE, D0/Gate M/M0=NOT_AUTHORIZED, known_hosts_status=REQUIRED_NOT_PRESENT.",
+    "Focused adaptation tests PASS: 17 passed.",
+    "Architecture assertions PASS; no StrictHostKeyChecking=no path found.",
+    "No candidate whitespace errors reported by git diff --check."
+  ],
+  "claim_boundary": "This is a read-only CPU-contract and governance review. It claims no GPUtw instance, live allocation, SSH connection, host-key acquisition, measured price or capacity, D0, Gate M, M0, GPU query, workload, or model download.",
+  "side_effects": {
+    "ssh": false,
+    "provider_network_probe": false,
+    "instance_creation": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  }
+}

@@ -1,0 +1,75 @@
+project_name: edge_heterogeneous_accelerator_exploration
+objective: >-
+  Build a verifiable, reliable, reproducible exploration flow spanning simulator,
+  algorithm iteration, software/firmware break-even, basic full-datapath RTL,
+  physical feasibility, and design-space exploration.
+publication_driven: false
+platform_families:
+  - discrete_edge_workstation
+  - embedded_integrated_cpu_gpu
+principles:
+  - evidence_before_claim
+  - tool_agnostic_adapters
+  - immutable_raw_data
+  - common_cross_layer_semantics
+  - negative_results_are_reusable
+  - no_fixed_success_threshold
+
+# Revised scope (charter patch, prompt_pack.md). The first vertical slice and the
+# fidelity ladders / success criteria are the authoritative operational contract;
+# see the referenced files for the machine-readable definitions.
+revised_scope:
+  primary_calibration_source: >-
+    large real MoE routing-trace dataset (HF core12345/MoE_expert_selection_trace),
+    stratified-sampled and canonicalized to moe-routing-v1.
+  first_vertical_slice: >-
+    MoE expert-weight offload / residency / prefetch / copy-engine scheduling on a
+    discrete CPU-GPU system, calibrated by routing behavior x model dimensions x
+    device service model (three-source hybrid calibration).
+  fidelity_ladders: configs/fidelity/fidelity_ladders.yaml   # W0-W4 workload, H0-H5 hardware
+  success_criteria: configs/fidelity/success_criteria.yaml   # A / B / C (incl. "validated but no accelerator")
+  tool_governance: docs/methodology/TOOL_SELECTION.md        # reuse/extend/combine/build + deferred triggers
+  task_coverage: docs/status/VALIDATION_MATRIX.md            # charter section-17 tasks 1-22 mapping
+  dataset_registry: data/registry/sources.yaml
+
+# Current platform contract (prompt_pack.md lines 971-1423).  This supersedes
+# legacy completion language without changing the immutable v1.0 release tag.
+current_contract:
+  contract_revision: platform-credibility-v1
+  release_state:
+    v1.0-large-moe-slice: legacy_scope_frozen
+    current_head: pre-v1.1
+    publication_grade_calibration: not_yet_demonstrated
+  first_large_workload: DeepSeek-R1 expert-selection routing trace
+  simulation_modes: configs/fidelity/simulation_modes.yaml
+  default_simulation: configs/fidelity/default_simulation.yaml
+  evidence_taxonomy: configs/fidelity/evidence_taxonomy.yaml
+  validation_gates: configs/fidelity/validation_gates.yaml
+  calibration_pack: configs/calibration/phase1_discrete_moe.yaml
+  calibration_platform: RTX_PRO_6000
+  holdout_platform: removed_by_user_D-062
+  gpu_measurement_stage:
+    status: stopped_after_rtx_q1_failure
+    summary: docs/status/GPU_MEASUREMENT_SUMMARY.md
+    calibrated_pass: false
+  accuracy_targets:
+    component_latency_mape_percent: 15
+    pcie_transfer_latency_mape_percent: 15
+    moe_replay_tpot_mape_percent: 15
+    moe_replay_throughput_mape_percent: 15
+    individual_point_ape_percent: 20
+  required_optional_backend:
+    gpu_cycle_simulator: required_platform_capability_not_every_run
+  rtl_claim_boundary:
+    current: block_level_rtl_transaction
+    rtl_cycle_required_interfaces:
+      - AXI4
+      - AXI_Lite
+      - PCIe_transaction_abstraction
+      - tagged_DMA_completion
+      - memory_response
+      - queue_backpressure
+  physical_design:
+    sky130: flow_validation_only
+    ASAP7_or_consistent_predictive_library: architecture_comparison
+    power_requires: valid_library_clock_and_activity_trace

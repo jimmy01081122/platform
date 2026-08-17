@@ -1,0 +1,12 @@
+{
+  "checkpoint_id": "MR11-SWAP-K5-SWAP-K5-V1-MASTER-PROMOTION",
+  "execution_ledger_sha256": "28fe4fdb684398c8d284f2bcfdab597c86509af0901c5152d2a595b01d4ca646",
+  "next_gate_action": "FREEZE_SWAP_K4_OFFXKV_INTERACTION_CONTRACT",
+  "next_gpu_unit": "SWAP-K4",
+  "raw_file_set_sha256": "4d11d357e04d69bab53d3e30e70d6524020f8a4ca779f2e45f5dc38a241a7a23",
+  "remaining_ledger_sha256": "bb943038b183711f3e4bdb597d6f078bde9e0ee2cfed1041257a8f60078facae",
+  "required_closed_count": 15,
+  "required_remaining_count": 271,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T01:55:17Z"
+}

@@ -1,0 +1,59 @@
+schema_version: trace-completeness-contract-v2
+manifest_versions:
+  session: trace-session-manifest-v2
+  pass: trace-pass-manifest-v2
+  raw_inventory: trace-raw-inventory-v2
+  completeness_report: trace-completeness-report-v2
+passes:
+  - {id: P0, directory: p0_baseline, mandatory: true}
+  - {id: P1, directory: p1_timeline, mandatory: false}
+  - {id: P2, directory: p2_routing, mandatory: false}
+  - {id: P3, directory: p3_memory_transfer, mandatory: false}
+  - {id: P4, directory: p4_gpu_counters, mandatory: false}
+  - {id: P5, directory: p5_telemetry, mandatory: false}
+  - {id: P6, directory: p6_detailed_optional, mandatory: false}
+statuses:
+  - complete
+  - unsupported
+  - permission_denied
+  - not_applicable
+  - failed
+  - missing
+  - corrupt
+  - truncated
+identity_fields:
+  - session_id
+  - run_group_id
+  - run_id
+  - model_revision
+  - workload_hash
+  - configuration_hash
+  - environment_hash
+  - repetition_index
+  - profiler_pass
+clock_fields:
+  - wall_clock_utc
+  - monotonic_host_ns
+  - profiler_domain
+  - timezone
+  - alignment
+non_waivable:
+  - P0
+  - identity
+  - environment
+  - workload
+  - configuration
+  - checksums
+  - raw_native_trace
+accepted_incomplete:
+  required: approval
+  approval_fields: [approved_by, approved_utc, reason]
+raw_policy:
+  digest: sha256
+  content_addressed: true
+  immutable: true
+  canonical_requires_converter_provenance: true
+exit_codes:
+  complete: 0
+  approved_incomplete: 10
+  verification_failed: 20

@@ -1,0 +1,61 @@
+{
+  "schema_version": "gpu-result-archive-v1",
+  "created_utc": "2026-07-18T02:44:28Z",
+  "files": [
+    {
+      "path": "cross-device-validation/environment.json",
+      "sha256": "e09b145654073ed73d46a0537f262b0208809197584fb759ea31548189c2005f",
+      "bytes": 15143
+    },
+    {
+      "path": "cross-device-validation/profiler.json",
+      "sha256": "8b94e4eb73f0dbbc01b084995a1938c85a542beba98f46e2b4e49431db477771",
+      "bytes": 2760684
+    },
+    {
+      "path": "cross-device-validation/result.json",
+      "sha256": "41cbbda97d44019e19c8a5eec32d7ea6893e0532a28e6b644996f4c73c66b0b5",
+      "bytes": 69425
+    },
+    {
+      "path": "cross-device-validation/smoke-profiler.json",
+      "sha256": "e179631613a6fbdfb93d753c97db4650d0521128365dd25659cfc7ced3875f7b",
+      "bytes": 89617
+    },
+    {
+      "path": "cross-device-validation/smoke-result.json",
+      "sha256": "07e79330e49608e3206e696570007847aa94311371b1b43c8ccce5ced2c25b39",
+      "bytes": 10651
+    },
+    {
+      "path": "preflight_environment.json",
+      "sha256": "0b454eefb3313f5722671bcff05ddf286bef622a903e9da739ea32e31164bc9e",
+      "bytes": 15144
+    },
+    {
+      "path": "rtx-pro-6000-calibration/environment.json",
+      "sha256": "f82d2549d4f5bc03404bdcbf5f54cfe46c766258bab18d2f2fa87cb02fe2048a",
+      "bytes": 15143
+    },
+    {
+      "path": "rtx-pro-6000-calibration/profiler.json",
+      "sha256": "9dab76e6dc4c21d207c7ff993201b7239a8720a9952bd21c4d2be381b291391f",
+      "bytes": 1382891
+    },
+    {
+      "path": "rtx-pro-6000-calibration/result.json",
+      "sha256": "6dc5969f9c8e415feb8ae97e0501725c7fd198041cee31c541f6ccf0a340215f",
+      "bytes": 69477
+    },
+    {
+      "path": "rtx-pro-6000-calibration/smoke-profiler.json",
+      "sha256": "63b51cc78a5eb60cbd4fbc375ebeedfca24cd0348ab39f0454f2821b4afbb89d",
+      "bytes": 89607
+    },
+    {
+      "path": "rtx-pro-6000-calibration/smoke-result.json",
+      "sha256": "fd705e9dc9d192722490442ec8fb88ee78b8bc134d0b787eb7b62c3a56da6dad",
+      "bytes": 10674
+    }
+  ]
+}

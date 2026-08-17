@@ -1,0 +1,22 @@
+{
+  "backup": {
+    "log_returncode": 0,
+    "log_stderr": "client_global_hostkeys_private_confirm: server gave bad signature for RSA key 0: incorrect signature\n",
+    "run_returncode": 0,
+    "run_stderr": "client_global_hostkeys_private_confirm: server gave bad signature for RSA key 0: incorrect signature\n"
+  },
+  "expected_request_count": 10000,
+  "local_run_dir": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T213347Z__SERV-P1-65-SHORT-C8-NATURAL-EXT10K-V1",
+  "poll_seconds": 45,
+  "remote_run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T213347Z__SERV-P1-65-SHORT-C8-NATURAL-EXT10K-V1",
+  "review": {
+    "open_loop_returncode": 1,
+    "open_loop_stderr": "",
+    "open_loop_stdout": "{\n  \"adoption_allowed\": false,\n  \"critical_failure_count\": 1,\n  \"status\": \"PRELIMINARY_REVIEW_FAIL\",\n  \"summary\": {\n    \"completed_request_count\": 10000,\n    \"completion_latency_ns\": {\n      \"p50\": 1537249534.0,\n      \"p95\": 2211242048.4999986,\n      \"p99\": 2750786571.33\n    },\n    \"completion_rate\": 1.0,\n    \"max_observed_overlap\": 16,\n    \"output_lengths\": [\n      32\n    ],\n    \"p99_bootstrap_ci\": {\n      \"completion_latency_ns\": {\n        \"backend\": \"numpy_default_rng_chunked\",\n        \"ci95_high\": 2786834855.0,\n        \"ci95_low\": 2691825357.0,\n        \"half_width\": 47504749.0,\n        \"point_estimate\": 2750786571.33,\n        \"relative_half_width_to_p99\": 0.017269514652687702,\n        \"resamples\": 10000,\n        \"seed\": 20260814\n      },\n      \"queue_delay_ns\": {\n        \"backend\": \"numpy_default_rng_chunked\",\n        \"ci95_high\": 130167448.8900022,\n        \"ci95_low\": 82787524.51000002,\n        \"half_width\": 23689962.190001093,\n        \"point_estimate\": 109951532.99000077,\n        \"relative_half_width_to_p99\": 0.2154582255088295,\n        \"resamples\": 10000,\n        \"seed\": 20260812\n      },\n      \"ttft_ns\": {\n        \"backend\": \"numpy_default_rng_chunked\",\n        \"ci95_high\": 1143624816.3000004,\n        \"ci95_low\": 1027726537.1600009,\n        \"half_width\": 57949139.569999754,\n        \"point_estimate\": 1086639033.0600002,\n        \"relative_half_width_to_p99\": 0.05332878518712296,\n        \"resamples\": 10000,\n        \"seed\": 20260813\n      }\n    },\n    \"p99_ci_rule\": {\n      \"max_relative_half_width_to_p99\": 0.05,\n      \"required\": true,\n      \"unstable_metrics\": [\n        \"queue_delay_ns\",\n        \"ttft_ns\"\n      ]\n    },\n    \"queue_delay_ns\": {\n      \"p50\": 4236252.0,\n      \"p95\": 61725184.999999985,\n      \"p99\": 109951532.99000077\n    },\n    \"sampling_modes\": [\n      \"NATURAL_EOS_CAPPED\"\n    ],\n    \"ttft_ns\": {\n      \"p50\": 139523458.5,\n      \"p95\": 615778913.9499997,\n      \"p99\": 1086639033.0600002\n    }\n  }\n}\n",
+    "stream_returncode": 0,
+    "stream_stderr": "",
+    "stream_stdout": "{\n  \"status\": \"PASS\",\n  \"prefix_count\": 1000,\n  \"critical_failure_count\": 0\n}\n"
+  },
+  "schema_version": "phase7-serving-extension-monitor-v1",
+  "status": "REVIEW_COMPLETE_WITH_FAILURE"
+}

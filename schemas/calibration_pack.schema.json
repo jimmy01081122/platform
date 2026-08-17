@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "calibration_pack.schema.json",
+  "title": "Calibration Pack",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "pack_id",
+    "status",
+    "calibrated_domain",
+    "data_split",
+    "measurement_contract"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "calibration-pack-v1"},
+    "pack_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["template", "planned", "collecting", "frozen", "validated", "failed"]},
+    "calibrated_domain": {
+      "type": ["object", "null"],
+      "properties": {
+        "workload": {"type": "string"},
+        "phase": {"type": "array", "items": {"enum": ["prefill", "decode"]}, "minItems": 1},
+        "concurrency": {"type": "array", "items": {"type": "integer", "minimum": 1}, "minItems": 1},
+        "platforms": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "metrics": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      },
+      "required": ["workload", "phase", "concurrency", "platforms", "metrics"],
+      "additionalProperties": true
+    },
+    "data_split": {
+      "type": "object",
+      "required": ["calibration", "validation", "holdout_workload", "holdout_platform"],
+      "additionalProperties": false,
+      "properties": {
+        "calibration": {"$ref": "#/definitions/split"},
+        "validation": {"$ref": "#/definitions/split"},
+        "holdout_workload": {"$ref": "#/definitions/split"},
+        "holdout_platform": {"$ref": "#/definitions/split"}
+      }
+    },
+    "measurement_contract": {
+      "type": "object",
+      "required": [
+        "warmup_policy",
+        "repetition_count",
+        "raw_measurements",
+        "per_repetition_results",
+        "uncertainty",
+        "environment_manifest",
+        "random_seed",
+        "command"
+      ],
+      "properties": {
+        "warmup_policy": {"type": ["string", "object"]},
+        "repetition_count": {"type": "integer", "minimum": 3},
+        "raw_measurements": {"type": "string", "minLength": 1},
+        "per_repetition_results": {"type": "string", "minLength": 1},
+        "uncertainty": {"enum": ["confidence-interval", "variance", "both"]},
+        "tool_versions": {"type": ["string", "object", "null"]},
+        "hardware_identification": {"type": ["string", "object", "null"]},
+        "software_versions": {"type": ["string", "object", "null"]},
+        "clock_power_temperature": {"type": ["string", "object", "null"]},
+        "environment_manifest": {"type": "string", "minLength": 1},
+        "random_seed": {"type": "integer"},
+        "command": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      },
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "split": {
+      "type": "object",
+      "required": ["selector", "artifact", "sha256", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "selector": {"type": "string", "minLength": 1},
+        "artifact": {"type": ["string", "null"]},
+        "sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "evidence": {"$ref": "evidence.schema.json"}
+      }
+    }
+  }
+}

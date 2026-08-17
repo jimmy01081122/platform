@@ -1,0 +1,24 @@
+{
+  "schema_version": "moe-simulator-phase0-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase0-amendment2-r3-20260726",
+  "plan": "MASTER_SIMULATOR_DEVELOPMENT_PLAN_AMENDMENT_2.md",
+  "cpu_scope": "phase0_cpu_scope.json",
+  "source_registry": "source_registry.json",
+  "checksum_ledger": "checksums.sha256",
+  "review_request": "review_request.json",
+  "review_results_directory": "reviews",
+  "status": "candidate_r3_unreviewed",
+  "claims": {
+    "phase0_plan_implemented": true,
+    "phase1_implemented": false,
+    "gpu_used": false,
+    "model_downloaded": false,
+    "formal_calibration_available": false
+  },
+  "required_roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "promotion_rule": "all roles GO on the identical checksum ledger with empty blockers"
+}

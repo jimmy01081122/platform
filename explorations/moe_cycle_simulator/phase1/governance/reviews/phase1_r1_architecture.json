@@ -1,0 +1,11 @@
+{
+  "role": "Architecture/System",
+  "ledger_sha256": "1cef7f8632c3fe6ff9f4b37f1e51e8f16f50dfa853837af28ca370dd86f77ad6",
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P1-B1: exact command did not bind the locked Python dependency environment.",
+    "ARCH-P1-B2: dependency preflight occurred after run-directory creation."
+  ],
+  "review_mode": "read-only",
+  "gpu_used": false
+}

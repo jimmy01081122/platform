@@ -1,0 +1,124 @@
+{
+  "schema_version": "moe-simulator-phase4-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r4-20260728",
+  "goal": "Freeze a deterministic CPU-synthetic single-discrete-GPU timed-service and contention model.",
+  "scope": [
+    "compute, memory, H2D and D2H primary service lanes",
+    "shared-fabric contention for memory and copies",
+    "exact integer duration and rational-clock completion snapping",
+    "dependency-aware ordered arrival, ready and completion queues",
+    "complete generated EventIR key and fixed priority registry",
+    "hash-bound complete checkpoint and reachable-prefix restore"
+  ],
+  "non_goals": [
+    "measured or calibrated GPU performance",
+    "residency, prefetch, eviction or routing policy",
+    "multi-GPU, NVLink, P2P or coherent UMA",
+    "model or benchmark execution",
+    "formal profiling or calibration PASS"
+  ],
+  "inputs": {
+    "phase3_ledger_sha256": "c4b9209d95bbf91c607d65a70062e3bbb03a5892807ce08d8a4a370000535e42",
+    "phase4_source_root_sha256": "510c2cbe19f4187f0f2c6b28fdc8dbc2f188c921daf1b20b1b31d4d27ce243ad",
+    "build_authority_sha256": "6c96124ad794729ff502dd7970cfccfaa9eb8105df2de359743eedc83276f308",
+    "model_contract_sha256": "73072b3978674294703667d4970b7373e842b86a91fef0cd3cd9d6a4b10ed1e5",
+    "checkpoint_schema_sha256": "2c34e7cc327e331d06beed4ea9906ccda597228bcc7394dcb0a11552852774d9"
+  },
+  "outputs": {
+    "formal_run": "20260728T123113Z__moe_cycle_simulator_phase4_single_gpu_r3__S4",
+    "run_ledger_sha256": "dd8bbe46feef480dabf58ff3208fdd829aa3a80a52451787e4abb13bf623dd3a",
+    "service_mode": "CPU_SYNTHETIC_REPLAY",
+    "gpu_used": false,
+    "model_downloaded": false,
+    "calibration_pass": false
+  },
+  "dependencies": {
+    "phase3_core": "frozen numeric, rational-clock and SHA-256 primitives only",
+    "language": "C++20",
+    "multiprecision": "Boost.Multiprecision",
+    "build": "CMake"
+  },
+  "assumptions": [
+    "Operations have passed the frozen canonical IR boundary before entering the low-level Phase 4 model.",
+    "CPU-synthetic service profiles are functional or first-order analytic and remain RANGE_UNKNOWN.",
+    "One Phase 4 state machine is the sole scheduling authority."
+  ],
+  "unknowns": [
+    "measured service curves and launch overhead",
+    "production trace scale and queue pressure",
+    "residency, routing and multi-platform behavior"
+  ],
+  "alternative_designs": [
+    "A second Phase 3 scheduler was rejected because it would create split scheduling authority.",
+    "Floating-point service time was rejected because it would violate exact event time.",
+    "Caller-labelled authority hashes were rejected in favor of exact artifact hashes."
+  ],
+  "risks": [
+    "The 1000-operation fixture is an operational envelope, not production-scale validation.",
+    "Service timing is synthetic and cannot support GPU performance or break-even claims.",
+    "The portable checkpoint restores by deterministic prefix replay; production-scale optimization remains future work."
+  ],
+  "validation_method": [
+    "source contract validator",
+    "clean Release build and CTest",
+    "native Phase 4 and inherited Phase 3 ASAN/UBSAN execution",
+    "contention, dependency, rational-edge and priority tests",
+    "checkpoint boundary, corruption, tamper and unreachable-state negative tests",
+    "wrong-but-well-formed authority hash rejection",
+    "1000-operation comparison-count and runtime envelope",
+    "sealed run exact-set checksum validation"
+  ],
+  "acceptance_criteria": [
+    "source root equals 510c2cbe19f4187f0f2c6b28fdc8dbc2f188c921daf1b20b1b31d4d27ce243ad",
+    "formal R3 run validator PASS",
+    "normal CTest 3/3 PASS",
+    "native ASAN and UBSAN PASS",
+    "run ledger exact-set PASS",
+    "three roles GO on one candidate ledger with empty blockers"
+  ],
+  "estimated_resources": {
+    "execution": "CPU-only, under two minutes",
+    "storage": "under ten MiB"
+  },
+  "owner_decisions": [
+    "Phase 3 GO authorizes Phase 4 CPU-synthetic implementation.",
+    "Push is permitted after each completed phase."
+  ],
+  "next_legal_action": "After same-hash GO, freeze Phase 4 and begin Phase 5 routing, residency and policy implementation using CPU synthetic fixtures only.",
+  "forbidden_actions": [
+    "GPU query or execution",
+    "model or benchmark download",
+    "formal profiling",
+    "calibration or platform qualification claims",
+    "modification or reinterpretation of frozen G3 or S4 evidence"
+  ],
+  "status": "candidate_r4_unreviewed",
+  "prior_reviewed_candidates": [
+    {
+      "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r2-20260728",
+      "verdict": "MODIFY",
+      "ledger_sha256": "a90b7e0f8717b129e178d50593ad4b24e88cf723b7f658812ae1b398cdf4a389",
+      "snapshot_ledger_sha256": "5c5c91da5d25dda1077e2baec78254bdda397b8a7c24878630bffc19a4848d3c",
+      "evidence_policy": "immutable failed formal candidate; never promote or reinterpret",
+      "closed_blockers": [
+        "ARCH-P4-R2-B1: exhaustive TraceKind serialization and invalid memory/wire rejection"
+      ]
+    },
+    {
+      "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r3-20260728",
+      "verdict": "MODIFY",
+      "ledger_sha256": "8b94a7d30510102d612f5663a1153fad2fe08aec4a02ffbba210398fd61e4785",
+      "snapshot_ledger_sha256": "8d2570165589f5414101e372e9ee43e65f9c197b2f4e4be76e176eb7607d6243",
+      "evidence_policy": "immutable failed formal candidate; never promote or reinterpret",
+      "closed_blockers": [
+        "MODEL-P4-R3-B1: exact active-ledger exclusion includes every nested historical checksum ledger"
+      ]
+    }
+  ],
+  "stale_run": {
+    "run_id": "20260728T120337Z__moe_cycle_simulator_phase4_single_gpu_r1__S4",
+    "status": "STALE_BEFORE_REVIEW",
+    "reason": "It predates the final reviewed source root and authority/checkpoint hardening.",
+    "promotion_policy": "excluded from the candidate ledger; never promote or reinterpret"
+  }
+}

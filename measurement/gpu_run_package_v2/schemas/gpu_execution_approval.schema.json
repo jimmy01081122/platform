@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gpu_execution_approval.schema.json",
+  "title": "Second-decision-layer paid GPU execution approval",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "approval_id",
+    "superseding_decision_id",
+    "package_id",
+    "package_checksums_sha256",
+    "matrix_sha256",
+    "gpu_profile_id",
+    "second_decision_layer",
+    "reviewers",
+    "blockers",
+    "budget",
+    "deadline_utc",
+    "approved_utc",
+    "expires_utc"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "gpu-execution-approval-v1"
+    },
+    "approval_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "superseding_decision_id": {
+      "type": "string",
+      "pattern": "^D-[0-9]{3,}$"
+    },
+    "package_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "package_checksums_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "matrix_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "gpu_profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "second_decision_layer": {
+      "const": true
+    },
+    "reviewers": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reviewer_id", "role"],
+        "properties": {
+          "reviewer_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "architecture_system",
+              "model_benchmark",
+              "trace_statistics"
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {"role": {"const": "architecture_system"}},
+            "required": ["role"]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {"role": {"const": "model_benchmark"}},
+            "required": ["role"]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {"role": {"const": "trace_statistics"}},
+            "required": ["role"]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "blockers": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currency", "amount"],
+      "properties": {
+        "currency": {
+          "type": "string",
+          "minLength": 3
+        },
+        "amount": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "deadline_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "approved_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_utc": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

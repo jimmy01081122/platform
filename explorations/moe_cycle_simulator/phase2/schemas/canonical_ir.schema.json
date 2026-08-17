@@ -1,0 +1,577 @@
+{
+  "$id": "https://example.invalid/moe-simulator/canonical-ir-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "uintString": {
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "type": "string"
+    },
+    "sintString": {
+      "pattern": "^(0|-?[1-9][0-9]*)$",
+      "type": "string"
+    },
+    "hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "producer": {"minLength": 1, "type": "string"},
+        "producer_version": {"minLength": 1, "type": "string"},
+        "source_content_ids": {
+          "items": {"$ref": "#/$defs/hash"},
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": ["producer", "producer_version", "source_content_ids"],
+      "type": "object"
+    },
+    "typedRef": {
+      "additionalProperties": false,
+      "properties": {
+        "target_ir_kind": {
+          "enum": ["WorkloadIR", "ModelIR", "RoutingIR", "PlacementIR", "PlatformIR", "EventIR", "ClockAlignmentIR", "CalibrationIR", "ResultIR"]
+        },
+        "target_primary_key": {
+          "additionalProperties": false,
+          "properties": {
+            "record_id": {"minLength": 1, "type": "string"}
+          },
+          "required": ["record_id"],
+          "type": "object"
+        },
+        "target_schema_version": {"const": "canonical-ir-v1"},
+        "target_semantic_root": {"$ref": "#/$defs/hash"}
+      },
+      "required": ["target_ir_kind", "target_schema_version", "target_semantic_root", "target_primary_key"],
+      "type": "object"
+    },
+    "workload": {
+      "additionalProperties": false,
+      "properties": {
+        "arrival_time_fs": {"$ref": "#/$defs/uintString"},
+        "dataset_id": {"minLength": 1, "type": "string"},
+        "dataset_revision": {"minLength": 1, "type": "string"},
+        "generation_profile_id": {"minLength": 1, "type": "string"},
+        "input_token_ids": {
+          "items": {"minimum": 0, "type": "integer"},
+          "type": "array"
+        },
+        "model_record_id": {"minLength": 1, "type": "string"},
+        "runtime_variant_hash": {"$ref": "#/$defs/hash"},
+        "attempt": {"minimum": 0, "type": "integer"},
+        "request_instance_id": {"minLength": 1, "type": "string"},
+        "sample_id": {"minLength": 1, "type": "string"}
+        ,"sequence_id": {"minLength": 1, "type": "string"},
+        "tokens": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "position": {"minimum": 0, "type": "integer"},
+              "role": {"enum": ["SYSTEM", "USER", "ASSISTANT_PREFIX", "DECODE"]},
+              "token_id": {"minimum": 0, "type": "integer"}
+            },
+            "required": ["position", "role", "token_id"],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": ["dataset_id", "dataset_revision", "sample_id", "input_token_ids", "arrival_time_fs", "generation_profile_id", "model_record_id", "runtime_variant_hash", "request_instance_id", "attempt", "sequence_id", "tokens"],
+      "type": "object"
+    },
+    "model": {
+      "additionalProperties": false,
+      "properties": {
+        "active_parameter_count": {"$ref": "#/$defs/uintString"},
+        "experts": {"minimum": 1, "type": "integer"},
+        "expert_bytes": {"$ref": "#/$defs/uintString"},
+        "hidden_size": {"minimum": 1, "type": "integer"},
+        "layers": {"minimum": 1, "type": "integer"},
+        "model_id": {"minLength": 1, "type": "string"},
+        "operators": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "expert_id": {"type": ["integer", "null"], "minimum": 0},
+              "layer_index": {"minimum": 0, "type": "integer"},
+              "operator_id": {"minLength": 1, "type": "string"},
+              "operator_kind": {"enum": ["ATTENTION", "ROUTER", "EXPERT_FFN", "NORM", "OUTPUT"]}
+            },
+            "required": ["operator_id", "layer_index", "operator_kind", "expert_id"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "precision": {"enum": ["BF16", "FP16", "FP8", "INT8", "INT4"]},
+        "revision": {"minLength": 1, "type": "string"},
+        "top_k": {"minimum": 1, "type": "integer"},
+        "total_parameter_count": {"$ref": "#/$defs/uintString"},
+        "tensors": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "dtype": {"enum": ["BF16", "FP16", "FP32", "FP8", "INT8", "INT4"]},
+              "exact_bytes": {"$ref": "#/$defs/uintString"},
+              "expert_id": {"type": ["integer", "null"], "minimum": 0},
+              "layout": {"minLength": 1, "type": "string"},
+              "shape": {"items": {"minimum": 1, "type": "integer"}, "minItems": 1, "type": "array"},
+              "tensor_id": {"minLength": 1, "type": "string"}
+            },
+            "required": ["tensor_id", "expert_id", "dtype", "layout", "shape", "exact_bytes"],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": ["model_id", "revision", "precision", "layers", "experts", "expert_bytes", "top_k", "hidden_size", "total_parameter_count", "active_parameter_count", "operators", "tensors"],
+      "type": "object"
+    },
+    "routing": {
+      "additionalProperties": false,
+      "properties": {
+        "ambiguity_set": {"items": {"minimum": 0, "type": "integer"}, "type": "array", "uniqueItems": true},
+        "aggregate_expert_demand": {"items": {"$ref": "#/$defs/uintString"}, "type": ["array", "null"]},
+        "canonical_scores": {"items": {"type": "string"}, "type": ["array", "null"]},
+        "k_boundary_score": {"type": ["string", "null"]},
+        "layer_index": {"minimum": 0, "type": "integer"},
+        "model_record_id": {"minLength": 1, "type": "string"},
+        "request_id": {"minLength": 1, "type": "string"},
+        "routing_scope": {"enum": ["TOKEN", "AGGREGATE"]},
+        "score_dtype": {"enum": ["float16", "bfloat16", "float32"]},
+        "score_tolerance_absolute": {"type": ["string", "null"]},
+        "score_tolerance_relative": {"type": ["string", "null"]},
+        "selected_experts": {"items": {"minimum": 0, "type": "integer"}, "type": ["array", "null"], "uniqueItems": true},
+        "token_index": {"type": ["integer", "null"], "minimum": 0},
+        "workload_record_id": {"minLength": 1, "type": "string"}
+      },
+      "required": ["request_id", "routing_scope", "token_index", "layer_index", "score_dtype", "canonical_scores", "score_tolerance_absolute", "score_tolerance_relative", "selected_experts", "k_boundary_score", "ambiguity_set", "aggregate_expert_demand", "model_record_id", "workload_record_id"],
+      "allOf": [
+        {"if": {"properties": {"routing_scope": {"const": "TOKEN"}}}, "then": {"properties": {"aggregate_expert_demand": {"type": "null"}, "canonical_scores": {"type": "array"}, "score_tolerance_absolute": {"type": "string"}, "score_tolerance_relative": {"type": "string"}, "selected_experts": {"minItems": 1, "type": "array"}, "k_boundary_score": {"type": "string"}, "token_index": {"minimum": 0, "type": "integer"}}}},
+        {"if": {"properties": {"routing_scope": {"const": "AGGREGATE"}}}, "then": {"properties": {"aggregate_expert_demand": {"minItems": 1, "type": "array"}, "canonical_scores": {"type": "null"}, "score_tolerance_absolute": {"type": "null"}, "score_tolerance_relative": {"type": "null"}, "selected_experts": {"type": "null"}, "k_boundary_score": {"type": "null"}, "token_index": {"type": "null"}}}}
+      ],
+      "type": "object"
+    },
+    "placement": {
+      "additionalProperties": false,
+      "properties": {
+        "expert_locations": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "expert_id": {"minimum": 0, "type": "integer"},
+              "tensor_id": {"minLength": 1, "type": "string"},
+              "shard_offset_bytes": {"$ref": "#/$defs/uintString"},
+              "memory_offset_bytes": {"$ref": "#/$defs/uintString"},
+              "memory_domain_id": {"minLength": 1, "type": "string"},
+              "compute_domain_id": {"minLength": 1, "type": "string"},
+              "owner": {"type": "boolean"},
+              "replica_id": {"minLength": 1, "type": "string"},
+              "shard_bytes": {"$ref": "#/$defs/uintString"}
+            },
+            "required": ["expert_id", "tensor_id", "shard_offset_bytes", "memory_offset_bytes", "memory_domain_id", "compute_domain_id", "owner", "replica_id", "shard_bytes"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "state_allocations": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "allocation_id": {"minLength": 1, "type": "string"},
+              "object_class": {"enum": ["NON_EXPERT_WEIGHT", "KV_CACHE", "ACTIVATION"]},
+              "tensor_id": {"type": ["string", "null"]},
+              "memory_domain_id": {"minLength": 1, "type": "string"},
+              "compute_domain_id": {"minLength": 1, "type": "string"},
+              "offset_bytes": {"$ref": "#/$defs/uintString"},
+              "exact_bytes": {"$ref": "#/$defs/uintString"}
+            },
+            "required": ["allocation_id", "object_class", "tensor_id", "memory_domain_id", "compute_domain_id", "offset_bytes", "exact_bytes"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "platform_id": {"minLength": 1, "type": "string"},
+        "model_record_id": {"minLength": 1, "type": "string"},
+        "platform_record_id": {"minLength": 1, "type": "string"},
+        "policy_id": {"minLength": 1, "type": "string"},
+        "snapshot_id": {"minLength": 1, "type": "string"},
+        "predecessor_snapshot_id": {"type": ["string", "null"]},
+        "migration_event_ids": {"items": {"minLength": 1, "type": "string"}, "type": "array", "uniqueItems": true},
+        "valid_from_fs": {"$ref": "#/$defs/uintString"},
+        "valid_to_fs": {
+          "anyOf": [
+            {"$ref": "#/$defs/uintString"},
+            {"type": "null"}
+          ]
+        },
+        "version": {"minimum": 1, "type": "integer"}
+      },
+      "required": ["platform_id", "policy_id", "expert_locations", "state_allocations", "model_record_id", "platform_record_id", "snapshot_id", "predecessor_snapshot_id", "migration_event_ids", "version", "valid_from_fs", "valid_to_fs"],
+      "type": "object"
+    },
+    "platform": {
+      "additionalProperties": false,
+      "properties": {
+        "compute_domains": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "clock_id": {"minLength": 1, "type": "string"},
+              "domain_id": {"minLength": 1, "type": "string"},
+              "kind": {"enum": ["CPU", "GPU", "ACCELERATOR", "RTL"]},
+              "service_slots": {"minimum": 1, "type": "integer"},
+              "service_rate_units_per_second": {"$ref": "#/$defs/uintString"}
+            },
+            "required": ["domain_id", "kind", "clock_id", "service_slots", "service_rate_units_per_second"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "bridges": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "schema_version": {"const": "bridge-v1"},
+              "bridge_id": {"minLength": 1, "type": "string"},
+              "forward_latency_fs": {"$ref": "#/$defs/uintString"},
+              "reverse_latency_fs": {"$ref": "#/$defs/uintString"},
+              "receiver_sync_cycles": {"minimum": 0, "type": "integer"},
+              "ack_sync_cycles": {"minimum": 0, "type": "integer"},
+              "queue_capacity": {"minimum": 1, "type": "integer"},
+              "backpressure_policy": {"enum": ["STALL_SOURCE", "REJECT", "CREDIT_BLOCK"]},
+              "protocol": {"enum": ["ONE_WAY", "REQUEST_ACK", "CREDIT"]},
+              "source_clock_id": {"minLength": 1, "type": "string"},
+              "target_clock_id": {"minLength": 1, "type": "string"}
+            },
+            "required": ["schema_version", "bridge_id", "source_clock_id", "target_clock_id", "protocol", "forward_latency_fs", "reverse_latency_fs", "receiver_sync_cycles", "ack_sync_cycles", "queue_capacity", "backpressure_policy"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "clocks": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "clock_id": {"minLength": 1, "type": "string"},
+              "frequency_denominator_hz": {"pattern": "^[1-9][0-9]*$", "type": "string"},
+              "frequency_numerator_hz": {"pattern": "^[1-9][0-9]*$", "type": "string"},
+              "phase_offset_fs": {"$ref": "#/$defs/uintString"}
+            },
+            "required": ["clock_id", "frequency_numerator_hz", "frequency_denominator_hz", "phase_offset_fs"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "interconnects": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "bandwidth_bytes_per_second": {"$ref": "#/$defs/uintString"},
+              "destination_domain_id": {"minLength": 1, "type": "string"},
+              "link_id": {"minLength": 1, "type": "string"},
+              "source_domain_id": {"minLength": 1, "type": "string"},
+              "latency_fs": {"$ref": "#/$defs/uintString"},
+              "shared_resource_id": {"minLength": 1, "type": "string"},
+              "copy_engine_id": {"type": ["string", "null"]}
+            },
+            "required": ["link_id", "source_domain_id", "destination_domain_id", "bandwidth_bytes_per_second", "latency_fs", "shared_resource_id", "copy_engine_id"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "memory_domains": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "capacity_bytes": {"$ref": "#/$defs/uintString"},
+              "domain_id": {"minLength": 1, "type": "string"},
+              "kind": {"enum": ["HOST", "DEVICE", "COHERENT_UMA", "OFFLOAD"]}
+            },
+            "required": ["domain_id", "kind", "capacity_bytes"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "queues": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "arbitration": {"enum": ["FIFO", "ROUND_ROBIN", "PRIORITY"]},
+              "capacity": {"minimum": 1, "type": "integer"},
+              "domain_id": {"minLength": 1, "type": "string"},
+              "queue_id": {"minLength": 1, "type": "string"}
+            },
+            "required": ["queue_id", "domain_id", "capacity", "arbitration"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "platform_id": {"minLength": 1, "type": "string"}
+        ,"calibrated_components": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "component_record_id": {"minLength": 1, "type": "string"},
+              "duration_fs": {"$ref": "#/$defs/uintString"},
+              "evidence_root": {"$ref": "#/$defs/hash"}
+            },
+            "required": ["component_record_id", "duration_fs", "evidence_root"],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": ["platform_id", "clocks", "bridges", "memory_domains", "compute_domains", "interconnects", "queues", "calibrated_components"],
+      "type": "object"
+    },
+    "event": {
+      "additionalProperties": false,
+      "properties": {
+        "component_id": {"minLength": 1, "type": "string"},
+        "dependencies": {"items": {"minLength": 1, "type": "string"}, "type": "array", "uniqueItems": true},
+        "event_priority": {"minimum": 0, "type": "integer"},
+        "event_type": {"minLength": 1, "type": "string"},
+        "resource_action": {"enum": ["ACQUIRE", "RELEASE", "SERVICE", "TRANSFER", "MIGRATE"]},
+        "resource_id": {"minLength": 1, "type": "string"},
+        "quantity": {"$ref": "#/$defs/uintString"},
+        "service_demand": {"$ref": "#/$defs/uintString"},
+        "alignment_grade": {"enum": ["CYCLE_GRADE", "ORDERING_ONLY", "AGGREGATE_ONLY", "UNAVAILABLE"]},
+        "alignment_record_id": {"minLength": 1, "type": "string"},
+        "aligned_interval_fs": {
+          "additionalProperties": false,
+          "properties": {
+            "lower_fs": {"$ref": "#/$defs/uintString"},
+            "upper_fs": {"$ref": "#/$defs/uintString"}
+          },
+          "required": ["lower_fs", "upper_fs"],
+          "type": "object"
+        },
+        "placement_record_id": {"minLength": 1, "type": "string"},
+        "platform_record_id": {"minLength": 1, "type": "string"},
+        "request_id": {"type": ["string", "null"]},
+        "token_index": {
+          "maximum": 18446744073709551614,
+          "minimum": 0,
+          "type": ["integer", "null"]
+        },
+        "layer_index": {
+          "maximum": 4294967294,
+          "minimum": 0,
+          "type": ["integer", "null"]
+        },
+        "runtime_variant_hash": {"$ref": "#/$defs/hash"},
+        "source_clock_id": {"minLength": 1, "type": "string"},
+        "source_timestamp": {"$ref": "#/$defs/uintString"},
+        "time_fs": {"$ref": "#/$defs/uintString"},
+        "workload_record_id": {"type": ["string", "null"]}
+      },
+      "required": ["event_type", "resource_action", "resource_id", "quantity", "service_demand", "time_fs", "event_priority", "request_id", "token_index", "layer_index", "runtime_variant_hash", "component_id", "dependencies", "workload_record_id", "platform_record_id", "placement_record_id", "source_clock_id", "source_timestamp", "alignment_record_id", "aligned_interval_fs", "alignment_grade"],
+      "type": "object"
+    },
+    "clockAlignment": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence_interval_95_fs": {
+          "additionalProperties": false,
+          "properties": {
+            "lower_error_fs": {"$ref": "#/$defs/sintString"},
+            "upper_error_fs": {"$ref": "#/$defs/sintString"}
+          },
+          "required": ["lower_error_fs", "upper_error_fs"],
+          "type": "object"
+        },
+        "offset_fs": {"$ref": "#/$defs/sintString"},
+        "calibration_method": {"minLength": 1, "type": "string"},
+        "calibration_points": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "source_time": {"$ref": "#/$defs/uintString"},
+              "target_time": {"$ref": "#/$defs/uintString"}
+            },
+            "required": ["source_time", "target_time"],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "residual_error_fs": {"$ref": "#/$defs/uintString"},
+        "valid_time_range": {
+          "additionalProperties": false,
+          "properties": {
+            "source_start": {"$ref": "#/$defs/uintString"},
+            "source_end": {"$ref": "#/$defs/uintString"}
+          },
+          "required": ["source_start", "source_end"],
+          "type": "object"
+        },
+        "drift_bound_ppm": {"type": "string"},
+        "grading_inputs": {
+          "additionalProperties": false,
+          "properties": {
+            "target_period_numerator_fs": {"$ref": "#/$defs/uintString"},
+            "target_period_denominator": {"pattern": "^[1-9][0-9]*$", "type": "string"},
+            "shortest_component_duration_fs": {"$ref": "#/$defs/uintString"}
+            ,"target_clock_profile_hash": {"$ref": "#/$defs/hash"}
+            ,"shortest_component_record_hash": {"$ref": "#/$defs/hash"}
+          },
+          "required": ["target_period_numerator_fs", "target_period_denominator", "shortest_component_duration_fs", "target_clock_profile_hash", "shortest_component_record_hash"],
+          "type": "object"
+        },
+        "claimed_grade": {"enum": ["CYCLE_GRADE", "AGGREGATE_ONLY"]},
+        "segments": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "source_start": {"$ref": "#/$defs/uintString"},
+              "source_end": {"$ref": "#/$defs/uintString"},
+              "scale_numerator": {"pattern": "^[1-9][0-9]*$", "type": "string"},
+              "scale_denominator": {"pattern": "^[1-9][0-9]*$", "type": "string"},
+              "offset_fs": {"$ref": "#/$defs/sintString"},
+              "end_inclusive": {"type": "boolean"},
+              "boundary_discontinuity": {"type": "boolean"}
+            },
+            "required": ["source_start", "source_end", "scale_numerator", "scale_denominator", "offset_fs", "end_inclusive", "boundary_discontinuity"],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "platform_record_id": {"minLength": 1, "type": "string"},
+        "scale_denominator": {"pattern": "^[1-9][0-9]*$", "type": "string"},
+        "scale_numerator": {"pattern": "^[1-9][0-9]*$", "type": "string"},
+        "source_clock_id": {"minLength": 1, "type": "string"},
+        "target_clock_id": {"minLength": 1, "type": "string"},
+        "transform_type": {"enum": ["IDENTITY", "AFFINE_RATIONAL", "PIECEWISE_AFFINE_RATIONAL"]}
+      },
+      "required": ["source_clock_id", "target_clock_id", "transform_type", "scale_numerator", "scale_denominator", "offset_fs", "calibration_method", "calibration_points", "residual_error_fs", "confidence_interval_95_fs", "valid_time_range", "drift_bound_ppm", "grading_inputs", "claimed_grade", "segments", "platform_record_id"],
+      "type": "object"
+    },
+    "calibration": {
+      "additionalProperties": false,
+      "properties": {
+        "calibration_profile_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "evidence_class": {"enum": ["SYNTHETIC", "MEASURED", "DERIVED"]},
+        "bootstrap_ci_95": {
+          "additionalProperties": false,
+          "properties": {
+            "lower": {"type": "string"},
+            "upper": {"type": "string"}
+          },
+          "required": ["lower", "upper"],
+          "type": "object"
+        },
+        "bootstrap_seed": {"$ref": "#/$defs/uintString"},
+        "bootstrap_resamples": {"const": 10000},
+        "sample_count": {"minimum": 1, "type": "integer"},
+        "measurement_noise_floor": {"type": "string"},
+        "resampling_strata": {
+          "items": {"minLength": 1, "type": "string"},
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "fidelity": {"enum": ["MEASURED", "CALIBRATED_SURROGATE", "ANALYTIC_FIRST_ORDER", "FUNCTIONAL_ONLY", "UNAVAILABLE"]},
+        "held_out_workload_record_ids": {"items": {"minLength": 1, "type": "string"}, "minItems": 1, "type": "array", "uniqueItems": true},
+        "measured_value": {"type": "string"},
+        "metric": {"minLength": 1, "type": "string"},
+        "model_record_id": {"minLength": 1, "type": "string"},
+        "platform_record_id": {"minLength": 1, "type": "string"},
+        "runtime_variant_hash": {"$ref": "#/$defs/hash"},
+        "predicted_value": {"type": "string"},
+        "range_status": {"enum": ["IN_CALIBRATION_ENVELOPE", "INTERPOLATED", "EXTRAPOLATED", "RANGE_UNKNOWN"]},
+        "repetitions": {"minimum": 3, "type": "integer"},
+        "training_workload_record_ids": {"items": {"minLength": 1, "type": "string"}, "minItems": 1, "type": "array", "uniqueItems": true},
+        "calibration_envelope": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "dimensions": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "name": {"minLength": 1, "type": "string"},
+                  "lower": {"type": "string"},
+                  "upper": {"type": "string"}
+                },
+                "required": ["name", "lower", "upper"],
+                "type": "object"
+              },
+              "minItems": 1,
+              "type": "array"
+            }
+          },
+          "required": ["dimensions"]
+        },
+        "evaluation_coordinate": {
+          "type": ["array", "null"],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {"minLength": 1, "type": "string"},
+              "value": {"type": "string"}
+            },
+            "required": ["name", "value"],
+            "type": "object"
+          }
+        },
+        "unit": {"minLength": 1, "type": "string"}
+      },
+      "required": ["metric", "unit", "measured_value", "predicted_value", "evidence_class", "fidelity", "range_status", "calibration_profile_hash", "model_record_id", "platform_record_id", "runtime_variant_hash", "training_workload_record_ids", "held_out_workload_record_ids", "calibration_envelope", "evaluation_coordinate", "repetitions", "bootstrap_seed", "bootstrap_resamples", "sample_count", "measurement_noise_floor", "resampling_strata", "bootstrap_ci_95"],
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "completed": {"type": "boolean"},
+        "calibration_record_id": {"minLength": 1, "type": "string"},
+        "evidence_class": {"enum": ["SYNTHETIC", "MEASURED", "DERIVED"]},
+        "evidence_availability": {"enum": ["CONFIRMED", "CONDITIONAL", "UNAVAILABLE", "NOT_APPLICABLE"]},
+        "execution_valid": {"type": "boolean"},
+        "formal_pass": {"type": "boolean"},
+        "latency_fs": {"$ref": "#/$defs/uintString"},
+        "model_record_id": {"minLength": 1, "type": "string"},
+        "output_token_ids": {"items": {"minimum": 0, "type": "integer"}, "type": "array"},
+        "request_id": {"minLength": 1, "type": "string"},
+        "runtime_variant_hash": {"$ref": "#/$defs/hash"},
+        "stop_reason": {"minLength": 1, "type": "string"},
+        "platform_record_id": {"minLength": 1, "type": "string"},
+        "range_status": {"enum": ["IN_CALIBRATION_ENVELOPE", "INTERPOLATED", "EXTRAPOLATED", "RANGE_UNKNOWN"]},
+        "workload_record_id": {"minLength": 1, "type": "string"}
+      },
+      "required": ["request_id", "runtime_variant_hash", "execution_valid", "completed", "output_token_ids", "stop_reason", "latency_fs", "model_record_id", "platform_record_id", "workload_record_id", "calibration_record_id", "evidence_class", "formal_pass", "range_status", "evidence_availability"],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "ir_kind": {
+      "enum": ["WorkloadIR", "ModelIR", "RoutingIR", "PlacementIR", "PlatformIR", "EventIR", "ClockAlignmentIR", "CalibrationIR", "ResultIR"]
+    },
+    "payload": {"type": "object"},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "refs": {
+      "items": {"$ref": "#/$defs/typedRef"},
+      "type": "array"
+    },
+    "record_id": {"minLength": 1, "type": "string"},
+    "schema_version": {"const": "canonical-ir-v1"},
+    "semantic_descriptor_hash": {"$ref": "#/$defs/hash"}
+  },
+  "required": ["schema_version", "ir_kind", "record_id", "semantic_descriptor_hash", "refs", "provenance", "payload"],
+  "allOf": [
+    {"if": {"properties": {"ir_kind": {"const": "WorkloadIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/workload"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "ModelIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/model"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "RoutingIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/routing"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "PlacementIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/placement"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "PlatformIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/platform"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "EventIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/event"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "ClockAlignmentIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/clockAlignment"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "CalibrationIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/calibration"}}}},
+    {"if": {"properties": {"ir_kind": {"const": "ResultIR"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/result"}}}}
+  ],
+  "type": "object"
+}

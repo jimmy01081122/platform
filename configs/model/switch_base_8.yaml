@@ -1,0 +1,22 @@
+model_id: google/switch-base-8
+source_config: configs/model/switch_base_8.config.json   # fetched raw config.json (HF)
+provenance: vendor_spec   # values taken from the published model config
+params:
+  d_model: 768
+  d_ff: 3072
+  num_experts: 8
+  expert_capacity: 64
+  num_layers: 12
+  num_decoder_layers: 12
+dtype:
+  name: float16          # from run_metadata.json (torch.float16)
+  bytes_per_element: 2
+derived:
+  # Switch expert FFN = wi(d_model->d_ff) + wo(d_ff->d_model), no bias.
+  expert_params: 4718592                # 2 * d_model * d_ff
+  expert_weight_bytes: 9437184          # expert_params * bytes_per_element  (A-005, derived)
+  expert_weight_mib: 9.0
+  derivation: "2 * d_model * d_ff * bytes_per_element"
+note: >-
+  expert_weight_bytes is DERIVED from the published config and the measured
+  dtype, not fabricated. It is the transfer size for one expert residency load.

@@ -1,0 +1,8 @@
+{
+  "blockers": [],
+  "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r5-20260726",
+  "ledger_sha256": "ac1d3c8f3a81e50302f5bf3debc8a6f33717d24de33f0f5f00e50138bfcd8fb2",
+  "role": "Model/Benchmark",
+  "schema_version": "moe-simulator-review-v1",
+  "verdict": "GO"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c1_benchmark.schema.json",
+  "type": "object",
+  "required": ["schema_version", "suite_version", "benchmark_id", "sample_id", "prompt_hash", "generation_config_hash", "seed", "repetition_id", "execution_alignment_key", "input_token_ids", "input_token_count", "output_token_ids", "output_token_count", "output_hash", "stop_reason", "tokenization_metadata"],
+  "properties": {
+    "schema_version": {"const": "c1-benchmark-v2"},
+    "suite_version": {"type": "string", "minLength": 1},
+    "benchmark_id": {"type": "string", "minLength": 1},
+    "sample_id": {"type": "string", "minLength": 1},
+    "prompt_hash": {"$ref": "#/$defs/hash"},
+    "generation_config_hash": {"$ref": "#/$defs/hash"},
+    "seed": {"type": "integer", "minimum": 0},
+    "repetition_id": {"type": "integer", "minimum": 0},
+    "execution_alignment_key": {"$ref": "#/$defs/hash"},
+    "output_hash": {"$ref": "#/$defs/hash"},
+    "input_token_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "integer", "minimum": 0}
+    },
+    "input_token_count": {"type": "integer", "minimum": 0},
+    "output_token_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "integer", "minimum": 0}
+    },
+    "output_token_count": {"type": "integer", "minimum": 0},
+    "stop_reason": {"type": "string", "minLength": 1},
+    "tokenization_metadata": {
+      "type": "object",
+      "required": ["mode", "chat_template_sha256", "tokenizer_config_sha256", "message_roles", "add_generation_prompt"],
+      "properties": {
+        "mode": {"const": "pinned_chat_template"},
+        "chat_template_sha256": {"$ref": "#/$defs/hash"},
+        "tokenizer_config_sha256": {"$ref": "#/$defs/hash"},
+        "message_roles": {"enum": [["user"], ["system", "user"]]},
+        "add_generation_prompt": {"const": true},
+        "prompt_construction_revision": {"type": "string", "minLength": 1},
+        "system_message_sha256": {"$ref": "#/$defs/hash"},
+        "generation_config_file_sha256": {"$ref": "#/$defs/hash"},
+        "special_tokens_map_sha256": {"$ref": "#/$defs/hash"},
+        "eos_token_id": {"type": "integer", "minimum": 0},
+        "pad_token_id": {"type": "integer", "minimum": 0},
+        "rendered_chat_sha256": {"$ref": "#/$defs/hash"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+  "additionalProperties": true
+}

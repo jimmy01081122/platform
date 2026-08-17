@@ -1,0 +1,53 @@
+{
+  "claims_allowed_now": [
+    "SERV-P0-25 base 1K measured cell PASS and do-not-rerun",
+    "new host preflight clear at last read-only checkpoint",
+    "historical old guard evidence with new-session proof still pending",
+    "new-host session-local MECH/KV/OS guard validated; UM validated negative evidence with telemetry limitation",
+    "vLLM 0.23.0 native CPU KV-offload capability initialized in a bounded real Mixtral canary",
+    "SWAP-K1 forced native KV movement observed through CPU BlockStored/BlockRemoved events with hash-subset lineage",
+    "SWAP-K1 distinct-prompt output/finish correctness for the 3x16384 pressure workload",
+    "SWAP-K2 FIT-25 point-level host-capacity execution and output/finish correctness",
+    "SWAP-K2 FIT-50 point-level host-capacity execution and output/finish correctness",
+    "SWAP-K2 FIT-75 point-level host-capacity execution and output/finish correctness",
+    "SWAP-K2 FIT-100 point-level host-capacity execution and output/finish correctness",
+    "SWAP-K2 HELDOUT-37.5 point-level host-capacity execution and output/finish correctness",
+    "SWAP-K2 HELDOUT-62.5 point-level host-capacity execution and output/finish correctness",
+    "SWAP-K2 HELDOUT-87.5 point-level host-capacity execution and output/finish correctness",
+    "SWAP-K3 LONG-PREFILL diagnostic serving-pressure event and output-correctness evidence",
+    "SWAP-K3 DECODE-HEAVY diagnostic serving-pressure event and output-correctness evidence",
+    "SWAP-K3 MIXED diagnostic serving-pressure event and output-correctness evidence",
+    "SWAP-K3 BURST diagnostic serving-pressure event and output-correctness evidence",
+    "SWAP-K5 source-bound native host-pool store-refusal fallback with 8/8 completed request denominator",
+    "Complete 256-object Mixtral BF16 expert catalog with exact transfer-accounting bytes and immutable ownership semantics",
+    "OFF-E-RT0 validated absence of route-conditioned dynamic expert residency in the source-bound vLLM runtime",
+    "OFF-W0 source-bound generic/selective UVA CPU weight-offload capability with 1.75 GiB runtime-logged offload"
+  ],
+  "claims_forbidden": [
+    "runtime-native dynamic expert offload",
+    "runtime-native KV swap performance",
+    "stronger Unified Memory absence than observed telemetry",
+    "SERV-P0 tail stability before independent 10K completion",
+    "OFF-E-PR3-CAP-025 represented by SERV-P0-25",
+    "support-processor break-even without compute-integrated dependency-correct replay and SW-OPT",
+    "cycle-grade control latency without CLK4"
+  ],
+  "claims_forbidden_now": [
+    "exact runtime KV block swap-out/in event from SWAP-K0",
+    "runtime KV-swap performance or block-lineage claim from SWAP-K0",
+    "SWAP-K1 block-movement result from the failed engine-initialization attempt",
+    "SWAP-K1 verified block swap-out/in or block lineage from V4",
+    "SWAP-K1 movement performance from V4",
+    "SWAP-K1 swap latency, bandwidth, copy completion, or serving benefit",
+    "SWAP-K2 complete matrix conclusion before all seven points",
+    "SWAP-K2/K3/K5 performance or serving benefit",
+    "SWAP-K3 formal SERV tail-CI or calibrated performance closure",
+    "SWAP-K3 object-level KV latency/bandwidth/copy-completion claims",
+    "SWAP-K5 formal serving performance, object-level copy latency/bandwidth, preemption/recompute, rejection, LRU eviction, or pinned-memory claims",
+    "SWAP-K4 OFFxKV interaction conclusions before its own frozen contract and evidence",
+    "Runtime-native OFF-E-RT1/2/3 behavior or performance; use correctly labeled compute-integrated replay only",
+    "OFF-W performance or byte-budget conclusions until OFF-W1/2/3 close",
+    "Dynamic expert residency claims from OFF-W generic weight offload"
+  ],
+  "schema_version": "phase7-combined-master-claim-boundary-v1"
+}

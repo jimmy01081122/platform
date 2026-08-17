@@ -1,0 +1,13 @@
+completed_at_utc	experiment_id	workload_id	run_dir	status	fit_role	row_role
+2026-08-11T16:55:01.318722+00:00	K0-F0-CANARY	F0	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165432Z__K0-F0-CANARY	PASS	fit	bounded_profiler_canary
+2026-08-11T16:55:42.985338+00:00	K0-F0	F0	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165501Z__K0-F0	PASS	fit	formal
+2026-08-11T16:56:11.472335+00:00	K1-P0-128-CANARY	P0-128	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165543Z__K1-P0-128-CANARY	PASS	fit	bounded_profiler_canary
+2026-08-11T16:56:53.449860+00:00	K1-P0-128	P0-128	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165611Z__K1-P0-128	PASS	fit	formal
+2026-08-11T16:57:37.200236+00:00	K2-P0-8192-CANARY	P0-8192	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165653Z__K2-P0-8192-CANARY	PASS	fit	bounded_profiler_canary
+2026-08-11T16:58:34.684392+00:00	K2-P0-8192	P0-8192	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165737Z__K2-P0-8192	PASS	fit	formal
+2026-08-11T16:59:58.088432+00:00	K3-P1-28672-CANARY	P1-28672	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165834Z__K3-P1-28672-CANARY	PASS	held-out	bounded_profiler_canary
+2026-08-11T17:01:34.379859+00:00	K3-P1-28672	P1-28672	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T165958Z__K3-P1-28672	PASS	held-out	formal
+2026-08-11T17:02:03.416022+00:00	K4-DEC0-512-CANARY	DEC0-512	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T170134Z__K4-DEC0-512-CANARY	PASS	fit	bounded_profiler_canary
+2026-08-11T17:03:22.636523+00:00	K4-DEC0-512	DEC0-512	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T170203Z__K4-DEC0-512	PASS	fit	formal
+2026-08-11T17:03:52.691876+00:00	K5-DEC1-1024-CANARY	DEC1-1024	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T170322Z__K5-DEC1-1024-CANARY	PASS	held-out	bounded_profiler_canary
+2026-08-11T17:05:23.168284+00:00	K5-DEC1-1024	DEC1-1024	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T170352Z__K5-DEC1-1024	PASS	held-out	formal

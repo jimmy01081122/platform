@@ -1,0 +1,11 @@
+{
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r2-20260728",
+  "ledger_sha256": "a90b7e0f8717b129e178d50593ad4b24e88cf723b7f658812ae1b398cdf4a389",
+  "member_count": 41,
+  "verdict": "GO",
+  "blockers": [],
+  "claim_boundary": "CPU_SYNTHETIC_REPLAY single-discrete-GPU timed-service, contention, checkpoint and provenance implementation only.",
+  "authorized_next_stage": "No promotion unless all three roles return GO with empty blockers on the identical ledger.",
+  "gpu_authority": "NONE"
+}

@@ -1,0 +1,83 @@
+schema_version: executable-moe-benchmark-v1
+config_revision: m0-tiny-qwen2moe-v1.4.0
+evidence_scope:
+  tier: M0
+  purpose: pipeline_and_correctness_only
+  model_is_random_tiny: true
+  prohibit_performance_conclusion: true
+  prohibit_quality_or_generalization_conclusion: true
+model:
+  registry_key: tiny_random_qwen2moe_m0
+  repo_id: hf-internal-testing/tiny-random-Qwen2MoeForCausalLM
+  revision: f736f270816032b3c721f7422c62dea1381f49d7
+  snapshot_path: models/snapshots/hf-internal-testing--tiny-random-Qwen2MoeForCausalLM/f736f270816032b3c721f7422c62dea1381f49d7
+  architecture: Qwen2MoeForCausalLM
+  local_files_only: true
+  trust_remote_code: false
+  dtype: float32
+  expected_num_layers: 2
+  expected_num_experts: 4
+  expected_top_k: 2
+  fused_expert_compatibility:
+    adapter_revision: qwen2moe-fused-to-modulelist-v1
+    required_for_transformers: 4.53.2
+    gate_up_order: [gate_proj, up_proj]
+    verify_exact_tensor_copy: true
+runtime:
+  execution_mode: gpu
+  preferred_device: cuda
+  preferred_gpu: NVIDIA GeForce RTX 3050
+  allow_cpu_fallback_on_cuda_oom: false
+  seed: 20260718
+  deterministic_algorithms: true
+  cublas_workspace_config: ":4096:8"
+  hf_home: models/hf_cache
+dataset:
+  manifest: configs/test_suites/sample_manifest_v1.jsonl
+  manifest_sha256: 4de9eda6a8eabb5e49c897563033e2fa9d9a8b62db7b81790bb9a4c871f5621e
+  suite_revision: v1.4.0
+  split: smoke
+  benchmarks:
+    gsm8k: {benchmark_id: gsm8k, suite_class: T1, task_id: T1, measured_samples: 4}
+    mmlu: {benchmark_id: mmlu, suite_class: T2, task_id: T2, measured_samples: 4}
+  warmup:
+    samples_per_benchmark: 1
+    policy: repeat_first_measured_sample
+generation:
+  do_sample: false
+  seed: 20260718
+  max_new_tokens: 8
+  use_cache: true
+  repetitions: 1
+passes:
+  P0:
+    name: clean
+    hooks: prohibited
+    purpose: vertical_smoke_latency
+  P2:
+    name: routing
+    hook_suffix: .mlp.gate
+    semantics: reconstructed_topk_from_gate_logits
+    actual_dispatch_verified: false
+    drop_overflow_unavailable: true
+    capture: [layer, token_position, phase, request_id, top_k_experts, router_logits, router_scores, reconstructed_topk_counts]
+  P3:
+    name: memory
+    capture: [allocator_snapshot, peak_allocated, peak_reserved, vram_before_after, nvidia_smi_native]
+statistics:
+  status: insufficient_for_formal_statistics
+  warmups_per_benchmark: 1
+  repetitions: 1
+output:
+  root: artifacts/m0_benchmark_smoke
+  native_jsonl_per_pass: true
+  checksum_algorithm: sha256
+cross_pass:
+  require_identical_input_token_ids: true
+  require_identical_prompt_sample_model_identity: true
+  require_identical_weights_tokenizer_revisions: true
+  require_identical_snapshot_hash: true
+  require_identical_effective_generation_config_hash: true
+  require_identical_output_token_ids: true
+  require_identical_output_hash: true
+  mismatch_policy: fail

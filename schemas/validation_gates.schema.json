@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "validation_gates.schema.json",
+  "title": "Calibrated Backend Validation Gates",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "domain_rule",
+    "aggregate_mape",
+    "individual_point",
+    "promotion_requirements"
+  ],
+  "properties": {
+    "schema_version": {"const": "validation-gates-v1"},
+    "status": {"enum": ["target_not_yet_demonstrated", "partial", "passed", "failed"]},
+    "domain_rule": {"type": "string"},
+    "aggregate_mape": {
+      "type": "object",
+      "required": ["component_latency", "pcie_transfer_latency", "tpot", "throughput"],
+      "additionalProperties": false,
+      "properties": {
+        "component_latency": {"$ref": "#/definitions/mapeGate"},
+        "pcie_transfer_latency": {"$ref": "#/definitions/mapeGate"},
+        "tpot": {"$ref": "#/definitions/mapeGate"},
+        "throughput": {"$ref": "#/definitions/mapeGate"}
+      }
+    },
+    "individual_point": {
+      "type": "object",
+      "required": ["maximum_relative_error_percent", "on_exceed"],
+      "properties": {
+        "maximum_relative_error_percent": {"type": "number", "minimum": 0, "maximum": 100},
+        "on_exceed": {
+          "type": "array",
+          "items": {"enum": ["retain", "analyze", "restrict-domain", "do-not-hide"]},
+          "minItems": 4,
+          "uniqueItems": true
+        }
+      }
+    },
+    "non_absolute": {"type": "object"},
+    "promotion_requirements": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "definitions": {
+    "mapeGate": {
+      "type": "object",
+      "required": ["maximum_percent", "split", "required_evidence"],
+      "properties": {
+        "maximum_percent": {"type": "number", "minimum": 0, "maximum": 100},
+        "split": {"enum": ["validation", "holdout_workload", "holdout_platform"]},
+        "required_evidence": {
+          "type": "array",
+          "items": {"$ref": "evidence.schema.json"},
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

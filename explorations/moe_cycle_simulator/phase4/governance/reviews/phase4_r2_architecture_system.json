@@ -1,0 +1,19 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r2-20260728",
+  "ledger_sha256": "a90b7e0f8717b129e178d50593ad4b24e88cf723b7f658812ae1b398cdf4a389",
+  "member_count": 41,
+  "exact_set_verified": true,
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "ARCH-P4-R2-B1",
+      "finding": "trace_name() serializes every non-kStart TraceKind value as COMPLETE, so an invalid enum can preserve the checkpoint preimage.",
+      "evidence": "Independent negative probe changed a terminal completion trace kind to static_cast<TraceKind>(99); restore accepted it without a digest update.",
+      "required_fix": "Use an exhaustive kStart/kComplete switch with fail-closed default and add in-memory plus rehashed-wire invalid TraceKind tests."
+    }
+  ],
+  "claim_boundary": "CPU-synthetic single-discrete-GPU timed-service, contention and checkpoint replay only; not GPU, calibration, production-scale, model, routing/residency, multi-GPU or UMA evidence.",
+  "authorized_next_stage": "CPU-only correction of ARCH-P4-R2-B1 followed by a fresh run, candidate ledger and three-role same-hash review.",
+  "gpu_authority": "NONE"
+}

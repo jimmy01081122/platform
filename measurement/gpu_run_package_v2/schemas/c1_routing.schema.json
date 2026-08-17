@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c1_routing.schema.json",
+  "type": "object",
+  "required": ["schema_version", "event_key", "execution_alignment_key", "request_id", "phase", "call_index", "generation_step", "input_sequence_length", "token_index", "global_token_position", "layer_id", "router_module", "selected_experts", "top_k", "actual_dispatch", "actual_dispatch_verified", "router_logits", "routing_weights", "gate_dtype", "generation_input_token_count", "generation_output_token_count", "unavailable_reasons"],
+  "properties": {
+    "schema_version": {"const": "c1-routing-event-v1"},
+    "event_key": {"$ref": "#/$defs/hash"},
+    "execution_alignment_key": {"$ref": "#/$defs/hash"},
+    "request_id": {"type": "string", "minLength": 1},
+    "phase": {"enum": ["prefill", "decode"]},
+    "call_index": {"type": "integer", "minimum": 0},
+    "generation_step": {"type": "integer", "minimum": 0},
+    "input_sequence_length": {"type": "integer", "minimum": 1},
+    "token_index": {"type": "integer", "minimum": 0},
+    "global_token_position": {"type": "integer", "minimum": 0},
+    "layer_id": {"type": "integer", "minimum": 0, "maximum": 23},
+    "router_module": {"type": "string", "minLength": 1},
+    "selected_experts": {"type": "array", "minItems": 8, "maxItems": 8, "uniqueItems": true, "items": {"type": "integer", "minimum": 0, "maximum": 31}},
+    "top_k": {"const": 8},
+    "routing_weights": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"type": "number", "minimum": 0, "maximum": 1}},
+    "gate_dtype": {"enum": ["bf16", "fp16", "fp32", "unknown"]},
+    "router_logits": {"type": "array", "minItems": 32, "maxItems": 32, "items": {"type": "number", "minimum": -1.7976931348623157e308, "maximum": 1.7976931348623157e308}},
+    "generation_input_token_count": {"type": "integer", "minimum": 1},
+    "generation_output_token_count": {"type": "integer", "minimum": 1},
+    "unavailable_reasons": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}},
+    "actual_dispatch": {"const": true},
+    "actual_dispatch_verified": {"const": true},
+    "dispatch_index": {"type": "integer", "minimum": 0},
+    "capture_overhead_total_ns": {"type": "integer", "minimum": 0}
+  },
+  "allOf": [
+    {"if": {"properties": {"phase": {"const": "prefill"}}}, "then": {"properties": {"call_index": {"const": 0}}}},
+    {"if": {"properties": {"phase": {"const": "decode"}}}, "then": {"properties": {"call_index": {"minimum": 1}}}}
+  ],
+  "$defs": {"hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+  "additionalProperties": true
+}

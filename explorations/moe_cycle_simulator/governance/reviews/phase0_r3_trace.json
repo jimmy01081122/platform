@@ -1,0 +1,11 @@
+{
+  "schema_version": "moe-simulator-review-result-v1",
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-cycle-simulator-phase0-amendment2-r3-20260726",
+  "ledger_sha256": "4a53c3d2fbbab330151679ea2b831b91b404239b88db7edc616f2900d61544bc",
+  "verdict": "GO",
+  "blockers": [],
+  "reviewer_id": "trace_phase0_audit",
+  "scope": "CPU/mock Phase 1 entry only",
+  "gpu_used": false
+}

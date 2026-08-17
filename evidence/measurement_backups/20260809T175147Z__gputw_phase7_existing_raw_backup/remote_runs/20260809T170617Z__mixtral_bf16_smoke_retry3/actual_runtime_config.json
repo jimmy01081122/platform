@@ -1,0 +1,20 @@
+{
+  "cache_config.cache_dtype": "bfloat16",
+  "cache_config.cpu_offload_gb": null,
+  "cache_config.gpu_memory_utilization": 0.97,
+  "cache_config.swap_space": null,
+  "compilation_config.level": null,
+  "load_config.ignore_patterns": "['consolidated.*.pt']",
+  "load_config.load_format": "safetensors",
+  "model_config.dtype": "torch.bfloat16",
+  "model_config.max_model_len": 32768,
+  "model_config.model": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "model_config.quantization": null,
+  "model_config.tokenizer": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "parallel_config.data_parallel_size": 1,
+  "parallel_config.enable_expert_parallel": false,
+  "parallel_config.pipeline_parallel_size": 1,
+  "parallel_config.tensor_parallel_size": 1,
+  "scheduler_config.max_num_batched_tokens": 256,
+  "scheduler_config.max_num_seqs": 1
+}

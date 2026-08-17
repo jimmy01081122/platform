@@ -1,0 +1,286 @@
+{
+  "actual_expert_compute": true,
+  "actual_expert_compute_end_monotonic_ns": 3770518026494398,
+  "actual_expert_compute_start_monotonic_ns": 3770517951243439,
+  "all_policy_h2d_complete_monotonic_ns": 3770517951217750,
+  "call_index": 1,
+  "claim_boundary": "Compute-integrated policy replay using actual layer-expert parameter slices and actual FusedMoE compute; not runtime-native residency.",
+  "dependency_gate": "PASS",
+  "expert_object_bytes": 352321536,
+  "host_snapshot_setup_d2h_bytes": 1056964608,
+  "host_snapshot_setup_excluded_from_demand_path": true,
+  "immutable_objects": true,
+  "layer_name": "model.layers.0.block_sparse_moe.experts",
+  "parameter_objects": [
+    {
+      "bytes_per_expert_slice": 234881024,
+      "dtype": "torch.bfloat16",
+      "expert_slice_shape": [
+        28672,
+        4096
+      ],
+      "name": "w13_weight"
+    },
+    {
+      "bytes_per_expert_slice": 117440512,
+      "dtype": "torch.bfloat16",
+      "expert_slice_shape": [
+        4096,
+        14336
+      ],
+      "name": "w2_weight"
+    }
+  ],
+  "policies": {
+    "FIFO": {
+      "capacity_objects": 2,
+      "demand_load_count": 3,
+      "events": [
+        {
+          "cache_after": [
+            1
+          ],
+          "cache_before": [],
+          "cuda_elapsed_ms": 12.495519638061523,
+          "d2h_writeback_bytes": 0,
+          "decision_monotonic_ns": 3770517913622739,
+          "event": "DEMAND_LOAD",
+          "evicted_expert_id": null,
+          "eviction_semantics": null,
+          "expert_id": 1,
+          "h2d_bytes": 352321536,
+          "h2d_complete_monotonic_ns": 3770517926137714,
+          "h2d_start_monotonic_ns": 3770517913627227,
+          "sequence_index": 0
+        },
+        {
+          "cache_after": [
+            1,
+            0
+          ],
+          "cache_before": [
+            1
+          ],
+          "cuda_elapsed_ms": 12.494815826416016,
+          "d2h_writeback_bytes": 0,
+          "decision_monotonic_ns": 3770517926141191,
+          "event": "DEMAND_LOAD",
+          "evicted_expert_id": null,
+          "eviction_semantics": null,
+          "expert_id": 0,
+          "h2d_bytes": 352321536,
+          "h2d_complete_monotonic_ns": 3770517938655776,
+          "h2d_start_monotonic_ns": 3770517926145880,
+          "sequence_index": 1
+        },
+        {
+          "cache_after": [
+            1,
+            0
+          ],
+          "cache_before": [
+            1,
+            0
+          ],
+          "decision_monotonic_ns": 3770517938659493,
+          "event": "HIT",
+          "expert_id": 1,
+          "h2d_bytes": 0,
+          "sequence_index": 2
+        },
+        {
+          "cache_after": [
+            0,
+            2
+          ],
+          "cache_before": [
+            1,
+            0
+          ],
+          "cuda_elapsed_ms": 12.536383628845215,
+          "d2h_writeback_bytes": 0,
+          "decision_monotonic_ns": 3770517938660845,
+          "event": "DEMAND_LOAD",
+          "evicted_expert_id": 1,
+          "eviction_semantics": "IMMUTABLE_DISCARD",
+          "expert_id": 2,
+          "h2d_bytes": 352321536,
+          "h2d_complete_monotonic_ns": 3770517951217750,
+          "h2d_start_monotonic_ns": 3770517938665604,
+          "sequence_index": 3
+        },
+        {
+          "cache_after": [
+            0,
+            2
+          ],
+          "cache_before": [
+            0,
+            2
+          ],
+          "decision_monotonic_ns": 3770517951221277,
+          "event": "HIT",
+          "expert_id": 0,
+          "h2d_bytes": 0,
+          "sequence_index": 4
+        }
+      ],
+      "evictions": [
+        {
+          "d2h_writeback_bytes": 0,
+          "expert_id": 1,
+          "semantics": "IMMUTABLE_DISCARD"
+        }
+      ],
+      "h2d_bytes": 1056964608,
+      "hit_count": 2,
+      "request_sequence": [
+        1,
+        0,
+        1,
+        2,
+        0
+      ],
+      "terminal_cache": [
+        0,
+        2
+      ]
+    },
+    "LRU": {
+      "capacity_objects": 2,
+      "demand_load_count": 4,
+      "events": [
+        {
+          "cache_after": [
+            1
+          ],
+          "cache_before": [],
+          "cuda_elapsed_ms": 12.929471969604492,
+          "d2h_writeback_bytes": 0,
+          "decision_monotonic_ns": 3770517862949834,
+          "event": "DEMAND_LOAD",
+          "evicted_expert_id": null,
+          "eviction_semantics": null,
+          "expert_id": 1,
+          "h2d_bytes": 352321536,
+          "h2d_complete_monotonic_ns": 3770517875964547,
+          "h2d_start_monotonic_ns": 3770517862963049,
+          "sequence_index": 0
+        },
+        {
+          "cache_after": [
+            1,
+            0
+          ],
+          "cache_before": [
+            1
+          ],
+          "cuda_elapsed_ms": 12.512384414672852,
+          "d2h_writeback_bytes": 0,
+          "decision_monotonic_ns": 3770517875976289,
+          "event": "DEMAND_LOAD",
+          "evicted_expert_id": null,
+          "eviction_semantics": null,
+          "expert_id": 0,
+          "h2d_bytes": 352321536,
+          "h2d_complete_monotonic_ns": 3770517888517154,
+          "h2d_start_monotonic_ns": 3770517875984545,
+          "sequence_index": 1
+        },
+        {
+          "cache_after": [
+            0,
+            1
+          ],
+          "cache_before": [
+            1,
+            0
+          ],
+          "decision_monotonic_ns": 3770517888522254,
+          "event": "HIT",
+          "expert_id": 1,
+          "h2d_bytes": 0,
+          "sequence_index": 2
+        },
+        {
+          "cache_after": [
+            1,
+            2
+          ],
+          "cache_before": [
+            0,
+            1
+          ],
+          "cuda_elapsed_ms": 12.545920372009277,
+          "d2h_writeback_bytes": 0,
+          "decision_monotonic_ns": 3770517888525309,
+          "event": "DEMAND_LOAD",
+          "evicted_expert_id": 0,
+          "eviction_semantics": "IMMUTABLE_DISCARD",
+          "expert_id": 2,
+          "h2d_bytes": 352321536,
+          "h2d_complete_monotonic_ns": 3770517901093837,
+          "h2d_start_monotonic_ns": 3770517888531070,
+          "sequence_index": 3
+        },
+        {
+          "cache_after": [
+            2,
+            0
+          ],
+          "cache_before": [
+            1,
+            2
+          ],
+          "cuda_elapsed_ms": 12.495583534240723,
+          "d2h_writeback_bytes": 0,
+          "decision_monotonic_ns": 3770517901097724,
+          "event": "DEMAND_LOAD",
+          "evicted_expert_id": 1,
+          "eviction_semantics": "IMMUTABLE_DISCARD",
+          "expert_id": 0,
+          "h2d_bytes": 352321536,
+          "h2d_complete_monotonic_ns": 3770517913612880,
+          "h2d_start_monotonic_ns": 3770517901102804,
+          "sequence_index": 4
+        }
+      ],
+      "evictions": [
+        {
+          "d2h_writeback_bytes": 0,
+          "expert_id": 0,
+          "semantics": "IMMUTABLE_DISCARD"
+        },
+        {
+          "d2h_writeback_bytes": 0,
+          "expert_id": 1,
+          "semantics": "IMMUTABLE_DISCARD"
+        }
+      ],
+      "h2d_bytes": 1409286144,
+      "hit_count": 1,
+      "request_sequence": [
+        1,
+        0,
+        1,
+        2,
+        0
+      ],
+      "terminal_cache": [
+        2,
+        0
+      ]
+    }
+  },
+  "route_decision_count": 512,
+  "schema_version": "phase7-off-e-pr1-demand-load-replay-v1",
+  "selected_expert_ids": [
+    1,
+    0,
+    2
+  ],
+  "selection_basis": "three highest-frequency actual top-2 router decisions",
+  "setup_end_monotonic_ns": 3770517862944995,
+  "setup_start_monotonic_ns": 3770516660101038,
+  "total_d2h_writeback_bytes": 0
+}

@@ -1,0 +1,28 @@
+{
+  "chat_template_used": true,
+  "expected_input_token_count": 20,
+  "expected_input_token_ids": [
+    1,
+    733,
+    16289,
+    28793,
+    26307,
+    395,
+    865,
+    272,
+    1474,
+    28747,
+    28705,
+    28750,
+    648,
+    28705,
+    28750,
+    327,
+    733,
+    28748,
+    16289,
+    28793
+  ],
+  "rendered_prompt": "<s> [INST] Answer with only the number: 2 + 2 = [/INST]",
+  "user_prompt": "Answer with only the number: 2 + 2 ="
+}

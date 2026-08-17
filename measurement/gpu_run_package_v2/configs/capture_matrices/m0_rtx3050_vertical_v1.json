@@ -1,0 +1,146 @@
+{
+  "schema_version": "benchmark-capture-matrix-v1",
+  "matrix_revision": "m0-rtx3050-vertical-v1",
+  "frozen": true,
+  "session_id": "m0-rtx3050-vertical-v1",
+  "repetitions": 1,
+  "suite": {
+    "suite_id": "moe-trace-suite",
+    "suite_revision": "v1.4.0",
+    "frozen_inventory": "configs/test_suites/frozen/v1.4.0/inventory.json",
+    "frozen_manifest_sha256": "4de9eda6a8eabb5e49c897563033e2fa9d9a8b62db7b81790bb9a4c871f5621e",
+    "smoke_sample_count": 8
+  },
+  "gpus": [
+    {
+      "gpu_id": "rtx3050-6gb-local-0",
+      "profile_id": "rtx3050_6gb",
+      "exact_sku": "NVIDIA GeForce RTX 3050",
+      "vram_gib": 6,
+      "trust_role": "local_development_only",
+      "required_preflight": "online",
+      "offline_preflight_may_claim_measurement": false
+    }
+  ],
+  "models": [
+    {
+      "model_id": "hf-internal-testing/tiny-random-Qwen2MoeForCausalLM",
+      "model_revision": "f736f270816032b3c721f7422c62dea1381f49d7",
+      "weights_revision": "f736f270816032b3c721f7422c62dea1381f49d7",
+      "tokenizer_revision": "f736f270816032b3c721f7422c62dea1381f49d7",
+      "tier": "M0",
+      "random_tiny_model": true
+    }
+  ],
+  "benchmarks": [
+    {
+      "suite_id": "moe-trace-suite",
+      "benchmark_id": "gsm8k",
+      "suite_class": "T1",
+      "samples": [
+        {
+          "sample_id": "t1-4df937a33adfa6187608",
+          "raw_sample_hash": "e6b60646aaea3519104fa4cad7d14819ac45a8165231f608d7882bf9056d5516"
+        },
+        {
+          "sample_id": "t1-58864a0b9eed701526b5",
+          "raw_sample_hash": "db3f1b79ca67b08bd8a1925078cf8711a44a9f5fe434d563399369621e0a835c"
+        },
+        {
+          "sample_id": "t1-c0e22050fcbd6a5ed55b",
+          "raw_sample_hash": "3278d07b41f48fd2ec6e5333316b4ccddfed0dac177bfa431a9efed191a31410"
+        },
+        {
+          "sample_id": "t1-d9ad4a94109cc13bdb0b",
+          "raw_sample_hash": "655b083e21c6c9737a43d47dc11d29fa5bfd5a23132559cef07fb86b15a83ee9"
+        }
+      ]
+    },
+    {
+      "suite_id": "moe-trace-suite",
+      "benchmark_id": "mmlu",
+      "suite_class": "T2",
+      "samples": [
+        {
+          "sample_id": "t2-084ab2d385e0e5297285",
+          "raw_sample_hash": "d4a124760c810d6a9b5d8b8cec6795b555935e4941557cd8cafdc74815957914"
+        },
+        {
+          "sample_id": "t2-5e0700632febaa26c4b9",
+          "raw_sample_hash": "45ba03a113fb7f2990bb554d010e367f8cfee60a8c7e2e5276fda13ae7a68987"
+        },
+        {
+          "sample_id": "t2-6e0dd2d0fe60bd5bf8cc",
+          "raw_sample_hash": "6f4986d498f9f96dc73f3719ff1b11527d0f6b19d9663d9d98b451d7c3812904"
+        },
+        {
+          "sample_id": "t2-cf4c792ab9fb3fe03b37",
+          "raw_sample_hash": "a7b2d30071ba8b75af4c14d8050bbd1e1c8119daa178d5646f1218c0e9e4caec"
+        }
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "configuration_id": "m0-greedy-8-tokens",
+      "generation_config": {
+        "do_sample": false,
+        "max_new_tokens": 8,
+        "repetitions": 1,
+        "seed": 20260718,
+        "use_cache": true
+      }
+    }
+  ],
+  "passes": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "pass_requirements": {
+    "P0": {
+      "requirement": "clean baseline without hooks",
+      "mandatory_gate": true
+    },
+    "P1": {
+      "requirement": "timeline profiler with instrumented latency kept separate from P0",
+      "mandatory_gate": false
+    },
+    "P2": {
+      "requirement": "per-layer router decisions and dispatch counts",
+      "mandatory_gate": true
+    },
+    "P3": {
+      "requirement": "allocator and memory-transfer evidence",
+      "mandatory_gate": true
+    },
+    "P4": {
+      "requirement": "hardware counters or explicit unsupported capability evidence",
+      "mandatory_gate": false
+    },
+    "P5": {
+      "requirement": "GPU and host telemetry with sampling sufficiency label",
+      "mandatory_gate": false
+    },
+    "P6": {
+      "requirement": "optional detailed simulation or explicit optional-not-run manifest",
+      "mandatory_gate": false
+    }
+  },
+  "evidence_status": {
+    "matrix_purpose": "capture planning only",
+    "source_suite_revision": "v1.4.0",
+    "external_existing_m0_evidence_revision": "historical v1.2.0",
+    "plan_is_capture_complete": false,
+    "plan_is_measurement_evidence": false,
+    "measured_artifact_is_separate": true,
+    "measured_artifact_path": "artifacts/m0_benchmark_smoke",
+    "measured_artifact_scope": "M0 pipeline and correctness only",
+    "prohibit_performance_conclusion": true,
+    "prohibit_quality_or_generalization_conclusion": true
+  }
+}

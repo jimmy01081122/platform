@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator-phase7-gputw-provider-adaptation-v1.schema.json",
+  "title": "Phase 7 GPUtw.ai provider adaptation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "adaptation",
+    "scope",
+    "state",
+    "provider_semantics",
+    "owner_execution_envelope",
+    "identity_model",
+    "host_key_governance",
+    "storage_semantics",
+    "runtime_image_identity",
+    "lifecycle_and_billing_authority",
+    "cost_control",
+    "canonical_m0",
+    "remaining_live_fields",
+    "validation_results",
+    "next_legal_action",
+    "forbidden_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "moe-simulator-phase7-gputw-provider-adaptation-v1"
+    },
+    "adaptation": {
+      "type": "object",
+      "required": ["name", "revision", "status", "review_status", "base_r12_r5"],
+      "properties": {
+        "name": {"const": "GPUtw Provider Adaptation"},
+        "revision": {"const": "R1"},
+        "status": {"const": "CPU_CONTRACT_IMPLEMENTED"},
+        "review_status": {"const": "PENDING"},
+        "base_r12_r5": {
+          "type": "object",
+          "required": [
+            "frozen_candidate_commit",
+            "review_closure_commit",
+            "review_verdict",
+            "frozen_candidate_immutable",
+            "historical_evidence_immutable"
+          ],
+          "properties": {
+            "frozen_candidate_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "review_closure_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "review_verdict": {"const": "GO/GO/GO"},
+            "frozen_candidate_immutable": {"const": true},
+            "historical_evidence_immutable": {"const": true}
+          }
+        }
+      }
+    },
+    "scope": {"type": "object"},
+    "state": {"type": "object"},
+    "provider_semantics": {"type": "object"},
+    "owner_execution_envelope": {"type": "object"},
+    "identity_model": {"type": "object"},
+    "host_key_governance": {"type": "object"},
+    "storage_semantics": {"type": "object"},
+    "runtime_image_identity": {"type": "object"},
+    "lifecycle_and_billing_authority": {"type": "object"},
+    "cost_control": {"type": "object"},
+    "canonical_m0": {"type": "object"},
+    "remaining_live_fields": {"type": "array", "items": {"type": "string"}},
+    "validation_results": {"type": "object"},
+    "next_legal_action": {"type": "object"},
+    "forbidden_actions": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "adoption_allowed": true,
+  "checks": [
+    {
+      "critical": true,
+      "expected": "PASS/complete",
+      "name": "FITCTX24576-CLEAN-V1.status",
+      "observed": {
+        "finished_at_utc": "2026-08-11T17:51:29Z",
+        "logical_request_id": "request-0001",
+        "measured_count": 3,
+        "phase": "complete",
+        "request_count_per_sequence": null,
+        "request_plan_id": null,
+        "sequence_count": null,
+        "status": "PASS",
+        "total_completed_requests": 4,
+        "warmup_count": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "frozen Mixtral revision and 19 shards",
+      "name": "FITCTX24576-CLEAN-V1.model_identity",
+      "observed": {
+        "identity_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "manifest_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "shards": 19
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "canonical CLEAN/BF16/no-offload forced-length",
+      "name": "FITCTX24576-CLEAN-V1.runtime_contract",
+      "observed": {
+        "cpu_offload_gb": 0,
+        "quantization": null,
+        "runtime_class": "CLEAN",
+        "sampling_mode": "FORCED_LENGTH_CONTROLLED"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive and total <= 32768",
+      "name": "FITCTX24576-CLEAN-V1.length_envelope",
+      "observed": {
+        "input": 24576,
+        "output": 32
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "rows = warmup + measured = completed",
+      "name": "FITCTX24576-CLEAN-V1.request_count",
+      "observed": {
+        "completed": 4,
+        "measured": 3,
+        "rows": 4,
+        "warmup": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all token counts/IDs, finish reason, sampling and durations valid",
+      "name": "FITCTX24576-CLEAN-V1.request_semantics",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=3 measured rows",
+      "name": "FITCTX24576-CLEAN-V1.measured_repetitions",
+      "observed": 3,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CUDA allocator and process-aware snapshots present",
+      "name": "FITCTX24576-CLEAN-V1.memory_capture",
+      "observed": {
+        "bad": [],
+        "rows": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "required raw files present",
+      "name": "FITCTX24576-CLEAN-V1.raw_completeness",
+      "observed": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T175018Z__FITCTX24576-CLEAN-V1",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS/complete",
+      "name": "FITCTX31744-CLEAN-V1.status",
+      "observed": {
+        "finished_at_utc": "2026-08-11T17:52:57Z",
+        "logical_request_id": "request-0001",
+        "measured_count": 3,
+        "phase": "complete",
+        "request_count_per_sequence": null,
+        "request_plan_id": null,
+        "sequence_count": null,
+        "status": "PASS",
+        "total_completed_requests": 4,
+        "warmup_count": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "frozen Mixtral revision and 19 shards",
+      "name": "FITCTX31744-CLEAN-V1.model_identity",
+      "observed": {
+        "identity_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "manifest_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "shards": 19
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "canonical CLEAN/BF16/no-offload forced-length",
+      "name": "FITCTX31744-CLEAN-V1.runtime_contract",
+      "observed": {
+        "cpu_offload_gb": 0,
+        "quantization": null,
+        "runtime_class": "CLEAN",
+        "sampling_mode": "FORCED_LENGTH_CONTROLLED"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive and total <= 32768",
+      "name": "FITCTX31744-CLEAN-V1.length_envelope",
+      "observed": {
+        "input": 31744,
+        "output": 32
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "rows = warmup + measured = completed",
+      "name": "FITCTX31744-CLEAN-V1.request_count",
+      "observed": {
+        "completed": 4,
+        "measured": 3,
+        "rows": 4,
+        "warmup": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all token counts/IDs, finish reason, sampling and durations valid",
+      "name": "FITCTX31744-CLEAN-V1.request_semantics",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=3 measured rows",
+      "name": "FITCTX31744-CLEAN-V1.measured_repetitions",
+      "observed": 3,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CUDA allocator and process-aware snapshots present",
+      "name": "FITCTX31744-CLEAN-V1.memory_capture",
+      "observed": {
+        "bad": [],
+        "rows": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "required raw files present",
+      "name": "FITCTX31744-CLEAN-V1.raw_completeness",
+      "observed": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T175132Z__FITCTX31744-CLEAN-V1",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "larger context must not be implausibly faster than adjacent anchor",
+      "name": "model_run.cross_anchor_physical_sanity",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for envelope review; no monotonic fit assumption forced",
+      "name": "model_run.cross_anchor_latency",
+      "observed": [
+        {
+          "experiment_id": "FITCTX24576-CLEAN-V1",
+          "input_tokens": 24576,
+          "median_wall_duration_ns": 11596588528.0,
+          "output_tokens": 32
+        },
+        {
+          "experiment_id": "FITCTX31744-CLEAN-V1",
+          "input_tokens": 31744,
+          "median_wall_duration_ns": 15107868750.0,
+          "output_tokens": 32
+        }
+      ],
+      "status": "WARNING"
+    }
+  ],
+  "critical_failure_count": 0,
+  "critical_failures": [],
+  "raw_unchanged": true,
+  "reviewer_tool_revision": "preliminary-review-v4",
+  "schema_version": "phase7-preliminary-measurement-review-v2",
+  "status": "PASS",
+  "warning_count": 1,
+  "warnings": [
+    {
+      "critical": false,
+      "expected": "reported for envelope review; no monotonic fit assumption forced",
+      "name": "model_run.cross_anchor_latency",
+      "observed": [
+        {
+          "experiment_id": "FITCTX24576-CLEAN-V1",
+          "input_tokens": 24576,
+          "median_wall_duration_ns": 11596588528.0,
+          "output_tokens": 32
+        },
+        {
+          "experiment_id": "FITCTX31744-CLEAN-V1",
+          "input_tokens": 31744,
+          "median_wall_duration_ns": 15107868750.0,
+          "output_tokens": 32
+        }
+      ],
+      "status": "WARNING"
+    }
+  ]
+}

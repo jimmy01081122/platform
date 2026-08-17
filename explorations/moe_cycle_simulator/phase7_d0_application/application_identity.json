@@ -1,0 +1,86 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-application-identity-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r1",
+  "identity_status": "FROZEN",
+  "repository_identity": {
+    "required_branch": "codex/c1-quality-contract-v2-20260718",
+    "base_commit": "a94f336ad57707c1eca0be10e3d6da257ff7fb46",
+    "base_tree": "2ab20af3291a9554ad2dae972b7f32891c29e7bc",
+    "r12_r5_review_closure": "87c8a866e44387100dadf9a087cf55a37c7cc9e0",
+    "gputw_provider_adaptation_review_closure": "a94f336ad57707c1eca0be10e3d6da257ff7fb46",
+    "gputw_provider_adaptation_aggregate": "explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/review_aggregate.json",
+    "gputw_provider_adaptation_verdict": "GO/GO/GO"
+  },
+  "provider_identity": {
+    "provider": "GPUtw.ai",
+    "environment_label": "Ubuntu 22.04 + CUDA 12",
+    "environment_label_semantics": "PROVIDER_UI_METADATA_ONLY"
+  },
+  "instance_identity": {
+    "instance_id": "7f9804d4-2dd0-4196-8215-9049a1d28942",
+    "selected_platform_candidate": "RTX PRO 6000 WS 96GB",
+    "gpu_count_owner_input": 1,
+    "instance_state": "D0_LIVE_FIELD_REQUIRED",
+    "exact_gpu_identity": "UNOBSERVED",
+    "vram": "UNOBSERVED",
+    "container_identity": "D0_LIVE_FIELD_REQUIRED"
+  },
+  "ssh_gateway_identity": {
+    "host": "ssh.gputw.ai",
+    "port": 2222,
+    "principal": "pod-7f9804d4-2dd0-4196-8215-9049a1d28942",
+    "canonical_target": "pod-7f9804d4-2dd0-4196-8215-9049a1d28942@ssh.gputw.ai",
+    "ip_only_identity": false
+  },
+  "client_authentication": {
+    "method": "SSH_PUBLIC_KEY",
+    "owner_key_registered": "OWNER_SUPPLIED_ALREADY_REGISTERED",
+    "provisioning_required": false,
+    "generate_key": false,
+    "upload_key": false,
+    "modify_provider_credentials": false,
+    "private_key_material": "FORBIDDEN_AND_NOT_RECORDED",
+    "credential_path": "EXTERNAL_RUNTIME_OPTION_ONLY"
+  },
+  "server_authentication": {
+    "gateway_endpoint": "[ssh.gputw.ai]:2222",
+    "key_type": "ssh-ed25519",
+    "trusted_fingerprint": "SHA256:NHS1jkKSV3aKwfQwgC1/wSJVlZkJuuG/AH3cUjAZGwU",
+    "host_key_blob_sha256": "3474b58e429257768ac1f430802d7fc12255959909bae1bf007ddc5230191b05",
+    "trust_provenance": "OFFICIAL_PROVIDER_CONFIRMATION",
+    "gateway_host_key_status": "TRUSTED_PINNED",
+    "known_hosts_logical_path": "phase7/application/known_hosts.gputw",
+    "known_hosts_actual_path": "explorations/moe_cycle_simulator/phase7_d0_application/known_hosts.gputw",
+    "known_hosts_sha256": "b19c0603ac7cc77fa91ba455734a8783f3502535e0fbe0918813f3d676aa6ec2"
+  },
+  "authority": {
+    "d0_application_instantiation": "AUTHORIZED_FOR_THIS_SESSION",
+    "d0_application": "READY_FOR_OWNER_REVIEW",
+    "d0_execution": "NOT_AUTHORIZED",
+    "ssh": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE",
+    "owner_approval_scope": "ONE_EXACT_D0_EXECUTION_ONLY"
+  },
+  "observation_identity_rule": {
+    "unresolved_statuses": [
+      "UNOBSERVED",
+      "D0_LIVE_FIELD_REQUIRED",
+      "NOT_YET_MEASURED"
+    ],
+    "observation_is_not_configuration_mutation": true,
+    "result_must_bind_application_identity": true,
+    "result_identity_field": "result_evidence_identity"
+  },
+  "change_requires_new_application_identity": [
+    "instance replacement or restart requiring revalidation",
+    "instance ID change",
+    "SSH gateway or principal change",
+    "trusted host key, provenance, known-hosts bytes or checksum change",
+    "template/image or runtime authority change",
+    "owner cost authority change",
+    "D0 timeout, SSH argv, remote payload, observation scope or executable binding change",
+    "authorization boundary change"
+  ]
+}

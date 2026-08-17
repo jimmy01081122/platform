@@ -1,0 +1,22 @@
+{
+  "schema_version": "phase7-gputw-d0-r3/reviewer-output/v1",
+  "role": "Architecture/System",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r3-0d05c23",
+  "reviewed_commit": "0d05c23d1fb78e852f8a404b5a61c9086863a18e",
+  "reviewed_tree": "433108ece0624443bb1f6c1f5c2b9ab6443a991a",
+  "reviewed_candidate_ledger_sha256": "df2f5ec6726e0b6df09ae27cbcc49f98e2596dcd060b827e04f61991bc4ee245",
+  "candidate_member_count": 22,
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-D0-R3-B1: approval reviewed_commit/tree are not compared to the reviewed same-hash target",
+    "ARCH-D0-R3-B2: D0 admission checks only 360 seconds rather than the frozen downstream reserve contract, and owner control-plane start is not cross-bound",
+    "ARCH-D0-R3-B3: the 300-second outer and 120-second inner timeout claims are not enforced as a total wall envelope",
+    "ARCH-D0-R3-B4: executable, known-hosts and agent-key validation are not closed against check/use replacement or alternate-agent-key selection"
+  ],
+  "positive_findings": [
+    "Clean archive validator and CPU regressions pass.",
+    "Fresh evidence root, one-shot use, active lease and descendant cleanup have meaningful CPU coverage.",
+    "R3 remains discovery-only, non-promotable and grants no live authority."
+  ],
+  "side_effects": false
+}

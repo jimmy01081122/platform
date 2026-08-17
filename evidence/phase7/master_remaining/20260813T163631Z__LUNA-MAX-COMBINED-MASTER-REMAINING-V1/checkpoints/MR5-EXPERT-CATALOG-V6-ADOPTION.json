@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR5-EXPERT-CATALOG-V6-ADOPTION",
+  "execution_ledger_sha256": "7c8821edb9a2b422156ce901c06963a8f2b136fc16f362ce3f95a402463b51bc",
+  "next_ready_gpu_unit": "OFF-E-RT0",
+  "remaining_ledger_sha256": "afce8d29d2063466c702b73f2d4aa6b245ca4feb30021d41d91bfa7956cce291",
+  "required_closed_count": 17,
+  "required_remaining_count": 269,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "source_raw_sha256": "732cf965376ae0bbc20750e71d9f60649e6331c9530359a3a32f52096e11898b",
+  "timestamp_utc": "2026-08-14T01:58:42Z"
+}

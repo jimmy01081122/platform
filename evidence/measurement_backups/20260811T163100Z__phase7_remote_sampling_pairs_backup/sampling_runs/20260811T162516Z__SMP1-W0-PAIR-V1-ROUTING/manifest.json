@@ -1,0 +1,40 @@
+{
+  "cpu_offload_gb": 0,
+  "created_at_utc": "2026-08-11T16:25:17Z",
+  "exact_output_required": false,
+  "experiment_id": "SMP1-W0-PAIR-V1-ROUTING",
+  "gpu_memory_utilization": 0.97,
+  "input_tokens_requested": null,
+  "max_num_batched_tokens": 256,
+  "max_num_seqs": 1,
+  "model_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "model_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "output_tokens_requested": 256,
+  "profiler_max_iterations": 96,
+  "prompt_file": {
+    "bytes": 452,
+    "encoding": "utf-8",
+    "sha256": "e2e56f77eccbe401a980cbd876a34535c619a34adb752c1ad7cf8b4d19b34279",
+    "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W0_arithmetic_reasoning.txt"
+  },
+  "quantization": null,
+  "request_plan": null,
+  "runtime_class": "ROUTING",
+  "sampling": {
+    "ignore_eos": false,
+    "max_tokens": 256,
+    "min_tokens": null,
+    "seed": 0,
+    "stop": [],
+    "temperature": 0.0,
+    "top_k": 0,
+    "top_p": 1.0
+  },
+  "sampling_mode": "NATURAL_EOS_CAPPED",
+  "sampling_pair_id": "SMP1-W0-PAIR-V1",
+  "sampling_pair_role": "instrumented",
+  "schema_version": "phase7-real-gpu-run-v1",
+  "swap_space": "not_passed_to_vllm_api",
+  "vault_hash_status": null
+}

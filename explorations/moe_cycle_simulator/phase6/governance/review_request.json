@@ -1,0 +1,44 @@
+{
+  "schema_version": "moe-simulator-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r4-20260729",
+  "ledger_path": "checksums.sha256",
+  "roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "allowed_verdicts": [
+    "GO",
+    "MODIFY",
+    "NO-GO"
+  ],
+  "promotion_rule": {
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "identical_ledger_sha256_required": true
+  },
+  "review_questions": [
+    "Is MultiDomainSchedulerV1 the only global scheduling and time authority?",
+    "Are directed links, clocks, queues, credits, resources and duplex groups explicit and hash-bound?",
+    "Are exact rational CDC and synthetic alignment semantics complete and non-hardware claims explicit?",
+    "Is capacity enforced separately per private VRAM and once for shared UMA aliases?",
+    "Are remote token assignments exactly dispatch-compute-return-combine while local assignments reject phantom traffic?",
+    "Are whole-expert replicate/move visibility, destination reservation and live pins fail closed?",
+    "Are queue, credit, byte, routing and assignment conservation enforced?",
+    "Does UMA forbid phantom P2P and enforce immutable objects plus monotonic release/read versions?",
+    "Do canonical digests count and tag every variable collection and optional field?",
+    "Does live checkpoint bind all topology/program/state and accept only exact reachable-prefix restore?",
+    "Does admission prevalidate every fallible transition and remain byte-identical after a rejected admission?",
+    "Are Phase5 CompiledAction IDs recomputed from their semantic preimages and exact plan digest before membership is accepted?",
+    "Are ExpertKey and immutable content identity bound to the actual resident or transferred object?",
+    "Does every route require request_id, token_index, layer_index and priority 100, bind selected experts to the route layer, and preserve the same identity across dispatch/compute/return/combine?",
+    "Are empty request_id, UINT64_MAX token_index and UINT32_MAX layer_index rejected as the frozen missing-value sentinels?",
+    "Are duplicate in-flight destination reservations and same-object UMA overlaps prevented without double-reserving capacity?",
+    "Are ACK_OR_CREDIT events distinct at frozen priority 40 and crossing operations forbidden from reusing priority 50?",
+    "Are inclusive alignment ranges enforced at every start, visibility, acknowledge, next-time and checkpoint boundary?",
+    "Does the fresh R4 run bind the exact source root and pass Release plus native sanitizer regressions?",
+    "Does the candidate exact-set include every nested ledger while excluding only its active ledger and current review results?",
+    "Are measured hardware, Mixtral, GPU, calibration, DSE and production-scale claims absent?"
+  ],
+  "review_results_are_not_part_of_reviewed_source": true
+}

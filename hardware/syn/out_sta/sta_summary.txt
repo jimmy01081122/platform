@@ -1,0 +1,31 @@
+== Real gate-level STA-lite (Nangate45 typical, cell-only) ==
+ NE  TS  delay_ns  Fmax_MHz   area_um2 >=200MHz
+  8   8     3.144    318.04     5637.6      yes
+  8  16     5.117    195.43     7565.0       no
+  8  32     7.201    138.86    11157.4       no
+ 16   8     6.600    151.52     8364.1       no
+ 16  16     9.466    105.64    12222.4       no
+ 16  32    13.737     72.80    19670.4       no
+ 32   8    11.295     88.53    13833.1       no
+ 32  16    18.155     55.08    21919.5       no
+ 32  32    37.481     26.68    37503.1       no
+ 64   8    24.662     40.55    24399.6       no
+ 64  16    36.903     27.10    40310.2       no
+ 64  32    63.389     15.78    73582.5       no
+
+-- functionally-valid region (NE>=32, TS_W>=16) --
+  (32,16): 55.08 MHz, 18.155 ns, 21919 um^2
+  (64,16): 27.10 MHz, 36.903 ns, 40310 um^2
+  (32,32): 26.68 MHz, 37.481 ns, 37503 um^2
+  (64,32): 15.78 MHz, 63.389 ns, 73583 um^2
+
+  target 200 MHz met in valid region: NO
+  best valid single-cycle-argmin point: (32,16) = 55.08 MHz
+
+-- area/Fmax Pareto front (real units) --
+  (8,8): 5638 um^2, 318.04 MHz
+
+-- LRU argmin critical-path fix (standalone, N=32, TSW=16) --
+  comb: 15.038 ns (66.5 MHz), area 5642 um^2
+   seq: 4.233 ns (236.2 MHz), area 5627 um^2
+  speedup: 3.55x  (15.04 ns -> 4.23 ns), crosses 200 MHz: YES

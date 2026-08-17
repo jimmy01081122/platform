@@ -1,0 +1,64 @@
+{
+  "schema_version": "moe-simulator-source-registry-v1",
+  "candidate_id": "moe-cycle-simulator-phase0-amendment2-r3-20260726",
+  "repository": {
+    "head_at_candidate_start": "4cf591cae1dd4502b2940f9f9b696df08099fc5e",
+    "branch": "codex/c1-quality-contract-v2-20260718",
+    "worktree_preexisting_dirty": true,
+    "protected_dirty_scope": "gpu_run_package_v2 S4-R6 prospective work"
+  },
+  "upstreams": [
+    {
+      "name": "vLLM",
+      "url": "https://github.com/vllm-project/vllm",
+      "candidate_commit": "1240c74c0a47473449cf0c3a9c2d87a1e159f73b",
+      "status": "candidate_not_downloaded"
+    },
+    {
+      "name": "mistral-inference",
+      "url": "https://github.com/mistralai/mistral-inference",
+      "candidate_commit": "9eaeb91c17450e09021b6065a1d5cc69876507c8",
+      "status": "candidate_not_downloaded"
+    },
+    {
+      "name": "LongBench",
+      "url": "https://github.com/THUDM/LongBench",
+      "candidate_commit": "2e00731f8d0bff23dc4325161044d0ed8af94c1e",
+      "status": "candidate_not_downloaded"
+    },
+    {
+      "name": "EvalPlus",
+      "url": "https://github.com/evalplus/evalplus",
+      "candidate_commit": "26d6d00bb1fd0fa37f39c99d5290da67891d1c5e",
+      "status": "candidate_not_downloaded"
+    },
+    {
+      "name": "BigCodeBench",
+      "url": "https://github.com/bigcode-project/bigcodebench",
+      "candidate_commit": "09dd993f46c3fbf3a799465bb96d524edcb0b199",
+      "status": "candidate_not_downloaded"
+    }
+  ],
+  "canonical_model": {
+    "model_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "precision": "BF16",
+    "repository_commit": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "materialized_artifact_hashes": null,
+    "status": "identity_pending_phase7_application",
+    "download_authorized": false
+  },
+  "local_inputs": [
+    {
+      "path": "AGENTS.md",
+      "role": "repository governance"
+    },
+    {
+      "path": "docs/status/CURRENT_STATUS.md",
+      "role": "current authority boundary"
+    },
+    {
+      "path": "docs/status/AGENT_HANDOFF.md",
+      "role": "S4-R6 priority and protection"
+    }
+  ]
+}

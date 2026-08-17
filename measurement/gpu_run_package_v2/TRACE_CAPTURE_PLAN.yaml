@@ -1,0 +1,311 @@
+schema_version: trace-capture-plan-v2
+capture_contract:
+  default_profile_for_paid_or_hard_to_repeat_hardware: maximal
+  preserve_native_outputs: true
+  require_completeness_audit: true
+  acquisition_style: deterministic_multi_pass
+  scheduling: hardware_major
+  topology_inference: prohibited
+  custom_profile:
+    allowed: true
+    require_explicit_enabled_disabled_items: true
+    require_disable_reason: true
+  downgrade:
+    allowed_before_capture_only: true
+    require_reason_and_approval_record: true
+
+profiles:
+  minimal:
+    purpose: smoke_test_only
+    valid_for_primary_calibration: false
+    passes:
+      P0: smoke_only
+      P1: manifest_only
+      P2: manifest_only
+      P3: manifest_only
+      P4: manifest_only
+      P5: environment_snapshot_only
+      P6: manifest_only
+  standard:
+    purpose: minimum_primary_calibrated_experiment
+    passes:
+      P0: required
+      P1: required
+      P2: required
+      P3: required
+      P4: representative_scope_required
+      P5: required
+      P6: manifest_or_selected_replay
+  maximal:
+    purpose: paid_hardware_hard_to_repeat_and_paper_experiment
+    passes:
+      P0: required
+      P1: required_native_and_portable
+      P2: required_lossless_raw
+      P3: required
+      P4: representative_scope_required
+      P5: required_time_series
+      P6: capability_dependent_but_manifest_required
+
+pass_status:
+  allowed: [complete, unsupported, permission_denied, not_applicable, failed, missing, corrupt, truncated]
+  manifest_required_for_every_planned_pass: true
+  missing_status_is_error: true
+
+passes:
+  P0:
+    name: clean_baseline_performance
+    high_overhead_profiler_allowed: false
+    mandatory_raw:
+      - warmup_and_measurement_start_end
+      - per_request_and_per_token_latency
+      - TTFT_TPOT_throughput
+      - arrival_completion_queue_wait
+      - prefill_decode_separation
+      - batch_sequence_context_generated_token_counts
+      - every_repetition_raw_result
+      - stdout_stderr_return_code
+      - timeout_OOM_fallback_retry_degraded_events
+  P1:
+    name: cpu_gpu_timeline_runtime_api
+    native_raw_required_when_supported:
+      - nsight_systems_native_report
+      - pytorch_profiler_chrome_trace
+      - cupti_activity_trace
+    portable_exports:
+      - nsight_systems_sqlite_or_csv
+    content:
+      - CUDA_runtime_and_driver_API
+      - NVTX_ranges
+      - CPU_threads_processes
+      - kernel_stream_event_synchronization
+      - context_module_graph_capture_replay
+      - host_enqueue_to_GPU_execution_mapping
+  P2:
+    name: moe_routing_and_model_semantics
+    mandatory_when_exposed:
+      - request_prompt_or_sample_id
+      - token_ids_or_reversible_dataset_index
+      - prefill_decode_and_token_position
+      - layer_id
+      - router_logits_or_scores
+      - selected_expert_ids_top_k_and_weights
+      - capacity_drop_overflow_reroute
+      - permutation_dispatch_combine_order
+      - per_expert_token_count_and_grouped_batch
+      - shared_or_routed_expert
+      - rank_and_device_placement
+      - collector_overhead_estimate
+    unavailable_value_policy: mark_not_applicable_or_unavailable_never_impute
+    lossless_raw_before_aggregation: true
+  P3:
+    name: memory_transfer_residency_offload
+    content:
+      - tensor_shape_dtype_logical_id_bytes_by_storage_kind
+      - allocation_free_reuse_pool_state
+      - H2D_D2H_D2D_P2P_transfer
+      - transfer_bytes_timestamps_stream_sync_mode
+      - expert_load_evict_prefetch_hit_miss
+      - residency_snapshots_or_events
+      - copy_engine_queue_and_completion
+      - page_fault_migration_prefetch_pinning
+      - OOM_fragmentation_allocator_retry
+      - VRAM_and_host_high_water_marks
+      - measured_topology_and_link_state
+    physical_address_policy: prefer_anonymized_allocation_id_and_offset
+  P4:
+    name: gpu_kernel_metrics_and_hardware_counters
+    scope: representative_kernel_shape_layer_or_window
+    content:
+      - kernel_names_and_launch_dimensions
+      - registers_and_shared_memory
+      - occupancy_duration_SM_and_tensor_utilization
+      - DRAM_L2_throughput_and_hit_rate
+      - instructions_warp_stalls_memory_transactions
+      - cache_atomic_serialization_copy_engine
+      - replay_count_and_metric_set
+    preflight_permissions_required: true
+    never_mix_with_P0_claim: true
+  P5:
+    name: power_clock_thermal_system_telemetry
+    time_series_required_when_supported: true
+    content:
+      - GPU_core_and_memory_clock
+      - power_draw_limit_temperature_utilization_VRAM
+      - PCIe_generation_width
+      - throttle_ECC_Xid
+      - CPU_frequency_utilization_memory_and_host_load
+      - disk_and_network_activity
+    metadata: [sampling_period, clock_source, tool_version]
+  P6:
+    name: optional_detailed_cycle_or_replay
+    content:
+      - native_raw_trace
+      - trace_generator_version
+      - simulator_commit_and_configuration
+      - architecture_mapping
+      - launch_command_and_raw_logs
+      - checkpoint_and_normalized_metrics
+      - timeout_or_partial_result
+      - mapping_to_hardware_kernel_shape_layer_token_window
+
+identity:
+  required_per_pass:
+    - session_id
+    - run_group_id
+    - run_id
+    - model_revision
+    - workload_hash
+    - configuration_hash
+    - environment_hash
+    - repetition_index
+    - profiler_pass
+  hash_contract:
+    algorithm: sha256
+    workload_hash_inputs:
+      - immutable_workload_manifest
+      - prompts_or_dataset_revision_and_indices
+      - generation_configuration
+      - random_seeds
+    configuration_hash_inputs:
+      - model_and_tokenizer_revision
+      - quantization_and_device_map
+      - precision_and_kernel_backend
+      - batch_concurrency_arrival_process
+      - collector_configuration
+    environment_hash_inputs:
+      - exact_GPU_identity_and_VRAM
+      - MIG_mode_and_instance_profile
+      - measured_topology
+      - driver_CUDA_runtime_and_tool_versions
+      - redacted_environment_variables
+    canonical_serialization: UTF-8_sorted-key_JSON_without_insignificant_whitespace
+  time_alignment:
+    clocks: [wall_clock, monotonic_host_clock, profiler_or_GPU_clock, timezone]
+    require_alignment_method_and_error: true
+    cross_pass_keys:
+      - deterministic_input
+      - seed
+      - request_and_token_ids
+      - NVTX_ranges
+      - kernel_sequence
+      - configuration_hash
+    direct_absolute_timestamp_subtraction_across_passes: prohibited
+
+model_workload_snapshot:
+  required:
+    - model_repository_revision_commit_and_config
+    - tokenizer_revision_and_file_checksums
+    - generation_quantization_offload_runtime_configs
+    - prompts_dataset_revision_sample_indices_and_seeds
+    - batch_concurrency_arrival_precision_attention_kernel_backend
+    - redacted_environment
+    - custom_extensions_and_source_commits
+  weights_not_packaged:
+    require_file_inventory_metadata_checksums_and_verified_download_method: true
+
+raw_data_lifecycle:
+  pipeline:
+    - native_raw_output
+    - immutable_raw_archive
+    - versioned_parser_or_converter
+    - canonical_trace
+    - derived_tables_and_summary
+  immutable_raw: true
+  mandatory_raw_deletion:
+    allowed: false
+    applies_to:
+      - baseline_per_repetition
+      - routing
+      - native_timeline
+      - memory_transfer
+      - model_workload_manifest
+      - environment_manifest
+      - failure_logs
+  prohibited:
+    - keep_only_canonical_or_summary
+    - keep_only_screenshot_or_aggregate
+    - modify_raw_trace_in_place
+    - overwrite_converter_output_without_schema_and_version
+    - merge_pass_timelines_without_preserving_alignment_method
+
+package_layout:
+  root_pattern: hardware_session_<session-id>
+  required_files:
+    - SESSION_MANIFEST.json
+    - TRACE_CAPTURE_PLAN.yaml
+    - TRACE_CAPABILITY_MATRIX.yaml
+    - TRACE_COMPLETENESS_REPORT.json
+    - checksums.sha256
+    - RESULT_PACKAGE_MANIFEST.json
+  required_directories:
+    - environment
+    - models
+    - workloads
+    - runs
+    - raw_traces
+    - canonical_traces
+    - derived_metrics
+    - logs
+    - failures
+  pass_directories:
+    P0: runs/<run-group-id>/p0_baseline
+    P1: runs/<run-group-id>/p1_timeline
+    P2: runs/<run-group-id>/p2_routing
+    P3: runs/<run-group-id>/p3_memory_transfer
+    P4: runs/<run-group-id>/p4_gpu_counters
+    P5: runs/<run-group-id>/p5_telemetry
+    P6: runs/<run-group-id>/p6_detailed_optional
+
+trace_size_estimation:
+  units: bytes
+  inputs:
+    requests: required_preflight
+    tokens_per_request: required_preflight
+    moe_layers: required_preflight
+    routing_bytes_per_token_layer: required_preflight
+    timeline_events: required_preflight
+    bytes_per_timeline_event: required_preflight
+    memory_events: required_preflight
+    bytes_per_memory_event: required_preflight
+    telemetry_samples: required_preflight
+    bytes_per_telemetry_sample: required_preflight
+    profiled_kernels: required_preflight
+    counter_bytes_per_kernel: required_preflight
+    p6_windows: required_preflight
+    p6_bytes_per_window: required_preflight
+    compression_ratio: required_preflight
+    archive_overhead_fraction: required_preflight
+  formulas:
+    P0_raw: requests * tokens_per_request * p0_bytes_per_token + p0_fixed_run_bytes
+    P1_raw: timeline_events * bytes_per_timeline_event + p1_native_fixed_bytes
+    P2_raw: requests * tokens_per_request * moe_layers * routing_bytes_per_token_layer
+    P3_raw: memory_events * bytes_per_memory_event
+    P4_raw: profiled_kernels * counter_bytes_per_kernel
+    P5_raw: telemetry_samples * bytes_per_telemetry_sample
+    P6_raw: p6_windows * p6_bytes_per_window
+    total_raw: sum(P0_raw through P6_raw)
+    compressed_archive: total_raw * compression_ratio * (1 + archive_overhead_fraction)
+    temporary_peak: total_raw + compressed_archive + converter_working_bytes
+    required_free_space: temporary_peak * safety_factor
+  estimate_status: must_be_filled_by_capture_preflight_not_claimed_as_measurement
+
+completeness_gate:
+  commands:
+    - ./run.sh --trace-audit
+    - ./run.sh --package-results
+    - ./run.sh --verify-package
+  verify:
+    - every_model_and_workload_has_status
+    - every_pass_has_success_or_explicit_failure_reason
+    - native_raw_files_exist_when_supported
+    - manifests_and_cross_pass_identity_align
+    - repetition_target_met
+    - no_empty_truncated_or_unparseable_files
+    - checksums_complete
+    - free_space_sufficient
+    - archive_decompresses_and_schema_validates
+  missing_mandatory_artifact_exit_code: nonzero
+  accepted_incomplete:
+    default: false
+    requires_explicit_user_acceptance_or_documented_unsupported_condition: true

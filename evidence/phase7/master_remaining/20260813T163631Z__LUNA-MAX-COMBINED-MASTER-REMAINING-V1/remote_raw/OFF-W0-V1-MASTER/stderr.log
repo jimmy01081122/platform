@@ -1,0 +1,28 @@
+(EngineCore pid=51361) Loading safetensors checkpoint shards:   0% Completed | 0/19 [00:00<?, ?it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:   5% Completed | 1/19 [00:00<00:08,  2.03it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  11% Completed | 2/19 [00:01<00:09,  1.84it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  16% Completed | 3/19 [00:01<00:08,  1.79it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  21% Completed | 4/19 [00:02<00:08,  1.78it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  26% Completed | 5/19 [00:02<00:07,  1.77it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  32% Completed | 6/19 [00:03<00:07,  1.76it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  37% Completed | 7/19 [00:03<00:06,  1.76it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  42% Completed | 8/19 [00:04<00:06,  1.76it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  47% Completed | 9/19 [00:05<00:05,  1.75it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  53% Completed | 10/19 [00:05<00:05,  1.75it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  58% Completed | 11/19 [00:06<00:04,  1.75it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  63% Completed | 12/19 [00:06<00:04,  1.74it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  68% Completed | 13/19 [00:07<00:03,  1.74it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  74% Completed | 14/19 [00:07<00:02,  1.80it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  79% Completed | 15/19 [00:08<00:02,  1.86it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  84% Completed | 16/19 [00:08<00:01,  1.90it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  89% Completed | 17/19 [00:09<00:01,  1.94it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards:  95% Completed | 18/19 [00:09<00:00,  1.96it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:10<00:00,  2.04it/s]
+(EngineCore pid=51361) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:10<00:00,  1.84it/s]
+(EngineCore pid=51361) 
+(EngineCore pid=51361) 2026-08-14 02:09:43,133 - INFO - autotuner.py:622 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=51361) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   0%|          | 0/1 [00:00<?, ?profile/s]2026-08-14 02:09:46,028 - INFO - autotuner.py:1287 - flashinfer.jit: [Autotuner]: Skipped 2 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(EngineCore pid=51361) [AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 1/1 [00:02<00:00,  2.89s/profile][AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 1/1 [00:02<00:00,  2.89s/profile]
+(EngineCore pid=51361) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:   0%|          | 0/1 [00:00<?, ?profile/s][AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 1/1 [00:00<00:00, 34.53profile/s]
+(EngineCore pid=51361) 2026-08-14 02:09:46,083 - INFO - autotuner.py:641 - flashinfer.jit: [Autotuner]: Autotuning process ends
+{"status": "FAIL", "run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W0-V1-MASTER/runner_runs/20260814T020914Z__OFF-W0-V1-MASTER", "failure": {"status": "FAIL", "phase": "engine_load", "failed_at_utc": "2026-08-14T02:09:47Z", "exception_type": "TypeError", "message": "Object of type set is not JSON serializable", "traceback": "Traceback (most recent call last):\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 1348, in main\n    torch_module, vllm_module, llm, constructor_args, resolved = load_engine(\n                                                                 ^^^^^^^^^^^^\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 1179, in load_engine\n    write_json(run_dir / \"resolved_runtime.json\", resolved)\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 136, in write_json\n    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\")\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n          ^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/encoder.py\", line 202, in encode\n    chunks = list(chunks)\n             ^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/encoder.py\", line 432, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/usr/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.12/json/encoder.py\", line 439, in _iterencode\n    o = _default(o)\n        ^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/encoder.py\", line 180, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type set is not JSON serializable\n"}}

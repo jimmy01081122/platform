@@ -1,0 +1,24 @@
+{
+  "schema_version": "phase7-off-w2-byte-budget-sweep-contract-v1",
+  "contract_state": "FROZEN_BEFORE_EXECUTION",
+  "canonical_experiment_id": "OFF-W2",
+  "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "model_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "points": [
+    {"point_id": "LOW", "split": "FIT", "cpu_offload_gb": 0.25},
+    {"point_id": "MID", "split": "FIT", "cpu_offload_gb": 2.0},
+    {"point_id": "HELDOUT-MID", "split": "HELD_OUT", "cpu_offload_gb": 4.0},
+    {"point_id": "HIGH", "split": "FIT", "cpu_offload_gb": 8.0}
+  ],
+  "runtime": {"vllm_version": "0.23.0", "offload_backend": "uva", "cpu_offload_params": ["experts"]},
+  "canary": {"runtime_class": "ROUTING", "input_tokens": 128, "output_tokens": 32, "seed": 0, "sampling_mode": "FORCED_LENGTH_CONTROLLED", "warmup_count": 0, "measured_count": 1, "max_num_seqs": 1, "max_num_batched_tokens": 256, "gpu_memory_utilization": 0.97},
+  "source_contract": [
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/config/offload.py", "sha256": "6f2db3d9a2730588473d5155811690c6241b167a21dcb62fbbd9ebb6386de42c"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/base.py", "sha256": "19b85dd4dd4b69ce26f8a2148f06717d6415070515c4c4fba86b60ec49842a1a"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/uva.py", "sha256": "3694e031dd231566671eadf61c27bd4ac14b66878ca3d16e0bef34f50e4f72ec"},
+    {"path": "/vault/flow/moe_simulator_phase7/real_campaign/code/off_w2_traced_runner.py", "sha256": "4fd63d54b4c47f78f0889a729160cf3206164715d43240a917f4bc82699b1002"}
+  ],
+  "frozen_reference": {"off_w0_routing_array_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6", "expected_output_token_ids": [19630, 434, 282, 28475, 15921, 20284, 28723, 3981, 5803, 3459, 6029, 9161, 1312, 6535, 2979, 710, 5806, 304, 21503, 12068, 28723, 28705, 26306, 28705, 28787, 19630, 434, 282, 28475, 15921, 20284, 28723]},
+  "validation_gate": ["all four independent points complete", "requested budgets and split labels match", "actual offloaded tensor records are nonempty and byte-accounted", "runtime logged bytes agree with traced bytes", "actual bytes are monotonic by requested budget", "output, finish and routing remain equal to frozen reference", "terminal cleanup between points"],
+  "claim_boundary": "Diagnostic byte-budget semantics and correctness only. No latency/speedup claim from one canary per point. UVA direct host access is not route-conditioned expert residency; explicit transfer profiling remains OFF-W3."
+}

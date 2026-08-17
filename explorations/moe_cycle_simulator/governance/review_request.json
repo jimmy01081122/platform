@@ -1,0 +1,28 @@
+{
+  "schema_version": "moe-simulator-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase0-amendment2-r3-20260726",
+  "ledger_path": "checksums.sha256",
+  "review_scope": [
+    "MASTER_SIMULATOR_DEVELOPMENT_PLAN_AMENDMENT_2.md",
+    "phase0_cpu_scope.json",
+    "source_registry.json",
+    "phase0_manifest.json",
+    "../contracts",
+    "../schemas",
+    "../tools",
+    "../tests",
+    "../fixtures"
+  ],
+  "roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "allowed_verdicts": ["GO", "MODIFY", "NO-GO"],
+  "promotion_rule": {
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "identical_ledger_sha256_required": true
+  },
+  "review_results_are_not_part_of_reviewed_source": true
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "moe-simulator-phase7-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r3-20260802",
+  "source_commit_sha1": "d850648378bd2360fbb606c3714c0f378bd75ffe",
+  "source_tree_sha1": "0d01cf408f46e2533e3596694a1adb291aabf447",
+  "ledger_sha256": "924eb51b816a7b1da15ffa22e0bdf3828980c8a3b34a96ccfd6e48c4a9ad8f5e",
+  "member_count": 169,
+  "application_ledger_sha256": "948bc13df904df9134dbfacbeba4948cb4d8d34a2c5e96c2165be43ee4bba7dd",
+  "run_ledger_sha256": "5ff75ebc8ad7c8d21e16482e19edaccc522067aa65614efcd560acaeb8ee29fd",
+  "exact_set_verification": "PASS",
+  "archive_regression": "PASS_119_OF_119_CPU_MOCK",
+  "roles": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "MODIFY",
+    "Trace/Provenance": "GO"
+  },
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P7-R12R3-B1",
+    "ARCH-P7-R12R3-B2",
+    "MODEL-P7-R12R3-B1",
+    "MODEL-P7-R12R3-B2",
+    "MODEL-P7-R12R3-B3"
+  ],
+  "phase7_freeze": false,
+  "d0_authorized": false,
+  "gate_m_authorized": false,
+  "m0_authorized": false,
+  "authorized_next_stage": "CPU_ONLY_PROSPECTIVE_R12R4_REPAIR_AND_FRESH_REVIEW",
+  "gpu_authority": "NONE"
+}

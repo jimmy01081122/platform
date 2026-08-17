@@ -1,0 +1,161 @@
+schema_version: hardware-schedule-v2
+scheduling_policy:
+  status: stopped
+  governing_decision: D-062
+  execution_allowed: false
+  superseded_by: null
+  reason: All four Q1 MAPE gates failed after two RTX PRO 6000 rounds.
+  order: hardware_major
+  rule: Complete every planned model and fallback on the current GPU, audit, and package before changing hardware.
+  preserve_capacity_boundaries: true
+  topology_inference: prohibited
+  paid_session_budget_minutes: 120
+  paid_session_default_trace_profile: maximal
+  local_exception:
+    profile: rtx3050_6gb
+    paid_budget_applies: false
+    session_limit_minutes: null
+    purpose: local_development_and_pipeline_validation
+
+trust_roles:
+  calibration:
+    hardware_profiles: [rtx_pro_6000_blackwell_workstation_96gb]
+    rules:
+      - Use only whole-query calibration split.
+      - Record exact SKU and all configuration hashes.
+  validation:
+    hardware_profiles: [rtx3090_24gb, rtx4090_24gb, rtx5090_32gb]
+    optional_profiles: [a6000_48gb, a100_40gb, a100_80gb, v100_16gb, v100_32gb]
+    rules:
+      - Do not tune calibration parameters on validation results.
+      - Keep hardware and model failures as capacity-boundary evidence.
+paid_session_template:
+  - phase: acquire_and_preflight
+    minute_start: 0
+    minute_end: 10
+    actions:
+      - verify_exact_sku_vram_form_factor_and_mig
+      - capture_environment_topology_and_profiler_capabilities
+      - verify_persistent_storage_and_free_space
+    gate: preflight_go_no_go
+  - phase: smoke_and_compatibility_matrix
+    minute_start: 10
+    minute_end: 22
+    actions:
+      - allocation_smoke
+      - short_context_generation_smoke
+      - profiler_compatibility_smoke
+      - select_documented_M0_M3_fallbacks
+    gate: smoke_go_no_go
+  - phase: p0_clean_baselines
+    minute_start: 22
+    minute_end: 42
+    passes: [P0]
+    profiler_perturbation_allowed: false
+  - phase: semantic_and_memory_capture
+    minute_start: 42
+    minute_end: 67
+    passes: [P2, P3]
+  - phase: timeline_capture
+    minute_start: 67
+    minute_end: 82
+    passes: [P1]
+  - phase: representative_kernel_counters
+    minute_start: 82
+    minute_end: 97
+    passes: [P4]
+    bounded_scope_required: true
+  - phase: telemetry_and_optional_detail
+    minute_start: 97
+    minute_end: 105
+    passes: [P5, P6]
+    p6_policy: selected_kernel_layer_or_window_only
+  - phase: audit_package_verify
+    minute_start: 105
+    minute_end: 120
+    actions:
+      - trace_audit
+      - package_results
+      - verify_package
+      - persist_archive_and_checksum
+    hard_stop_new_experiments_at_minute: 105
+
+hardware_order:
+  required:
+    - rtx3050_6gb
+    - rtx_pro_6000_blackwell_workstation_96gb
+    - rtx3090_24gb
+    - rtx4090_24gb
+    - rtx5090_32gb
+  optional:
+    - a6000_48gb
+    - a100_40gb
+    - a100_80gb
+    - v100_16gb
+    - v100_32gb
+  historical_disabled:
+    - h100_pcie_80gb
+    - h100_sxm5_80gb
+  note: D-062 stops all paid execution and removes H100 from active, required, and holdout scheduling.
+
+per_hardware_run:
+  model_order: [M0, M1, M2, M3]
+  for_each_model:
+    - resolve_mode_from_gpu_profile
+    - run_compatibility_checks
+    - record_selected_mode_or_capacity_boundary
+    - execute_P0_to_P6_as_profile_requires
+    - record_status_for_every_planned_pass
+  before_switching_hardware:
+    required_commands:
+      - ./run.sh --trace-audit
+      - ./run.sh --package-results
+      - ./run.sh --verify-package
+    require_archive_checksum: true
+    require_persistent_copy: true
+
+go_no_go:
+  preflight:
+    go_when:
+      - exact GPU product name matches the selected profile
+      - reported VRAM matches the selected profile or an approved exact variant
+      - H100 form factor and MIG state are explicitly recorded
+      - writable persistent storage satisfies the selected storage class
+      - driver, CUDA, runtime, and required collectors pass compatibility checks
+    no_go_when:
+      - generic RTX PRO 6000, H100, A100, or V100 identity remains unresolved
+      - topology or link type is being inferred rather than measured
+      - result path is ephemeral or remaining storage is below hard minimum
+      - mandatory raw collectors cannot create manifests or failure records
+  smoke:
+    go_when:
+      - M0 completes correctness smoke
+      - each planned model has a selected mode or recorded capacity boundary
+      - profiler compatibility matrix exists
+    degraded_go_when:
+      - unsupported or permission-denied collectors have complete manifests and maximal-profile downgrade is approved before execution
+    no_go_when:
+      - deterministic workload identity or hashes cannot be produced
+      - allocation failure was silently removed from the matrix
+  calibration_release:
+    go_when:
+      - all mandatory P0 to P5 artifacts pass completeness verification
+      - repetitions and confidence statistics meet benchmark contract
+      - raw and derived results remain distinguishable
+    no_go_when:
+      - only summary averages or canonical traces remain
+      - P0 was collected with a high-overhead profiler
+  validation_release:
+    go_when:
+      - calibration parameters are frozen before validation
+      - validation uses its designated whole-query split
+      - cross-device differences retain exact hardware identity
+  instance_shutdown:
+    go_when:
+      - every model and pass has success or explicit failure status
+      - mandatory native raw files and manifests exist
+      - archive can be decompressed and schema-validated
+      - archive and checksum are copied to persistent storage
+    accepted_incomplete:
+      default: false
+      allowed_only_with: explicit_user_acceptance_or_documented_hardware_permission_unsupported

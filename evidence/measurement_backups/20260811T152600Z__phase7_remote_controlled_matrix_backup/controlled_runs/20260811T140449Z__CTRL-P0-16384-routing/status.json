@@ -1,0 +1,8 @@
+{
+  "finished_at_utc": "2026-08-11T14:05:21Z",
+  "logical_request_id": "P0-16384-routing",
+  "measured_count": 1,
+  "phase": "complete",
+  "status": "PASS",
+  "warmup_count": 0
+}

@@ -1,0 +1,113 @@
+experiment_id: moe_cycle_simulator_phase7_rtxpro6000_bf16_m0
+stage: S7
+status: r12r5_cpu_two_blocker_repair_candidate
+goal: Qualify whether one exact RTX PRO 6000 Blackwell Workstation Edition 96GB can load and serve canonical Mixtral BF16 under one frozen vLLM runtime variant.
+scope:
+  - one NVIDIA RTX PRO 6000 Blackwell Workstation Edition 96GB
+  - mistralai/Mixtral-8x7B-Instruct-v0.1 at repository commit eba92302a2861cdc0098cc54bc9f17cb2c47eb61
+  - canonical BF16 weights
+  - vLLM single-GPU runtime
+  - M0 BF16_CAPACITY_AND_RUNTIME_QUALIFICATION only
+  - one representative 32768-token envelope with 28672 input tokens and 4096 forced output tokens
+  - minimum serving configuration of one active sequence
+  - three fresh runtime launches and three qualifying requests
+non_goals:
+  - M1 collector canary
+  - M2 core matrix
+  - M3 deep profiling
+  - M4 serving or telemetry matrix
+  - calibration, performance comparison, model-quality evaluation, routing claims or DSE
+  - quantization, CPU offload, swap-backed execution, tensor parallelism or paid multi-GPU
+inputs:
+  - explorations/moe_cycle_simulator/governance/MASTER_SIMULATOR_DEVELOPMENT_PLAN_AMENDMENT_2.md
+  - explorations/moe_cycle_simulator/contracts/model_profile.json
+  - explorations/moe_cycle_simulator/phase6/governance/reviews/phase6_r4_aggregate.json
+  - explorations/moe_cycle_simulator/phase7/application/application_manifest.json
+  - explorations/moe_cycle_simulator/phase7/application/environment_manifest.template.json
+  - explorations/moe_cycle_simulator/phase7/application/runtime_variant.template.json
+outputs:
+  - immutable M0 environment, model and runtime manifests
+  - model file SHA-256 ledger
+  - one fresh fail-closed M0 session
+  - preflight, launch, request, memory and stop-reason evidence
+  - M0 PASS, FAIL or INCOMPLETE decision
+dependencies:
+  - owner-approved six-hour prepaid environment envelope
+  - fresh owner-provided SSH endpoint and exact one-shot D0 approval
+  - provider-confirmed exclusive target GPU with zero additional cost
+  - frozen container, vLLM, CUDA, driver and backend identities
+  - sufficient host memory and at least 300 GB free working storage
+  - immutable COMPLETE_M0_ELIGIBLE Gate M parent before M0 entry
+assumptions:
+  - 28672 input plus 4096 forced output tokens represents the frozen 32768-token capacity envelope
+  - transient host staging during model load is distinct from persistent CPU execution offload
+  - time and storage figures are planning estimates, not measurements
+unknowns:
+  - provider SSH endpoint and authentication method
+  - exact allocation start and six-hour deadline
+  - container digest, vLLM commit, CUDA and driver identities
+  - exact attention, fused-MoE and kernel backends available on the provider image
+  - observed load time, peak device memory and whether the platform passes M0
+alternatives:
+  - if M0 fails, retain canonical BF16 and classify this GPU as a near-capacity or offload research platform
+  - defer an all-resident discrete BF16 baseline until a suitable larger or multi-GPU platform is approved
+risks:
+  - model weights, runtime overhead and KV cache may exceed usable device memory
+  - provider software may not support an exact no-offload BF16 vLLM configuration
+  - a forced 4096-token decode can approach the wall-time limit
+  - a provider price or environment change invalidates the frozen application
+validation:
+  - strict draft and execution-ready application validation
+  - exact GPU identity and capacity preflight
+  - exact model revision and complete file checksum ledger
+  - three fresh load and bounded request repetitions
+  - evidence scan for quantization, CPU offload, swap or unexpected GPU use
+  - one-SSH bounded bundle upload and length/hash-framed terminal export
+  - local exact-set semantic export replay before M0 eligibility
+  - local replay in a separate process under a pre-exec Linux address-space limit, absolute deadline and bounded logs
+  - absolute/hash-bound remote timeout and Python executable revalidation at bootstrap and remote entry
+  - Gate M parent model-ledger and prompt-fixture equality with the M0 runtime contract
+  - exact frozen Mixtral ID/revision validation and loaded-vLLM distribution attestation under isolated Python
+  - one captured Gate M parent payload for approval hash, live validation and M0 model/fixture binding
+  - hard-stop on every originless loaded vllm or vllm.* module
+  - M0 parent source/review/local/remote hash closure before any GPU preflight
+acceptance:
+  - all blocking placeholders resolved before execution review
+  - owner application and exact-command approvals recorded
+  - exact target GPU and at least 96000000000 device-memory bytes confirmed
+  - all three fresh BF16 loads complete without OOM or persistent CPU offload
+  - all three requests use 28672 input tokens and produce 4096 tokens with the registered forced-length stop
+  - no quantization, CPU offload or swap-backed execution
+  - complete immutable evidence and checksum ledger
+estimated_resources:
+  gpu_count: 1
+  reservation_hours_fixed: 6
+  allocation_seconds: 21600
+  hard_timeout_seconds: 14400
+  release_reserve_seconds: 900
+  provider_indicated_noncontractual_post_window_grace_minutes: 20_to_30
+  required_work_may_use_post_window_grace: false
+  working_storage_estimate_gb: 160_to_220
+  minimum_free_working_storage_gb: 300
+  archive_excluding_model_cache_estimate_gb: less_than_10
+  billing_mode: prepaid_fixed_window
+  maximum_additional_spend_twd: 0
+owner_decisions:
+  - vLLM Inference Server environment selected
+  - no allocation extension or additional cost
+  - approve the completed exact runtime identity and exact command after SSH/environment disclosure
+  - approve a maximum spend before any paid allocation
+next_legal_action: Finish immutable R12-R5 CPU evidence, clean-archive replay and same-hash review. After a fresh SSH handoff, run only approved D0 and Gate M. When the exact M0 package becomes executable, pause and notify the owner; do not start GPU work until a fresh exact M0 approval is issued.
+forbidden_actions:
+  - execution before owner application and exact-command approvals
+  - connecting to an unapproved SSH endpoint
+  - GPU query before approval
+  - model download before approval
+  - remote write, installation, model access or CUDA workload during D0
+  - allocation extension or additional cost
+  - M1, M2, M3 or M4 execution
+  - retry-failed or resume
+  - quantization or CPU offload
+  - changing runtime identity inside a session
+  - treating aggregate installed memory as single-device capacity
+  - modifying or reinterpreting G3-R4, S4-R5, S4-R6 or Phase 0-6 evidence

@@ -1,0 +1,23 @@
+experiment_id: example_exploration
+revision: 1
+status: template
+question: "Replace with a falsifiable engineering question"
+platform_profile: discrete_edge_workstation
+workload:
+  id: fixture_minimal
+  trace_ref: data/fixtures/minimal_trace.jsonl
+algorithm:
+  baseline_ids: [baseline_software]
+  proposed_id: proposed_candidate
+  semantic_revision: 1
+stages: [S1, S2, S3, S4, S5, S6]
+parameters:
+  sweep: {}
+metrics:
+  primary: [latency_s]
+  secondary: [throughput_per_s, bytes_moved, cpu_cycles, energy_j]
+repetitions:
+  warmup: 1
+  measured: 3
+provenance:
+  unregistered_parameters_allowed: false

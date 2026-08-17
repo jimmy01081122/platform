@@ -1,0 +1,26 @@
+{
+  "schema_version": "moe-simulator-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase1-cpu-mock-r1-20260726",
+  "ledger_sha256": "1cef7f8632c3fe6ff9f4b37f1e51e8f16f50dfa853837af28ca370dd86f77ad6",
+  "roles": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "MODIFY"
+  },
+  "blockers": [
+    "exact locked CPU runtime and test provenance",
+    "preflight-before-create",
+    "complete filesystem inventory",
+    "source clock uniqueness and rank binding"
+  ],
+  "verdict": "MODIFY",
+  "authorized_next_stage": "Prospective Phase 1 R2 CPU-only remediation",
+  "not_authorized": [
+    "Canonical IR freeze",
+    "Mixtral download",
+    "GPU query or workload",
+    "paid server",
+    "formal profiling",
+    "calibration PASS"
+  ]
+}

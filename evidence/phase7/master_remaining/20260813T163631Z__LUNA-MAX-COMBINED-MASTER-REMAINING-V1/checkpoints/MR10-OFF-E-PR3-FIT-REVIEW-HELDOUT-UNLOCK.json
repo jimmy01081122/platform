@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR10-OFF-E-PR3-FIT-REVIEW-HELDOUT-UNLOCK",
+  "execution_ledger_sha256": "8664c0834a13a6ea15fa7e5c0d9aa2fd0218dc348ea6b85cf3a24dd9537958f5",
+  "fit_review_sha256": "262a29cfb50f7a563f89274fc2edf9e5a7505469f16dc81316cf44a4a42758dd",
+  "next_ready_gpu_unit": "OFF-E-PR3-CAP-0375",
+  "remaining_ledger_sha256": "01d1aea330ab3b253ee9281bccd917efc8c8f29a8c919bf34d702c428b2bb965",
+  "required_closed_count": 37,
+  "required_remaining_count": 249,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T03:19:51Z"
+}

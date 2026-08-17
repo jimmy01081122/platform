@@ -1,0 +1,10 @@
+IBM Granite 3.1 1B A400M Instruct
+Source: https://huggingface.co/ibm-granite/granite-3.1-1b-a400m-instruct
+Pinned revision: 0da7a48b0276d500ce5922fd2b33944091fc6c09
+Copyright: IBM and model contributors
+License: Apache License 2.0
+License text: https://www.apache.org/licenses/LICENSE-2.0
+
+This directory contains inventory and attribution metadata only. It does not
+redistribute model weights. Architecture facts are taken from config.json at
+the pinned revision, not from a dense-model narrative in the model card.

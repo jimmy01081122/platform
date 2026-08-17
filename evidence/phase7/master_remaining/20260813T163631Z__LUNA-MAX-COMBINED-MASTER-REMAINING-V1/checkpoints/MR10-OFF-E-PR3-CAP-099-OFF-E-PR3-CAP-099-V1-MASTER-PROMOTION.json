@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR10-OFF-E-PR3-CAP-099-OFF-E-PR3-CAP-099-V1-MASTER-PROMOTION",
+  "execution_ledger_sha256": "2a76ee30c06f47a619c55bac5972e676eb5bd0eb68f09b82af92b503554afbca",
+  "next_ready_gpu_unit": "OFF-E-PR3-CAP-100",
+  "raw_file_set_sha256": "57835dab2008537032f558963e88cb227ba3ef7c9b5d648b4f58b3576cfe5f13",
+  "remaining_ledger_sha256": "1cc89c0714a434cf372b1f6436de4a54875abc955d719db1d591d64245266a9b",
+  "required_closed_count": 36,
+  "required_remaining_count": 250,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T03:17:57Z"
+}

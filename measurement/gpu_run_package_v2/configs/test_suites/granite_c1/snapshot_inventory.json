@@ -1,0 +1,44 @@
+{
+  "schema_version": "granite-c1-snapshot-inventory-v1",
+  "inventory_revision": "granite-c1-snapshots-v1.1.0",
+  "base_inventory": {
+    "path": "datasets/snapshots/snapshot_inventory_v1.json",
+    "sha256": "285b5c29b04cd5653d202d2bbdc9fd7ce0e09d218057020a0d80643e52c1082c",
+    "immutable_v1_4_source": true
+  },
+  "extensions": [
+    {
+      "benchmark": "mmlu",
+      "bytes": 28069,
+      "config": "college_computer_science",
+      "dataset_id": "cais/mmlu",
+      "dataset_revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "domain": "stem",
+      "license": "mit",
+      "path": "datasets/snapshots/mmlu/c30699e8356da336a370243923dbaf21066bb9fe/college_computer_science/test-00000-of-00001.parquet",
+      "rows": 100,
+      "sha256": "08b79916057e75938a2a0d5ceb10c517cf923580e6058af48b1b7b3f7a52c5b8",
+      "source_url": "https://huggingface.co/datasets/cais/mmlu/resolve/c30699e8356da336a370243923dbaf21066bb9fe/college_computer_science/test-00000-of-00001.parquet?download=true",
+      "split": "test"
+    },
+    {
+      "benchmark": "mmlu",
+      "bytes": 18641,
+      "config": "college_physics",
+      "dataset_id": "cais/mmlu",
+      "dataset_revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "domain": "stem",
+      "license": "mit",
+      "path": "datasets/snapshots/mmlu/c30699e8356da336a370243923dbaf21066bb9fe/college_physics/test-00000-of-00001.parquet",
+      "rows": 102,
+      "sha256": "81b8eafc776b3109fd0ba9f527a7f759b07b92fe953743d3711086e5208aadca",
+      "source_url": "https://huggingface.co/datasets/cais/mmlu/resolve/c30699e8356da336a370243923dbaf21066bb9fe/college_physics/test-00000-of-00001.parquet?download=true",
+      "split": "test"
+    }
+  ],
+  "selection_policy": {
+    "algorithm": "sha256",
+    "canonical_raw_row": "JSON sort_keys=true, separators=(',', ':'), ensure_ascii=false, allow_nan=false",
+    "rule": "select two rows with lexicographically smallest raw_sample_hash per extension config"
+  }
+}

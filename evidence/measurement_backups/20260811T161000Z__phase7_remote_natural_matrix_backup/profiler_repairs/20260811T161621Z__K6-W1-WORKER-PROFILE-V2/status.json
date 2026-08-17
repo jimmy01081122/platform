@@ -1,0 +1,6 @@
+{
+  "exception_type": "CampaignFailure",
+  "finished_at_utc": "2026-08-11T16:16:21Z",
+  "phase": "initialization",
+  "status": "FAIL"
+}

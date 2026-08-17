@@ -1,0 +1,7 @@
+{
+  "blockers": [],
+  "ledger_sha256": "5ae4f8d98923087385d7face44adf5b451428b15b6faf0eab44867f5b2d2baa6",
+  "role": "Trace/Provenance",
+  "schema_version": "moe-simulator-role-review-v1",
+  "verdict": "GO"
+}

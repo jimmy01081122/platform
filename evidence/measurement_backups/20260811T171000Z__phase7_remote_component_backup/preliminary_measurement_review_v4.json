@@ -1,0 +1,4016 @@
+{
+  "adoption_allowed": true,
+  "checks": [
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "component.manifest_status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "name": "component.measurement_class",
+      "observed": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "component.not_end_to_end_flag",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "32/8/2",
+      "name": "component.model_dimensions",
+      "observed": {
+        "hidden_size": 4096,
+        "intermediate_size": 14336,
+        "num_attention_heads": 32,
+        "num_experts_per_tok": 2,
+        "num_hidden_layers": 32,
+        "num_key_value_heads": 8,
+        "num_local_experts": 8,
+        "torch_dtype": "bfloat16"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "exact matrix for families ['CMP-A']",
+      "name": "component.expected_point_set",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "unique",
+      "name": "component.no_duplicate_ids",
+      "observed": 20,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-128.repetition_count",
+      "observed": 26,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-128.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 9001.637898950798,
+        "ci95_halfwidth_over_median": 0.0498451642318087,
+        "ci_rule_stable": true,
+        "count": 26,
+        "max": 296096.0,
+        "mean": 186780.3076923077,
+        "median": 180592.0,
+        "min": 178272.0,
+        "stddev": 23418.1261740033
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-128.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-128.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 1048576,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-128.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-128.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-2048.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-2048.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2806.8311496303286,
+        "ci95_halfwidth_over_median": 0.004228989606380973,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 677248.0,
+        "mean": 665699.2,
+        "median": 663712.0,
+        "min": 662336.0,
+        "stddev": 4528.560938949346
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-2048.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-2048.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 16777216,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-2048.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-2048.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-8192.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-8192.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2740.1582493357323,
+        "ci95_halfwidth_over_median": 0.0008136982794944827,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3380096.0,
+        "mean": 3368249.6,
+        "median": 3367536.0,
+        "min": 3364160.0,
+        "stddev": 4420.990416939022
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-8192.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-8192.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 67108864,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-8192.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-8192.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-16384.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-16384.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 34867.40408004233,
+        "ci95_halfwidth_over_median": 0.0037359875656436635,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 9494368.0,
+        "mean": 9352012.8,
+        "median": 9332848.0,
+        "min": 9308032.0,
+        "stddev": 56255.31275019473
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-16384.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-16384.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 134217728,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-16384.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-16384.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-512.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-512.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 5943.609432121192,
+        "ci95_halfwidth_over_median": 0.025707653253119342,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 257408.0,
+        "mean": 233360.0,
+        "median": 231200.0,
+        "min": 225568.0,
+        "stddev": 9589.460881613732
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-512.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-512.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 4194304,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-512.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-512.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-4096.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-4096.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 1914.900023187053,
+        "ci95_halfwidth_over_median": 0.0013958625081547796,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 1380192.0,
+        "mean": 1372499.2,
+        "median": 1371840.0,
+        "min": 1368992.0,
+        "stddev": 3089.5130432552705
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-4096.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-4096.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 33554432,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-4096.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-4096.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-12288.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-12288.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3338.9825202840857,
+        "ci95_halfwidth_over_median": 0.0005421186543508839,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 6167104.0,
+        "mean": 6158393.6,
+        "median": 6159136.0,
+        "min": 6149088.0,
+        "stddev": 5387.13766917708
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-12288.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-12288.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 100663296,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-12288.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-12288.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-28672.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-28672.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 201458.66745930648,
+        "ci95_halfwidth_over_median": 0.008200438484135968,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 24679392.0,
+        "mean": 24400160.3,
+        "median": 24566816.5,
+        "min": 23843807.0,
+        "stddev": 325034.8181397221
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-28672.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-28672.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 234881024,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-28672.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-28672.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-512x1.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-512x1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3995.7825304534945,
+        "ci95_halfwidth_over_median": 0.030992356435014072,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 142688.0,
+        "mean": 131651.2,
+        "median": 128928.0,
+        "min": 125312.0,
+        "stddev": 6446.823383134777
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-512x1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-512x1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 2097152,
+        "query_input_bytes": 8192,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-512x1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-512x1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-512x4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-512x4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3725.5897043887035,
+        "ci95_halfwidth_over_median": 0.026544614286855218,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 152128.0,
+        "mean": 141865.6,
+        "median": 140352.0,
+        "min": 134720.0,
+        "stddev": 6010.892394460058
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-512x4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-512x4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 8388608,
+        "query_input_bytes": 32768,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-512x4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-512x4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-4096x1.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-4096x1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3558.7028068763107,
+        "ci95_halfwidth_over_median": 0.02800893154889427,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 139328.0,
+        "mean": 129894.4,
+        "median": 127056.0,
+        "min": 124416.0,
+        "stddev": 5741.635910899727
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-4096x1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-4096x1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 16777216,
+        "query_input_bytes": 8192,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-4096x1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-4096x1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-4096x4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-4096x4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3825.4881330026365,
+        "ci95_halfwidth_over_median": 0.02778858766999823,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 150272.0,
+        "mean": 140524.8,
+        "median": 137664.0,
+        "min": 134144.0,
+        "stddev": 6172.069215425245
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-4096x4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-4096x4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 67108864,
+        "query_input_bytes": 32768,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-4096x4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-4096x4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-16384x1.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-16384x1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4957.957705188251,
+        "ci95_halfwidth_over_median": 0.03885546790899883,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 149760.0,
+        "mean": 130944.0,
+        "median": 127600.0,
+        "min": 124896.0,
+        "stddev": 7999.2035159063735
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-16384x1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-16384x1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 67108864,
+        "query_input_bytes": 8192,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-16384x1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-16384x1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-16384x4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-16384x4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2944.2317623943186,
+        "ci95_halfwidth_over_median": 0.010636675442176006,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 287584.0,
+        "mean": 279065.6,
+        "median": 276800.0,
+        "min": 274880.0,
+        "stddev": 4750.24404519272
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-16384x4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-16384x4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 268435456,
+        "query_input_bytes": 32768,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-16384x4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-16384x4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-2048x2.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-2048x2.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4676.8246043797235,
+        "ci95_halfwidth_over_median": 0.03398064842754391,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 158944.0,
+        "mean": 140313.6,
+        "median": 137632.0,
+        "min": 135072.0,
+        "stddev": 7545.621411712152
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-2048x2.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-2048x2.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 16777216,
+        "query_input_bytes": 16384,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-2048x2.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-2048x2.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-2048x8.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-2048x8.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2874.1276042449235,
+        "ci95_halfwidth_over_median": 0.020834258323510522,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 149664.0,
+        "mean": 139910.4,
+        "median": 137952.0,
+        "min": 135840.0,
+        "stddev": 4637.137507845402
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-2048x8.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-2048x8.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 67108864,
+        "query_input_bytes": 65536,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-2048x8.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-2048x8.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-8192x2.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-8192x2.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2879.37327572944,
+        "ci95_halfwidth_over_median": 0.02068515284288391,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 150784.0,
+        "mean": 140502.4,
+        "median": 139200.0,
+        "min": 135968.0,
+        "stddev": 4645.60091077809
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-8192x2.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-8192x2.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 67108864,
+        "query_input_bytes": 16384,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-8192x2.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-8192x2.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-8192x8.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-8192x8.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2635.9559448201876,
+        "ci95_halfwidth_over_median": 0.009582785397351194,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 285856.0,
+        "mean": 277468.8,
+        "median": 275072.0,
+        "min": 273504.0,
+        "stddev": 4252.869692598425
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-8192x8.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-8192x8.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 268435456,
+        "query_input_bytes": 65536,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-8192x8.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-8192x8.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-28672x2.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-28672x2.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2876.514222285639,
+        "ci95_halfwidth_over_median": 0.01100594667235093,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 271904.0,
+        "mean": 263526.4,
+        "median": 261360.0,
+        "min": 259328.0,
+        "stddev": 4640.9880940257635
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-28672x2.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-28672x2.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 234881024,
+        "query_input_bytes": 16384,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-28672x2.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-28672x2.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-28672x8.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-28672x8.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2840.8029133111877,
+        "ci95_halfwidth_over_median": 0.004118920384214477,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 697952.0,
+        "mean": 690732.8,
+        "median": 689696.0,
+        "min": 685472.0,
+        "stddev": 4583.371219237357
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-28672x8.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-28672x8.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 939524096,
+        "query_input_bytes": 65536,
+        "router_weight_bytes": null,
+        "weight_bytes": 67108864
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-28672x8.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-28672x8.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 24566816.5,
+        "min": 127056.0
+      },
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "phase7-expert-catalog-v1",
+      "name": "catalog.schema",
+      "observed": "phase7-expert-catalog-v1",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 256,
+      "name": "catalog.object_count",
+      "observed": 256,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "empty",
+      "name": "catalog.each_object_has_w1_w2_w3_and_bytes",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "component.manifest_status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "name": "component.measurement_class",
+      "observed": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "component.not_end_to_end_flag",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "32/8/2",
+      "name": "component.model_dimensions",
+      "observed": {
+        "hidden_size": 4096,
+        "intermediate_size": 14336,
+        "num_attention_heads": 32,
+        "num_experts_per_tok": 2,
+        "num_hidden_layers": 32,
+        "num_key_value_heads": 8,
+        "num_local_experts": 8,
+        "torch_dtype": "bfloat16"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "exact matrix for families ['CMP-M']",
+      "name": "component.expected_point_set",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "unique",
+      "name": "component.no_duplicate_ids",
+      "observed": 18,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M0-1.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M0-1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 13450.484964042595,
+        "ci95_halfwidth_over_median": 0.0036270944607076044,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3771456.0,
+        "mean": 3715494.4,
+        "median": 3708336.0,
+        "min": 3695200.0,
+        "stddev": 21701.106183787037
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M0-1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M0-1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 65536,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M0-1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M0-1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M0-1.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M0-1.route_count_shape",
+      "observed": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M0-1.router_entropy_finite",
+      "observed": 0.90625,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M0-4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M0-4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 10018.438018853392,
+        "ci95_halfwidth_over_median": 0.0027292009056402995,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3706208.0,
+        "mean": 3674745.6,
+        "median": 3670832.0,
+        "min": 3657408.0,
+        "stddev": 16163.81772285798
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M0-4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M0-4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 262144,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M0-4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M0-4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M0-4.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M0-4.route_count_shape",
+      "observed": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M0-4.router_entropy_finite",
+      "observed": 1.046875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M0-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M0-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 29335.767198099875,
+        "ci95_halfwidth_over_median": 0.007634369508420325,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3989792.0,
+        "mean": 3859228.8,
+        "median": 3842592.0,
+        "min": 3830560.0,
+        "stddev": 47330.53125227121
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M0-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M0-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 1048576,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M0-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M0-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M0-16.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M0-16.route_count_shape",
+      "observed": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M0-16.router_entropy_finite",
+      "observed": 0.96875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M0-64.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M0-64.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 8752.874064115447,
+        "ci95_halfwidth_over_median": 0.002134139423048805,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 4125280.0,
+        "mean": 4104358.4,
+        "median": 4101360.0,
+        "min": 4083392.0,
+        "stddev": 14121.948017969129
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M0-64.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M0-64.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 4194304,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M0-64.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M0-64.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M0-64.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M0-64.route_count_shape",
+      "observed": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M0-64.router_entropy_finite",
+      "observed": 1.0546875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M0-256.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M0-256.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 90166.51052512813,
+        "ci95_halfwidth_over_median": 0.014416935049990044,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 6711488.0,
+        "mean": 6298736.0,
+        "median": 6254208.0,
+        "min": 6235328.0,
+        "stddev": 145475.27649436213
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M0-256.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M0-256.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 16777216,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M0-256.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M0-256.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M0-256.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M0-256.route_count_shape",
+      "observed": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M0-256.router_entropy_finite",
+      "observed": 1.0625,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M1-2.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M1-2.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 13206.373963968628,
+        "ci95_halfwidth_over_median": 0.003621725007889528,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3692800.0,
+        "mean": 3650595.2,
+        "median": 3646432.0,
+        "min": 3624960.0,
+        "stddev": 21307.25579494251
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M1-2.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M1-2.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 131072,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M1-2.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M1-2.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M1-2.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M1-2.route_count_shape",
+      "observed": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M1-2.router_entropy_finite",
+      "observed": 1.0078125,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M1-8.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M1-8.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 11891.71512423775,
+        "ci95_halfwidth_over_median": 0.0032266744606445226,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3732480.0,
+        "mean": 3690806.4,
+        "median": 3685440.0,
+        "min": 3670624.0,
+        "stddev": 19186.176060440554
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M1-8.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M1-8.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 524288,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M1-8.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M1-8.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M1-8.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M1-8.route_count_shape",
+      "observed": [
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M1-8.router_entropy_finite",
+      "observed": 1.0390625,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M1-32.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M1-32.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 13344.77446374579,
+        "ci95_halfwidth_over_median": 0.0034241110923434585,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3931648.0,
+        "mean": 3893372.8,
+        "median": 3897296.0,
+        "min": 3859936.0,
+        "stddev": 21530.552125861625
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M1-32.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M1-32.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 2097152,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M1-32.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M1-32.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M1-32.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M1-32.route_count_shape",
+      "observed": [
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M1-32.router_entropy_finite",
+      "observed": 1.0390625,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M1-128.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M1-128.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 11272.642023316528,
+        "ci95_halfwidth_over_median": 0.002527597955281762,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 4490016.0,
+        "mean": 4458028.8,
+        "median": 4459824.0,
+        "min": 4428320.0,
+        "stddev": 18187.35920480058
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M1-128.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M1-128.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 8388608,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M1-128.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M1-128.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M1-128.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M1-128.route_count_shape",
+      "observed": [
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M1-128.router_entropy_finite",
+      "observed": 1.0234375,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M2-1.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M2-1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 6888.562342905778,
+        "ci95_halfwidth_over_median": 0.004088497554049334,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 1703680.0,
+        "mean": 1684595.2,
+        "median": 1684864.0,
+        "min": 1666688.0,
+        "stddev": 11114.054493698008
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M2-1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M2-1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 65536,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M2-1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M2-1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 2,
+      "name": "CMP-M2-1.controlled_active_experts",
+      "observed": 2,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M2-1.route_count_shape",
+      "observed": [
+        8,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M2-1.router_entropy_finite",
+      "observed": 0.90625,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M2-4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M2-4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 8170.133008995359,
+        "ci95_halfwidth_over_median": 0.004759818354420301,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 1740704.0,
+        "mean": 1722384.0,
+        "median": 1716480.0,
+        "min": 1708928.0,
+        "stddev": 13181.749538239941
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M2-4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M2-4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 262144,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M2-4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M2-4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 2,
+      "name": "CMP-M2-4.controlled_active_experts",
+      "observed": 2,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M2-4.route_count_shape",
+      "observed": [
+        32,
+        32,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M2-4.router_entropy_finite",
+      "observed": 1.046875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M2-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M2-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 6655.485218930789,
+        "ci95_halfwidth_over_median": 0.0037038459417772208,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 1816704.0,
+        "mean": 1797180.8,
+        "median": 1796912.0,
+        "min": 1783776.0,
+        "stddev": 10738.006237451884
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M2-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M2-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 1048576,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M2-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M2-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 2,
+      "name": "CMP-M2-16.controlled_active_experts",
+      "observed": 2,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M2-16.route_count_shape",
+      "observed": [
+        128,
+        128,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M2-16.router_entropy_finite",
+      "observed": 0.96875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M2-64.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M2-64.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 12495.447169884203,
+        "ci95_halfwidth_over_median": 0.005358069693099809,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 2372256.0,
+        "mean": 2330457.6,
+        "median": 2332080.0,
+        "min": 2305344.0,
+        "stddev": 20160.24155058113
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M2-64.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M2-64.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 4194304,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M2-64.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M2-64.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 2,
+      "name": "CMP-M2-64.controlled_active_experts",
+      "observed": 2,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M2-64.route_count_shape",
+      "observed": [
+        512,
+        512,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M2-64.router_entropy_finite",
+      "observed": 1.0546875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M2-256.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M2-256.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 8676.905429980488,
+        "ci95_halfwidth_over_median": 0.0017458562233361144,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 4984448.0,
+        "mean": 4966854.4,
+        "median": 4970000.0,
+        "min": 4939264.0,
+        "stddev": 13999.379694194391
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M2-256.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M2-256.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 16777216,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M2-256.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M2-256.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 2,
+      "name": "CMP-M2-256.controlled_active_experts",
+      "observed": 2,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M2-256.route_count_shape",
+      "observed": [
+        2048,
+        2048,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M2-256.router_entropy_finite",
+      "observed": 1.0625,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M3-p10.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M3-p10.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 58200.08174294581,
+        "ci95_halfwidth_over_median": 0.013398598477015636,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 4640160.0,
+        "mean": 4376220.8,
+        "median": 4343744.0,
+        "min": 4330016.0,
+        "stddev": 93900.41750800567
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M3-p10.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M3-p10.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 4915200,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M3-p10.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M3-p10.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M3-p10.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M3-p10.route_count_shape",
+      "observed": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M3-p10.router_entropy_finite",
+      "observed": 1.046875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M3-p50.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M3-p50.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 92798.78181920205,
+        "ci95_halfwidth_over_median": 0.013155483671562525,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 7522656.0,
+        "mean": 7098630.4,
+        "median": 7054000.0,
+        "min": 7025216.0,
+        "stddev": 149722.20134576643
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M3-p50.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M3-p50.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 20447232,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M3-p50.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M3-p50.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M3-p50.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M3-p50.route_count_shape",
+      "observed": [
+        624,
+        624,
+        624,
+        624,
+        624,
+        624,
+        624,
+        624
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M3-p50.router_entropy_finite",
+      "observed": 1.0625,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M3-p90.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M3-p90.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 680389.2412151734,
+        "ci95_halfwidth_over_median": 0.009325426202841361,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 73167229.0,
+        "mean": 72403731.6,
+        "median": 72960659.0,
+        "min": 69864769.0,
+        "stddev": 1097744.743731458
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M3-p90.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M3-p90.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 288555008,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M3-p90.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M3-p90.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M3-p90.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M3-p90.route_count_shape",
+      "observed": [
+        8806,
+        8806,
+        8806,
+        8806,
+        8806,
+        8806,
+        8806,
+        8806
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M3-p90.router_entropy_finite",
+      "observed": 1.046875,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-M3-max.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-M3-max.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 1143304.3882230634,
+        "ci95_halfwidth_over_median": 0.007088016178538261,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 161637985.0,
+        "mean": 160598908.9,
+        "median": 161301041.0,
+        "min": 155563995.0,
+        "stddev": 1844615.2681889131
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-M3-max.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-M3-max.known_bytes",
+      "observed": {
+        "expert_weight_bytes": 2818572288,
+        "input_bytes": 626196480,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": 65536,
+        "weight_bytes": null
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-M3-max.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-M3-max.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "CMP-M3-max.controlled_active_experts",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "8 expert route-count entries",
+      "name": "CMP-M3-max.route_count_shape",
+      "observed": [
+        19110,
+        19110,
+        19110,
+        19110,
+        19110,
+        19110,
+        19110,
+        19110
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "CMP-M3-max.router_entropy_finite",
+      "observed": 1.046875,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 161301041.0,
+        "min": 1684864.0
+      },
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "phase7-expert-catalog-v1",
+      "name": "catalog.schema",
+      "observed": "phase7-expert-catalog-v1",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 256,
+      "name": "catalog.object_count",
+      "observed": 256,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "empty",
+      "name": "catalog.each_object_has_w1_w2_w3_and_bytes",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "component.manifest_status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "name": "component.measurement_class",
+      "observed": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "component.not_end_to_end_flag",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "32/8/2",
+      "name": "component.model_dimensions",
+      "observed": {
+        "hidden_size": 4096,
+        "intermediate_size": 14336,
+        "num_attention_heads": 32,
+        "num_experts_per_tok": 2,
+        "num_hidden_layers": 32,
+        "num_key_value_heads": 8,
+        "num_local_experts": 8,
+        "torch_dtype": "bfloat16"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "exact matrix for families ['CMP-L']",
+      "name": "component.expected_point_set",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "unique",
+      "name": "component.no_duplicate_ids",
+      "observed": 16,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L0-1.repetition_count",
+      "observed": 30,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L0-1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4938.921736291032,
+        "ci95_halfwidth_over_median": 0.07323430807074484,
+        "ci_rule_stable": false,
+        "count": 30,
+        "max": 141248.0,
+        "mean": 70574.93333333333,
+        "median": 67440.0,
+        "min": 65344.0,
+        "stddev": 13801.83084040398
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L0-1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L0-1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L0-1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L0-1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L0-2.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L0-2.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2207.1826559086585,
+        "ci95_halfwidth_over_median": 0.023270734816850734,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 104960.0,
+        "mean": 96451.2,
+        "median": 94848.0,
+        "min": 93568.0,
+        "stddev": 3561.0838799444196
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L0-2.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L0-2.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L0-2.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L0-2.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L0-4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L0-4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3857.4703649502394,
+        "ci95_halfwidth_over_median": 0.026725628844849792,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 156608.0,
+        "mean": 146582.4,
+        "median": 144336.0,
+        "min": 139936.0,
+        "stddev": 6223.669571348831
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L0-4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L0-4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L0-4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L0-4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L0-8.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L0-8.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 6753.352032772268,
+        "ci95_halfwidth_over_median": 0.029173659251331682,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 256640.0,
+        "mean": 236278.4,
+        "median": 231488.0,
+        "min": 226784.0,
+        "stddev": 10895.905236983906
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L0-8.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L0-8.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L0-8.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L0-8.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L0-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L0-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 5737.815146380835,
+        "ci95_halfwidth_over_median": 0.01390675327292055,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 429824.0,
+        "mean": 413283.2,
+        "median": 412592.0,
+        "min": 404128.0,
+        "stddev": 9257.430946722387
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L0-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L0-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L0-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L0-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L1-1.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L1-1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3538.3667101164688,
+        "ci95_halfwidth_over_median": 0.031421983430275545,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 124704.0,
+        "mean": 114438.4,
+        "median": 112608.0,
+        "min": 109888.0,
+        "stddev": 5708.825510655507
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L1-1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L1-1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L1-1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L1-1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L1-2.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L1-2.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4162.059482604682,
+        "ci95_halfwidth_over_median": 0.029906727714738172,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 154944.0,
+        "mean": 141372.8,
+        "median": 139168.0,
+        "min": 135008.0,
+        "stddev": 6715.095776598342
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L1-2.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L1-2.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L1-2.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L1-2.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L1-4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L1-4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4589.201441854563,
+        "ci95_halfwidth_over_median": 0.022863697896844178,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 217056.0,
+        "mean": 202752.0,
+        "median": 200720.0,
+        "min": 196992.0,
+        "stddev": 7404.249590606735
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L1-4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L1-4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L1-4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L1-4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L2-1.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L2-1.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2292.7103237111214,
+        "ci95_halfwidth_over_median": 0.025643234651386022,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 100448.0,
+        "mean": 90473.6,
+        "median": 89408.0,
+        "min": 87904.0,
+        "stddev": 3699.074815259741
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L2-1.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L2-1.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L2-1.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L2-1.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L2-2.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L2-2.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2906.49289305628,
+        "ci95_halfwidth_over_median": 0.030050588224320513,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 110304.0,
+        "mean": 98016.0,
+        "median": 96720.0,
+        "min": 93984.0,
+        "stddev": 4689.355890382672
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L2-2.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L2-2.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L2-2.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L2-2.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L2-4.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L2-4.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4132.278692613717,
+        "ci95_halfwidth_over_median": 0.03254787880130527,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 137152.0,
+        "mean": 127641.6,
+        "median": 126960.0,
+        "min": 119776.0,
+        "stddev": 6667.047242470488
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L2-4.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L2-4.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L2-4.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L2-4.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L2-8.repetition_count",
+      "observed": 30,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L2-8.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 14568.060195545782,
+        "ci95_halfwidth_over_median": 0.08387101715379619,
+        "ci_rule_stable": false,
+        "count": 30,
+        "max": 396512.0,
+        "mean": 182856.53333333333,
+        "median": 173696.0,
+        "min": 170112.0,
+        "stddev": 40710.48565404871
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L2-8.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L2-8.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L2-8.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L2-8.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L3-0.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L3-0.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2328.3457218296994,
+        "ci95_halfwidth_over_median": 0.04868571683317371,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 56192.0,
+        "mean": 48889.6,
+        "median": 47824.0,
+        "min": 45632.0,
+        "stddev": 3756.5692149442243
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L3-0.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L3-0.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L3-0.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L3-0.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L3-1000000.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L3-1000000.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4722.730392023288,
+        "ci95_halfwidth_over_median": 0.004184265618154254,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 1132800.0,
+        "mean": 1126150.4,
+        "median": 1128688.0,
+        "min": 1106528.0,
+        "stddev": 7619.686129435458
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L3-1000000.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L3-1000000.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L3-1000000.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L3-1000000.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L3-5000000.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L3-5000000.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 5143.2222927043185,
+        "ci95_halfwidth_over_median": 0.0009957512113263922,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 5181056.0,
+        "mean": 5166915.2,
+        "median": 5165168.0,
+        "min": 5157408.0,
+        "stddev": 8298.11069260146
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L3-5000000.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L3-5000000.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L3-5000000.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L3-5000000.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-L3-20000000.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-L3-20000000.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 193859.04725667395,
+        "ci95_halfwidth_over_median": 0.009613140227409651,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 21082464.0,
+        "mean": 20339129.6,
+        "median": 20166048.0,
+        "min": 20159807.0,
+        "stddev": 312773.537939442
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-L3-20000000.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-L3-20000000.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": 8192,
+        "kv_cache_bytes": null,
+        "query_input_bytes": null,
+        "router_weight_bytes": null,
+        "weight_bytes": 33554432
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-L3-20000000.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-L3-20000000.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 20166048.0,
+        "min": 47824.0
+      },
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "phase7-expert-catalog-v1",
+      "name": "catalog.schema",
+      "observed": "phase7-expert-catalog-v1",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 256,
+      "name": "catalog.object_count",
+      "observed": 256,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "empty",
+      "name": "catalog.each_object_has_w1_w2_w3_and_bytes",
+      "observed": [],
+      "status": "PASS"
+    }
+  ],
+  "critical_failure_count": 0,
+  "critical_failures": [],
+  "raw_unchanged": true,
+  "reviewer_tool_revision": "preliminary-review-v2",
+  "schema_version": "phase7-preliminary-measurement-review-v1",
+  "status": "PASS",
+  "warning_count": 3,
+  "warnings": [
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 24566816.5,
+        "min": 127056.0
+      },
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 161301041.0,
+        "min": 1684864.0
+      },
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 20166048.0,
+        "min": 47824.0
+      },
+      "status": "WARNING"
+    }
+  ]
+}

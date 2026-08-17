@@ -1,0 +1,54 @@
+{
+  "schema_version": "phase6-cdc-protocol-v1",
+  "clock_model": {
+    "event_time": "unsigned 128-bit femtoseconds",
+    "floating_point_time": false,
+    "rounded_period_addition": false,
+    "edge_generation": "Phase3 exact rational Clock",
+    "maximum_drift_from_rational_reference_fs": 0
+  },
+  "crossing": [
+    "source completion",
+    "forward bridge latency",
+    "receiver next-edge ceil",
+    "receiver synchronization cycles",
+    "finite crossing queue",
+    "destination visibility",
+    "optional reverse acknowledge latency",
+    "source next-edge ceil",
+    "ack synchronization cycles",
+    "distinct ACK_OR_CREDIT trace at priority 40",
+    "credit return and terminal resource/dependency transition"
+  ],
+  "supported_protocols": [
+    "REQUEST_ACK",
+    "CREDIT"
+  ],
+  "required_properties": {
+    "queue_capacity_positive": true,
+    "credit_capacity_positive_for_credit_protocol": true,
+    "positive_progress": true,
+    "forward_and_reverse_exact_rational_cdc": true,
+    "transfer_visibility_only_at_forward_completion": true,
+    "queue_and_credit_conservation": true
+  },
+  "synthetic_clock_alignment": {
+    "one_record_per_compute_and_fabric_clock": true,
+    "calibration_method": "SIMULATOR_EXACT_SYNTHETIC",
+    "residual_error_fs": 0,
+    "confidence_interval_95_fs": [
+      0,
+      0
+    ],
+    "quality": "CYCLE_GRADE",
+    "label": "SIMULATOR_INTERNAL_NOT_HARDWARE_ALIGNMENT",
+    "valid_time_range": "explicit, hash-bound and inclusive at both endpoints",
+    "applies_to": [
+      "operation start",
+      "forward visibility",
+      "acknowledge or credit return",
+      "checkpoint global time"
+    ]
+  },
+  "resource_admission": "all required resources sorted by resource_id and reserved atomically"
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "moe-simulator-semantic-descriptors-v1",
+  "descriptors": {
+    "event-ir-v1": {
+      "schema_id": "event-ir",
+      "schema_version": "1",
+      "field_order": [
+        "trace_id", "event_id", "event_type", "time_fs", "event_priority",
+        "request_id", "token_index", "layer_index", "component_id", "clock_id",
+        "rank", "stream_id", "correlation_id", "duration_fs", "dependencies",
+        "observability", "provenance", "attributes"
+      ],
+      "logical_types": [
+        "utf8", "utf8", "utf8", "u128-decimal", "uint32",
+        "nullable-utf8", "nullable-uint64", "nullable-uint32", "utf8", "utf8",
+        "nullable-uint32", "nullable-utf8", "nullable-utf8",
+        "nullable-u128-decimal", "list-utf8", "observability-v1",
+        "provenance-v1", "canonical-json-object"
+      ],
+      "nullability": [
+        false, false, false, false, false, true, true, true, false,
+        false, true, true, true, true, false, false, false, false
+      ],
+      "units": [
+        null, null, null, "femtosecond", null, null, "token", "layer",
+        null, null, "rank", null, null, "femtosecond", null, null, null, null
+      ],
+      "semantic_metadata": {
+        "event_priority_table": "moe-simulator-event-priorities-v1",
+        "string_normalization": "NFC"
+      },
+      "primary_key": ["trace_id", "event_id"]
+    },
+    "routing-ir-v1": {
+      "schema_id": "routing-ir",
+      "schema_version": "1",
+      "field_order": [
+        "request_id", "token_index", "layer_index", "num_experts", "top_k",
+        "canonical_scores", "score_dtype", "score_tolerance_absolute",
+        "score_tolerance_relative", "selected_experts", "k_boundary_score",
+        "ambiguity_set", "observability", "model_profile_hash"
+      ],
+      "logical_types": [
+        "utf8", "uint64", "uint32", "uint32", "uint32", "list-decimal",
+        "score-dtype", "decimal", "decimal", "list-uint32", "decimal",
+        "list-uint32", "observability-v1", "sha256"
+      ],
+      "nullability": [
+        false, false, false, false, false, true, true, true,
+        true, false, true, true, false, false
+      ],
+      "units": [
+        null, "token", "layer", "expert", "expert", null, null,
+        "score", "ratio", "expert", "score", "expert", null, null
+      ],
+      "semantic_metadata": {
+        "top_k_tie_break": "expert_id_ascending",
+        "string_normalization": "NFC"
+      },
+      "primary_key": ["request_id", "token_index", "layer_index"]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "captured_at_utc": "2026-08-14T01:49:28Z",
+  "compute_apps": [],
+  "expected_gpu_uuid": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521",
+  "foreign_serving_processes": [],
+  "gpu_identity": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 595.71.05, 97887, 2, 97249, 0",
+  "same_session_guard_gpu": true,
+  "status": "PASS",
+  "zero_compute_apps": true,
+  "zero_foreign_serving": true
+}

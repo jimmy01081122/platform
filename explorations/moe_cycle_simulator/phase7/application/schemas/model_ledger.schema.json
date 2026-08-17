@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "model_ledger.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "member_count": {"minimum": 1, "type": "integer"},
+    "members": {"items": {"additionalProperties": false, "properties": {"path": {"type": "string"}, "sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"}, "size_bytes": {"minimum": 0, "type": "integer"}}, "required": ["path", "size_bytes", "sha256"], "type": "object"}, "minItems": 1, "type": "array"},
+    "model_id": {"const": "mistralai/Mixtral-8x7B-Instruct-v0.1"},
+    "repository_commit": {"const": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61"},
+    "schema_version": {"const": "moe-simulator-phase7-model-ledger-v1"},
+    "snapshot_structure": {"type": "object"},
+    "total_size_bytes": {"minimum": 1, "type": "integer"}
+  },
+  "required": ["schema_version", "model_id", "repository_commit", "member_count", "total_size_bytes", "snapshot_structure", "members", "ledger_sha256"],
+  "type": "object"
+}

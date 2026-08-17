@@ -1,0 +1,58 @@
+{
+  "counts": {
+    "by_role": {
+      "chinese_multiple_choice": 152,
+      "code": 132,
+      "context_length": 5,
+      "conversation": 2,
+      "instruction": 2,
+      "math": 132,
+      "micro_fixture": 4,
+      "multiple_choice": 369,
+      "router_stress": 8,
+      "serving_schedule": 4
+    },
+    "by_split": {
+      "calibration": 135,
+      "domain_holdout": 262,
+      "sample_holdout": 262,
+      "smoke": 17,
+      "validation": 134
+    },
+    "by_task": {
+      "T0": 4,
+      "T1": 132,
+      "T2": 369,
+      "T3": 132,
+      "T4": 4,
+      "T5": 152,
+      "T6": 5,
+      "T7": 4,
+      "T8": 8
+    }
+  },
+  "frozen_manifest_sha256": "0f30ecfb91170d65c47ac6c09bdac5ac42b689a4bc79a55ccdf5bbaeaff03def",
+  "merkle": {
+    "algorithm": "sha256",
+    "leaf_contract": "manifest_merkle_root plus domain-separated canonical source-file path/SHA-256 leaves",
+    "manifest_root": "c2bb498f27bd456989d32290ebce43b3b8ebdb135b2302f278a3ebe0e48e0540",
+    "odd_leaf_rule": "duplicate_last",
+    "root": "957eaa4c45798e9e2c19586d60867a3d2dbbe7f209d10ac30a2272e5222fee3d"
+  },
+  "sample_count": 810,
+  "schema_version": "frozen-benchmark-suite-v2",
+  "source_files": {
+    "configs/test_suites/benchmark_registry.yaml": "66b0ec88bc0a0a98850ba2544c6d8abb067a93d3ab3664decf569b8877d17359",
+    "configs/test_suites/generation_configs/v1.yaml": "ae2fb1dc9a995d4b01316c507738d2cc2e0c1cd5c375f0eb28d55603edd53d8d",
+    "configs/test_suites/model_benchmark_matrix.yaml": "5466a358e2aa505a051446bc5490875d82719b6c8464ee53d9c24ece832cb6f3",
+    "configs/test_suites/moe_trace_suite_v1.yaml": "cc5e35bf9782836642900a087919d9c0430a3e4ee8b0579593158a4522445bd0",
+    "configs/test_suites/prompt_templates/v1.yaml": "0877e94d1cb13e9eaafb5e75cf56243b26c5ffd11f0f2e73c8c3e282180b99bb",
+    "configs/test_suites/sample_manifest_v1.jsonl": "0f30ecfb91170d65c47ac6c09bdac5ac42b689a4bc79a55ccdf5bbaeaff03def",
+    "configs/test_suites/serving_schedules/v1.yaml": "cdcbc460fa0007dfd1cf9f23f54401e553ba1e52b4909dcb72a91f9dd6768919",
+    "configs/test_suites/splits/v1.yaml": "c376cfef2ead61df1e98ec5f725d3c2c39c2f7bfc050b58f1a65c68bdcc17840",
+    "datasets/snapshots/snapshot_inventory_v1.json": "285b5c29b04cd5653d202d2bbdc9fd7ce0e09d218057020a0d80643e52c1082c"
+  },
+  "suite_id": "moe-trace-suite",
+  "suite_revision": "v1.3.0",
+  "unresolved_gates": []
+}

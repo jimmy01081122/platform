@@ -1,0 +1,7 @@
+{
+  "expected_kernel_correlation": true,
+  "experiment_id": "STEPTRACE-P0-2048-CANARY-V1",
+  "hook_revision": "phase7-step-trace-hook-v1",
+  "runtime_class": "ROUTING_PROFILE",
+  "schema_version": "phase7-routing-step-hook-request-v1"
+}

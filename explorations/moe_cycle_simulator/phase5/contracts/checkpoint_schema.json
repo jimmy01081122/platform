@@ -1,0 +1,14 @@
+{
+  "schema_version": "phase5-checkpoint-v1",
+  "phase4_checkpoint": "live exact-prefix resumable checkpoint",
+  "phase5_cursor": "processed trace count equal to the current Phase4 trace prefix",
+  "required_bindings": [
+    "plan semantic digest",
+    "Phase4 state digest",
+    "trace-prefix residency digest",
+    "outer checkpoint state digest"
+  ],
+  "restore": "restore the same live Phase4 scheduler prefix, replay that exact prefix, compare residency digest, then continue step or run_until_quiescent without re-running prior events",
+  "terminal_checkpoint_with_earlier_cursor": "forbidden",
+  "continuous_vs_restored_result": "exact semantic digest equality required"
+}

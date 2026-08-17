@@ -1,0 +1,6021 @@
+{
+  "router_modules": [
+    {
+      "name": "encoder.block.1.layer.1.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "encoder.block.3.layer.1.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "encoder.block.5.layer.1.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "encoder.block.7.layer.1.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "encoder.block.9.layer.1.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "encoder.block.11.layer.1.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "decoder.block.1.layer.2.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "decoder.block.3.layer.2.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "decoder.block.5.layer.2.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "decoder.block.7.layer.2.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "decoder.block.9.layer.2.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    },
+    {
+      "name": "decoder.block.11.layer.2.mlp.router",
+      "class": "SwitchTransformersTop1Router"
+    }
+  ],
+  "capture_stats": [
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.295258045196533,
+      "max": 7.106145858764648,
+      "mean": -0.26202213764190674,
+      "std": 1.6784809827804565,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -5.220095634460449,
+      "max": 8.442490577697754,
+      "mean": 0.9746899008750916,
+      "std": 1.8930083513259888,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.439064979553223,
+      "max": 5.797187328338623,
+      "mean": -1.7150377035140991,
+      "std": 1.933980941772461,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.351153373718262,
+      "max": 7.455865859985352,
+      "mean": -1.3662712574005127,
+      "std": 2.033475875854492,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -49.478477478027344,
+      "max": 69.36849975585938,
+      "mean": 0.6299314498901367,
+      "std": 18.44602394104004,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -55.78998565673828,
+      "max": 71.37865447998047,
+      "mean": 4.5064568519592285,
+      "std": 18.716514587402344,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.593835830688477,
+      "max": 14.8098783493042,
+      "mean": -0.012151002883911133,
+      "std": 2.843017816543579,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.049474716186523,
+      "max": 12.690449714660645,
+      "mean": 0.8077142238616943,
+      "std": 2.7524657249450684,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.72203254699707,
+      "max": 8.31041431427002,
+      "mean": 1.7187466621398926,
+      "std": 2.112605571746826,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -22.621858596801758,
+      "max": 28.721282958984375,
+      "mean": -0.10077729821205139,
+      "std": 6.807992458343506,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -48.51041030883789,
+      "max": 84.65800476074219,
+      "mean": -1.2456766366958618,
+      "std": 17.611520767211914,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -504.7727355957031,
+      "max": 831.594970703125,
+      "mean": -21.61203956604004,
+      "std": 72.93543243408203,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.200832843780518,
+      "max": 7.391831398010254,
+      "mean": -0.27847054600715637,
+      "std": 1.6970070600509644,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -4.4476318359375,
+      "max": 7.685848236083984,
+      "mean": 0.9197184443473816,
+      "std": 1.8882852792739868,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.405592918395996,
+      "max": 5.782888412475586,
+      "mean": -1.7599260807037354,
+      "std": 1.9467600584030151,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.8336029052734375,
+      "max": 6.751326560974121,
+      "mean": -1.5709316730499268,
+      "std": 1.9109805822372437,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -55.155574798583984,
+      "max": 70.1785888671875,
+      "mean": 0.6205592155456543,
+      "std": 17.791990280151367,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -52.976959228515625,
+      "max": 86.23590850830078,
+      "mean": 4.677465915679932,
+      "std": 18.989662170410156,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.462041854858398,
+      "max": 14.738000869750977,
+      "mean": -0.01820051670074463,
+      "std": 2.780834197998047,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.306000709533691,
+      "max": 12.69432258605957,
+      "mean": 0.811391294002533,
+      "std": 2.725942850112915,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.722234725952148,
+      "max": 8.314249038696289,
+      "mean": 1.7507811784744263,
+      "std": 2.115124464035034,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -21.16071319580078,
+      "max": 28.725826263427734,
+      "mean": -0.08279172331094742,
+      "std": 6.742210865020752,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -45.312625885009766,
+      "max": 65.32207489013672,
+      "mean": -1.045111894607544,
+      "std": 17.28049659729004,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -505.1607360839844,
+      "max": 831.6700439453125,
+      "mean": -21.673660278320312,
+      "std": 72.80756378173828,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.515346527099609,
+      "max": 8.650146484375,
+      "mean": -0.27546799182891846,
+      "std": 1.7730985879898071,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -5.0199055671691895,
+      "max": 9.186332702636719,
+      "mean": 0.9332868456840515,
+      "std": 1.9241094589233398,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.727259635925293,
+      "max": 5.790853500366211,
+      "mean": -1.724890947341919,
+      "std": 2.0065205097198486,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.341866493225098,
+      "max": 6.497795581817627,
+      "mean": -1.6155556440353394,
+      "std": 1.9295787811279297,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -52.01777648925781,
+      "max": 69.02030181884766,
+      "mean": 0.5172407627105713,
+      "std": 18.1004695892334,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -49.82133865356445,
+      "max": 86.53511047363281,
+      "mean": 4.6229681968688965,
+      "std": 18.993043899536133,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.631317138671875,
+      "max": 14.790593147277832,
+      "mean": 0.01778075098991394,
+      "std": 2.780069589614868,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.312321662902832,
+      "max": 12.74470329284668,
+      "mean": 0.8275337219238281,
+      "std": 2.7458879947662354,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.723875045776367,
+      "max": 9.913291931152344,
+      "mean": 1.8515312671661377,
+      "std": 2.123387098312378,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -22.792652130126953,
+      "max": 28.79647445678711,
+      "mean": -0.2603975832462311,
+      "std": 7.034265041351318,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -44.726707458496094,
+      "max": 67.61905670166016,
+      "mean": -0.9281442165374756,
+      "std": 17.704147338867188,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -504.905517578125,
+      "max": 832.8543090820312,
+      "mean": -20.682863235473633,
+      "std": 73.21099853515625,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.140077114105225,
+      "max": 7.353250026702881,
+      "mean": -0.27387991547584534,
+      "std": 1.6738535165786743,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -4.787910461425781,
+      "max": 8.215742111206055,
+      "mean": 0.9279113411903381,
+      "std": 1.892388939857483,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.657776355743408,
+      "max": 5.781735897064209,
+      "mean": -1.7505533695220947,
+      "std": 1.9228588342666626,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.472336769104004,
+      "max": 7.33096170425415,
+      "mean": -1.5069122314453125,
+      "std": 1.9571642875671387,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -53.19231414794922,
+      "max": 77.6546630859375,
+      "mean": 0.6406517028808594,
+      "std": 18.179933547973633,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -48.51031494140625,
+      "max": 72.62801361083984,
+      "mean": 4.998027801513672,
+      "std": 18.947668075561523,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.541248321533203,
+      "max": 14.756622314453125,
+      "mean": 0.006025552749633789,
+      "std": 2.791778087615967,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.925999641418457,
+      "max": 12.677801132202148,
+      "mean": 0.8630054593086243,
+      "std": 2.7234957218170166,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.7180891036987305,
+      "max": 8.836641311645508,
+      "mean": 1.676775574684143,
+      "std": 2.0997154712677,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -21.617347717285156,
+      "max": 28.722579956054688,
+      "mean": -0.011050507426261902,
+      "std": 6.719662666320801,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -46.93544006347656,
+      "max": 66.72334289550781,
+      "mean": -1.1572399139404297,
+      "std": 17.43972396850586,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -508.3825988769531,
+      "max": 831.323974609375,
+      "mean": -21.77467155456543,
+      "std": 72.8137435913086,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.3208909034729,
+      "max": 7.167304515838623,
+      "mean": -0.2685938775539398,
+      "std": 1.7176413536071777,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -4.491314888000488,
+      "max": 7.710322856903076,
+      "mean": 0.9612367749214172,
+      "std": 1.8922687768936157,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.599216938018799,
+      "max": 5.801980972290039,
+      "mean": -1.681472659111023,
+      "std": 1.9377329349517822,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.71491003036499,
+      "max": 5.6926984786987305,
+      "mean": -1.5839252471923828,
+      "std": 1.9088289737701416,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -57.508209228515625,
+      "max": 75.2261734008789,
+      "mean": 0.6370251178741455,
+      "std": 17.92519760131836,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -46.78383255004883,
+      "max": 79.47528839111328,
+      "mean": 4.720975875854492,
+      "std": 18.508684158325195,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.519078254699707,
+      "max": 14.813209533691406,
+      "mean": 0.002565443515777588,
+      "std": 2.7810561656951904,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -9.409391403198242,
+      "max": 12.694677352905273,
+      "mean": 0.8117013573646545,
+      "std": 2.744575262069702,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.723386764526367,
+      "max": 8.310941696166992,
+      "mean": 1.684662103652954,
+      "std": 2.0874106884002686,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -20.557308197021484,
+      "max": 28.758914947509766,
+      "mean": -0.1875455528497696,
+      "std": 6.911470413208008,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -46.3898811340332,
+      "max": 67.81434631347656,
+      "mean": -1.0360318422317505,
+      "std": 17.746274948120117,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -505.5064697265625,
+      "max": 831.9749145507812,
+      "mean": -21.696271896362305,
+      "std": 72.64251708984375,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.3306660652160645,
+      "max": 7.284912109375,
+      "mean": -0.2260311394929886,
+      "std": 1.6985185146331787,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -4.471746444702148,
+      "max": 7.608758926391602,
+      "mean": 0.9659950733184814,
+      "std": 1.8455883264541626,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.5942063331604,
+      "max": 5.792205810546875,
+      "mean": -1.730200171470642,
+      "std": 1.9638608694076538,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.2933807373046875,
+      "max": 4.814906597137451,
+      "mean": -1.510317087173462,
+      "std": 1.8947155475616455,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -57.61882019042969,
+      "max": 69.39840698242188,
+      "mean": 0.7013719081878662,
+      "std": 18.115203857421875,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -53.591827392578125,
+      "max": 89.63895416259766,
+      "mean": 4.926673412322998,
+      "std": 18.508426666259766,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.641959190368652,
+      "max": 14.82989501953125,
+      "mean": 0.002733945846557617,
+      "std": 2.723381996154785,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -9.770261764526367,
+      "max": 12.665224075317383,
+      "mean": 0.7815930247306824,
+      "std": 2.7363836765289307,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.7232136726379395,
+      "max": 8.315757751464844,
+      "mean": 1.7413504123687744,
+      "std": 2.090276002883911,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -20.64708137512207,
+      "max": 28.718231201171875,
+      "mean": -0.1648884415626526,
+      "std": 6.736170768737793,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -46.263572692871094,
+      "max": 74.70692443847656,
+      "mean": -1.022929310798645,
+      "std": 17.236352920532227,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -506.9080810546875,
+      "max": 832.3162841796875,
+      "mean": -21.452289581298828,
+      "std": 73.01737213134766,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.033975124359131,
+      "max": 8.674365043640137,
+      "mean": -0.2722291052341461,
+      "std": 1.6972090005874634,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -4.9132399559021,
+      "max": 9.845544815063477,
+      "mean": 0.9467741250991821,
+      "std": 1.9031301736831665,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -9.025729179382324,
+      "max": 5.799271583557129,
+      "mean": -1.6886285543441772,
+      "std": 1.9816406965255737,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.4450459480285645,
+      "max": 6.950192451477051,
+      "mean": -1.6448793411254883,
+      "std": 1.9841570854187012,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -69.78002166748047,
+      "max": 64.05199432373047,
+      "mean": 0.6411786079406738,
+      "std": 18.108211517333984,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -56.94298553466797,
+      "max": 83.56298065185547,
+      "mean": 4.492020606994629,
+      "std": 18.62481117248535,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.521946907043457,
+      "max": 14.807629585266113,
+      "mean": -0.00836479663848877,
+      "std": 2.792515516281128,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.290262222290039,
+      "max": 12.688023567199707,
+      "mean": 0.7826479077339172,
+      "std": 2.7545530796051025,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.72564697265625,
+      "max": 8.318089485168457,
+      "mean": 1.7511134147644043,
+      "std": 2.1368956565856934,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -21.404388427734375,
+      "max": 28.742355346679688,
+      "mean": 0.06116780638694763,
+      "std": 6.899858474731445,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -45.205753326416016,
+      "max": 67.95858001708984,
+      "mean": -1.1762866973876953,
+      "std": 17.63468360900879,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -504.372314453125,
+      "max": 831.8823852539062,
+      "mean": -21.246479034423828,
+      "std": 71.775390625,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.409620761871338,
+      "max": 7.481174468994141,
+      "mean": -0.23242908716201782,
+      "std": 1.697076439857483,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "hook_order": 0,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -4.182075023651123,
+      "max": 8.683629989624023,
+      "mean": 0.9824190139770508,
+      "std": 1.9024012088775635,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "hook_order": 1,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.813837051391602,
+      "max": 5.790213108062744,
+      "mean": -1.6655091047286987,
+      "std": 1.9665977954864502,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "hook_order": 2,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -7.555234909057617,
+      "max": 5.94688606262207,
+      "mean": -1.616179347038269,
+      "std": 1.888888955116272,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "hook_order": 3,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -52.92539978027344,
+      "max": 62.94888687133789,
+      "mean": 0.7241780757904053,
+      "std": 18.12342071533203,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "hook_order": 4,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -51.105506896972656,
+      "max": 76.90819549560547,
+      "mean": 4.793439865112305,
+      "std": 18.859661102294922,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "hook_order": 5,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -10.50969409942627,
+      "max": 14.828287124633789,
+      "mean": -0.004676729440689087,
+      "std": 2.783574104309082,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "hook_order": 6,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -8.545083999633789,
+      "max": 12.694527626037598,
+      "mean": 0.7926555871963501,
+      "std": 2.7304306030273438,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "hook_order": 7,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -6.724875450134277,
+      "max": 8.313440322875977,
+      "mean": 1.725801944732666,
+      "std": 2.1466712951660156,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "hook_order": 8,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -20.271364212036133,
+      "max": 28.73841667175293,
+      "mean": -0.23508542776107788,
+      "std": 6.837629795074463,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "hook_order": 9,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -47.280216217041016,
+      "max": 65.07601165771484,
+      "mean": -1.1325597763061523,
+      "std": 17.574726104736328,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "hook_order": 10,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    },
+    {
+      "shape": [
+        8,
+        64,
+        8
+      ],
+      "min": -505.36865234375,
+      "max": 833.7159423828125,
+      "mean": -21.79076385498047,
+      "std": 73.63679504394531,
+      "has_nan": false,
+      "has_inf": false,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "hook_order": 11,
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "value_kind": "logits",
+      "tensor_path": "input[0].classifier"
+    }
+  ],
+  "diagnostics": [
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 1,
+      "module_name": "encoder.block.1.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 3,
+      "module_name": "encoder.block.3.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 5,
+      "module_name": "encoder.block.5.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 7,
+      "module_name": "encoder.block.7.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 9,
+      "module_name": "encoder.block.9.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "encoder",
+      "router_layer_index": 11,
+      "module_name": "encoder.block.11.layer.1.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 1,
+      "module_name": "decoder.block.1.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 3,
+      "module_name": "decoder.block.3.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 5,
+      "module_name": "decoder.block.5.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 7,
+      "module_name": "decoder.block.7.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 9,
+      "module_name": "decoder.block.9.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    },
+    {
+      "stage": "decoder",
+      "router_layer_index": 11,
+      "module_name": "decoder.block.11.layer.2.mlp.router",
+      "warning": "2D router tensor [batch*seq,experts] reshaped to [batch,seq,experts]",
+      "raw_shape": [
+        512,
+        8
+      ],
+      "normalized_shape": [
+        8,
+        64,
+        8
+      ],
+      "expected_batch_size": 8,
+      "expected_seq_len": 64
+    }
+  ],
+  "first_batch_shapes": {
+    "encoder_last_hidden_shape": [
+      8,
+      64,
+      768
+    ],
+    "decoder_last_hidden_shape": [
+      8,
+      64,
+      768
+    ]
+  },
+  "bypass_reason": "encoder/decoder called separately with router forward hooks to avoid combined forward router loss error"
+}

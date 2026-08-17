@@ -1,0 +1,19 @@
+{
+  "call_index": 1,
+  "dtype": "torch.bfloat16",
+  "hidden_shape": [
+    256,
+    4096
+  ],
+  "output_shape": [
+    256,
+    4096
+  ],
+  "router_shape": [
+    256,
+    8
+  ],
+  "schema_version": "phase7-off-e-pr0-trace-only-v1",
+  "wrapper_return_monotonic_ns": 3770184567278416,
+  "wrapper_start_monotonic_ns": 3770184494823379
+}

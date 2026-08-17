@@ -1,0 +1,40 @@
+{
+  "schema_version": "moe-simulator-phase-scope-v1",
+  "phase": 0,
+  "candidate_id": "moe-cycle-simulator-phase0-amendment2-r3-20260726",
+  "authority": {
+    "allowed": [
+      "read-only repository inspection",
+      "CPU-only schema and fixture validation",
+      "CPU-only deterministic unit tests",
+      "governance artifact creation",
+      "same-hash three-role review"
+    ],
+    "forbidden": [
+      "GPU discovery or query",
+      "GPU workload",
+      "Mixtral model download",
+      "paid server use",
+      "formal profiling",
+      "old-session resume",
+      "frozen evidence modification"
+    ]
+  },
+  "phase1_entry": {
+    "requires_unanimous_roles": [
+      "Architecture/System",
+      "Model/Benchmark",
+      "Trace/Provenance"
+    ],
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "owner_cpu_approval_source": "user request to implement Amendment 2",
+    "gpu_authority": "NONE"
+  },
+  "protected_parallel_path": {
+    "name": "G2.5-S4-R6",
+    "priority": "higher",
+    "may_modify": false,
+    "may_reinterpret": false
+  }
+}

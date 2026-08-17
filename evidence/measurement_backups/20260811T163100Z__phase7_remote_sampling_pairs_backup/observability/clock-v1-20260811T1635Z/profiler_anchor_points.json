@@ -1,0 +1,775 @@
+{
+  "host_points": [
+    {
+      "index": 0,
+      "source_after_fs": 3561281678875545000000,
+      "source_before_fs": 3561281676849509000000
+    },
+    {
+      "index": 1,
+      "source_after_fs": 3561281678967098000000,
+      "source_before_fs": 3561281678881306000000
+    },
+    {
+      "index": 2,
+      "source_after_fs": 3561281679049854000000,
+      "source_before_fs": 3561281678969783000000
+    },
+    {
+      "index": 3,
+      "source_after_fs": 3561281679121970000000,
+      "source_before_fs": 3561281679052179000000
+    },
+    {
+      "index": 4,
+      "source_after_fs": 3561281679193516000000,
+      "source_before_fs": 3561281679124235000000
+    },
+    {
+      "index": 5,
+      "source_after_fs": 3561281679263718000000,
+      "source_before_fs": 3561281679195800000000
+    },
+    {
+      "index": 6,
+      "source_after_fs": 3561281679334602000000,
+      "source_before_fs": 3561281679265862000000
+    },
+    {
+      "index": 7,
+      "source_after_fs": 3561281679403252000000,
+      "source_before_fs": 3561281679336646000000
+    },
+    {
+      "index": 8,
+      "source_after_fs": 3561281679471501000000,
+      "source_before_fs": 3561281679405416000000
+    },
+    {
+      "index": 9,
+      "source_after_fs": 3561281679539790000000,
+      "source_before_fs": 3561281679473745000000
+    },
+    {
+      "index": 10,
+      "source_after_fs": 3561281679608119000000,
+      "source_before_fs": 3561281679541873000000
+    },
+    {
+      "index": 11,
+      "source_after_fs": 3561281679683331000000,
+      "source_before_fs": 3561281679610393000000
+    },
+    {
+      "index": 12,
+      "source_after_fs": 3561281679752942000000,
+      "source_before_fs": 3561281679685475000000
+    },
+    {
+      "index": 13,
+      "source_after_fs": 3561281679820600000000,
+      "source_before_fs": 3561281679755056000000
+    },
+    {
+      "index": 14,
+      "source_after_fs": 3561281679888458000000,
+      "source_before_fs": 3561281679822724000000
+    },
+    {
+      "index": 15,
+      "source_after_fs": 3561281679955204000000,
+      "source_before_fs": 3561281679890572000000
+    },
+    {
+      "index": 16,
+      "source_after_fs": 3561281680031418000000,
+      "source_before_fs": 3561281679957128000000
+    },
+    {
+      "index": 17,
+      "source_after_fs": 3561281680101791000000,
+      "source_before_fs": 3561281680033772000000
+    },
+    {
+      "index": 18,
+      "source_after_fs": 3561281680174809000000,
+      "source_before_fs": 3561281680103865000000
+    },
+    {
+      "index": 19,
+      "source_after_fs": 3561281680243428000000,
+      "source_before_fs": 3561281680176913000000
+    },
+    {
+      "index": 20,
+      "source_after_fs": 3561281680311447000000,
+      "source_before_fs": 3561281680245532000000
+    },
+    {
+      "index": 21,
+      "source_after_fs": 3561281680378614000000,
+      "source_before_fs": 3561281680313471000000
+    },
+    {
+      "index": 22,
+      "source_after_fs": 3561281680451571000000,
+      "source_before_fs": 3561281680380657000000
+    },
+    {
+      "index": 23,
+      "source_after_fs": 3561281680518858000000,
+      "source_before_fs": 3561281680453755000000
+    },
+    {
+      "index": 24,
+      "source_after_fs": 3561281680585384000000,
+      "source_before_fs": 3561281680521043000000
+    },
+    {
+      "index": 25,
+      "source_after_fs": 3561281680651529000000,
+      "source_before_fs": 3561281680587588000000
+    },
+    {
+      "index": 26,
+      "source_after_fs": 3561281680719577000000,
+      "source_before_fs": 3561281680653733000000
+    },
+    {
+      "index": 27,
+      "source_after_fs": 3561281680786945000000,
+      "source_before_fs": 3561281680721701000000
+    },
+    {
+      "index": 28,
+      "source_after_fs": 3561281680858259000000,
+      "source_before_fs": 3561281680788938000000
+    },
+    {
+      "index": 29,
+      "source_after_fs": 3561281680926839000000,
+      "source_before_fs": 3561281680860383000000
+    },
+    {
+      "index": 30,
+      "source_after_fs": 3561281680993715000000,
+      "source_before_fs": 3561281680928903000000
+    },
+    {
+      "index": 31,
+      "source_after_fs": 3561281681076101000000,
+      "source_before_fs": 3561281680995839000000
+    },
+    {
+      "index": 32,
+      "source_after_fs": 3561281681143408000000,
+      "source_before_fs": 3561281681078275000000
+    },
+    {
+      "index": 33,
+      "source_after_fs": 3561281681209743000000,
+      "source_before_fs": 3561281681145652000000
+    },
+    {
+      "index": 34,
+      "source_after_fs": 3561281681276028000000,
+      "source_before_fs": 3561281681211737000000
+    },
+    {
+      "index": 35,
+      "source_after_fs": 3561281681342353000000,
+      "source_before_fs": 3561281681278062000000
+    },
+    {
+      "index": 36,
+      "source_after_fs": 3561281681409510000000,
+      "source_before_fs": 3561281681344407000000
+    },
+    {
+      "index": 37,
+      "source_after_fs": 3561281681475014000000,
+      "source_before_fs": 3561281681411474000000
+    },
+    {
+      "index": 38,
+      "source_after_fs": 3561281681539906000000,
+      "source_before_fs": 3561281681477038000000
+    },
+    {
+      "index": 39,
+      "source_after_fs": 3561281681605540000000,
+      "source_before_fs": 3561281681541950000000
+    },
+    {
+      "index": 40,
+      "source_after_fs": 3561281681670914000000,
+      "source_before_fs": 3561281681607464000000
+    },
+    {
+      "index": 41,
+      "source_after_fs": 3561281681735937000000,
+      "source_before_fs": 3561281681673058000000
+    },
+    {
+      "index": 42,
+      "source_after_fs": 3561281681800919000000,
+      "source_before_fs": 3561281681738021000000
+    },
+    {
+      "index": 43,
+      "source_after_fs": 3561281681865191000000,
+      "source_before_fs": 3561281681802923000000
+    },
+    {
+      "index": 44,
+      "source_after_fs": 3561281681929612000000,
+      "source_before_fs": 3561281681867285000000
+    },
+    {
+      "index": 45,
+      "source_after_fs": 3561281682006998000000,
+      "source_before_fs": 3561281681931656000000
+    },
+    {
+      "index": 46,
+      "source_after_fs": 3561281682077291000000,
+      "source_before_fs": 3561281682009283000000
+    },
+    {
+      "index": 47,
+      "source_after_fs": 3561281682142524000000,
+      "source_before_fs": 3561281682079305000000
+    },
+    {
+      "index": 48,
+      "source_after_fs": 3561281682208769000000,
+      "source_before_fs": 3561281682144568000000
+    },
+    {
+      "index": 49,
+      "source_after_fs": 3561281682274243000000,
+      "source_before_fs": 3561281682210803000000
+    },
+    {
+      "index": 50,
+      "source_after_fs": 3561281682339857000000,
+      "source_before_fs": 3561281682276247000000
+    },
+    {
+      "index": 51,
+      "source_after_fs": 3561281682404459000000,
+      "source_before_fs": 3561281682341891000000
+    },
+    {
+      "index": 52,
+      "source_after_fs": 3561281682475884000000,
+      "source_before_fs": 3561281682406473000000
+    },
+    {
+      "index": 53,
+      "source_after_fs": 3561281682542580000000,
+      "source_before_fs": 3561281682478238000000
+    },
+    {
+      "index": 54,
+      "source_after_fs": 3561281682607973000000,
+      "source_before_fs": 3561281682544594000000
+    },
+    {
+      "index": 55,
+      "source_after_fs": 3561281682673347000000,
+      "source_before_fs": 3561281682610007000000
+    },
+    {
+      "index": 56,
+      "source_after_fs": 3561281682738380000000,
+      "source_before_fs": 3561281682675421000000
+    },
+    {
+      "index": 57,
+      "source_after_fs": 3561281682804474000000,
+      "source_before_fs": 3561281682740443000000
+    },
+    {
+      "index": 58,
+      "source_after_fs": 3561281682869637000000,
+      "source_before_fs": 3561281682806568000000
+    },
+    {
+      "index": 59,
+      "source_after_fs": 3561281682934380000000,
+      "source_before_fs": 3561281682871741000000
+    },
+    {
+      "index": 60,
+      "source_after_fs": 3561281682998932000000,
+      "source_before_fs": 3561281682936434000000
+    },
+    {
+      "index": 61,
+      "source_after_fs": 3561281683080085000000,
+      "source_before_fs": 3561281683009221000000
+    },
+    {
+      "index": 62,
+      "source_after_fs": 3561281683151450000000,
+      "source_before_fs": 3561281683082239000000
+    },
+    {
+      "index": 63,
+      "source_after_fs": 3561281683217645000000,
+      "source_before_fs": 3561281683153564000000
+    }
+  ],
+  "trace_event_count": 1088,
+  "trace_points": [
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 0,
+      "source_time_fs": 3561281677862527000000,
+      "target_duration_fs": 52673000000,
+      "target_time_fs": 3498799864323691773952
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 1,
+      "source_time_fs": 3561281678924202000000,
+      "target_duration_fs": 19265000000,
+      "target_time_fs": 3498799864491881791488
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 2,
+      "source_time_fs": 3561281679009818500000,
+      "target_duration_fs": 24961000000,
+      "target_time_fs": 3498799864571592966144
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 3,
+      "source_time_fs": 3561281679087074500000,
+      "target_duration_fs": 16833000000,
+      "target_time_fs": 3498799864653352009728
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 4,
+      "source_time_fs": 3561281679158875500000,
+      "target_duration_fs": 17345000000,
+      "target_time_fs": 3498799864724615331840
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 5,
+      "source_time_fs": 3561281679229759000000,
+      "target_duration_fs": 16674000000,
+      "target_time_fs": 3498799864795846148096
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 6,
+      "source_time_fs": 3561281679300232000000,
+      "target_duration_fs": 16802000000,
+      "target_time_fs": 3498799864866148974592
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 7,
+      "source_time_fs": 3561281679369949000000,
+      "target_duration_fs": 16578000000,
+      "target_time_fs": 3498799864936516288512
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 8,
+      "source_time_fs": 3561281679438458500000,
+      "target_duration_fs": 16674000000,
+      "target_time_fs": 3498799865004707282944
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 9,
+      "source_time_fs": 3561281679506767500000,
+      "target_duration_fs": 16322000000,
+      "target_time_fs": 3498799865072897753088
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 10,
+      "source_time_fs": 3561281679574996000000,
+      "target_duration_fs": 16418000000,
+      "target_time_fs": 3498799865140960821248
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 11,
+      "source_time_fs": 3561281679646862000000,
+      "target_duration_fs": 20866000000,
+      "target_time_fs": 3498799865210368163840
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 12,
+      "source_time_fs": 3561281679719208500000,
+      "target_duration_fs": 16322000000,
+      "target_time_fs": 3498799865286238928896
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 13,
+      "source_time_fs": 3561281679787828000000,
+      "target_duration_fs": 16098000000,
+      "target_time_fs": 3498799865354078126080
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 14,
+      "source_time_fs": 3561281679855591000000,
+      "target_duration_fs": 16577000000,
+      "target_time_fs": 3498799865421853884416
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 15,
+      "source_time_fs": 3561281679922888000000,
+      "target_duration_fs": 15778000000,
+      "target_time_fs": 3498799865489467637760
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 16,
+      "source_time_fs": 3561281679994273000000,
+      "target_duration_fs": 16258000000,
+      "target_time_fs": 3498799865555483885568
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 17,
+      "source_time_fs": 3561281680067781500000,
+      "target_duration_fs": 16962000000,
+      "target_time_fs": 3498799865634746269696
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 18,
+      "source_time_fs": 3561281680139337000000,
+      "target_duration_fs": 16193000000,
+      "target_time_fs": 3498799865702937788416
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 19,
+      "source_time_fs": 3561281680210170500000,
+      "target_duration_fs": 16385000000,
+      "target_time_fs": 3498799865776857153536
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 20,
+      "source_time_fs": 3561281680278489500000,
+      "target_duration_fs": 16418000000,
+      "target_time_fs": 3498799865844663844864
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 21,
+      "source_time_fs": 3561281680346042500000,
+      "target_duration_fs": 16226000000,
+      "target_time_fs": 3498799865912439078912
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 22,
+      "source_time_fs": 3561281680416114000000,
+      "target_duration_fs": 16834000000,
+      "target_time_fs": 3498799865984437977088
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 23,
+      "source_time_fs": 3561281680486306500000,
+      "target_duration_fs": 16002000000,
+      "target_time_fs": 3498799866053492998144
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 24,
+      "source_time_fs": 3561281680553213500000,
+      "target_duration_fs": 16226000000,
+      "target_time_fs": 3498799866119571636224
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 25,
+      "source_time_fs": 3561281680619558500000,
+      "target_duration_fs": 15874000000,
+      "target_time_fs": 3498799866186290954240
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 26,
+      "source_time_fs": 3561281680686655000000,
+      "target_duration_fs": 16578000000,
+      "target_time_fs": 3498799866252434079744
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 27,
+      "source_time_fs": 3561281680754323000000,
+      "target_duration_fs": 16194000000,
+      "target_time_fs": 3498799866320528605184
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 28,
+      "source_time_fs": 3561281680823598500000,
+      "target_duration_fs": 20097000000,
+      "target_time_fs": 3498799866387409403904
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 29,
+      "source_time_fs": 3561281680893611000000,
+      "target_duration_fs": 16578000000,
+      "target_time_fs": 3498799866460368273408
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 30,
+      "source_time_fs": 3561281680961309000000,
+      "target_duration_fs": 16353000000,
+      "target_time_fs": 3498799866527278956544
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 31,
+      "source_time_fs": 3561281681035970000000,
+      "target_duration_fs": 17186000000,
+      "target_time_fs": 3498799866607757688832
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 32,
+      "source_time_fs": 3561281681110841500000,
+      "target_duration_fs": 16097000000,
+      "target_time_fs": 3498799866677356920832
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 33,
+      "source_time_fs": 3561281681177697500000,
+      "target_duration_fs": 16162000000,
+      "target_time_fs": 3498799866743948312576
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 34,
+      "source_time_fs": 3561281681243882500000,
+      "target_duration_fs": 16258000000,
+      "target_time_fs": 3498799866809643171840
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 35,
+      "source_time_fs": 3561281681310207500000,
+      "target_duration_fs": 16226000000,
+      "target_time_fs": 3498799866876649799680
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 36,
+      "source_time_fs": 3561281681376958500000,
+      "target_duration_fs": 16546000000,
+      "target_time_fs": 3498799866943017320448
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 37,
+      "source_time_fs": 3561281681443244000000,
+      "target_duration_fs": 15970000000,
+      "target_time_fs": 3498799867009735589888
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 38,
+      "source_time_fs": 3561281681508472000000,
+      "target_duration_fs": 15778000000,
+      "target_time_fs": 3498799867074887286784
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 39,
+      "source_time_fs": 3561281681573745000000,
+      "target_duration_fs": 15713000000,
+      "target_time_fs": 3498799867140007002112
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 40,
+      "source_time_fs": 3561281681639189000000,
+      "target_duration_fs": 16353000000,
+      "target_time_fs": 3498799867205541953536
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 41,
+      "source_time_fs": 3561281681704497500000,
+      "target_duration_fs": 15681000000,
+      "target_time_fs": 3498799867271172849664
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 42,
+      "source_time_fs": 3561281681769470000000,
+      "target_duration_fs": 16065000000,
+      "target_time_fs": 3498799867335811792896
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 43,
+      "source_time_fs": 3561281681834057000000,
+      "target_duration_fs": 15714000000,
+      "target_time_fs": 3498799867400643149824
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 44,
+      "source_time_fs": 3561281681898448500000,
+      "target_duration_fs": 15842000000,
+      "target_time_fs": 3498799867465025716224
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 45,
+      "source_time_fs": 3561281681969327000000,
+      "target_duration_fs": 19714000000,
+      "target_time_fs": 3498799867529504751616
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 46,
+      "source_time_fs": 3561281682043287000000,
+      "target_duration_fs": 16866000000,
+      "target_time_fs": 3498799867610399768576
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 47,
+      "source_time_fs": 3561281682110914500000,
+      "target_duration_fs": 15746000000,
+      "target_time_fs": 3498799867677310976000
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 48,
+      "source_time_fs": 3561281682176668500000,
+      "target_duration_fs": 16258000000,
+      "target_time_fs": 3498799867742974377984
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 49,
+      "source_time_fs": 3561281682242523000000,
+      "target_duration_fs": 16033000000,
+      "target_time_fs": 3498799867808925614080
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 50,
+      "source_time_fs": 3561281682308052000000,
+      "target_duration_fs": 16033000000,
+      "target_time_fs": 3498799867874557034496
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 51,
+      "source_time_fs": 3561281682373175000000,
+      "target_duration_fs": 15938000000,
+      "target_time_fs": 3498799867939516317696
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 52,
+      "source_time_fs": 3561281682441178500000,
+      "target_duration_fs": 16994000000,
+      "target_time_fs": 3498799868008730722304
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 53,
+      "source_time_fs": 3561281682510409000000,
+      "target_duration_fs": 16130000000,
+      "target_time_fs": 3498799868076826296320
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 54,
+      "source_time_fs": 3561281682576283500000,
+      "target_duration_fs": 16290000000,
+      "target_time_fs": 3498799868142329266176
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 55,
+      "source_time_fs": 3561281682641677000000,
+      "target_duration_fs": 15938000000,
+      "target_time_fs": 3498799868208024125440
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 56,
+      "source_time_fs": 3561281682706900500000,
+      "target_duration_fs": 16162000000,
+      "target_time_fs": 3498799868273527095296
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 57,
+      "source_time_fs": 3561281682772458500000,
+      "target_duration_fs": 15906000000,
+      "target_time_fs": 3498799868339381862400
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 58,
+      "source_time_fs": 3561281682838102500000,
+      "target_duration_fs": 15233000000,
+      "target_time_fs": 3498799868404789936128
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 59,
+      "source_time_fs": 3561281682903060500000,
+      "target_duration_fs": 15842000000,
+      "target_time_fs": 3498799868469780676608
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 60,
+      "source_time_fs": 3561281682967683000000,
+      "target_duration_fs": 15906000000,
+      "target_time_fs": 3498799868534324199424
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 61,
+      "source_time_fs": 3561281683044653000000,
+      "target_duration_fs": 16514000000,
+      "target_time_fs": 3498799868610099019776
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 62,
+      "source_time_fs": 3561281683116844500000,
+      "target_duration_fs": 19810000000,
+      "target_time_fs": 3498799868681201909760
+    },
+    {
+      "event_category": "gpu_user_annotation",
+      "index": 63,
+      "source_time_fs": 3561281683185604500000,
+      "target_duration_fs": 16194000000,
+      "target_time_fs": 3498799868752561176576
+    }
+  ]
+}

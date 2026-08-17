@@ -1,0 +1,13 @@
+{
+  "attempt_id": "EXPERT-CATALOG-V6-TRANSFER-V4-EQ",
+  "next_ready_unit": "OFF-E-RT0",
+  "object_bytes": 352321536,
+  "object_count": 256,
+  "raw_file_set_sha256": "732cf965376ae0bbc20750e71d9f60649e6331c9530359a3a32f52096e11898b",
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T01:58:42Z",
+  "schema_version": "phase7-combined-master-expert-catalog-adoption-review-v1",
+  "source": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/adopted/EXPERT-CATALOG-V6-TRANSFER-V4/EQ",
+  "total_expert_bytes": 90194313216,
+  "validation_state": "VALIDATION_PASS"
+}

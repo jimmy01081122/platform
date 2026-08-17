@@ -1,0 +1,33 @@
+profile_id: discrete_edge_workstation
+profile_revision: 1
+system:
+  cpu:
+    isa: unspecified
+    cores: null
+    frequency_hz: null
+  host_memory:
+    capacity_bytes: null
+    bandwidth_bytes_per_s: null
+    latency_s: null
+  gpu:
+    count: 1
+    model: unspecified
+    compute_service_model: trace_or_measured
+  gpu_memory:
+    capacity_bytes: null
+    bandwidth_bytes_per_s: null
+  device_link:
+    type: pcie_or_equivalent
+    payload_bandwidth_bytes_per_s: null
+    latency_s: null
+    duplex_model: configurable
+  dma:
+    copy_engines: null
+    max_outstanding: null
+  translation:
+    iommu_enabled: null
+  data_ownership:
+    host_dram_and_gpu_vram: true
+parameter_policy:
+  null_values_must_be_measured_registered_or_swept: true
+  no_vendor_default_without_provenance: true

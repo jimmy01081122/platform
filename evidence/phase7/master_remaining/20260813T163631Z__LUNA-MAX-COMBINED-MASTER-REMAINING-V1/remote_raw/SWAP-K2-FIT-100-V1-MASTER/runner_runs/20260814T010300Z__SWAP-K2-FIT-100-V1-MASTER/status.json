@@ -1,0 +1,19 @@
+{
+  "attempt_id": "SWAP-K2-FIT-100-V1-MASTER",
+  "context_tokens_per_request": 16384,
+  "execution_state": "EXECUTION_COMPLETE",
+  "finished_at_utc": "2026-08-14T01:03:47.249945Z",
+  "gpu_kv_capacity_tokens_expected": 36928,
+  "mechanism": "runtime_native_kv_offload",
+  "movement_gate": "REQUIRES_OBSERVABLE_BLOCK_SWAP_EVENT_AND_LINEAGE",
+  "object_level_block_trace": "UNAVAILABLE_UNLESS_RUNTIME_EXPOSES",
+  "promotion_status": "PENDING_REVIEW",
+  "raw_capture_status": "RAW_CAPTURED",
+  "request_count": 3,
+  "requested_kv_offloading_backend": "native",
+  "requested_kv_offloading_size_gib": 4.0,
+  "schema_version": "phase7-swap-k1-status-v1",
+  "status": "PASS",
+  "total_context_tokens": 49152,
+  "validation_state": "UNVERIFIED_BLOCK_MOVEMENT"
+}

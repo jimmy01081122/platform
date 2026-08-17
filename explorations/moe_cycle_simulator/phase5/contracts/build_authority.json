@@ -1,0 +1,7 @@
+{
+  "schema_version": "phase5-build-authority-v1",
+  "phase4_git_commit": "e5b2298edebdf192472e1ae5bef009879fc3549a",
+  "phase4_build_authority_sha256": "6c96124ad794729ff502dd7970cfccfaa9eb8105df2de359743eedc83276f308",
+  "execution_scope": "CPU_SYNTHETIC_ONLY",
+  "gpu_authority": "NONE"
+}

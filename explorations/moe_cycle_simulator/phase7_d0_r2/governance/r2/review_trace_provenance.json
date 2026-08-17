@@ -1,0 +1,45 @@
+{
+  "schema_version": "phase7-gputw-d0-r2/reviewer-output/v1",
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r2-4643f2e",
+  "reviewed_commit": "4643f2e46be4caedd1219c316a3ffd0d9adf45ca",
+  "reviewed_tree": "d63d63b77d631260fe415d43fef62d9b77a5a175",
+  "reviewed_candidate_ledger_sha256": "24aeb8650ecf90ba603d3f0b2214e6a84a3b442019514253337167b4ac48de26",
+  "candidate_member_count": 22,
+  "verdict": "GO",
+  "blockers": [],
+  "non_blocking_findings": [
+    "The candidate is additive after immutable D0-R1 and excludes the guide draft, unrelated GPU package edits and runs content from its change boundary.",
+    "Owner/provider live inputs remain pending and are represented as explicit external blockers; no private key or ambient credential is retained."
+  ],
+  "review_focus": [
+    "The candidate ledger is SHA-256 and LC_ALL=C lexical path ordered; its 22 members equal the implementation commit change boundary.",
+    "Application, dependency and result identity closures are checked by CPU validator/tests, including transitive dependency drift and command/probe bindings.",
+    "Clean archive replay must reconstruct only the candidate source tree and preserve the same commit/tree/ledger identity.",
+    "Historical D0-R1, R12-R5 and Provider R1 bytes are referenced but not overwritten or mixed into this candidate."
+  ],
+  "commands_executed": [
+    "git rev-parse 4643f2e46be4caedd1219c316a3ffd0d9adf45ca 4643f2e46be4caedd1219c316a3ffd0d9adf45ca^{tree}",
+    "git diff-tree --root --no-commit-id --name-status -r 4643f2e46be4caedd1219c316a3ffd0d9adf45ca",
+    "for path in $(git diff-tree --root --no-commit-id --name-only -r 4643f2e46be4caedd1219c316a3ffd0d9adf45ca | LC_ALL=C sort); do git show 4643f2e46be4caedd1219c316a3ffd0d9adf45ca:$path | sha256sum; done",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -B explorations/moe_cycle_simulator/phase7_d0_r2/validate_d0_r2.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -B explorations/moe_cycle_simulator/phase7/governance/r12r5/validate_candidate_ledger.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -B explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/validate_review.py"
+  ],
+  "command_results": [
+    "Candidate identity PASS: commit 4643f2e46be4caedd1219c316a3ffd0d9adf45ca, tree d63d63b77d631260fe415d43fef62d9b77a5a175.",
+    "Implementation change boundary PASS: exactly 22 additive candidate members.",
+    "Candidate source hashes PASS against the recorded candidate ledger.",
+    "D0-R2 validator PASS; historical R12-R5 and Provider R1 validators PASS.",
+    "No historical status or candidate bytes were rewritten."
+  ],
+  "claim_boundary": "This is a read-only exact-set and provenance review. It claims no historical rewrite, GPUtw instance qualification, live RTX PRO 6000 availability, storage measurement, runtime measurement, Mixtral load, BF16 capacity pass, D0 pass, GPU calibration, SSH connection, host-key acquisition or model download.",
+  "side_effects": {
+    "ssh": false,
+    "provider_network_probe": false,
+    "instance_creation": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  }
+}

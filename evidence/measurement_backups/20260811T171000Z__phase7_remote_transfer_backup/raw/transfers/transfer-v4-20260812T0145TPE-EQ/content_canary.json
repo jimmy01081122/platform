@@ -1,0 +1,18 @@
+{
+  "completed_bytes": 352321536,
+  "content_equal_after_h2d_d2h": true,
+  "object": {
+    "global_object_id": 0,
+    "layer_id": 0,
+    "local_expert_id": 0
+  },
+  "requested_bytes": 352321536,
+  "schema_version": "phase7-xfer-content-canary-v1",
+  "source_identity": [
+    "model.layers.0.block_sparse_moe.experts.0.w1.weight",
+    "model.layers.0.block_sparse_moe.experts.0.w2.weight",
+    "model.layers.0.block_sparse_moe.experts.0.w3.weight"
+  ],
+  "status": "PASS",
+  "tensor_count": 3
+}

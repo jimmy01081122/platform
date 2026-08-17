@@ -1,0 +1,22 @@
+schema_version: benchmark-sample-split-axis-v1
+axis_revision: v1.4.0
+seed: 20260718
+assignment_unit: sample_id
+partitions: [smoke, calibration, validation, sample_holdout]
+invariants:
+  sample_ids_pairwise_disjoint: true
+  raw_sample_hashes_pairwise_disjoint: true
+  prompt_hashes_pairwise_disjoint: true
+assignment:
+  method: deterministic_subject_round_robin_after_domain_reservation
+  selection_key: sha256(seed,dataset_revision,config,split,row_index)
+  quotas_per_dataset:
+    smoke: 4
+    calibration: 32
+    validation: 32
+    sample_holdout: 64
+  insufficient_rows: emit_convergence_gate
+leakage_policy:
+  duplicate_raw_hash: reject
+  duplicate_prompt_hash: reject
+  cross_partition_sample_id: reject

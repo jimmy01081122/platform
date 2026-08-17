@@ -1,0 +1,12 @@
+{
+  "completed_at_utc": "2026-08-09T17:08:18.576186Z",
+  "expected_repo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "expected_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "generation_seconds": 83.79787476407364,
+  "load_seconds": 12.839880526997149,
+  "model_dir": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "repair": "smoke-only batch cap 256 and gpu_memory_utilization 0.97 to retain 32768 context; baseline properties unchanged",
+  "repair_of": "/vault/flow/moe_simulator_phase7/runs/20260809T165923Z__mixtral_bf16_smoke",
+  "started_at_utc": "2026-08-09T17:06:36.553443Z",
+  "state": "MODEL_SMOKE_TEST_PASS"
+}

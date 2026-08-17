@@ -1,0 +1,381 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "evidence": "measured",
+  "metric_scope": "MoE-replay; not full-model TPOT/throughput",
+  "experiment": {
+    "split": "calibration",
+    "target_gpu_regex": "RTX PRO 6000",
+    "trust": "hardware-calibration"
+  },
+  "device": {
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "capability": [
+      12,
+      0
+    ],
+    "total_memory_bytes": 101973491712
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "torch": "2.7.1+cu128",
+    "cuda_runtime": "12.8"
+  },
+  "timestamp_utc": "2026-07-18T02:31:23Z",
+  "raw_profiler_output": "/root/gpu-results/rtx-pro-6000-calibration/smoke-profiler.json",
+  "raw_benchmarks": [
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 813,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.04218029008140423,
+        0.041661167496684734,
+        0.04145220372949579
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04176455376919492,
+        "variance": 1.4054397496649882e-07,
+        "stdev": 0.0003748919510558993,
+        "ci95": [
+          0.04083319537119401,
+          0.04269591216719583
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 907,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.040675351480401994,
+        0.04088082781437345,
+        0.04074838169354457
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.040768186996106674,
+        "variance": 1.084931846276983e-08,
+        "stdev": 0.00010416006174522858,
+        "ci95": [
+          0.04050941817493173,
+          0.04102695581728162
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 545,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.04205845124130949,
+        0.04204829504730505,
+        0.0416198450490969
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.041908863779237145,
+        "variance": 6.267465684807345e-08,
+        "stdev": 0.0002503490699964221,
+        "ci95": [
+          0.041286912019226914,
+          0.042530815539247376
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 672,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.04069723685582479,
+        0.040110619295211064,
+        0.039702429657890684
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.04017009526964218,
+        "variance": 2.500633839162754e-07,
+        "stdev": 0.0005000633798992638,
+        "ci95": [
+          0.03892776870837532,
+          0.04141242183090904
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 631,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.05218581427862829,
+        0.05207257036550676,
+        0.05190962656930963
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.05205600373781489,
+        "variance": 1.927575255948338e-08,
+        "stdev": 0.00013883714401947118,
+        "ci95": [
+          0.05171108531619288,
+          0.0524009221594369
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 1349,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.016663436097865462,
+        0.016542553459829183,
+        0.016643060411321756
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.016616349989672135,
+        "variance": 4.1882380131779705e-09,
+        "stdev": 6.47165976637985e-05,
+        "ci95": [
+          0.016455572073383298,
+          0.016777127905960972
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704,group=128",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 286,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.14506494748842466,
+        0.14413046670126747,
+        0.1440123044527494
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.14440257288081385,
+        "variance": 3.325456698493986e-07,
+        "stdev": 0.0005766677291555325,
+        "ci95": [
+          0.1429699352077659,
+          0.14583521055386178
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 574,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.06452654795364221,
+        0.06440195223180259,
+        0.06441929116066325
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.06444926378203601,
+        "variance": 4.554791999150467e-09,
+        "stdev": 6.748919912956789e-05,
+        "ci95": [
+          0.06428159778598931,
+          0.06461692977808271
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 583,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.051880069294270276,
+        0.051789337734006485,
+        0.05192106911085073
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.05186349204637583,
+        "variance": 4.544392772135613e-09,
+        "stdev": 6.741211146474803e-05,
+        "ci95": [
+          0.05169601756216023,
+          0.05203096653059143
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 1532,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.016735352050542208,
+        0.016748532925199903,
+        0.016644156632784454
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.016709347202842187,
+        "variance": 3.2307916825247598e-09,
+        "stdev": 5.6840053505646526e-05,
+        "ci95": [
+          0.01656813728615499,
+          0.016850557119529385
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 297,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.14406411013619266,
+        0.14355566365148884,
+        0.1437955015034788
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.1438050917637201,
+        "variance": 6.469843677054192e-08,
+        "stdev": 0.0002543588739763996,
+        "ci95": [
+          0.14317317829447454,
+          0.14443700523296568
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 579,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms": [
+        0.06430574196402067,
+        0.06413838941610334,
+        0.06424909469788968
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.0642310753593379,
+        "variance": 7.245241244988679e-09,
+        "stdev": 8.511898287097114e-05,
+        "ci95": [
+          0.06401961101793796,
+          0.06444253970073785
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-livecodebench-execution-q0,concurrency=1",
+      "warmup": 2,
+      "outer_repeats": 3,
+      "inner_iterations": 143,
+      "minimum_inner_seconds": 0.05,
+      "repeats_ms_per_token": [
+        0.16278757748903927,
+        0.16217074360880818,
+        0.1622967219852901
+      ],
+      "statistics": {
+        "n": 3,
+        "mean": 0.16241834769437918,
+        "variance": 1.0621561878380278e-07,
+        "stdev": 0.000325907377614872,
+        "ci95": [
+          0.1616086835437962,
+          0.16322801184496216
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        6142.974884354007,
+        6166.340350588895,
+        6161.553898116536
+      ],
+      "throughput_statistics": {
+        "n": 3,
+        "mean": 6156.956377686479,
+        "variance": 152.33914867200684,
+        "stdev": 12.342574637084713,
+        "ci95": [
+          6126.293247926492,
+          6187.619507446466
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    }
+  ]
+}

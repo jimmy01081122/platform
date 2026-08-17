@@ -1,0 +1,1 @@
+Solve this arithmetic problem: 17 multiplied by 19 equals what? Give only the integer answer.

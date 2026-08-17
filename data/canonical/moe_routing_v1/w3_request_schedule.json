@@ -1,0 +1,93 @@
+{
+  "variant": "Qwen/Qwen3-235B-A22B-FP8",
+  "num_experts": 128,
+  "capacity": 64,
+  "request_schedule": {
+    "K=2": {
+      "isolated": {
+        "on_demand_miss_rate": 0.5154,
+        "prefetch_miss_rate": 0.0035,
+        "on_demand_misses": 104070,
+        "total_demands": 201904
+      },
+      "sequential": {
+        "on_demand_miss_rate": 0.5153,
+        "prefetch_miss_rate": 0.0033,
+        "on_demand_misses": 104051,
+        "total_demands": 201904
+      },
+      "interleaved": {
+        "on_demand_miss_rate": 0.4781,
+        "prefetch_miss_rate": 0.0019,
+        "on_demand_misses": 96524,
+        "total_demands": 201904
+      },
+      "seq_vs_isolated_miss_delta_pct": -0.02,
+      "inter_vs_isolated_miss_delta_pct": -7.24
+    },
+    "K=4": {
+      "isolated": {
+        "on_demand_miss_rate": 0.519,
+        "prefetch_miss_rate": 0.0076,
+        "on_demand_misses": 210217,
+        "total_demands": 405020
+      },
+      "sequential": {
+        "on_demand_miss_rate": 0.5189,
+        "prefetch_miss_rate": 0.0072,
+        "on_demand_misses": 210157,
+        "total_demands": 405020
+      },
+      "interleaved": {
+        "on_demand_miss_rate": 0.4336,
+        "prefetch_miss_rate": 0.0043,
+        "on_demand_misses": 175630,
+        "total_demands": 405020
+      },
+      "seq_vs_isolated_miss_delta_pct": -0.02,
+      "inter_vs_isolated_miss_delta_pct": -16.45
+    },
+    "K=8": {
+      "isolated": {
+        "on_demand_miss_rate": 0.5216,
+        "prefetch_miss_rate": 0.0082,
+        "on_demand_misses": 422802,
+        "total_demands": 810515
+      },
+      "sequential": {
+        "on_demand_miss_rate": 0.5215,
+        "prefetch_miss_rate": 0.0078,
+        "on_demand_misses": 422662,
+        "total_demands": 810515
+      },
+      "interleaved": {
+        "on_demand_miss_rate": 0.3651,
+        "prefetch_miss_rate": 0.0057,
+        "on_demand_misses": 295929,
+        "total_demands": 810515
+      },
+      "seq_vs_isolated_miss_delta_pct": -0.02,
+      "inter_vs_isolated_miss_delta_pct": -30.0
+    }
+  },
+  "cross_domain": {
+    "livecodebench": {
+      "queries": 3,
+      "on_demand_miss_mean": 0.537,
+      "prefetch_miss_mean": 0.0664,
+      "miss_reduction_pct": 87.6
+    },
+    "mmlu": {
+      "queries": 3,
+      "on_demand_miss_mean": 0.5168,
+      "prefetch_miss_mean": 0.0042,
+      "miss_reduction_pct": 99.2
+    },
+    "mmlu_ZH_CN": {
+      "queries": 3,
+      "on_demand_miss_mean": 0.5123,
+      "prefetch_miss_mean": 0.0028,
+      "miss_reduction_pct": 99.4
+    }
+  }
+}

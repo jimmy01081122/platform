@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pass_manifest.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "pass_id",
+    "status",
+    "identity",
+    "clock",
+    "raw_observation",
+    "raw_artifacts",
+    "converter_provenance",
+    "rerun_command"
+  ],
+  "properties": {
+    "schema_version": {"const": "trace-pass-manifest-v2"},
+    "pass_id": {"enum": ["P0", "P1", "P2", "P3", "P4", "P5", "P6"]},
+    "status": {
+      "enum": [
+        "complete",
+        "unsupported",
+        "permission_denied",
+        "not_applicable",
+        "failed",
+        "missing",
+        "corrupt",
+        "truncated",
+        "planned",
+        "blocked",
+        "optional_not_run"
+      ]
+    },
+    "failure_reason": {"type": ["string", "null"]},
+    "requirement_class": {
+      "enum": ["required", "conditional_optional", "optional"]
+    },
+    "capability_evidence": {
+      "type": "object",
+      "required": ["capability", "available", "evidence_path", "evidence_sha256"],
+      "properties": {
+        "capability": {"type": "string", "minLength": 1},
+        "available": {"type": "boolean"},
+        "evidence_path": {"type": "string", "minLength": 1},
+        "evidence_sha256": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "session_id",
+        "run_group_id",
+        "run_id",
+        "model_revision",
+        "workload_hash",
+        "configuration_hash",
+        "environment_hash",
+        "repetition_index",
+        "profiler_pass"
+      ],
+      "properties": {
+        "workload_hash": {"$ref": "#/$defs/hash"},
+        "configuration_hash": {"$ref": "#/$defs/hash"},
+        "environment_hash": {"$ref": "#/$defs/hash"},
+        "repetition_index": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": true
+    },
+    "clock": {
+      "type": "object",
+      "properties": {
+        "status": {"enum": ["observed", "known_limitation"]},
+        "reason": {"type": "string", "minLength": 1},
+        "source_content_ids": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/hash"}
+        },
+        "monotonic_host_ns": {"type": "integer", "minimum": 0},
+        "alignment": {
+          "type": "object",
+          "required": ["method", "max_error_ns", "anchors"],
+          "properties": {
+            "method": {"type": "string", "minLength": 1},
+            "max_error_ns": {"type": "number", "minimum": 0},
+            "anchors": {"type": "array", "minItems": 1}
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "wall_clock_utc",
+            "monotonic_host_ns",
+            "profiler_domain",
+            "timezone",
+            "alignment"
+          ]
+        },
+        {
+          "required": ["status", "reason", "source_content_ids"],
+          "properties": {"status": {"const": "known_limitation"}}
+        }
+      ]
+    },
+    "raw_observation": {
+      "type": "object",
+      "required": [
+        "environment",
+        "gpu_uuid",
+        "runtime",
+        "start_utc",
+        "end_utc"
+      ],
+      "properties": {
+        "environment": {"$ref": "#/$defs/rawField"},
+        "gpu_uuid": {"$ref": "#/$defs/rawField"},
+        "runtime": {"$ref": "#/$defs/rawField"},
+        "start_utc": {"$ref": "#/$defs/rawField"},
+        "end_utc": {"$ref": "#/$defs/rawField"}
+      },
+      "additionalProperties": false
+    },
+    "formal_evidence_status": {
+      "enum": ["sufficient", "insufficient", "known_limitation", "not_applicable"]
+    },
+    "sampling_sufficiency": {
+      "type": "object",
+      "required": ["status", "duration_seconds", "sample_count"],
+      "properties": {
+        "status": {"enum": ["sufficient", "insufficient"]},
+        "duration_seconds": {"type": ["number", "null"], "minimum": 0},
+        "sample_count": {"type": ["integer", "null"], "minimum": 0},
+        "minimum_duration_seconds": {"type": "number", "minimum": 5},
+        "minimum_sample_count": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": true
+    },
+    "raw_artifacts": {"type": "array"},
+    "converter_provenance": {
+      "type": "object",
+      "required": ["name", "version", "source_hash", "input_content_ids"],
+      "properties": {
+        "source_hash": {"$ref": "#/$defs/hash"},
+        "input_content_ids": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/hash"}
+        }
+      }
+    },
+    "rerun_command": {"type": "string", "minLength": 1},
+    "estimate_minutes": {"type": "number", "exclusiveMinimum": 0},
+    "collector_adapter": {"type": ["string", "null"]},
+    "benchmark_trace_records": {
+      "type": "array",
+      "items": {"type": "object"}
+    }
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rawField": {
+      "type": "object",
+      "required": ["status", "source_content_ids"],
+      "properties": {
+        "status": {"enum": ["observed", "known_limitation", "not_applicable"]},
+        "source_content_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/hash"}
+        },
+        "value": {},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "observed"}}},
+          "then": {"required": ["value"], "properties": {"source_content_ids": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"status": {"const": "known_limitation"}}},
+          "then": {"required": ["reason"]}
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

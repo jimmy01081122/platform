@@ -1,0 +1,19 @@
+{
+  "cuda_device_count": 1,
+  "cuda_devices": [
+    {
+      "capability": [
+        12,
+        0
+      ],
+      "index": 0,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+      "total_memory_bytes": 101973491712
+    }
+  ],
+  "engineargs_has_swap_space": false,
+  "torch": "2.11.0+cu130",
+  "torch_cuda": "13.0",
+  "transformers": "5.12.0",
+  "vllm": "0.23.0"
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "formal-residency-completion-v1",
+  "depth": 24,
+  "num_experts": 4,
+  "capacity": 2,
+  "request_reachable": true,
+  "completion_reachable": true,
+  "proof": "PROVEN_BOUNDED",
+  "properties": [
+    "single_outstanding_conservation",
+    "tagged_completion_payload_match",
+    "completion_before_resident"
+  ],
+  "sat_variables": 911948
+}

@@ -1,0 +1,32 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r1-20260728",
+  "ledger_sha256": "ef12fc0d8396544aaa63635fa83a14841ea9e5cbeb664382093939d278e25cb0",
+  "member_count": 54,
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "ARCH-P6-R1-B1",
+      "summary": "Admission is not fail-atomic; a pin-overflow exception can leave partially mutated scheduler state."
+    },
+    {
+      "id": "ARCH-P6-R1-B2",
+      "summary": "Coherent UMA lacks per-object serialization, complete directory invariants and checked version increments."
+    },
+    {
+      "id": "ARCH-P6-R1-B3",
+      "summary": "ACK/credit completion uses the wrong frozen event priority, and synthetic alignment valid ranges are not enforced."
+    },
+    {
+      "id": "ARCH-P6-R1-B4",
+      "summary": "Topology permits duplicate link/bridge IDs and does not enforce half-duplex reverse-pair group closure."
+    },
+    {
+      "id": "ARCH-P6-R1-B5",
+      "summary": "Phase 5 action membership and ExpertKey-to-object identity are caller-labelled rather than semantically validated."
+    }
+  ],
+  "claim_boundary": "CPU-synthetic TRACE_COMPILED_NON_ADAPTIVE two-domain direct-P2P and object-granular coherent-UMA scheduler evidence only; FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER and RANGE_UNKNOWN.",
+  "authorized_next_stage": "Phase 6 CPU-only remediation and a fresh immutable same-hash candidate/review only.",
+  "gpu_authority": "NONE"
+}

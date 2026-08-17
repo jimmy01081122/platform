@@ -1,0 +1,19 @@
+{
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r3-20260729",
+  "ledger_sha256": "ea5ce045072efda9a6cbf852f71733de5800b985e9385301b1baaedf0b115b9f",
+  "member_count": 240,
+  "exact_set_verification": "PASS",
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "TRACE-P6-R3-B1",
+      "summary": "TOKEN_ONLY route validation accepts present optional values that equal frozen missing-value sentinels.",
+      "evidence": "A present-but-empty request_id and UINT64_MAX or UINT32_MAX token/layer values pass has_value checks even though the canonical ABI reserves them for missing identity.",
+      "required_remediation": "Reject empty request_id and the frozen missing token/layer sentinel values; add three negative regressions and produce a fresh candidate."
+    }
+  ],
+  "claim_boundary": "Evidence remains CPU_SYNTHETIC with FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER fidelity and RANGE_UNKNOWN. No Mixtral, GPU, measured-hardware, calibration, DSE, performance, break-even or production-scale claim is established.",
+  "authorized_next_stage": "Phase 6 CPU-only remediation, a fresh immutable sealed run and a new independent three-role same-hash review only.",
+  "gpu_authority": "NONE"
+}

@@ -1,0 +1,55 @@
+{
+  "$id": "https://example.invalid/moe-simulator/calibration-profile-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "recordRef": {
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {"minLength": 1, "type": "string"},
+        "semantic_root": {"$ref": "#/$defs/hash"}
+      },
+      "required": ["record_id", "semantic_root"],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "evidence_artifact_roots": {
+      "items": {"$ref": "#/$defs/hash"},
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "held_out_workloads": {
+      "items": {"$ref": "#/$defs/recordRef"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "metric": {"minLength": 1, "type": "string"},
+    "model": {"$ref": "#/$defs/recordRef"},
+    "platform": {"$ref": "#/$defs/recordRef"},
+    "profile_id": {"$ref": "#/$defs/hash"},
+    "runtime_variant_hash": {"$ref": "#/$defs/hash"},
+    "schema_version": {"const": "calibration-profile-v1"},
+    "training_workloads": {
+      "items": {"$ref": "#/$defs/recordRef"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "unit": {"minLength": 1, "type": "string"}
+  },
+  "required": [
+    "schema_version",
+    "profile_id",
+    "runtime_variant_hash",
+    "model",
+    "platform",
+    "training_workloads",
+    "held_out_workloads",
+    "metric",
+    "unit",
+    "evidence_artifact_roots"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-r2-probe-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "capture_status", "captured_at_utc", "provider", "instance", "host", "gpu", "runtime", "storage", "observed_commands", "prohibitions"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-r2-probe-v1"},
+    "capture_status": {"const": "COMPLETE"},
+    "captured_at_utc": {"type": "string", "minLength": 1},
+    "provider": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "instance_id", "instance_state"],
+      "properties": {"name": {"type": "string"}, "instance_id": {"type": ["string", "null"]}, "instance_state": {"type": ["string", "null"]}}
+    },
+    "instance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["principal", "catalog_gpu_id", "node_id", "environment_label"],
+      "properties": {"principal": {"type": ["string", "null"]}, "catalog_gpu_id": {"type": ["string", "null"]}, "node_id": {"type": ["string", "null"]}, "environment_label": {"type": ["string", "null"]}}
+    },
+    "host": {
+      "type": "object", "additionalProperties": false,
+      "required": ["hostname", "os_release", "kernel_release", "boot_id", "python", "timeout"],
+      "properties": {
+        "hostname": {"type": ["string", "null"]}, "os_release": {"type": ["string", "null"]}, "kernel_release": {"type": ["string", "null"]}, "boot_id": {"type": ["string", "null"]},
+        "python": {"$ref": "#/$defs/executable"}, "timeout": {"$ref": "#/$defs/executable"}
+      }
+    },
+    "gpu": {
+      "type": "object", "additionalProperties": false,
+      "required": ["query_status", "count", "devices"],
+      "properties": {"query_status": {"type": "string"}, "count": {"type": ["integer", "null"], "minimum": 0}, "devices": {"type": "array", "items": {"$ref": "#/$defs/gpu_device"}}}
+    },
+    "runtime": {
+      "type": "object", "additionalProperties": false,
+      "required": ["container_image", "container_digest", "cuda", "driver", "vllm", "backends"],
+      "properties": {
+        "container_image": {"type": ["string", "null"]}, "container_digest": {"type": ["string", "null"]},
+        "cuda": {"type": ["string", "null"]}, "driver": {"type": ["string", "null"]},
+        "vllm": {"$ref": "#/$defs/software_identity"}, "backends": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "storage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["vault", "workspace"],
+      "properties": {"vault": {"$ref": "#/$defs/storage_identity"}, "workspace": {"$ref": "#/$defs/storage_identity"}}
+    },
+    "observed_commands": {"type": "array", "items": {"type": "string"}},
+    "prohibitions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["remote_writes", "package_install", "model_access", "inference", "cuda_benchmark", "gpu_workload"],
+      "properties": {"remote_writes": {"const": false}, "package_install": {"const": false}, "model_access": {"const": false}, "inference": {"const": false}, "cuda_benchmark": {"const": false}, "gpu_workload": {"const": false}}
+    }
+  },
+  "$defs": {
+    "executable": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "version", "sha256"],
+      "properties": {"path": {"type": ["string", "null"]}, "version": {"type": ["string", "null"]}, "sha256": {"type": ["string", "null"]}}
+    },
+    "software_identity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["present", "version", "path", "distribution_sha256"],
+      "properties": {"present": {"type": "boolean"}, "version": {"type": ["string", "null"]}, "path": {"type": ["string", "null"]}, "distribution_sha256": {"type": ["string", "null"]}}
+    },
+    "storage_identity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "mounted", "mount_identity_sha256", "total_bytes", "free_bytes"],
+      "properties": {"path": {"type": "string"}, "mounted": {"type": "boolean"}, "mount_identity_sha256": {"type": ["string", "null"]}, "total_bytes": {"type": ["integer", "null"], "minimum": 0}, "free_bytes": {"type": ["integer", "null"], "minimum": 0}}
+    },
+    "gpu_device": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "memory_total_bytes", "uuid", "pci_bus_id", "driver_version", "compute_mode", "mig_mode"],
+      "properties": {"name": {"type": ["string", "null"]}, "memory_total_bytes": {"type": ["integer", "null"], "minimum": 0}, "uuid": {"type": ["string", "null"]}, "pci_bus_id": {"type": ["string", "null"]}, "driver_version": {"type": ["string", "null"]}, "compute_mode": {"type": ["string", "null"]}, "mig_mode": {"type": ["string", "null"]}}
+    }
+  }
+}

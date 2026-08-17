@@ -1,0 +1,20 @@
+{
+  "checkpoint_id": "MR7-SWAP-K3-LONG-PREFILL-SWAP-K3-LONG-PREFILL-V3-MASTER-PROMOTION",
+  "execution_ledger_sha256": "7d4a466bea0bdaa908a7b9d7cdba48f4434b9cec477d5520fedbeca36702ab23",
+  "matrix_completed_points": [
+    "LONG-PREFILL"
+  ],
+  "matrix_missing_points": [
+    "DECODE-HEAVY",
+    "MIXED",
+    "BURST"
+  ],
+  "next_ready_gpu_unit": "SWAP-K3",
+  "point_id": "LONG-PREFILL",
+  "raw_file_set_sha256": "a06579655006d223a5abcdb94a3bead0e7e0216edd0cb7fc345004fee5c1a531",
+  "remaining_ledger_sha256": "2d2efc74b29dc3a8763047b897f1dc62c43db88b5720bffaccc4eb9279382fa0",
+  "required_closed_count": 13,
+  "required_remaining_count": 273,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T01:32:31Z"
+}

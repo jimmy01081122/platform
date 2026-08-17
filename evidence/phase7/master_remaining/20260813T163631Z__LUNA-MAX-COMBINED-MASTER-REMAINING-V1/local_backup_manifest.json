@@ -1,0 +1,463 @@
+{
+  "checksum_algorithm": "SHA-256",
+  "new_remote_backup": {
+    "file_count": 18,
+    "file_set_sha256": "0f9d152953a634c22cfc0c598bda36f01cfcc5e402d4c8d6959e033dd4e38784",
+    "guard_manifest_sha256": "bd8239cdc57d8ad2e24b0738608fe7f8761cd1e0ef4739a26dc71974fdadfe17",
+    "guard_terminal_sha256": "9161bc8deccdb5fe2273f1241bbfea5cdb363830557b0f5be7a1488e2a1be7e7",
+    "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+    "local_root": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1",
+    "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+    "remote_campaign": "20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2",
+    "status": "VERIFIED"
+  },
+  "phase7_attempt_backups": [
+    {
+      "attempt_id": "SWAP-K1-V4-MASTER",
+      "file_count": 18,
+      "file_set_sha256": "458acc77f4610625018437a39eb84142eaa9fca6df419782a6a63f9ab7f0925d",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V4-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V4-MASTER",
+      "status": "VERIFIED_RAW_UNVERIFIED_GATE"
+    },
+    {
+      "attempt_id": "SWAP-K1-V5-MASTER",
+      "derived_sidecar_sha256": "522c992b94e731f6fa58e341d07fe0636b1724f61dece60ade89fedc16cf9c0d",
+      "file_count": 18,
+      "file_set_sha256": "3f03ff125785b108dc658be2fda17816f6a2f4d01f8f21d92b7b7e61a5dacd9e",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V5-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V5-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS_WITH_LIMITATIONS"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-25-V1-MASTER",
+      "file_count": 2,
+      "file_set_sha256": "97caa5fd2fa309ec91cf472bc0b134e6d3375c7699c0183137c35726e2d3e591",
+      "local_attempt": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-25-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-25-V1-MASTER",
+      "status": "VERIFIED_RAW_TECHNICAL_FAILURE",
+      "stderr_sha256": "12ceabdcbc98b890410362372532256402b48ddddc409ee473a3a0fcaec55be8",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-75-V1-MASTER",
+      "file_count": 19,
+      "file_set_sha256": "7226c804f3e3046ca34d61253e2f8d6e7f31dcd32e240515f165823ba62134c5",
+      "local_attempt": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-75-V1-MASTER",
+      "status": "VERIFIED_RAW_TECHNICAL_FAILURE",
+      "stderr_sha256": "93be9e26ca21f4e64bf9791acda31b474590bd3a807e17b42651f22aa5188047",
+      "stdout_sha256": "6c68cd15f8bbd8b7f22b15824b6dbf514b666e6fd99f34e2be29db47b6806431"
+    },
+    {
+      "attempt_id": "SWAP-K3-LONG-PREFILL-V1-MASTER",
+      "file_count": 2,
+      "file_set_sha256": "58e866cf3cbad8519b0ce926b0f3ae243b93433c9b491ddd1d814e5410612fc3",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-LONG-PREFILL-V1-MASTER",
+      "status": "VERIFIED_RAW_TECHNICAL_FAILURE",
+      "stderr_sha256": "3cd7acff45a5f4b08690a63e22c6fa7415b7d6e4938e7380e0c0ac699e39288a",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attempt_id": "SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "derived_sidecar_sha256": "8bd13af2dd3ebfce41f97277bf4a24f451966302b979f735f5aa080ff41d0100",
+      "file_count": 10,
+      "file_set_sha256": "a06579655006d223a5abcdb94a3bead0e7e0216edd0cb7fc345004fee5c1a531",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "manifest_sha256": "60eca083b9bcb641f2b9c8e3437d44f2cb9f9e85f828031278a465799a2d324c",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS_WITH_LIMITATIONS"
+    },
+    {
+      "attempt_id": "SWAP-K3-LONG-PREFILL-V2-MASTER",
+      "file_count": 9,
+      "file_set_sha256": "22dca43c3468a334ce73b13cd29f39c0f3ab7d344b29132ba0d7dd661600be89",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V2-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-LONG-PREFILL-V2-MASTER",
+      "status": "VERIFIED_RAW_TECHNICAL_FAILURE",
+      "stderr_sha256": "97feab53ffbf7201ba39d10813e9d9756e3f55c95a42bcaef76a312f6db0d9be",
+      "stdout_sha256": "f5fcf68640bd93bf4d9c0e24d50ce6de9b8ebbb45eacccc7efc15bb26f565bc5"
+    },
+    {
+      "attempt_id": "SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "derived_sidecar_sha256": "a63b241a2d5ea09f5c8d921ab42e2d0b2b1f5ab343d5d0df87e0bc6a0f0f2671",
+      "file_count": 10,
+      "file_set_sha256": "59632645e7a3e662078105834bdb426f0849cb383473cf18b134d8bfaab51b22",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "manifest_sha256": "74a4d542c28f32f093d7c11918d48ca2dba5612413ad9c96839bdb9e262c9dd0",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS_WITH_LIMITATIONS"
+    },
+    {
+      "attempt_id": "SWAP-K3-MIXED-V1-MASTER",
+      "derived_sidecar_sha256": "d4a9754fd8a5b13f0bed24185f133b53d7ea5b48ca640ffa852bb120bede982c",
+      "file_count": 11,
+      "file_set_sha256": "907624034634eea9756223bcaf94aa5f4712fb7b9cd9c2a7a51ebf672a655b6b",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-MIXED-V1-MASTER",
+      "manifest_sha256": "1f6fbeaee4582d376c5c8e0833cd12a8a57359abf4a71595318d418d95893aa4",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-MIXED-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS_WITH_LIMITATIONS"
+    },
+    {
+      "attempt_id": "SWAP-K3-BURST-V1-MASTER",
+      "derived_sidecar_sha256": "92c40811d920d78413ea2c756954a46732244c4c3f956ec6d6819b95eb47e7b3",
+      "file_count": 10,
+      "file_set_sha256": "620b826e9f29f723440c46eb0dc53244b265368bf5cb85b5db6968746b71acef",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER",
+      "manifest_sha256": "b9843fc9f999a54ef01a3e1261fa0d5bf09d4a3d0f0b11be11cf170c4c8ad80a",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-BURST-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS_WITH_LIMITATIONS"
+    },
+    {
+      "attempt_id": "SWAP-K5-V1-MASTER",
+      "derived_sidecar_sha256": "31bb095ced0960ac0fa412a833318dafaf37487a03d2e0998802c984c4157353",
+      "file_count": 17,
+      "file_set_sha256": "4d11d357e04d69bab53d3e30e70d6524020f8a4ca779f2e45f5dc38a241a7a23",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K5-V1-MASTER",
+      "manifest_sha256": "857fb706422d370879a962c88d3c1a05bcaccfbb088a0528591139f4aba31f49",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/SWAP-K5-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS_WITH_LIMITATIONS"
+    },
+    {
+      "attempt_id": "EXPERT-CATALOG-V6-TRANSFER-V4-EQ",
+      "file_count": 5,
+      "file_set_sha256": "732cf965376ae0bbc20750e71d9f60649e6331c9530359a3a32f52096e11898b",
+      "local_attempt": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/adopted/EXPERT-CATALOG-V6-TRANSFER-V4/EQ",
+      "status": "VERIFIED_EXISTING_RAW_ADOPTED"
+    },
+    {
+      "attempt_id": "OFF-E-RT0-V1-MASTER",
+      "file_count": 21,
+      "file_set_sha256": "b27e112ddeb12deb7f5596817b1a9bd11a37cf9d57ceafdd342498a86be8da32",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-RT0-V1-MASTER",
+      "manifest_sha256": "e5c7b224955a947688a3d65d75e270894a565de2237d64d9378b4a43cd4a05a8",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-RT0-V1-MASTER",
+      "status": "VERIFIED_RAW_NEGATIVE_EVIDENCE"
+    },
+    {
+      "attempt_id": "OFF-W0-V1-MASTER",
+      "file_set_sha256": "e6d609bcb37fd8188b2ee9a3740a609dec0fcaa43e39b850a01cc66fa1389412",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W0-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W0-V1-MASTER",
+      "status": "VERIFIED_RAW_TECHNICAL_FAILURE"
+    },
+    {
+      "attempt_id": "OFF-W0-V2-MASTER",
+      "file_set_sha256": "ac8a84f9af23df521dd0beeebbaba8ddf55e89045542bd4a7abd112d99b85978",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W0-V2-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W0-V2-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-W1-V1-MASTER",
+      "file_set_sha256": "1a54e48ff475f83139eb52e3f0a9afebf02d819fd5a98d8cfae9df5121904bdc",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W1-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W1-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-W2-V1-MASTER",
+      "file_set_sha256": "dd36f96a4cad1c917ba69155eb996adbc548bb7beee68b663c7be42fd0f9911f",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W2-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W2-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-W3-V1-MASTER",
+      "file_set_sha256": "80a05de34fb21cbf5247e15f5ea38dce0090dc997d91656a1d82a45bebf4fe59",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W3-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W3-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS_WITH_AUDIT_REPAIR_LINEAGE"
+    },
+    {
+      "attempt_id": "OFF-E-PR0-V1-MASTER",
+      "file_set_sha256": "797462788dcfe47cbe6f9ef83ccc9372fa9dbeba872686f94eb91a404d288aa8",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR0-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR0-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR1-V1-MASTER",
+      "file_set_sha256": "c321fa594150722b043e9ee2f5d37f07dae2137b6cbdb176226e5024cf2d6b82",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR1-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR1-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR2-V1-MASTER",
+      "file_set_sha256": "d04d8170c760b6fc555f176a15ecb4b9a30a806c56dc3d505cc680f0e939917b",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR2-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR2-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-025-V1-MASTER",
+      "file_set_sha256": "b33bf0622ea0220f15c9f0ef67be008d7ac795ce18f718b9e9dad6a907f052e3",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-025-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-025-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-050-V1-MASTER",
+      "file_set_sha256": "5935d38dbfb91b63654f72695e036bf9167a81a1feefa9b5f94dd158cd49b0fb",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-050-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-050-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-075-V1-MASTER",
+      "file_set_sha256": "2b4b9e80ce32ebad4390517493eaa8fb78a947c1c1c7133aaad3a00745bde385",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-075-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-075-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-080-V1-MASTER",
+      "file_set_sha256": "b92784596f9c2e7c26e9514265d2c4c95960d1750d8fc5aa3c4328ac07ff51e5",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-080-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-080-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-085-V1-MASTER",
+      "file_set_sha256": "27010d45f1d17ff94e22571d36b538b6d63f1dd458343873cf17a49884ebf187",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-085-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-085-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-090-V1-MASTER",
+      "file_set_sha256": "1e2ea69b7e38a035cf40198218c4677c63222f225b07a584132f0bc7d8296025",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-090-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-090-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-095-V1-MASTER",
+      "file_set_sha256": "b12e7985f67b1ad2a05f8d7b85419ace4470f023db2e80153937f0a2bd8796bc",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-095-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-095-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-099-V1-MASTER",
+      "file_set_sha256": "57835dab2008537032f558963e88cb227ba3ef7c9b5d648b4f58b3576cfe5f13",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-099-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-099-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-100-V1-MASTER",
+      "file_set_sha256": "9363a2a6270607756d97d6621350553acb93af20a7848cf371ac2f2f56898a4e",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-100-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-100-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0375-V1-MASTER",
+      "file_set_sha256": "863bf217c8d6a3fe39ed7970ef5094b0c73155a477d0ff9ca960aec621fb6c8f",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0375-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0375-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0625-V1-MASTER",
+      "file_set_sha256": "5a97be268ccf3402abdc01d2d747b534ff3b43db0d23d5727165474ea6061654",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0625-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0625-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0825-V1-MASTER",
+      "file_set_sha256": "dc1642c5e768361c5e7216a524a9e649ea89fea4fd3250d06644934683eebdc9",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0825-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0825-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0875-V1-MASTER",
+      "file_set_sha256": "9199b1846a7852c2cec2ca9c6240ba1446b4a5cc819a9abb29872c15ee518daf",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0875-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0875-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0925-V1-MASTER",
+      "file_set_sha256": "8c23fa9c13e4149a29cdcc83589375ddc67d54937298bfe8960c0252c889eac4",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0925-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0925-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-097-V1-MASTER",
+      "file_set_sha256": "a78dac7ce4f6f2006b84d4b0d3763f67bb26c5202e784d34ce5866189477281b",
+      "local_attempt": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-097-V1-MASTER",
+      "remote_attempt": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-097-V1-MASTER",
+      "status": "VERIFIED_RAW_VALIDATION_PASS"
+    }
+  ],
+  "remote_delete_before_local_verify": false,
+  "schema_version": "phase7-combined-master-local-backup-manifest-v1",
+  "verified_local_sources": [
+    {
+      "manifest_sha256": "f9305de2691eb8fcc7f2678b5f39dbb9c403bf122a3275efdfaccf8cede7ea02",
+      "path": "runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T195121Z__SERV-P0-25-SHORT-C8-NATURAL-V1",
+      "result_sha256": "7c37baa6dd55c8f3030646b370ace4378d74d78fb9ea75ea08128f6a5f4787de",
+      "status_sha256": "9ff7955173c2c0b1d3521699f2fe031233123a4c500fa545d85bd03a9a499d43"
+    },
+    {
+      "attempt_manifest_sha256": "af322f9f187d1471381786b7feeb160bb5d464db29e96729fbf8548f5559e7ed",
+      "path": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1",
+      "status": "historical_attempt_checksum_rechecked"
+    },
+    {
+      "attempt_id": "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+      "file_count": 18,
+      "file_set_sha256": "0f9d152953a634c22cfc0c598bda36f01cfcc5e402d4c8d6959e033dd4e38784",
+      "path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+      "status": "new-session guard raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K1-V4-MASTER",
+      "file_count": 18,
+      "file_set_sha256": "458acc77f4610625018437a39eb84142eaa9fca6df419782a6a63f9ab7f0925d",
+      "manifest_sha256": "76e780654e3d3ec127a1ffa5512690ba7916f98a9bcf9d565ebbc794366d9820",
+      "path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V4-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K1-V4 raw backup verified; scientific gate unverified"
+    },
+    {
+      "attempt_id": "SWAP-K1-V5-MASTER",
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V5-MASTER/derived_swap_k1_v5_event_lineage_and_bytes.json",
+      "derived_sidecar_sha256": "522c992b94e731f6fa58e341d07fe0636b1724f61dece60ade89fedc16cf9c0d",
+      "file_count": 18,
+      "file_set_sha256": "3f03ff125785b108dc658be2fda17816f6a2f4d01f8f21d92b7b7e61a5dacd9e",
+      "manifest_sha256": "3fc77b9c95c6fac31d2dbc2fd7489c9605fe44b3e9411a66d2a8f2e7f65af383",
+      "path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V5-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K1-V5 raw backup verified; forced movement gate passed"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-25-V2-MASTER",
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-25-V2-MASTER/derived_swap_k2_fit-25_swap-k2-fit-25-v2-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "2622cc11c69cc949dd0feda7a0f79a869a8c49a12194e22be73315cb6558dda8",
+      "file_count": 19,
+      "file_set_sha256": "9a831cc87e2bdf7c4dc131be6143f1fcd0405e043c10f5d6b9c5c471dff967ec",
+      "manifest_sha256": "3066c008d26793f14688636ee86d793fb27744b792a7ded5fff7e413fb8803ee",
+      "path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-25-V2-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K2 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-50-V1-MASTER",
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-50-V1-MASTER/derived_swap_k2_fit-50_swap-k2-fit-50-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "4bf8425c7e300602fc2c4c0a8f2da93ac424223ba456558cfa5e7bfefacd3785",
+      "file_count": 19,
+      "file_set_sha256": "819592222df7d2c97977323929027baf5ed772c4c3236ae0ac61500aa6567105",
+      "manifest_sha256": "94efc13d832c94e729faeaefeab3aba73a2aebe819571351bac0a015e570b94e",
+      "path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-50-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K2 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-75-V2-MASTER",
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V2-MASTER/derived_swap_k2_fit-75_swap-k2-fit-75-v2-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "fcc09c29731e911a9cb5af1fc2b4278b6ad135aa4ed2c0a63cebcb0563b1ef08",
+      "file_count": 19,
+      "file_set_sha256": "366369e56aeabb736b89cb21c08552fa38447850f2ed60ef56750ec59fd6b91a",
+      "manifest_sha256": "0a41d08a6b9900bf06c9c4c83fd86f584095b2c77cd3c74af3d56d6ecdf70e3c",
+      "path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V2-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K2 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-100-V1-MASTER",
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-100-V1-MASTER/derived_swap_k2_fit-100_swap-k2-fit-100-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "5e1ca4beb57f6af4088cb99d40a250be0e4f54b820f3f07ac15857e89a04c31e",
+      "file_count": 19,
+      "file_set_sha256": "1398ae66d018a7d4599ee69191406e9fba351e2924ddfff756e71d7af5b6ca3e",
+      "manifest_sha256": "765b3a29ef1940e17fc9f6b95630161b602c233e723e7ae19dc7f26abe421596",
+      "path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-100-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K2 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K2-HELDOUT-37P5-V1-MASTER",
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-37P5-V1-MASTER/derived_swap_k2_heldout-37p5_swap-k2-heldout-37p5-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "e64351e5ad4e3e9ce3a35e1f1b3c36e2d117356e5b32f3f051ff7b6850e4990b",
+      "file_count": 19,
+      "file_set_sha256": "9cf45c0785085cd8df3a99a7a23051f715c09b4a20580478aeeb833d1f8112da",
+      "manifest_sha256": "22e5b01b4221abfbac4a97ee034a5e47f944203a261d3330a44a397aa13f29be",
+      "path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-37P5-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K2 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K2-HELDOUT-62P5-V1-MASTER",
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-62P5-V1-MASTER/derived_swap_k2_heldout-62p5_swap-k2-heldout-62p5-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "a271b2744fa44dbe619719d28f88ee05227a342f9e717646e0b29d979c2343f3",
+      "file_count": 19,
+      "file_set_sha256": "2aded14f14360528dbcaa7a23d88999e076e0a3407e5e05b80f3fbad962f2308",
+      "manifest_sha256": "d3685fc96458e7e64c4c7a8a29b4fb82b7eddf1ac44b0bc1adef9c8967e1fa56",
+      "path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-62P5-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K2 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K2-HELDOUT-87P5-V1-MASTER",
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-87P5-V1-MASTER/derived_swap_k2_heldout-87p5_swap-k2-heldout-87p5-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "fac79a7cf79b48d39552d1acbd6469336b628a97dbcd6292b55bb9c921378a47",
+      "file_count": 19,
+      "file_set_sha256": "f40746da2b2edad35b54a1eb6f0484d4ae30e7cac3a7e9ec1e935535d09f2e87",
+      "manifest_sha256": "568cb6d6116c5a198ff11cc121b09a6854102c4e46a578b6b9ea7a7a6cc0d9c7",
+      "path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-87P5-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K2 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V3-MASTER/derived_swap_k3_long_prefill_swap_k3_long_prefill_v3_master_serving_events.json",
+      "derived_sidecar_sha256": "8bd13af2dd3ebfce41f97277bf4a24f451966302b979f735f5aa080ff41d0100",
+      "file_count": 10,
+      "file_set_sha256": "a06579655006d223a5abcdb94a3bead0e7e0216edd0cb7fc345004fee5c1a531",
+      "manifest_sha256": "60eca083b9bcb641f2b9c8e3437d44f2cb9f9e85f828031278a465799a2d324c",
+      "path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K3 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-DECODE-HEAVY-V1-MASTER/derived_swap_k3_decode_heavy_swap_k3_decode_heavy_v1_master_serving_events.json",
+      "derived_sidecar_sha256": "a63b241a2d5ea09f5c8d921ab42e2d0b2b1f5ab343d5d0df87e0bc6a0f0f2671",
+      "file_count": 10,
+      "file_set_sha256": "59632645e7a3e662078105834bdb426f0849cb383473cf18b134d8bfaab51b22",
+      "manifest_sha256": "74a4d542c28f32f093d7c11918d48ca2dba5612413ad9c96839bdb9e262c9dd0",
+      "path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K3 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K3-MIXED-V1-MASTER",
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-MIXED-V1-MASTER/derived_swap_k3_mixed_swap_k3_mixed_v1_master_serving_events.json",
+      "derived_sidecar_sha256": "d4a9754fd8a5b13f0bed24185f133b53d7ea5b48ca640ffa852bb120bede982c",
+      "file_count": 11,
+      "file_set_sha256": "907624034634eea9756223bcaf94aa5f4712fb7b9cd9c2a7a51ebf672a655b6b",
+      "manifest_sha256": "1f6fbeaee4582d376c5c8e0833cd12a8a57359abf4a71595318d418d95893aa4",
+      "path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-MIXED-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K3 point raw backup verified"
+    },
+    {
+      "attempt_id": "SWAP-K3-BURST-V1-MASTER",
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER/derived_swap_k3_burst_swap_k3_burst_v1_master_serving_events.json",
+      "derived_sidecar_sha256": "92c40811d920d78413ea2c756954a46732244c4c3f956ec6d6819b95eb47e7b3",
+      "file_count": 10,
+      "file_set_sha256": "620b826e9f29f723440c46eb0dc53244b265368bf5cb85b5db6968746b71acef",
+      "manifest_sha256": "b9843fc9f999a54ef01a3e1261fa0d5bf09d4a3d0f0b11be11cf170c4c8ad80a",
+      "path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER",
+      "remote_local_hashes_verified": true,
+      "status": "SWAP-K3 point raw backup verified"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "moe-simulator-phase7-m0-environment-v1",
+  "manifest_status": "DRAFT_WITH_BLOCKING_FIELDS",
+  "provider": {
+    "name": "GPUtw",
+    "instance_or_host_type": "[BLOCKING:INSTANCE_OR_HOST_TYPE]",
+    "region": "[BLOCKING:PROVIDER_REGION]",
+    "billing_mode": "PREPAID_FIXED_WINDOW",
+    "allocation_seconds": 21600,
+    "extension_allowed": false,
+    "additional_cost_allowed": false,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "allocation_id": "[BLOCKING:ALLOCATION_ID_RECORDED_OUTSIDE_PUBLIC_LOGS_IF_SENSITIVE]"
+  },
+  "ssh": {
+    "approved_endpoint": "[BLOCKING:OWNER_PROVIDED_APPROVED_SSH_ENDPOINT]",
+    "host_key_sha256": "[BLOCKING:SSH_HOST_KEY_SHA256]",
+    "username": "[BLOCKING:REMOTE_USERNAME]",
+    "credential_path": "NOT_RECORDED_IN_REPOSITORY"
+  },
+  "host": {
+    "os_release": "[BLOCKING:OS_RELEASE]",
+    "os_release_sha256": "[BLOCKING:OS_RELEASE_FILE_SHA256]",
+    "kernel_release": "[BLOCKING:KERNEL_RELEASE]",
+    "cpu_model": "[BLOCKING:CPU_MODEL]",
+    "logical_cpu_count": "[BLOCKING:LOGICAL_CPU_COUNT]",
+    "host_memory_bytes": "[BLOCKING:HOST_MEMORY_BYTES]",
+    "free_working_storage_bytes_at_capture": "[BLOCKING:FREE_WORKING_STORAGE_BYTES_AT_CAPTURE]",
+    "minimum_free_bytes_before_materialization": 300000000000,
+    "minimum_free_bytes_before_execution": 50000000000,
+    "working_directory": "/vault/flow/mixtral-rtxpro6000-bf16-m0-r12-20260729",
+    "persistent_mount": "/vault",
+    "ephemeral_workspace": "/workspace",
+    "vault_mount_confirmed": "[BLOCKING:TRUE_OR_FALSE]",
+    "vault_free_bytes_at_capture": "[BLOCKING:VAULT_FREE_BYTES_AT_CAPTURE]",
+    "vault_mount_identity_sha256": "[BLOCKING:D0_VAULT_MOUNT_IDENTITY_SHA256]",
+    "d0_result_file_sha256": "[BLOCKING:COMPLETE_D0_RESULT_FILE_SHA256]"
+  },
+  "gpu": {
+    "count": 1,
+    "exact_product_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "uuid": "[BLOCKING:GPU_UUID]",
+    "total_memory_bytes": "[BLOCKING:GPU_TOTAL_MEMORY_BYTES]",
+    "pci_bus_id": "[BLOCKING:PCI_BUS_ID]",
+    "mig_mode": "[BLOCKING:MIG_MODE]",
+    "compute_mode": "[BLOCKING:COMPUTE_MODE]",
+    "exclusive_allocation_confirmed": "[BLOCKING:TRUE_OR_FALSE]"
+  },
+  "software": {
+    "driver_version": "[BLOCKING:NVIDIA_DRIVER_VERSION]",
+    "cuda_runtime_version": "[BLOCKING:CUDA_RUNTIME_VERSION]",
+    "cuda_toolkit_version": "[BLOCKING:CUDA_TOOLKIT_VERSION]",
+    "python_version": "[BLOCKING:PYTHON_VERSION]",
+    "vllm_version": "[BLOCKING:VLLM_VERSION]",
+    "torch_version": "[BLOCKING:TORCH_VERSION]",
+    "transformers_version": "[BLOCKING:TRANSFORMERS_VERSION]",
+    "huggingface_hub_version": "[BLOCKING:HUGGINGFACE_HUB_VERSION]",
+    "container_runtime": "[BLOCKING:CONTAINER_RUNTIME_AND_VERSION]",
+    "container_image": "[BLOCKING:CONTAINER_IMAGE_NAME]",
+    "container_digest": "[BLOCKING:IMMUTABLE_CONTAINER_DIGEST]"
+  },
+  "network": {
+    "model_materialization_egress_allowed": "[BLOCKING:TRUE_OR_FALSE]",
+    "allowed_model_origin": "huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "qualification_egress_enforcement": "[BLOCKING:EGRESS_DENY_MECHANISM]",
+    "qualification_egress_enforcement_sha256": "[BLOCKING:EGRESS_POLICY_EVIDENCE_SHA256]",
+    "qualification_egress_evidence_path": "[BLOCKING:ABSOLUTE_EGRESS_POLICY_EVIDENCE_PATH]",
+    "other_workload_network_access": "FORBIDDEN"
+  },
+  "captured_at_utc": "[BLOCKING:UTC_TIMESTAMP]",
+  "captured_by": "[BLOCKING:OPERATOR_ID]",
+  "provenance": "[BLOCKING:PRECHECK_OUTPUT_SHA256]"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "authority_evidence.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "application_package_ledger_file_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "application_package_ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "expected_application_package_ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "approval_file_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "approval_id": {"type": "string"},
+    "approval_semantic_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "consumption_record_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "member_count": {"minimum": 1, "type": "integer"},
+    "package_verification": {"enum": ["PASS", "FAIL"]},
+    "retained_paths": {
+      "additionalProperties": false,
+      "properties": {
+        "application_package_ledger": {"const": "authority/application_package_ledger.json"},
+        "approval": {"const": "authority/approval.json"},
+        "consumption_record": {"const": "authority/consumption_record.json"}
+      },
+      "required": ["approval", "consumption_record", "application_package_ledger"],
+      "type": "object"
+    },
+    "schema_version": {"const": "moe-simulator-phase7-authority-evidence-v1"}
+  },
+  "required": ["schema_version", "approval_id", "approval_file_sha256", "approval_semantic_sha256", "consumption_record_sha256", "application_package_ledger_file_sha256", "application_package_ledger_sha256", "expected_application_package_ledger_sha256", "package_verification", "member_count", "retained_paths"],
+  "type": "object"
+}

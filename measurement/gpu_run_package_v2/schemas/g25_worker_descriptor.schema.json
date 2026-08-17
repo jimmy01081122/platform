@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_worker_descriptor.schema.json",
+  "title": "G2.5 frozen worker descriptor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "cell_id", "instance_id", "sample_id",
+    "logical_pass", "ceiling", "selection", "sample", "generation_config",
+    "generation_profile_sha256", "generation_config_sha256", "prompt_hash", "model_snapshot_inventory_sha256",
+    "device_identity"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-worker-descriptor-v1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "cell_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "instance_id": {"type": "string", "pattern": "^c1a-t1-0[0-3]$"},
+    "sample_id": {"type": "string", "minLength": 1},
+    "logical_pass": {"const": "P0"},
+    "ceiling": {"enum": [256, 384, 512]},
+    "selection": {"type": "object"},
+    "sample": {"type": "object"},
+    "generation_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_new_tokens", "do_sample", "num_beams", "use_cache", "seed"],
+      "properties": {
+        "max_new_tokens": {"enum": [256, 384, 512]},
+        "do_sample": {"const": false},
+        "num_beams": {"const": 1},
+        "use_cache": {"const": true},
+        "seed": {"const": 20260718}
+      }
+    },
+    "generation_config_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "generation_profile_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "prompt_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "model_snapshot_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "device_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "name", "uuid", "pci_bus_id"],
+      "properties": {
+        "kind": {"const": "cuda"},
+        "name": {"type": "string", "minLength": 1},
+        "uuid": {"type": "string", "minLength": 1},
+        "pci_bus_id": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

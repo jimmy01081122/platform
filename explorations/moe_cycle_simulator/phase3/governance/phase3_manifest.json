@@ -1,0 +1,143 @@
+{
+  "schema_version": "moe-simulator-phase3-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r5-20260728",
+  "goal": "Freeze a deterministic CPU-only event/resource engine with exact rational clocks, fail-closed resource semantics and portable checkpoints.",
+  "scope": [
+    "C++20 sole scheduling core and thin C/Python bindings",
+    "unsigned 128-bit femtosecond global time",
+    "exact rational clock edge and receiver-edge ceiling",
+    "complete seven-field deterministic event ordering",
+    "dependency, resource, queue and bridge semantics",
+    "capacity conservation, deadlock and Zeno detection",
+    "canonical checkpoint serialization and hash-bound restore"
+  ],
+  "non_goals": [
+    "Phase 4 GPU compute, memory, copy or interconnect performance model",
+    "runtime adapter or live trace collection",
+    "Mixtral or benchmark materialization",
+    "GPU work",
+    "formal profiling",
+    "calibration PASS"
+  ],
+  "inputs": {
+    "phase2_ledger_sha256": "dd2b9d9f8217fd6b78c1ae8b6f6e52c94a45774919cb36f0b407b53762c3d984",
+    "phase2_bundle_semantic_root": "c07d9ec1cbc4d67652f3f73e34e69e27ffc15427d186c8bbb7e28e93f3e5efd7",
+    "phase3_source_root_sha256": "c4bf4e7c3a24f588357b639a880d7bbe3d2bbe54c26afdb3ce85afab5dadb9ea"
+  },
+  "outputs": {
+    "formal_run": "20260728T113936Z__moe_cycle_simulator_phase3_event_core_r6__S3",
+    "service_mode": "REPLAY_VALIDATE",
+    "gpu_used": false,
+    "model_downloaded": false
+  },
+  "dependencies": {
+    "language": "C++20",
+    "multiprecision": "Boost.Multiprecision",
+    "build": "CMake",
+    "python_binding": "ctypes"
+  },
+  "assumptions": [
+    "Engine inputs have already passed the frozen Phase 2 Canonical IR validator.",
+    "Canonical string keys are NFC-normalized before crossing the trusted low-level engine boundary.",
+    "Event priorities already match the Phase 0 registry because Phase 2 validate_events is the authoritative input gate."
+  ],
+  "unknowns": [
+    "Phase 4 service-time surrogate shape",
+    "production trace scale and partition pressure",
+    "real platform contention parameters"
+  ],
+  "alternative_designs": [
+    "Python scheduling core rejected because it would create a second scheduler.",
+    "Rounded-period accumulation rejected because it creates clock drift.",
+    "Heap-memory checkpoint rejected because it is not portable or canonical."
+  ],
+  "risks": [
+    "The low-level C API is a trusted adapter boundary and does not independently repeat every Phase 2 schema check.",
+    "Python exposes execution smoke coverage; full checkpoint control remains in the authoritative C++ API.",
+    "ASAN leak detection is disabled only for the Python interpreter process because interpreter-owned allocations are not Phase 3 leaks; C++ leak detection remains enabled."
+  ],
+  "validation_method": [
+    "Release CMake build and CTest",
+    "ASAN and UBSAN C++ execution with leak detection",
+    "ASAN and UBSAN Python ctypes smoke",
+    "SHA-256 known vectors",
+    "exact rational long-run clock tests",
+    "CDC, capacity, deadlock, Zeno and unsupported-boundary negative tests",
+    "checkpoint equivalence at every event boundary",
+    "full-range checked resource conservation and fresh-waiter rejection",
+    "sealed run exact-set checksum validation"
+  ],
+  "acceptance_criteria": [
+    "Phase 3 source validator PASS",
+    "formal run 20260728T113936Z__moe_cycle_simulator_phase3_event_core_r6__S3 validator PASS",
+    "normal C++ and Python CTest PASS",
+    "ASAN and UBSAN PASS",
+    "run ledger exact-set PASS",
+    "three roles GO on one ledger with empty blockers"
+  ],
+  "estimated_resources": {
+    "execution": "CPU-only, under one minute",
+    "storage": "under ten MiB"
+  },
+  "owner_decisions": [
+    "Phase 2 GO authorizes Phase 3 CPU-only implementation.",
+    "Push is permitted after each completed phase."
+  ],
+  "next_legal_action": "After same-hash GO, begin Phase 4 single-discrete-GPU resource model implementation using CPU synthetic replay only.",
+  "forbidden_actions": [
+    "GPU query or execution",
+    "model or benchmark download",
+    "formal profiling",
+    "calibration PASS",
+    "modification or reinterpretation of frozen G3/S4 evidence"
+  ],
+  "status": "candidate_r5_unreviewed",
+  "prior_reviewed_candidates": [
+    {
+      "candidate_id": "moe-cycle-simulator-phase3-event-core-r4-20260728",
+      "verdict": "MODIFY",
+      "ledger_sha256": "6ade9bbfaefacd8cbebbc30fe2181c95b54635fb3da0af581b5e349cf2e6d956",
+      "evidence_policy": "immutable failure evidence; never promoted or reinterpreted",
+      "closed_blockers": [
+        "non-wrapping full-range resource holder conservation",
+        "fresh-constructor waiter rejection with private checkpoint reconstruction"
+      ]
+    },
+    {
+      "candidate_id": "moe-cycle-simulator-phase3-event-core-r3-20260728",
+      "verdict": "MODIFY",
+      "ledger_sha256": "7bf3b31c84f21ba9647729ba6532b1ac8aa99f0d77c5af605884e09a65ecbe38",
+      "evidence_policy": "immutable failure evidence; never promoted or reinterpreted",
+      "closed_blockers": [
+        "atomic transition-limit preflight",
+        "trace-derived counter/time invariants",
+        "deterministic reachable-prefix replay",
+        "FAILED checkpoint non-resumability",
+        "formal-run acceptance binding and snapshot reconstruction"
+      ]
+    }
+  ],
+  "withdrawn_candidate": {
+    "candidate_id": "moe-cycle-simulator-phase3-event-core-r2-20260728",
+    "ledger_sha256": "7708e8a6c49b1b2a9627f15c12daa0a7735d1e847eaaffb1930c282c7a6ba082",
+    "status": "WITHDRAWN_BEFORE_REVIEW",
+    "reason": "Self-audit found waiter-drain transitions were not individually counted against max_same_time_events.",
+    "promotion_policy": "never review, freeze or promote"
+  },
+  "supersedes_candidate": {
+    "candidate_id": "moe-cycle-simulator-phase3-event-core-r1-20260726",
+    "verdict": "MODIFY",
+    "ledger_sha256": "abeafed5b02929d0a592eb45c0aebfce3f24c2da97aaa34d9afbbc525154ab2e",
+    "evidence_policy": "immutable failure evidence; never promoted or reinterpreted",
+    "closed_blockers": [
+      "dependency-ready scheduling",
+      "complete canonical checkpoint digest and restore invariants",
+      "bounded and transition-complete limit enforcement"
+    ]
+  },
+  "superseded_exploratory_run": {
+    "run_id": "20260726T081852Z__moe_cycle_simulator_phase3_event_core_r1__S3",
+    "reason": "Predates final SHA-256 and checkpoint-boundary hardening.",
+    "evidence_policy": "Not part of the reviewed candidate and never promoted."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "batch_dir": "/vault/flow/moe_simulator_phase7/real_campaign/batches/natural-v1-20260811T1541Z",
+  "created_at_utc": "2026-08-11T15:42:13.090562+00:00",
+  "does_not_signal_or_modify_workload": true,
+  "gpu_index": 0,
+  "idle_threshold_mib": 1024.0,
+  "interval_seconds": 0.25,
+  "measurement_class": "PASSIVE_NVML_SIDECAR",
+  "resident_threshold_mib": 80000.0,
+  "schema_version": "phase7-model-residency-monitor-v1"
+}

@@ -1,0 +1,16 @@
+{
+  "blockers": [
+    "Architecture/System: 6 blockers",
+    "Model/Benchmark: 2 blockers",
+    "Trace/Provenance: 3 blockers"
+  ],
+  "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r1-20260726",
+  "ledger_sha256": "f12a8178e6070d64c14b4c573ab1bbf35b5d8a3425008776bffcd5a15d9d2ed9",
+  "role_verdicts": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "MODIFY",
+    "Trace/Provenance": "MODIFY"
+  },
+  "schema_version": "moe-simulator-aggregate-review-v1",
+  "verdict": "MODIFY"
+}

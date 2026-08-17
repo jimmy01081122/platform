@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c1_work_unit.schema.json",
+  "title": "C1 Scheduler Work Unit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_id",
+    "sample_id",
+    "repetition",
+    "logical_pass",
+    "work_unit_id"
+  ],
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sample_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repetition": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "logical_pass": {
+      "enum": ["P0", "P1", "P2", "P3", "P5_BASIC"]
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "work_unit_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "note": "Yosys native sat BMC on residency_engine observable/internal contract state; reach=stalled handshake reachable (prop_hs non-vacuous); prove=prop_all (request stability + counter monotonicity + miss<=xfer + no cfg-err + completion-before-resident) holds for all environments to depth.",
+  "results": [
+    {"build":"comb","num_experts":8,"capacity":4,"TSW":4,"banks":4,"depth":24,"stall_reachable":"reachable","proof":"PROVEN","sat_variables":571115},
+    {"build":"comb","num_experts":8,"capacity":1,"TSW":4,"banks":4,"depth":24,"stall_reachable":"reachable","proof":"PROVEN","sat_variables":571043},
+    {"build":"comb","num_experts":8,"capacity":8,"TSW":4,"banks":4,"depth":24,"stall_reachable":"reachable","proof":"PROVEN","sat_variables":571091},
+    {"build":"banked","num_experts":8,"capacity":4,"TSW":4,"banks":4,"depth":30,"stall_reachable":"reachable","proof":"PROVEN","sat_variables":1066153},
+    {"build":"seq","num_experts":8,"capacity":4,"TSW":4,"banks":4,"depth":30,"stall_reachable":"reachable","proof":"PROVEN","sat_variables":774233}
+  ]
+}

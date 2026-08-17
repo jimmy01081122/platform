@@ -1,0 +1,8 @@
+{
+  "completed_runs": 15,
+  "current_experiment": null,
+  "message": "All frozen natural workload runs passed; local backup pending",
+  "status": "PASS",
+  "total_runs": 15,
+  "updated_at_utc": "2026-08-11T16:09:18.165999+00:00"
+}

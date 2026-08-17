@@ -1,0 +1,20 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r1-20260728",
+  "ledger_sha256": "ef12fc0d8396544aaa63635fa83a14841ea9e5cbeb664382093939d278e25cb0",
+  "member_count": 54,
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "MODEL-P6-R1-B1",
+      "summary": "Selected ExpertKey is not hash-bound to the resident or transferred expert object/content identity."
+    },
+    {
+      "id": "MODEL-P6-R1-B2",
+      "summary": "Concurrent duplicate replicate reservations can count destination bytes twice while creating one set-valued location."
+    }
+  ],
+  "claim_boundary": "CPU-synthetic functional routing, placement and whole-object UMA evidence only; no MoE-on-UMA, hardware, calibration or performance claim.",
+  "authorized_next_stage": "Phase 6 CPU-only remediation and a fresh immutable same-hash candidate/review only.",
+  "gpu_authority": "NONE"
+}

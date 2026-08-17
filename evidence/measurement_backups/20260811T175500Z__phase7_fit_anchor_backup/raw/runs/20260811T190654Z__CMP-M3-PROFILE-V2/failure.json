@@ -1,0 +1,8 @@
+{
+  "exception_type": "CampaignFailure",
+  "failed_at_utc": "2026-08-11T19:07:16Z",
+  "message": "vLLM worker profiler cannot separate prefill/decode: prefill_markers=2, decode_markers=0",
+  "phase": "generation",
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 1466, in main\n    record = run_one_request(\n             ^^^^^^^^^^^^^^^^\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 982, in run_one_request\n    results, profiler_info = worker_profiler_run(llm, invoke, run_dir, logical_id)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 903, in worker_profiler_run\n    raise CampaignFailure(\nCampaignFailure: vLLM worker profiler cannot separate prefill/decode: prefill_markers=2, decode_markers=0\n"
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": "phase6-topology-operation-v1",
+  "execution_mode": "TRACE_COMPILED_NON_ADAPTIVE",
+  "modes": {
+    "DISCRETE_P2P_2GPU": {
+      "compute_domains": 2,
+      "private_memory_domains": 2,
+      "directed_single_hop_links": 2,
+      "shared_memory_domains": 0
+    },
+    "COHERENT_UMA_2COMPUTE": {
+      "compute_domains": 2,
+      "private_memory_domains": 0,
+      "directed_p2p_links": 0,
+      "shared_memory_domains": 1,
+      "shared_fabrics": 1
+    }
+  },
+  "program": {
+    "compile_before_execution": true,
+    "runtime_callbacks": false,
+    "adaptive_policy": false,
+    "global_event_order": [
+      "time_fs",
+      "event_priority",
+      "request_id",
+      "token_index",
+      "layer_index",
+      "component_id",
+      "event_id"
+    ],
+    "trace_priorities": {
+      "VISIBLE": 20,
+      "COMPUTE_COMPLETE": 30,
+      "ACK_OR_CREDIT": 40,
+      "TRANSFER_OR_UMA_START": 90,
+      "COMPUTE_START": 100
+    },
+    "crossing_terminal_semantics": "ACK_OR_CREDIT is the terminal resource-release and dependency transition for transfer and UMA operations; priority 50 remains reserved for DEPENDENCY_READY",
+    "dependency_dag_required": true,
+    "input_permutation_invariant": true
+  },
+  "routing": {
+    "granularity": "TOKEN_ONLY",
+    "aggregate_input_accepted": false,
+    "route_event_key": {
+      "required_fields": [
+        "request_id",
+        "token_index",
+        "layer_index",
+        "component_id",
+        "event_id"
+      ],
+      "event_priority": 100,
+      "missing_sentinels": {
+        "request_id": "empty string",
+        "token_index": "UINT64_MAX",
+        "layer_index": "UINT32_MAX"
+      },
+      "missing_sentinel_policy": "REJECT"
+    },
+    "identity_propagation": "dispatch, expert compute, return and combine EventKeys exactly preserve the route request_id, token_index and layer_index",
+    "expert_layer_binding": "every selected ExpertKey.layer equals route_key.layer_index",
+    "routing_weights_modeled": false,
+    "selected_expert_ids_and_top_k": "HASH_BOUND_EXACT",
+    "assignment_conservation": "one compute assignment per selected token-expert pair",
+    "canonical_sort": [
+      "route_key",
+      "demand_id"
+    ],
+    "duplicate_demand_id": "reject"
+  },
+  "phase5_binding": {
+    "phase5_plan_digest": "exact",
+    "phase5_action_ids": "exact non-empty membership set equal to the verified CompiledAction proof set",
+    "compiled_action_verification": "recompute every action_id from plan_digest, sequence and full Phase5 CompiledAction semantics using moe-phase5-compiled-action-v1",
+    "phase5_ledger_sha256": "exact reviewed Phase5 ledger"
+  },
+  "operations": [
+    "ACTIVATION_DISPATCH",
+    "EXPERT_COMPUTE",
+    "ACTIVATION_RETURN",
+    "TOKEN_COMBINE",
+    "EXPERT_REPLICATE",
+    "EXPERT_MOVE",
+    "UMA_IMMUTABLE_READ",
+    "UMA_MUTABLE_ACQUIRE_WRITE",
+    "UMA_MUTABLE_RELEASE",
+    "UMA_MUTABLE_READ"
+  ],
+  "payload": {
+    "source": "hash-bound CPU-synthetic TrafficPayloadProfile",
+    "phase5_missing_byte_fields_are_not_inferred": true,
+    "expert_identity": "selected ExpertKey maps to exactly one immutable InitialObject carrying the same ExpertKey and content_sha256"
+  }
+}

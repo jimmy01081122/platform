@@ -1,0 +1,33 @@
+{
+  "schema_version": "moe-simulator-model-profile-v1",
+  "profile_id": "mixtral-8x7b-instruct-v01-bf16-canonical",
+  "model_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "repository_commit": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "repository_commit_source": "https://huggingface.co/api/models/mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "license": "Apache-2.0",
+  "precision": "BF16",
+  "quantization": null,
+  "cpu_offload": false,
+  "model_dimensions": {
+    "num_experts": 8,
+    "top_k": 2,
+    "derivation": "repository metadata and config at the pinned commit; file hashes remain unavailable until a separately authorized materialization"
+  },
+  "artifact_identity": {
+    "config_sha256": null,
+    "tokenizer_sha256": null,
+    "tokenizer_config_sha256": null,
+    "chat_template_sha256": null,
+    "model_index_sha256": null,
+    "weight_file_sha256s": null,
+    "status": "NOT_MATERIALIZED",
+    "materialization_authorized": false
+  },
+  "platform_eligibility": {
+    "rtx_pro_6000_blackwell_96gb": "CONDITIONAL_BF16_CAPACITY_AND_RUNTIME_QUALIFICATION",
+    "dgx_spark_gb10_128gb": "UMA_ONLY",
+    "rtx_3090_x2": "NOT_CANONICAL_BF16",
+    "rtx_3050": "PIPELINE_SMOKE_ONLY"
+  },
+  "formal_use": "forbidden until artifact hashes and runtime identity are frozen by a separately approved application"
+}

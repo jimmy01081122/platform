@@ -1,0 +1,10 @@
+{
+  "detokenize": true,
+  "ignore_eos": false,
+  "max_tokens": 16,
+  "min_tokens": 0,
+  "n": 1,
+  "seed": 0,
+  "temperature": 0.0,
+  "top_p": 1.0
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "phase6-claim-boundary-v1",
+  "profile_origin": "CPU_SYNTHETIC",
+  "fidelity": [
+    "FUNCTIONAL_ONLY",
+    "ANALYTIC_FIRST_ORDER"
+  ],
+  "range_status": "RANGE_UNKNOWN",
+  "calibration_pass": false,
+  "production_scale_claim": false,
+  "measured_hardware_claim": false,
+  "coherent_uma_claim": "GENERIC_COHERENT_UMA_FUNCTIONAL_ONLY_NOT_MOE_EXECUTION",
+  "gpu_used": false,
+  "gpu_authority": "NONE",
+  "forbidden": [
+    "Mixtral download",
+    "GPU workload",
+    "paid server",
+    "formal profiling",
+    "calibration PASS",
+    "modification or reinterpretation of prior G3 or S4 evidence"
+  ]
+}

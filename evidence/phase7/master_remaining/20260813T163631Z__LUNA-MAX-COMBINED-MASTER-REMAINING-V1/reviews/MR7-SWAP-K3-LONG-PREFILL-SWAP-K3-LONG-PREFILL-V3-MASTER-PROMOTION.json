@@ -1,0 +1,122 @@
+{
+  "attempt_id": "SWAP-K3-LONG-PREFILL-V3-MASTER",
+  "claims_forbidden": [
+    "formal SERV tail-CI",
+    "object-level KV performance",
+    "SWAP-K4/K5"
+  ],
+  "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V3-MASTER/derived_swap_k3_long_prefill_swap_k3_long_prefill_v3_master_serving_events.json",
+  "derived_sidecar_sha256": "8bd13af2dd3ebfce41f97277bf4a24f451966302b979f735f5aa080ff41d0100",
+  "execution_state": "EXECUTION_COMPLETE",
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V3-MASTER",
+  "matrix_complete": false,
+  "missing_points": [
+    "DECODE-HEAVY",
+    "MIXED",
+    "BURST"
+  ],
+  "next_ready_unit": "SWAP-K3",
+  "point_id": "LONG-PREFILL",
+  "point_result": {
+    "arrival_to_completion_ns": {
+      "count": 8,
+      "max": 4328929966,
+      "median": 3482888089.0,
+      "min": 2650529529
+    },
+    "attempt_id": "SWAP-K3-LONG-PREFILL-V3-MASTER",
+    "censored_count": 0,
+    "checksum_manifest_sha256": "60eca083b9bcb641f2b9c8e3437d44f2cb9f9e85f828031278a465799a2d324c",
+    "claim_boundary": "diagnostic serving-pressure evidence; not formal SERV tail-CI closure",
+    "completed_request_count": 8,
+    "completion_latency_ns": {
+      "count": 8,
+      "max": 4288052273,
+      "median": 3442225227.5,
+      "min": 2610361533
+    },
+    "failure_count": 0,
+    "host_memory_snapshot_count": 3,
+    "kv_observation": "runtime configuration and logs only; object-level KV event trace is not exposed by this serving runner",
+    "manifest_initial_status": "RUNNING",
+    "manifest_terminal_status_file": "PASS",
+    "native_kv_offload_log_evidence": [
+      "Creating v1 connector with name: OffloadingConnector",
+      "Creating offloading spec with name: CPUOffloadingSpec",
+      "GPU KV cache size:",
+      "Allocating a cross layer KV cache"
+    ],
+    "point_id": "LONG-PREFILL",
+    "raw_file_count": 10,
+    "raw_file_set_sha256": "a06579655006d223a5abcdb94a3bead0e7e0216edd0cb7fc345004fee5c1a531",
+    "rejected_count": 0,
+    "request_count_denominator": 8,
+    "request_shapes": [
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 0
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 1
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 2
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 3
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 4
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 5
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 6
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 8192,
+        "output_tokens": 32,
+        "slot": 7
+      }
+    ],
+    "stderr_sha256": "c080fb03b2505b0f72ac449c6ac26efc50f413e80414478bca55c6a95177b67e",
+    "stdout_sha256": "5075806c9491d4fc9581566bfaf2a662235d329e2874c657b37e052091eb5edf",
+    "telemetry_event_count": 3,
+    "ttft_ns": {
+      "count": 8,
+      "max": 3101753814,
+      "median": 2275062592.0,
+      "min": 1528216493
+    },
+    "validation_state": "VALIDATION_PASS"
+  },
+  "raw_backup": "VERIFIED",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-LONG-PREFILL-V3-MASTER",
+  "request_correctness": "PASS",
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T01:32:31Z",
+  "schema_version": "phase7-combined-master-swap-k3-point-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

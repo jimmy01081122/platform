@@ -1,0 +1,1829 @@
+{
+  "adoption_rule": "candidate evidence is not master-complete until current gate, backup and adoption axes close",
+  "existing_evidence_roots": [
+    "runs/20260811T133800Z__phase7_remote_f0_gpu_backup",
+    "runs/20260811T134100Z__phase7_remote_c0a_backup",
+    "runs/20260811T134700Z__phase7_remote_c0bc_backup",
+    "runs/20260811T134800Z__phase7_remote_f1_backup",
+    "runs/20260811T134900Z__phase7_remote_tcanary_backup",
+    "runs/20260811T135600Z__phase7_remote_r0_backup",
+    "runs/20260811T152600Z__phase7_remote_controlled_matrix_backup",
+    "runs/20260811T161000Z__phase7_remote_natural_matrix_backup",
+    "runs/20260811T163100Z__phase7_remote_sampling_pairs_backup",
+    "runs/20260811T170000Z__phase7_remote_k_profile_backup",
+    "runs/20260811T171000Z__phase7_remote_component_backup",
+    "runs/20260811T171000Z__phase7_remote_transfer_backup",
+    "runs/20260811T175500Z__phase7_fit_anchor_backup",
+    "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1"
+  ],
+  "expert_catalog_adoptions": [
+    {
+      "attempt_id": "EXPERT-CATALOG-V6-TRANSFER-V4-EQ",
+      "file_count": 5,
+      "file_set_sha256": "732cf965376ae0bbc20750e71d9f60649e6331c9530359a3a32f52096e11898b",
+      "local_raw_path": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/adopted/EXPERT-CATALOG-V6-TRANSFER-V4/EQ",
+      "object_bytes": 352321536,
+      "object_count": 256,
+      "status": "VALIDATION_PASS_WITH_LIMITATIONS",
+      "total_expert_bytes": 90194313216
+    }
+  ],
+  "generated_at_utc": "2026-08-13T23:11:33.445488Z",
+  "historical_guard": {
+    "attempt": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1",
+    "checksum_claim": "19 listed items rechecked OK",
+    "new_host_reuse_forbidden": true,
+    "sha256s_attempt_sha256": "af322f9f187d1471381786b7feeb160bb5d464db29e96729fbf8548f5559e7ed"
+  },
+  "known_candidate_and_gap_counts": {
+    "controlled_family_records": 93,
+    "lm0_lm1_record_count": 133,
+    "natural_family_records": 20,
+    "old_special_guard_legal_rows": 4,
+    "old_special_non_guard_rows_remaining": 75,
+    "sampling_family_records": 11,
+    "special_core_ledger_rows": 79
+  },
+  "lm0_lm1_state": "checkpoints/lm0_lm1_state.json",
+  "new_session_guard": {
+    "attempt_id": "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+    "file_set_sha256": "0f9d152953a634c22cfc0c598bda36f01cfcc5e402d4c8d6959e033dd4e38784",
+    "guard_status": {
+      "KV-G0": "VALIDATED",
+      "MECH-G0": "VALIDATED",
+      "OS-SWAP-G0": "VALIDATED",
+      "UM-G0": "NEGATIVE_EVIDENCE"
+    },
+    "guard_terminal_promotion_status": "PENDING_REVIEW",
+    "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+    "raw_file_count": 18,
+    "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+    "runner_status": "PASS"
+  },
+  "off_e_pr0_attempts": [
+    {
+      "attempt_id": "OFF-E-PR0-V1-MASTER",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR0-V1-MASTER",
+      "raw_file_set_sha256": "797462788dcfe47cbe6f9ef83ccc9372fa9dbeba872686f94eb91a404d288aa8",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR0-V1-MASTER",
+      "status": "VALIDATION_PASS",
+      "tensor_file_sha256": "fb9511003476e86124eed33ab193043b7e182187c12c06db815c71081ec0cda1",
+      "timing_perturbation_relative_delta": 0.009807710596613773
+    }
+  ],
+  "off_e_pr1_attempts": [
+    {
+      "attempt_id": "OFF-E-PR1-V1-MASTER",
+      "expert_object_bytes": 352321536,
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR1-V1-MASTER",
+      "policies": {
+        "FIFO": {
+          "demand_load_count": 3,
+          "h2d_bytes": 1056964608,
+          "hit_count": 2
+        },
+        "LRU": {
+          "demand_load_count": 4,
+          "h2d_bytes": 1409286144,
+          "hit_count": 1
+        }
+      },
+      "raw_file_set_sha256": "c321fa594150722b043e9ee2f5d37f07dae2137b6cbdb176226e5024cf2d6b82",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR1-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    }
+  ],
+  "off_e_pr2_attempts": [
+    {
+      "attempt_id": "OFF-E-PR2-V1-MASTER",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR2-V1-MASTER",
+      "oracle_evidence_class": "SIMULATED_UPPER_BOUND",
+      "policy_counts": {
+        "CAUSAL_HISTORY": {
+          "cancelled": 0,
+          "issued": 11,
+          "late": 0,
+          "useful": 11,
+          "wasted": 0
+        },
+        "COPY_AWARE_CAUSAL": {
+          "cancelled": 10,
+          "issued": 1,
+          "late": 0,
+          "useful": 1,
+          "wasted": 0
+        },
+        "STATIC": {
+          "cancelled": 0,
+          "issued": 11,
+          "late": 0,
+          "useful": 0,
+          "wasted": 11
+        }
+      },
+      "raw_file_set_sha256": "d04d8170c760b6fc555f176a15ecb4b9a30a806c56dc3d505cc680f0e939917b",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR2-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    }
+  ],
+  "off_e_pr3_capacity_attempts": [
+    {
+      "attempt_id": "OFF-E-PR3-CAP-025-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-025",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-025-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 22548578304,
+        "capacity_objects": 64,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 7295,
+        "h2d_bytes": 2570185605120,
+        "hit_count": 2881,
+        "immutable_discard_count": 7231,
+        "total_h2d_cuda_elapsed_ms": 91121.09742164612
+      },
+      "raw_file_set_sha256": "b33bf0622ea0220f15c9f0ef67be008d7ac795ce18f718b9e9dad6a907f052e3",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-025-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-050-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-050",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-050-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 45097156608,
+        "capacity_objects": 128,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 4852,
+        "h2d_bytes": 1709464092672,
+        "hit_count": 5324,
+        "immutable_discard_count": 4724,
+        "total_h2d_cuda_elapsed_ms": 60600.223269462585
+      },
+      "raw_file_set_sha256": "5935d38dbfb91b63654f72695e036bf9167a81a1feefa9b5f94dd158cd49b0fb",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-050-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-075-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-075",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-075-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 67645734912,
+        "capacity_objects": 192,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 2329,
+        "h2d_bytes": 820556857344,
+        "hit_count": 7847,
+        "immutable_discard_count": 2137,
+        "total_h2d_cuda_elapsed_ms": 29066.397554397583
+      },
+      "raw_file_set_sha256": "2b4b9e80ce32ebad4390517493eaa8fb78a947c1c1c7133aaad3a00745bde385",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-075-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-080-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-080",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-080-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 71873593344,
+        "capacity_objects": 204,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 1850,
+        "h2d_bytes": 651794841600,
+        "hit_count": 8326,
+        "immutable_discard_count": 1646,
+        "total_h2d_cuda_elapsed_ms": 23063.159061431885
+      },
+      "raw_file_set_sha256": "b92784596f9c2e7c26e9514265d2c4c95960d1750d8fc5aa3c4328ac07ff51e5",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-080-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-085-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-085",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-085-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 76453773312,
+        "capacity_objects": 217,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 1324,
+        "h2d_bytes": 466473713664,
+        "hit_count": 8852,
+        "immutable_discard_count": 1107,
+        "total_h2d_cuda_elapsed_ms": 16488.63403892517
+      },
+      "raw_file_set_sha256": "27010d45f1d17ff94e22571d36b538b6d63f1dd458343873cf17a49884ebf187",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-085-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-090-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-090",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-090-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 81033953280,
+        "capacity_objects": 230,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 889,
+        "h2d_bytes": 313213845504,
+        "hit_count": 9287,
+        "immutable_discard_count": 659,
+        "total_h2d_cuda_elapsed_ms": 11111.310248374939
+      },
+      "raw_file_set_sha256": "1e2ea69b7e38a035cf40198218c4677c63222f225b07a584132f0bc7d8296025",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-090-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-095-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-095",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-095-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 85614133248,
+        "capacity_objects": 243,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 462,
+        "h2d_bytes": 162772549632,
+        "hit_count": 9714,
+        "immutable_discard_count": 219,
+        "total_h2d_cuda_elapsed_ms": 5774.499808311462
+      },
+      "raw_file_set_sha256": "b12e7985f67b1ad2a05f8d7b85419ace4470f023db2e80153937f0a2bd8796bc",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-095-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-099-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-099",
+      "fit_role": "FIT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-099-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 89137348608,
+        "capacity_objects": 253,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 259,
+        "h2d_bytes": 91251277824,
+        "hit_count": 9917,
+        "immutable_discard_count": 6,
+        "total_h2d_cuda_elapsed_ms": 3232.8438425064087
+      },
+      "raw_file_set_sha256": "57835dab2008537032f558963e88cb227ba3ef7c9b5d648b4f58b3576cfe5f13",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-099-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-100-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-100",
+      "fit_role": "CONTROL",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-100-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 90194313216,
+        "capacity_objects": 256,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 0,
+        "h2d_bytes": 0,
+        "hit_count": 10176,
+        "immutable_discard_count": 0,
+        "total_h2d_cuda_elapsed_ms": 0.0
+      },
+      "raw_file_set_sha256": "9363a2a6270607756d97d6621350553acb93af20a7848cf371ac2f2f56898a4e",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-100-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0375-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-0375",
+      "fit_role": "HELD_OUT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0375-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 33822867456,
+        "capacity_objects": 96,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 6620,
+        "h2d_bytes": 2332368568320,
+        "hit_count": 3556,
+        "immutable_discard_count": 6524,
+        "total_h2d_cuda_elapsed_ms": 82599.70801258087
+      },
+      "raw_file_set_sha256": "863bf217c8d6a3fe39ed7970ef5094b0c73155a477d0ff9ca960aec621fb6c8f",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0375-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0625-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-0625",
+      "fit_role": "HELD_OUT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0625-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 56371445760,
+        "capacity_objects": 160,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 3485,
+        "h2d_bytes": 1227840552960,
+        "hit_count": 6691,
+        "immutable_discard_count": 3325,
+        "total_h2d_cuda_elapsed_ms": 43520.62023353577
+      },
+      "raw_file_set_sha256": "5a97be268ccf3402abdc01d2d747b534ff3b43db0d23d5727165474ea6061654",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0625-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0825-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-0825",
+      "fit_role": "HELD_OUT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0825-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 74339844096,
+        "capacity_objects": 211,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 1549,
+        "h2d_bytes": 545746059264,
+        "hit_count": 8627,
+        "immutable_discard_count": 1338,
+        "total_h2d_cuda_elapsed_ms": 19348.159316062927
+      },
+      "raw_file_set_sha256": "dc1642c5e768361c5e7216a524a9e649ea89fea4fd3250d06644934683eebdc9",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0825-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0875-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-0875",
+      "fit_role": "HELD_OUT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0875-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 78920024064,
+        "capacity_objects": 224,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 1124,
+        "h2d_bytes": 396009406464,
+        "hit_count": 9052,
+        "immutable_discard_count": 900,
+        "total_h2d_cuda_elapsed_ms": 14023.180710792542
+      },
+      "raw_file_set_sha256": "9199b1846a7852c2cec2ca9c6240ba1446b4a5cc819a9abb29872c15ee518daf",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0875-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-0925-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-0925",
+      "fit_role": "HELD_OUT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-0925-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 83147882496,
+        "capacity_objects": 236,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 665,
+        "h2d_bytes": 234293821440,
+        "hit_count": 9511,
+        "immutable_discard_count": 429,
+        "total_h2d_cuda_elapsed_ms": 8308.386083602905
+      },
+      "raw_file_set_sha256": "8c23fa9c13e4149a29cdcc83589375ddc67d54937298bfe8960c0252c889eac4",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-0925-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "OFF-E-PR3-CAP-097-V1-MASTER",
+      "cell_id": "OFF-E-PR3-CAP-097",
+      "fit_role": "HELD_OUT",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-PR3-CAP-097-V1-MASTER",
+      "metrics": {
+        "capacity_bytes": 87375740928,
+        "capacity_objects": 248,
+        "d2h_writeback_bytes": 0,
+        "demand_load_count": 361,
+        "h2d_bytes": 127188074496,
+        "hit_count": 9815,
+        "immutable_discard_count": 113,
+        "total_h2d_cuda_elapsed_ms": 4509.744923591614
+      },
+      "raw_file_set_sha256": "a78dac7ce4f6f2006b84d4b0d3763f67bb26c5202e784d34ce5866189477281b",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-PR3-CAP-097-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    }
+  ],
+  "off_e_rt0_capability_attempts": [
+    {
+      "attempt_id": "OFF-E-RT0-V1-MASTER",
+      "capability_status": "RUNTIME_EXPERT_OFFLOAD_UNAVAILABLE_WITH_CONSEQUENCE",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-RT0-V1-MASTER",
+      "manifest_sha256": "e5c7b224955a947688a3d65d75e270894a565de2237d64d9378b4a43cd4a05a8",
+      "raw_file_count": 21,
+      "raw_file_set_sha256": "b27e112ddeb12deb7f5596817b1a9bd11a37cf9d57ceafdd342498a86be8da32",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-E-RT0-V1-MASTER",
+      "status": "VALIDATED_NEGATIVE_EVIDENCE"
+    }
+  ],
+  "off_w0_capability_attempts": [
+    {
+      "attempt_id": "OFF-W0-V1-MASTER",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W0-V1-MASTER",
+      "raw_file_set_sha256": "e6d609bcb37fd8188b2ee9a3740a609dec0fcaa43e39b850a01cc66fa1389412",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W0-V1-MASTER",
+      "status": "TECHNICAL_FAILURE_PRESERVED"
+    },
+    {
+      "attempt_id": "OFF-W0-V2-MASTER",
+      "capability_status": "RUNTIME_NATIVE_CPU_WEIGHT_OFFLOAD_AVAILABLE",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W0-V2-MASTER",
+      "manifest_sha256": "627e65d8e882fb9a5f889790fdac5dbc4bf694760fe7572b6560dfbaca3d7ec4",
+      "raw_file_set_sha256": "ac8a84f9af23df521dd0beeebbaba8ddf55e89045542bd4a7abd112d99b85978",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W0-V2-MASTER",
+      "runtime_log_offloaded_gib": 1.75,
+      "status": "VALIDATION_PASS"
+    }
+  ],
+  "off_w1_disabled_control_attempts": [
+    {
+      "attempt_id": "OFF-W1-V1-MASTER",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W1-V1-MASTER",
+      "raw_file_set_sha256": "1a54e48ff475f83139eb52e3f0a9afebf02d819fd5a98d8cfae9df5121904bdc",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W1-V1-MASTER",
+      "routing_array_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "status": "VALIDATION_PASS"
+    }
+  ],
+  "off_w2_byte_budget_attempts": [
+    {
+      "actual_offloaded_bytes": [
+        1879048192,
+        2818572288,
+        4697620480,
+        10334765056
+      ],
+      "attempt_id": "OFF-W2-V1-MASTER",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W2-V1-MASTER",
+      "raw_file_set_sha256": "dd36f96a4cad1c917ba69155eb996adbc548bb7beee68b663c7be42fd0f9911f",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W2-V1-MASTER",
+      "status": "VALIDATION_PASS"
+    }
+  ],
+  "off_w3_representative_profiler_attempts": [
+    {
+      "actual_offloaded_bytes": 4697620480,
+      "attempt_id": "OFF-W3-V1-MASTER",
+      "audit_v1_technical_failure_preserved": true,
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W3-V1-MASTER",
+      "raw_file_set_sha256": "80a05de34fb21cbf5247e15f5ea38dce0090dc997d91656a1d82a45bebf4fe59",
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W3-V1-MASTER",
+      "routing_sha256": "26546e41d43eb414e24d81a876b7c0d583358bfbe83b6191d8f851bf0c461fcf",
+      "status": "VALIDATION_PASS",
+      "wall_duration_ns": {
+        "DISABLED": 43203610984,
+        "UVA-HELDOUT": 76584818259
+      }
+    }
+  ],
+  "p0_base": {
+    "adoption": "DO_NOT_RERUN_BASE",
+    "arrival_count": 1000,
+    "manifest_sha256": "f9305de2691eb8fcc7f2678b5f39dbb9c403bf122a3275efdfaccf8cede7ea02",
+    "path": "runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T195121Z__SERV-P0-25-SHORT-C8-NATURAL-V1",
+    "request_count": 1000,
+    "result_sha256": "7c37baa6dd55c8f3030646b370ace4378d74d78fb9ea75ea08128f6a5f4787de",
+    "status": "PASS",
+    "status_sha256": "9ff7955173c2c0b1d3521699f2fe031233123a4c500fa545d85bd03a9a499d43",
+    "telemetry_count": 127,
+    "warmup_count": 8
+  },
+  "p0_ext10k": {
+    "adoption": "INCOMPLETE_NO_VERIFIED_RAW",
+    "classification": "REMOTE_ENVIRONMENT_UNAVAILABLE",
+    "is_completion_evidence": false,
+    "is_raw_backup": false,
+    "path": "runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_serving_p0_25_remote_environment_loss_v1.json"
+  },
+  "schema_version": "phase7-combined-master-evidence-inventory-v1",
+  "swap_k0": {
+    "attempt_id": "SWAP-K0-V1-MASTER",
+    "block_trace": "UNAVAILABLE_UNLESS_RUNTIME_EXPOSES",
+    "checksum_manifest_mismatches": [
+      "stdout.log"
+    ],
+    "checksum_manifest_sha256": "69b20ce3e8bde7769a54a30cd94d1d05993d033ef0a5ed00098a73265f52f5e3",
+    "file_set_sha256": "c560b58f93e2e67b5da840faee9d93a3ae51aa6e9008db19f35305d710d8e239",
+    "finish_reason": "length",
+    "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K0-V1-MASTER",
+    "measured_input_tokens": 128,
+    "measured_output_tokens": 32,
+    "raw_file_count": 15,
+    "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K0-V1-MASTER",
+    "requested_kv_offloading_backend": "native",
+    "requested_kv_offloading_size_gib": 1.0,
+    "status": "CAPABILITY_VALIDATED_WITH_TRACE_LIMITATION"
+  },
+  "swap_k1_event_trace_attempts": [
+    {
+      "attempt_id": "SWAP-K1-V4-MASTER",
+      "block_removed_event_count": 0,
+      "block_stored_event_count": 7,
+      "block_stored_hash_counts": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "block_stored_media": [
+        "CPU"
+      ],
+      "checksum_manifest_sha256": "76e780654e3d3ec127a1ffa5512690ba7916f98a9bcf9d565ebbc794366d9820",
+      "consequence": "No K1 block movement/lineage or performance claim; distinct-prompt supplement required.",
+      "context_tokens_per_request": 16384,
+      "decoded_block_stored_message_count": 8,
+      "file_set_sha256": "458acc77f4610625018437a39eb84142eaa9fca6df419782a6a63f9ab7f0925d",
+      "gpu_kv_capacity_tokens_log_observed": 36928,
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V4-MASTER",
+      "raw_file_count": 18,
+      "remote_local_hashes_verified": true,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V4-MASTER",
+      "request_count": 3,
+      "status": "EXECUTION_COMPLETE_GATE_UNVERIFIED",
+      "total_context_tokens": 49152,
+      "validation_state": "UNVERIFIED"
+    },
+    {
+      "attempt_id": "SWAP-K1-V5-MASTER",
+      "block_removed_event_count_declared": 18,
+      "block_stored_event_count_declared": 25,
+      "checksum_manifest_sha256": "3fc77b9c95c6fac31d2dbc2fd7489c9605fe44b3e9411a66d2a8f2e7f65af383",
+      "claims_forbidden": [
+        "K2 capacity",
+        "K3 serving",
+        "K5 exhaustion",
+        "swap performance"
+      ],
+      "context_tokens_per_request": 16384,
+      "decoded_block_removed_message_count": 18,
+      "decoded_block_stored_message_count": 26,
+      "derived_bytes_per_full_block": 2097152,
+      "derived_removed_unique_block_bytes": 4294967296,
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V5-MASTER/derived_swap_k1_v5_event_lineage_and_bytes.json",
+      "derived_sidecar_sha256": "522c992b94e731f6fa58e341d07fe0636b1724f61dece60ade89fedc16cf9c0d",
+      "distinct_prompt_sequences": 3,
+      "file_set_sha256": "3f03ff125785b108dc658be2fda17816f6a2f4d01f8f21d92b7b7e61a5dacd9e",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V5-MASTER",
+      "num_cached_tokens": [
+        0,
+        0,
+        0
+      ],
+      "raw_file_count": 18,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V5-MASTER",
+      "removed_hashes_subset_of_stored": true,
+      "removed_unique_block_count": 2048,
+      "request_count": 3,
+      "status": "VALIDATION_PASS_FORCED_MOVEMENT",
+      "stored_unique_block_count": 3072,
+      "total_context_tokens": 49152,
+      "validation_state": "VALIDATION_PASS"
+    }
+  ],
+  "swap_k1_failed_attempts": [
+    {
+      "attempt_id": "SWAP-K1-V1-MASTER",
+      "error": "Engine core initialization failed. See root cause above. Failed core proc(s): {}",
+      "failure_class": "TECHNICAL_SETUP_FAILURE",
+      "file_set_sha256": "401cce32484295af6f1187b3ac8e5750d8cf0be86a9854be03c20f9032fa38db",
+      "fixture_base_token_count": 153,
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V1-MASTER",
+      "raw_file_count": 12,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V1-MASTER",
+      "status": "TECHNICAL_FAILURE_BEFORE_VALID_WORKLOAD"
+    },
+    {
+      "attempt_id": "SWAP-K1-V2-MASTER",
+      "failure_class": "TECHNICAL_LAUNCH_INTERRUPTION",
+      "file_set_sha256": "240f7a6c5e8e2ebbef9d34854040e592a84cfe785c9ece8c5244fa2d54bd8837",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V2-MASTER",
+      "raw_file_count": 2,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V2-MASTER",
+      "status": "TECHNICAL_LAUNCH_INTERRUPTION"
+    }
+  ],
+  "swap_k2_capacity_attempts": [
+    {
+      "attempt_id": "SWAP-K2-FIT-25-V2-MASTER",
+      "checksum_manifest_sha256": "3066c008d26793f14688636ee86d793fb27744b792a7ded5fff7e413fb8803ee",
+      "claims_forbidden": [
+        "complete K2 matrix until remaining points are executed",
+        "K2/K3/K5 performance or serving claims"
+      ],
+      "derived_bytes_per_full_block": 2097152,
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-25-V2-MASTER/derived_swap_k2_fit-25_swap-k2-fit-25-v2-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "2622cc11c69cc949dd0feda7a0f79a869a8c49a12194e22be73315cb6558dda8",
+      "dtype": "bfloat16",
+      "event_analysis": {
+        "declared_block_removed_event_count": 22,
+        "declared_block_stored_event_count": 25,
+        "decode_errors": null,
+        "decoded_block_removed_message_count": 22,
+        "decoded_block_stored_message_count": 26,
+        "event_envelope_count": 28,
+        "removed_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "removed_hash_record_count": 2560,
+        "removed_hashes_not_previously_stored": [],
+        "removed_hashes_subset_of_stored": true,
+        "removed_media": [
+          "CPU"
+        ],
+        "removed_unique_hash_count": 2560,
+        "stored_event_block_size_values": [
+          0
+        ],
+        "stored_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "stored_hash_record_count": 3072,
+        "stored_hashes_without_remove": 512,
+        "stored_media": [
+          "CPU"
+        ],
+        "stored_parent_null_count": 26,
+        "stored_token_id_count_values": [
+          0
+        ],
+        "stored_unique_hash_count": 3072
+      },
+      "expected_host_blocks": 512,
+      "expected_rounded_bytes": 1073741824,
+      "fraction": 0.25,
+      "host_capacity_bytes": 1073741824,
+      "host_capacity_gib": 1.0,
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-25-V2-MASTER",
+      "movement_observed": true,
+      "point_id": "FIT-25",
+      "raw_file_count": 19,
+      "raw_file_set_sha256": "9a831cc87e2bdf7c4dc131be6143f1fcd0405e043c10f5d6b9c5c471dff967ec",
+      "reference_full_block_bytes": 2097152,
+      "reference_working_set_bytes": 4294967296,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-25-V2-MASTER",
+      "role": "FIT",
+      "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+      "runtime_block_size_tokens": 16,
+      "runtime_cache_shape": [
+        2308,
+        8,
+        32,
+        2,
+        16,
+        128
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "43df3fa171691743114cdec82e7637a692f690133041da41eda550e49c1d0b4a",
+      "stdout_sha256": "7575ed7e2648ab6b11f3a71a2ef5d48696c31f80c4561beb41eb983544f14721",
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-50-V1-MASTER",
+      "checksum_manifest_sha256": "94efc13d832c94e729faeaefeab3aba73a2aebe819571351bac0a015e570b94e",
+      "claims_forbidden": [
+        "complete K2 matrix until remaining points are executed",
+        "K2/K3/K5 performance or serving claims"
+      ],
+      "derived_bytes_per_full_block": 2097152,
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-50-V1-MASTER/derived_swap_k2_fit-50_swap-k2-fit-50-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "4bf8425c7e300602fc2c4c0a8f2da93ac424223ba456558cfa5e7bfefacd3785",
+      "dtype": "bfloat16",
+      "event_analysis": {
+        "declared_block_removed_event_count": 18,
+        "declared_block_stored_event_count": 25,
+        "decode_errors": null,
+        "decoded_block_removed_message_count": 18,
+        "decoded_block_stored_message_count": 26,
+        "event_envelope_count": 28,
+        "removed_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "removed_hash_record_count": 2048,
+        "removed_hashes_not_previously_stored": [],
+        "removed_hashes_subset_of_stored": true,
+        "removed_media": [
+          "CPU"
+        ],
+        "removed_unique_hash_count": 2048,
+        "stored_event_block_size_values": [
+          0
+        ],
+        "stored_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "stored_hash_record_count": 3072,
+        "stored_hashes_without_remove": 1024,
+        "stored_media": [
+          "CPU"
+        ],
+        "stored_parent_null_count": 26,
+        "stored_token_id_count_values": [
+          0
+        ],
+        "stored_unique_hash_count": 3072
+      },
+      "expected_host_blocks": 1024,
+      "expected_rounded_bytes": 2147483648,
+      "fraction": 0.5,
+      "host_capacity_bytes": 2147483648,
+      "host_capacity_gib": 2.0,
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-50-V1-MASTER",
+      "movement_observed": true,
+      "point_id": "FIT-50",
+      "raw_file_count": 19,
+      "raw_file_set_sha256": "819592222df7d2c97977323929027baf5ed772c4c3236ae0ac61500aa6567105",
+      "reference_full_block_bytes": 2097152,
+      "reference_working_set_bytes": 4294967296,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-50-V1-MASTER",
+      "role": "FIT",
+      "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+      "runtime_block_size_tokens": 16,
+      "runtime_cache_shape": [
+        2308,
+        8,
+        32,
+        2,
+        16,
+        128
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "58a9318e2c0192e8a73db948f0db6c56328b3bc3e4957d3bd86ac5b7f15c91b5",
+      "stdout_sha256": "79e2da288b4c1f1ba609a14c8d3dabc4b2d3ba2e5c665e564692d7dfe9f53947",
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-75-V2-MASTER",
+      "checksum_manifest_sha256": "0a41d08a6b9900bf06c9c4c83fd86f584095b2c77cd3c74af3d56d6ecdf70e3c",
+      "claims_forbidden": [
+        "complete K2 matrix until remaining points are executed",
+        "K2/K3/K5 performance or serving claims"
+      ],
+      "derived_bytes_per_full_block": 2097152,
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V2-MASTER/derived_swap_k2_fit-75_swap-k2-fit-75-v2-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "fcc09c29731e911a9cb5af1fc2b4278b6ad135aa4ed2c0a63cebcb0563b1ef08",
+      "dtype": "bfloat16",
+      "event_analysis": {
+        "declared_block_removed_event_count": 14,
+        "declared_block_stored_event_count": 25,
+        "decode_errors": null,
+        "decoded_block_removed_message_count": 14,
+        "decoded_block_stored_message_count": 26,
+        "event_envelope_count": 28,
+        "removed_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "removed_hash_record_count": 1536,
+        "removed_hashes_not_previously_stored": [],
+        "removed_hashes_subset_of_stored": true,
+        "removed_media": [
+          "CPU"
+        ],
+        "removed_unique_hash_count": 1536,
+        "stored_event_block_size_values": [
+          0
+        ],
+        "stored_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "stored_hash_record_count": 3072,
+        "stored_hashes_without_remove": 1536,
+        "stored_media": [
+          "CPU"
+        ],
+        "stored_parent_null_count": 26,
+        "stored_token_id_count_values": [
+          0
+        ],
+        "stored_unique_hash_count": 3072
+      },
+      "expected_host_blocks": 1536,
+      "expected_rounded_bytes": 3221225472,
+      "fraction": 0.75,
+      "host_capacity_bytes": 3221225472,
+      "host_capacity_gib": 3.0,
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V2-MASTER",
+      "movement_observed": true,
+      "point_id": "FIT-75",
+      "raw_file_count": 19,
+      "raw_file_set_sha256": "366369e56aeabb736b89cb21c08552fa38447850f2ed60ef56750ec59fd6b91a",
+      "reference_full_block_bytes": 2097152,
+      "reference_working_set_bytes": 4294967296,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-75-V2-MASTER",
+      "role": "FIT",
+      "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+      "runtime_block_size_tokens": 16,
+      "runtime_cache_shape": [
+        2308,
+        8,
+        32,
+        2,
+        16,
+        128
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "e45ef832c2fb79eb8949fd018cb79cf66504e41ef597b4fc68952d02f03697a5",
+      "stdout_sha256": "86d91f111a2df95cf7bd23580035f52ea07235750cca75688766743fb869c6a8",
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-100-V1-MASTER",
+      "checksum_manifest_sha256": "765b3a29ef1940e17fc9f6b95630161b602c233e723e7ae19dc7f26abe421596",
+      "claims_forbidden": [
+        "complete K2 matrix until remaining points are executed",
+        "K2/K3/K5 performance or serving claims"
+      ],
+      "derived_bytes_per_full_block": 2097152,
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-100-V1-MASTER/derived_swap_k2_fit-100_swap-k2-fit-100-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "5e1ca4beb57f6af4088cb99d40a250be0e4f54b820f3f07ac15857e89a04c31e",
+      "dtype": "bfloat16",
+      "event_analysis": {
+        "declared_block_removed_event_count": 9,
+        "declared_block_stored_event_count": 25,
+        "decode_errors": null,
+        "decoded_block_removed_message_count": 9,
+        "decoded_block_stored_message_count": 26,
+        "event_envelope_count": 28,
+        "removed_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "removed_hash_record_count": 1024,
+        "removed_hashes_not_previously_stored": [],
+        "removed_hashes_subset_of_stored": true,
+        "removed_media": [
+          "CPU"
+        ],
+        "removed_unique_hash_count": 1024,
+        "stored_event_block_size_values": [
+          0
+        ],
+        "stored_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "stored_hash_record_count": 3072,
+        "stored_hashes_without_remove": 2048,
+        "stored_media": [
+          "CPU"
+        ],
+        "stored_parent_null_count": 26,
+        "stored_token_id_count_values": [
+          0
+        ],
+        "stored_unique_hash_count": 3072
+      },
+      "expected_host_blocks": 2048,
+      "expected_rounded_bytes": 4294967296,
+      "fraction": 1.0,
+      "host_capacity_bytes": 4294967296,
+      "host_capacity_gib": 4.0,
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-100-V1-MASTER",
+      "movement_observed": true,
+      "point_id": "FIT-100",
+      "raw_file_count": 19,
+      "raw_file_set_sha256": "1398ae66d018a7d4599ee69191406e9fba351e2924ddfff756e71d7af5b6ca3e",
+      "reference_full_block_bytes": 2097152,
+      "reference_working_set_bytes": 4294967296,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-100-V1-MASTER",
+      "role": "FIT",
+      "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+      "runtime_block_size_tokens": 16,
+      "runtime_cache_shape": [
+        2308,
+        8,
+        32,
+        2,
+        16,
+        128
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "223aca6042f458e5adc0e0dc30f64f0b9617e02dcc83deb0e9cbf76b23c0d7c8",
+      "stdout_sha256": "2a8583fe21b904802d5ea88d279d4dbbf570e93741c06c7178c829ec799bc471",
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "SWAP-K2-HELDOUT-37P5-V1-MASTER",
+      "checksum_manifest_sha256": "22e5b01b4221abfbac4a97ee034a5e47f944203a261d3330a44a397aa13f29be",
+      "claims_forbidden": [
+        "complete K2 matrix until remaining points are executed",
+        "K2/K3/K5 performance or serving claims"
+      ],
+      "derived_bytes_per_full_block": 2097152,
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-37P5-V1-MASTER/derived_swap_k2_heldout-37p5_swap-k2-heldout-37p5-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "e64351e5ad4e3e9ce3a35e1f1b3c36e2d117356e5b32f3f051ff7b6850e4990b",
+      "dtype": "bfloat16",
+      "event_analysis": {
+        "declared_block_removed_event_count": 20,
+        "declared_block_stored_event_count": 25,
+        "decode_errors": null,
+        "decoded_block_removed_message_count": 20,
+        "decoded_block_stored_message_count": 26,
+        "event_envelope_count": 28,
+        "removed_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "removed_hash_record_count": 2304,
+        "removed_hashes_not_previously_stored": [],
+        "removed_hashes_subset_of_stored": true,
+        "removed_media": [
+          "CPU"
+        ],
+        "removed_unique_hash_count": 2304,
+        "stored_event_block_size_values": [
+          0
+        ],
+        "stored_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "stored_hash_record_count": 3072,
+        "stored_hashes_without_remove": 768,
+        "stored_media": [
+          "CPU"
+        ],
+        "stored_parent_null_count": 26,
+        "stored_token_id_count_values": [
+          0
+        ],
+        "stored_unique_hash_count": 3072
+      },
+      "expected_host_blocks": 768,
+      "expected_rounded_bytes": 1610612736,
+      "fraction": 0.375,
+      "host_capacity_bytes": 1610612736,
+      "host_capacity_gib": 1.5,
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-37P5-V1-MASTER",
+      "movement_observed": true,
+      "point_id": "HELDOUT-37.5",
+      "raw_file_count": 19,
+      "raw_file_set_sha256": "9cf45c0785085cd8df3a99a7a23051f715c09b4a20580478aeeb833d1f8112da",
+      "reference_full_block_bytes": 2097152,
+      "reference_working_set_bytes": 4294967296,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-HELDOUT-37P5-V1-MASTER",
+      "role": "HELDOUT",
+      "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+      "runtime_block_size_tokens": 16,
+      "runtime_cache_shape": [
+        2308,
+        8,
+        32,
+        2,
+        16,
+        128
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "222c2ea0117c2c198746170d5897dadc490c753a4f9b65cd40d05b46cff8db67",
+      "stdout_sha256": "3b05b5b26bb2d832e69aff56aeebd9117b5f921c5de871d4478d972625a1339b",
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "SWAP-K2-HELDOUT-62P5-V1-MASTER",
+      "checksum_manifest_sha256": "d3685fc96458e7e64c4c7a8a29b4fb82b7eddf1ac44b0bc1adef9c8967e1fa56",
+      "claims_forbidden": [
+        "complete K2 matrix until remaining points are executed",
+        "K2/K3/K5 performance or serving claims"
+      ],
+      "derived_bytes_per_full_block": 2097152,
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-62P5-V1-MASTER/derived_swap_k2_heldout-62p5_swap-k2-heldout-62p5-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "a271b2744fa44dbe619719d28f88ee05227a342f9e717646e0b29d979c2343f3",
+      "dtype": "bfloat16",
+      "event_analysis": {
+        "declared_block_removed_event_count": 16,
+        "declared_block_stored_event_count": 25,
+        "decode_errors": null,
+        "decoded_block_removed_message_count": 16,
+        "decoded_block_stored_message_count": 26,
+        "event_envelope_count": 28,
+        "removed_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "removed_hash_record_count": 1792,
+        "removed_hashes_not_previously_stored": [],
+        "removed_hashes_subset_of_stored": true,
+        "removed_media": [
+          "CPU"
+        ],
+        "removed_unique_hash_count": 1792,
+        "stored_event_block_size_values": [
+          0
+        ],
+        "stored_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "stored_hash_record_count": 3072,
+        "stored_hashes_without_remove": 1280,
+        "stored_media": [
+          "CPU"
+        ],
+        "stored_parent_null_count": 26,
+        "stored_token_id_count_values": [
+          0
+        ],
+        "stored_unique_hash_count": 3072
+      },
+      "expected_host_blocks": 1280,
+      "expected_rounded_bytes": 2684354560,
+      "fraction": 0.625,
+      "host_capacity_bytes": 2684354560,
+      "host_capacity_gib": 2.5,
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-62P5-V1-MASTER",
+      "movement_observed": true,
+      "point_id": "HELDOUT-62.5",
+      "raw_file_count": 19,
+      "raw_file_set_sha256": "2aded14f14360528dbcaa7a23d88999e076e0a3407e5e05b80f3fbad962f2308",
+      "reference_full_block_bytes": 2097152,
+      "reference_working_set_bytes": 4294967296,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-HELDOUT-62P5-V1-MASTER",
+      "role": "HELDOUT",
+      "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+      "runtime_block_size_tokens": 16,
+      "runtime_cache_shape": [
+        2308,
+        8,
+        32,
+        2,
+        16,
+        128
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "45bff7f33b613bf3245bc471530cc24429aa202e6b7800efdb1e130b551c8edb",
+      "stdout_sha256": "1eea958bc6c368cad3e7d8466bbea95640e58b82c8c73630a81baec5ee4b5a27",
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "attempt_id": "SWAP-K2-HELDOUT-87P5-V1-MASTER",
+      "checksum_manifest_sha256": "568cb6d6116c5a198ff11cc121b09a6854102c4e46a578b6b9ea7a7a6cc0d9c7",
+      "claims_forbidden": [
+        "complete K2 matrix until remaining points are executed",
+        "K2/K3/K5 performance or serving claims"
+      ],
+      "derived_bytes_per_full_block": 2097152,
+      "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-87P5-V1-MASTER/derived_swap_k2_heldout-87p5_swap-k2-heldout-87p5-v1-master_event_lineage_and_capacity.json",
+      "derived_sidecar_sha256": "fac79a7cf79b48d39552d1acbd6469336b628a97dbcd6292b55bb9c921378a47",
+      "dtype": "bfloat16",
+      "event_analysis": {
+        "declared_block_removed_event_count": 12,
+        "declared_block_stored_event_count": 25,
+        "decode_errors": null,
+        "decoded_block_removed_message_count": 12,
+        "decoded_block_stored_message_count": 26,
+        "event_envelope_count": 28,
+        "removed_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "removed_hash_record_count": 1280,
+        "removed_hashes_not_previously_stored": [],
+        "removed_hashes_subset_of_stored": true,
+        "removed_media": [
+          "CPU"
+        ],
+        "removed_unique_hash_count": 1280,
+        "stored_event_block_size_values": [
+          0
+        ],
+        "stored_hash_count_groups": [
+          1,
+          127,
+          128
+        ],
+        "stored_hash_record_count": 3072,
+        "stored_hashes_without_remove": 1792,
+        "stored_media": [
+          "CPU"
+        ],
+        "stored_parent_null_count": 26,
+        "stored_token_id_count_values": [
+          0
+        ],
+        "stored_unique_hash_count": 3072
+      },
+      "expected_host_blocks": 1792,
+      "expected_rounded_bytes": 3758096384,
+      "fraction": 0.875,
+      "host_capacity_bytes": 3758096384,
+      "host_capacity_gib": 3.5,
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-87P5-V1-MASTER",
+      "movement_observed": true,
+      "point_id": "HELDOUT-87.5",
+      "raw_file_count": 19,
+      "raw_file_set_sha256": "f40746da2b2edad35b54a1eb6f0484d4ae30e7cac3a7e9ec1e935535d09f2e87",
+      "reference_full_block_bytes": 2097152,
+      "reference_working_set_bytes": 4294967296,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-HELDOUT-87P5-V1-MASTER",
+      "role": "HELDOUT",
+      "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+      "runtime_block_size_tokens": 16,
+      "runtime_cache_shape": [
+        2308,
+        8,
+        32,
+        2,
+        16,
+        128
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_COMPLETE",
+      "stderr_sha256": "6cd6cd9d660be8c00705de56b11088c8e7a5ae5045ff48b4ea4e60bcc388c0db",
+      "stdout_sha256": "46159e7e1b36d5e8ceb3205bcf47d238208e7642969ede16d54300eca8d42b3e",
+      "validation_state": "VALIDATION_PASS"
+    }
+  ],
+  "swap_k2_failed_attempts": [
+    {
+      "attempt_id": "SWAP-K2-FIT-25-V1-MASTER",
+      "failure": "Python IndentationError occurred while inserting the K2 contract before engine import; no GPU workload or scientific result was produced.",
+      "failure_class": "TECHNICAL_SETUP_FAILURE",
+      "file_set_sha256": "97caa5fd2fa309ec91cf472bc0b134e6d3375c7699c0183137c35726e2d3e591",
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-25-V1-MASTER",
+      "raw_file_count": 2,
+      "remote_local_hashes_verified": true,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-25-V1-MASTER",
+      "repair_required": "Use a new attempt namespace with compile-checked K2 runner source.",
+      "status": "TECHNICAL_FAILURE_BEFORE_VALID_WORKLOAD",
+      "stderr_sha256": "12ceabdcbc98b890410362372532256402b48ddddc409ee473a3a0fcaec55be8",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attempt_id": "SWAP-K2-FIT-75-V1-MASTER",
+      "failure": "Runner completed but requested native KV host budget was 2.0 GiB while the frozen FIT-75 contract required 3.0 GiB; this attempt is excluded from K2 point evidence.",
+      "failure_class": "TECHNICAL_CONTRACT_MISMATCH",
+      "file_set_sha256": "7226c804f3e3046ca34d61253e2f8d6e7f31dcd32e240515f165823ba62134c5",
+      "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-FIT-75-V1-MASTER",
+      "manifest_sha256": "1c33d5eb324db6dd45a84912db71c1573662811ac52a3ee8ef5b2776f5243be7",
+      "raw_file_count": 19,
+      "remote_local_hashes_verified": true,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-75-V1-MASTER",
+      "repair_required": "Rerun FIT-75 in a fresh namespace with requested kv_offloading_size and status metadata set to 3.0 GiB.",
+      "status": "TECHNICAL_FAILURE_CONTRACT_MISMATCH_AFTER_WORKLOAD",
+      "stderr_sha256": "93be9e26ca21f4e64bf9791acda31b474590bd3a807e17b42651f22aa5188047",
+      "stdout_sha256": "6c68cd15f8bbd8b7f22b15824b6dbf514b666e6fd99f34e2be29db47b6806431"
+    }
+  ],
+  "swap_k3_failed_attempts": [
+    {
+      "attempt_id": "SWAP-K3-LONG-PREFILL-V1-MASTER",
+      "failure": "Argparse received a stray -- separator and rejected required K3 CLI arguments before engine/GPU workload startup.",
+      "failure_class": "TECHNICAL_CLI_ARGUMENT_ERROR",
+      "file_set_sha256": "58e866cf3cbad8519b0ce926b0f3ae243b93433c9b491ddd1d814e5410612fc3",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V1-MASTER",
+      "raw_file_count": 2,
+      "remote_local_hashes_verified": true,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-LONG-PREFILL-V1-MASTER",
+      "repair_required": "Remove the stray separator, preserve the frozen point, and use a compile-checked fresh attempt namespace.",
+      "status": "TECHNICAL_FAILURE_BEFORE_GPU_WORKLOAD",
+      "stderr_sha256": "3cd7acff45a5f4b08690a63e22c6fa7415b7d6e4938e7380e0c0ac699e39288a",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attempt_id": "SWAP-K3-LONG-PREFILL-V2-MASTER",
+      "failure": "The inline source transformation did not inject k3_contract.json, native KV offload, or host-memory telemetry; the completed serving workload is preserved but rejected for K3.",
+      "failure_class": "TECHNICAL_CONTRACT_MISMATCH",
+      "file_set_sha256": "22dca43c3468a334ce73b13cd29f39c0f3ab7d344b29132ba0d7dd661600be89",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V2-MASTER",
+      "raw_file_count": 9,
+      "remote_local_hashes_verified": true,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-LONG-PREFILL-V2-MASTER",
+      "repair_required": "Assert every transformed-source marker before launch and rerun the frozen LONG-PREFILL point in a fresh namespace.",
+      "status": "TECHNICAL_CONTRACT_MISMATCH_NOT_ADMITTED",
+      "stderr_sha256": "97feab53ffbf7201ba39d10813e9d9756e3f55c95a42bcaef76a312f6db0d9be",
+      "stdout_sha256": "f5fcf68640bd93bf4d9c0e24d50ce6de9b8ebbb45eacccc7efc15bb26f565bc5"
+    }
+  ],
+  "swap_k3_serving_pressure_attempts": [
+    {
+      "arrival_to_completion_ns": {
+        "count": 8,
+        "max": 4328929966,
+        "median": 3482888089.0,
+        "min": 2650529529
+      },
+      "attempt_id": "SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "censored_count": 0,
+      "checksum_manifest_sha256": "60eca083b9bcb641f2b9c8e3437d44f2cb9f9e85f828031278a465799a2d324c",
+      "claim_boundary": "diagnostic serving-pressure evidence; not formal SERV tail-CI closure",
+      "claims_forbidden": [
+        "formal SERV tail-CI",
+        "object-level KV performance",
+        "SWAP-K4/K5"
+      ],
+      "completed_request_count": 8,
+      "completion_latency_ns": {
+        "count": 8,
+        "max": 4288052273,
+        "median": 3442225227.5,
+        "min": 2610361533
+      },
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V3-MASTER/derived_swap_k3_long_prefill_swap_k3_long_prefill_v3_master_serving_events.json",
+      "derived_sidecar_sha256": "8bd13af2dd3ebfce41f97277bf4a24f451966302b979f735f5aa080ff41d0100",
+      "failure_count": 0,
+      "host_memory_snapshot_count": 3,
+      "kv_observation": "runtime configuration and logs only; object-level KV event trace is not exposed by this serving runner",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "manifest_initial_status": "RUNNING",
+      "manifest_terminal_status_file": "PASS",
+      "native_kv_offload_log_evidence": [
+        "Creating v1 connector with name: OffloadingConnector",
+        "Creating offloading spec with name: CPUOffloadingSpec",
+        "GPU KV cache size:",
+        "Allocating a cross layer KV cache"
+      ],
+      "point_id": "LONG-PREFILL",
+      "raw_file_count": 10,
+      "raw_file_set_sha256": "a06579655006d223a5abcdb94a3bead0e7e0216edd0cb7fc345004fee5c1a531",
+      "rejected_count": 0,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-LONG-PREFILL-V3-MASTER",
+      "request_count_denominator": 8,
+      "request_shapes": [
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 0
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 1
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 2
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 3
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 4
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 5
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 6
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 7
+        }
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "c080fb03b2505b0f72ac449c6ac26efc50f413e80414478bca55c6a95177b67e",
+      "stdout_sha256": "5075806c9491d4fc9581566bfaf2a662235d329e2874c657b37e052091eb5edf",
+      "telemetry_event_count": 3,
+      "ttft_ns": {
+        "count": 8,
+        "max": 3101753814,
+        "median": 2275062592.0,
+        "min": 1528216493
+      },
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "arrival_to_completion_ns": {
+        "count": 8,
+        "max": 14795456264,
+        "median": 14779624237.0,
+        "min": 14690126251
+      },
+      "attempt_id": "SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "censored_count": 0,
+      "checksum_manifest_sha256": "74a4d542c28f32f093d7c11918d48ca2dba5612413ad9c96839bdb9e262c9dd0",
+      "claim_boundary": "diagnostic serving-pressure evidence; not formal SERV tail-CI closure",
+      "claims_forbidden": [
+        "formal SERV tail-CI",
+        "object-level KV performance",
+        "SWAP-K4/K5"
+      ],
+      "completed_request_count": 8,
+      "completion_latency_ns": {
+        "count": 8,
+        "max": 14757264956,
+        "median": 14741654068.5,
+        "min": 14652682592
+      },
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-DECODE-HEAVY-V1-MASTER/derived_swap_k3_decode_heavy_swap_k3_decode_heavy_v1_master_serving_events.json",
+      "derived_sidecar_sha256": "a63b241a2d5ea09f5c8d921ab42e2d0b2b1f5ab343d5d0df87e0bc6a0f0f2671",
+      "failure_count": 0,
+      "host_memory_snapshot_count": 3,
+      "kv_observation": "runtime configuration and logs only; object-level KV event trace is not exposed by this serving runner",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "manifest_initial_status": "RUNNING",
+      "manifest_terminal_status_file": "PASS",
+      "native_kv_offload_log_evidence": [
+        "Creating v1 connector with name: OffloadingConnector",
+        "Creating offloading spec with name: CPUOffloadingSpec",
+        "GPU KV cache size:",
+        "Allocating a cross layer KV cache"
+      ],
+      "point_id": "DECODE-HEAVY",
+      "raw_file_count": 10,
+      "raw_file_set_sha256": "59632645e7a3e662078105834bdb426f0849cb383473cf18b134d8bfaab51b22",
+      "rejected_count": 0,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-DECODE-HEAVY-V1-MASTER",
+      "request_count_denominator": 8,
+      "request_shapes": [
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 0
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 1
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 2
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 3
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 4
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 5
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 6
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 7
+        }
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "99df234feea7157370e4fb48248502059581062d5f9e3c8d342479c22dda18f0",
+      "stdout_sha256": "e241495fa8caa92bba5c206e3c4e88a21062dcfd41e34d740ed03f278fff6107",
+      "telemetry_event_count": 3,
+      "ttft_ns": {
+        "count": 8,
+        "max": 438029688,
+        "median": 437735083.5,
+        "min": 326824830
+      },
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "arrival_to_completion_ns": {
+        "count": 4,
+        "max": 13650069971,
+        "median": 4606522237.5,
+        "min": 3076274244
+      },
+      "attempt_id": "SWAP-K3-MIXED-V1-MASTER",
+      "censored_count": 0,
+      "checksum_manifest_sha256": "1f6fbeaee4582d376c5c8e0833cd12a8a57359abf4a71595318d418d95893aa4",
+      "claim_boundary": "diagnostic serving-pressure evidence; not formal SERV tail-CI closure",
+      "claims_forbidden": [
+        "formal SERV tail-CI",
+        "object-level KV performance",
+        "SWAP-K4/K5"
+      ],
+      "completed_request_count": 4,
+      "completion_latency_ns": {
+        "count": 4,
+        "max": 13609148311,
+        "median": 4565707996.5,
+        "min": 3035787068
+      },
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-MIXED-V1-MASTER/derived_swap_k3_mixed_swap_k3_mixed_v1_master_serving_events.json",
+      "derived_sidecar_sha256": "d4a9754fd8a5b13f0bed24185f133b53d7ea5b48ca640ffa852bb120bede982c",
+      "failure_count": 0,
+      "host_memory_snapshot_count": 3,
+      "kv_observation": "runtime configuration and logs only; object-level KV event trace is not exposed by this serving runner",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-MIXED-V1-MASTER",
+      "manifest_initial_status": "RUNNING",
+      "manifest_terminal_status_file": "PASS",
+      "native_kv_offload_log_evidence": [
+        "Creating v1 connector with name: OffloadingConnector",
+        "Creating offloading spec with name: CPUOffloadingSpec",
+        "GPU KV cache size:",
+        "Allocating a cross layer KV cache"
+      ],
+      "point_id": "MIXED",
+      "raw_file_count": 11,
+      "raw_file_set_sha256": "907624034634eea9756223bcaf94aa5f4712fb7b9cd9c2a7a51ebf672a655b6b",
+      "rejected_count": 0,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-MIXED-V1-MASTER",
+      "request_count_denominator": 4,
+      "request_shapes": [
+        {
+          "class": "short",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 0
+        },
+        {
+          "class": "medium",
+          "input_tokens": 2048,
+          "output_tokens": 128,
+          "slot": 1
+        },
+        {
+          "class": "long-prefill",
+          "input_tokens": 8192,
+          "output_tokens": 32,
+          "slot": 2
+        },
+        {
+          "class": "decode-heavy",
+          "input_tokens": 512,
+          "output_tokens": 512,
+          "slot": 3
+        }
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_PARTIAL",
+      "stderr_sha256": "09569f9bc098ea3ce40a6ca46dae996771297fffa873d13596e45012dc2d635b",
+      "stdout_sha256": "7fa33eaaf906f7511f7aeb1e20df0b007ea588557be183cfe06c97a34e4f2582",
+      "telemetry_event_count": 3,
+      "ttft_ns": {
+        "count": 4,
+        "max": 2042045558,
+        "median": 1496808662.0,
+        "min": 240855129
+      },
+      "validation_state": "VALIDATION_PASS"
+    },
+    {
+      "arrival_to_completion_ns": {
+        "count": 32,
+        "max": 1378006188,
+        "median": 1333512575.0,
+        "min": 1207070604
+      },
+      "attempt_id": "SWAP-K3-BURST-V1-MASTER",
+      "censored_count": 0,
+      "checksum_manifest_sha256": "b9843fc9f999a54ef01a3e1261fa0d5bf09d4a3d0f0b11be11cf170c4c8ad80a",
+      "claim_boundary": "diagnostic serving-pressure evidence; not formal SERV tail-CI closure",
+      "claims_forbidden": [
+        "formal SERV tail-CI",
+        "object-level KV performance",
+        "SWAP-K4/K5"
+      ],
+      "completed_request_count": 32,
+      "completion_latency_ns": {
+        "count": 32,
+        "max": 1339040207,
+        "median": 1295161460.0,
+        "min": 1169662296
+      },
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER/derived_swap_k3_burst_swap_k3_burst_v1_master_serving_events.json",
+      "derived_sidecar_sha256": "92c40811d920d78413ea2c756954a46732244c4c3f956ec6d6819b95eb47e7b3",
+      "failure_count": 0,
+      "host_memory_snapshot_count": 3,
+      "kv_observation": "runtime configuration and logs only; object-level KV event trace is not exposed by this serving runner",
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER",
+      "manifest_initial_status": "RUNNING",
+      "manifest_terminal_status_file": "PASS",
+      "native_kv_offload_log_evidence": [
+        "Creating v1 connector with name: OffloadingConnector",
+        "Creating offloading spec with name: CPUOffloadingSpec",
+        "GPU KV cache size:",
+        "Allocating a cross layer KV cache"
+      ],
+      "point_id": "BURST",
+      "raw_file_count": 10,
+      "raw_file_set_sha256": "620b826e9f29f723440c46eb0dc53244b265368bf5cb85b5db6968746b71acef",
+      "rejected_count": 0,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-BURST-V1-MASTER",
+      "request_count_denominator": 32,
+      "request_shapes": [
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 0
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 1
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 2
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 3
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 4
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 5
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 6
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 7
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 8
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 9
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 10
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 11
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 12
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 13
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 14
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 15
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 16
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 17
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 18
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 19
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 20
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 21
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 22
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 23
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 24
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 25
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 26
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 27
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 28
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 29
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 30
+        },
+        {
+          "class": "homogeneous",
+          "input_tokens": 128,
+          "output_tokens": 32,
+          "slot": 31
+        }
+      ],
+      "status": "VALIDATION_PASS_POINT_MATRIX_COMPLETE",
+      "stderr_sha256": "2841f4e10a76abd90c50eec8ac256bd71dd7964b02e1033ffd715c318ac46183",
+      "stdout_sha256": "8d1aef5ef2228d8195f55215731f9f3b289f91d0a1f3fae78a38605f644887d7",
+      "telemetry_event_count": 3,
+      "ttft_ns": {
+        "count": 32,
+        "max": 412294093,
+        "median": 411584863.0,
+        "min": 302825317
+      },
+      "validation_state": "VALIDATION_PASS"
+    }
+  ],
+  "swap_k5_exhaustion_attempts": [
+    {
+      "adjudication_basis": "vLLM offloading scheduler line 802 logs prepare_store=None as 'cannot store blocks'; CPU manager source returns None when protected-key eviction cannot satisfy capacity.",
+      "affected_logical_request_ids": [
+        "swap-k5-00",
+        "swap-k5-01",
+        "swap-k5-02",
+        "swap-k5-03",
+        "swap-k5-04",
+        "swap-k5-05",
+        "swap-k5-06",
+        "swap-k5-07"
+      ],
+      "attempt_id": "SWAP-K5-V1-MASTER",
+      "block_removed_message_count": 0,
+      "block_stored_message_count": 0,
+      "cannot_store_warning_count": 287,
+      "censored_request_count": 0,
+      "checksum_manifest_sha256": "857fb706422d370879a962c88d3c1a05bcaccfbb088a0528591139f4aba31f49",
+      "completion_latency_ns": {
+        "count": 8,
+        "max": 26398442797,
+        "median": 17812985082.5,
+        "min": 6573683014
+      },
+      "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K5-V1-MASTER/derived_swap_k5_store_refusal_fallback.json",
+      "derived_sidecar_sha256": "31bb095ced0960ac0fa412a833318dafaf37487a03d2e0998802c984c4157353",
+      "failed_request_count": 0,
+      "finish_reasons": [
+        "length"
+      ],
+      "kv_event_batch_count": 0,
+      "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K5-V1-MASTER",
+      "output_token_counts": [
+        32
+      ],
+      "passed_request_count": 8,
+      "peak_process_vmpin_kib": 0,
+      "peak_process_vmrss_kib": 1018248,
+      "peak_system_mlocked_kib": 26588,
+      "raw_file_count": 17,
+      "raw_file_set_sha256": "4d11d357e04d69bab53d3e30e70d6524020f8a4ca779f2e45f5dc38a241a7a23",
+      "rejected_request_count": 0,
+      "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/SWAP-K5-V1-MASTER",
+      "request_denominator": 8,
+      "runner_initial_outcome": "NO_EXHAUSTION_RESPONSE_OBSERVED",
+      "scientific_outcome": "HOST_POOL_STORE_REFUSED_FALLBACK_OBSERVED",
+      "status": "VALIDATION_PASS_WITH_LIMITATIONS",
+      "stderr_sha256": "7be2ac9aa4486a319c088d3eae81783586e7ef5ed929b18a37c50395f92be31f",
+      "stdout_sha256": "be2ffc81cb1ccf9b5bffb4363a0e1a79d6ab679be60cb9198f076ca15eb17ec4",
+      "telemetry_sample_count": 83,
+      "ttft_ns": {
+        "count": 8,
+        "max": 25529124283,
+        "median": 14161423247.5,
+        "min": 2862390070
+      },
+      "validation_state": "VALIDATION_PASS",
+      "zero_event_interpretation": "Expected for prepare_store=None: no store is issued and therefore no BlockStored/BlockRemoved event is published."
+    }
+  ]
+}

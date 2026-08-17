@@ -1,0 +1,33 @@
+{
+  "schema_version": "phase7-serving-saturation-pilot-plan-v1",
+  "plan_id": "SERVING-SATURATION-PILOT-SHORT-C8-NATURAL-V1",
+  "purpose": "designated pilot for freezing the saturation-rate contract",
+  "excluded_from_formal_scoring": true,
+  "sampling_mode": "NATURAL_EOS_CAPPED",
+  "request_shape": {
+    "input_tokens": 128,
+    "output_tokens": 32
+  },
+  "concurrency": 8,
+  "max_num_seqs": 8,
+  "max_num_batched_tokens": 1024,
+  "total_requests_per_rate": 100,
+  "arrival_seed": 20260812,
+  "arrival_rates_rps": [
+    2.0,
+    4.0,
+    6.0,
+    8.0,
+    10.0
+  ],
+  "saturation_decision_inputs": [
+    "completed_request_rate",
+    "completion_rate",
+    "queue_delay",
+    "p95_latency",
+    "p99_latency",
+    "queue_growth",
+    "GPU_utilization",
+    "VRAM_and_KV_occupancy"
+  ]
+}

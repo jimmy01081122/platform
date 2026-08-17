@@ -1,0 +1,23 @@
+{
+  "schema_version": "moe-simulator-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase1-cpu-mock-r2-20260726",
+  "ledger_sha256": "478674f22a8022c5ae8fdc343cb67173435d8308cf4e742b1629da975310b445",
+  "roles": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "blockers": [],
+  "verdict": "GO",
+  "authorized_next_stage": "Phase 2 Canonical IR/codec CPU-only draft and strict semantic round-trip implementation",
+  "not_authorized": [
+    "GPU query or workload",
+    "Mixtral or benchmark download",
+    "real vLLM or Mistral profiling",
+    "paid server",
+    "formal calibration PASS",
+    "platform qualification",
+    "modification or reinterpretation of frozen S4 or G3 evidence"
+  ],
+  "claim_boundary": "Phase 1 GO covers only synthetic CPU/mock schema, alignment, observability and V0 replay feasibility."
+}

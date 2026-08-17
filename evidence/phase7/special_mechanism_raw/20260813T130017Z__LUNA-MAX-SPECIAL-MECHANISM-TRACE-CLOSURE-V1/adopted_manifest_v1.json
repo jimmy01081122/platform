@@ -1,0 +1,42 @@
+{
+  "schema_version": "phase7-special-mechanism-adopted-raw-manifest-v1",
+  "campaign_id": "20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1",
+  "namespace": "adopted",
+  "backup_verified": true,
+  "checksum_algorithm": "SHA-256",
+  "source_type": "existing_local_raw_adopted_without_measurement_rerun",
+  "claim_status": "PENDING_AMENDMENT_GATE_AUDIT",
+  "files": [
+    {"path":"CMP-M3-PROFILE-V3-derived/correlation_acceptance_gate.json","bytes":1205,"sha256":"f831de2d8b37a93409873cccc37769cc740d784c72d209a6c94c9c47785eb007"},
+    {"path":"CMP-M3-PROFILE-V3-derived/routing_step_kernel_correlation.jsonl","bytes":312016,"sha256":"683c39a7b06c0f7a1e3f5331e482c4464fbe639f24597c4a8f07d895a6618526"},
+    {"path":"CMP-M3-PROFILE-V3/SHA256SUMS","bytes":1805,"sha256":"2bbc037d9138194c4ee673dd6bf83cf5baee5672333fb92f79fc8e8efa0f81cc"},
+    {"path":"CMP-M3-PROFILE-V3/environment.json","bytes":2388,"sha256":"e3e6a5fac9735de2923d683725403e691089dae8b9f04afcc5f4f51db867fca7"},
+    {"path":"CMP-M3-PROFILE-V3/input_fixture.json","bytes":21561,"sha256":"fcb1a82e27a8659c9055cc7a89a37fc267c72aeef7798a981c8e44a0cd996239"},
+    {"path":"CMP-M3-PROFILE-V3/manifest.json","bytes":1087,"sha256":"28b0fcdd77408ef088bb6e9888e22ca1f42463cd78d06adacf88352838a94c51"},
+    {"path":"CMP-M3-PROFILE-V3/memory.jsonl","bytes":1056,"sha256":"c456564fe540616df0d256a55d28bb148881b72eb9dcd146e919089ff5caa129"},
+    {"path":"CMP-M3-PROFILE-V3/model_identity.json","bytes":3543,"sha256":"7dbcbe2f18470919fd2b8d28d5f0e83767c7d63beb35206f50271eeb7e0d06cb"},
+    {"path":"CMP-M3-PROFILE-V3/nvidia-smi-post-load.json","bytes":517,"sha256":"56f33ad7b76255617b4da5ffe1aebfdb301fd7ca0d8ea8f60bca334401c7185f"},
+    {"path":"CMP-M3-PROFILE-V3/nvidia-smi-post-request.json","bytes":514,"sha256":"81fb958dfc44b40186d0a94642d186466b89c06d1f1311510969314fb3276c7f"},
+    {"path":"CMP-M3-PROFILE-V3/profiler/worker/profiler_out_0.txt","bytes":26479,"sha256":"789bff72a9209b1cafd561dee82be7e3ecad5ea1e365d42a37c6a682a8981692"},
+    {"path":"CMP-M3-PROFILE-V3/profiler/worker/request-0001__measured-01_dp0_pp0_tp0_dcp0_ep0_rank0.1786475301107302440.pt.trace.json.gz","bytes":1068436,"sha256":"96c191129d925a4ad3d5e86413f79eb54e19bb4d8071a8d67bac43627ad6fe92"},
+    {"path":"CMP-M3-PROFILE-V3/requested_engine_args.json","bytes":1291,"sha256":"995c9cfebdee7f5051a49cfd59243f6b1bf7aac3691c636693f45140c902e759"},
+    {"path":"CMP-M3-PROFILE-V3/requests.jsonl","bytes":16105,"sha256":"ad3a86591bc09e1ba9643588a8ca6a56de4c322214d7670153e8989f2f20d047"},
+    {"path":"CMP-M3-PROFILE-V3/resolved_runtime.json","bytes":39554,"sha256":"de92f466bb591cbad9a5ed5a4645f6fb69ef551c32040faf62f5cfbeb22bdcc2"},
+    {"path":"CMP-M3-PROFILE-V3/result.json","bytes":24789,"sha256":"542e943ef682f6a8ad1a55d5351d6a8ef298b7253f2bc2ad4af0a88c0e02c0e7"},
+    {"path":"CMP-M3-PROFILE-V3/routing/request-0001__measured-01.json","bytes":853,"sha256":"8d20a26896a287800a25ec1db1b0c91a93065937ad77e63ab2de43c1e602bec5"},
+    {"path":"CMP-M3-PROFILE-V3/routing/request-0001__measured-01.npy","bytes":131264,"sha256":"f433e515ff4c913ff6722599f9dbc81a855e447497ab8ced4e6562dc550cddc5"},
+    {"path":"CMP-M3-PROFILE-V3/routing_steps/hook_request.json","bytes":227,"sha256":"8b421c124b116db71bccdd7fdcb36c9c1c2246c2cb1af0b8329e0dad21b83340"},
+    {"path":"CMP-M3-PROFILE-V3/routing_steps/scheduler_steps.jsonl","bytes":14689,"sha256":"e8a7ff8cfa645c96421a7484416c22692a423a68950b5d94893ee009287d5351"},
+    {"path":"CMP-M3-PROFILE-V3/routing_steps/worker_annotations.jsonl","bytes":3126,"sha256":"05383ec87adaed7acc560fcd195adf997592bc715e514e5764b58c38429af781"},
+    {"path":"CMP-M3-PROFILE-V3/status.json","bytes":299,"sha256":"fccea9b8a571a2fb41de71197fb0c610adf6408e1b45412f7a7541f1bfefa5d1"},
+    {"path":"EXPERT-CATALOG-V5/expert_catalog.json","bytes":295448,"sha256":"581a5641419af5bdce0f1ba8257dc16bc3db2f4dbc29b259c3f16d069a580362"},
+    {"path":"EXPERT-CATALOG-V5/manifest.json","bytes":3392,"sha256":"f7cf219a6f7a667cd8ea6c73cdd11aee590e00b9dec0d6ba1b4dad3460c1f548"},
+    {"path":"EXPERT-CATALOG-V5/measurements.jsonl","bytes":174002,"sha256":"4668e36b547631089c050bed623461a16d9528712a7899c840c81f90da111712"}
+  ],
+  "source_paths": {
+    "cmp_m3_raw": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T190759Z__CMP-M3-PROFILE-V3",
+    "cmp_m3_derived": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/derived/CMP-M3-PROFILE-V3-correlation-v5",
+    "expert_catalog": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/components/component-v5-20260812T0230TPE-A-CORR"
+  },
+  "remote_delete_allowed": false
+}

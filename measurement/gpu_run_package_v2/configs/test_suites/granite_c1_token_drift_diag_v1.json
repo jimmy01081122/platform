@@ -1,0 +1,75 @@
+{
+  "schema_version": "granite-c1-diagnostic-suite-v1",
+  "suite_id": "granite_c1_token_drift_diag_v1",
+  "suite_revision": "granite-c1-v1.1.0",
+  "stage": "diagnostic",
+  "evidence_class": "diagnostic_non_c1",
+  "parent_session": "granite-c1a-canary-v3-20260718",
+  "parent_provenance": {
+    "evidence_path_argument_required": true,
+    "evidence_sha256_argument_required": true,
+    "usage": "provenance_only"
+  },
+  "models": [
+    "ibm-granite/granite-3.1-1b-a400m-instruct"
+  ],
+  "model": {
+    "id": "ibm-granite/granite-3.1-1b-a400m-instruct",
+    "revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+    "tokenizer_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+    "weights_sha256": "ac02591061f1344027a7e7b11dbb4143f75f166c47dc09b742f5de3ab1dde1d1",
+    "chat_template_sha256": "08962c2f15d56767854b46dfc4070b37f4c443551833bba65b417191735f3187"
+  },
+  "samples": [
+    {
+      "sample_id": "c1a-t0-01",
+      "instance_id": "c1a-t0-01",
+      "source_sample_id": "t0-7fdb4d724ff4d56bbaea",
+      "benchmark_id": "fixed_contract",
+      "task_id": "T0",
+      "prompt_hash": "3fd469a534c95ffb5a243ef6627b05cb1515012b4f482940218b8367c6b511c3",
+      "raw_sample_hash": "7fdb4d724ff4d56bbaea05e73460d78fbebbdc9d20f9ddd04d94e496fc0a6aa5",
+      "source_sample": {
+        "sample_id": "t0-7fdb4d724ff4d56bbaea",
+        "task_id": "T0",
+        "benchmark_id": "fixed_contract",
+        "prompt": "Return exactly this text and nothing else: 7",
+        "prompt_hash": "3fd469a534c95ffb5a243ef6627b05cb1515012b4f482940218b8367c6b511c3",
+        "raw_sample_hash": "7fdb4d724ff4d56bbaea05e73460d78fbebbdc9d20f9ddd04d94e496fc0a6aa5",
+        "reference": [
+          7
+        ],
+        "metadata": {
+          "expected_output_token_ids": [
+            7
+          ],
+          "expected_semantics": "identity",
+          "fixture_name": "identity_single_token",
+          "input_token_ids": [
+            7
+          ],
+          "token_contract": "artificial_fixture_ids_not_model_tokenizer_ids"
+        }
+      }
+    }
+  ],
+  "repetitions": 2,
+  "logical_passes": [
+    "P0",
+    "P2"
+  ],
+  "max_attempts": 1,
+  "generation_config": {
+    "batch_size": 1,
+    "do_sample": false,
+    "num_beams": 1,
+    "use_cache": true,
+    "compile": false,
+    "speculative_decoding": false,
+    "max_new_tokens": 16,
+    "seed": 20260718,
+    "return_dict_in_generate": true,
+    "output_scores": true
+  },
+  "generation_config_sha256": "51b9379d5e1328776d21923e0b43221d662a01e2533119db5e5df1e166fec400"
+}

@@ -1,0 +1,16 @@
+{
+  "role": "Model/Benchmark",
+  "ledger_sha256": "478674f22a8022c5ae8fdc343cb67173435d8308cf4e742b1629da975310b445",
+  "verdict": "GO",
+  "blockers": [],
+  "verified_results": [
+    "16 top-level members verified",
+    "fresh run ledger verified",
+    "Phase 1 replay PASS",
+    "16 Phase 1 tests PASS",
+    "no model, benchmark, GPU or download action"
+  ],
+  "claim_boundary": "Synthetic routing shape evidence is not Mixtral routing, runtime or benchmark evidence.",
+  "review_mode": "read-only",
+  "gpu_used": false
+}

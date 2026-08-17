@@ -1,0 +1,28 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r4-dependency-closure-v1",
+  "closure_status": "CPU_PACKAGE_CLOSURE_WITH_LIVE_INPUTS_EXPLICITLY_PENDING",
+  "members": [
+    {"path": "canonical_m0_reference.json", "sha256": "b9357c2a1e36e87e4769e9249b7462d69c4b7aebf9819cfa5d2fe7006aa628d2", "kind": "reference_member"},
+    {"path": "controller.py", "sha256": "cb2eb3454f1a9291096527fa2a8c08eff6cfee07f46ecc9ff349bf0a7924cc9e", "kind": "execution_member"},
+    {"path": "d0_r4.schema.json", "sha256": "c1383f31dfd948acb12129cea533055c14a0a366122a8c2a41fbde40647e41a4", "kind": "execution_member"},
+    {"path": "probe.py", "sha256": "61190293a0cae6d280d337ebcf2663a10586121c6710f4844e0c7941c4dc4f39", "kind": "execution_member"},
+    {"path": "schemas/approval.schema.json", "sha256": "b076bd7941ee75aa75e80c3c9b7e99b2d9204b4e17001208b293a42909115c91", "kind": "execution_member"},
+    {"path": "schemas/failure.schema.json", "sha256": "91da4ec1a579bf12232cb6edef3849f59a301f42e6801880e0a496564e75ed5e", "kind": "execution_member"},
+    {"path": "schemas/owner_authority.schema.json", "sha256": "9e812efa3b64da9e541c1488d64aecaed743c99b13a1d520b0d20e5a7de4a565", "kind": "execution_member"},
+    {"path": "schemas/probe.schema.json", "sha256": "980bc26ef9c7e9c3ac63de3b11abfca658862f2694c1b05548855cddfa6bb33a", "kind": "execution_member"},
+    {"path": "schemas/result.schema.json", "sha256": "085b3103231f7d8d8bba970fb3d29c9d8cc4d6dea4cb84bd8cb75f6aa55b07bf", "kind": "execution_member"},
+    {"path": "schemas/review_authority.schema.json", "sha256": "76a926363728dc3b0885a31f7244c920c644b70439a2746f71638db92cdab9af", "kind": "execution_member"},
+    {"path": "schemas/terminal_ledger.schema.json", "sha256": "85a87ed5b6a0d0e3587423dbf031ed267ff0933f040cfb1a01d2f9eba7f8da0d", "kind": "execution_member"},
+    {"path": "validate_d0_r4.py", "sha256": "96a770ac10b619427e62906f502548affffa5d4a05d0d3fd3a84150ce1504492", "kind": "execution_member"}
+  ],
+  "live_inputs": {
+    "same_hash_review_authority": "FRESH_EXTERNAL_GO_GO_GO_CLOSURE_REQUIRED_AND_HASHED",
+    "local_ssh_executable": "FRESH_APPROVAL_INPUT_REQUIRED_HASHED_AND_CAPTURED",
+    "known_hosts_bytes": "FRESH_AUTHENTICATED_PROVIDER_INPUT_REQUIRED_HASHED_AND_CAPTURED",
+    "host_key_provenance_artifact": "FRESH_HASH_BOUND_PROVIDER_CONFIRMATION_REQUIRED",
+    "client_public_key_fingerprint": "FRESH_NON_SECRET_APPROVAL_INPUT_REQUIRED_AND_UNIQUELY_SELECTED",
+    "credential_selector": "FRESH_APPROVAL_INPUT_REQUIRED",
+    "container_digest": "REQUIRED_FOR_PROMOTABLE_D0"
+  },
+  "private_credentials": "EXCLUDED"
+}

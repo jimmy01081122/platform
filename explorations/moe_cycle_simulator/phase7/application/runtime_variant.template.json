@@ -1,0 +1,94 @@
+{
+  "schema_version": "moe-simulator-phase7-m0-runtime-variant-v1",
+  "variant_status": "DRAFT_WITH_BLOCKING_FIELDS",
+  "variant_id": "[BLOCKING:CANONICAL_RUNTIME_VARIANT_SHA256]",
+  "canonical_runtime_identity_path": "[BLOCKING:ABSOLUTE_CANONICAL_RUNTIME_IDENTITY_PATH]",
+  "canonical_runtime_identity_sha256": "[BLOCKING:CANONICAL_RUNTIME_IDENTITY_FILE_SHA256]",
+  "model": {
+    "model_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "repository_commit": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "local_snapshot_path": "[BLOCKING:ABSOLUTE_PINNED_MODEL_SNAPSHOT_PATH]",
+    "model_file_ledger_path": "[BLOCKING:ABSOLUTE_MODEL_FILE_LEDGER_PATH]",
+    "model_file_ledger_file_sha256": "[BLOCKING:MODEL_FILE_LEDGER_FILE_SHA256]",
+    "model_file_ledger_sha256": "[BLOCKING:COMPLETE_MODEL_FILE_LEDGER_SHA256]",
+    "capacity_prompt_fixture_path": "[BLOCKING:ABSOLUTE_CAPACITY_PROMPT_FIXTURE_PATH]",
+    "capacity_prompt_fixture_sha256": "[BLOCKING:CAPACITY_PROMPT_FIXTURE_FILE_SHA256]",
+    "precision": "BF16",
+    "quantization": null
+  },
+  "runtime": {
+    "name": "vLLM",
+    "version": "[BLOCKING:VLLM_VERSION]",
+    "git_commit": "[BLOCKING:VLLM_GIT_COMMIT]",
+    "container_image": "[BLOCKING:CONTAINER_IMAGE]",
+    "container_digest": "[BLOCKING:CONTAINER_DIGEST]",
+    "cuda_runtime": "[BLOCKING:CUDA_RUNTIME_VERSION]",
+    "driver": "[BLOCKING:DRIVER_VERSION]",
+    "attention_backend": "[BLOCKING:ATTENTION_BACKEND]",
+    "fused_moe_backend": "[BLOCKING:FUSED_MOE_BACKEND]",
+    "kernel_backend": "[BLOCKING:KERNEL_BACKEND]",
+    "distributed_executor": "single_process",
+    "execution_mode": "EAGER",
+    "scheduler_policy": "FCFS",
+    "tensor_parallel_size": 1,
+    "expert_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "max_model_length": 32768,
+    "max_batched_tokens": 32768,
+    "max_sequences": 1,
+    "kv_cache_dtype": "BF16",
+    "gpu_memory_utilization": "[BLOCKING:FROZEN_GPU_MEMORY_UTILIZATION]",
+    "cpu_offload_gb": 0,
+    "swap_space_gb": 0,
+    "nccl_environment": {},
+    "placement": "SINGLE_GPU_ALL_EXECUTION_WEIGHTS_DEVICE_RESIDENT"
+  },
+  "runtime_adapter_contract": {
+    "path": "[BLOCKING:ABSOLUTE_VLLM_RUNTIME_ADAPTER_CONTRACT_PATH]",
+    "file_sha256": "[BLOCKING:VLLM_RUNTIME_ADAPTER_CONTRACT_SHA256]"
+  },
+  "runtime_attestation": {
+    "build_attestation_path": "[BLOCKING:ABSOLUTE_VLLM_BUILD_ATTESTATION_PATH]",
+    "build_attestation_file_sha256": "[BLOCKING:VLLM_BUILD_ATTESTATION_FILE_SHA256]"
+  },
+  "backend_evidence_contract": {
+    "source": "VLLM_STARTUP_LOG_OR_FROZEN_VERSION_ADAPTER",
+    "required_utf8_markers": {
+      "attention_backend": "[BLOCKING:EXACT_ATTENTION_BACKEND_LOG_MARKER]",
+      "fused_moe_backend": "[BLOCKING:EXACT_FUSED_MOE_BACKEND_LOG_MARKER]",
+      "kernel_backend": "[BLOCKING:EXACT_KERNEL_BACKEND_LOG_MARKER]"
+    }
+  },
+  "generation": {
+    "seed": 0,
+    "do_sample": false,
+    "temperature": 0,
+    "top_p": 1,
+    "input_tokens": 28672,
+    "max_new_tokens": 4096,
+    "ignore_eos": true,
+    "required_stop": "FORCED_LENGTH_4096"
+  },
+  "commands": {
+    "qualification_command_argv": [
+      "[BLOCKING:EXACT_M0_QUALIFICATION_EXECUTABLE]",
+      "[BLOCKING:EXACT_M0_QUALIFICATION_ARGUMENTS]"
+    ],
+    "audit_command_argv": [
+      "[BLOCKING:EXACT_M0_EVIDENCE_AUDIT_EXECUTABLE]",
+      "[BLOCKING:EXACT_M0_EVIDENCE_AUDIT_ARGUMENTS]"
+    ]
+  },
+  "command_environment": {
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "HF_DATASETS_OFFLINE": "1",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "PYTHONNOUSERSITE": "1"
+  },
+  "collector": {
+    "phase7_local_framework_hash": "[BLOCKING:PHASE7_LOCAL_FRAMEWORK_HASH]",
+    "capacity_probe_hash": "[BLOCKING:CAPACITY_PROBE_HASH]",
+    "evidence_schema_hash": "[BLOCKING:EVIDENCE_SCHEMA_HASH]"
+  }
+}

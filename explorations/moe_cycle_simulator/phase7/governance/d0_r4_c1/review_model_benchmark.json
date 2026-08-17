@@ -1,0 +1,19 @@
+{
+  "schema_version": "phase7-gputw-d0-r4/review-role/v1",
+  "role": "Model/Benchmark",
+  "verdict": "MODIFY",
+  "reviewed_commit": "7fe4a2a657af0ccd0795d7cdd44581ade37f34b8",
+  "reviewed_tree": "062d178bf0ca793ce996c33daee1b65c5bdbb6fc",
+  "candidate_ledger_sha256": "c9c708c35de2d81a4cc5ad13d2f8696811a08e41b354e39d1488dc7c9205b212",
+  "blocking_findings": [
+    "Live approval authority and prohibition arrays are arbitrary, unchecked and absent from the command preimage.",
+    "The 300-second D0 cap does not cover preflight retention or post-transport terminal sealing.",
+    "The 21,000-second downstream reserve is not freshly rechecked immediately before one-shot consumption and transport."
+  ],
+  "nonblocking": [
+    "The 28,800-second fully prepaid entitlement, zero additional spend and 7,800-second non-authoritative slack are fail-closed.",
+    "The canonical Mixtral BF16/vLLM M0 boundary is reference-only and grants no model or GPU authority."
+  ],
+  "gpu_authority": "NONE",
+  "side_effects": false
+}

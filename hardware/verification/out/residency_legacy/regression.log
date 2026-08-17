@@ -1,0 +1,42 @@
+== verilator version ==
+Verilator 5.006 2023-01-22 rev (Debian 5.006-3)
+== lint (defs: none ME=32 BANKS=4) ==
+== build (DMA_DEPTH=4 DMA_LATENCY=8 ME=32) ==
+make: Entering directory '/work/verification/out/residency_legacy/obj_dir'
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -I/work/firmware -O2 -DTB_MAX_EXPERTS=32   -Os -c -o scheduler.o /work/firmware/scheduler.c
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -I/work/firmware -O2 -DTB_MAX_EXPERTS=32   -Os -c -o tb_residency.o /work/rtl/verification/tb_residency.cpp
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -I/work/firmware -O2 -DTB_MAX_EXPERTS=32   -Os -c -o verilated.o /usr/share/verilator/include/verilated.cpp
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -I/work/firmware -O2 -DTB_MAX_EXPERTS=32   -Os -c -o verilated_threads.o /usr/share/verilator/include/verilated_threads.cpp
+/usr/bin/python3 /usr/share/verilator/bin/verilator_includer -DVL_INCLUDE_OPT=include Vmoe_residency_top.cpp Vmoe_residency_top___024root__DepSet_he26b6419__0.cpp Vmoe_residency_top___024root__DepSet_h8881ed5c__0.cpp Vmoe_residency_top__ConstPool_0.cpp Vmoe_residency_top___024root__Slow.cpp Vmoe_residency_top___024root__DepSet_he26b6419__0__Slow.cpp Vmoe_residency_top___024root__DepSet_h8881ed5c__0__Slow.cpp Vmoe_residency_top___024unit__Slow.cpp Vmoe_residency_top___024unit__DepSet_h858a891a__0__Slow.cpp Vmoe_residency_top__Syms.cpp > Vmoe_residency_top__ALL.cpp
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -I/work/firmware -O2 -DTB_MAX_EXPERTS=32   -Os -c -o Vmoe_residency_top__ALL.o Vmoe_residency_top__ALL.cpp
+echo "" > Vmoe_residency_top__ALL.verilator_deplist.tmp
+Archive ar -rcs Vmoe_residency_top__ALL.a Vmoe_residency_top__ALL.o
+g++    scheduler.o tb_residency.o verilated.o verilated_threads.o Vmoe_residency_top__ALL.a    -pthread -lpthread -latomic   -o Vsim
+rm Vmoe_residency_top__ALL.verilator_deplist.tmp
+make: Leaving directory '/work/verification/out/residency_legacy/obj_dir'
+== run ==
+{"case":"on_demand","capacity":8,"depth":0,"pass":true,"rtl":{"miss":3997,"hit":0,"xfer":3997,"evict":3989,"waste":0},"golden":{"miss":3997,"hit":0,"xfer":3997,"evict":3989,"waste":0}}
+{"case":"cycles","capacity":8,"depth":0,"num_steps":192,"cycles_total":53026,"cycles_per_step":276.1771}
+{"case":"on_demand","capacity":16,"depth":0,"pass":true,"rtl":{"miss":3819,"hit":0,"xfer":3819,"evict":3803,"waste":0},"golden":{"miss":3819,"hit":0,"xfer":3819,"evict":3803,"waste":0}}
+{"case":"cycles","capacity":16,"depth":0,"num_steps":192,"cycles_total":51246,"cycles_per_step":266.9062}
+{"case":"on_demand","capacity":24,"depth":0,"pass":true,"rtl":{"miss":3115,"hit":0,"xfer":3115,"evict":3091,"waste":0},"golden":{"miss":3115,"hit":0,"xfer":3115,"evict":3091,"waste":0}}
+{"case":"cycles","capacity":24,"depth":0,"num_steps":192,"cycles_total":44206,"cycles_per_step":230.2396}
+{"case":"on_demand","capacity":28,"depth":0,"pass":true,"rtl":{"miss":2003,"hit":0,"xfer":2003,"evict":1975,"waste":0},"golden":{"miss":2003,"hit":0,"xfer":2003,"evict":1975,"waste":0}}
+{"case":"cycles","capacity":28,"depth":0,"num_steps":192,"cycles_total":33086,"cycles_per_step":172.3229}
+{"case":"on_demand","capacity":32,"depth":0,"pass":true,"rtl":{"miss":32,"hit":0,"xfer":32,"evict":0,"waste":0},"golden":{"miss":32,"hit":0,"xfer":32,"evict":0,"waste":0}}
+{"case":"cycles","capacity":32,"depth":0,"num_steps":192,"cycles_total":13376,"cycles_per_step":69.6667}
+{"case":"prefetch","capacity":8,"depth":1,"pass":true,"rtl":{"miss":3568,"hit":402,"xfer":3970,"evict":3962,"waste":0},"golden":{"miss":3568,"hit":402,"xfer":3970,"evict":3962,"waste":0}}
+{"case":"cycles","capacity":8,"depth":1,"num_steps":192,"cycles_total":48436,"cycles_per_step":252.2708}
+{"case":"prefetch","capacity":16,"depth":1,"pass":true,"rtl":{"miss":3257,"hit":493,"xfer":3750,"evict":3734,"waste":0},"golden":{"miss":3257,"hit":493,"xfer":3750,"evict":3734,"waste":0}}
+{"case":"cycles","capacity":16,"depth":1,"num_steps":192,"cycles_total":46602,"cycles_per_step":242.7188}
+{"case":"prefetch","capacity":24,"depth":1,"pass":true,"rtl":{"miss":2211,"hit":531,"xfer":2742,"evict":2718,"waste":0},"golden":{"miss":2211,"hit":531,"xfer":2742,"evict":2718,"waste":0}}
+{"case":"cycles","capacity":24,"depth":1,"num_steps":192,"cycles_total":37653,"cycles_per_step":196.1094}
+{"case":"prefetch","capacity":28,"depth":1,"pass":true,"rtl":{"miss":994,"hit":383,"xfer":1377,"evict":1349,"waste":0},"golden":{"miss":994,"hit":383,"xfer":1377,"evict":1349,"waste":0}}
+{"case":"cycles","capacity":28,"depth":1,"num_steps":192,"cycles_total":24959,"cycles_per_step":129.9948}
+{"case":"prefetch","capacity":32,"depth":1,"pass":true,"rtl":{"miss":31,"hit":1,"xfer":32,"evict":0,"waste":0},"golden":{"miss":31,"hit":1,"xfer":32,"evict":0,"waste":0}}
+{"case":"cycles","capacity":32,"depth":1,"num_steps":192,"cycles_total":13152,"cycles_per_step":68.5000}
+{"case":"empty_steps","capacity":8,"depth":1,"pass":true,"rtl":{"miss":0,"hit":0,"xfer":0,"evict":0,"waste":0},"golden":{"miss":0,"hit":0,"xfer":0,"evict":0,"waste":0}}
+{"case":"invalid_input","pass":true,"o_input_error":1}
+{"case":"reset_midstream","pass":true,"miss_after_reset":0}
+{"case":"randomized_property","trials":300,"pass":true,"failures":0}
+{"summary":"PASS","failures":0}

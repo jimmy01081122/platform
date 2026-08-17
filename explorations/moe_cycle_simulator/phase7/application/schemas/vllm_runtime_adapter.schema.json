@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vllm_runtime_adapter.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "adapter_id", "implementation_path", "implementation_sha256", "qualified_runtime", "llm_constructor_binding", "resolved_kv_cache_evidence", "loaded_module_binding"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-vllm-runtime-adapter-v1"},
+    "status": {"const": "FROZEN"},
+    "adapter_id": {"const": "vllm-exact-version-kv-cache-bf16-v1"},
+    "implementation_path": {"type": "string", "minLength": 1},
+    "implementation_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "qualified_runtime": {"type": "object"},
+    "llm_constructor_binding": {"type": "object"},
+    "resolved_kv_cache_evidence": {"type": "object"},
+    "loaded_module_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["distribution_name", "module_prefix", "isolated_python", "bind_all_loaded_modules", "bind_all_loaded_binary_modules"],
+      "properties": {
+        "distribution_name": {"const": "vllm"},
+        "module_prefix": {"const": "vllm"},
+        "isolated_python": {"const": true},
+        "bind_all_loaded_modules": {"const": true},
+        "bind_all_loaded_binary_modules": {"const": true}
+      }
+    }
+  }
+}

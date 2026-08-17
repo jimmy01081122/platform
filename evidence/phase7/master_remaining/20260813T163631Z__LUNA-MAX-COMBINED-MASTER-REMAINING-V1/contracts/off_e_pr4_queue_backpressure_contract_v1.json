@@ -1,0 +1,21 @@
+{
+  "schema_version":"phase7-off-e-pr4-queue-backpressure-contract-v1",
+  "contract_state":"FROZEN_BEFORE_EXECUTION",
+  "canonical_experiment_id":"OFF-E-PR4",
+  "evidence_class":"GPU_POLICY_REPLAY",
+  "compute_integrated":true,
+  "dependency_correct":true,
+  "routing_sha256":"0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+  "descriptor_selection":"first 16 unique global object IDs in frozen PR0 token-major/layer-major/top-k routing order",
+  "expert_object_bytes":352321536,
+  "queue_depths":[1,2,4,8],
+  "descriptors_per_depth":16,
+  "retry_budget":2,
+  "fallback":"synchronous actual H2D after retry budget exhaustion",
+  "duplicate":"same tag and generation rejected before H2D",
+  "stale_completion":{"injected_generation":0,"expected_generation":1,"evidence_subclass":"SYNTHETIC_FAULT_REPLAY","actual_corruption":false},
+  "late_prefetch_deadline_ms":13.0,
+  "physical_service":"each accepted or fallback descriptor issues one actual 352321536-byte H2D into the exact representative actual layer-0 expert-0 object",
+  "validation_gate":["queue full, retry and fallback conservation at depths 1/2/4/8","duplicate cancellation has zero H2D","stale completion rejected and separately synthetic-labeled","actual elapsed classifies late/on-time without dropping samples","all 64 actual H2D operations complete before actual FusedMoE compute","zero D2H writeback","final output and routing match frozen control","raw backup and SHA-256 pass"],
+  "claim_boundary":"Measured queue/backpressure GPU policy replay; stale completion is synthetic fault replay. No runtime-native residency, physical identity for all logical objects, end-to-end speedup, CAL3 or hardware queue-size claim."
+}

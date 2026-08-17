@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_application_terminal.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "disposition", "reason", "gpu_cells",
+    "gpu_used", "application_audit_sha256", "qualification_audit_sha256",
+    "qualification_audit_artifact", "session_state", "journal_head_sha256",
+    "session_state_sha256", "selection_pass", "deadline_ok",
+    "application_audit_clean", "qualification_audit_clean", "qualification_pass",
+    "formal_g3_r5_authorized", "paid_gpu_authorized", "resume", "retry_failed"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-application-terminal-v2"},
+    "session_id": {"const": "granite-c1a-g25-qualification-r1-20260719"},
+    "disposition": {"enum": ["EXECUTION_COMPLETE", "INCOMPLETE_HARD_STOP"]},
+    "reason": {"type": "string", "minLength": 1},
+    "gpu_cells": {"type": "integer", "minimum": 0, "maximum": 12},
+    "gpu_used": {"type": "boolean"},
+    "application_audit_sha256": {"$ref": "#/$defs/sha256"},
+    "qualification_audit_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+    "qualification_audit_artifact": {"enum": ["audit.json", "qualification_audit_failure.json", null]},
+    "session_state": {"enum": ["TERMINAL_COMPLETE", "TERMINAL_INCOMPLETE", "TERMINAL_FAILED"]},
+    "journal_head_sha256": {"$ref": "#/$defs/sha256"},
+    "session_state_sha256": {"$ref": "#/$defs/sha256"},
+    "selection_pass": {"type": "boolean"},
+    "deadline_ok": {"type": "boolean"},
+    "application_audit_clean": {"type": "boolean"},
+    "qualification_audit_clean": {"type": "boolean"},
+    "qualification_pass": {"type": "boolean"},
+    "formal_g3_r5_authorized": {"const": false},
+    "paid_gpu_authorized": {"const": false},
+    "resume": {"const": false},
+    "retry_failed": {"const": false}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

@@ -1,0 +1,7 @@
+{
+  "expected_kernel_correlation": false,
+  "experiment_id": "CMP-M3-SERVING-C8-V2",
+  "hook_revision": "phase7-step-trace-hook-v2",
+  "runtime_class": "SERVING_VARIANT",
+  "schema_version": "phase7-serving-routing-step-hook-request-v1"
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/external_trace_registry.schema.json",
+  "title": "Read-only external trace registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "registry_id",
+    "complete",
+    "read_only",
+    "source",
+    "inventory",
+    "corpus",
+    "trace_types",
+    "candidate_mapping",
+    "semantics",
+    "missing_provenance_fields"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "registry_id": {"type": "string", "minLength": 1},
+    "complete": {"const": false},
+    "read_only": {"const": true},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root_alias", "default_path", "access"],
+      "properties": {
+        "root_alias": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+        "default_path": {"type": "string", "minLength": 1},
+        "access": {"const": "read_only"}
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_path",
+        "sha256",
+        "content_set_sha256",
+        "content_set_hash_algorithm",
+        "file_count",
+        "total_bytes"
+      ],
+      "properties": {
+        "default_path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "content_set_sha256": {"$ref": "#/$defs/sha256"},
+        "content_set_hash_algorithm": {"type": "string", "minLength": 1},
+        "file_count": {"const": 1527},
+        "total_bytes": {"const": 11159735788}
+      }
+    },
+    "corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_count", "models", "benchmarks"],
+      "properties": {
+        "run_count": {"const": 168},
+        "models": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "num_experts"],
+            "properties": {
+              "name": {"type": "string"},
+              "num_experts": {"enum": [8, 16, 32]}
+            }
+          }
+        },
+        "benchmarks": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {"enum": ["humaneval", "mbpp", "wikitext", "arxiv_summarization", "cnn_dailymail", "gsm8k"]}
+        }
+      }
+    },
+    "trace_types": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "file_name", "evidence_class", "schema_relation"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "file_name": {"type": "string", "minLength": 1},
+          "evidence_class": {"enum": ["measured", "derived_logical", "metadata", "diagnostic"]},
+          "schema_relation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["inventory_kind", "required_columns"],
+            "properties": {
+              "inventory_kind": {"type": "string", "minLength": 1},
+              "required_columns": {
+                "type": "array",
+                "items": {"type": "string"},
+                "uniqueItems": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "candidate_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["T1", "T3", "T6"],
+      "properties": {
+        "T1": {"$ref": "#/$defs/candidate"},
+        "T3": {"$ref": "#/$defs/candidate"},
+        "T6": {"$ref": "#/$defs/candidate"}
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["top1", "runner_up", "teacher_forced_decode", "hardware_event"],
+      "properties": {
+        "top1": {"type": "string", "minLength": 1},
+        "runner_up": {"type": "string", "minLength": 1},
+        "teacher_forced_decode": {"type": "string", "minLength": 1},
+        "hardware_event": {"type": "string", "minLength": 1}
+      }
+    },
+    "missing_provenance_fields": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "source_trace", "use", "limitations"],
+      "properties": {
+        "status": {"const": "candidate"},
+        "source_trace": {"type": "string", "minLength": 1},
+        "use": {"type": "string", "minLength": 1},
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

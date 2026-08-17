@@ -1,0 +1,5 @@
+Serial workload request 07. This is a project-authored mixed-length context. Use only the records below. Preserve record identifiers when answering.
+
+Record 00001: station Birch; shipment code SERIAL07-00001-07919; marker green; quantity 170; observed delay 13 minutes; validation state accepted.
+
+Task for request 07: identify the record with the largest quantity among the final five records, state its shipment code, and give one sentence comparing its delay with the first record.

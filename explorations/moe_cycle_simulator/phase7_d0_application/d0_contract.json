@@ -1,0 +1,184 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-contract-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r1",
+  "status": "READY_FOR_OWNER_REVIEW",
+  "d0_execution_approval_eligible": false,
+  "cost_authority_status": "COST_AUTHORITY_INCOMPLETE",
+  "provider": {
+    "name": "GPUtw.ai",
+    "billing_model": "PREPAID_METERED",
+    "compute_billing": "ACCRUES_WHILE_INSTANCE_IS_RUNNING",
+    "stop_or_delete_ends_future_compute_billing": true,
+    "provider_fixed_lease_seconds": "NONE_OBSERVED",
+    "provider_grace_period": "NOT_APPLICABLE"
+  },
+  "instance": {
+    "instance_id": "7f9804d4-2dd0-4196-8215-9049a1d28942",
+    "selected_environment_label": "Ubuntu 22.04 + CUDA 12",
+    "selected_environment_label_semantics": "PROVIDER_UI_METADATA_ONLY",
+    "platform_candidate": "RTX PRO 6000 WS 96GB",
+    "gpu_count": 1,
+    "exact_measured_gpu": "UNOBSERVED",
+    "measured_vram": "UNOBSERVED"
+  },
+  "ssh": {
+    "host": "ssh.gputw.ai",
+    "port": 2222,
+    "principal": "pod-7f9804d4-2dd0-4196-8215-9049a1d28942",
+    "canonical_target": "pod-7f9804d4-2dd0-4196-8215-9049a1d28942@ssh.gputw.ai",
+    "known_hosts_logical_path": "phase7/application/known_hosts.gputw",
+    "known_hosts_actual_path": "known_hosts.gputw",
+    "known_hosts_sha256": "b19c0603ac7cc77fa91ba455734a8783f3502535e0fbe0918813f3d676aa6ec2",
+    "host_key_type": "ssh-ed25519",
+    "host_key_blob_sha256": "3474b58e429257768ac1f430802d7fc12255959909bae1bf007ddc5230191b05",
+    "host_key_fingerprint": "SHA256:NHS1jkKSV3aKwfQwgC1/wSJVlZkJuuG/AH3cUjAZGwU",
+    "trust_provenance": "OFFICIAL_PROVIDER_CONFIRMATION",
+    "strict_host_key_checking": "yes",
+    "personal_known_hosts_allowed": false
+  },
+  "owner_cost_governance": {
+    "observed_compute_price": {
+      "amount": "34.36",
+      "currency": "NTD",
+      "unit": "per_hour",
+      "provenance": "OWNER_SUPPLIED_DEPLOYMENT_OBSERVATION"
+    },
+    "owner_runtime_hours": "6",
+    "nominal_compute_only_exposure": {
+      "amount": "206.16",
+      "currency": "NTD",
+      "calculation": "34.36 * 6"
+    },
+    "owner_total_cost_cap": {
+      "amount": "300",
+      "currency": "NTD",
+      "discretionary_unallocated_spend": false
+    },
+    "owner_compute_cost_cap": {
+      "status": "UNRESOLVED_SUB_CAP",
+      "amount": null,
+      "currency": "NTD"
+    },
+    "owner_compute_spend": "ZERO_SPEND_REQUIRED_UNTIL_SEPARATE_NUMERIC_SUB_CAP_APPROVAL",
+    "owner_storage_cost_cap": {
+      "status": "UNRESOLVED_SUB_CAP",
+      "amount": null,
+      "currency": "NTD"
+    },
+    "owner_storage_spend": "ZERO_SPEND_REQUIRED",
+    "owner_port_cost_cap": {
+      "status": "UNRESOLVED_SUB_CAP",
+      "amount": null,
+      "currency": "NTD"
+    },
+    "owner_port_spend": "ZERO_SPEND_REQUIRED",
+    "owner_total_spend": "CAPPED_AT_300_NTD_NOT_DISCRETIONARY",
+    "additional_billable_ports": "ZERO_SPEND_REQUIRED_FORBIDDEN_UNLESS_EXPLICITLY_APPROVED",
+    "extension_or_spend_beyond_cap": "FORBIDDEN"
+  },
+  "owner_time_envelope": {
+    "owner_execution_budget_seconds": 21600,
+    "semantic_role": "OWNER_IMPOSED_EXECUTION_ENVELOPE",
+    "provider_lease_semantics": "NOT_A_PROVIDER_LEASE",
+    "stage_bounds_seconds": {
+      "D0": 300,
+      "Gate M": 5400,
+      "M0": 14400,
+      "release": 900
+    },
+    "bounded_work_seconds": 21000,
+    "slack_seconds": 600,
+    "d0_executable_seconds_in_this_package": 300,
+    "gate_m_and_m0_authority": "NONE",
+    "over_budget_action": "STOP_AND_SEAL_WITHOUT_PASS_CREDIT"
+  },
+  "observation_contract": {
+    "purpose": "READ_ONLY_ENVIRONMENT_DISCLOSURE_GATE",
+    "fresh_session_required": true,
+    "resume_allowed": false,
+    "retry_allowed": false,
+    "observation_statuses_before_execution": [
+      "UNOBSERVED",
+      "D0_LIVE_FIELD_REQUIRED",
+      "NOT_YET_MEASURED"
+    ],
+    "fields": [
+      "provider instance identity",
+      "instance state if visible",
+      "GPU model and count",
+      "VRAM/GPU memory capacity",
+      "driver identity/version",
+      "CUDA-visible runtime/toolchain identity",
+      "container/environment identity",
+      "Python executable absolute path, version and hash where supported",
+      "timeout executable absolute path and hash where supported",
+      "vLLM presence and distribution identity if present",
+      "backend availability without inference",
+      "/vault mount identity and total/free capacity",
+      "workspace/local-storage identity",
+      "basic OS/kernel identity"
+    ],
+    "result_identity_fields": [
+      "application_identity",
+      "result_evidence_identity"
+    ],
+    "observation_does_not_mutate_application_identity": true,
+    "remote_file_write": false,
+    "download": false,
+    "package_install": false,
+    "model_access": false,
+    "inference": false,
+    "cuda_benchmark": false,
+    "gpu_workload": false
+  },
+  "command_binding": {
+    "ssh_argv_path": "ssh_argv.json",
+    "ssh_argv_sha256": "ed6b316dbab3018e2b23a9dcfbae7918d82097a4cd0adf49405419957613a90a",
+    "remote_payload_binding_path": "remote_payload_binding.json",
+    "remote_payload_sha256": "87b7da0f6acddcfe6b5bfe33c4e90ac49a57f3dea3701b980194a215a3d2bbf1",
+    "exact_command_binding_sha256": "ac769a67bffd217471930ab6cc62702990654f058ce4924938cbafab001c7184",
+    "inner_timeout_seconds": 120,
+    "outer_d0_stage_seconds": 300,
+    "max_stdout_bytes": 1048576,
+    "max_stderr_bytes": 262144,
+    "process_tree_containment": "REUSE_FROZEN_PHASE7_DISCLOSURE_DRIVER",
+    "terminal_evidence_publication": "REQUIRED_ATOMIC_EXACT_SET_SEAL",
+    "execution_status": "NOT_EXECUTED"
+  },
+  "canonical_m0_boundary": {
+    "platform": "RTX PRO 6000 WS 96GB",
+    "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "precision": "BF16",
+    "runtime": "vLLM",
+    "quantization": "NONE",
+    "cpu_offload": "NONE",
+    "automatic_fallback": false,
+    "d0_establishes_bf16_capacity": false
+  },
+  "live_fields_remaining_unresolved": [
+    "exact CUDA minor version",
+    "NVIDIA driver version",
+    "measured GPU identity and VRAM",
+    "container digest",
+    "template/image identity if not disclosed",
+    "Python path/version/hash",
+    "timeout path/hash",
+    "vLLM version and backend",
+    "/vault mount identity and free capacity",
+    "model snapshot identity and Mixtral/BF16 capacity",
+    "performance and calibration"
+  ],
+  "forbidden_actions": [
+    "SSH execution before separate D0 approval",
+    "ssh-keyscan",
+    "StrictHostKeyChecking=no",
+    "personal known_hosts",
+    "GPU workload",
+    "model download",
+    "D0 execution in this session",
+    "Gate M",
+    "M0",
+    "instance replacement/restart/delete",
+    "credential generation/upload or private-key recording"
+  ]
+}

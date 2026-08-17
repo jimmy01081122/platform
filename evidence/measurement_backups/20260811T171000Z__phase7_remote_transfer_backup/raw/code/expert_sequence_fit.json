@@ -1,0 +1,53 @@
+{
+  "identity_formula": "layer_id * num_local_experts + local_expert_id",
+  "schema_version": "phase7-xfer-e3-fit-sequence-v1",
+  "sequence": [
+    {
+      "global_object_id": 1,
+      "layer_id": 0,
+      "local_expert_id": 1
+    },
+    {
+      "global_object_id": 2,
+      "layer_id": 0,
+      "local_expert_id": 2
+    },
+    {
+      "global_object_id": 6,
+      "layer_id": 0,
+      "local_expert_id": 6
+    },
+    {
+      "global_object_id": 4,
+      "layer_id": 0,
+      "local_expert_id": 4
+    },
+    {
+      "global_object_id": 5,
+      "layer_id": 0,
+      "local_expert_id": 5
+    },
+    {
+      "global_object_id": 3,
+      "layer_id": 0,
+      "local_expert_id": 3
+    },
+    {
+      "global_object_id": 0,
+      "layer_id": 0,
+      "local_expert_id": 0
+    },
+    {
+      "global_object_id": 7,
+      "layer_id": 0,
+      "local_expert_id": 7
+    }
+  ],
+  "source_role": "fit_only",
+  "source_routing_path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T152600Z__phase7_remote_controlled_matrix_backup/controlled_runs/20260811T140246Z__CTRL-P0-8192-routing/routing/P0-8192-routing__measured-01.npy",
+  "source_shape": [
+    8223,
+    32,
+    2
+  ]
+}

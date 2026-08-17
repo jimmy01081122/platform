@@ -1,0 +1,77 @@
+{
+  "argv": [
+    "/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py",
+    "--model-path",
+    "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "--run-root",
+    "/vault/flow/moe_simulator_phase7/real_campaign/attempts/OFF-W1-V1-MASTER/runner_runs",
+    "--experiment-id",
+    "OFF-W1-V1-MASTER",
+    "--runtime-class",
+    "ROUTING",
+    "--input-tokens",
+    "128",
+    "--output-tokens",
+    "32",
+    "--sampling-mode",
+    "FORCED_LENGTH_CONTROLLED",
+    "--logical-request-id",
+    "off-w1-disabled-control",
+    "--warmup-count",
+    "0",
+    "--measured-count",
+    "1",
+    "--max-num-seqs",
+    "1",
+    "--max-num-batched-tokens",
+    "256",
+    "--gpu-memory-utilization",
+    "0.97",
+    "--offload-backend",
+    "auto",
+    "--cpu-offload-gb",
+    "0.0"
+  ],
+  "captured_at_utc": "2026-08-14T02:19:30Z",
+  "cwd": "/root",
+  "env_selected": {},
+  "executable": "/usr/bin/python3",
+  "nvidia_smi": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=timestamp,index,uuid,name,driver_version,memory.total,memory.used,memory.free,utilization.gpu,utilization.memory,power.draw,clocks.gr,clocks.mem,temperature.gpu",
+      "--format=csv,noheader,nounits"
+    ],
+    "duration_ns": 39137987,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "2026/08/14 02:19:30.127, 0, GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 595.71.05, 97887, 2, 97249, 0, 0, 17.15, 180, 405, 40\n"
+  },
+  "packages": {
+    "numpy": "2.2.6",
+    "safetensors": "0.8.0",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.12.0",
+    "vllm": "0.23.0"
+  },
+  "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.35",
+  "python_version": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+  "torch": {
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "device_count": 1,
+    "device_properties": {
+      "repr": "_CudaDeviceProperties(name='NVIDIA RTX PRO 6000 Blackwell Workstation Edition', major=12, minor=0, total_memory=97249MB, multi_processor_count=188, uuid=177cc8e4-ff4d-a649-ac29-a3807141b521, pci_bus_id=97, pci_device_id=0, pci_domain_id=0, L2_cache_size=128MB)",
+      "type": "_CudaDeviceProperties"
+    },
+    "version": "2.11.0+cu130"
+  },
+  "uname": [
+    "Linux",
+    "gpu-9ebe2f5c-81af-44c1-8fb0-a06bfd2d4f9c",
+    "6.17.0-35-generic",
+    "#35~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 19:30:42 UTC 2",
+    "x86_64",
+    "x86_64"
+  ]
+}

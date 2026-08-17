@@ -1,0 +1,554 @@
+{
+  "adoption_allowed": true,
+  "checks": [
+    {
+      "critical": true,
+      "expected": "PASS/complete",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.status",
+      "observed": {
+        "finished_at_utc": "2026-08-11T18:04:46Z",
+        "logical_request_id": "request-0001",
+        "measured_count": 10,
+        "phase": "complete",
+        "request_count_per_sequence": null,
+        "request_plan_id": null,
+        "sequence_count": null,
+        "status": "PASS",
+        "total_completed_requests": 11,
+        "warmup_count": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "frozen Mixtral revision and 19 shards",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.model_identity",
+      "observed": {
+        "identity_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "manifest_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "shards": 19
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "canonical instrument class/BF16/no-offload forced-length",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.runtime_contract",
+      "observed": {
+        "cpu_offload_gb": 0,
+        "quantization": null,
+        "runtime_class": "CLEAN",
+        "sampling_mode": "FORCED_LENGTH_CONTROLLED"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive and total <= 32768",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.length_envelope",
+      "observed": {
+        "input": 24576,
+        "output": 32
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "rows = warmup + measured = completed",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.request_count",
+      "observed": {
+        "completed": 11,
+        "measured": 10,
+        "rows": 11,
+        "warmup": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all token counts/IDs, finish reason, sampling and durations valid",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.request_semantics",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=3 measured rows",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.measured_repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CUDA allocator and process-aware snapshots present",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.memory_capture",
+      "observed": {
+        "bad": [],
+        "rows": 23
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "required raw files present",
+      "name": "FITCTX24576-CLEAN-PERTURB-V2.raw_completeness",
+      "observed": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T180213Z__FITCTX24576-CLEAN-PERTURB-V2",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS/complete",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.status",
+      "observed": {
+        "finished_at_utc": "2026-08-11T18:07:22Z",
+        "logical_request_id": "request-0001",
+        "measured_count": 10,
+        "phase": "complete",
+        "request_count_per_sequence": null,
+        "request_plan_id": null,
+        "sequence_count": null,
+        "status": "PASS",
+        "total_completed_requests": 11,
+        "warmup_count": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "frozen Mixtral revision and 19 shards",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.model_identity",
+      "observed": {
+        "identity_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "manifest_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+        "shards": 19
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "canonical instrument class/BF16/no-offload forced-length",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.runtime_contract",
+      "observed": {
+        "cpu_offload_gb": 0,
+        "quantization": null,
+        "runtime_class": "ROUTING",
+        "sampling_mode": "FORCED_LENGTH_CONTROLLED"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive and total <= 32768",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.length_envelope",
+      "observed": {
+        "input": 24576,
+        "output": 32
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "rows = warmup + measured = completed",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.request_count",
+      "observed": {
+        "completed": 11,
+        "measured": 10,
+        "rows": 11,
+        "warmup": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all token counts/IDs, finish reason, sampling and durations valid",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.request_semantics",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=3 measured rows",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.measured_repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "every request has [input+output-1,32,2], expert IDs 0..7 and preserved raw array",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.routing_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CUDA allocator and process-aware snapshots present",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.memory_capture",
+      "observed": {
+        "bad": [],
+        "rows": 23
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "required raw files present",
+      "name": "FITCTX24576-ROUTING-PERTURB-V2.raw_completeness",
+      "observed": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T180449Z__FITCTX24576-ROUTING-PERTURB-V2",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "larger context must not be implausibly faster than adjacent anchor",
+      "name": "model_run.cross_anchor_physical_sanity",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for envelope review; no monotonic fit assumption forced",
+      "name": "model_run.cross_anchor_latency",
+      "observed": [
+        {
+          "experiment_id": "FITCTX24576-CLEAN-PERTURB-V2",
+          "input_tokens": 24576,
+          "measured_identity": [
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 2,
+              "wall_duration_ns": 11599773125.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 3,
+              "wall_duration_ns": 11593807768.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 4,
+              "wall_duration_ns": 11619861405.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 5,
+              "wall_duration_ns": 11603151652.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 6,
+              "wall_duration_ns": 11608908741.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 7,
+              "wall_duration_ns": 11602204292.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 8,
+              "wall_duration_ns": 11623443041.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 9,
+              "wall_duration_ns": 11613520970.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 10,
+              "wall_duration_ns": 11615672416.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 11,
+              "wall_duration_ns": 11608918792.0
+            }
+          ],
+          "median_wall_duration_ns": 11608913766.5,
+          "output_tokens": 32,
+          "runtime_class": "CLEAN"
+        },
+        {
+          "experiment_id": "FITCTX24576-ROUTING-PERTURB-V2",
+          "input_tokens": 24576,
+          "measured_identity": [
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 2,
+              "wall_duration_ns": 11622006057.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 3,
+              "wall_duration_ns": 11611625018.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 4,
+              "wall_duration_ns": 11634477080.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 5,
+              "wall_duration_ns": 11623437495.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 6,
+              "wall_duration_ns": 11626623279.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 7,
+              "wall_duration_ns": 11623310731.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 8,
+              "wall_duration_ns": 11659357586.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 9,
+              "wall_duration_ns": 11627056465.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 10,
+              "wall_duration_ns": 11625833555.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 11,
+              "wall_duration_ns": 11620199548.0
+            }
+          ],
+          "median_wall_duration_ns": 11624635525.0,
+          "output_tokens": 32,
+          "runtime_class": "ROUTING"
+        }
+      ],
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "CLEAN and ROUTING",
+      "name": "PAIR-24576x32-CLEAN-vs-ROUTING.clean_present",
+      "observed": [
+        "CLEAN",
+        "ROUTING"
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "exact input/output identity for every measured repetition",
+      "name": "PAIR-24576x32-CLEAN-vs-ROUTING.token_equivalence",
+      "observed": {
+        "clean": 10,
+        "common": 10,
+        "failures": [],
+        "routing": 10
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=10 paired measured repetitions",
+      "name": "PAIR-24576x32-CLEAN-vs-ROUTING.distribution_sample_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "median and p95 shift within preregistered clean-noise limits",
+      "name": "PAIR-24576x32-CLEAN-vs-ROUTING.latency_distribution_perturbation",
+      "observed": {
+        "clean_median_ns": 11608913766.5,
+        "clean_p95_ns": 11623443041.0,
+        "clean_robust_noise_fraction": 0.0008600219212593976,
+        "median_limit_fraction": 0.05,
+        "median_shift_fraction": 0.0013542833391844145,
+        "p95_limit_fraction": 0.1,
+        "p95_shift_fraction": 0.0030898370537297826,
+        "routing_median_ns": 11624635525.0,
+        "routing_p95_ns": 11659357586.0
+      },
+      "status": "PASS"
+    }
+  ],
+  "critical_failure_count": 0,
+  "critical_failures": [],
+  "raw_unchanged": true,
+  "reviewer_tool_revision": "preliminary-review-v6",
+  "schema_version": "phase7-preliminary-measurement-review-v2",
+  "status": "PASS",
+  "warning_count": 1,
+  "warnings": [
+    {
+      "critical": false,
+      "expected": "reported for envelope review; no monotonic fit assumption forced",
+      "name": "model_run.cross_anchor_latency",
+      "observed": [
+        {
+          "experiment_id": "FITCTX24576-CLEAN-PERTURB-V2",
+          "input_tokens": 24576,
+          "measured_identity": [
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 2,
+              "wall_duration_ns": 11599773125.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 3,
+              "wall_duration_ns": 11593807768.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 4,
+              "wall_duration_ns": 11619861405.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 5,
+              "wall_duration_ns": 11603151652.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 6,
+              "wall_duration_ns": 11608908741.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 7,
+              "wall_duration_ns": 11602204292.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 8,
+              "wall_duration_ns": 11623443041.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 9,
+              "wall_duration_ns": 11613520970.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 10,
+              "wall_duration_ns": 11615672416.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 11,
+              "wall_duration_ns": 11608918792.0
+            }
+          ],
+          "median_wall_duration_ns": 11608913766.5,
+          "output_tokens": 32,
+          "runtime_class": "CLEAN"
+        },
+        {
+          "experiment_id": "FITCTX24576-ROUTING-PERTURB-V2",
+          "input_tokens": 24576,
+          "measured_identity": [
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 2,
+              "wall_duration_ns": 11622006057.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 3,
+              "wall_duration_ns": 11611625018.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 4,
+              "wall_duration_ns": 11634477080.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 5,
+              "wall_duration_ns": 11623437495.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 6,
+              "wall_duration_ns": 11626623279.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 7,
+              "wall_duration_ns": 11623310731.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 8,
+              "wall_duration_ns": 11659357586.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 9,
+              "wall_duration_ns": 11627056465.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 10,
+              "wall_duration_ns": 11625833555.0
+            },
+            {
+              "input_sha256": "6d66756d4d6e3cdebf10656df7ac3a003cb2a834a8d5622671f18ec16f80dd30",
+              "output_sha256": "a0fce95d0cd04e0bd74e86c127b26692dc02f2fd67c76d8fd97d35b71b294e42",
+              "repetition_index": 11,
+              "wall_duration_ns": 11620199548.0
+            }
+          ],
+          "median_wall_duration_ns": 11624635525.0,
+          "output_tokens": 32,
+          "runtime_class": "ROUTING"
+        }
+      ],
+      "status": "WARNING"
+    }
+  ]
+}

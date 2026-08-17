@@ -1,0 +1,68 @@
+{
+  "counts": {
+    "by_role": {
+      "context_length": 5,
+      "conversation": 2,
+      "instruction": 2,
+      "router_stress": 8,
+      "serving_schedule": 4
+    },
+    "by_split": {
+      "calibration": 6,
+      "domain_holdout": 5,
+      "sample_holdout": 5,
+      "validation": 5
+    },
+    "by_task": {
+      "T4": 4,
+      "T6": 5,
+      "T7": 4,
+      "T8": 8
+    }
+  },
+  "frozen_manifest_sha256": "026120a0b8d265d4e1d98ebdb2af8c6d2df841702c5be17245827f344e1b2998",
+  "merkle": {
+    "algorithm": "sha256",
+    "leaf_contract": "sha256(canonical_json(manifest_row))",
+    "odd_leaf_rule": "duplicate_last",
+    "root": "527ce463aeaacfed14ae8c8018dcdb148a56aff89c1ee89f4ba9a2be30af6340"
+  },
+  "sample_count": 21,
+  "schema_version": "frozen-benchmark-suite-v1",
+  "source_files": {
+    "configs/test_suites/moe_trace_suite_v1.yaml": "2fe70874bd66d5bfd1b1ac1b0614e712907010f1a52f61d9d2e080acd4ca3bac",
+    "configs/test_suites/sample_manifest_v1.jsonl": "026120a0b8d265d4e1d98ebdb2af8c6d2df841702c5be17245827f344e1b2998"
+  },
+  "suite_id": "moe-trace-suite",
+  "suite_revision": "v1.0.0",
+  "unresolved_gates": [
+    {
+      "dataset": "gsm8k",
+      "dataset_revision": "740312add88f781978c0658806c59bc2815b9866",
+      "gate": "RAW_DATASET_ROWS_REQUIRED",
+      "missing_path": "raw_datasets/gsm8k/main/test.jsonl",
+      "status": "unresolved"
+    },
+    {
+      "dataset": "mmlu",
+      "dataset_revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "gate": "SUBJECT_STRATIFIED_ROWS_REQUIRED",
+      "missing_path": "raw_datasets/mmlu/all/test.jsonl",
+      "status": "unresolved"
+    },
+    {
+      "dataset": "humaneval",
+      "dataset_revision": "7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544",
+      "gate": "RAW_DATASET_ROWS_REQUIRED",
+      "missing_path": "raw_datasets/humaneval/openai_humaneval/test.jsonl",
+      "status": "unresolved"
+    },
+    {
+      "dataset": "ceval",
+      "dataset_revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "gate": "SUBJECT_STRATIFIED_ROWS_REQUIRED",
+      "missing_path": "raw_datasets/ceval/all/test.jsonl",
+      "status": "unresolved"
+    }
+  ]
+}

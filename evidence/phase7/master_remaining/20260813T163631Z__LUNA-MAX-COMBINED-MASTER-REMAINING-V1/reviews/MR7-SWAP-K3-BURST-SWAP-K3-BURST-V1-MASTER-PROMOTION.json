@@ -1,0 +1,262 @@
+{
+  "attempt_id": "SWAP-K3-BURST-V1-MASTER",
+  "claims_forbidden": [
+    "formal SERV tail-CI",
+    "object-level KV performance",
+    "SWAP-K4/K5"
+  ],
+  "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER/derived_swap_k3_burst_swap_k3_burst_v1_master_serving_events.json",
+  "derived_sidecar_sha256": "92c40811d920d78413ea2c756954a46732244c4c3f956ec6d6819b95eb47e7b3",
+  "execution_state": "EXECUTION_COMPLETE",
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER",
+  "matrix_complete": true,
+  "missing_points": [],
+  "next_ready_unit": "SWAP-K5",
+  "point_id": "BURST",
+  "point_result": {
+    "arrival_to_completion_ns": {
+      "count": 32,
+      "max": 1378006188,
+      "median": 1333512575.0,
+      "min": 1207070604
+    },
+    "attempt_id": "SWAP-K3-BURST-V1-MASTER",
+    "censored_count": 0,
+    "checksum_manifest_sha256": "b9843fc9f999a54ef01a3e1261fa0d5bf09d4a3d0f0b11be11cf170c4c8ad80a",
+    "claim_boundary": "diagnostic serving-pressure evidence; not formal SERV tail-CI closure",
+    "completed_request_count": 32,
+    "completion_latency_ns": {
+      "count": 32,
+      "max": 1339040207,
+      "median": 1295161460.0,
+      "min": 1169662296
+    },
+    "failure_count": 0,
+    "host_memory_snapshot_count": 3,
+    "kv_observation": "runtime configuration and logs only; object-level KV event trace is not exposed by this serving runner",
+    "manifest_initial_status": "RUNNING",
+    "manifest_terminal_status_file": "PASS",
+    "native_kv_offload_log_evidence": [
+      "Creating v1 connector with name: OffloadingConnector",
+      "Creating offloading spec with name: CPUOffloadingSpec",
+      "GPU KV cache size:",
+      "Allocating a cross layer KV cache"
+    ],
+    "point_id": "BURST",
+    "raw_file_count": 10,
+    "raw_file_set_sha256": "620b826e9f29f723440c46eb0dc53244b265368bf5cb85b5db6968746b71acef",
+    "rejected_count": 0,
+    "request_count_denominator": 32,
+    "request_shapes": [
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 0
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 1
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 2
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 3
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 4
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 5
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 6
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 7
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 8
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 9
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 10
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 11
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 12
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 13
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 14
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 15
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 16
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 17
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 18
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 19
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 20
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 21
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 22
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 23
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 24
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 25
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 26
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 27
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 28
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 29
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 30
+      },
+      {
+        "class": "homogeneous",
+        "input_tokens": 128,
+        "output_tokens": 32,
+        "slot": 31
+      }
+    ],
+    "stderr_sha256": "2841f4e10a76abd90c50eec8ac256bd71dd7964b02e1033ffd715c318ac46183",
+    "stdout_sha256": "8d1aef5ef2228d8195f55215731f9f3b289f91d0a1f3fae78a38605f644887d7",
+    "telemetry_event_count": 3,
+    "ttft_ns": {
+      "count": 32,
+      "max": 412294093,
+      "median": 411584863.0,
+      "min": 302825317
+    },
+    "validation_state": "VALIDATION_PASS"
+  },
+  "raw_backup": "VERIFIED",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-BURST-V1-MASTER",
+  "request_correctness": "PASS",
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T01:39:48Z",
+  "schema_version": "phase7-combined-master-swap-k3-point-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

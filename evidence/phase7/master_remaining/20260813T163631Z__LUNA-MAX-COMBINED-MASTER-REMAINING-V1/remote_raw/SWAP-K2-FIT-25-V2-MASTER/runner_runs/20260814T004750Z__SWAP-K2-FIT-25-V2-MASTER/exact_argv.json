@@ -1,0 +1,49 @@
+{
+  "argv": [
+    "-c"
+  ],
+  "attempt_id": "SWAP-K2-FIT-25-V2-MASTER",
+  "captured_at_utc": "2026-08-14T00:47:55.630584Z",
+  "constructor_args": {
+    "cpu_offload_gb": 0,
+    "dtype": "bfloat16",
+    "enable_expert_parallel": false,
+    "enable_prefix_caching": false,
+    "enforce_eager": true,
+    "gpu_memory_utilization": 0.97,
+    "kv_cache_dtype": "auto",
+    "kv_cache_metrics": true,
+    "kv_events_config": {
+      "repr": "KVEventsConfig(enable_kv_cache_events=True, publisher='zmq', endpoint='tcp://*:5611', replay_endpoint=None, buffer_steps=10000, hwm=100000, max_queue_size=100000, topic='')",
+      "type": "vllm.config.kv_events.KVEventsConfig"
+    },
+    "kv_offloading_backend": "native",
+    "kv_offloading_size": 1.0,
+    "load_format": "safetensors",
+    "max_model_len": 32768,
+    "max_num_batched_tokens": 2048,
+    "max_num_seqs": 3,
+    "model": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "pipeline_parallel_size": 1,
+    "quantization": null,
+    "safetensors_prefetch_block_size": 16777216,
+    "safetensors_prefetch_num_threads": 1,
+    "seed": 0,
+    "tensor_parallel_size": 1,
+    "trust_remote_code": false
+  },
+  "cwd": "/root",
+  "request_fixture": {
+    "base_token_count": 128,
+    "context_token_count": 16384,
+    "gpu_kv_capacity_tokens_expected": 36928,
+    "measured_count": 3,
+    "output_tokens": 32,
+    "prompt_token_ids_sha256": "f071cbfd4a7175a4fde1fd01c9106dbdcea9c4e4b4c68635c1ec765bf02e1749",
+    "request_count": 3,
+    "total_context_tokens": 49152,
+    "warmup_count": 0
+  },
+  "run_dir": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-FIT-25-V2-MASTER/runner_runs/20260814T004750Z__SWAP-K2-FIT-25-V2-MASTER",
+  "schema_version": "phase7-exact-argv-v1"
+}

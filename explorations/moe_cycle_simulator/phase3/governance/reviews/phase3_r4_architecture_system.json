@@ -1,0 +1,23 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r4-20260728",
+  "ledger_sha256": "6ade9bbfaefacd8cbebbc30fe2181c95b54635fb3da0af581b5e349cf2e6d956",
+  "member_count": 198,
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P3-R4-B1: U128 holder accumulation can wrap, allowing a mathematically over-capacity holder sum to equal occupancy and pass construction and restore.",
+    "ARCH-P3-R4-B2: the public fresh constructor accepts preloaded resource waiters while all event states start PENDING, producing a boundary-0 checkpoint that its own restore rejects."
+  ],
+  "findings": [
+    "All R3 waiter-drain atomicity, counter, terminal, causality, trace-order and frozen-maxima probes now pass.",
+    "The 198-member ledger, R1/R3 snapshots and R5 nested run verify exactly.",
+    "Prefix replay is correct subject to the resource-validation blockers; production-scale restore complexity remains nonblocking work."
+  ],
+  "claim_boundary": "CPU REPLAY_VALIDATE only; resource-conservation and fresh-state closure prevent freeze.",
+  "authorized_next_stage": "Fresh Phase 3 CPU correction, run, ledger and same-hash review.",
+  "not_authorized": [
+    "Phase 3 freeze or Phase 4 promotion",
+    "GPU/model/benchmark/profiling work",
+    "calibration PASS"
+  ]
+}

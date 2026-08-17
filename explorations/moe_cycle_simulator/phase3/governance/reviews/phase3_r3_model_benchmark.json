@@ -1,0 +1,23 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r3-20260728",
+  "ledger_sha256": "7bf3b31c84f21ba9647729ba6532b1ac8aa99f0d77c5af605884e09a65ecbe38",
+  "member_count": 96,
+  "verdict": "MODIFY",
+  "blockers": [
+    "MB-P3-R3-B1: acceptance_criteria still names formal R2 although R2 is withdrawn and R4 is the sole formal execution evidence."
+  ],
+  "findings": [
+    "The complete checkpoint digest closes MB-P3-R1-B1.",
+    "No model, routing, benchmark, GPU, profiling or calibration boundary is exceeded.",
+    "The candidate, historical snapshot and nested run exact sets verify."
+  ],
+  "claim_boundary": "CPU REPLAY_VALIDATE implementation only; stale acceptance text prevents freeze.",
+  "authorized_next_stage": "Correct the formal-run binding and reseal a fresh candidate.",
+  "not_authorized": [
+    "Withdrawn R2 use",
+    "Phase 3 freeze or Phase 4 promotion",
+    "GPU/model/benchmark/profiling work",
+    "formal calibration PASS"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "g25-system-closure-v2",
+  "platform": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "byteorder": "little",
+    "libc": "glibc",
+    "libc_version": "2.35",
+    "python_version": "3.10.12"
+  },
+  "runtime_system_files_sha256": "f4c7e80e83400a789390a963e593dff3ee9ac6d72d5d168bef8ce0dce53c54ce",
+  "approved_executable_roots": [
+    "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/gpu_run_package_v2/.benchmark-runtime",
+    "/usr/lib/python3.10",
+    "/usr/lib/wsl/lib"
+  ],
+  "approved_non_executable_data_roots": [
+    "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/gpu_run_package_v2/models/snapshots/granite-3.1-1b-a400m-instruct/0da7a48b0276d500ce5922fd2b33944091fc6c09"
+  ],
+  "static_executables": [
+    "/usr/bin/env",
+    "/usr/bin/git",
+    "/usr/bin/python3.10",
+    "/usr/bin/timeout",
+    "/usr/lib/wsl/lib/nvidia-smi"
+  ],
+  "dynamic_loader": {
+    "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+    "cache_path": "/etc/ld.so.cache",
+    "cache_execution_policy": "inhibited_by_exact_argv",
+    "preload_path": "/etc/ld.so.preload",
+    "preload_expected": "absent"
+  },
+  "forbidden_environment": [
+    "GCONV_PATH",
+    "LD_AUDIT",
+    "LD_LIBRARY_PATH",
+    "LD_PRELOAD",
+    "LOCPATH",
+    "PYTHONHOME",
+    "PYTHONPATH"
+  ],
+  "roles": [
+    "bootstrap",
+    "parent_imported",
+    "parent_preflight",
+    "parent_finalization",
+    "worker_imported",
+    "worker_pre_generation",
+    "worker_post_generation"
+  ],
+  "allowed_special_mappings": [
+    "[heap]",
+    "[stack]",
+    "[vdso]",
+    "[vsyscall]",
+    "[vvar]",
+    "[vvar_vclock]"
+  ],
+  "anonymous_executable_mapping_policy": "forbidden_except_vdso_vsyscall",
+  "file_backed_mapping_policy": "exact_bound_root_or_system_file",
+  "live_dependency_policy": "every_dt_needed_resolves_uniquely_in_observed_set"
+}

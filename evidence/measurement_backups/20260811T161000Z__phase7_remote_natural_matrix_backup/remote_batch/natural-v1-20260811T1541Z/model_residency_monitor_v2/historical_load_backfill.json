@@ -1,0 +1,18 @@
+{
+  "records": [
+    {
+      "completed_at_utc": "2026-08-11T15:40:04Z",
+      "console_path": "/vault/flow/moe_simulator_phase7/real_campaign/batches/natural-v1-20260811T1541Z/consoles/W0-CLEAN.console.log",
+      "console_sha256": "6e0f2e55cb841d6fb82ab82e0eef0e23be8810f89f13cbf985b3de24a254a043",
+      "coverage": "historical_log_only",
+      "eviction_timing": null,
+      "experiment_id": "W0-CLEAN",
+      "limitation": "Monitor was not active; high-resolution allocation/eviction timing cannot be reconstructed.",
+      "run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T153919Z__W0-CLEAN",
+      "run_status": "PASS",
+      "vllm_reported_model_loading_seconds": 9.119411,
+      "vllm_reported_model_memory_gib": 87.0,
+      "vllm_reported_weight_loading_seconds": 8.91
+    }
+  ]
+}

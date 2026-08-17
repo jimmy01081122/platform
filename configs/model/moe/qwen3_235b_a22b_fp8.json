@@ -1,0 +1,23 @@
+{
+  "schema_version": "moe-model-config-v1",
+  "model_id": "Qwen/Qwen3-235B-A22B-FP8",
+  "trace_variant": "Qwen/Qwen3-235B-A22B-FP8",
+  "provenance": {
+    "config_source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-FP8/resolve/main/config.json",
+    "access": "public",
+    "note": "qwen3_moe; decoder_sparse_step=1 -> all 94 layers are MoE; quantization_config.quant_method=fp8."
+  },
+  "hidden_size": 4096,
+  "moe_intermediate_size": 1536,
+  "num_experts": 128,
+  "top_k": 8,
+  "num_hidden_layers": 94,
+  "num_moe_layers": 94,
+  "num_shared_experts": 0,
+  "mlp_kind": "gated_swiglu",
+  "weight_precision": {
+    "name": "fp8",
+    "bytes_per_param": 1.0,
+    "overhead_note": "FP8 E4M3 weights = 1 byte/param; per-tensor/channel scales negligible vs expert size."
+  }
+}

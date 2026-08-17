@@ -1,0 +1,38 @@
+experiment_id: moe_cycle_simulator_phase4_single_gpu
+stage: S4
+status: r4_candidate_for_same_hash_review
+goal: Freeze a deterministic CPU-synthetic single-discrete-GPU timed-service and contention model.
+scope:
+  - compute, memory, H2D and D2H service classes
+  - exact integer service duration and rational-clock completion snapping
+  - primary-lane and shared-fabric contention
+  - dependency-aware deterministic scheduling
+  - complete generated EventIR keys and priority registry
+  - hash-bound canonical checkpoint and reachable-prefix restore
+service_mode: CPU_SYNTHETIC_REPLAY
+inputs:
+  - Phase 3 ledger c4b9209d95bbf91c607d65a70062e3bbb03a5892807ce08d8a4a370000535e42
+  - Phase 4 source root 510c2cbe19f4187f0f2c6b28fdc8dbc2f188c921daf1b20b1b31d4d27ce243ad
+outputs:
+  - explorations/moe_cycle_simulator/phase4
+  - immutable R2 MODIFY snapshot and reviews
+  - immutable R3 MODIFY snapshot and reviews
+  - runs/20260728T123113Z__moe_cycle_simulator_phase4_single_gpu_r3__S4
+acceptance:
+  - source and sealed-run validators pass
+  - normal Phase 4 and inherited Phase 3 regressions pass
+  - native ASAN and UBSAN regressions pass
+  - 1000-operation deterministic scale envelope passes
+  - exact-set run ledger passes
+  - three roles return GO on one candidate ledger
+non_goals:
+  - measured or calibrated GPU performance
+  - residency, prefetch, eviction or routing policy
+  - multi-GPU, NVLink, P2P or coherent UMA
+  - model or benchmark execution
+forbidden_actions:
+  - GPU query or execution
+  - model or benchmark download
+  - formal profiling
+  - calibration or platform qualification claims
+  - modification or reinterpretation of frozen G3 or S4 evidence

@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "nvidia-smi",
+    "--query-gpu=timestamp,index,uuid,name,driver_version,memory.total,memory.used,memory.free,utilization.gpu,utilization.memory,power.draw,clocks.gr,clocks.mem,temperature.gpu",
+    "--format=csv,noheader,nounits"
+  ],
+  "duration_ns": 34680675,
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "2026/08/11 14:24:17.149, 0, GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 595.71.05, 97887, 95477, 1773, 90, 85, 391.57, 2782, 13365, 72\n"
+}

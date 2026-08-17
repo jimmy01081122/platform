@@ -1,0 +1,9 @@
+{
+  "hashes": {
+    "/usr/local/lib/python3.12/dist-packages/vllm/distributed/kv_events.py": "24841685ad6db3543a19b9639eea24e1992ab37c4773c775da9f4140bb813322",
+    "/usr/local/lib/python3.12/dist-packages/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py": "42dddd1dd728622d6f6488eae58b26c51c76d6b80c20874233cda2a87f75b7c6",
+    "/usr/local/lib/python3.12/dist-packages/vllm/v1/core/sched/scheduler.py": "9ae1491f57a6294e32416b93ef2ea68107fa0d65c3a4d7f745f1261012f735e9",
+    "/usr/local/lib/python3.12/dist-packages/vllm/v1/kv_offload/cpu/manager.py": "fd89bb49d46a01fdf6acfdf6c3c1867e5cb3116a0b24bc47859cc83de34841bd"
+  },
+  "status": "PASS"
+}

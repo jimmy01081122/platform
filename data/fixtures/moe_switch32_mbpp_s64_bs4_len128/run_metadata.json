@@ -1,0 +1,37 @@
+{
+  "model_name": "google/switch-base-32",
+  "dataset_name": "mbpp",
+  "dataset_category": "coding",
+  "dataset_hf_id": "google-research-datasets/mbpp",
+  "dataset_config": "",
+  "requested_samples": 64,
+  "processed_samples": 64,
+  "max_input_length": 128,
+  "batch_size": 4,
+  "output_dir": "outputs/moe_router_trace_switch_model_sweep_16_32/google__switch_base_32/coding/mbpp/samples_64/bs_4_len_128",
+  "device": "cuda",
+  "dtype": "torch.float16",
+  "num_experts": 32,
+  "model_config_num_experts": 32,
+  "expert_capacity": 64,
+  "router_modules_captured": 12,
+  "padding_tokens_excluded": 2328,
+  "router_value_kinds": [
+    "logits"
+  ],
+  "one_hot_fallback_count": 0,
+  "router_token_rows": 95976,
+  "hardware_event_rows": 383904,
+  "package_versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.12.1",
+    "datasets": "4.0.0",
+    "pandas": "2.2.2",
+    "numpy": "2.0.2"
+  },
+  "timestamp_utc": "2026-07-10T06:26:11.892348+00:00",
+  "forward_policy": "separate_encoder_decoder_forward_with_router_hooks",
+  "decoder_input_policy": "teacher_forced_shift_right_from_input_ids_for_tracing_only",
+  "accuracy_evaluation": false,
+  "status": "success"
+}

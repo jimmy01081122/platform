@@ -1,0 +1,32 @@
+{
+  "cpu_offload_gb": 0,
+  "data_parallel_size": 1,
+  "dtype": "bfloat16",
+  "enable_expert_parallel": false,
+  "enable_prefix_caching": false,
+  "enforce_eager": true,
+  "expected_repo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "expected_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "expert_parallel_size": 1,
+  "generation_config": "vllm",
+  "gpu_memory_utilization": 0.95,
+  "ignore_patterns": [
+    "consolidated.*.pt"
+  ],
+  "kv_cache_dtype": "bfloat16",
+  "load_format": "safetensors",
+  "max_model_len": 32768,
+  "max_num_batched_tokens": 256,
+  "max_num_seqs": 1,
+  "model": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "offload_group_size": 0,
+  "pipeline_parallel_size": 1,
+  "quantization": null,
+  "seed": 0,
+  "swap_backed_fallback": false,
+  "swap_space_argument": "unavailable in vLLM EngineArgs",
+  "tensor_parallel_size": 1,
+  "tokenizer": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "tokenizer_mode": "auto",
+  "trust_remote_code": false
+}

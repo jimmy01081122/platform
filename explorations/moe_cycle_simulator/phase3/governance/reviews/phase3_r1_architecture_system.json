@@ -1,0 +1,30 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r1-20260726",
+  "ledger_sha256": "abeafed5b02929d0a592eb45c0aebfce3f24c2da97aaa34d9afbbc525154ab2e",
+  "member_count": 45,
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P3-R1-B1: next_pending_index selects the first pending event without checking dependency readiness, so a blocked acquire and its dependent consumer can prevent a later independent release from running. Select the earliest dependency-ready pending event and add the blocked-acquire/dependent-consumer/independent-release regression.",
+    "ARCH-P3-R1-B2: checkpoint identity and restore invariants do not cover the complete resumable state, including event program, last-event time, resource kind/arbitration, exact event/state keys, waiter/state consistency, processed-count/trace consistency, terminal consistency and time monotonicity.",
+    "ARCH-P3-R1-B3: frozen limits are incomplete. max_wait_for_nodes is absent and deadlock DFS is recursive/unbounded; input event count and waiter-drain completion budget are not fully enforced."
+  ],
+  "findings": [
+    "The 45-member outer ledger and 26-member nested run ledger verified exactly.",
+    "Exact rational clocks, forward CDC, seven-field ordering and REPLAY_VALIDATE boundaries are implemented.",
+    "Referenced Phase 4 resources and ROUND_ROBIN fail closed, but inert unsupported declarations should also be rejected or explicitly scoped.",
+    "Reverse acknowledgement, queue protocol and credit behavior remain outside the implemented bridge primitive."
+  ],
+  "claim_boundary": "Only CPU replay-validation primitives are supported; a freeze-ready dependency-aware engine, complete checkpoint integrity and bounded deadlock execution are not yet proven.",
+  "authorized_next_stage": "Create a fresh Phase 3 CPU-only amendment candidate and repeat the complete suite and three-role same-hash review.",
+  "not_authorized": [
+    "PHASE3_FREEZE",
+    "Phase 4 promotion",
+    "GPU query or execution",
+    "Mixtral or benchmark download",
+    "formal profiling",
+    "platform qualification",
+    "calibration PASS",
+    "modification or reinterpretation of frozen G3/S4 evidence"
+  ]
+}

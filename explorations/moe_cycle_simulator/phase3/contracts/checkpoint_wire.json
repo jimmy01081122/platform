@@ -1,0 +1,39 @@
+{
+  "canonical_order": [
+    "header",
+    "config",
+    "global_time",
+    "counters",
+    "events_sorted_by_tie_key",
+    "event_states_sorted_by_id",
+    "clocks_sorted_by_id",
+    "resources_sorted_by_id",
+    "trace_in_execution_order",
+    "state_digest"
+  ],
+  "digest_preimage": "complete canonical checkpoint body from magic through final trace field; excludes only state_digest",
+  "digest_algorithm": "SHA-256",
+  "encoding": "ASCII decimal length, colon, exact field bytes",
+  "heap_layout_serialized": false,
+  "magic": "moe-phase3-checkpoint-v1",
+  "restore_checks": [
+    "wire magic and exact field closure",
+    "schema and five contract hashes",
+    "all contract hashes are lowercase 64-character hexadecimal SHA-256",
+    "canonical numeric encoding and bounds",
+    "event/state count and configured allocation limits",
+    "complete event program, last-event time, resource kind and arbitration are digest-bound",
+    "exact event/state keys, blocked waiter/state and trace/state consistency",
+    "processed-count, terminal-state and trace-time monotonicity",
+    "trace-tail derivation of global time, last-event time and same-time count",
+    "reverse resource reconstruction and deterministic scheduler-prefix replay",
+    "FAILED checkpoints are NON_CHECKPOINTABLE until failure evidence is versioned",
+    "clock fractional remainder recomputation",
+    "resource holder/occupancy conservation with non-wrapping arbitrary-precision accumulation",
+    "checkpoint waiters accepted only through the private restore reconstruction path",
+    "event and resource semantic validation",
+    "state digest equality",
+    "no trailing bytes"
+  ],
+  "schema_version": "moe-simulator-phase3-checkpoint-wire-v1"
+}

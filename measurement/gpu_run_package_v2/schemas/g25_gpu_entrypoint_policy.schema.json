@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_gpu_entrypoint_policy.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "schema_version", "stage", "policy",
+    "gpu_capable_entrypoints", "cpu_only_entrypoints", "fallback_policy"
+  ],
+  "properties": {
+    "$schema": {"const": "../schemas/g25_gpu_entrypoint_policy.schema.json"},
+    "schema_version": {"const": "g25-gpu-entrypoint-policy-v1"},
+    "stage": {"const": "G2.5-S4-R6"},
+    "policy": {"const": "single_attested_qualification_gpu_route"},
+    "gpu_capable_entrypoints": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "entrypoint_id", "command_prefix", "disposition", "enforcement"
+        ],
+        "properties": {
+          "entrypoint_id": {"type": "string", "minLength": 1},
+          "command_prefix": {"type": "string", "minLength": 1},
+          "disposition": {
+            "enum": ["hard_disabled", "qualification_only"]
+          },
+          "enforcement": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "cpu_only_entrypoints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "fallback_policy": {"const": "fail_closed_no_pgid_or_legacy_gpu_fallback"}
+  }
+}

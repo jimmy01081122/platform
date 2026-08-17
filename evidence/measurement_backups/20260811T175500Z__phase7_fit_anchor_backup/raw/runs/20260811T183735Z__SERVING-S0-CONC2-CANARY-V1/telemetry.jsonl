@@ -1,0 +1,3 @@
+{"event":"pre_burst","snapshot":{"captured_at_ns":1786473474947161012,"raw":"2026/08/11 18:37:54.939, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 94924, 2327, 97887, 86, 69, 154.50, 53, 2797, 13365"}}
+{"burst_index":0,"captured_at_ns":1786473475545303023,"event":"burst_submitted","snapshot":{"captured_at_ns":1786473475580946235,"raw":"2026/08/11 18:37:55.572, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 94926, 2325, 97887, 0, 0, 156.18, 49, 2805, 13365"},"submitted_request_count":2}
+{"event":"post_burst","snapshot":{"captured_at_ns":1786473475790864927,"raw":"2026/08/11 18:37:55.783, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 94926, 2325, 97887, 52, 51, 204.07, 50, 2790, 13365"}}

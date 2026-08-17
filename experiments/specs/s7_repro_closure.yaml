@@ -1,0 +1,25 @@
+experiment_id: s7_repro_closure
+stage: S7
+mechanism: C1 expert-prefetch / residency scheduling (MoE)
+description: >
+  Cross-layer closure + clean-environment reproduction. A single entry command
+  regenerates the equivalence chain (python == C == rv64 == RTL) from the
+  committed switch-base-32 demands fixture, runs the P-D/P-I cross-platform
+  sensitivity under the same contract, and (optionally) the S6 synth DSE, all in
+  dedicated containers with captured exit codes.
+entry_command: bash scripts/reproduce_all.sh <out_dir> [--with-synth]
+input_fixture: data/fixtures/switch_base32_mbpp_bs4_len128/demands.txt
+operating_point: {capacity: 28, depth: 1}
+layers:
+  - python (edgeflow.residency reference)
+  - native C (software, edgehetero-fw:1)
+  - rv64 (firmware, edgehetero-fw:1 + qemu instret)
+  - RTL (moe_residency_top, edgehetero-rtl:1 Verilator scoreboard)
+cross_platform:
+  axes: [device/shared bandwidth (swept), P-I contention factor (swept)]
+  profiles: [configs/platforms/discrete_edge_workstation.yaml, configs/platforms/embedded_integrated_cpu_gpu.yaml]
+evidence:
+  counters: measured/simulated (identical across 4 layers)
+  bandwidth: swept
+  power: unavailable
+containers: [edgehetero-fw:1, edgehetero-rtl:1, edgehetero-syn:1]

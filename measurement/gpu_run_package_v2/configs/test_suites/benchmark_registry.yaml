@@ -1,0 +1,73 @@
+schema_version: benchmark-registry-v1
+registry_revision: benchmark-registry-v1.3.0
+hash_contract:
+  raw_sample_hash: sha256(canonical_json(raw_dataset_row))
+  prompt_hash: sha256(utf8(rendered_prompt))
+  stable_locator: [dataset_id, dataset_revision, config, split, row_index]
+  canonical_json: UTF-8, sorted keys, compact separators, no NaN
+datasets:
+  gsm8k:
+    dataset_id: openai/gsm8k
+    dataset_revision: 740312add88f781978c0658806c59bc2815b9866
+    revision_evidence: verified_huggingface_api_2026-07-18
+    snapshot_root: datasets/snapshots/gsm8k/740312add88f781978c0658806c59bc2815b9866
+    files:
+      - {config: main, split: test, path: main/test-00000-of-00001.parquet}
+    task: gsm8k
+    suite_class: T1
+    license: mit
+    source_url: https://huggingface.co/datasets/openai/gsm8k
+  mmlu:
+    dataset_id: cais/mmlu
+    dataset_revision: c30699e8356da336a370243923dbaf21066bb9fe
+    revision_evidence: verified_huggingface_api_2026-07-18
+    snapshot_root: datasets/snapshots/mmlu/c30699e8356da336a370243923dbaf21066bb9fe
+    files:
+      - {config: abstract_algebra, split: test, domain: stem, path: abstract_algebra/test-00000-of-00001.parquet}
+      - {config: high_school_psychology, split: test, domain: social_science, path: high_school_psychology/test-00000-of-00001.parquet}
+      - {config: clinical_knowledge, split: test, domain: health, path: clinical_knowledge/test-00000-of-00001.parquet}
+      - {config: international_law, split: test, domain: law, path: international_law/test-00000-of-00001.parquet}
+      - {config: business_ethics, split: test, domain: business, path: business_ethics/test-00000-of-00001.parquet}
+      - {config: high_school_world_history, split: test, domain: humanities, path: high_school_world_history/test-00000-of-00001.parquet}
+    task: mmlu_choice
+    suite_class: T2
+    license: mit
+    stratification: subject
+    source_url: https://huggingface.co/datasets/cais/mmlu
+  humaneval:
+    dataset_id: openai/openai_humaneval
+    dataset_revision: 7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544
+    revision_evidence: verified_huggingface_api_2026-07-18
+    snapshot_root: datasets/snapshots/humaneval/7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544
+    files:
+      - {config: openai_humaneval, split: test, path: openai_humaneval/test-00000-of-00001.parquet}
+    task: code
+    suite_class: T3
+    license: mit
+    source_url: https://huggingface.co/datasets/openai/openai_humaneval
+  ceval:
+    dataset_id: ceval/ceval-exam
+    dataset_revision: 617524a00b307ff6f9933702f724131fe12ca7ce
+    revision_evidence: verified_huggingface_api_2026-07-18
+    snapshot_root: datasets/snapshots/ceval/617524a00b307ff6f9933702f724131fe12ca7ce
+    files:
+      - {config: high_school_mathematics, split: val, domain: mathematics, path: high_school_mathematics/val-00000-of-00001.parquet}
+      - {config: advanced_mathematics, split: val, domain: mathematics, path: advanced_mathematics/val-00000-of-00001.parquet}
+      - {config: probability_and_statistics, split: val, domain: mathematics, path: probability_and_statistics/val-00000-of-00001.parquet}
+      - {config: chinese_language_and_literature, split: val, domain: knowledge, path: chinese_language_and_literature/val-00000-of-00001.parquet}
+      - {config: high_school_chinese, split: val, domain: knowledge, path: high_school_chinese/val-00000-of-00001.parquet}
+      - {config: logic, split: val, domain: question_answering, path: logic/val-00000-of-00001.parquet}
+      - {config: civil_servant, split: val, domain: question_answering, path: civil_servant/val-00000-of-00001.parquet}
+      - {config: high_school_history, split: val, domain: history, path: high_school_history/val-00000-of-00001.parquet}
+    task: chinese_choice
+    suite_class: T5
+    license: cc-by-nc-sa-4.0
+    source_url: https://huggingface.co/datasets/ceval/ceval-exam
+unresolved_gate_policy:
+  allow_frozen_partial_suite: true
+  prohibit_fabricated_rows: true
+  resolution_requires:
+    - locally materialized row at pinned revision
+    - stable row index
+    - canonical raw row SHA-256
+    - rendered prompt SHA-256

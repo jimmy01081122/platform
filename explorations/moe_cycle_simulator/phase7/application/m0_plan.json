@@ -1,0 +1,84 @@
+{
+  "schema_version": "moe-simulator-phase7-m0-plan-v1",
+  "plan_id": "rtxpro6000-mixtral-bf16-capacity-runtime-v1",
+  "stage": "M0",
+  "prerequisites": [
+    "GATE_M_COMPLETE_M0_ELIGIBLE_LOCAL_EXPORT_REPLAYED",
+    "MATERIALIZATION_COMPLETE_HARD_STOP",
+    "MODEL_LEDGER_AND_CAPACITY_FIXTURE_HASH_BOUND",
+    "FROZEN_RUNTIME_AND_BUILD_ATTESTATION",
+    "SEPARATE_EXACT_M0_OWNER_APPROVAL"
+  ],
+  "cells": [
+    {
+      "cell_id": "M0-PREFLIGHT",
+      "purpose": "Confirm the frozen host, exact GPU, price, storage and software identity.",
+      "gpu_workload": false,
+      "model_required": false,
+      "timeout_seconds": 600,
+      "blocking": true
+    },
+    {
+      "cell_id": "M0-BF16-CAPACITY-R1",
+      "purpose": "Fresh BF16 load and one 28672 plus 4096 token bounded capacity request.",
+      "gpu_workload": true,
+      "model_required": true,
+      "timeout_seconds": 3600,
+      "blocking": true
+    },
+    {
+      "cell_id": "M0-BF16-CAPACITY-R2",
+      "purpose": "Second fresh runtime launch and identical bounded capacity request.",
+      "gpu_workload": true,
+      "model_required": true,
+      "timeout_seconds": 3600,
+      "blocking": true
+    },
+    {
+      "cell_id": "M0-BF16-CAPACITY-R3",
+      "purpose": "Third fresh runtime launch and identical bounded capacity request.",
+      "gpu_workload": true,
+      "model_required": true,
+      "timeout_seconds": 3600,
+      "blocking": true
+    },
+    {
+      "cell_id": "M0-AUDIT",
+      "purpose": "Validate evidence completeness, identity, memory, stop reasons and checksums.",
+      "gpu_workload": false,
+      "model_required": false,
+      "timeout_seconds": 600,
+      "blocking": true
+    }
+  ],
+  "global_outer_timeout_seconds": 14400,
+  "allocation_window_seconds": 21600,
+  "release_reserve_seconds": 900,
+  "fresh_session_required": true,
+  "resume_allowed": false,
+  "retry_failed_allowed": false,
+  "pass_requires": [
+    "all prerequisites are hash-bound before M0 entry",
+    "all cells complete within the outer timeout",
+    "exact target hardware and frozen runtime identity",
+    "three of three fresh BF16 loads without OOM",
+    "three of three exact 28672-input and 4096-output requests",
+    "forced-length stop is registered and valid",
+    "no quantization, CPU offload or swap-backed execution",
+    "complete evidence and checksum ledger"
+  ],
+  "hard_stop_on": [
+    "unresolved placeholder",
+    "approval or command hash mismatch",
+    "SSH host-key mismatch",
+    "provider price exceeds owner cap",
+    "GPU identity or memory mismatch",
+    "runtime, container, driver, CUDA or backend mismatch",
+    "model revision or checksum mismatch",
+    "quantization, CPU offload or swap detected",
+    "OOM",
+    "request timeout or incomplete output",
+    "artifact or audit failure",
+    "outer timeout"
+  ]
+}

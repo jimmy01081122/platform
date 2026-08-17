@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR3-MR5-GUARD-PROMOTION",
+  "execution_ledger_sha256": "70ee79789faee76fbc5bfc3b9f625b587d8861c550452512d0a8acbfd8064887",
+  "guard_review": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/reviews/MR3-MR5-GUARD-V3-MASTER.json",
+  "next_ready_gpu_unit": "SWAP-K0",
+  "remaining_ledger_sha256": "9f0c28f1f6879a6eb7b5c89b781bebd56c376ed67b0d22ad3d47e0aa8d31728d",
+  "required_closed_count": 10,
+  "required_remaining_count": 276,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-13T23:52:03Z"
+}

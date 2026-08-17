@@ -1,0 +1,84 @@
+{
+  "counts": {
+    "by_role": {
+      "chinese_multiple_choice": 152,
+      "code": 132,
+      "context_length": 5,
+      "conversation": 2,
+      "instruction": 2,
+      "math": 132,
+      "micro_fixture": 4,
+      "multiple_choice": 369,
+      "router_stress": 8,
+      "serving_schedule": 4
+    },
+    "by_split": {
+      "calibration": 135,
+      "domain_holdout": 262,
+      "sample_holdout": 262,
+      "smoke": 17,
+      "validation": 134
+    },
+    "by_task": {
+      "T0": 4,
+      "T1": 132,
+      "T2": 369,
+      "T3": 132,
+      "T4": 4,
+      "T5": 152,
+      "T6": 5,
+      "T7": 4,
+      "T8": 8
+    }
+  },
+  "frozen_manifest_sha256": "4de9eda6a8eabb5e49c897563033e2fa9d9a8b62db7b81790bb9a4c871f5621e",
+  "merkle": {
+    "algorithm": "sha256",
+    "leaf_contract": "manifest_merkle_root plus domain-separated canonical source-file path/SHA-256 leaves",
+    "manifest_root": "53e32e3f1a850346950b9b21d5735807c6b2a7b43df17bb41cddcd3bf0be69da",
+    "odd_leaf_rule": "duplicate_last",
+    "root": "5a7b1c4c7f7ab52d7172aa229d94bd59332b5df161c3f3b0170d863836070b75"
+  },
+  "sample_count": 810,
+  "schema_version": "frozen-benchmark-suite-v2",
+  "source_files": {
+    "configs/test_suites/benchmark_registry.yaml": "66b0ec88bc0a0a98850ba2544c6d8abb067a93d3ab3664decf569b8877d17359",
+    "configs/test_suites/generation_configs/v1.yaml": "ae2fb1dc9a995d4b01316c507738d2cc2e0c1cd5c375f0eb28d55603edd53d8d",
+    "configs/test_suites/model_benchmark_matrix.yaml": "aea2ea346811c3081a9ca6eba94347943666dcaea6b8ea09250245aeb3d0e5f5",
+    "configs/test_suites/moe_trace_suite_v1.yaml": "2a2645e92e4ba92fe8abfba853be57c4106b8e2b0af7ee477c1d8ac5d83715f6",
+    "configs/test_suites/prompt_templates/v1.yaml": "0877e94d1cb13e9eaafb5e75cf56243b26c5ffd11f0f2e73c8c3e282180b99bb",
+    "configs/test_suites/sample_manifest_v1.jsonl": "4de9eda6a8eabb5e49c897563033e2fa9d9a8b62db7b81790bb9a4c871f5621e",
+    "configs/test_suites/serving_schedules/v1.yaml": "cdcbc460fa0007dfd1cf9f23f54401e553ba1e52b4909dcb72a91f9dd6768919",
+    "configs/test_suites/splits/v1.4.0/domain_split.yaml": "e46aff8f36190e365f04eaa60f46b9fab6f279231f096ec32d970ea4dc38be59",
+    "configs/test_suites/splits/v1.4.0/hardware_holdout.yaml": "e1430cafee90e1fe612e2782965782d48472f9e0ea7aace624b00345c713d5c3",
+    "configs/test_suites/splits/v1.4.0/model_holdout.yaml": "e17b69aabef6d814806cf67b68b1233b194365da7af329f8746b7f23c509e718",
+    "configs/test_suites/splits/v1.4.0/sample_split.yaml": "511fb69625b34464b23b1fe338e5e1608296887f18cbd3821be46cf805ec0f6e",
+    "configs/test_suites/splits/v1.yaml": "193c3410da06f3eafa495ed188a67a5eaaec207c4a609cf95c226342d7b45262",
+    "datasets/snapshots/snapshot_inventory_v1.json": "285b5c29b04cd5653d202d2bbdc9fd7ce0e09d218057020a0d80643e52c1082c"
+  },
+  "split_axes": {
+    "domain": {
+      "active": true,
+      "manifest": "configs/test_suites/splits/v1.4.0/domain_split.yaml",
+      "sha256": "e46aff8f36190e365f04eaa60f46b9fab6f279231f096ec32d970ea4dc38be59"
+    },
+    "hardware": {
+      "active": false,
+      "manifest": "configs/test_suites/splits/v1.4.0/hardware_holdout.yaml",
+      "sha256": "e1430cafee90e1fe612e2782965782d48472f9e0ea7aace624b00345c713d5c3"
+    },
+    "model": {
+      "active": true,
+      "manifest": "configs/test_suites/splits/v1.4.0/model_holdout.yaml",
+      "sha256": "e17b69aabef6d814806cf67b68b1233b194365da7af329f8746b7f23c509e718"
+    },
+    "sample": {
+      "active": true,
+      "manifest": "configs/test_suites/splits/v1.4.0/sample_split.yaml",
+      "sha256": "511fb69625b34464b23b1fe338e5e1608296887f18cbd3821be46cf805ec0f6e"
+    }
+  },
+  "suite_id": "moe-trace-suite",
+  "suite_revision": "v1.4.0",
+  "unresolved_gates": []
+}

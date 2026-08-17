@@ -1,0 +1,44 @@
+schema_version: simulation-modes-v1
+config_schema: schemas/simulation_config.schema.json
+default_fidelity: calibrated
+
+modes:
+  fast:
+    model: analytical_or_simplified_event
+    intended_use: [early_exploration, broad_sweep]
+    primary_publication_evidence: false
+    required_components: [workload_contract, parameter_provenance]
+  calibrated:
+    model: trace_driven_event_simulation
+    intended_use: [system_simulation, primary_dse]
+    primary_publication_evidence: conditional_on_validation_gates
+    required_components:
+      - cpu_runtime_model
+      - gpu_service_model
+      - pcie_model
+      - copy_engine_model
+      - memory_model
+      - queueing_contention_model
+      - calibration_pack
+  detailed:
+    model: optional_high_fidelity_backend
+    intended_use: [representative_kernel, grouped_gemm, gather_scatter, expert_window, pareto_candidate, transaction_calibration, holdout_validation]
+    primary_publication_evidence: cross_check_only
+    optional_backends: [gpu_cycle_simulator, full_system_simulator, detailed_memory_simulator, detailed_interconnect_simulator]
+    whole_dse_required: false
+  rtl-transaction:
+    model: custom_rtl_transaction_level
+    intended_use: [functional_equivalence, request_result_semantics, latency, dma_transactions, algorithm_to_rtl_mapping]
+    primary_publication_evidence: scoped_to_transaction_contract
+    required_components: [golden_reference, transaction_scoreboard]
+  rtl-cycle:
+    model: custom_rtl_cycle_level
+    intended_use: [cycle_sensitive_interaction, representative_case]
+    primary_publication_evidence: scoped_to_rtl_and_interface_timing
+    required_components: [ready_valid, queue_occupancy, backpressure, dma_request_completion, memory_response, accelerator_internal_timing]
+    whole_dse_required: false
+
+legacy_mapping:
+  scope: v1.0-large-moe-slice
+  note: W0-W4 and H0-H5 remain historical workload/platform evidence axes and do not replace simulation.fidelity.
+  source: configs/fidelity/fidelity_ladders.yaml

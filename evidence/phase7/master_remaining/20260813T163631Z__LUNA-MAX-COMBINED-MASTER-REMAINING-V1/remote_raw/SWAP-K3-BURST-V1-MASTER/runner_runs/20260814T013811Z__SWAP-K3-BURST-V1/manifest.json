@@ -1,0 +1,37 @@
+{
+  "arrival_contract": {
+    "rate_rps": null,
+    "seed": null,
+    "total_requests": null
+  },
+  "arrival_mode": "CLOSED_LOOP_BURST",
+  "experiment_id": "SWAP-K3-BURST-V1",
+  "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "model_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "runtime_class": "SERVING_VARIANT",
+  "sampling_mode": "FORCED_LENGTH_CONTROLLED",
+  "schema_version": "phase7-serving-burst-manifest-v1",
+  "started_at_utc": "2026-08-14T01:38:11Z",
+  "status": "RUNNING",
+  "variables": {
+    "arrival_rate_rps": null,
+    "arrival_seed": 0,
+    "bursts": 1,
+    "concurrency": 32,
+    "experiment_id": "SWAP-K3-BURST-V1",
+    "gpu_memory_utilization": 0.97,
+    "input_tokens": 128,
+    "inter_burst_gap_ms": 0.0,
+    "intra_burst_gap_ms": 0.0,
+    "max_num_batched_tokens": 4096,
+    "max_num_seqs": 32,
+    "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "output_tokens": 32,
+    "request_plan": null,
+    "run_root": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K3-BURST-V1-MASTER/runner_runs",
+    "sampling_mode": "FORCED_LENGTH_CONTROLLED",
+    "total_requests": null,
+    "warmup_burst": false,
+    "warmup_bursts": 0
+  }
+}

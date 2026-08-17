@@ -1,0 +1,46 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r2-application-manifest-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r2",
+  "status": "CPU_ONLY_DISCOVERY_PACKAGE",
+  "application_ledger_path": "application_ledger.sha256",
+  "ledger_exclusions": ["application_ledger.sha256", "approval.template.json"],
+  "ledger_members": [
+    "README.md",
+    "__init__.py",
+    "application_identity.json",
+    "application_manifest.json",
+    "controller.py",
+    "d0_plan.json",
+    "d0_r2.schema.json",
+    "dependency_manifest.json",
+    "overlay.json",
+    "owner_authority.json",
+    "probe.py",
+    "schemas/approval.schema.json",
+    "schemas/failure.schema.json",
+    "schemas/owner_authority.schema.json",
+    "schemas/probe.schema.json",
+    "schemas/result.schema.json",
+    "schemas/terminal_ledger.schema.json",
+    "validate_d0_r2.py"
+  ],
+  "mutable_external_inputs": [
+    "approval.template.json",
+    "fresh owner approval bytes",
+    "fresh host-key bytes and provenance",
+    "fresh local SSH executable and hash",
+    "fresh client public-key fingerprint and credential selector",
+    "fresh lease timestamps and provider instance identity"
+  ],
+  "historical_artifacts_untouched": [
+    "explorations/moe_cycle_simulator/phase7/application/",
+    "explorations/moe_cycle_simulator/phase7_d0_application/",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/"
+  ],
+  "execution_authority": {
+    "d0": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu": "NONE"
+  }
+}

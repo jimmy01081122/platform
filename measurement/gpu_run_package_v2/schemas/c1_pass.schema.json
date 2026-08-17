@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c1_pass.schema.json",
+  "type": "object",
+  "required": ["schema_version", "work_unit_id", "pass_id", "status", "execution_alignment_key", "raw_artifacts"],
+  "properties": {
+    "schema_version": {"const": "c1-pass-v1"},
+    "work_unit_id": {"type": "string", "minLength": 1},
+    "pass_id": {"enum": ["P0", "P1", "P2", "P3", "P5_BASIC"]},
+    "status": {"enum": ["PENDING", "PREFLIGHT", "RUNNING", "RAW_SAVED", "VALIDATING", "COMPLETE", "FAILED_RETRYABLE", "FAILED_TERMINAL", "SKIPPED", "UNAVAILABLE", "unavailable_due_to_environment"]},
+    "execution_alignment_key": {"$ref": "#/$defs/hash"},
+    "raw_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"},
+          "sha256": {"$ref": "#/$defs/hash"},
+          "bytes": {"type": "integer", "minimum": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "unavailable_reason": {"type": ["string", "null"], "minLength": 1}
+  },
+  "allOf": [{
+    "if": {"properties": {"status": {"enum": ["UNAVAILABLE", "unavailable_due_to_environment"]}}, "required": ["status"]},
+    "then": {"required": ["unavailable_reason"]}
+  }],
+  "$defs": {"hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+  "additionalProperties": true
+}

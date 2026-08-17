@@ -1,0 +1,15 @@
+{
+  "actual_offloaded_bytes": 4697620480,
+  "audit_repair_lineage": "PRESERVED_NO_GPU_RERUN",
+  "next_ready_unit": "OFF-E-PR0",
+  "pair_equivalence": "PASS",
+  "profiler_evidence": "PASS",
+  "raw_file_set_sha256": "80a05de34fb21cbf5247e15f5ea38dce0090dc997d91656a1d82a45bebf4fe59",
+  "reviewed_at_utc": "2026-08-14T02:40:09Z",
+  "schema_version": "phase7-combined-master-off-w3-review-v1",
+  "validation_state": "VALIDATION_PASS",
+  "wall_duration_ns": {
+    "DISABLED": 43203610984,
+    "UVA-HELDOUT": 76584818259
+  }
+}

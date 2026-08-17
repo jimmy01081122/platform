@@ -1,0 +1,8 @@
+{
+  "completed_runs": 0,
+  "current_experiment": "K0-F0-CANARY",
+  "message": "runner_rc=1 run_dir=/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T164853Z__K0-F0-CANARY",
+  "status": "FAIL",
+  "total_runs": 12,
+  "updated_at_utc": "2026-08-11T16:49:21.073752+00:00"
+}

@@ -1,0 +1,22 @@
+schema_version: benchmark-split-axes-v1
+split_revision: v1.4.0
+seed: 20260718
+axes:
+  sample:
+    manifest: configs/test_suites/splits/v1.4.0/sample_split.yaml
+    active: true
+  domain:
+    manifest: configs/test_suites/splits/v1.4.0/domain_split.yaml
+    active: true
+  model:
+    manifest: configs/test_suites/splits/v1.4.0/model_holdout.yaml
+    active: true
+  hardware:
+    manifest: configs/test_suites/splits/v1.4.0/hardware_holdout.yaml
+    active: false
+orthogonality:
+  sample_domain_sets_preserved_from: v1.3.0
+  model_assignment_unit: model_id
+  hardware_assignment_unit: hardware_profile_id
+  prohibit_deriving_model_or_hardware_holdout_from_sample_partition: true
+  prohibit_per_sample_model_or_hardware_holdout_labels: true

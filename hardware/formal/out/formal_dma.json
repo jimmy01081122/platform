@@ -1,0 +1,16 @@
+{
+  "schema_version": "formal-dma-v2",
+  "depth": 12,
+  "request_tag_contract": "monotonic_unique_formal_tags",
+  "stall_reachable": true,
+  "watched_completion_reachable": true,
+  "proof": "PROVEN_BOUNDED",
+  "properties": [
+    "occupancy_conservation",
+    "no_completion_underflow",
+    "completion_stable_while_stalled",
+    "symbolic_tag_no_spurious_or_duplicate_completion",
+    "symbolic_tag_completion_payload_match"
+  ],
+  "sat_variables": 1216765
+}

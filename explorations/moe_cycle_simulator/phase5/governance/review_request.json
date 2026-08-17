@@ -1,0 +1,37 @@
+{
+  "schema_version": "moe-simulator-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase5-routing-residency-r2-20260728",
+  "ledger_path": "checksums.sha256",
+  "roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "allowed_verdicts": [
+    "GO",
+    "MODIFY",
+    "NO-GO"
+  ],
+  "promotion_rule": {
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "identical_ledger_sha256_required": true
+  },
+  "review_questions": [
+    "Does frozen Phase 4 remain the single timed scheduling authority and run exactly once?",
+    "Are policy decisions fully compiled and hash-bound before scheduling without predicted lanes or completion times?",
+    "Are token-level selected experts and top-k conserved without aggregate reconstruction or routing weights?",
+    "Does reserved nonexpert plus resident expert bytes remain within one authoritative capacity?",
+    "Do explicit eviction, load, barrier and assignment dependencies prevent pinned eviction and premature compute?",
+    "Are clean immutable eviction and no-writeback semantics explicit?",
+    "Are LRU/FIFO and OFF/HINT deterministic, causal and non-oracular?",
+    "Can postprocessing only validate and never repair the Phase 4 trace?",
+    "Does checkpointing bind a real live Phase 4 prefix and continue exactly after object or wire restore?",
+    "Do corruption, tamper, invalid routing, invalid enum and capacity violations fail closed?",
+    "Does the fresh R2 run bind the exact source root and pass Release plus native sanitizer regressions?",
+    "Is the stale R1 run excluded and explicitly non-promotable?",
+    "Does the candidate exact-set include all nested ledgers while excluding only its active ledger and current review results?",
+    "Are CPU_SYNTHETIC, RANGE_UNKNOWN and no-calibration/no-GPU claim boundaries explicit?"
+  ],
+  "review_results_are_not_part_of_reviewed_source": true
+}

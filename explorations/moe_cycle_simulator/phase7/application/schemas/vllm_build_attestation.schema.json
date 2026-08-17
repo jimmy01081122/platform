@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vllm_build_attestation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "package", "source", "wheel", "build", "installed_distribution", "container", "provenance"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-vllm-build-attestation-v1"},
+    "status": {"const": "FROZEN"},
+    "package": {"type": "object"},
+    "source": {"type": "object"},
+    "wheel": {"type": "object"},
+    "build": {"type": "object"},
+    "installed_distribution": {"type": "object"},
+    "container": {"type": "object"},
+    "provenance": {"type": "object"}
+  }
+}

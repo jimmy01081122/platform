@@ -1,0 +1,115 @@
+{
+  "schema_version": "moe-simulator-phase7-governance-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r4-20260802",
+  "goal": "Close exactly the five immutable R12-R3 review blockers and freeze a fail-closed CPU-tested application/evidence chain for one later owner-approved RTX PRO 6000 Mixtral BF16 M0 qualification.",
+  "scope": [
+    "runtime-enforced bounded local Gate M decode and replay",
+    "absolute and hash-bound remote timeout/Python executable identities",
+    "Gate M parent to M0 model-ledger and prompt-fixture cross-binding",
+    "exact frozen Mixtral model/revision ledger validation",
+    "isolated Python and loaded-vLLM installed-distribution attestation",
+    "adversarial CPU/mock regression and no-.git archive replay"
+  ],
+  "non_goals": [
+    "live SSH or provider environment disclosure",
+    "Mixtral or benchmark download",
+    "GPU query, model load or inference",
+    "M1 through M4 profiling",
+    "measured capacity, calibration, DSE or platform qualification",
+    "modification or reinterpretation of R12-R3 evidence"
+  ],
+  "inputs": {
+    "implementation_commit_sha1": "e4c71aede158610306e1fef8a894813c9a7e3e40",
+    "implementation_tree_sha1": "4be571ec4d2a90589dcb32105e0d0b6252233305",
+    "r12r3_review_verdicts": "MODIFY/MODIFY/GO",
+    "r12r3_candidate_ledger_sha256": "924eb51b816a7b1da15ffa22e0bdf3828980c8a3b34a96ccfd6e48c4a9ad8f5e",
+    "nominal_allocation_seconds": 21600,
+    "provider_grace_formal_credit_seconds": 0
+  },
+  "outputs": {
+    "formal_cpu_run": "20260801T181451Z__moe_cycle_simulator_phase7_cpu_governance_r12r4_final__S2",
+    "unit_tests_passed": 125,
+    "application_ledger_members": 72,
+    "application_ledger_sha256": "99f9e5aafbc2a1b0339d80ad85a203f1e495034f71eb09b10074386283744384",
+    "run_ledger_members": 47,
+    "run_ledger_sha256": "cd4951f0ca2ea5cbb8b4afb82908d1beb9b75d8860e95ac18dda03dbec7eae32",
+    "clean_archive_replay": "PASS",
+    "clean_archive_run_ledger_sha256": "1dee0256187c00a5ec12a82506f8094effb9e0694812f7f6310100aa75266196",
+    "gpu_used": false,
+    "network_used": false,
+    "model_downloaded": false
+  },
+  "dependencies": {
+    "phase6": "same-hash GO CPU-synthetic multi-domain simulator",
+    "r12r3": "immutable same-hash MODIFY/MODIFY/GO review",
+    "python": "standard library for deployment bootstrap and governance control",
+    "ssh": "future exact executable and host key remain live D0 inputs",
+    "vault": "future real mount identity remains live D0 input"
+  },
+  "assumptions": [
+    "The provider may expose 20 to 30 minutes of noncontractual post-window cleanup grace, but it contributes zero formal seconds.",
+    "Absolute remote timeout/Python identities can only be instantiated after D0 and must be revalidated in Gate M.",
+    "Server availability does not establish host, runtime, storage, model or GPU eligibility.",
+    "The selected vLLM image and 96 GB GPU may still fail D0, Gate M or M0."
+  ],
+  "unknowns": [
+    "fresh SSH endpoint, host key and allocation timestamps",
+    "absolute remote timeout and Python paths/content hashes",
+    "container image, vLLM, CUDA, driver and backend identity",
+    "actual /vault mount identity and free capacity",
+    "model snapshot ledger and runtime materialization time",
+    "BF16 capacity and longest-context M0 result"
+  ],
+  "alternative_designs": [
+    "Post-hoc process RSS was rejected in favor of a pre-exec address-space limit.",
+    "RLIMIT_FSIZE was rejected because it would cap evidence artifacts; logs instead use bounded nonblocking pipes.",
+    "PATH-resolved remote commands were rejected in favor of absolute content identities.",
+    "Self-declared model and import identities were rejected in favor of cross-contract and installed-distribution closure."
+  ],
+  "risks": [
+    "Linux RLIMIT_AS is platform-specific and live Gate M must hard-stop if unavailable.",
+    "The kernel necessarily starts the approved absolute interpreter before Python can self-revalidate its bytes; bootstrap prevalidation and immediate entry revalidation are the minimum frozen trust boundary.",
+    "The exact runtime or model may not be preinstalled and materialization may exceed its bound.",
+    "The 96 GB device may not satisfy all-resident Mixtral BF16 under the exact vLLM configuration.",
+    "Any live identity, deadline, checksum, capacity or audit failure terminates that fresh evidence chain."
+  ],
+  "validation_method": [
+    "125 CPU unit and adversarial tests",
+    "draft and negative readiness validators",
+    "five locked shell syntax and pre-authority checks",
+    "application and run exact-set ledger replay",
+    "clean archive run creation without .git",
+    "three-role identical-ledger review"
+  ],
+  "acceptance_criteria": [
+    "candidate exact-set validator PASS",
+    "clean archive regression and run replay PASS",
+    "Architecture/System GO with empty blockers",
+    "Model/Benchmark GO with empty blockers",
+    "Trace/Provenance GO with empty blockers",
+    "no SSH, network, model or GPU side effect during review"
+  ],
+  "estimated_resources": {
+    "review_execution": "CPU-only, under ten minutes",
+    "review_storage": "under one GiB",
+    "future_paid_window": "exactly 21600 purchased seconds; no extension or additional cost",
+    "post_window_grace": "non-guaranteed cleanup/release/transfer only; zero formal credit"
+  },
+  "owner_decisions": [
+    "Use one RTX PRO 6000 Blackwell Workstation Edition and the vLLM environment.",
+    "Use no more than the purchased six hours and incur no additional charge.",
+    "Use /vault for persistent model and evidence artifacts.",
+    "Pause and notify the owner when GPU execution becomes ready."
+  ],
+  "next_legal_action": "After identical-ledger GO/GO/GO and push, wait for a fresh SSH handoff, instantiate a new exact D0 application and execute it only after its owner approval.",
+  "forbidden_actions": [
+    "SSH before the fresh handoff and exact D0 approval",
+    "remote write or materialization under D0 authority",
+    "GPU query or workload before the separately approved M0",
+    "allocation extension, retry, resume or added cost",
+    "using provider grace for formal work or PASS",
+    "modifying or reinterpreting frozen historical evidence"
+  ],
+  "status": "candidate_unreviewed",
+  "gpu_authority": "NONE"
+}

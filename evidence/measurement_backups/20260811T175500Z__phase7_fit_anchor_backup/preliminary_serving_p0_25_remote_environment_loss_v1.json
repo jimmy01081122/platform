@@ -1,0 +1,51 @@
+{
+  "schema_version": "phase7-serving-remote-environment-loss-v1",
+  "experiment_id": "20260813T121215Z__SERV-P0-25-SHORT-C8-NATURAL-EXT10K-V1",
+  "observed_at_utc": "2026-08-13T15:15:36Z",
+  "classification": "REMOTE_ENVIRONMENT_UNAVAILABLE",
+  "is_completion_evidence": false,
+  "is_raw_backup": false,
+  "prior_confirmed_checkpoint": {
+    "observed_at_utc": "2026-08-13T13:23:43Z",
+    "runner_pid": 131,
+    "last_log_event": "open-003228",
+    "gpu_report": "97% utilization, 94976 MiB used of 97887 MiB reported by nvidia-smi",
+    "result_json_present": false
+  },
+  "later_read_only_checkpoint": {
+    "observed_at_utc": "2026-08-13T13:50:53Z",
+    "runner_pid": 131,
+    "last_log_event": "open-004946-9ccce739",
+    "result_json_present": false
+  },
+  "current_endpoint_observation": {
+    "hostname": "DESKTOP-SS60093",
+    "kernel": "Linux 6.6.87.2-microsoft-standard-WSL2",
+    "gpu": "NVIDIA GeForce RTX 3050",
+    "gpu_uuid": "GPU-4d160805-02d8-24aa-ef6a-2685832658a3",
+    "gpu_memory_total_mib": 6144,
+    "vault_present": false,
+    "exact_runner_present": false,
+    "remote_run_dir_present": false,
+    "remote_log_present": false,
+    "remote_result_json_present": false,
+    "remote_status_json_present": false
+  },
+  "expected_remote_paths": {
+    "run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/runs/20260813T121215Z__SERV-P0-25-SHORT-C8-NATURAL-EXT10K-V1",
+    "log": "/vault/flow/moe_simulator_phase7/real_campaign/logs/20260813T121215Z__SERV-P0-25-SHORT-C8-NATURAL-EXT10K-V1.log"
+  },
+  "local_evidence": {
+    "monitor_state": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_serving_p0_25_extension_monitor_state.json",
+    "special_mechanism_ledger": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/execution_ledger.json",
+    "local_p0_raw_copy": null
+  },
+  "decision": {
+    "affected_branch": "STOPPED_AND_PRESERVED_AS_INCOMPLETE",
+    "do_not_restart_on_current_endpoint": true,
+    "do_not_claim_pass_or_normal_completion": true,
+    "remote_sha256": null,
+    "local_sha256": null,
+    "reason": "The endpoint no longer exposes the canonical remote vault or the 96-GB GPU host; no terminal result or raw backup is available."
+  }
+}

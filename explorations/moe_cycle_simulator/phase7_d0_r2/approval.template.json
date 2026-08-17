@@ -1,0 +1,82 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r2-approval-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r2",
+  "approval_id": "PENDING_ONE_SHOT_D0_APPROVAL_ID",
+  "session_id": "PENDING_FRESH_D0_R2_SESSION_ID",
+  "decision": "PENDING",
+  "execution_mode": "DISCOVERY_ONLY",
+  "reviewed_commit": "PENDING_FRESH_D0_R2_COMMIT",
+  "reviewed_tree": "PENDING_FRESH_D0_R2_TREE",
+  "owner_authority_sha256": "PENDING_OWNER_AUTHORITY_HASH",
+  "owner_authority_input": {
+    "path": "PENDING_ABSOLUTE_OWNER_AUTHORITY_INPUT",
+    "sha256": "PENDING_OWNER_AUTHORITY_HASH"
+  },
+  "application_identity_sha256": "PENDING_APPLICATION_IDENTITY_HASH",
+  "application_ledger_sha256": "PENDING_APPLICATION_LEDGER_HASH",
+  "lease": {
+    "start_trigger": "FRESH_OWNER_SSH_HANDOFF",
+    "control_plane_start_utc": "PENDING_FRESH_HANDOFF_UTC",
+    "lease_start_utc": "PENDING_FRESH_HANDOFF_UTC",
+    "lease_deadline_utc": "PENDING_EXACT_DEADLINE_UTC",
+    "total_seconds": 21600,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "extension_allowed": false,
+    "top_up_allowed": false,
+    "provider_grace_credit_seconds": 0
+  },
+  "endpoint": {
+    "host": "PENDING_OWNER_PROVIDER_HOST",
+    "port": 2222,
+    "username": "PENDING_OWNER_PRINCIPAL",
+    "instance_id": "PENDING_OWNER_INSTANCE_ID"
+  },
+  "host_key": {
+    "known_hosts_path": "PENDING_ABSOLUTE_PROJECT_KNOWN_HOSTS",
+    "known_hosts_sha256": "PENDING_HOST_KEY_SOURCE_HASH",
+    "host_key_blob_sha256": "PENDING_HOST_KEY_BLOB_HASH",
+    "fingerprint": "PENDING_AUTHENTICATED_HOST_KEY_FINGERPRINT",
+    "provenance": "PENDING_AUTHENTICATED_PROVIDER_SOURCE"
+  },
+  "credential": {
+    "selector_kind": "SSH_AGENT_SOCKET",
+    "selector": "PENDING_ABSOLUTE_AGENT_SOCKET",
+    "client_public_key_fingerprint": "PENDING_NON_SECRET_PUBLIC_KEY_FINGERPRINT",
+    "private_key_material": "FORBIDDEN_NOT_RECORDED"
+  },
+  "local_ssh": {
+    "executable_path": "PENDING_ABSOLUTE_LOCAL_SSH_EXECUTABLE",
+    "executable_sha256": "PENDING_LOCAL_SSH_EXECUTABLE_HASH"
+  },
+  "runtime": {
+    "approved_container_digest": null,
+    "digest_status": "UNOBSERVED_DISCOVERY_ONLY",
+    "discovery_only_reason": "A missing immutable digest cannot be promoted"
+  },
+  "evidence": {
+    "evidence_root": "PENDING_FRESH_ABSOLUTE_EVIDENCE_ROOT",
+    "one_shot_registry_path": "PENDING_FRESH_ABSOLUTE_ONE_SHOT_REGISTRY",
+    "terminal_sealing": "REQUIRED"
+  },
+  "command_binding_sha256": "PENDING_COMMAND_BINDING_HASH",
+  "remote_payload_sha256": "PENDING_PROBE_SOURCE_HASH",
+  "authority": [
+    "one exact read-only discovery D0 execution",
+    "local bounded evidence capture",
+    "atomic terminal sealing"
+  ],
+  "not_authorized": [
+    "remote write",
+    "package install",
+    "model download",
+    "model access",
+    "GPU workload",
+    "Gate M",
+    "M0",
+    "retry",
+    "resume",
+    "extension",
+    "additional spend"
+  ]
+}

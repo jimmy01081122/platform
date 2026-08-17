@@ -1,0 +1,21 @@
+{
+  "schema_version": "moe-simulator-contract-catalog-v1",
+  "contracts": [
+    {"id": "architecture-decisions-v1", "path": "architecture_decisions.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "event-priorities-v1", "path": "event_priorities.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "semantic-hash-v1", "path": "semantic_hash.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "semantic-descriptors-v1", "path": "semantic_descriptors.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "model-profile-v1", "path": "model_profile.json", "status": "IDENTITY_ONLY_NOT_MATERIALIZED"},
+    {"id": "benchmark-matrix-v1", "path": "benchmark_matrix.json", "status": "PROSPECTIVE_NOT_MATERIALIZED"},
+    {"id": "clock-domain-v1", "path": "../schemas/clock_domain.schema.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "bridge-v1", "path": "../schemas/bridge.schema.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "clock-alignment-v1", "path": "../schemas/clock_alignment.schema.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "observability-v1", "path": "../schemas/observability.schema.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "result-evidence-v1", "path": "../schemas/result_evidence.schema.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "event-ir-v1", "path": "../schemas/event_ir.schema.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "runtime-variant-v1", "path": "../schemas/runtime_variant.schema.json", "status": "PHASE0_CANDIDATE"},
+    {"id": "routing-ir-v1", "path": "../schemas/routing_ir.schema.json", "status": "PHASE0_CANDIDATE"}
+  ],
+  "legacy_contracts_are_not_modified": true,
+  "phase1_rule": "candidate schemas become implemented only after positive and negative CPU/mock fixtures pass"
+}

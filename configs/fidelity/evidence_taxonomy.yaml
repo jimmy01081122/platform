@@ -1,0 +1,30 @@
+schema_version: evidence-taxonomy-v1
+schema: schemas/evidence.schema.json
+closed_enum:
+  - measured
+  - trace-derived
+  - model-configured
+  - microbenchmark-calibrated
+  - cycle-simulated
+  - transaction-simulated
+  - RTL-simulated
+  - synthesis-derived
+  - vendor-spec
+  - assumed
+  - swept
+  - unknown
+
+legacy_mapping:
+  scope: v1.0-large-moe-slice
+  mappings:
+    simulated: transaction-simulated
+    derived: unknown
+    vendor_spec: vendor-spec
+    tool_default: unknown
+    unavailable: unknown
+  rule: A legacy mapping is only a starting label; promotion requires artifact-level review.
+
+claim_rule:
+  require_evidence_on_every_result: true
+  unknown_allows_formal_claim: false
+  assumed_or_swept_requires_sensitivity: true

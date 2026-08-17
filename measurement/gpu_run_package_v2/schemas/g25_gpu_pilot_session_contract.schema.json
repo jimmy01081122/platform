@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_gpu_pilot_session_contract.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_revision", "status", "session_id", "execution_role", "authority", "execution_scope", "matrix_path", "generation_profile_path", "expected_artifacts_path", "frozen_identity", "generation", "process_strategy", "deadlines", "failure_and_resume", "preflight", "selector", "gpu_application_blockers"],
+  "properties": {
+    "schema_version": {"const": "g25-gpu-pilot-session-contract-v1"},
+    "contract_revision": {"type": "string"},
+    "status": {"enum": ["frozen_for_review_not_authorized", "application_implemented_pending_fresh_review_not_authorized"]},
+    "session_id": {"const": "granite-c1a-g25-qualification-r1-20260719"},
+    "execution_role": {"const": "workload_termination_qualification"},
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["gpu_execution", "formal_g3_r5", "paid_gpu", "archive_release"],
+      "properties": {
+        "gpu_execution": {"const": "not_authorized"},
+        "formal_g3_r5": {"const": "not_authorized"},
+        "paid_gpu": {"const": "not_authorized"},
+        "archive_release": {"const": "not_authorized"}
+      }
+    },
+    "execution_scope": {"type": "object"},
+    "matrix_path": {"type": "string"},
+    "generation_profile_path": {"type": "string"},
+    "expected_artifacts_path": {"type": "string"},
+    "frozen_identity": {"type": "object"},
+    "generation": {"type": "object"},
+    "process_strategy": {"type": "object"},
+    "deadlines": {"type": "object"},
+    "failure_and_resume": {"type": "object"},
+    "preflight": {"type": "object"},
+    "selector": {"type": "object"},
+    "gpu_application_blockers": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}
+  }
+}

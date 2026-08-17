@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-s2-evidence-ledger-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "evidence_class", "member_count", "members", "ledger_sha256", "network_access", "ssh_attempted", "model_accessed", "gpu_workload_performed"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-s2-evidence-ledger-v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "evidence_class": {"const": "CPU_ONLY_LOCAL_PROBE_NONFORMAL_DISCOVERY_PROVENANCE"},
+    "member_count": {"type": "integer", "minimum": 1},
+    "members": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["path", "size_bytes", "sha256"], "properties": {"path": {"type": "string"}, "size_bytes": {"type": "integer", "minimum": 0}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}},
+    "ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "network_access": {"const": false},
+    "ssh_attempted": {"const": false},
+    "model_accessed": {"const": false},
+    "gpu_workload_performed": {"const": false}
+  }
+}

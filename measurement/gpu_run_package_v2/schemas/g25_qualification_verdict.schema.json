@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_qualification_verdict.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "status", "selected_common_ceiling",
+    "selector_revision", "selector_input_sha256", "row_summaries",
+    "formal_gate_pass", "gpu_pilot_authorized"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-qualification-verdict-v1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["QUALIFIED", "NO_COMMON_CEILING_WITHIN_CONTRACT"]},
+    "selected_common_ceiling": {"type": ["integer", "null"], "enum": [256, 384, 512, null]},
+    "selector_revision": {"const": "g25-minimal-common-ceiling-v1"},
+    "selector_input_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "row_summaries": {"type": "object"},
+    "formal_gate_pass": {"const": false},
+    "gpu_pilot_authorized": {"const": false}
+  }
+}

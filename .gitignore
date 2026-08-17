@@ -1,0 +1,68 @@
+# ---------------------------------------------------------------------------
+# /home/a/platform  —  MoE inference processor co-design substrate
+#
+# POLICY: measurement evidence under evidence/ IS version-controlled.
+# Only derived, regenerable, third-party, or licence-restricted content is ignored.
+# ---------------------------------------------------------------------------
+
+# Python / build transients
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+obj_dir/
+*.o
+*.a
+*.so
+
+# ---------------------------------------------------------------------------
+# Hardware: generated netlists, tool logs and build output are regenerable from
+# hardware/rtl via scripts/reproduce_all.sh --with-sta (Docker).
+# Result CSV/JSON summaries ARE committed.
+# ---------------------------------------------------------------------------
+hardware/**/flat_*.v
+hardware/**/netlist_*.v
+hardware/**/top_*.sv
+hardware/**/*.log
+!hardware/verification/**/regression.log
+hardware/syn/out_sta_buf_comb/
+hardware/syn/out_sta_buf_seq/
+hardware/sta/out/
+hardware/formal/out/*.v
+hardware/formal/out/*.err
+hardware/formal/out/*_instrumented.sv
+hardware/mem/out/
+
+# Third-party standard-cell library: not redistributable here.
+# Re-fetch with scripts/fetch_pdk.sh; see hardware/syn/lib/PROVENANCE.md.
+hardware/syn/lib/*.lib
+
+# ---------------------------------------------------------------------------
+# Measurement package: private runtimes, model weights and generated runs.
+# Collectors, schemas, configs and the trace-capture plan ARE committed.
+# ---------------------------------------------------------------------------
+measurement/**/.benchmark-runtime/
+measurement/**/.venv*/
+measurement/**/models/
+measurement/**/cache/
+measurement/**/archive/
+measurement/**/scheduler_runs/
+measurement/**/diagnostic_runs/
+measurement/**/qualification_runs/
+measurement/**/*.tar
+measurement/**/*.tar.gz
+measurement/**/*.tgz
+measurement/**/*.zip
+
+# ---------------------------------------------------------------------------
+# Third-party HuggingFace routing corpus: re-fetchable, not produced here.
+# Manifests, stats and the registry ARE committed.
+# ---------------------------------------------------------------------------
+data/raw/**
+!data/raw/.gitkeep
+data/canonical/**/*.jsonl
+
+# Transient reproduction self-check output
+runs/_repro_*

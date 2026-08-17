@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quality_release_report.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "gate_pass"
+  ],
+  "properties": {
+    "schema_version": {"const": "quality-release-report-v1"},
+    "gate_pass": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

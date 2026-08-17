@@ -1,0 +1,15 @@
+{
+  "schema_version": "phase7-gputw-d0-r3/candidate-manifest/v1",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r3-0d05c23",
+  "base_commit": "1ceeace87be0cbd2d340a2094148c3aa7cb4b023",
+  "reviewed_commit": "0d05c23d1fb78e852f8a404b5a61c9086863a18e",
+  "reviewed_tree": "433108ece0624443bb1f6c1f5c2b9ab6443a991a",
+  "candidate_member_count": 22,
+  "candidate_ledger_sha256": "df2f5ec6726e0b6df09ae27cbcc49f98e2596dcd060b827e04f61991bc4ee245",
+  "application_identity_file_sha256": "b35f2cd862dbdcb4038b2231dcd761a52cf97e4b59b73338784089cb277026af",
+  "application_semantic_identity_sha256": "22898df6161d54f5863d89c68f3183e508cc953d914c41808c2dd091baddb431",
+  "application_ledger_file_sha256": "fa3f9d35235489100c59e767ddce9d36359747d4c64bc16f43a8d64afc41b7bd",
+  "review_result": "MODIFY/MODIFY/MODIFY",
+  "execution_authority": "NONE",
+  "side_effects": false
+}

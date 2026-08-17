@@ -1,0 +1,23 @@
+{
+  "schema_version": "moe-model-config-v1",
+  "model_id": "deepseek-ai/DeepSeek-R1",
+  "trace_variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+  "provenance": {
+    "config_source": "https://huggingface.co/deepseek-ai/DeepSeek-R1/resolve/main/config.json",
+    "access": "public (dims from base model); trace from AWQ 4-bit derivative",
+    "note": "deepseek_v3; first_k_dense_replace=3 -> layers 0-2 dense, 58 MoE layers; n_shared_experts=1 (always resident). Trace variant is 4-bit AWQ."
+  },
+  "hidden_size": 7168,
+  "moe_intermediate_size": 2048,
+  "num_experts": 256,
+  "top_k": 8,
+  "num_hidden_layers": 61,
+  "num_moe_layers": 58,
+  "num_shared_experts": 1,
+  "mlp_kind": "gated_swiglu",
+  "weight_precision": {
+    "name": "awq_int4",
+    "bytes_per_param": 0.5,
+    "overhead_note": "AWQ 4-bit weights = 0.5 byte/param; group scales/zeros (group_size 128) add ~6% -> effective ~0.53. Nominal 0.5 used; overhead swept if it affects the break-even."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tool Adapter Result",
+  "type": "object",
+  "required": [
+    "adapter_id",
+    "tool",
+    "tool_version",
+    "command",
+    "return_code",
+    "outputs",
+    "status"
+  ],
+  "properties": {
+    "adapter_id": {
+      "type": "string"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "command": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "return_code": {
+      "type": "integer"
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "partial",
+        "invalid"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

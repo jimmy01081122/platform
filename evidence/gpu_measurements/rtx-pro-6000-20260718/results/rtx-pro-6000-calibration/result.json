@@ -1,0 +1,2476 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "evidence": "measured",
+  "metric_scope": "MoE-replay; not full-model TPOT/throughput",
+  "experiment": {
+    "split": "calibration",
+    "target_gpu_regex": "RTX PRO 6000",
+    "trust": "hardware-calibration"
+  },
+  "device": {
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "capability": [
+      12,
+      0
+    ],
+    "total_memory_bytes": 101973491712
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "torch": "2.7.1+cu128",
+    "cuda_runtime": "12.8"
+  },
+  "timestamp_utc": "2026-07-18T02:37:46Z",
+  "raw_profiler_output": "/root/gpu-results/rtx-pro-6000-calibration/profiler.json",
+  "raw_benchmarks": [
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 16748,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.041067126601870375,
+        0.03785664749965481,
+        0.03795502969920849,
+        0.040981047643748506,
+        0.041075927646911196
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.03978715581827867,
+        "variance": 2.9520460521259907e-06,
+        "stdev": 0.0017181519292908851,
+        "ci95": [
+          0.03765413043456717,
+          0.041920181201990175
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 18405,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.03783275352422066,
+        0.03657831773910792,
+        0.03642369202704768,
+        0.036353258683739134,
+        0.03635605757924987
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.03670881591067306,
+        "variance": 4.0310513573898764e-07,
+        "stdev": 0.0006349056116770332,
+        "ci95": [
+          0.035920602852863366,
+          0.03749702896848275
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 12431,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0688952382385141,
+        0.0689649197554878,
+        0.06909501777939224,
+        0.06898885559224419,
+        0.06898525662437907
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06898585759800348,
+        "variance": 5.143888975767365e-09,
+        "stdev": 7.172091031050404e-05,
+        "ci95": [
+          0.06889681860230865,
+          0.06907489659369831
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 12338,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0748749001908484,
+        0.0749849841049375,
+        0.07488836077280303,
+        0.0720658582890511,
+        0.0713922355603623
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07364126778360046,
+        "variance": 3.1056811022094882e-06,
+        "stdev": 0.001762294272307973,
+        "ci95": [
+          0.07145344122861488,
+          0.07582909433858603
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 6150,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.1451784806910569,
+        0.15075694510607215,
+        0.15524836842606707,
+        0.1417406631097561,
+        0.14036625063516261
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.14665814159362295,
+        "variance": 3.913776753138491e-05,
+        "stdev": 0.006256018504718869,
+        "ci95": [
+          0.1388915139490923,
+          0.1544247692381536
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 6657,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.13712613697576329,
+        0.13693935491130108,
+        0.13696616380372634,
+        0.13725622061657372,
+        0.13708191697297017
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.13707395865606692,
+        "variance": 1.6435808099542e-08,
+        "stdev": 0.00012820221565769445,
+        "ci95": [
+          0.13691480009995555,
+          0.1372331172121783
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 10290,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.03915379471403517,
+        0.039678741544050655,
+        0.03978271780950103,
+        0.039167647737108235,
+        0.03806898230134688
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0391703768212084,
+        "variance": 4.6168711998324975e-07,
+        "stdev": 0.0006794756213310745,
+        "ci95": [
+          0.038326831658988376,
+          0.04001392198342842
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 14583,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.03727103885142374,
+        0.03757903556768798,
+        0.038762421991520524,
+        0.039495911134218784,
+        0.03993702333731914
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.038609086176434035,
+        "variance": 1.3561905954357685e-06,
+        "stdev": 0.0011645559649221537,
+        "ci95": [
+          0.037163330774025116,
+          0.040054841578842953
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 11157,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.07461959512000593,
+        0.07458196306480797,
+        0.06995668861722182,
+        0.067043308888198,
+        0.06774498068582224
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07078930727521118,
+        "variance": 1.3262256260085576e-05,
+        "stdev": 0.003641738082301578,
+        "ci95": [
+          0.06626821712133632,
+          0.07531039742908605
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 12246,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06678060992332956,
+        0.06696914804929927,
+        0.06690517726451495,
+        0.06800615758302456,
+        0.06881702902191277
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06749562436841622,
+        "variance": 7.859512938198933e-07,
+        "stdev": 0.0008865389409495181,
+        "ci95": [
+          0.06639501735430048,
+          0.06859623138253196
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 7037,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.12952321074099404,
+        0.1298249084637452,
+        0.1288475133113365,
+        0.13137832561372034,
+        0.13587288790777763
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.13108936920751474,
+        "variance": 8.010794533617448e-06,
+        "stdev": 0.0028303347034613147,
+        "ci95": [
+          0.12757560790156655,
+          0.13460313051346293
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 7137,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.12711330273245935,
+        0.13829063831365157,
+        0.1403790292610253,
+        0.14013812126725164,
+        0.13569948769123494
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.13632411585312457,
+        "variance": 3.0021352329191253e-05,
+        "stdev": 0.005479174420402334,
+        "ci95": [
+          0.12952191290397996,
+          0.14312631880226917
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=22020096,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1210,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7808211901956353,
+        0.7808469661996384,
+        0.7808505980436466,
+        0.7808551882909349,
+        0.7808350113797778
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7808417908219266,
+        "variance": 1.885476260389525e-10,
+        "stdev": 1.3731264546244548e-05,
+        "ci95": [
+          0.7808247439383954,
+          0.7808588377054578
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=22020096,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1225,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7800196807238521,
+        0.7800382154815051,
+        0.7800420021524235,
+        0.7800762814891582,
+        0.7800464863679847
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7800445332429847,
+        "variance": 4.189335172844848e-10,
+        "stdev": 2.046786547944081e-05,
+        "ci95": [
+          0.7800191231055726,
+          0.7800699433803968
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=22020096,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1222,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7817640538691694,
+        0.781776141027772,
+        0.781791974206603,
+        0.7817798870480002,
+        0.7817804364643003
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7817784985231689,
+        "variance": 1.003708686908195e-10,
+        "stdev": 1.0018526273400668e-05,
+        "ci95": [
+          0.781766060874039,
+          0.7817909361722989
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=22020096,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1228,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7802417270523717,
+        0.7802708032465137,
+        0.7802871057963915,
+        0.7802658329569168,
+        0.7802746303695033
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7802680198843394,
+        "variance": 2.77953330596993e-10,
+        "stdev": 1.667193241939857e-05,
+        "ci95": [
+          0.7802473222647401,
+          0.7802887175039386
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=22020096,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1215,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7836816104841821,
+        0.7837235062210648,
+        0.783717126414609,
+        0.7837134592817644,
+        0.7837188846289866
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7837109174061213,
+        "variance": 2.814658734014382e-10,
+        "stdev": 1.6776944698050303e-05,
+        "ci95": [
+          0.7836900894174598,
+          0.7837317453947829
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=22020096,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1215,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7805836869855967,
+        0.780591624067644,
+        0.7805878062307099,
+        0.7805962456597222,
+        0.7806321132330247
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7805982952353394,
+        "variance": 3.789455961848058e-10,
+        "stdev": 1.946652501564688e-05,
+        "ci95": [
+          0.7805741282270073,
+          0.7806224622436715
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=44040192,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 626,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5608047631601938,
+        1.560836938242562,
+        1.5608524407822484,
+        1.5608837383623702,
+        1.5608584857977237
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5608472732690195,
+        "variance": 8.490122875591124e-10,
+        "stdev": 2.9137815421872527e-05,
+        "ci95": [
+          1.5608110996927127,
+          1.5608834468453263
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=44040192,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 626,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5597261178988617,
+        1.559847408209365,
+        1.5597860805523662,
+        1.5598321006701776,
+        1.5597915405663438
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5597966495794229,
+        "variance": 2.2364356649112735e-09,
+        "stdev": 4.729096811137697e-05,
+        "ci95": [
+          1.5597379395004816,
+          1.5598553596583642
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=44040192,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 626,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5616153802353734,
+        1.5616939654365516,
+        1.5616854829148363,
+        1.5616898704260682,
+        1.5617435930635983
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5616856584152856,
+        "variance": 2.0955561211120184e-09,
+        "stdev": 4.577724457754113e-05,
+        "ci95": [
+          1.5616288275710422,
+          1.561742489259529
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=44040192,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 626,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5598982058394069,
+        1.5599571934904153,
+        1.5599751335363419,
+        1.5600120861309406,
+        1.5599374009397464
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.55995600398737,
+        "variance": 1.7998151694211869e-09,
+        "stdev": 4.242422856601151e-05,
+        "ci95": [
+          1.5599033357949519,
+          1.5600086721797883
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=44040192,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 624,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5635115794646435,
+        1.5635476723695412,
+        1.5635602902143428,
+        1.5635601924015925,
+        1.5635732014973958
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.563550587189503,
+        "variance": 5.569786214803878e-10,
+        "stdev": 2.3600394519591994e-05,
+        "ci95": [
+          1.5635212881271106,
+          1.5635798862518955
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=44040192,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 626,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5602755318053614,
+        1.5603203819201776,
+        1.5603162869096945,
+        1.560321064421925,
+        1.5603121918992113
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5603090913912738,
+        "variance": 3.6461598683208747e-10,
+        "stdev": 1.9094920445817195e-05,
+        "ci95": [
+          1.5602853857169872,
+          1.5603327970655605
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=88080384,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 316,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        3.120506576344937,
+        3.1206070139438293,
+        3.1205998674223694,
+        3.1205965838854826,
+        3.1207621127744263
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 3.120614430874209,
+        "variance": 8.507040782159515e-09,
+        "stdev": 9.223362067142065e-05,
+        "ci95": [
+          3.120499926067754,
+          3.120728935680664
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=88080384,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 316,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        3.1195445000370845,
+        3.1196650251557556,
+        3.1197164028505737,
+        3.1196030242533626,
+        3.1197478861748418
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 3.1196553676943237,
+        "variance": 6.852424832627235e-09,
+        "stdev": 8.277937443969503e-05,
+        "ci95": [
+          3.11955260000311,
+          3.1197581353855375
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=88080384,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 317,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        3.1214665072949526,
+        3.121665015957709,
+        3.1215955090447554,
+        3.1216638607181584,
+        3.1217089150606268
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 3.1216199616152407,
+        "variance": 9.003974269179537e-09,
+        "stdev": 9.488927373090985e-05,
+        "ci95": [
+          3.1215021599086166,
+          3.121737763321865
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=88080384,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 310,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        3.119516877205141,
+        3.1196993920110887,
+        3.119590316280242,
+        3.119661786479335,
+        3.1196533203125
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 3.119624338457661,
+        "variance": 5.14519186720668e-09,
+        "stdev": 7.17299928008269e-05,
+        "ci95": [
+          3.119535288186373,
+          3.119713388728949
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "h2d_pinned",
+      "case": "bytes=88080384,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 316,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        3.1232554761669302,
+        3.1233300317691852,
+        3.123323271546183,
+        3.123372910897943,
+        3.1234250611896757
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 3.1233413503139835,
+        "variance": 3.958225400671506e-09,
+        "stdev": 6.291442919292446e-05,
+        "ci95": [
+          3.123263244255851,
+          3.1234194563721163
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "d2h_pinned",
+      "case": "bytes=88080384,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 316,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        3.119863003115111,
+        3.1200683207451543,
+        3.1200358716747427,
+        3.1200557660452928,
+        3.1201355366767207
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 3.1200316996514044,
+        "variance": 1.029458769623347e-08,
+        "stdev": 0.00010146224764035867,
+        "ci95": [
+          3.119905737828113,
+          3.1201576614746958
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 4595,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.21231148837051142,
+        0.2151663264460351,
+        0.2157755489577666,
+        0.21613827976230957,
+        0.21643974960044884
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.2151662786274143,
+        "variance": 2.7718880685102666e-06,
+        "stdev": 0.0016648988162979354,
+        "ci95": [
+          0.21309936511648842,
+          0.2172331921383402
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 21273,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.029529346843893963,
+        0.029550165303619907,
+        0.029550303022206847,
+        0.029551987205759647,
+        0.029551685946350714
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.02954669766436622,
+        "variance": 9.473407588069537e-11,
+        "stdev": 9.73314316552959e-06,
+        "ci95": [
+          0.02953461430835943,
+          0.029558781020373008
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5568,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.14550416222934065,
+        0.15163302147525481,
+        0.15150757493643924,
+        0.15128685962194685,
+        0.15550730694299456
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15108778504119522,
+        "variance": 1.2805538639855799e-05,
+        "stdev": 0.0035784827287351547,
+        "ci95": [
+          0.14664522419111045,
+          0.15553034589127998
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 4322,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.23433927141478192,
+        0.2365482159093374,
+        0.23701498939835436,
+        0.23726506125093996,
+        0.23756868361544134
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.23654724431777102,
+        "variance": 1.6631325332758765e-06,
+        "stdev": 0.001289624958379713,
+        "ci95": [
+          0.2349462201447649,
+          0.23814826849077714
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1228,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.8144076468501883,
+        0.8160645425902128,
+        0.816859242193862,
+        0.8184049525556036,
+        0.8187091839818302
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.8168891136343394,
+        "variance": 3.112227703912111e-06,
+        "stdev": 0.0017641507032881605,
+        "ci95": [
+          0.8146989823853763,
+          0.8190792448833024
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 7664,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.11132117253504616,
+        0.11140442690918988,
+        0.11145037848167977,
+        0.1115047319448069,
+        0.11154626356535018
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.11144539468721457,
+        "variance": 7.70744521195453e-09,
+        "stdev": 8.779205665636573e-05,
+        "ci95": [
+          0.11133640392676793,
+          0.1115543854476612
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5354,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.14895765541826206,
+        0.15199230195516786,
+        0.15216029113381935,
+        0.15627528501616783,
+        0.1661153286751144
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.1551001724397063,
+        "variance": 4.468670821447719e-05,
+        "stdev": 0.006684811756098835,
+        "ci95": [
+          0.1468012130066038,
+          0.16339913187280883
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1147,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.8976061021959459,
+        0.9034283346161182,
+        0.9038362644398431,
+        0.9048678490423387,
+        0.905484799000109
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.903044669858871,
+        "variance": 9.907512852935302e-06,
+        "stdev": 0.0031476201887990396,
+        "ci95": [
+          0.8991370097465536,
+          0.9069523299711884
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 11731,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06450586153940414,
+        0.0641150096932007,
+        0.06782789931924495,
+        0.06374584871447714,
+        0.06337981467539265
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06471488678834392,
+        "variance": 3.2039608592255557e-06,
+        "stdev": 0.001789961133439929,
+        "ci95": [
+          0.06249271279523252,
+          0.06693706078145532
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 28384,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.017357288648740817,
+        0.01728377938942549,
+        0.01728507926794695,
+        0.016038720476049446,
+        0.016394232413411276
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.016871820039114797,
+        "variance": 3.745795724150956e-07,
+        "stdev": 0.0006120290617406134,
+        "ci95": [
+          0.016112007416024674,
+          0.01763163266220492
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5469,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.15038237760916645,
+        0.15064929621074466,
+        0.154259979365229,
+        0.15855209342215784,
+        0.15071149202822157
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.1529110477271039,
+        "variance": 1.2497187714402588e-05,
+        "stdev": 0.0035351361663170187,
+        "ci95": [
+          0.1485223001145788,
+          0.157299795339629
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 9883,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.07677004176402977,
+        0.07671111872185823,
+        0.07577240752942237,
+        0.07244104163241172,
+        0.07681290779858722
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07570150348926186,
+        "variance": 3.507988851051839e-06,
+        "stdev": 0.0018729625866663324,
+        "ci95": [
+          0.07337628610190887,
+          0.07802672087661484
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 11173,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06339031681425088,
+        0.06338580459380314,
+        0.06339367093453527,
+        0.06339087401338607,
+        0.06338860151495233
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06338985357418554,
+        "variance": 8.447505505084736e-12,
+        "stdev": 2.906459272910036e-06,
+        "ci95": [
+          0.06338624530689546,
+          0.06339346184147562
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 31282,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0156305509564456,
+        0.015705085960726218,
+        0.01565788039297759,
+        0.015635629740146092,
+        0.015775346045649254
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.015680898619188952,
+        "variance": 3.654835286761854e-09,
+        "stdev": 6.0455233741685705e-05,
+        "ci95": [
+          0.015605845565992166,
+          0.015755951672385738
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5875,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.14231843209773937,
+        0.1453367270611702,
+        0.15232241107047872,
+        0.15288727975398936,
+        0.15275684632646278
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.14912433926196808,
+        "variance": 2.4562217631055097e-05,
+        "stdev": 0.004956028413059705,
+        "ci95": [
+          0.1429716037400199,
+          0.15527707478391625
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 9675,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.07631149567990957,
+        0.07651902151970284,
+        0.07646723468790374,
+        0.07652433962168928,
+        0.07644032875080749
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07645248405200258,
+        "variance": 7.45837779375849e-09,
+        "stdev": 8.636190012823068e-05,
+        "ci95": [
+          0.07634526878074592,
+          0.07655969932325925
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-livecodebench-execution-q0,concurrency=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 174,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.17947245192253727,
+        0.17928720890790567,
+        0.17901295629040948,
+        0.1794641867451284,
+        0.17937524291290635
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.17932240935577742,
+        "variance": 3.560131398148759e-08,
+        "stdev": 0.0001886831046529805,
+        "ci95": [
+          0.17908816589637136,
+          0.1795566528151835
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        5571.885764571899,
+        5577.642744796531,
+        5586.18784205607,
+        5572.14237635156,
+        5574.905342347265
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 5576.552814024665,
+        "variance": 34.49229706103814,
+        "stdev": 5.873014307920434,
+        "ci95": [
+          5569.261672662757,
+          5583.843955386574
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-livecodebench-execution-q0,concurrency=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 173,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.04523568897578069,
+        0.045284734295971824,
+        0.04525121788069003,
+        0.04512093659770282,
+        0.04526374794844258
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04523126513971759,
+        "variance": 4.126038228533949e-09,
+        "stdev": 6.423424498298356e-05,
+        "ci95": [
+          0.04515152057655268,
+          0.0453110097028825
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        22106.43902285655,
+        22082.496796032923,
+        22098.85273445266,
+        22162.660516468794,
+        22092.73525336533
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 22108.63686463525,
+        "variance": 988.819774215016,
+        "stdev": 31.445504833203362,
+        "ci95": [
+          22069.59837282939,
+          22147.67535644111
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 6878,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.13171914719883596,
+        0.132698504998955,
+        0.13290395512072006,
+        0.1330834045143937,
+        0.13315137911411384
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.1327112781894037,
+        "variance": 3.38444570595489e-07,
+        "stdev": 0.0005817598908445725,
+        "ci95": [
+          0.1319890436807774,
+          0.13343351269803
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 30370,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.01572395352340663,
+        0.01623275299624938,
+        0.01646398318846209,
+        0.016420769212589007,
+        0.01583702833510403
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.01613569745116223,
+        "variance": 1.1429837906005954e-07,
+        "stdev": 0.00033808043282636095,
+        "ci95": [
+          0.015715982446533723,
+          0.016555412455790737
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5549,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.15283139329017617,
+        0.15805281946564134,
+        0.1567831474245078,
+        0.15703317267891737,
+        0.1530526333573617
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15555063324332088,
+        "variance": 5.903054907281632e-06,
+        "stdev": 0.0024296203216308578,
+        "ci95": [
+          0.15253434479381292,
+          0.15856692169282885
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 6466,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.13640575839608143,
+        0.13743414319855785,
+        0.13763271040345654,
+        0.13773138044494762,
+        0.13796556250362474
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.13743391098933364,
+        "variance": 3.6694010641481627e-07,
+        "stdev": 0.0006057558141816026,
+        "ci95": [
+          0.13668188638315493,
+          0.13818593559551234
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1552,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.6405466610623389,
+        0.641803859435406,
+        0.6423008319028874,
+        0.6426469861846609,
+        0.6432343315832394
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.6421065340337065,
+        "variance": 1.0316457753578377e-06,
+        "stdev": 0.0010156996482020841,
+        "ci95": [
+          0.6408455785297681,
+          0.643367489537645
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 21144,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.03470731367904311,
+        0.034732112819572045,
+        0.034731255486928916,
+        0.03473486090265708,
+        0.03474328412370974
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.03472976540238218,
+        "variance": 1.8013263742441385e-10,
+        "stdev": 1.3421350059677821e-05,
+        "ci95": [
+          0.034713103266820755,
+          0.0347464275379436
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5823,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.1535561515890649,
+        0.14579789457954984,
+        0.15325655209205413,
+        0.153104839426493,
+        0.15436782587972803
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.152016652713378,
+        "variance": 1.2323131391325277e-05,
+        "stdev": 0.0035104317955666473,
+        "ci95": [
+          0.1476585747110316,
+          0.15637473071572439
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1548,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.6701683024719396,
+        0.6757491552860546,
+        0.677055181458939,
+        0.6780464113220688,
+        0.6789080794775517
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.6759854260033107,
+        "variance": 1.1957172645134999e-05,
+        "stdev": 0.003457914493612443,
+        "ci95": [
+          0.671692546390142,
+          0.6802783056164794
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 12165,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06267932746031134,
+        0.06335000674321825,
+        0.062455286040896014,
+        0.06039791209091143,
+        0.06385234138184598
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0625469747434366,
+        "variance": 1.7483091994154354e-06,
+        "stdev": 0.0013222364385447238,
+        "ci95": [
+          0.06090546456112797,
+          0.06418848492574522
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 29097,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.01579054294183303,
+        0.015785730945804658,
+        0.01582944795069885,
+        0.015773574048253473,
+        0.015794370093861695
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.01579473319609034,
+        "variance": 4.378885772217133e-10,
+        "stdev": 2.0925787373996546e-05,
+        "ci95": [
+          0.015768754564700446,
+          0.015820711827480235
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5917,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.14594047408420652,
+        0.1485185673133292,
+        0.1528687018568056,
+        0.1529844179938366,
+        0.15147862282076538
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15035815681378867,
+        "variance": 9.33888462527079e-06,
+        "stdev": 0.003055958871658909,
+        "ci95": [
+          0.14656429101315652,
+          0.15415202261442082
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 10597,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.07400298147839601,
+        0.07780522347126545,
+        0.07774005863614113,
+        0.07766097845351279,
+        0.07771276358985739
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07698440112583456,
+        "variance": 2.7804748672748993e-06,
+        "stdev": 0.0016674755972052183,
+        "ci95": [
+          0.07491428863175136,
+          0.07905451361991776
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 11217,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0634805836269028,
+        0.0634779935641075,
+        0.06348043671157617,
+        0.06348781512575778,
+        0.06568177243525453
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06392172029271975,
+        "variance": 9.680708512393695e-07,
+        "stdev": 0.000983905915847328,
+        "ci95": [
+          0.06270023559284665,
+          0.06514320499259285
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 31188,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.016083551367475572,
+        0.01576238291927434,
+        0.015777610396213587,
+        0.01581074742914943,
+        0.015773402829651527
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.01584153898835289,
+        "variance": 1.8628299013565e-08,
+        "stdev": 0.00013648552675490908,
+        "ci95": [
+          0.01567209699191803,
+          0.016010980984787752
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5901,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.14972818513943612,
+        0.1547870180239578,
+        0.1549278301942997,
+        0.15495448459146224,
+        0.1552481070309852
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15392912499602823,
+        "variance": 5.54309102690417e-06,
+        "stdev": 0.00235437699336877,
+        "ci95": [
+          0.15100624850060992,
+          0.15685200149144654
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 9657,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0771441207337456,
+        0.07729510642781791,
+        0.07745077546565962,
+        0.0774871488035719,
+        0.07726201964693681
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07732783421554637,
+        "variance": 1.9912249465843603e-08,
+        "stdev": 0.00014111077019789668,
+        "ci95": [
+          0.07715265014153296,
+          0.07750301828955979
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu-abstract_algebra-q0,concurrency=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 172,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.18025557939396347,
+        0.18589232688726381,
+        0.18138133647829988,
+        0.18152422128721726,
+        0.1815095724061478
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.18211260729057846,
+        "variance": 4.74485975001396e-06,
+        "stdev": 0.0021782698983399554,
+        "ci95": [
+          0.17940836157951878,
+          0.18481685300163814
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        5547.678487190776,
+        5379.458188214835,
+        5513.246397981185,
+        5508.906706272255,
+        5509.351307171773
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 5491.728217366164,
+        "variance": 4200.924502865261,
+        "stdev": 64.81453928606807,
+        "ci95": [
+          5411.263239168451,
+          5572.193195563877
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu-abstract_algebra-q0,concurrency=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 182,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.04306215506333571,
+        0.0457922862126277,
+        0.04562514168875558,
+        0.046123777117047994,
+        0.04456674659645164
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04503402133564373,
+        "variance": 1.5546397090968945e-06,
+        "stdev": 0.0012468519194743595,
+        "ci95": [
+          0.043486098390863245,
+          0.04658194428042421
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        23222.246971365053,
+        21837.739119568996,
+        21917.74015348323,
+        21680.791611283414,
+        22438.254446861934
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 22219.354460512528,
+        "variance": 395090.49839146144,
+        "stdev": 628.5622470300467,
+        "ci95": [
+          21439.016467520734,
+          22999.69245350432
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 8781,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.09960298719580984,
+        0.10091453754688745,
+        0.10104530333603803,
+        0.10114661154721487,
+        0.10128924933805945
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.10079973779280194,
+        "variance": 4.6640909135119684e-07,
+        "stdev": 0.000682941499215853,
+        "ci95": [
+          0.0999518898646978,
+          0.10164758572090607
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 29876,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.015622630178696948,
+        0.01569614060545306,
+        0.015662368608935162,
+        0.015618143861816342,
+        0.015652218214845318
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.015650300293949364,
+        "variance": 1.0125820528807804e-09,
+        "stdev": 3.182109446390524e-05,
+        "ci95": [
+          0.015610795520784744,
+          0.015689805067113986
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5853,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.1444150193744127,
+        0.1442721347492739,
+        0.15328400216101784,
+        0.15431607297072547,
+        0.15413263380558048
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15008397261220208,
+        "variance": 2.761425254347111e-05,
+        "stdev": 0.005254926502194975,
+        "ci95": [
+          0.14356016559162835,
+          0.1566077796327758
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 8170,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.1052632774250306,
+        0.10666048197005049,
+        0.10684720323018666,
+        0.1069932543078718,
+        0.10715937900426484
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.10658471918748087,
+        "variance": 5.794952632661406e-07,
+        "stdev": 0.0007612458625609342,
+        "ci95": [
+          0.10563965913754804,
+          0.1075297792374137
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2723,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.36283192545274057,
+        0.36330081801006475,
+        0.36362914814915764,
+        0.3639911675426919,
+        0.3643614803654632
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.3636229079040236,
+        "variance": 3.5263463023912176e-07,
+        "stdev": 0.0005938304726427583,
+        "ci95": [
+          0.3628856881912761,
+          0.36436012761677106
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 17333,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04412772074605702,
+        0.04413414364601663,
+        0.044140348223718845,
+        0.04413743256518455,
+        0.04420899648836396
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.044149728333868196,
+        "variance": 1.1197757369917657e-09,
+        "stdev": 3.346305032407783e-05,
+        "ci95": [
+          0.044108185130068325,
+          0.04419127153766807
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5907,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.15066574300750168,
+        0.1536027047160678,
+        0.15421695169991642,
+        0.15477949393992296,
+        0.1542500059516252
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15350297986300682,
+        "variance": 2.689287492524077e-06,
+        "stdev": 0.001639904720562776,
+        "ci95": [
+          0.15146709564567082,
+          0.15553886408034281
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2613,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.3969080939951684,
+        0.4008811953603377,
+        0.4010698834553196,
+        0.4014003562416284,
+        0.40199944911858976
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.4004517956342088,
+        "variance": 4.104809129901842e-06,
+        "stdev": 0.002026032855089434,
+        "ci95": [
+          0.39793654687508256,
+          0.402967044393335
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 12034,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06302403302134836,
+        0.06484544604090493,
+        0.06829908034007812,
+        0.06809614377103415,
+        0.06383272094625124
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06561948482392335,
+        "variance": 5.960525730540245e-06,
+        "stdev": 0.0024414187945824136,
+        "ci95": [
+          0.06258854898388741,
+          0.0686504206639593
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 30106,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.01595314049700174,
+        0.016023243953720293,
+        0.01601296431644647,
+        0.016017708296570867,
+        0.016021777171831404
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.016005766847114154,
+        "variance": 8.814285647363646e-10,
+        "stdev": 2.9688862637971913e-05,
+        "ci95": [
+          0.015968909165007743,
+          0.016042624529220565
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5889,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.14960261957211007,
+        0.15425719022953283,
+        0.1540995186669532,
+        0.1532658897447837,
+        0.15230400304394315
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15270584425146458,
+        "variance": 3.613533360315074e-06,
+        "stdev": 0.0019009296042502663,
+        "ci95": [
+          0.1503459067922738,
+          0.15506578171065535
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 10163,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.07898458495661345,
+        0.08131247290262472,
+        0.07907023716545311,
+        0.0778300758188404,
+        0.0776579486306793
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0789710638948422,
+        "variance": 2.1295849462490266e-06,
+        "stdev": 0.0014593097499328326,
+        "ci95": [
+          0.07715938200208367,
+          0.08078274578760072
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 11439,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06329783764697526,
+        0.06331083009434554,
+        0.06386693352033067,
+        0.0655564318921289,
+        0.06420276827595015
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0640469602859461,
+        "variance": 8.595656707909082e-07,
+        "stdev": 0.0009271276453600702,
+        "ci95": [
+          0.06289596381829966,
+          0.06519795675359254
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 30194,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.015964285446301418,
+        0.015912836937349413,
+        0.015885867985335457,
+        0.015973556750008798,
+        0.015926789880517444
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.015932667399902505,
+        "variance": 1.3224043733021424e-09,
+        "stdev": 3.636487829351478e-05,
+        "ci95": [
+          0.015887521678413452,
+          0.015977813121391557
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5631,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.14314833925410117,
+        0.14328193156466434,
+        0.1444042803995183,
+        0.1609766856325475,
+        0.16441661446540357
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.15124557026324698,
+        "variance": 0.00011098973751059786,
+        "stdev": 0.010535166705401383,
+        "ci95": [
+          0.13816653014976413,
+          0.16432461037672982
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 9232,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.072634149878649,
+        0.071453127538724,
+        0.07521439920884898,
+        0.07609977920505781,
+        0.07478329213901037
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07403694959405803,
+        "variance": 3.7106660622442596e-06,
+        "stdev": 0.0019263089218098585,
+        "ci95": [
+          0.07164550460188776,
+          0.0764283945862283
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,concurrency=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 173,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.1755139565881277,
+        0.1812896728515625,
+        0.18136348614113867,
+        0.181487254324676,
+        0.1812941931575709
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.18018971261261515,
+        "variance": 6.838460748195443e-06,
+        "stdev": 0.002615045075748302,
+        "ci95": [
+          0.17694322583165684,
+          0.18343619939357347
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        5697.552601737901,
+        5516.034003871728,
+        5513.789028193863,
+        5510.028810128043,
+        5515.896469617509
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 5550.660182709808,
+        "variance": 6748.8153125080225,
+        "stdev": 82.15117353092421,
+        "ci95": [
+          5448.672380900296,
+          5652.647984519321
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    },
+    {
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,concurrency=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 171,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.04537440461722034,
+        0.04539936746073048,
+        0.04543344319215295,
+        0.04557841841937506,
+        0.04549554635209647
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04545623600831506,
+        "variance": 6.730941360530969e-09,
+        "stdev": 8.204231445133036e-05,
+        "ci95": [
+          0.045354383351236385,
+          0.04555808866539374
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        22038.856673404887,
+        22026.73860742618,
+        22010.218238813017,
+        21940.208429323367,
+        21980.173449525337
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 21999.23907969856,
+        "variance": 1573.608907200683,
+        "stdev": 39.66873967245094,
+        "ci95": [
+          21949.991730137277,
+          22048.486429259843
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      }
+    }
+  ]
+}

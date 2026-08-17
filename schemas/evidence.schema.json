@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "evidence.schema.json",
+  "title": "Result Evidence Class",
+  "type": "string",
+  "enum": [
+    "measured",
+    "trace-derived",
+    "model-configured",
+    "microbenchmark-calibrated",
+    "cycle-simulated",
+    "transaction-simulated",
+    "RTL-simulated",
+    "synthesis-derived",
+    "vendor-spec",
+    "assumed",
+    "swept",
+    "unknown"
+  ]
+}

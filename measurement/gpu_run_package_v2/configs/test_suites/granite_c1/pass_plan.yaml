@@ -1,0 +1,25 @@
+schema_version: granite-pass-plan-v1
+trace_capture_plan_revision: granite-c1-pass-plan-v1
+passes:
+  P0:
+    routing_hooks: false
+    purpose: clean_generation_baseline
+  P1:
+    routing_hooks: false
+    purpose: lightweight_runtime_timeline
+  P2:
+    routing_hooks: true
+    hook_contract: paired_router_and_block_sparse_moe
+    evidence: actual_GraniteMoeTopKGating_dispatch_tuple
+    detach: cpu_before_artifact_retention
+  P3:
+    routing_hooks: false
+    purpose: memory_and_allocation_observation
+    offload_claim_allowed: false
+  P5_BASIC:
+    routing_hooks: false
+    purpose: low_overhead_power_telemetry_if_available
+suite_passes:
+  granite_c1_smoke_v1: [P0, P2]
+  granite_c1_integration_v1: [P0, P1, P2, P3, P5_BASIC]
+  granite_c1_regression_v1: []

@@ -1,0 +1,44 @@
+{
+  "schema_version": "phase7-gputw-d0-r2/reviewer-output/v1",
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r2-4643f2e",
+  "reviewed_commit": "4643f2e46be4caedd1219c316a3ffd0d9adf45ca",
+  "reviewed_tree": "d63d63b77d631260fe415d43fef62d9b77a5a175",
+  "reviewed_candidate_ledger_sha256": "24aeb8650ecf90ba603d3f0b2214e6a84a3b442019514253337167b4ac48de26",
+  "candidate_member_count": 22,
+  "verdict": "GO",
+  "blockers": [],
+  "non_blocking_findings": [
+    "The probe intentionally reports missing runtime, CUDA, driver, vLLM, GPU and storage facts as null or unavailable; this is a readiness blocker, not a benchmark result.",
+    "No Mixtral snapshot, container digest, BF16 load, throughput, calibration, model access or GPU performance claim is made by this CPU-only candidate."
+  ],
+  "review_focus": [
+    "The probe is read-only and uses no model, inference, CUDA benchmark, package installation or workload path.",
+    "Strict probe/result/failure schemas close required fields and preserve an explicit NOT_READY eligibility result when discovery fields are unobserved.",
+    "The overlay remains DISCOVERY_ONLY and non-promotable until a new application binds immutable environment identity and fresh owner/provider evidence.",
+    "The 300-second outer bound and 120-second inner probe bound are represented as control limits rather than as performance measurements."
+  ],
+  "commands_executed": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 -B explorations/moe_cycle_simulator/phase7_d0_r2/validate_d0_r2.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q tests/test_phase7_d0_r2.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -B explorations/moe_cycle_simulator/phase7_d0_application/validate_d0_application.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -B explorations/moe_cycle_simulator/phase7/governance/r12r5/validate_candidate_ledger.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -B explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/validate_review.py"
+  ],
+  "command_results": [
+    "D0-R2 package validator PASS with model_accessed=false and gpu_queried=false.",
+    "Focused D0-R2 tests PASS: 9 passed.",
+    "Historical D0-R1 validator PASS with D0 execution NOT_AUTHORIZED.",
+    "Historical R12-R5 and Provider R1 governance validators PASS; both retain GPU authority NONE.",
+    "No model, inference, CUDA or GPU workload command was executed."
+  ],
+  "claim_boundary": "This is a read-only model and benchmark-contract review. It claims no model snapshot, runtime identity, GPU capacity, BF16 load, throughput, calibration, generation result, D0, Gate M, M0, GPU query, workload or model download.",
+  "side_effects": {
+    "ssh": false,
+    "provider_network_probe": false,
+    "instance_creation": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  }
+}

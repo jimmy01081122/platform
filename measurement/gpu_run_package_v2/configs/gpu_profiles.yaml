@@ -1,0 +1,332 @@
+schema_version: gpu-profiles-v2
+policy:
+  active_execution_decision: D-062
+  paid_execution_default: denied_until_superseded
+  exact_sku_required: true
+  reject_generic_names:
+    - RTX PRO 6000
+    - H100
+    - A100
+    - V100
+  prohibit_topology_inference: true
+  topology_source: required_preflight
+  unknown_value_policy: use_null_and_required_preflight
+  fit_decision:
+    theoretical_weight_size_is_not_sufficient: true
+    required_checks:
+      - weight_size_estimate
+      - runtime_overhead_estimate
+      - allocation_smoke_test
+      - short_context_generation_smoke_test
+      - profiler_compatibility_test
+  result_scope:
+    rtx_3050_scaling_to_other_gpus: prohibited
+    h100_as_only_edge_workstation_representative: prohibited
+
+execution_modes:
+  native_executable: Full executable model without offload.
+  quantized_executable: Executable model using an explicitly recorded quantization configuration.
+  cpu_offload: Executable model with an explicitly recorded CPU/GPU device map.
+  layer_replay: Selected layer or kernel replay tied to the same workload identity.
+  trace_replay: Routing trace plus calibrated service model; not an end-to-end model run.
+  capacity_boundary: Preserve failed allocation or execution evidence; do not delete the matrix row.
+
+model_classes:
+  M0:
+    purpose: correctness_and_pipeline
+    examples: [small_switch_model, OLMoE-1B-7B]
+  M1:
+    purpose: medium_executable_moe
+    examples: [DeepSeek-MoE-16B, Qwen3-30B-A3B]
+  M2:
+    purpose: workstation_vram_and_offload_pressure
+    examples: [Mixtral-8x7B]
+  M3:
+    purpose: large_trace_derived_workload
+    examples: [DeepSeek-R1-trace, Qwen3-235B-trace, frozen-large-MoE-holdout-trace]
+    full_single_gpu_execution_required: false
+
+profiles:
+  rtx3050_6gb:
+    enabled: true
+    execution_enabled: true
+    execution_scope: local_pipeline_smoke_only
+    optional: false
+    exact_sku: NVIDIA GeForce RTX 3050
+    accepted_name_regex: '^NVIDIA GeForce RTX 3050(?: Laptop GPU)?$'
+    vram_gib: 6
+    form_factor: null
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 8.6, pcie_generation_min: 3, pcie_width_min: 4}
+    mig:
+      supported: false
+      enabled: false
+    required_preflight: [exact_product_name, pci_bus_id, vram_total, form_factor, pcie_link_state]
+    role:
+      trust: local_development_only
+      functions: [pipeline_validation, trace_collector_development, cuda_runtime_smoke, low_vram_pressure]
+      split: none
+    default_trace_profile: standard
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: quantized_executable, fallback: [cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: cpu_offload, fallback: [layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  rtx3090_24gb:
+    enabled: true
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: false
+    exact_sku: NVIDIA GeForce RTX 3090 24GB
+    accepted_name_regex: '^NVIDIA GeForce RTX 3090$'
+    vram_gib: 24
+    form_factor: add_in_board
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 8.6, pcie_generation_min: 4, pcie_width_min: 16}
+    nvlink_profile_allowed_only_if:
+      gpu_count_minimum: 2
+      link_detected_by_preflight: true
+    required_preflight: [exact_product_name, gpu_count, pci_bus_id, vram_total, topology_dump, pcie_link_state, nvlink_link_state]
+    role:
+      trust: hardware_validation
+      functions: [consumer_edge_workstation, expert_offload, residency, pcie_transfer, copy_compute_overlap, grouped_gemm]
+      split: validation
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: quantized_executable, fallback: [cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [cpu_offload, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  rtx4090_24gb:
+    enabled: true
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: false
+    exact_sku: NVIDIA GeForce RTX 4090 24GB
+    accepted_name_regex: '^NVIDIA GeForce RTX 4090$'
+    vram_gib: 24
+    form_factor: add_in_board
+    interconnect: PCIe
+    hardware_requirements: {compute_capability_min: 8.9, pcie_generation_min: 4, pcie_width_min: 16}
+    nvlink: prohibited
+    required_preflight: [exact_product_name, pci_bus_id, vram_total, topology_dump, pcie_link_state]
+    role:
+      trust: hardware_validation
+      functions: [consumer_edge_workstation, bottleneck_shift, copy_engine_compute_balance]
+      split: validation
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: quantized_executable, fallback: [cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [cpu_offload, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  rtx5090_32gb:
+    enabled: true
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: false
+    exact_sku: NVIDIA GeForce RTX 5090 32GB
+    accepted_name_regex: '^NVIDIA GeForce RTX 5090$'
+    vram_gib: 32
+    form_factor: add_in_board
+    interconnect: PCIe
+    hardware_requirements: {compute_capability_min: 12.0, pcie_generation_min: 5, pcie_width_min: 16}
+    required_preflight: [exact_product_name, pci_bus_id, vram_total, topology_dump, pcie_link_state]
+    role:
+      trust: hardware_validation
+      functions: [consumer_edge_workstation, bottleneck_shift, copy_engine_compute_balance]
+      split: validation
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: quantized_executable, fallback: [native_executable, cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [cpu_offload, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  rtx_pro_6000_blackwell_workstation_96gb:
+    enabled: true
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: false
+    exact_sku: NVIDIA RTX PRO 6000 Blackwell Workstation Edition 96GB
+    accepted_name_regex: '^NVIDIA RTX PRO 6000 Blackwell Workstation Edition 96GB$'
+    vram_gib: 96
+    form_factor: workstation_add_in_board
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 12.0, pcie_generation_min: 5, pcie_width_min: 16}
+    required_preflight: [exact_product_name, pci_bus_id, vram_total, form_factor, topology_dump, pcie_link_state]
+    reject_skus:
+      - NVIDIA RTX 6000 Ada Generation
+      - NVIDIA RTX PRO 6000 Blackwell Server Edition
+      - NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition
+    role:
+      trust: primary_hardware_calibration
+      functions: [large_vram_workstation, expert_residency, offload_prefetch_calibration]
+      split: calibration
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: native_executable, fallback: [quantized_executable, cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [native_executable, cpu_offload, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  h100_pcie_80gb:
+    enabled: false
+    execution_enabled: false
+    optional: true
+    disabled_reason: D-062
+    exact_sku: NVIDIA H100 PCIe 80GB
+    accepted_name_regex: '^NVIDIA H100 PCIe'
+    vram_gib: 80
+    form_factor: PCIe_add_in_board
+    interconnect: PCIe
+    hardware_requirements: {compute_capability_min: 9.0, pcie_generation_min: 5, pcie_width_min: 16}
+    topology: null
+    mig:
+      capability: required_preflight
+      current_mode: null
+      instance_profile: null
+      full_gpu_required_by_default: true
+    required_preflight: [exact_product_name, vram_total, pci_bus_id, topology_dump, pcie_link_state, mig_capability, mig_current_mode, mig_instance_profile]
+    role:
+      trust: frozen_blind_holdout
+      functions: [datacenter_reference, kernel_memory_runtime_cross_check, performance_upper_reference]
+      split: holdout
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: native_executable, fallback: [quantized_executable, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [native_executable, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  h100_sxm5_80gb:
+    enabled: false
+    execution_enabled: false
+    optional: true
+    disabled_reason: D-062
+    exact_sku: NVIDIA H100 SXM5 80GB
+    accepted_name_regex: '^NVIDIA H100.*80GB.*SXM|^NVIDIA H100 SXM'
+    vram_gib: 80
+    form_factor: SXM5
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 9.0, topology_required: true}
+    topology: null
+    mig:
+      capability: required_preflight
+      current_mode: null
+      instance_profile: null
+      full_gpu_required_by_default: true
+    required_preflight: [exact_product_name, vram_total, topology_dump, nvlink_link_state, mig_capability, mig_current_mode, mig_instance_profile]
+    role:
+      trust: frozen_blind_holdout
+      functions: [datacenter_reference, kernel_memory_runtime_cross_check, performance_upper_reference]
+      split: holdout
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: native_executable, fallback: [quantized_executable, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [native_executable, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  a6000_48gb:
+    enabled: false
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: true
+    exact_sku: NVIDIA RTX A6000 48GB
+    accepted_name_regex: '^NVIDIA RTX A6000$'
+    vram_gib: 48
+    form_factor: add_in_board
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 8.6, pcie_generation_min: 4, pcie_width_min: 16}
+    required_preflight: [exact_product_name, vram_total, topology_dump, pcie_link_state, nvlink_link_state]
+    role: {trust: optional_cross_platform_validation, functions: [professional_workstation_validation], split: validation}
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: quantized_executable, fallback: [native_executable, cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [cpu_offload, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  a100_40gb:
+    enabled: false
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: true
+    exact_sku: NVIDIA A100 40GB
+    accepted_name_regex: '^NVIDIA A100.*40GB'
+    vram_gib: 40
+    form_factor: null
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 8.0, topology_required: true}
+    required_preflight: [exact_product_name, vram_total, form_factor, topology_dump, pcie_link_state, nvlink_link_state, mig_capability, mig_current_mode]
+    role: {trust: optional_cross_platform_validation, functions: [datacenter_generation_validation], split: validation}
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: quantized_executable, fallback: [native_executable, cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [cpu_offload, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  a100_80gb:
+    enabled: false
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: true
+    exact_sku: NVIDIA A100 80GB
+    accepted_name_regex: '^NVIDIA A100.*80GB'
+    vram_gib: 80
+    form_factor: null
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 8.0, topology_required: true}
+    required_preflight: [exact_product_name, vram_total, form_factor, topology_dump, pcie_link_state, nvlink_link_state, mig_capability, mig_current_mode]
+    role: {trust: optional_cross_platform_validation, functions: [datacenter_generation_validation], split: validation}
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: native_executable, fallback: [quantized_executable, layer_replay, capacity_boundary]}
+      M2: {default: quantized_executable, fallback: [native_executable, layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  v100_16gb:
+    enabled: false
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: true
+    exact_sku: NVIDIA Tesla V100 16GB
+    accepted_name_regex: '^Tesla V100.*16GB|^NVIDIA V100.*16GB'
+    vram_gib: 16
+    form_factor: null
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 7.0, topology_required: true}
+    required_preflight: [exact_product_name, vram_total, form_factor, topology_dump, pcie_link_state, nvlink_link_state]
+    role: {trust: optional_cross_platform_validation, functions: [legacy_generation_validation], split: validation}
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: cpu_offload, fallback: [quantized_executable, layer_replay, capacity_boundary]}
+      M2: {default: layer_replay, fallback: [trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}
+
+  v100_32gb:
+    enabled: false
+    execution_enabled: false
+    disabled_reason: D-062
+    optional: true
+    exact_sku: NVIDIA Tesla V100 32GB
+    accepted_name_regex: '^Tesla V100.*32GB|^NVIDIA V100.*32GB'
+    vram_gib: 32
+    form_factor: null
+    interconnect: null
+    hardware_requirements: {compute_capability_min: 7.0, topology_required: true}
+    required_preflight: [exact_product_name, vram_total, form_factor, topology_dump, pcie_link_state, nvlink_link_state]
+    role: {trust: optional_cross_platform_validation, functions: [legacy_generation_validation], split: validation}
+    default_trace_profile: maximal
+    model_policy:
+      M0: {default: native_executable, fallback: [quantized_executable, capacity_boundary]}
+      M1: {default: quantized_executable, fallback: [cpu_offload, layer_replay, capacity_boundary]}
+      M2: {default: cpu_offload, fallback: [layer_replay, trace_replay, capacity_boundary]}
+      M3: {default: trace_replay, fallback: [layer_replay, capacity_boundary]}

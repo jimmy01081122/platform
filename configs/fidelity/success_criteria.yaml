@@ -1,0 +1,52 @@
+schema_version: success-criteria-v1
+description: >-
+  The platform itself is the first-class deliverable. Finding a justified
+  accelerator is NOT the sole success condition. A run satisfies the project if
+  it lands in one of A/B/C with calibrated, reproducible evidence.
+
+principle: platform_credibility_is_primary
+
+criteria:
+  A:
+    name: platform_credible_accelerator_effective
+    chain: [large_trace, calibrated_system_model, reproducible_bottleneck, algorithm_improvement,
+            software_firmware_insufficient, rtl_integration, system_level_improvement, dse]
+    current_evidence: >-
+      W2/W3 show a reproducible transfer-bound bottleneck on real large-MoE routing;
+      prefetch/residency gives 74.7-98.2% stall reduction. RTL residency engine exists,
+      is four-layer-verified (python==C==rv64==RTL) and formally checked (D-051/D-052).
+      Timing (real OpenSTA wire-load, D-034/D-041/D-044): the banked argmin SUBMODULE
+      meets 200 MHz at N=128 (200.3 MHz); the FULL engine meets 200 MHz only at N=32
+      (346 MHz) and is 129.7 MHz at the real N=128 width, with N=256/384 below that --
+      explicitly RELAXED because the system is transfer-bound (D-042: victim search
+      ~2.4 us << 0.6-31 ms expert transfer). So "meets 200 MHz" is a submodule/N=32
+      result, NOT a full-engine claim at real large-MoE widths. Software/firmware-
+      insufficient break-even shown at S4. This is the leading criterion but device
+      compute calibration (H2+, A-017, needs real GPU) is still needed to fully close
+      "system-level improvement".
+  B:
+    name: platform_credible_no_accelerator_needed
+    requires: [calibrated_model, strong_baseline, workload_boundary, platform_boundary,
+               software_firmware_break_even, reproducible_no_go_evidence]
+    current_evidence: >-
+      High-bandwidth / low-contention W3 points approach the compute-bound crossover
+      (break-even t*), i.e. an operating region where transfer is hidden. Reported
+      as boundary, not yet a closed no-go (compute-time A-017 open).
+  C:
+    name: platform_identifies_scale_shift
+    example:
+      small_switch_workload: dispatch_hardware_no_go
+      large_trace_offloaded_workload: residency_prefetch_hardware_potentially_useful
+    current_evidence: >-
+      SATISFIED. Small Switch-Transformer workload (S1-S7) was dispatch/control
+      bound with residency benefit modest; large-model routing (Qwen3/DeepSeek/
+      Llama-4/Kimi) is decisively transfer-bound with 75-98% prefetch stall
+      reduction. The platform correctly identifies the workload-scale bottleneck
+      shift from control to expert-weight movement.
+
+generalization:
+  holdout_model: moonshotai/Kimi-K2-Thinking
+  result: >-
+    Not in the round-1 calibration set. W2 miss reduction 91.2% and W3 stall
+    reduction 92.0% at C=0.5N fall inside the calibration-set range (74.7-98.2%),
+    so the residency/prefetch conclusion generalizes to an unseen 384-expert model.

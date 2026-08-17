@@ -1,0 +1,37 @@
+{
+  "acceptance_scope": "real vLLM worker fused-path scheduler steps with routed-expert output",
+  "correlated_scheduler_step_count": 9,
+  "extra_worker_annotation_ids_without_scheduler_routing": [
+    9,
+    10
+  ],
+  "failure_count": 0,
+  "failures": [],
+  "global_checks": {
+    "annotation_correlation_ids_unique": true,
+    "chunk_token_continuity": true,
+    "forward_step_ids_contiguous": true,
+    "kernel_launch_correlations_disjoint_across_steps": true,
+    "phase_order_monotonic": true,
+    "scheduler_iterations_contiguous": true
+  },
+  "raw_unchanged": true,
+  "scheduler_step_count": 9,
+  "schema_version": "phase7-step-kernel-correlation-v1",
+  "status": "PASS",
+  "tool_revision": "resolve-step-trace-correlation-v2",
+  "trace_files": [
+    "profiler/worker/request-0001__measured-01_dp0_pp0_tp0_dcp0_ep0_rank0.1786471937571012004.pt.trace.json.gz"
+  ],
+  "warning_count": 1,
+  "warnings": [
+    {
+      "interpretation": "worker execute_model annotations outside routed scheduler outputs are preserved but excluded from the routing-correlation acceptance scope",
+      "name": "worker_annotations_without_scheduler_routing",
+      "observed": [
+        9,
+        10
+      ]
+    }
+  ]
+}

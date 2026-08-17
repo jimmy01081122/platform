@@ -1,0 +1,26 @@
+{
+  "cpu_offload_gb": 1.0,
+  "cpu_offload_params": [
+    "experts"
+  ],
+  "dtype": "bfloat16",
+  "enable_expert_parallel": false,
+  "enable_prefix_caching": false,
+  "enable_return_routed_experts": true,
+  "enforce_eager": true,
+  "gpu_memory_utilization": 0.97,
+  "kv_cache_dtype": "auto",
+  "load_format": "safetensors",
+  "max_model_len": 32768,
+  "max_num_batched_tokens": 256,
+  "max_num_seqs": 1,
+  "model": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "offload_backend": "uva",
+  "pipeline_parallel_size": 1,
+  "quantization": null,
+  "safetensors_prefetch_block_size": 16777216,
+  "safetensors_prefetch_num_threads": 1,
+  "seed": 0,
+  "tensor_parallel_size": 1,
+  "trust_remote_code": false
+}

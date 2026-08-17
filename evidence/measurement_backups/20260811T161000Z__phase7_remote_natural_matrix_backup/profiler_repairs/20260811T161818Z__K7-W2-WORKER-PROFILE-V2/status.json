@@ -1,0 +1,12 @@
+{
+  "finished_at_utc": "2026-08-11T16:19:43Z",
+  "logical_request_id": "K7-W2-worker-profile-v2",
+  "measured_count": 1,
+  "phase": "complete",
+  "request_count_per_sequence": null,
+  "request_plan_id": null,
+  "sequence_count": null,
+  "status": "PASS",
+  "total_completed_requests": 1,
+  "warmup_count": 0
+}

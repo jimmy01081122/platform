@@ -1,0 +1,79 @@
+{
+  "adoption_allowed": true,
+  "checks": [
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "manifest.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "SERVING_VARIANT",
+      "name": "runtime_class",
+      "observed": "SERVING_VARIANT",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 3,
+      "name": "request_count",
+      "observed": 3,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "request_ids_unique",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": [],
+      "name": "request_errors",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "positive_output_lengths",
+      "observed": [
+        32
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": [],
+      "name": "timing_order",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=1",
+      "name": "observed_max_overlap",
+      "observed": 1,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=2",
+      "name": "telemetry_rows",
+      "observed": 5,
+      "status": "PASS"
+    }
+  ],
+  "critical_failure_count": 0,
+  "critical_failures": [],
+  "raw_unchanged": true,
+  "routing_summary": {
+    "present": false
+  },
+  "schema_version": "phase7-serving-burst-review-v1",
+  "status": "PASS",
+  "tool_revision": "serving-burst-review-v1"
+}

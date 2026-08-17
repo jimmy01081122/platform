@@ -1,0 +1,15 @@
+{
+  "actual_offloaded_bytes": [
+    1879048192,
+    2818572288,
+    4697620480,
+    10334765056
+  ],
+  "correctness_equivalence": "PASS",
+  "held_out_point": "PASS",
+  "next_ready_unit": "OFF-W3",
+  "raw_file_set_sha256": "dd36f96a4cad1c917ba69155eb996adbc548bb7beee68b663c7be42fd0f9911f",
+  "reviewed_at_utc": "2026-08-14T02:29:29Z",
+  "schema_version": "phase7-combined-master-off-w2-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

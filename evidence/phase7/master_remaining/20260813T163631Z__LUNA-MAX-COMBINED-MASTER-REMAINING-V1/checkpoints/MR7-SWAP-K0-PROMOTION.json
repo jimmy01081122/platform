@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR7-SWAP-K0-PROMOTION",
+  "execution_ledger_sha256": "c115b986e2828f9bafc3e78170c36f4d04ec6ffe5b294906a186c021050130cb",
+  "next_ready_gpu_unit": "SWAP-K1",
+  "remaining_ledger_sha256": "3cc0da788817c10ad629b9fb5d556934cdd8b9d2d68211a0dadad0fdd083e3ef",
+  "required_closed_count": 11,
+  "required_remaining_count": 275,
+  "review": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/reviews/MR7-SWAP-K0-MASTER.json",
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T00:08:31Z"
+}

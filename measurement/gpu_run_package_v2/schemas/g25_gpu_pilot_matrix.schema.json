@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_gpu_pilot_matrix.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "matrix_revision", "suite", "stage", "task", "logical_pass", "instances", "frozen_rendered_inputs", "ceilings", "executions_per_cell", "expected_cells", "schedule", "early_success_stop", "per_sample_ceiling", "answer_correctness_affects_dispatch_or_selection", "r4_cell_or_generation_reuse", "ceiling_above_512"],
+  "properties": {
+    "schema_version": {"const": "g25-gpu-pilot-matrix-v1"},
+    "matrix_revision": {"type": "string"},
+    "suite": {"const": "granite_c1_smoke_v1"},
+    "stage": {"const": "C1-A"},
+    "task": {"const": "T1"},
+    "logical_pass": {"const": "P0"},
+    "instances": {"const": ["c1a-t1-00", "c1a-t1-01", "c1a-t1-02", "c1a-t1-03"]},
+    "frozen_rendered_inputs": {
+      "type": "object", "additionalProperties": false,
+      "required": ["c1a-t1-00", "c1a-t1-01", "c1a-t1-02", "c1a-t1-03"],
+      "properties": {
+        "c1a-t1-00": {"$ref": "#/$defs/renderedInput"},
+        "c1a-t1-01": {"$ref": "#/$defs/renderedInput"},
+        "c1a-t1-02": {"$ref": "#/$defs/renderedInput"},
+        "c1a-t1-03": {"$ref": "#/$defs/renderedInput"}
+      }
+    },
+    "ceilings": {"const": [256, 384, 512]},
+    "executions_per_cell": {"const": 1},
+    "expected_cells": {"const": 12},
+    "schedule": {"const": "ceiling_ascending_then_instance_ascending_full_cartesian"},
+    "early_success_stop": {"const": false},
+    "per_sample_ceiling": {"const": false},
+    "answer_correctness_affects_dispatch_or_selection": {"const": false},
+    "r4_cell_or_generation_reuse": {"const": false},
+    "ceiling_above_512": {"const": false}
+  },
+  "$defs": {
+    "renderedInput": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rendered_chat_sha256", "input_token_count", "input_token_ids_sha256"],
+      "properties": {
+        "rendered_chat_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "input_token_count": {"type": "integer", "minimum": 1},
+        "input_token_ids_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

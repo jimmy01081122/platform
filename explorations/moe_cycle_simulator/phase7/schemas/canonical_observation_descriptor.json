@@ -1,0 +1,84 @@
+{
+  "schema_id": "phase7-canonical-observation",
+  "schema_version": "1",
+  "field_order": [
+    "observation_id",
+    "pass_id",
+    "source_clock_id",
+    "source_timestamp",
+    "aligned_time_fs",
+    "alignment_id",
+    "alignment_grade",
+    "alignment_use",
+    "request_id",
+    "rank",
+    "stream_id",
+    "correlation_id",
+    "observability",
+    "evidence_class",
+    "runtime_variant_hash",
+    "raw_source_sha256"
+  ],
+  "logical_types": [
+    "utf8",
+    "pass-id",
+    "utf8",
+    "u128-decimal",
+    "u128-decimal",
+    "utf8",
+    "alignment-grade",
+    "alignment-use",
+    "nullable-utf8",
+    "nullable-uint32",
+    "nullable-utf8",
+    "nullable-utf8",
+    "observability-v1",
+    "evidence-class",
+    "sha256",
+    "sha256"
+  ],
+  "nullability": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+  ],
+  "units": [
+    null,
+    null,
+    null,
+    "source-clock-unit",
+    "femtosecond",
+    null,
+    null,
+    null,
+    null,
+    "rank",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "semantic_metadata": {
+    "authority": "CPU_SYNTHETIC_SCHEMA_ONLY",
+    "string_normalization": "NFC"
+  },
+  "primary_key": [
+    "observation_id"
+  ]
+}
+

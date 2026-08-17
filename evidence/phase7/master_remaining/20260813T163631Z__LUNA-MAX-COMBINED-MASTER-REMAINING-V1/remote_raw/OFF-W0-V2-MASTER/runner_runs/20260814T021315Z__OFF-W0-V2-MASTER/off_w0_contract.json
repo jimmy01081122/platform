@@ -1,0 +1,58 @@
+{
+  "schema_version": "phase7-off-w0-capability-contract-v1",
+  "contract_state": "FROZEN_BEFORE_EXECUTION",
+  "canonical_experiment_id": "OFF-W0",
+  "scientific_question": "Does installed vLLM 0.23.0 execute runtime-native CPU weight offload for expert parameters under a bounded UVA configuration while preserving request and routing semantics?",
+  "model": {
+    "path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "dtype": "bfloat16"
+  },
+  "expert_catalog": {
+    "source_sha256": "9e7548cf9349972368b423a3fa8273dd30dc77c23722c99bc5e57ee99dc0a104",
+    "object_count": 256,
+    "object_bytes": 352321536,
+    "total_expert_bytes": 90194313216
+  },
+  "runtime": {
+    "vllm_version": "0.23.0",
+    "offload_backend": "uva",
+    "cpu_offload_gb_requested": 1.0,
+    "cpu_offload_params": ["experts"],
+    "budget_semantics": "Maximum is checked before each selected parameter; a single fused parameter may cross the nominal byte limit and actual logged bytes must be retained.",
+    "uva_semantics": "Selected parameters move to pinned CPU memory when supported and receive accelerator views; otherwise functional_call copies selected state on demand.",
+    "not_dynamic_expert_policy": true
+  },
+  "canary": {
+    "runtime_class": "ROUTING",
+    "input_tokens": 128,
+    "output_tokens": 32,
+    "sampling_mode": "FORCED_LENGTH_CONTROLLED",
+    "warmup_count": 0,
+    "measured_count": 1,
+    "max_num_seqs": 1,
+    "max_num_batched_tokens": 256,
+    "gpu_memory_utilization": 0.97,
+    "enable_expert_parallel": false,
+    "enable_prefix_caching": false,
+    "enforce_eager": true
+  },
+  "positive_gate": [
+    "source hashes match",
+    "resolved/requested backend is uva with 1.0 GiB and experts filter",
+    "runtime log reports positive Total CPU offloaded parameters",
+    "one routing request completes 128 input and 32 forced output tokens with length finish",
+    "terminal GPU cleanup has no compute process"
+  ],
+  "predeclared_outcomes": [
+    "RUNTIME_NATIVE_CPU_WEIGHT_OFFLOAD_AVAILABLE",
+    "RUNTIME_CPU_WEIGHT_OFFLOAD_UNAVAILABLE_WITH_CONSEQUENCE",
+    "TECHNICAL_FAILURE_REQUIRES_REPAIR"
+  ],
+  "source_contract": [
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/config/offload.py", "sha256": "6f2db3d9a2730588473d5155811690c6241b167a21dcb62fbbd9ebb6386de42c"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/base.py", "sha256": "19b85dd4dd4b69ce26f8a2148f06717d6415070515c4c4fba86b60ec49842a1a"},
+    {"path": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/uva.py", "sha256": "3694e031dd231566671eadf61c27bd4ac14b66878ca3d16e0bef34f50e4f72ec"}
+  ],
+  "claim_boundary": "Runtime-native generic/selective CPU weight-offload capability only; not route-conditioned dynamic expert residency and not a performance comparison. OFF-W1/2/3 require independent frozen controls, byte-budget sweep and representative profiler comparison."
+}

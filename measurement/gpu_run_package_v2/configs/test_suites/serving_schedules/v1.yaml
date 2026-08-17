@@ -1,0 +1,26 @@
+schema_version: serving-schedules-v1
+schedule_revision: v1.0.0
+seed: 20260718
+schedules:
+  serial:
+    arrival_process: fixed
+    interarrival_ms: 1000
+    concurrency: 1
+    request_count: 16
+  steady_four:
+    arrival_process: fixed
+    interarrival_ms: 50
+    concurrency: 4
+    request_count: 64
+  seeded_bursts:
+    arrival_process: deterministic_burst
+    bursts: [1, 8, 2, 16]
+    inter_burst_ms: 500
+    concurrency: 8
+    request_count: 27
+  seeded_poisson_proxy:
+    arrival_process: precomputed_exponential_interarrival
+    interarrival_ms: [17, 63, 4, 28, 91, 12, 35, 7]
+    repeat_pattern: true
+    concurrency: 8
+    request_count: 64

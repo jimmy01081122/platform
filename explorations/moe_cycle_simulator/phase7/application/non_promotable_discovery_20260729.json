@@ -1,0 +1,18 @@
+{
+  "schema_version": "moe-simulator-phase7-non-promotable-discovery-v1",
+  "classification": "NON_PROMOTABLE_DISCOVERY",
+  "authority_status_at_capture": "NOT_FORMALLY_BOUND",
+  "promotion_eligible": false,
+  "formal_evidence_input_allowed": false,
+  "planning_use_only": true,
+  "raw_capture_retained": false,
+  "raw_capture_sha256": null,
+  "known_planning_observations": [
+    "an SSH transport was reachable during an informal planning query",
+    "the reported GPU product matched the requested RTX PRO 6000 family",
+    "the queried image did not expose the required vLLM runtime",
+    "the queried workspace was instance-lifetime storage"
+  ],
+  "superseded_by_formal_d0_session": null,
+  "required_disposition": "A fresh D0 session must recapture every formal field. No value from this record may populate formal environment provenance."
+}

@@ -1,0 +1,16 @@
+VALIDATION_STOPPED_ACCEPTED
+stopped_at_utc=2026-08-09T17:49:37Z
+reason=user_manual_comparison_accepted_all
+copy_completed=true
+file_count=28
+shard_count=19
+incomplete_count=0
+pt_count=0
+source_rehash_completed=28
+source_static_during_copy=true
+destination_hash_completed=16
+destination_hash_total=28
+destination_full_hash_waived_by_user=true
+model_smoke_test=MODEL_SMOKE_TEST_PASS
+formal_measurement_started=false
+destination=/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors

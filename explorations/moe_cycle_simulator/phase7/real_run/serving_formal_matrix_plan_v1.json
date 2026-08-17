@@ -1,0 +1,98 @@
+{
+  "schema_version": "phase7-serving-formal-matrix-plan-v1",
+  "plan_id": "SERVING-FORMAL-MATRIX-V1",
+  "status": "FROZEN_BEFORE_NEW_RESULTS",
+  "model_workload": {
+    "sampling_mode": "NATURAL_EOS_CAPPED",
+    "model_input_tokens": 128,
+    "model_output_tokens_cap": 32,
+    "max_num_batched_tokens": 1024,
+    "max_num_seqs": 8
+  },
+  "sample_rule": {
+    "minimum_completed_requests_per_condition": 1000,
+    "maximum_requests_if_p99_ci_unstable": 10000,
+    "failed_rejected_censored_remain_in_denominator": true
+  },
+  "p99_ci_rule": {
+    "metrics": ["ttft_ns", "completion_latency_ns", "queue_delay_ns_when_observable"],
+    "bootstrap": "percentile",
+    "confidence": 0.95,
+    "resamples": 10000,
+    "fixed_seed": 20260812,
+    "metric_seed_derivation": "base fixed_seed plus metric index in [0,1,2]",
+    "max_relative_half_width_to_point_p99": 0.05,
+    "extension": "same_frozen_request_sequence_or_arrival_stream"
+  },
+  "conditions": {
+    "SERV-C0": {
+      "mode": "CLOSED_LOOP_BURST",
+      "purpose": "closed-loop concurrency scaling",
+      "concurrency": [1, 2, 4, 8],
+      "requests_per_condition": 1000,
+      "bursts_by_concurrency": {"1": 1000, "2": 500, "4": 250, "8": 125},
+      "warmup": "one warmup burst retained but excluded"
+    },
+    "SERV-B0": {
+      "mode": "CLOSED_LOOP_BURST",
+      "purpose": "fixed batch scaling",
+      "fixed_batch": [1, 2, 4, 8],
+      "requests_per_condition": 1000,
+      "bursts_by_batch": {"1": 1000, "2": 500, "4": 250, "8": 125},
+      "warmup": "one warmup burst retained but excluded"
+    },
+    "SERV-U0": {
+      "mode": "CLOSED_LOOP_BURST",
+      "purpose": "burst absorption and recovery",
+      "burst_size": [32, 64],
+      "requests_per_condition": {"32": 1024, "64": 1024},
+      "bursts_by_size": {"32": 32, "64": 16},
+      "warmup": "one warmup burst retained but excluded"
+    },
+    "SERV-M0": {
+      "mode": "POISSON_OPEN_LOOP",
+      "purpose": "mixed-length head-of-line blocking and tail",
+      "frozen_request_plan": "serving_s4_mixed_plan_v1.json",
+      "request_mix": ["short", "medium", "long-prefill", "decode-heavy"],
+      "engine_limits": {"max_num_seqs": 8, "max_num_batched_tokens": 4096},
+      "load_rates_rps": {
+        "low": 1.0472460793856333,
+        "medium": 2.0944921587712665,
+        "high": 3.1417382381568997
+      },
+      "arrival_seeds": {"low": 20260813, "medium": 20260814, "high": 20260815},
+      "requests_per_condition": 1000
+    },
+    "SERV-T0": {
+      "mode": "CLOSED_LOOP_BURST",
+      "purpose": "state-dependent latency",
+      "states": ["cold", "warm", "steady"],
+      "requests_per_condition": 1000,
+      "state_binding": {
+        "cold": "no_warmup_burst",
+        "warm": "one_warmup_burst_excluded",
+        "steady": "three_warmup_bursts_excluded"
+      },
+      "concurrency": 4,
+      "bursts": 250
+    },
+    "SERV-S0": {
+      "mode": "CLOSED_LOOP_BURST",
+      "purpose": "canonical scheduler and explicitly named variants",
+      "variants": {
+        "canonical": {"max_num_seqs": 8, "max_num_batched_tokens": 1024},
+        "batch_tokens_512": {"max_num_seqs": 8, "max_num_batched_tokens": 512},
+        "batch_tokens_2048": {"max_num_seqs": 8, "max_num_batched_tokens": 2048}
+      },
+      "requests_per_condition": 1000,
+      "concurrency": 4,
+      "bursts": 250,
+      "warmup": "one warmup burst retained but excluded",
+      "canonical_separate_from_variants": true
+    }
+  },
+  "formal_benchmark_release": {
+    "GSM8K_LongBench_HumanEval_BigCodeBench": "BLOCKED_UNTIL_OWNER_RELEASE",
+    "dispatch_allowed": false
+  }
+}

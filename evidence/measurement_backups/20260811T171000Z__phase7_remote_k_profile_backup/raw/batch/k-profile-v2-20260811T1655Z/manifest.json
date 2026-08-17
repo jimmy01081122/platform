@@ -1,0 +1,141 @@
+{
+  "batch_id": "k-profile-v2-20260811T1655Z",
+  "canary_rule": "two bounded output tokens per target shape to require a separable prefill/decode marker; canary excluded from fit/held-out",
+  "created_at_utc": "2026-08-11T16:54:32.743142+00:00",
+  "execution_plan": [
+    [
+      "K0-F0-CANARY",
+      "F0",
+      "prompt",
+      "F0_canary.txt",
+      2,
+      96,
+      "fit",
+      "bounded_profiler_canary"
+    ],
+    [
+      "K0-F0",
+      "F0",
+      "prompt",
+      "F0_canary.txt",
+      32,
+      96,
+      "fit",
+      "formal"
+    ],
+    [
+      "K1-P0-128-CANARY",
+      "P0-128",
+      "input",
+      null,
+      2,
+      96,
+      "fit",
+      "bounded_profiler_canary"
+    ],
+    [
+      "K1-P0-128",
+      "P0-128",
+      "input",
+      null,
+      32,
+      96,
+      "fit",
+      "formal"
+    ],
+    [
+      "K2-P0-8192-CANARY",
+      "P0-8192",
+      "input",
+      null,
+      2,
+      96,
+      "fit",
+      "bounded_profiler_canary"
+    ],
+    [
+      "K2-P0-8192",
+      "P0-8192",
+      "input",
+      null,
+      32,
+      96,
+      "fit",
+      "formal"
+    ],
+    [
+      "K3-P1-28672-CANARY",
+      "P1-28672",
+      "input",
+      null,
+      2,
+      144,
+      "held-out",
+      "bounded_profiler_canary"
+    ],
+    [
+      "K3-P1-28672",
+      "P1-28672",
+      "input",
+      null,
+      32,
+      144,
+      "held-out",
+      "formal"
+    ],
+    [
+      "K4-DEC0-512-CANARY",
+      "DEC0-512",
+      "input",
+      null,
+      2,
+      96,
+      "fit",
+      "bounded_profiler_canary"
+    ],
+    [
+      "K4-DEC0-512",
+      "DEC0-512",
+      "input",
+      null,
+      512,
+      96,
+      "fit",
+      "formal"
+    ],
+    [
+      "K5-DEC1-1024-CANARY",
+      "DEC1-1024",
+      "input",
+      null,
+      2,
+      96,
+      "held-out",
+      "bounded_profiler_canary"
+    ],
+    [
+      "K5-DEC1-1024",
+      "DEC1-1024",
+      "input",
+      null,
+      1024,
+      96,
+      "held-out",
+      "formal"
+    ]
+  ],
+  "fit_held_out_lock": {
+    "K0-F0": "fit",
+    "K1-P0-128": "fit",
+    "K2-P0-8192": "fit",
+    "K3-P1-28672": "held-out",
+    "K4-DEC0-512": "fit",
+    "K5-DEC1-1024": "held-out"
+  },
+  "fixture_root": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/gpu-kernel-v1",
+  "instrumentation": "KERNEL_PROFILE / vllm.EngineCore worker torch.profiler",
+  "runner_path": "/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner_patch_v3.py",
+  "sampling_mode": "FORCED_LENGTH_CONTROLLED",
+  "schema_version": "phase7-kernel-profile-batch-v1",
+  "scope": "end-to-end GPU model profiler evidence; not formal dataset benchmark"
+}

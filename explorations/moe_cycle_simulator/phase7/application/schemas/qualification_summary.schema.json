@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qualification_summary.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "contract_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "environment_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "fresh_process_identity_count": {"const": 3},
+    "launch_count": {"const": 3},
+    "launches": {"maxItems": 3, "minItems": 3, "type": "array"},
+    "model_ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "resume_used": {"const": false},
+    "retry_used": {"const": false},
+    "runtime_variant_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "schema_version": {"const": "moe-simulator-phase7-m0-qualification-summary-v1"},
+    "session_id": {"type": "string"},
+    "status": {"const": "COMPLETE"}
+  },
+  "required": ["schema_version", "status", "session_id", "contract_sha256", "runtime_variant_sha256", "model_ledger_sha256", "environment_sha256", "launch_count", "fresh_process_identity_count", "retry_used", "resume_used", "launches"],
+  "type": "object"
+}

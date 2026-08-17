@@ -1,0 +1,23 @@
+{
+  "checkpoint_id": "MR7-SWAP-K2-FIT-50-SWAP-K2-FIT-50-V1-MASTER-PROMOTION",
+  "execution_ledger_sha256": "ad6bbf334929e418d65117dcbca03dce8d704911dfefcc93beac35aeadea9f51",
+  "matrix_completed_points": [
+    "FIT-25",
+    "FIT-50"
+  ],
+  "matrix_missing_points": [
+    "FIT-75",
+    "FIT-100",
+    "HELDOUT-37.5",
+    "HELDOUT-62.5",
+    "HELDOUT-87.5"
+  ],
+  "next_ready_gpu_unit": "SWAP-K2",
+  "point_id": "FIT-50",
+  "raw_file_set_sha256": "819592222df7d2c97977323929027baf5ed772c4c3236ae0ac61500aa6567105",
+  "remaining_ledger_sha256": "e2641089374664d409e44bd0cd79274c34ca844e1fcac2f4e95863ac41fe6b06",
+  "required_closed_count": 12,
+  "required_remaining_count": 274,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T00:57:23Z"
+}

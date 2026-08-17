@@ -1,0 +1,66 @@
+{
+  "schema_version": "moe-simulator-phase7-m0-execution-contract-v1",
+  "target": {
+    "gpu_count": 1,
+    "exact_product_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "minimum_memory_bytes": 96000000000
+  },
+  "model": {
+    "model_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "repository_commit": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "precision": "BF16",
+    "quantization": null
+  },
+  "engine": {
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "max_model_length": 32768,
+    "max_batched_tokens": 32768,
+    "max_sequences": 1,
+    "cpu_offload_gb": 0,
+    "swap_space_gb": 0,
+    "kv_cache_dtype": "bfloat16",
+    "enforce_eager": true,
+    "generation_config": "vllm"
+  },
+  "probe": {
+    "input_tokens": 28672,
+    "output_tokens": 4096,
+    "repetitions": 3,
+    "seed": 0,
+    "temperature": "0",
+    "top_p": "1",
+    "ignore_eos": true,
+    "required_finish_reason": "length",
+    "required_stop_reason": null,
+    "cleanup_memory_tolerance_bytes": 268435456
+  },
+  "timeouts": {
+    "materialization_seconds": 4200,
+    "materialization_stage_seconds": 5400,
+    "materialization_work_seconds": 4800,
+    "single_launch_seconds": 3600,
+    "audit_seconds": 600,
+    "m0_work_seconds": 13200,
+    "terminal_reserve_seconds": 1200,
+    "outer_seconds": 14400
+  },
+  "allocation": {
+    "total_seconds": 21600,
+    "start_trigger": "OWNER_RELEASES_FRESH_SSH_HANDOFF",
+    "billing_mode": "PREPAID_FIXED_WINDOW",
+    "extension_allowed": false,
+    "additional_cost_allowed": false,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "release_reserve_seconds": 900
+  },
+  "authority": {
+    "required_materialization_unlock": "OWNER_APPROVED_EXACT_MATERIALIZATION_COMMAND",
+    "required_unlock": "OWNER_APPROVED_EXACT_M0_COMMAND",
+    "fresh_session": true,
+    "resume": false,
+    "retry_failed": false,
+    "m1_through_m4": false
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-provider-adaptation-v1",
+  "adaptation": {
+    "name": "GPUtw Provider Adaptation",
+    "revision": "R1",
+    "status": "CPU_CONTRACT_IMPLEMENTED",
+    "review_status": "PENDING",
+    "base_r12_r5": {
+      "frozen_candidate_commit": "da3d33238365664435664e6ae1d18714e6b68ee2",
+      "review_closure_commit": "87c8a866e44387100dadf9a087cf55a37c7cc9e0",
+      "review_verdict": "GO/GO/GO",
+      "frozen_candidate_immutable": true,
+      "historical_evidence_immutable": true
+    }
+  },
+  "scope": {
+    "purpose": "Adapt prospective Phase 7 D0, Gate M and M0 provider governance to GPUtw.ai semantics before any instance is created.",
+    "included": [
+      "provider billing and lifecycle semantics",
+      "owner execution-budget semantics",
+      "separated provider, instance and SSH gateway identities",
+      "client and server SSH authentication governance",
+      "project-specific host-key acquisition and trust rules",
+      "persistent and instance-local storage semantics",
+      "template and custom-image runtime identity",
+      "owner cost-control caps and port policy",
+      "canonical BF16 M0 preservation"
+    ],
+    "non_goals": [
+      "GPU instance creation or deployment",
+      "SSH connection or host-key probing",
+      "D0 execution",
+      "Gate M execution",
+      "M0 execution, model download or GPU query",
+      "scientific simulator architecture changes",
+      "FP8, quantization or CPU-offload fallback",
+      "calibration, DSE, RTL or Phase 8 work"
+    ]
+  },
+  "state": {
+    "r12_r5": "IMMUTABLE_GO/GO/GO",
+    "provider_adaptation": "CPU_CONTRACT_IMPLEMENTED",
+    "provider_adaptation_review": "PENDING",
+    "d0_application_instantiation": "BLOCKED_PENDING_PROVIDER_ADAPTATION_REVIEW_AND_LIVE_INPUTS",
+    "d0_execution": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE"
+  },
+  "provider_semantics": {
+    "provider": "GPUtw.ai",
+    "execution_environment": "DEDICATED_GPU_CONTAINER_INSTANCE",
+    "billing_model": "PREPAID_METERED",
+    "compute_billing": "ACCRUES_WHILE_INSTANCE_IS_RUNNING",
+    "billing_termination_actions": [
+      "STOP",
+      "DELETE"
+    ],
+    "stop_or_delete_ends_future_compute_billing": true,
+    "provider_fixed_lease_seconds": "NONE_OBSERVED",
+    "provider_grace_period": "NOT_APPLICABLE"
+  },
+  "owner_execution_envelope": {
+    "owner_execution_budget_seconds": 21600,
+    "owner_execution_budget_type": "HARD_CAP",
+    "semantic_role": "OWNER_IMPOSED_EXECUTION_ENVELOPE",
+    "provider_lease_semantics": "NOT_A_PROVIDER_LEASE",
+    "provider_lease_seconds": "NONE_OBSERVED",
+    "provider_grace_credit": "NONE",
+    "stage_bounds_seconds": {
+      "D0": 300,
+      "Gate M": 5400,
+      "M0": 14400,
+      "release": 900
+    },
+    "bounded_work_seconds": 21000,
+    "remaining_slack_seconds": 600,
+    "stage_bounds_are_provider_guarantees": false,
+    "over_budget_action": "STOP_AND_SEAL_WITHOUT_PASS_CREDIT"
+  },
+  "identity_model": {
+    "provider_identity": {
+      "provider": "GPUtw.ai"
+    },
+    "instance_identity": {
+      "instance_id": null,
+      "catalog_gpu_id": null,
+      "node_id_if_exposed": null,
+      "template_id_or_custom_image": null,
+      "instance_state": "UNOBSERVED"
+    },
+    "ssh_gateway_identity": {
+      "host": "ssh.gputw.ai",
+      "port": 2222,
+      "principal_template": "pod-<instance-id>",
+      "identity_semantics": "GATEWAY_HOST_AND_INSTANCE_PRINCIPAL",
+      "ip_only_identity": false
+    },
+    "client_authentication": {
+      "method": "SSH_PUBLIC_KEY",
+      "account_public_key_registered": "CONFIRMED_BY_OWNER",
+      "credential_provisioning_required": false,
+      "workflow_must_generate_keys": false,
+      "workflow_must_upload_keys": false,
+      "workflow_must_modify_provider_credentials": false,
+      "private_key_material_policy": "FORBIDDEN_IN_REPOSITORY_EVIDENCE_LOGS_MANIFESTS_AND_ARTIFACTS"
+    },
+    "server_authentication": {
+      "gateway_host_key_status": "UNRESOLVED",
+      "trusted_gateway_host_key_sha256": null,
+      "trusted_provenance": null,
+      "d0_ssh_authority": "NONE"
+    }
+  },
+  "host_key_governance": {
+    "gateway_endpoint": "[ssh.gputw.ai]:2222",
+    "existing_known_hosts_entry_policy": "MAY_BE_OBSERVED_DOES_NOT_ESTABLISH_TRUST_PROVENANCE",
+    "ssh_keyscan_policy": "MAY_COLLECT_OBSERVATION_MUST_NOT_ESTABLISH_TRUST_BY_ITSELF",
+    "trusted_host_key_sources": [
+      "AUTHENTICATED_PROVIDER_DASHBOARD",
+      "OFFICIAL_PROVIDER_SUPPORT_RESPONSE",
+      "OFFICIAL_PROVIDER_DOCUMENTATION",
+      "INDEPENDENTLY_AUTHENTICATED_PROVIDER_CHANNEL"
+    ],
+    "trust_requirement": "INDEPENDENT_TRUSTED_PROVENANCE_REQUIRED",
+    "project_specific_artifact": {
+      "formal_path": "phase7/application/known_hosts.gputw",
+      "template_path": "known_hosts.gputw.template",
+      "status": "REQUIRED_NOT_PRESENT",
+      "contains_only_required_gateway_entry": "FUTURE_REQUIREMENT",
+      "checksum_bound_before_formal_d0": true,
+      "personal_known_hosts_file_allowed": false
+    },
+    "strict_ssh_options": {
+      "user_known_hosts_file": "PROJECT_SPECIFIC_FROZEN_ARTIFACT",
+      "strict_host_key_checking": "yes",
+      "connection_allowed_while_unresolved": false
+    },
+    "unresolved_behavior": {
+      "gateway_host_key_status": "UNRESOLVED",
+      "d0_ssh_authority": "NONE",
+      "d0_may_proceed": false
+    }
+  },
+  "storage_semantics": {
+    "persistent_domain": {
+      "path": "/vault",
+      "persistence_semantics": "PERSISTENT_ACCORDING_TO_PROVIDER_SEMANTICS",
+      "intended_contents": [
+        "model snapshots",
+        "datasets",
+        "formal evidence"
+      ],
+      "actual_mount_identity": null,
+      "capacity_bytes": null,
+      "free_bytes": null,
+      "live_measurement_status": "D0_LIVE_FIELD_REQUIRED"
+    },
+    "instance_local_domain": {
+      "paths": [
+        "/workspace",
+        "container-local storage"
+      ],
+      "persistence_semantics": "TIED_TO_INSTANCE_OR_NODE_LIFECYCLE",
+      "persistence_assumption": "FORBIDDEN",
+      "intended_contents": [
+        "rebuildable scratch"
+      ]
+    },
+    "credentials_in_either_domain": "FORBIDDEN"
+  },
+  "runtime_image_identity": {
+    "selected_mode": "UNRESOLVED",
+    "supported_modes": [
+      "TEMPLATE",
+      "CUSTOM_IMAGE"
+    ],
+    "template": {
+      "mode": "TEMPLATE",
+      "template_id": null,
+      "observed_runtime_identity": null,
+      "identity_status": "D0_LIVE_FIELD_REQUIRED"
+    },
+    "custom_image": {
+      "mode": "CUSTOM_IMAGE",
+      "immutable_image_reference": null,
+      "non_latest_tag_or_digest": null,
+      "observed_runtime_identity": null,
+      "identity_status": "D0_LIVE_FIELD_REQUIRED"
+    },
+    "mutable_tag_policy": "MUTABLE_TAG_MUST_NOT_BE_TREATED_AS_TRUSTED_RUNTIME_IDENTITY",
+    "live_identity_fields": [
+      "container identity",
+      "CUDA identity",
+      "driver identity",
+      "Python identity",
+      "vLLM identity",
+      "backend identity"
+    ]
+  },
+  "lifecycle_and_billing_authority": {
+    "STOP": {
+      "permitted": true,
+      "role": "CONTROL_PLANE_BILLING_TERMINATION",
+      "ends_future_compute_billing": true,
+      "compute_authority_after_stop": "NONE",
+      "live_identity_after_stop": "NOT_VALID"
+    },
+    "DELETE": {
+      "permitted": true,
+      "role": "CONTROL_PLANE_INSTANCE_TERMINATION",
+      "ends_future_compute_billing": true,
+      "compute_authority_after_delete": "NONE",
+      "live_identity_after_delete": "NOT_VALID"
+    },
+    "RESTART": {
+      "permitted": true,
+      "previous_d0_live_authority_inherited": false,
+      "requires_live_environment_revalidation": true,
+      "revalidation_required_before_use": true,
+      "identities_not_assumed_stable": [
+        "instance",
+        "node",
+        "GPU",
+        "container",
+        "runtime",
+        "storage"
+      ],
+      "stale_d0_evidence_action": "FAIL_CLOSED"
+    }
+  },
+  "cost_control": {
+    "current_price_or_availability": "LIVE_DEPLOYMENT_INPUT_NOT_FROZEN",
+    "owner_compute_cost_cap": {
+      "status": "OWNER_INPUT_REQUIRED",
+      "amount": null,
+      "currency": null
+    },
+    "owner_storage_cost_cap": {
+      "status": "OWNER_INPUT_REQUIRED",
+      "amount": null,
+      "currency": null
+    },
+    "owner_port_cost_cap": {
+      "status": "OWNER_INPUT_REQUIRED",
+      "amount": null,
+      "currency": null
+    },
+    "owner_total_cost_cap": {
+      "status": "OWNER_INPUT_REQUIRED",
+      "amount": null,
+      "currency": null
+    },
+    "additional_billable_ports_default": "FORBIDDEN_UNLESS_EXPLICITLY_APPROVED",
+    "price_refresh_required_before_instance_creation": true,
+    "availability_refresh_required_before_instance_creation": true,
+    "extension_or_unapproved_spend": "FORBIDDEN"
+  },
+  "canonical_m0": {
+    "platform_candidate": "RTX PRO 6000 WS 96GB",
+    "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "precision": "BF16",
+    "runtime": "vLLM",
+    "quantization": "NONE",
+    "cpu_offload": "NONE",
+    "automatic_fp8_selection": false,
+    "automatic_quantization_selection": false,
+    "automatic_cpu_offload_selection": false,
+    "capacity_or_runtime_failure_policy": "PRESERVE_CANONICAL_BF16_FAILURE_AS_FORMAL_EVIDENCE",
+    "runtime_variant_policy": "SEPARATE_IDENTITY_APPROVAL_CALIBRATION_AND_EVIDENCE_REQUIRED"
+  },
+  "remaining_live_fields": [
+    "instance_id",
+    "catalog_gpu_id",
+    "node_id_if_exposed",
+    "instance_state",
+    "template_id_or_custom_image",
+    "trusted gateway host key provenance and fingerprint",
+    "project-specific known-hosts artifact and checksum",
+    "actual /vault mount identity",
+    "actual /vault capacity and free space",
+    "container, CUDA, driver, Python, vLLM and backend identities",
+    "owner compute, storage, port and total cost caps",
+    "live price and availability",
+    "instance allocation and lifecycle timestamps"
+  ],
+  "validation_results": {
+    "validation_mode": "CPU_ONLY_NETWORK_FREE",
+    "contract_validator": "PASS",
+    "tests": {
+      "status": "PASS",
+      "test_count": 17,
+      "command": "python3 -m pytest -q tests/test_phase7_gputw_provider_adaptation.py"
+    },
+    "gpu_instance_created": false,
+    "ssh_connection_attempted": false,
+    "ssh_keyscan_attempted": false,
+    "d0_executed": false,
+    "gate_m_executed": false,
+    "m0_executed": false,
+    "gpu_queried": false,
+    "model_downloaded": false,
+    "network_used": false
+  },
+  "next_legal_action": {
+    "action": "OBTAIN_FRESH_PROVIDER_ADAPTATION_REVIEW",
+    "then": [
+      "obtain trusted GPUtw gateway host-key provenance",
+      "instantiate a project-specific known-hosts artifact and checksum",
+      "refresh live price, availability and owner cost caps",
+      "create an instance only under separately approved D0 application"
+    ],
+    "authority_granted_by_this_package": "NONE"
+  },
+  "forbidden_actions": [
+    "create a GPUtw instance",
+    "SSH to GPUtw",
+    "run ssh-keyscan as a trust decision",
+    "use a personal ~/.ssh/known_hosts file for formal D0",
+    "generate, upload or provision SSH credentials",
+    "store private SSH key material anywhere in repository evidence",
+    "execute D0",
+    "execute Gate M",
+    "query or execute GPU work",
+    "download Mixtral",
+    "treat 21600 seconds as a provider lease",
+    "claim provider grace or provider-enforced deadline",
+    "assume restart preserves live D0 authority",
+    "assume instance-local storage is persistent",
+    "silently switch to FP8, quantization or CPU offload"
+  ]
+}

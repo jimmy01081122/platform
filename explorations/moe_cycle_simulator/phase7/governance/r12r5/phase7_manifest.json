@@ -1,0 +1,105 @@
+{
+  "schema_version": "moe-simulator-phase7-governance-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r5-20260802",
+  "goal": "Close exactly the two immutable R12-R4 review blockers and freeze the CPU-tested application/evidence chain for later separately approved RTX PRO 6000 Mixtral BF16 gates.",
+  "scope": [
+    "one captured Gate M parent value across approval hash, strict parse, live validation and M0 binding",
+    "hard-stop on every originless loaded vllm or vllm.* module",
+    "adversarial CPU/mock regression and no-.git archive replay",
+    "all previously reviewed R12-R4 controls unchanged"
+  ],
+  "non_goals": [
+    "live SSH or provider environment disclosure",
+    "Mixtral or benchmark download",
+    "GPU query, model load or inference",
+    "M1 through M4 profiling",
+    "measured capacity, calibration, DSE or platform qualification",
+    "modification or reinterpretation of R12-R3 or R12-R4 evidence"
+  ],
+  "inputs": {
+    "implementation_commit_sha1": "cac2a1967b7a91902c46ee014920d704aec57b1f",
+    "implementation_tree_sha1": "ac33145ad2381a5578fd0ab68eceac2906bbd3a4",
+    "r12r4_review_verdicts": "GO/MODIFY/GO",
+    "r12r4_candidate_ledger_sha256": "4241d872975bbf9f375316765dd5bb159028c1c8fa0cc1bd2d84c1425d339f2a",
+    "nominal_allocation_seconds": 21600,
+    "provider_grace_formal_credit_seconds": 0
+  },
+  "outputs": {
+    "formal_cpu_run": "20260801T183625Z__moe_cycle_simulator_phase7_cpu_governance_r12r5_final__S2",
+    "unit_tests_passed": 126,
+    "application_ledger_members": 72,
+    "application_ledger_sha256": "e16d53444efbc8b21c2d273783f1cffc454ca64825e979fba72ab82023849cf6",
+    "run_ledger_members": 47,
+    "run_ledger_sha256": "82650138b6941803686b1252a2167d50c2d2b412d2b4384aa740aea7034cbd08",
+    "clean_archive_replay": "PASS",
+    "clean_archive_run_ledger_sha256": "7ad4fdb626720b17bf5210aa9ea63916a4ea46fd20ce7af50f3d13f3b487d2a0",
+    "gpu_used": false,
+    "network_used": false,
+    "model_downloaded": false
+  },
+  "dependencies": {
+    "phase6": "same-hash GO CPU-synthetic multi-domain simulator",
+    "r12r4": "immutable same-hash GO/MODIFY/GO review",
+    "ssh": "future exact executable and host key remain live D0 inputs",
+    "vault": "future real mount identity remains live D0 input"
+  },
+  "assumptions": [
+    "The provider may expose 20 to 30 minutes of noncontractual cleanup grace, but it contributes zero formal seconds.",
+    "Server availability does not establish host, runtime, storage, model or GPU eligibility.",
+    "The selected vLLM image and 96 GB GPU may still fail D0, Gate M or M0."
+  ],
+  "unknowns": [
+    "fresh SSH endpoint, host key and allocation timestamps",
+    "absolute remote timeout and Python paths/content hashes",
+    "container image, vLLM, CUDA, driver and backend identity",
+    "actual /vault mount identity and free capacity",
+    "model snapshot ledger and BF16 capacity result"
+  ],
+  "alternative_designs": [
+    "Read-only file modes and a second pathname read were rejected in favor of one bounded descriptor-captured payload.",
+    "Silently ignoring originless module entries was rejected in favor of fail-closed complete loaded-module coverage."
+  ],
+  "risks": [
+    "Live remote and runtime identities remain unobserved.",
+    "The exact runtime or model may not be preinstalled and materialization may exceed its bound.",
+    "The 96 GB device may not satisfy all-resident Mixtral BF16.",
+    "Any live identity, deadline, checksum, capacity or audit failure terminates that fresh chain."
+  ],
+  "validation_method": [
+    "126 CPU unit and adversarial tests",
+    "draft and negative readiness validators",
+    "application and run exact-set replay",
+    "clean archive run creation without .git",
+    "three-role identical-ledger review"
+  ],
+  "acceptance_criteria": [
+    "candidate exact-set validator PASS",
+    "clean archive regression and run replay PASS",
+    "Architecture/System GO with empty blockers",
+    "Model/Benchmark GO with empty blockers",
+    "Trace/Provenance GO with empty blockers",
+    "no SSH, network, model or GPU side effect during review"
+  ],
+  "estimated_resources": {
+    "review_execution": "CPU-only, under ten minutes",
+    "future_paid_window": "exactly 21600 purchased seconds; no extension or additional cost",
+    "post_window_grace": "non-guaranteed cleanup/release/transfer only; zero formal credit"
+  },
+  "owner_decisions": [
+    "Use one RTX PRO 6000 Blackwell Workstation Edition and the vLLM environment.",
+    "Use no more than the purchased six hours and incur no additional charge.",
+    "Use /vault for persistent model and evidence artifacts.",
+    "Pause and notify the owner when GPU execution becomes ready."
+  ],
+  "next_legal_action": "After identical-ledger GO/GO/GO and push, wait for a fresh SSH handoff and separately approved exact D0.",
+  "forbidden_actions": [
+    "SSH before the fresh handoff and exact D0 approval",
+    "remote write or materialization under D0 authority",
+    "GPU query or workload before separately approved M0",
+    "allocation extension, retry, resume or added cost",
+    "using provider grace for formal work or PASS",
+    "modifying frozen historical evidence"
+  ],
+  "status": "candidate_unreviewed",
+  "gpu_authority": "NONE"
+}

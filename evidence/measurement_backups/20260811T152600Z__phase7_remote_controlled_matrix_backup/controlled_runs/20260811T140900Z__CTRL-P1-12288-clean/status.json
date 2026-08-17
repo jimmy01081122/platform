@@ -1,0 +1,8 @@
+{
+  "finished_at_utc": "2026-08-11T14:09:48Z",
+  "logical_request_id": "P1-12288-clean",
+  "measured_count": 3,
+  "phase": "complete",
+  "status": "PASS",
+  "warmup_count": 1
+}

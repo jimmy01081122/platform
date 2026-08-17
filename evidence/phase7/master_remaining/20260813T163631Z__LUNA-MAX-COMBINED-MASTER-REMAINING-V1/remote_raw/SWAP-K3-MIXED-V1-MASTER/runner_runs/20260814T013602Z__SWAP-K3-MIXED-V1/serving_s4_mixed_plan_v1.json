@@ -1,0 +1,26 @@
+{
+  "schema_version": "phase7-serving-frozen-mixed-plan-v1",
+  "plan_id": "S4-short-medium-long-decode-v1",
+  "requests": [
+    {
+      "class": "short",
+      "input_tokens": 128,
+      "output_tokens": 32
+    },
+    {
+      "class": "medium",
+      "input_tokens": 2048,
+      "output_tokens": 128
+    },
+    {
+      "class": "long-prefill",
+      "input_tokens": 8192,
+      "output_tokens": 32
+    },
+    {
+      "class": "decode-heavy",
+      "input_tokens": 512,
+      "output_tokens": 512
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 2, 97249, 0
+session_guard=PASS
+serving_conflict=NONE
+compute_conflict=NONE
+filler_workload=FORBIDDEN

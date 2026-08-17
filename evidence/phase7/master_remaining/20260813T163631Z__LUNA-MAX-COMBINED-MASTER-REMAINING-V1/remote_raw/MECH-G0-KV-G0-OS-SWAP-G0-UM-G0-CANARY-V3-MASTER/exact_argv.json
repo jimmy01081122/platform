@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T160658Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2-NEW-SESSION/code/gpu_campaign_runner.py",
+    "--model-path",
+    "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "--run-root",
+    "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER/runner_runs",
+    "--experiment-id",
+    "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+    "--input-tokens",
+    "128",
+    "--output-tokens",
+    "32",
+    "--sampling-mode",
+    "NATURAL_EOS_CAPPED",
+    "--max-num-seqs",
+    "1",
+    "--max-num-batched-tokens",
+    "1024",
+    "--gpu-memory-utilization",
+    "0.97",
+    "--runtime-class",
+    "CLEAN",
+    "--warmup-count",
+    "1",
+    "--measured-count",
+    "1"
+  ]
+}

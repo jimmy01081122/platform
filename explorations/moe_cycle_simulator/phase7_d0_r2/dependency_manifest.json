@@ -1,0 +1,24 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r2-dependency-closure-v1",
+  "closure_status": "CPU_PACKAGE_CLOSURE_WITH_LIVE_INPUTS_EXPLICITLY_PENDING",
+  "members": [
+    {"path": "controller.py", "sha256": "14e228413e594848254b0c30edaa74f2e120a391bf97b55c47253ebb77d82b8c", "kind": "local_controller"},
+    {"path": "probe.py", "sha256": "9bfe3e36d9e4ca7bc78928b78e219472d39ffad01589672160e3d41d6bd0345c", "kind": "remote_payload"},
+    {"path": "validate_d0_r2.py", "sha256": "89e1e26a38b1bb3e6bae1744cd50d6d3923679fb24739f9ebd7d4bc22552a730", "kind": "validator"},
+    {"path": "d0_r2.schema.json", "sha256": "7eb3764b727543744515ab4e3ad7972e7bbe0a80788c500cfbf797f230d9f427", "kind": "overlay_schema"},
+    {"path": "schemas/approval.schema.json", "sha256": "2e6fe515fceec357af8d818ac4805dc5f49ccd863fa5e8ef35fead89022c48db", "kind": "approval_schema"},
+    {"path": "schemas/failure.schema.json", "sha256": "1ddec24879379446c5490d608d0053d3a92698f9f7e6b9cfda2e8b5cdbd29f19", "kind": "failure_schema"},
+    {"path": "schemas/owner_authority.schema.json", "sha256": "fb57180944262141061a552e42927a3e59bcea454b99adf40d41da32ea988675", "kind": "owner_authority_schema"},
+    {"path": "schemas/probe.schema.json", "sha256": "4c618f1888067363b466fc23a0c361562ad38342112b2867d7135ef8934e2ae5", "kind": "probe_schema"},
+    {"path": "schemas/result.schema.json", "sha256": "ef196ce2016bbae17b54afadf607b782821eaceff30bdb8327e02eb2c45820d9", "kind": "result_schema"},
+    {"path": "schemas/terminal_ledger.schema.json", "sha256": "62365d590dc61ff2fd39c2acf43f6089edc2d3ed8705e42b311e128711cafda7", "kind": "terminal_ledger_schema"}
+  ],
+  "live_inputs": {
+    "local_ssh_executable": "FRESH_APPROVAL_INPUT_REQUIRED_AND_HASHED",
+    "known_hosts_bytes": "FRESH_AUTHENTICATED_PROVIDER_INPUT_REQUIRED_AND_HASHED",
+    "client_public_key_fingerprint": "FRESH_NON_SECRET_APPROVAL_INPUT_REQUIRED",
+    "credential_selector": "FRESH_APPROVAL_INPUT_REQUIRED",
+    "container_digest": "REQUIRED_FOR_PROMOTABLE_D0"
+  },
+  "private_credentials": "EXCLUDED"
+}

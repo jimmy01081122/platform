@@ -1,0 +1,25 @@
+{
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r1-20260726",
+  "ledger_sha256": "abeafed5b02929d0a592eb45c0aebfce3f24c2da97aaa34d9afbbc525154ab2e",
+  "member_count": 45,
+  "verdict": "MODIFY",
+  "blockers": [
+    "TRACE-P3-R1-B1: state_digest omits event program, last_event_time_fs and resource kind/arbitration. Read-only probes showed quantity mutation was accepted and last-event mutation changed a ZENO continuation to QUIESCENT. Digest the complete canonical checkpoint body excluding only its digest field and add mutation/behavior tests."
+  ],
+  "findings": [
+    "Outer and nested ledgers, exact sets, source root and Phase 2 lineage verified.",
+    "Existing schema, wire, numeric, remainder, conservation and trailing-byte guards do not compensate for the incomplete digest preimage.",
+    "R1 exploratory run is correctly excluded from the candidate.",
+    "Five SHA-256 identity fields should be validated as lowercase 64-hex; Boost and OS/build environment should be recorded."
+  ],
+  "claim_boundary": "The candidate proves CPU implementation tests but not portable checkpoint integrity, deterministic resume or Phase 3 freeze.",
+  "authorized_next_stage": "Fix checkpoint canonical digest and restore invariants, then create a fresh CPU run and same-hash candidate.",
+  "not_authorized": [
+    "Phase 3 freeze or Phase 4 promotion",
+    "reinterpretation of the reviewed run",
+    "GPU/model/benchmark/profiling work",
+    "calibration PASS",
+    "modification or reinterpretation of frozen G3/S4 evidence"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canonical_moe_ir.schema.json",
+  "title": "Canonical MoE Routing and System IR",
+  "type": "object",
+  "required": ["schema_version", "ir_kind", "identity", "provenance", "events"],
+  "properties": {
+    "schema_version": {"const": "canonical-moe-ir-v1"},
+    "ir_kind": {"enum": ["moe-routing", "system-events"]},
+    "identity": {
+      "type": "object",
+      "properties": {
+        "fixture_id": {"type": "string", "minLength": 1},
+        "seed": {"type": "integer", "minimum": 0},
+        "prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "token_sequence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "integer", "minimum": 0}
+        }
+      },
+      "anyOf": [
+        {"required": ["fixture_id", "seed", "prompt_sha256", "token_sequence"]},
+        {
+          "required": [
+            "session_id", "suite_id", "suite_revision", "model_id",
+            "model_revision", "generation_config_hash", "seed", "hardware_id"
+          ]
+        }
+      ],
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_content_ids"],
+      "properties": {
+        "adapter": {"const": "canonical-moe-converter-v2"},
+        "converter": {"type": "string", "minLength": 1},
+        "source_content_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "event_type", "sequence", "evidence"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "event_type": {"type": "string", "minLength": 1},
+          "sequence": {"type": "integer", "minimum": 0},
+          "request_id": {"type": "string", "minLength": 1},
+          "phase": {"enum": ["prefill", "decode"]},
+          "layer_index": {"type": "integer", "minimum": 0},
+          "token_index": {"type": "integer", "minimum": 0},
+          "selected_experts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "integer", "minimum": 0}
+          },
+          "selected_scores": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "number"}
+          },
+          "evidence": {
+            "type": "object",
+            "required": ["class", "source_pass", "synthetic"],
+            "properties": {
+              "class": {
+                "enum": [
+                  "fixture_ground_truth", "synthetic_marker", "interference",
+                  "measured_gpu_route",
+                  "measured_gpu_gate_logits_reconstructed_topk",
+                  "estimate", "calibrated"
+                ]
+              },
+              "source_pass": {"enum": ["P0", "P1", "P2", "P3", "P4", "P5", "P6"]},
+              "synthetic": {"type": "boolean"}
+            },
+            "additionalProperties": true
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "event_type": {"const": "routing_decision"},
+                "evidence": {
+                  "properties": {
+                    "class": {
+                      "enum": [
+                        "measured_gpu_route",
+                        "measured_gpu_gate_logits_reconstructed_topk"
+                      ]
+                    }
+                  },
+                  "required": ["class"]
+                }
+              },
+              "required": ["event_type", "evidence"]
+            },
+            "then": {
+              "required": [
+                "request_id", "phase", "layer_index", "token_index",
+                "selected_experts", "selected_scores"
+              ],
+              "properties": {
+                "selected_scores": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": "phase7-special-mechanism-adoption-audit-v1",
+  "campaign_id": "20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1",
+  "audit_timestamp_utc": "2026-08-13T13:03:00Z",
+  "policy": "Existing evidence is not promoted until the amendment gates, lineage and local checksum requirements are satisfied; cosmetic renaming does not trigger a rerun.",
+  "observations": [
+    {
+      "unit": "ADOPT-CMP-M3",
+      "status": "SUPPLEMENT_REQUIRED",
+      "existing_preliminary_status": "PASS",
+      "raw_run": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T190759Z__CMP-M3-PROFILE-V3",
+      "raw_sha256_manifest_check": "PASS",
+      "raw_sha256_manifest_path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T190759Z__CMP-M3-PROFILE-V3/SHA256SUMS",
+      "preliminary_review_sha256": "f3104b735d2fc50c025a9bccb9a565dc497df3610956f041e04645a08f3751d7",
+      "correlation_gate_status": "PASS",
+      "correlation_gate_sha256": "f831de2d8b37a93409873cccc37769cc740d784c72d209a6c94c9c47785eb007",
+      "correlation_gate_observed": {
+        "scope": "real vLLM worker fused-path scheduler steps with routed-expert output",
+        "correlated_scheduler_step_count": 9,
+        "failure_count": 0,
+        "forward_step_ids_contiguous": true,
+        "scheduler_iterations_contiguous": true,
+        "phase_order_monotonic": true
+      },
+      "required_supplement": [
+        "instrumentation latency-distribution perturbation gate is not present in this evidence",
+        "derived correlation sidecars must be copied into the special-mechanism raw namespace before final adoption"
+      ],
+      "claims_forbidden_until_supplement": [
+        "final CMP-M3 calibration PASS",
+        "hook-free latency claim",
+        "complete special-mechanism closure"
+      ]
+    },
+    {
+      "unit": "ADOPT-CMP-A-ISOLATED",
+      "status": "SUPPLEMENT_REQUIRED",
+      "source": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_attention_v5_correlation_probe_review_v1.json",
+      "source_sha256": "93237bb33b414da58e07a5c8455b92467e39558ca4d33b74557f9bb1203187bf",
+      "observed_boundary": "isolated shape evidence only; actual vLLM fused-path correlation is pending",
+      "claims_forbidden": [
+        "fused attention calibration",
+        "actual vLLM fused-kernel latency curve"
+      ],
+      "next_action": "Run the paired isolated-probe and actual fused-kernel correlation canary after the current GPU run completes."
+    },
+    {
+      "unit": "ADOPT-XFER-E-Q-O",
+      "status": "EXISTING_EVIDENCE_PENDING_AUDIT",
+      "source": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_transfer_backup/preliminary_transfer_EQ_review_v1.json",
+      "source_sha256": "ee8252d18c6359afc878445aadbe97afceedd04a60b599c3d5d5852a16d7cd6e",
+      "existing_review_adoption_allowed": true,
+      "new_gate_requirements": [
+        "materialized/packed/aligned bytes",
+        "object granularity and ownership",
+        "writeback contract and immutable discard semantics",
+        "correlation and local checksum lineage"
+      ]
+    },
+    {
+      "unit": "ADOPT-FIT-ANCHORS",
+      "status": "EXISTING_EVIDENCE_PENDING_AUDIT",
+      "source": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_fit_anchor_review_v1.json",
+      "source_sha256": "7c6377d424ae722a392ee7e1a039b873749bdb56b23c183f7e03087c18f95b56",
+      "existing_review_adoption_allowed": true,
+      "new_gate_requirements": [
+        "28,672 context and 1,024 decode remain stress-only until surrounding anchors exist",
+        "LM11 fit anchors must include 25, 50, 75, 80, 85, 90, 95 and 99 percent",
+        "LM11 held-out anchors must include 37.5, 62.5, 82.5, 87.5, 92.5 and 97 percent",
+        "100 percent all-resident control must be explicit"
+      ]
+    },
+    {
+      "unit": "ADOPT-SERVING",
+      "status": "EXISTING_EVIDENCE_PENDING_AUDIT",
+      "existing_extension_plan": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/explorations/moe_cycle_simulator/phase7/real_run/serving_p99_extension_plan_v1.json",
+      "new_gate_requirements": [
+        "paired clean/deep special-mechanism trace",
+        "latency distribution perturbation gate",
+        "per-file local SHA-256 in the new raw namespace",
+        "failure and censored-request denominator preserved"
+      ],
+      "current_unrelated_inflight_run": "20260813T121215Z__SERV-P0-25-SHORT-C8-NATURAL-EXT10K-V1"
+    },
+    {
+      "unit": "ADOPT-POL0-POL5",
+      "status": "SUPPLEMENT_REQUIRED",
+      "source": "Existing policy artifacts are not yet located with amendment-compliant compute/dependency metadata.",
+      "required_fields": [
+        "compute_integrated=true",
+        "dependency_correct=true",
+        "actual compute start/end/completion",
+        "dependency release and policy decision lineage",
+        "exact transfer and capacity conservation"
+      ],
+      "claims_forbidden": [
+        "CAL3 end-to-end policy ranking",
+        "support-processor break-even"
+      ]
+    },
+    {
+      "unit": "ADOPT-LM11-COARSE",
+      "status": "SUPPLEMENT_REQUIRED",
+      "source": "Existing coarse capacity points",
+      "required_action": "Add the full near-all-resident and held-out anchor set before calibration or break-even claims."
+    },
+    {
+      "unit": "ADOPT-EXPERT-CATALOG",
+      "status": "SUPPLEMENT_REQUIRED",
+      "source": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/components/component-v5-20260812T0230TPE-A-CORR/expert_catalog.json",
+      "candidate_object_count": 256,
+      "candidate_model_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+      "missing_amendment_fields": [
+        "materialized bytes",
+        "packed bytes",
+        "aligned bytes",
+        "object granularity",
+        "ownership",
+        "writeback_allowed and writeback semantics"
+      ],
+      "claim_boundary": "Immutable expert eviction remains discard/reload, not D2H, until dirty mutable state and writeback permission are explicitly evidenced."
+    }
+  ],
+  "checksum_observations": {
+    "adopted_evidence_manifest": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/adopted_manifest_v1.json",
+    "adopted_evidence_files_checked": 25,
+    "adopted_evidence_checksum_status": "PASS",
+    "cmp_m3_raw_manifest": "PASS",
+    "derived_correlation_gate_sha256": "f831de2d8b37a93409873cccc37769cc740d784c72d209a6c94c9c47785eb007",
+    "derived_correlation_trace_sha256": "683c39a7b06c0f7a1e3f5331e482c4464fbe639f24597c4a8f07d895a6618526",
+    "raw_backup_policy": "No remote deletion; final adoption waits for special-mechanism namespace copy and checksum verification."
+  },
+  "next_ready_gpu_unit": "MECH-G0",
+  "current_gpu_unit_is_untouched": true
+}

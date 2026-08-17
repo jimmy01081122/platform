@@ -1,0 +1,51 @@
+{
+  "schema_version": "moe-simulator-phase7-owner-environment-decision-v1",
+  "decision_id": "owner-rtxpro6000-r11-environment-20260729",
+  "recorded_date": "2026-07-29",
+  "source": "OWNER_CONVERSATION_IN_THIS_PROJECT",
+  "target": {
+    "environment_family": "vLLM Inference Server",
+    "gpu_count": 1,
+    "exact_product_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+  },
+  "allocation": {
+    "total_seconds": 21600,
+    "start_trigger": "OWNER_RELEASES_FRESH_SSH_HANDOFF",
+    "billing_mode": "PREPAID_FIXED_WINDOW",
+    "extension_allowed": false,
+    "additional_cost_allowed": false,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD"
+  },
+  "storage": {
+    "persistent_mount": "/vault",
+    "ephemeral_mount": "/workspace",
+    "vault_role": "CROSS_SESSION_MODEL_DATASET_CHECKPOINT_AND_OUTPUT_STORAGE",
+    "workspace_role": "INSTANCE_LIFETIME_REBUILDABLE_SCRATCH",
+    "credentials_in_vault": "FORBIDDEN",
+    "credentials_in_workspace": "FORBIDDEN",
+    "provider_retention_statement": "30 days after balance is zero or below, subject to provider policy"
+  },
+  "delegated_operations_within_the_frozen_scope": [
+    "read-only environment disclosure",
+    "server-side runtime inspection and bounded setup",
+    "pinned model materialization after exact internal freeze",
+    "one M0 qualification after exact internal freeze"
+  ],
+  "not_authorized": [
+    "allocation extension",
+    "additional cost",
+    "alternate model or revision",
+    "alternate GPU",
+    "quantization",
+    "CPU offload",
+    "retry-failed",
+    "resume",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "formal profiling"
+  ],
+  "claim_boundary": "This record authorizes preparation within the fixed envelope. No remote evidence exists until a fresh SSH handoff instantiates and consumes an exact one-shot D0 approval."
+}

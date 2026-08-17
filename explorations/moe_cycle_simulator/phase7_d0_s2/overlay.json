@@ -1,0 +1,58 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-s2-overlay-v1",
+  "application_id": "phase7-gputw-d0-s2-20260809",
+  "revision": "D0-S2",
+  "status": "CPU_ONLY_DISCOVERY_IMPLEMENTATION",
+  "historical_boundary": {
+    "d0_s1_evidence_path": "/home/a/phase7_d0_evidence_20260809T090801Z__pod-a92587c7/d0_classification.json",
+    "d0_s1_evidence_ledger_sha256": "93714369f475d5ab5716c181c4682dcf253d28def680991e51de387e4c31228b",
+    "d0_s1_status": "INCOMPLETE_NOT_READY_IMMUTABLE_NO_RETRY",
+    "historical_artifacts_untouched": true,
+    "d0_r4_c1_formal_review_untouched": true
+  },
+  "target": {
+    "provider": "GPUtw.ai",
+    "gpu_count": 1,
+    "exact_product_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "minimum_memory_bytes": 96000000000,
+    "minimum_driver": "575.51.03",
+    "minimum_cuda_runtime": "12.8"
+  },
+  "runtime_boundary": {
+    "environment_family": "vLLM Inference Server",
+    "required_packages": ["vllm", "torch", "transformers", "tokenizers", "huggingface_hub"],
+    "distribution_hash_method": "RECORD_BYTES_PLUS_PATH_SIZE_INVENTORY",
+    "container_digest_missing_policy": "EXPLICIT_UNAVAILABLE_NONBLOCKING_IF_RUNTIME_HASHES_COMPLETE"
+  },
+  "storage_boundary": {
+    "vault_path": "/vault",
+    "minimum_free_bytes_for_gate_m_planning": 214748364800,
+    "persistent_project_path": "/vault/flow/moe_simulator_phase7/"
+  },
+  "provenance": {
+    "evidence_class": "NONFORMAL_DISCOVERY_PROVENANCE",
+    "local_cpu_probe_allowed": true,
+    "provider_ssh_attempted": false,
+    "model_download_performed": false,
+    "gpu_workload_performed": false
+  },
+  "authority": {
+    "d0": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu": "NONE"
+  },
+  "forbidden_actions": [
+    "RESUME_D0_S1",
+    "RETRY_D0_S1",
+    "SSH_OR_NETWORK_FROM_CPU_VALIDATOR",
+    "PACKAGE_INSTALL",
+    "MODEL_DOWNLOAD",
+    "MODEL_LOAD",
+    "INFERENCE",
+    "CUDA_BENCHMARK",
+    "GPU_WORKLOAD",
+    "QUANTIZATION",
+    "CPU_OFFLOAD"
+  ]
+}

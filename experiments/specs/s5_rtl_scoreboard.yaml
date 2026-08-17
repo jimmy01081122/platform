@@ -1,0 +1,38 @@
+experiment_id: s5_rtl_scoreboard
+stage: S5
+mechanism: C1 expert-prefetch / residency scheduling (MoE)
+description: >
+  Full-datapath RTL of the residency/prefetch + DMA-issue engine, verified for
+  transaction-level equivalence against the frozen C kernel golden (the same
+  scheduler.c used for software/firmware), plus corner cases and randomized
+  property tests, under two DMA interface configurations (overlap-friendly and
+  heavy backpressure).
+semantic_revision: 1
+inputs:
+  demands: /data/demands_32.txt   # exported from switch-base-32 canonical trace
+  caps: [8, 16, 24, 28, 32]
+  depths: [0, 1]                    # 0 = on-demand baseline, 1 = depth-1 prefetch
+rtl:
+  top: moe_residency_top
+  sources:
+    - rtl/common/moe_pkg.sv
+    - rtl/datapath/residency_engine.sv
+    - rtl/interfaces/dma_model.sv
+    - rtl/top/moe_residency_top.sv
+  parameters:
+    MAX_EXPERTS: 32
+    cfg_num_experts: runtime
+    cfg_capacity: runtime
+dma_configs:
+  default: {DMA_DEPTH: 4, DMA_LATENCY: 8}
+  stress:  {DMA_DEPTH: 1, DMA_LATENCY: 32}
+verification:
+  tool: verilator 5.006
+  golden: firmware/scheduler.c (sched_run, semantic_revision=1)
+  checks:
+    - lint (Wall, curated waivers)
+    - deterministic equivalence sweep (2 depths x 5 caps)
+    - corner cases (empty steps, invalid input -> o_input_error, reset mid-stream)
+    - randomized property test (300 trials, seed 0xC0FFEE)
+    - backpressure independence (default vs stress DMA config)
+container: edgehetero-rtl:1 (dedicated; not shared)

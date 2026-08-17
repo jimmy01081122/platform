@@ -1,0 +1,46 @@
+{
+  "schema_version": "phase7-gputw-provider-adaptation-r1/reviewer-output/v1",
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-simulator-phase7-gputw-provider-adaptation-r1-bdb610f",
+  "reviewed_commit": "bdb610fca5470e21556b1509ed22db6f55295995",
+  "reviewed_tree": "a471b8bd588c1e574fefae811f3e13d951d411b2",
+  "reviewed_candidate_ledger_sha256": "67fcf4cc8b17b122efa230b95c4a162fe8582be515ce23a307efe2bea5c23762",
+  "candidate_member_count": 12,
+  "verdict": "GO",
+  "blockers": [],
+  "non_blocking_findings": [
+    "Future provider facts, trusted host-key provenance, live measurements and deployment evidence remain explicitly unresolved; this is required by the fail-closed boundary.",
+    "The current worktree contains unrelated user-owned dirty gpu_run_package_v2 and runs content; it is outside the candidate set and is not included in this closure."
+  ],
+  "review_focus": [
+    "The implementation is a prospective overlay after immutable R12-R5 and its change boundary contains exactly the 12 listed candidate members.",
+    "The candidate ledger uses SHA-256 and LC_ALL=C lexical path order; review artifacts are outside the reviewed source candidate.",
+    "Owner-supplied facts, provider-documented/prospective semantics, unresolved live fields and future measured evidence are kept distinct; no private credential material is present.",
+    "Historical R12-R5 exact-set integrity remains 192 members with its original ledger and GPU authority NONE."
+  ],
+  "commands_executed": [
+    "git diff-tree --root --no-commit-id --name-status -r bdb610fca5470e21556b1509ed22db6f55295995",
+    "sha256sum explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/candidate_ledger.sha256",
+    "python3 explorations/moe_cycle_simulator/phase7/governance/r12r5/validate_candidate_ledger.py",
+    "if git diff-tree --root --no-commit-id --name-only -r bdb610fca5470e21556b1509ed22db6f55295995 | rg -i 'r12|r12-r[345]'; then exit 1; else echo PASS; fi",
+    "git diff --quiet -- candidate paths",
+    "git diff --check",
+    "python3 explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/validate_review.py"
+  ],
+  "command_results": [
+    "Implementation change boundary PASS: exactly 12 additive candidate members and no frozen R12 path.",
+    "Candidate ledger root PASS: 67fcf4cc8b17b122efa230b95c4a162fe8582be515ce23a307efe2bea5c23762.",
+    "Historical R12-R5 validator PASS: 192 members, ledger 61d95a0886b54ce35799002f322836260d1feb703ec31deee8c9430a0555fba3, nested ledgers included, GPU authority NONE.",
+    "Candidate worktree identity and whitespace checks PASS.",
+    "Final candidate/reviewer identity replay PASS via validate_review.py; all three reviewer identities and review artifact hashes match."
+  ],
+  "claim_boundary": "This is a read-only exact-set and provenance review. It claims no historical rewrite, GPUtw instance qualification, live RTX PRO 6000 availability, /vault measurement, runtime measurement, Mixtral load, BF16 capacity pass, D0 pass, GPU calibration, SSH connection, host-key acquisition, or model download.",
+  "side_effects": {
+    "ssh": false,
+    "provider_network_probe": false,
+    "instance_creation": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  }
+}

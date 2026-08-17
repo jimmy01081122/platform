@@ -1,0 +1,9 @@
+# GPUtw gateway known-hosts template; this is not a trusted host-key artifact.
+#
+# The formal artifact must be a project-specific file at:
+#   phase7/application/known_hosts.gputw
+#
+# It must contain only the required [ssh.gputw.ai]:2222 entry, be obtained from
+# an independently authenticated provider source, and be checksum-bound before
+# formal D0. Existing personal known_hosts entries and ssh-keyscan output are
+# observations only and cannot establish trust.

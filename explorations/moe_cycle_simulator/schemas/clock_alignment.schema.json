@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator/clock-alignment-v1",
+  "title": "Rational cross-trace clock alignment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "alignment_id", "source_clock_id", "target_clock_id",
+    "transform_type", "calibration_method", "calibration_points",
+    "residual_error_fs", "confidence_interval_95_fs", "valid_time_range",
+    "drift_bound_ppm", "grading_inputs", "provenance", "claimed_grade"
+  ],
+  "properties": {
+    "schema_version": {"const": "clock-alignment-v1"},
+    "alignment_id": {"type": "string", "minLength": 1},
+    "source_clock_id": {"type": "string", "minLength": 1},
+    "target_clock_id": {"type": "string", "minLength": 1},
+    "source_rank": {"type": ["integer", "null"], "minimum": 0},
+    "target_rank": {"type": ["integer", "null"], "minimum": 0},
+    "transform_type": {
+      "enum": ["IDENTITY", "AFFINE_RATIONAL", "PIECEWISE_AFFINE_RATIONAL"]
+    },
+    "scale_numerator": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+    "scale_denominator": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+    "offset_fs": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)$"},
+    "segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_start", "source_end", "end_inclusive", "scale_numerator",
+          "scale_denominator", "offset_fs", "boundary_discontinuity"
+        ],
+        "properties": {
+          "source_start": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+          "source_end": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+          "end_inclusive": {"type": "boolean"},
+          "scale_numerator": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+          "scale_denominator": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+          "offset_fs": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)$"},
+          "boundary_discontinuity": {"type": "boolean"}
+        }
+      }
+    },
+    "calibration_method": {"type": "string", "minLength": 1},
+    "calibration_points": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_time", "target_time"],
+        "properties": {
+          "source_time": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+          "target_time": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"}
+        }
+      }
+    },
+    "residual_error_fs": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "confidence_interval_95_fs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lower_error_fs", "upper_error_fs"],
+      "properties": {
+        "lower_error_fs": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)$"},
+        "upper_error_fs": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)$"}
+      }
+    },
+    "valid_time_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_start", "source_end"],
+      "properties": {
+        "source_start": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+        "source_end": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"}
+      }
+    },
+    "drift_bound_ppm": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "grading_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_clock_profile_hash", "target_period_numerator_fs",
+        "target_period_denominator", "shortest_component_record_hash",
+        "shortest_component_duration_fs"
+      ],
+      "properties": {
+        "target_clock_profile_hash": {
+          "type": "string", "pattern": "^[0-9a-f]{64}$"
+        },
+        "target_period_numerator_fs": {
+          "type": "string", "pattern": "^[1-9][0-9]*$"
+        },
+        "target_period_denominator": {
+          "type": "string", "pattern": "^[1-9][0-9]*$"
+        },
+        "shortest_component_record_hash": {
+          "type": "string", "pattern": "^[0-9a-f]{64}$"
+        },
+        "shortest_component_duration_fs": {
+          "type": "string", "pattern": "^[1-9][0-9]*$"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["producer", "producer_version", "source_content_ids"],
+      "properties": {
+        "producer": {"type": "string", "minLength": 1},
+        "producer_version": {"type": "string", "minLength": 1},
+        "source_content_ids": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "claimed_grade": {
+      "enum": ["CYCLE_GRADE", "ORDERING_ONLY", "AGGREGATE_ONLY", "UNAVAILABLE"]
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "transform_type": {"const": "IDENTITY"},
+        "scale_numerator": {"const": "1"},
+        "scale_denominator": {"const": "1"},
+        "offset_fs": {"const": "0"}
+      },
+      "required": ["scale_numerator", "scale_denominator", "offset_fs"],
+      "not": {"required": ["segments"]}
+    },
+    {
+      "properties": {"transform_type": {"const": "AFFINE_RATIONAL"}},
+      "required": ["scale_numerator", "scale_denominator", "offset_fs"],
+      "not": {"required": ["segments"]}
+    },
+    {
+      "properties": {"transform_type": {"const": "PIECEWISE_AFFINE_RATIONAL"}},
+      "required": ["segments"],
+      "not": {
+        "anyOf": [
+          {"required": ["scale_numerator"]},
+          {"required": ["scale_denominator"]},
+          {"required": ["offset_fs"]}
+        ]
+      }
+    }
+  ]
+}

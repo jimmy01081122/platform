@@ -1,0 +1,171 @@
+{
+  "schema_version": "g25-workload-qualification-v1",
+  "contract_revision": "granite-c1-g25-termination-v1.4.1-s4-r4-application",
+  "status": "s4_r4_application_cpu_only_remediation_gpu_not_run_pending_review",
+  "purpose": "formal_workload_termination_qualification",
+  "claim_boundary": {
+    "establishes": "bounded_execution_compatibility_only",
+    "does_not_establish": [
+      "task_correctness",
+      "model_capability",
+      "collector_correctness",
+      "formal_c1_acceptance",
+      "cross_pass_alignment"
+    ]
+  },
+  "authority": {
+    "gpu_execution": "not_authorized",
+    "paid_gpu": "not_authorized",
+    "formal_r5": "not_authorized"
+  },
+  "frozen_inputs": {
+    "model_id": "ibm-granite/granite-3.1-1b-a400m-instruct",
+    "model_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+    "tokenizer_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+    "tokenization_mode": "pinned_chat_template",
+    "chat_template_sha256": "08962c2f15d56767854b46dfc4070b37f4c443551833bba65b417191735f3187",
+    "prompt_construction_revision": "granite-c1-fixed-system-date-v1",
+    "system_message_sha256": "2d870b377ad178dacfce968718fd67e7d34c18f2f9c6ef82455ff53913ece630",
+    "tokenizer_config_sha256": "ab17e0d532ecf47e9d8451939dd81f25dd98c5fba4b6742584549bbf9c1f06b9",
+    "generation_config_file_sha256": "df006c64ad35b18712527cb5130a7a13a4d8a7c5c23653feea59be88e2e2a4ca",
+    "special_tokens_map_sha256": "596d752bf46f5cace1f6826b52ed7d913347a4eea0ecce8ab2f869471ca40369",
+    "eos_token_id": 0,
+    "pad_token_id": 0,
+    "model_config_path": "configs/test_suites/granite_c1/model_config.yaml",
+    "model_config_sha256": "72e33e5b5cf56ed18416831c34a95edb32ce11334c51e56782555af9f195a381",
+    "candidate_manifest_path": "configs/test_suites/granite_c1/sample_manifest.jsonl",
+    "candidate_manifest_sha256": "f32aa23823c2b88f7f2fab2a11cbbafe39c10adc54d5570ca7474b27996cd2bd",
+    "quality_contract_path": "configs/test_suites/granite_c1/c1_quality_contract_v2.json",
+    "quality_contract_sha256": "7ae151ee9171bf8f1f4f5baca2a24b507a2fdd1147bfd0f7335551fdc5a2d957",
+    "profile_map_path": "configs/test_suites/granite_c1/g25_generation_profiles_v1.yaml",
+    "profile_map_sha256": "35269e74bfd75d5a7d75f7ffca0fc94bff77f6d5e838760df2af0ef17bbc58a6",
+    "torch_version": "2.7.1+cu128",
+    "transformers_version": "4.47.0",
+    "jsonschema_version": "4.24.0",
+    "seed": 20260718
+  },
+  "candidate_scope": {
+    "suite": "granite_c1_smoke_v1",
+    "stage": "C1-A",
+    "tasks": ["T1"],
+    "instances": [
+      "c1a-t1-00",
+      "c1a-t1-01",
+      "c1a-t1-02",
+      "c1a-t1-03"
+    ],
+    "selection_policy": "all_frozen_candidates_no_per_sample_exception"
+  },
+  "execution_controls": {
+    "logical_pass": "P0",
+    "routing_collector": "disabled",
+    "do_sample": false,
+    "num_beams": 1,
+    "seed": 20260718,
+    "token_ceiling_candidates": [256, 384, 512],
+    "per_unit_timeout_seconds": 480,
+    "legal_stop_reasons": ["eos_token"]
+  },
+  "classification": {
+    "labels": [
+      "INVALID_EVIDENCE",
+      "QUALIFIED",
+      "TRUNCATED",
+      "TIMEOUT",
+      "INVALID_OUTPUT",
+      "RUNTIME_FAILURE"
+    ],
+    "qualified_definition": "legal_stop_and_complete_parseable_output_within_token_and_wall_time_ceilings",
+    "precedence": [
+      "INVALID_EVIDENCE",
+      "RUNTIME_FAILURE",
+      "TIMEOUT",
+      "TRUNCATED",
+      "INVALID_OUTPUT",
+      "QUALIFIED"
+    ]
+  },
+  "common_ceiling_rule": {
+    "session_evidence": "fresh_non_G3_no_R4_cell_reuse",
+    "schedule": "complete_full_cartesian_matrix_all_instances_at_all_ceilings",
+    "expected_cells": 12,
+    "early_success_stop": "forbidden",
+    "per_class_dispatch_stop": "forbidden_in_governance_matrix",
+    "selection": "smallest_ceiling_where_every_candidate_instance_is_QUALIFIED",
+    "per_sample_ceiling_selection": "forbidden",
+    "ceiling_change_within_session": "forbidden",
+    "no_common_ceiling_disposition": "R5_NOT_ELIGIBLE"
+  },
+  "eligibility_rule": {
+    "sample_eligible": "QUALIFIED_at_selected_common_ceiling",
+    "suite_eligible": "every_frozen_candidate_is_QUALIFIED_at_same_selected_common_ceiling",
+    "answer_correctness_used_for_eligibility": false,
+    "prospective_exclusion_requires": [
+      "uniform_rule_applied_to_all_candidates",
+      "preserved_original_sample_and_r4_evidence",
+      "new_suite_revision",
+      "fresh_same_hash_review"
+    ]
+  },
+  "r4_immutability": {
+    "session": "granite-c1a-formal-g3-r4-20260719",
+    "status": "FINAL_FAIL_IMMUTABLE",
+    "failure_class": "EXECUTION_TRUNCATED",
+    "failing_unit": "c1a-t1-01/P0",
+    "stop_reason": "max_new_tokens",
+    "completed_units": 10,
+    "failed_units": 1,
+    "pending_units": 5,
+    "session_sha256": "767887e9d90a4980deeb56dfd005014a1981e72a5e377d41deb2a75edf890dff",
+    "suite_snapshot_sha256": "a2493710880581946f290b7aab97ff57aaffd7c5bf3782dd430247fea128a705",
+    "journal_sha256": "3947a13a741c91aa884fa3cfeedab3ddb01c9df48a65b7eaca9df8cb4b2d917c",
+    "failed_state_sha256": "026e0d13ee55873595b2891f966c101fd935fabd0b20435b9fcfbbf935e6bdbd",
+    "failure_quality_sha256": "4f97e5cbf4719929056b31567149bb46e6445eee5245167c17332aea878765dd",
+    "resume": "forbidden",
+    "retry_failed": "forbidden",
+    "reinterpret_after_config_change": "forbidden"
+  },
+  "r5_entry_conditions": [
+    "all_candidate_samples_qualified_at_one_common_ceiling",
+    "new_split_T0_and_natural_task_generation_profiles_frozen",
+    "every_candidate_has_legal_stop",
+    "measured_per_unit_time_and_storage_are_non_null",
+    "new_suite_and_generation_config_revision",
+    "complete_contract_suite_reference_engine_hashes",
+    "three_role_same_hash_GO",
+    "fresh_R5_session_absent",
+    "R4_evidence_hashes_locked",
+    "new_exact_command_owner_approval"
+  ],
+  "implementation_status": [
+    "shared_generation_core_runner_implemented",
+    "P0_only_routing_and_profiler_disabled",
+    "task_to_frozen_generation_profile_mapping_implemented",
+    "six_class_fail_closed_classifier_implemented",
+    "exact_12_cell_ledger_and_minimal_common_ceiling_selector_implemented",
+    "parent_process_480_second_timeout_implemented",
+    "independent_session_schema_replay_and_audit_implemented",
+    "synthetic_governance_matrix_CPU_validated",
+    "real_evidence_file_worker_and_frozen_argv_factory_implemented",
+    "hash_bound_start_and_strict_owner_approval_implemented",
+    "package_wide_gpu_lease_and_deadline_dispatcher_implemented",
+    "parent_authoritative_exit_timeout_wall_and_TERM30_KILL_implemented",
+    "hash_chained_journal_terminal_and_partial_audit_implemented",
+    "session_local_source_snapshot_and_replay_audit_implemented",
+    "exact_dynamic_RTX3050_runtime_preflight_implemented",
+    "S4_CPU_mock_fault_matrix_validated_gpu_used_false",
+    "single_model_load_and_actual_bf16_evidence_enforced",
+    "independent_three_role_and_gpt_5_6_sol_records_parsed_and_hash_bound",
+    "observed_exact_outer_argv_and_detached_worker_signal_cleanup_enforced",
+    "full_R4_hash_snapshot_journal_failure_evidence_gate_connected_to_start",
+    "snapshot_journal_authorization_and_worker_IO_manifests_fail_closed",
+    "terminal_PASS_requires_complete_clean_audits_and_post_audit_deadline"
+  ],
+  "remaining_gpu_application_conditions": [
+    "freeze_review_target_and_complete_package_ledger",
+    "three_role_same_hash_GO",
+    "5_6sol_evaluation_GO_with_empty_blockers",
+    "fresh_qualification_session_absent",
+    "owner_approval_of_new_exact_local_RTX_3050_qualification_command"
+  ]
+}

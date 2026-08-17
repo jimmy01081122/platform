@@ -1,0 +1,23 @@
+{
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r3-20260728",
+  "ledger_sha256": "7bf3b31c84f21ba9647729ba6532b1ac8aa99f0d77c5af605884e09a65ecbe38",
+  "member_count": 96,
+  "verdict": "MODIFY",
+  "blockers": [
+    "TRACE-P3-R3-B1: correctly rehashed same_time_count and global/last time mutations are accepted and can change continuation behavior.",
+    "TRACE-P3-R3-B2: correctly rehashed unreachable dependency state, unexplained FAILED terminal and deterministic same-time trace-order mutations are accepted."
+  ],
+  "findings": [
+    "TRACE-P3-R1-B1 complete digest-preimage defect is closed.",
+    "Candidate, R1 snapshot, R4 run, source root and environment inventory verify exactly.",
+    "Snapshot reconstruction instructions and stale formal-run wording require correction."
+  ],
+  "claim_boundary": "Digest integrity is implemented, but rehashed checkpoint reachability and deterministic resume are not proven.",
+  "authorized_next_stage": "Implement reachable-state validation and fresh CPU evidence.",
+  "not_authorized": [
+    "Phase 3 freeze or Phase 4 promotion",
+    "GPU/model/benchmark/profiling work",
+    "calibration PASS"
+  ]
+}

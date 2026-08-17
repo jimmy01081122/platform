@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "moe-routing-v1",
+  "title": "MoE canonical routing trace record",
+  "description": "One record per (request, generation step, layer). Faithful to measured top-k routing. Physical costs are NOT encoded here; they are attached by the workload-expansion + platform cost model.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source",
+    "request_id",
+    "phase",
+    "step_index",
+    "layer_id",
+    "num_tokens",
+    "top_k",
+    "num_experts",
+    "selected_experts",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {"const": "moe-routing-v1"},
+    "source": {
+      "type": "object",
+      "required": ["dataset", "model", "benchmark", "subject", "query_id", "source_revision"],
+      "properties": {
+        "dataset": {"type": "string"},
+        "model": {"type": "string"},
+        "benchmark": {"type": "string"},
+        "subject": {"type": "string"},
+        "query_id": {"type": "string"},
+        "source_revision": {"type": "string"}
+      }
+    },
+    "request_id": {"type": "string"},
+    "phase": {"enum": ["prefill", "decode"]},
+    "step_index": {"type": "integer", "minimum": 0},
+    "layer_id": {"type": "integer", "minimum": 0},
+    "num_tokens": {"type": "integer", "minimum": 1},
+    "top_k": {"type": "integer", "minimum": 1},
+    "num_experts": {"type": "integer", "minimum": 1},
+    "selected_experts": {
+      "description": "Per-token top-k expert ids for this (step, layer). Outer length == num_tokens, inner length == top_k.",
+      "type": "array",
+      "items": {"type": "array", "items": {"type": "integer", "minimum": 0}}
+    },
+    "router_scores": {
+      "description": "Router gate scores if available in the source; null when not measured.",
+      "type": ["array", "null"]
+    },
+    "provenance": {"const": "measured-routing-trace"}
+  },
+  "additionalProperties": false
+}

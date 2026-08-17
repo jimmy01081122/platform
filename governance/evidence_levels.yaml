@@ -1,0 +1,31 @@
+levels:
+  S0:
+    name: contract_and_environment
+    claim_limit: environment and inputs are identified and reproducible
+  S1:
+    name: workload_and_trace
+    claim_limit: observed workload behavior and measured bottleneck only
+  S2:
+    name: executable_model_and_simulator
+    claim_limit: model behavior under registered assumptions
+  S3:
+    name: algorithm
+    claim_limit: algorithm effect relative to stated baselines in modeled region
+  S4:
+    name: break_even
+    claim_limit: implementation placement boundaries under measured or swept costs
+  S5:
+    name: rtl_full_datapath
+    claim_limit: functional and transaction-level hardware feasibility
+  S6:
+    name: physical_and_dse
+    claim_limit: PPA and Pareto results for named flow, library, constraints and activity
+  S7:
+    name: cross_layer_closure
+    claim_limit: reproducible end-to-end evidence pack within documented boundaries
+
+result_evidence_contract:
+  schema: schemas/evidence.schema.json
+  taxonomy: configs/fidelity/evidence_taxonomy.yaml
+  rule: stage level and result evidence are independent; every current-contract result must carry both.
+  legacy_scope: v1.0-large-moe-slice

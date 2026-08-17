@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "d0_failure.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-d0-failure-v1"},
+    "disclosure_status": {"enum": ["FAILED", "INCOMPLETE"]},
+    "failure_type": {"type": "string"},
+    "failure": {"type": "string"},
+    "controller_start_utc": {"type": "string"},
+    "controller_end_utc": {"type": "string"},
+    "elapsed_monotonic_ns": {"minimum": 0, "type": "integer"},
+    "authority_evidence_sha256": {
+      "oneOf": [
+        {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        {"type": "null"}
+      ]
+    },
+    "retry_allowed": {"const": false},
+    "resume_allowed": {"const": false},
+    "gpu_workload_performed": {"const": false}
+  },
+  "required": [
+    "schema_version", "disclosure_status", "failure_type", "failure",
+    "controller_start_utc", "controller_end_utc", "elapsed_monotonic_ns",
+    "authority_evidence_sha256", "retry_allowed", "resume_allowed",
+    "gpu_workload_performed"
+  ],
+  "type": "object"
+}

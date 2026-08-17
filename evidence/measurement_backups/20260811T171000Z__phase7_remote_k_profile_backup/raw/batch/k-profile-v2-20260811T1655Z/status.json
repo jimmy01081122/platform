@@ -1,0 +1,8 @@
+{
+  "completed_runs": 12,
+  "current_experiment": null,
+  "message": "All K0-K5 canaries and formal profiler rows passed runner gates; audit pending",
+  "status": "PASS",
+  "total_runs": 12,
+  "updated_at_utc": "2026-08-11T17:05:23.194527+00:00"
+}

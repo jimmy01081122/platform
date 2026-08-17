@@ -1,0 +1,77 @@
+{
+  "schema_version": "phase7-off-e-pr3-capacity-contract-v1",
+  "contract_state": "FROZEN_BEFORE_EXECUTION",
+  "canonical_family_id": "OFF-E-PR3",
+  "evidence_class": "GPU_POLICY_REPLAY",
+  "compute_integrated": true,
+  "dependency_correct": true,
+  "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "expert_catalog": {
+    "catalog_sha256": "9e7548cf9349972368b423a3fa8273dd30dc77c23722c99bc5e57ee99dc0a104",
+    "object_count": 256,
+    "object_bytes": 352321536,
+    "catalog_bytes": 90194313216,
+    "immutable": true,
+    "writeback_allowed": false
+  },
+  "routing_trace": {
+    "source_attempt": "OFF-E-PR0-V1-MASTER",
+    "shape": [159, 32, 2],
+    "dtype": "uint8",
+    "top_k": 2,
+    "demand_count": 10176,
+    "array_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+    "semantics": "token-major, layer-major, top-k order; logical object id = layer * 8 + expert"
+  },
+  "policy": {
+    "name": "DETERMINISTIC_LRU_EMPTY_INITIAL_CACHE",
+    "capacity_alignment": "floor(256 * requested_fraction) to whole immutable expert objects",
+    "miss": "issue one actual 352,321,536-byte H2D service operation before actual FusedMoE compute",
+    "eviction": "least-recently-used immutable discard with zero D2H writeback",
+    "control_100": "all 256 objects logically resident; no demand H2D",
+    "host_snapshot_setup": "one representative exact actual expert object; excluded from demand H2D"
+  },
+  "capacity_points": [
+    {"cell_id": "OFF-E-PR3-CAP-025", "label": "025", "requested_fraction": 0.25, "capacity_objects": 64, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-050", "label": "050", "requested_fraction": 0.50, "capacity_objects": 128, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-075", "label": "075", "requested_fraction": 0.75, "capacity_objects": 192, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-080", "label": "080", "requested_fraction": 0.80, "capacity_objects": 204, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-085", "label": "085", "requested_fraction": 0.85, "capacity_objects": 217, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-090", "label": "090", "requested_fraction": 0.90, "capacity_objects": 230, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-095", "label": "095", "requested_fraction": 0.95, "capacity_objects": 243, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-099", "label": "099", "requested_fraction": 0.99, "capacity_objects": 253, "fit_role": "FIT"},
+    {"cell_id": "OFF-E-PR3-CAP-0375", "label": "0375", "requested_fraction": 0.375, "capacity_objects": 96, "fit_role": "HELD_OUT"},
+    {"cell_id": "OFF-E-PR3-CAP-0625", "label": "0625", "requested_fraction": 0.625, "capacity_objects": 160, "fit_role": "HELD_OUT"},
+    {"cell_id": "OFF-E-PR3-CAP-0825", "label": "0825", "requested_fraction": 0.825, "capacity_objects": 211, "fit_role": "HELD_OUT"},
+    {"cell_id": "OFF-E-PR3-CAP-0875", "label": "0875", "requested_fraction": 0.875, "capacity_objects": 224, "fit_role": "HELD_OUT"},
+    {"cell_id": "OFF-E-PR3-CAP-0925", "label": "0925", "requested_fraction": 0.925, "capacity_objects": 236, "fit_role": "HELD_OUT"},
+    {"cell_id": "OFF-E-PR3-CAP-097", "label": "097", "requested_fraction": 0.97, "capacity_objects": 248, "fit_role": "HELD_OUT"},
+    {"cell_id": "OFF-E-PR3-CAP-100", "label": "100", "requested_fraction": 1.0, "capacity_objects": 256, "fit_role": "CONTROL"}
+  ],
+  "execution_order": {
+    "fit": ["025", "050", "075", "080", "085", "090", "095", "099"],
+    "fit_control": ["100"],
+    "held_out_locked_until_fit_review": ["0375", "0625", "0825", "0875", "0925", "097"]
+  },
+  "workload": {
+    "input_tokens": 128,
+    "output_tokens": 32,
+    "runtime_class": "ROUTING",
+    "seed": 0,
+    "measured_count": 1,
+    "cpu_offload_gb": 0.0
+  },
+  "validation_gate": [
+    "dispatch preflight clear and no foreign compute/serving process",
+    "routing trace hash, shape, demand count and full 256-object coverage exact",
+    "capacity and resident bytes never exceed the whole-object budget",
+    "every logical miss maps to one actual object-sized H2D service operation",
+    "all H2D completes before actual FusedMoE compute",
+    "zero D2H writeback and exact load/hit/eviction/byte conservation",
+    "final output and routed-expert array equal the clean frozen control",
+    "raw local backup and SHA-256 verification before promotion"
+  ],
+  "held_out_rule": "Held-out point raw execution and interpretation remain locked until all fit points plus 100% control are reviewed without changing policy, capacity alignment, trace, thresholds or claim boundary.",
+  "adaptive_refinement_rule": "No refinement is dispatched until fit plus held-out results are frozen; any trigger must add new child IDs and may not replace required anchors.",
+  "claim_boundary": "Compute-integrated GPU policy replay with actual object-sized H2D service and actual FusedMoE compute. Not runtime-native expert residency, not physical movement of every logical object, and not an end-to-end speedup or hardware break-even claim."
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "m0_result.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "completed_units": {"const": 3},
+    "contract_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "failure_class": {"type": "null"},
+    "failed_units": {"const": 0},
+    "findings": {"maxItems": 0, "type": "array"},
+    "fresh_processes": {"const": 3},
+    "gpu": {"type": "object"},
+    "input_tokens_per_unit": {"const": 28672},
+    "m1_through_m4_authorized": {"const": false},
+    "model_ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "next_legal_action": {"const": "SEPARATE_M1_APPLICATION_REQUIRED"},
+    "output_token_ids_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "output_tokens_per_unit": {"const": 4096},
+    "pending_units": {"const": 0},
+    "prompt_token_ids_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "qualification_summary_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "runtime_variant_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "schema_version": {"const": "moe-simulator-phase7-m0-result-v1"},
+    "session_id": {"type": "string"},
+    "verdict": {"const": "PASS"}
+  },
+  "required": ["schema_version", "session_id", "verdict", "failure_class", "findings", "contract_sha256", "runtime_variant_sha256", "model_ledger_sha256", "qualification_summary_sha256", "completed_units", "failed_units", "pending_units", "fresh_processes", "input_tokens_per_unit", "output_tokens_per_unit", "prompt_token_ids_sha256", "output_token_ids_sha256", "gpu", "next_legal_action", "m1_through_m4_authorized"],
+  "type": "object"
+}

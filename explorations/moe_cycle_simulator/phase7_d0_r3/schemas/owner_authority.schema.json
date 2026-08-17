@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-r3-owner-authority-v2",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "decision_id", "decision_status", "selected_environment", "cost_authority", "time_origin", "authority", "private_credentials"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-r3-owner-authority-v2"},
+    "decision_id": {"type": "string", "minLength": 8},
+    "decision_status": {"const": "APPROVED"},
+    "selected_environment": {"type": "object", "additionalProperties": false, "required": ["environment_family", "exact_image_or_template_identity", "change_from_d0_r1"], "properties": {"environment_family": {"const": "vLLM Inference Server"}, "exact_image_or_template_identity": {"type": "string", "minLength": 1}, "change_from_d0_r1": {"type": "string", "minLength": 1}}},
+    "cost_authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["maximum_runtime_seconds", "maximum_additional_spend", "compute", "storage", "port", "top_up", "extension", "provider_grace_credit_seconds", "historical_300_twd_record"],
+      "properties": {
+        "maximum_runtime_seconds": {"const": 21600},
+        "maximum_additional_spend": {"type": "object", "additionalProperties": false, "required": ["amount", "currency"], "properties": {"amount": {"const": "0"}, "currency": {"const": "TWD"}}},
+        "compute": {"$ref": "#/$defs/zero_cap"},
+        "storage": {"$ref": "#/$defs/zero_cap"},
+        "port": {"$ref": "#/$defs/zero_cap"},
+        "top_up": {"const": false},
+        "extension": {"const": false},
+        "provider_grace_credit_seconds": {"const": 0},
+        "historical_300_twd_record": {"type": "string", "minLength": 1}
+      }
+    },
+    "time_origin": {"type": "object", "additionalProperties": false, "required": ["semantic", "control_plane_start_utc", "lease_start_utc", "lease_deadline_utc", "status"], "properties": {"semantic": {"const": "FRESH_SSH_HANDOFF"}, "control_plane_start_utc": {"type": "string", "minLength": 1}, "lease_start_utc": {"type": "string", "minLength": 1}, "lease_deadline_utc": {"type": "string", "minLength": 1}, "status": {"const": "VERIFIED"}}},
+    "authority": {"type": "object", "additionalProperties": false, "required": ["d0", "gate_m", "m0", "gpu"], "properties": {"d0": {"const": "APPROVED_FOR_ONE_SHOT_DISCOVERY"}, "gate_m": {"const": "NOT_AUTHORIZED"}, "m0": {"const": "NOT_AUTHORIZED"}, "gpu": {"const": "NONE"}}},
+    "private_credentials": {"const": "FORBIDDEN_AND_NOT_RECORDED"}
+  },
+  "$defs": {
+    "zero_cap": {"type": "object", "additionalProperties": false, "required": ["cap_amount", "cap_currency", "classification"], "properties": {"cap_amount": {"const": "0"}, "cap_currency": {"const": "TWD"}, "classification": {"type": "string", "minLength": 1}}}
+  }
+}

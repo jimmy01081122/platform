@@ -1,0 +1,23 @@
+{
+  "schema_version": "moe-simulator-phase7-archive-replay-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r4-20260802",
+  "source_commit_sha1": "e4c71aede158610306e1fef8a894813c9a7e3e40",
+  "source_tree_sha1": "4be571ec4d2a90589dcb32105e0d0b6252233305",
+  "archive_contains_git_directory": false,
+  "source_identity_method": "EXPLICIT_ARCHIVE_BINDING",
+  "commands": [
+    "git archive e4c71aede158610306e1fef8a894813c9a7e3e40 | tar -x -C <fresh-directory>",
+    "python3 explorations/moe_cycle_simulator/phase7/run_cpu_validation.py --repo-root <fresh-directory> --output <fresh-directory>/runs/20260801T181451Z__moe_cycle_simulator_phase7_cpu_governance_r12r4_archive__S2 --source-commit-sha1 e4c71aede158610306e1fef8a894813c9a7e3e40 --source-tree-sha1 4be571ec4d2a90589dcb32105e0d0b6252233305",
+    "make check-run RUN_DIR=runs/20260801T181451Z__moe_cycle_simulator_phase7_cpu_governance_r12r4_archive__S2",
+    "python3 explorations/moe_cycle_simulator/phase7/application/validate_application.py --mode draft --application-dir explorations/moe_cycle_simulator/phase7/application"
+  ],
+  "results": {
+    "unit_tests": "PASS_125_OF_125",
+    "draft_validation": "PASS_FAIL_CLOSED_217_BLOCKERS",
+    "run_contract": "PASS",
+    "application_ledger_sha256": "99f9e5aafbc2a1b0339d80ad85a203f1e495034f71eb09b10074386283744384",
+    "run_ledger_sha256": "1dee0256187c00a5ec12a82506f8094effb9e0694812f7f6310100aa75266196"
+  },
+  "claim_boundary": "CPU/mock reproducibility only; no SSH, network, model download, GPU query or workload.",
+  "status": "PASS"
+}

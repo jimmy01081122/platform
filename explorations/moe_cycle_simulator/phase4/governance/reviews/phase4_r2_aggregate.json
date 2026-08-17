@@ -1,0 +1,19 @@
+{
+  "schema_version": "moe-simulator-three-role-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r2-20260728",
+  "ledger_sha256": "a90b7e0f8717b129e178d50593ad4b24e88cf723b7f658812ae1b398cdf4a389",
+  "member_count": 41,
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P4-R2-B1: invalid TraceKind is normalized to COMPLETE and can escape checkpoint identity"
+  ],
+  "role_verdicts": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "phase4_freeze": false,
+  "phase5_authorized": false,
+  "next_legal_action": "CPU-only prospective fix, fresh run and fresh same-hash candidate review.",
+  "gpu_authority": "NONE"
+}

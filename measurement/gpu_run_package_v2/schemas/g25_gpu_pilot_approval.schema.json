@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_gpu_pilot_approval.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "approval_id", "decision", "approved_by",
+    "issued_at_epoch", "expires_at_epoch", "session_id", "exact_command",
+    "review_target", "review", "evaluation_gate", "bindings", "hardware", "runtime",
+    "environment", "deadlines", "scope"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-gpu-pilot-owner-approval-v1"},
+    "approval_id": {"type": "string", "minLength": 1},
+    "decision": {"const": "APPROVE_EXACT_G25_GPU_PILOT_COMMAND"},
+    "approved_by": {"type": "string", "minLength": 1},
+    "issued_at_epoch": {"type": "number", "minimum": 0},
+    "expires_at_epoch": {"type": "number", "exclusiveMinimum": 0},
+    "session_id": {"const": "granite-c1a-g25-qualification-r1-20260719"},
+    "exact_command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["argv", "argv_sha256"],
+      "properties": {
+        "argv": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "argv_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "review_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["annotated_tag", "tag_object", "commit", "tree", "package_tree"],
+      "properties": {
+        "annotated_tag": {"type": "string", "minLength": 1},
+        "tag_object": {"$ref": "#/$defs/gitObject"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "package_tree": {"$ref": "#/$defs/gitObject"}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["document_sha256", "architecture", "model", "trace", "blockers"],
+      "properties": {
+        "document_sha256": {"$ref": "#/$defs/sha256"},
+        "architecture": {"const": "GO"},
+        "model": {"const": "GO"},
+        "trace": {"const": "GO"},
+        "blockers": {"const": []}
+      }
+    },
+    "evaluation_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluator", "evaluator_model", "document_sha256", "verdict", "blockers"],
+      "properties": {
+        "evaluator": {"const": "5.6sol"},
+        "evaluator_model": {"const": "gpt-5.6-sol"},
+        "document_sha256": {"$ref": "#/$defs/sha256"},
+        "verdict": {"const": "GO"},
+        "blockers": {"const": []}
+      }
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_checksum_ledger_sha256", "package_manifest_sha256",
+        "runtime_inventory_sha256", "requirements_lock_sha256",
+        "pilot_session_contract_sha256", "matrix_sha256",
+        "generation_profile_sha256", "expected_artifacts_sha256",
+        "qualification_runner_sha256", "qualification_worker_sha256",
+        "isolated_bootstrap_sha256",
+        "snapshot_inventory_sha256", "model_runtime_payload_contract_sha256",
+        "model_snapshot_verifier_sha256",
+        "model_snapshot_payload_identity_sha256",
+        "model_snapshot_files_inventory_sha256",
+        "c1_evaluator_sha256", "benchmark_quality_sha256",
+        "sample_manifest_sha256",
+        "approval_schema_sha256", "application_runner_sha256",
+        "application_scheduler_sha256", "deadline_tracker_sha256",
+        "system_closure_sha256", "runtime_closure_verifier_sha256",
+        "worker_lifetime_guard_sha256",
+        "session_store_sha256", "snapshot_auditor_sha256",
+        "worker_descriptor_schema_sha256", "same_source_review_schema_sha256",
+        "evaluation_schema_sha256", "terminal_schema_sha256",
+        "final_seal_schema_sha256", "parent_output_replay_schema_sha256",
+        "session_file_inventory_schema_sha256",
+        "external_seal_anchor_schema_sha256",
+        "r3_session_sha256", "r4_session_sha256",
+        "r4_suite_snapshot_sha256", "r4_journal_sha256",
+        "r4_failed_state_sha256", "r4_failure_quality_sha256",
+        "same_source_review_sha256", "evaluation_record_sha256"
+      ],
+      "properties": {
+        "package_checksum_ledger_sha256": {"$ref": "#/$defs/sha256"},
+        "package_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "runtime_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "requirements_lock_sha256": {"$ref": "#/$defs/sha256"},
+        "pilot_session_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "matrix_sha256": {"$ref": "#/$defs/sha256"},
+        "generation_profile_sha256": {"$ref": "#/$defs/sha256"},
+        "expected_artifacts_sha256": {"$ref": "#/$defs/sha256"},
+        "qualification_runner_sha256": {"$ref": "#/$defs/sha256"},
+        "qualification_worker_sha256": {"$ref": "#/$defs/sha256"},
+        "isolated_bootstrap_sha256": {"$ref": "#/$defs/sha256"},
+        "snapshot_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "model_runtime_payload_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "model_snapshot_verifier_sha256": {"$ref": "#/$defs/sha256"},
+        "model_snapshot_payload_identity_sha256": {"$ref": "#/$defs/sha256"},
+        "model_snapshot_files_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "c1_evaluator_sha256": {"$ref": "#/$defs/sha256"},
+        "benchmark_quality_sha256": {"$ref": "#/$defs/sha256"},
+        "sample_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "approval_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "application_runner_sha256": {"$ref": "#/$defs/sha256"},
+        "application_scheduler_sha256": {"$ref": "#/$defs/sha256"},
+        "deadline_tracker_sha256": {"$ref": "#/$defs/sha256"},
+        "system_closure_sha256": {"$ref": "#/$defs/sha256"},
+        "runtime_closure_verifier_sha256": {"$ref": "#/$defs/sha256"},
+        "worker_lifetime_guard_sha256": {"$ref": "#/$defs/sha256"},
+        "session_store_sha256": {"$ref": "#/$defs/sha256"},
+        "snapshot_auditor_sha256": {"$ref": "#/$defs/sha256"},
+        "worker_descriptor_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "same_source_review_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "evaluation_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "terminal_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "final_seal_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "parent_output_replay_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "session_file_inventory_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "external_seal_anchor_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "r3_session_sha256": {"$ref": "#/$defs/sha256"},
+        "r4_session_sha256": {"$ref": "#/$defs/sha256"},
+        "r4_suite_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+        "r4_journal_sha256": {"$ref": "#/$defs/sha256"},
+        "r4_failed_state_sha256": {"$ref": "#/$defs/sha256"},
+        "r4_failure_quality_sha256": {"$ref": "#/$defs/sha256"},
+        "same_source_review_sha256": {"$ref": "#/$defs/sha256"},
+        "evaluation_record_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name", "uuid", "pci_bus_id", "total_vram_bytes",
+        "minimum_free_vram_bytes", "minimum_free_disk_bytes", "precision"
+      ],
+      "properties": {
+        "name": {"const": "NVIDIA GeForce RTX 3050"},
+        "uuid": {"const": "GPU-4d160805-02d8-24aa-ef6a-2685832658a3"},
+        "pci_bus_id": {"const": "00000000:01:00.0"},
+        "total_vram_bytes": {"const": 6442450944},
+        "minimum_free_vram_bytes": {"const": 5000000000},
+        "minimum_free_disk_bytes": {"const": 8589934592},
+        "precision": {"const": "bf16"}
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python", "torch", "transformers", "pyyaml", "jsonschema", "cuda",
+        "python_executable", "python_realpath", "pythonpath",
+        "python_no_user_site", "python_dont_write_bytecode",
+        "python_isolated", "python_no_site", "python_ignore_environment",
+        "runtime_inventory_sha256", "requirements_lock_sha256",
+        "runtime_tree_sha256", "stdlib_tree_sha256",
+        "driver_runtime_tree_sha256", "system_files_sha256",
+        "system_closure_sha256", "static_dependency_edges_sha256",
+        "module_files"
+      ],
+      "properties": {
+        "python": {"const": "3.10.12"},
+        "torch": {"const": "2.7.1+cu128"},
+        "transformers": {"const": "4.47.0"},
+        "pyyaml": {"const": "6.0.2"},
+        "jsonschema": {"const": "4.24.0"},
+        "cuda": {"const": "12.8"},
+        "python_executable": {"const": "/usr/bin/python3"},
+        "python_realpath": {"const": "/usr/bin/python3.10"},
+        "pythonpath": {"type": "null"},
+        "python_no_user_site": {"const": "1"},
+        "python_dont_write_bytecode": {"const": "1"},
+        "python_isolated": {"const": true},
+        "python_no_site": {"const": true},
+        "python_ignore_environment": {"const": true},
+        "runtime_inventory_sha256": {"const": "c3282bb8a6531ac442172278489eff391b0c5d042f610203081930ba873792d3"},
+        "requirements_lock_sha256": {"const": "88f36bc6a9af2e78f6ef1d744b512d2ef093769a2e252667a16bd842de523fed"},
+        "runtime_tree_sha256": {"const": "179cc8fa7f0598b956e77ffcecf9f336ebc7ddd61c785c48e28d0a39140b4625"},
+        "stdlib_tree_sha256": {"const": "fabc15b299143df7560a170b358a671347984d808b49efe61b06483f6dc12e5e"},
+        "driver_runtime_tree_sha256": {"const": "eacd617d22d8762d600624820796d3d851a2002ac641868213084104251205b5"},
+        "system_files_sha256": {"const": "f4c7e80e83400a789390a963e593dff3ee9ac6d72d5d168bef8ce0dce53c54ce"},
+        "system_closure_sha256": {"const": "cb81a3c638df8a5e6ed32a7210f3f7d0140e8c982e816b135fc23ec6b7c19ed5"},
+        "static_dependency_edges_sha256": {"const": "c497fd6849f348ef1a534a38e570750e46762759d999ead08b43f02329b7af2f"},
+        "module_files": {
+          "const": {
+            "jsonschema": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/gpu_run_package_v2/.benchmark-runtime/jsonschema/__init__.py",
+            "torch": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/gpu_run_package_v2/.benchmark-runtime/torch/__init__.py",
+            "transformers": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/gpu_run_package_v2/.benchmark-runtime/transformers/__init__.py",
+            "yaml": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/gpu_run_package_v2/.benchmark-runtime/yaml/__init__.py"
+          }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cuda_visible_devices", "hf_hub_offline", "transformers_offline",
+        "cublas_workspace_config", "cuda_launch_blocking", "pythonhashseed",
+        "lc_all", "lang"
+      ],
+      "properties": {
+        "cuda_visible_devices": {"const": "GPU-4d160805-02d8-24aa-ef6a-2685832658a3"},
+        "hf_hub_offline": {"const": "1"},
+        "transformers_offline": {"const": "1"},
+        "cublas_workspace_config": {"const": ":4096:8"},
+        "cuda_launch_blocking": {"const": "1"},
+        "pythonhashseed": {"const": "0"},
+        "lc_all": {"const": "C"},
+        "lang": {"const": "C"}
+      }
+    },
+    "deadlines": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cell_timeout_seconds", "term_grace_seconds",
+        "latest_new_dispatch_elapsed_seconds", "execution_cutoff_elapsed_seconds",
+        "session_hard_deadline_seconds", "outer_command_timeout_seconds",
+        "outer_kill_after_seconds"
+      ],
+      "properties": {
+        "cell_timeout_seconds": {"const": 480},
+        "term_grace_seconds": {"const": 30},
+        "latest_new_dispatch_elapsed_seconds": {"const": 5790},
+        "execution_cutoff_elapsed_seconds": {"const": 6300},
+        "session_hard_deadline_seconds": {"const": 7200},
+        "outer_command_timeout_seconds": {"const": 7500},
+        "outer_kill_after_seconds": {"const": 30}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_pass", "expected_cells", "ceilings", "fresh_session",
+        "resume", "retry_failed", "routing_capture", "profiler",
+        "formal_c1_evidence", "formal_g3_r5", "paid_gpu", "archive_release"
+      ],
+      "properties": {
+        "logical_pass": {"const": "P0_ONLY"},
+        "expected_cells": {"const": 12},
+        "ceilings": {"const": [256, 384, 512]},
+        "fresh_session": {"const": true},
+        "resume": {"const": false},
+        "retry_failed": {"const": false},
+        "routing_capture": {"const": false},
+        "profiler": {"const": false},
+        "formal_c1_evidence": {"const": false},
+        "formal_g3_r5": {"const": false},
+        "paid_gpu": {"const": false},
+        "archive_release": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+  }
+}

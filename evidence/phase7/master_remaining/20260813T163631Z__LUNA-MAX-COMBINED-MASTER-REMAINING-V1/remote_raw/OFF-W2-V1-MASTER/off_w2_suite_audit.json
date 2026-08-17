@@ -1,0 +1,77 @@
+{
+  "captured_at_utc": "2026-08-14T02:28:19Z",
+  "claim_boundary": "Diagnostic byte-budget semantics and correctness only. No latency/speedup claim from one canary per point. UVA direct host access is not route-conditioned expert residency; explicit transfer profiling remains OFF-W3.",
+  "contract_sha256": "c9d0bf337ba6b1a1fe5e7ff1d11a5a0b50171b8e379f8afb2e812db985ea1810",
+  "gpu_terminal_compute_apps": [],
+  "points": [
+    {
+      "actual_bytes": 1879048192,
+      "actual_gib": 1.75,
+      "configuration": "PASS",
+      "correctness_equivalence": "PASS",
+      "module_record_count": 1,
+      "point_id": "LOW",
+      "requested_gib": 0.25,
+      "runtime_log_byte_match": "PASS",
+      "runtime_log_gib": 1.75,
+      "split": "FIT",
+      "tensor_record_count": 1,
+      "trace_accounting": "PASS",
+      "trace_sha256": "db6a4f2c81992d383da701ade06a034da30bccaca5a6ea86f3f6e975f915669f"
+    },
+    {
+      "actual_bytes": 2818572288,
+      "actual_gib": 2.625,
+      "configuration": "PASS",
+      "correctness_equivalence": "PASS",
+      "module_record_count": 1,
+      "point_id": "MID",
+      "requested_gib": 2.0,
+      "runtime_log_byte_match": "PASS",
+      "runtime_log_gib": 2.62,
+      "split": "FIT",
+      "tensor_record_count": 2,
+      "trace_accounting": "PASS",
+      "trace_sha256": "357bb98d63405445ac58a1ea17d384cc1c6f8ac2d7382f022d21dcfe0a86d578"
+    },
+    {
+      "actual_bytes": 4697620480,
+      "actual_gib": 4.375,
+      "configuration": "PASS",
+      "correctness_equivalence": "PASS",
+      "module_record_count": 2,
+      "point_id": "HELDOUT-MID",
+      "requested_gib": 4.0,
+      "runtime_log_byte_match": "PASS",
+      "runtime_log_gib": 4.38,
+      "split": "HELD_OUT",
+      "tensor_record_count": 3,
+      "trace_accounting": "PASS",
+      "trace_sha256": "ed1e57f61d9ffcf371ff5332b5f261a03f80ea6e026c82da2027c3b3826067d6"
+    },
+    {
+      "actual_bytes": 10334765056,
+      "actual_gib": 9.625,
+      "configuration": "PASS",
+      "correctness_equivalence": "PASS",
+      "module_record_count": 4,
+      "point_id": "HIGH",
+      "requested_gib": 8.0,
+      "runtime_log_byte_match": "PASS",
+      "runtime_log_gib": 9.62,
+      "split": "FIT",
+      "tensor_record_count": 7,
+      "trace_accounting": "PASS",
+      "trace_sha256": "e91a37f18f8040d010d56007535e0af50a008675c6259853b1860c4f36115159"
+    }
+  ],
+  "schema_version": "phase7-off-w2-suite-audit-v1",
+  "source_hashes": {
+    "/usr/local/lib/python3.12/dist-packages/vllm/config/offload.py": "6f2db3d9a2730588473d5155811690c6241b167a21dcb62fbbd9ebb6386de42c",
+    "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/base.py": "19b85dd4dd4b69ce26f8a2148f06717d6415070515c4c4fba86b60ec49842a1a",
+    "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/uva.py": "3694e031dd231566671eadf61c27bd4ac14b66878ca3d16e0bef34f50e4f72ec",
+    "/vault/flow/moe_simulator_phase7/real_campaign/code/off_w2_traced_runner.py": "4fd63d54b4c47f78f0889a729160cf3206164715d43240a917f4bc82699b1002"
+  },
+  "status": "PASS",
+  "strict_actual_byte_monotonicity": "PASS"
+}

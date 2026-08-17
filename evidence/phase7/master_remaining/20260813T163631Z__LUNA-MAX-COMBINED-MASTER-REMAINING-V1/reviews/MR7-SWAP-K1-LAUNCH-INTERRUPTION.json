@@ -1,0 +1,13 @@
+{
+  "attempt_id": "SWAP-K1-V2-MASTER",
+  "failure_class": "TECHNICAL_LAUNCH_INTERRUPTION",
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V2-MASTER",
+  "next_ready_unit": "SWAP-K1",
+  "promotion_status": "REPAIR_REQUIRED",
+  "raw_file_count": 2,
+  "raw_file_set_sha256": "240f7a6c5e8e2ebbef9d34854040e592a84cfe785c9ece8c5244fa2d54bd8837",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K1-V2-MASTER",
+  "reviewed_at_utc": "2026-08-14T00:16:23Z",
+  "schema_version": "phase7-combined-master-swap-k1-interruption-review-v1",
+  "validation_state": "UNVERIFIED"
+}

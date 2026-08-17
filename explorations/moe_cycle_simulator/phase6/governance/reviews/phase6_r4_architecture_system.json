@@ -1,0 +1,12 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r4-20260729",
+  "ledger_sha256": "eb920b9bf068677af00dfa99d0b1718d6735387db10261e1bfe0faa38dab4a34",
+  "member_count": 488,
+  "exact_set_verification": "PASS",
+  "verdict": "GO",
+  "blockers": [],
+  "claim_boundary": "CPU-synthetic TRACE_COMPILED_NON_ADAPTIVE two-domain direct-P2P and generic object-granular coherent-UMA scheduler evidence only; fidelity is FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER with RANGE_UNKNOWN. Required token routes reject absent identity and all frozen missing-value sentinels before scheduling. No measured hardware, Mixtral, GPU, calibration, DSE, production-scale or MoE-on-UMA claim.",
+  "authorized_next_stage": "After identical-ledger GO from all roles, freeze Phase 6 and proceed only with Phase 7 local CPU-only adapter, collector and profiling-application framework preparation.",
+  "gpu_authority": "NONE"
+}

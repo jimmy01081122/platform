@@ -1,0 +1,56 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r3-owner-authority-v1",
+  "decision_id": "phase7-gputw-d0-owner-authority-r3-pending",
+  "decision_status": "PENDING_OWNER_CONFIRMATION",
+  "selected_environment": {
+    "environment_family": "vLLM Inference Server",
+    "exact_image_or_template_identity": null,
+    "change_from_d0_r1": "REJECT_UNAPPROVED_UBUNTU_CUDA_LABEL"
+  },
+  "cost_authority": {
+    "maximum_runtime_seconds": 21600,
+    "maximum_additional_spend": {
+      "amount": "0",
+      "currency": "TWD"
+    },
+    "compute": {
+      "cap_amount": "0",
+      "cap_currency": "TWD",
+      "classification": "ZERO_SPEND_PROHIBITION_UNTIL_OWNER_NUMERIC_CAP"
+    },
+    "storage": {
+      "cap_amount": "0",
+      "cap_currency": "TWD",
+      "classification": "ZERO_SPEND_PROHIBITION"
+    },
+    "port": {
+      "cap_amount": "0",
+      "cap_currency": "TWD",
+      "classification": "ZERO_SPEND_PROHIBITION"
+    },
+    "top_up": false,
+    "extension": false,
+    "provider_grace_credit_seconds": 0,
+    "historical_300_twd_record": "NOT_TREATED_AS_DISCRETIONARY_SPEND"
+  },
+  "time_origin": {
+    "semantic": "FRESH_SSH_HANDOFF",
+    "control_plane_start_utc": null,
+    "lease_start_utc": null,
+    "lease_deadline_utc": null,
+    "status": "REQUIRES_FRESH_HANDOFF"
+  },
+  "authority": {
+    "d0": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu": "NONE"
+  },
+  "owner_confirmation_required": [
+    "exact provider image or template identity",
+    "classification of the historical 300 TWD record",
+    "fresh control-plane start and deadline",
+    "non-secret SSH client public-key fingerprint and credential selector"
+  ],
+  "private_credentials": "FORBIDDEN_AND_NOT_RECORDED"
+}

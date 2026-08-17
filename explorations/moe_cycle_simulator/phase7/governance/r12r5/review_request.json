@@ -1,0 +1,21 @@
+{
+  "schema_version": "moe-simulator-phase7-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r5-20260802",
+  "candidate_ledger": "explorations/moe_cycle_simulator/phase7/governance/r12r5/checksums.sha256",
+  "required_roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "required_checks": [
+    "recompute the exact candidate set and every member SHA-256",
+    "confirm R12-R3 and R12-R4 historical evidence/reviews remain unchanged",
+    "reproduce the 126-test CPU/mock regression and no-.git archive binding",
+    "adversarially verify one captured parent value across every M0 entry check",
+    "adversarially verify every originless matching loaded module hard-stops",
+    "report GO or MODIFY with explicit blockers",
+    "make no live SSH, network, model or GPU action"
+  ],
+  "promotion_rule": "Only GO/GO/GO with empty blockers permits push and later exact D0 application instantiation.",
+  "gpu_authority": "NONE"
+}

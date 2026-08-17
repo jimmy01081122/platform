@@ -1,0 +1,26 @@
+{
+  "canonical_expected": {
+    "enforce_eager": true,
+    "kv": "BF16",
+    "max_num_seqs": 1,
+    "persistent_cpu_model_offload": false,
+    "quantization": "none",
+    "runtime_kv_swap": false,
+    "tp_pp_ep": "1/1/1",
+    "weights": "BF16"
+  },
+  "experiment_id": "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+  "guard_ids": [
+    "MECH-G0",
+    "KV-G0",
+    "OS-SWAP-G0",
+    "UM-G0"
+  ],
+  "mechanism_variant": "CANONICAL_GUARD_ONLY",
+  "observation_policy": {
+    "managed_memory_absence_is_unavailable_not_zero": true,
+    "system_swap_is_context_only": true,
+    "zero_vmswap_is_not_global_no_swap_proof": true
+  },
+  "schema_version": "phase7-special-mechanism-guard-manifest-v1"
+}

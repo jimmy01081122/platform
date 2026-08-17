@@ -1,0 +1,12 @@
+{
+  "finished_at_utc": "2026-08-11T16:09:15Z",
+  "logical_request_id": null,
+  "measured_count": null,
+  "phase": "complete",
+  "request_count_per_sequence": 32,
+  "request_plan_id": "W3-fixed-32-request-mixed-length-serial-v1",
+  "sequence_count": 3,
+  "status": "PASS",
+  "total_completed_requests": 96,
+  "warmup_count": null
+}

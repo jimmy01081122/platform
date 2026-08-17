@@ -1,0 +1,69 @@
+{
+  "schema_version": "moe-simulator-phase4-single-gpu-model-v1",
+  "phase3_ledger_sha256": "c4b9209d95bbf91c607d65a70062e3bbb03a5892807ce08d8a4a370000535e42",
+  "execution_scope": "CPU_SYNTHETIC_ONLY",
+  "topology": "SINGLE_DISCRETE_GPU",
+  "service_classes": [
+    "COMPUTE",
+    "MEMORY",
+    "H2D",
+    "D2H"
+  ],
+  "time_math": {
+    "service_duration": "setup_fs + ceil(work * 10^15 * throughput_denominator / throughput_numerator_per_second)",
+    "intermediate_representation": "arbitrary_precision_integer",
+    "result_representation": "unsigned_128_bit_femtoseconds",
+    "floating_point_time": false
+  },
+  "contention": {
+    "compute": "profile-defined primary lanes",
+    "memory": "primary lane plus shared fabric",
+    "H2D": "directional copy-engine lane plus shared fabric",
+    "D2H": "directional copy-engine lane plus shared fabric",
+    "admission": "atomic primary-lane plus optional shared-fabric reservation",
+    "completion_priority": "copy 20, compute and memory 30",
+    "start_priority": "copy 90, compute and memory 100",
+    "tie_break": "complete seven-field EventIR key"
+  },
+  "fidelity_allowed": [
+    "ANALYTIC_FIRST_ORDER",
+    "FUNCTIONAL_ONLY"
+  ],
+  "range_status_required": "RANGE_UNKNOWN",
+  "formal_calibration_pass": false,
+  "replay": {
+    "scheduler": "one Phase 4 timed-service state machine; Phase 3 Engine is linked only for frozen numeric/hash primitives and is not invoked as a second scheduler",
+    "state_digest": "SHA-256 over canonical length-prefixed platform, profiles, operations, states, reservations, metrics and trace",
+    "checkpoint_schema": "phase4-checkpoint-v1",
+    "checkpoint_wire": "versioned header plus trace count, terminal state, byte-counted complete canonical body and SHA-256",
+    "checkpoint_body": "tagged and counted platform, profiles, operations, states, active reservations, completion times, dependency counters, future/ready/completion queues, busy masks, clock cursor, schedule, trace and metrics",
+    "restore": "wire digest verification, deterministic scheduler-prefix reconstruction, complete canonical-body equality and full-state digest equality",
+    "required_authority_hashes": [
+      "phase3_ledger_sha256",
+      "phase4_build_sha256",
+      "model_contract_sha256",
+      "checkpoint_schema_sha256"
+    ]
+  },
+  "operational_envelope": {
+    "tested_operations": 1000,
+    "full_event_vector_scan_per_step": false,
+    "complexity_counters": [
+      "scheduler_key_comparisons",
+      "ready_queue_pushes",
+      "ready_queue_pops",
+      "dependency_edge_visits",
+      "generated_event_count"
+    ],
+    "comparison_gate": "scheduler_key_comparisons <= 16 * generated_event_count * ceil(log2(generated_event_count + 1))",
+    "production_scale_claim": false,
+    "required_followup": "benchmark and optimize ready selection before production-scale replay"
+  },
+  "non_goals": [
+    "residency, prefetch or eviction policy",
+    "multi-GPU, P2P, NVLink or UMA",
+    "measured or calibrated service curves",
+    "GPU internal cycle truth",
+    "GPU or model execution"
+  ]
+}

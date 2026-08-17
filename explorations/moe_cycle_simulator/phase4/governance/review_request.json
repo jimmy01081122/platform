@@ -1,0 +1,39 @@
+{
+  "schema_version": "moe-simulator-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r4-20260728",
+  "ledger_path": "checksums.sha256",
+  "roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "allowed_verdicts": [
+    "GO",
+    "MODIFY",
+    "NO-GO"
+  ],
+  "promotion_rule": {
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "identical_ledger_sha256_required": true
+  },
+  "review_questions": [
+    "Does one Phase 4 state machine remain the sole scheduler while Phase 3 supplies only frozen primitives?",
+    "Are integer service duration and completion-edge snapping exact and overflow checked?",
+    "Are primary and shared-fabric reservations atomic, deterministic and capacity conserving?",
+    "Are dependency topology, arrival and completion order independent and fail closed?",
+    "Does the complete generated EventIR key and fixed priority registry determine same-time ordering?",
+    "Do generated event IDs bind the complete input, service profile and exact authority hashes?",
+    "Are build, model contract and checkpoint schema hashes compared against actual immutable artifacts rather than caller labels?",
+    "Does checkpoint identity cover every static and derived field using tagged, counted, length-prefixed encoding?",
+    "Does restore reject corruption, trailing bytes, invalid enum/map entries and states that are not exact reachable prefixes?",
+    "Is ARCH-P4-R2-B1 prospectively closed by exhaustive TraceKind serialization plus in-memory and rehashed-wire negative tests?",
+    "Does the fresh R3 run bind the exact current source root and pass Release plus native sanitizer regressions?",
+    "Is the reviewed R2 MODIFY candidate preserved as an independently checksummed immutable snapshot?",
+    "Is MODEL-P4-R3-B1 closed by excluding only the exact active ledger path and including every nested historical checksum member?",
+    "Is the reviewed R3 MODIFY candidate preserved as an independently checksummed immutable snapshot?",
+    "Is the stale R1 run excluded and explicitly non-promotable?",
+    "Are GPU, model, profiling, calibration and production-scale claims absent?"
+  ],
+  "review_results_are_not_part_of_reviewed_source": true
+}

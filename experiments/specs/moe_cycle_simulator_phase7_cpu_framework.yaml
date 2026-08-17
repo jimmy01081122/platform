@@ -1,0 +1,89 @@
+experiment_id: moe_cycle_simulator_phase7_cpu_framework
+stage: S2
+status: cpu_mock_framework_validation
+goal: Validate the Phase 7 adapter, schema, replay, promotion, and GPU-application safety boundary without GPU, model, or network access.
+scope:
+  - synthetic vLLM-shaped trace conversion
+  - canonical observation, EventIR, RoutingIR, identity, and alignment validation
+  - deterministic semantic replay
+  - M0 through M4 promotion-contract dry-run validation
+  - RTX PRO 6000 M0 application draft validation
+  - six-hour prepaid allocation and Vault persistence contract validation
+  - read-only D0 environment-disclosure gate validation
+  - D0 process-tree timeout, staged terminal sealing and exact-set replay
+  - mountinfo-derived Vault identity continuity
+  - executable three-gate D0, materialization and M0 control-chain validation
+  - bounded checksum-bound deployment bundle and atomic install validation
+  - standalone full bundle receive, install, remote launch and exact frame relay
+  - single-SSH streamed size/RSS/deadline bounds and process-tree cleanup
+  - pre-exec local replay address-space enforcement and independently bounded decoder logs
+  - absolute and hash-bound remote timeout/Python identity across bootstrap and remote entry
+  - Gate M export semantic projection and local exact-set replay
+  - immutable COMPLETE_M0_ELIGIBLE parent binding before M0 entry
+  - Gate M/M0 model-ledger and prompt-fixture cross-binding
+  - exact model ID/revision and loaded-vLLM installed-distribution attestation under isolated Python
+  - single-capture Gate M parent validation and originless loaded-vLLM rejection
+  - complete model/package/session ledger and evidence-schema validation
+  - locked remote-template negative tests
+non_goals:
+  - Mixtral materialization
+  - GPU discovery or execution
+  - formal M0 through M4 promotion
+  - measured observability or calibration claims
+inputs:
+  - explorations/moe_cycle_simulator/phase7/fixtures/mock_vllm_trace.json
+  - explorations/moe_cycle_simulator/phase7/contracts
+  - explorations/moe_cycle_simulator/phase7/schemas
+  - explorations/moe_cycle_simulator/phase7/application
+outputs:
+  - canonical synthetic adapter output
+  - CPU test and safety-boundary logs
+  - artifact checksum ledger
+  - run manifest and metrics
+dependencies:
+  - Python standard library
+  - bash syntax checker
+assumptions:
+  - synthetic shapes test schema semantics but do not establish real vLLM observability
+unknowns:
+  - real vLLM and Mistral event visibility
+  - provider runtime and GPU capacity
+risks:
+  - synthetic fixtures may omit runtime-specific fields
+  - future collector changes invalidate M1 and require a new variant
+validation:
+  - all Phase 7 unit tests pass
+  - adapter conversion replays byte-semantically
+  - draft application validates fail-closed
+  - disclosure-ready application is rejected while live endpoint and host-key blockers remain
+  - materialization-ready application is rejected while blockers remain
+  - execution-ready application is rejected while blockers remain
+  - all five locked shell templates exit before network or GPU query
+  - D0 timeout contains a detached descendant
+  - stage envelopes including kill grace fit one 21600-second lease
+  - D0 terminal ledgers replay as exact immutable sets and reject tamper
+  - deployment bundle rejects path, symlink, duplicate, size, hash and mode drift
+  - Gate M bootstrap rejects short, extra and hash-drifted transport frames
+  - M0 entry rejects missing, blocked, non-reviewed or hash-drifted Gate M parent evidence
+  - adversarial tests reject local decoder limit/log overflow, PATH executable drift, model/fixture drift, wrong self-consistent model identity, PYTHONPATH shadowing and loaded vLLM distribution drift
+  - adversarial tests reject post-validation parent pathname substitution and originless loaded vllm modules
+acceptance:
+  - no GPU, model download, network, or formal profiling occurs
+  - all CPU checks pass
+  - generated run satisfies the repository run contract
+estimated_resources:
+  cpu_seconds: less_than_60
+  gpu_count: 0
+  network: none
+owner_decisions:
+  - one prepaid six-hour vLLM environment approved with no extension or added cost
+  - provider-indicated 20-30 minute grace is noncontractual cleanup-only time
+next_legal_action: Freeze R12-R5 CPU evidence and complete a fresh same-hash review before any D0 package may be instantiated.
+forbidden_actions:
+  - SSH connection without a fresh exact one-shot D0 approval
+  - remote write, package install or download during D0
+  - GPU query or workload
+  - Mixtral download
+  - allocation extension or additional cost
+  - M0 through M4 execution
+  - old-session resume or retry-failed

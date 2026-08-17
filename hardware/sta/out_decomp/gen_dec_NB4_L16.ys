@@ -1,0 +1,7 @@
+read_verilog /work/sta/out_decomp/flat_dec_NB4_L16.v
+synth -top dec_top -flatten
+dfflibmap -liberty /work/syn/lib/nangate45.lib
+abc -liberty /work/syn/lib/nangate45.lib -script /work/sta/out_decomp/abc_dec_NB4_L16.do
+clean
+stat -liberty /work/syn/lib/nangate45.lib
+write_verilog -noattr /work/sta/out_decomp/netlist_dec_NB4_L16.v

@@ -1,0 +1,30 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-provider-adaptation-review-request-v1",
+  "review_request_id": "phase7-gputw-provider-adaptation-r1",
+  "adaptation_revision": "R1",
+  "base_r12_r5": {
+    "frozen_candidate_commit": "da3d33238365664435664e6ae1d18714e6b68ee2",
+    "review_closure_commit": "87c8a866e44387100dadf9a087cf55a37c7cc9e0"
+  },
+  "scope": "Review only the prospective GPUtw.ai provider, billing, SSH, storage, image, lifecycle and canonical-M0 contract overlay.",
+  "required_review_roles": [
+    "ARCHITECTURE_SYSTEM",
+    "MODEL_BENCHMARK",
+    "TRACE_PROVENANCE"
+  ],
+  "verdict": "PENDING",
+  "blockers": [
+    "provider-adaptation review has not been recorded",
+    "trusted GPUtw gateway host-key provenance is unresolved",
+    "live instance, image, storage and cost inputs do not exist"
+  ],
+  "does_not_authorize": [
+    "GPU instance creation",
+    "SSH",
+    "D0",
+    "Gate M",
+    "M0",
+    "GPU query",
+    "Mixtral download"
+  ]
+}

@@ -1,0 +1,5 @@
+read_verilog /work/syn/out_sta/sta_flat_me8_ts32.v
+synth -top moe_residency_top -flatten
+dfflibmap -liberty /work/syn/lib/nangate45.lib
+abc -liberty /work/syn/lib/nangate45.lib -script +strash;dch;map;topo;stime
+stat -liberty /work/syn/lib/nangate45.lib

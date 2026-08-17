@@ -1,0 +1,8 @@
+{
+  "finished_at_utc": "2026-08-11T15:19:44Z",
+  "logical_request_id": "CE2-31744x1024-clean",
+  "measured_count": 3,
+  "phase": "complete",
+  "status": "PASS",
+  "warmup_count": 1
+}

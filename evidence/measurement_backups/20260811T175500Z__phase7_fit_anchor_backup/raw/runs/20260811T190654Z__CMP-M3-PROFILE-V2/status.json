@@ -1,0 +1,6 @@
+{
+  "exception_type": "CampaignFailure",
+  "finished_at_utc": "2026-08-11T19:07:16Z",
+  "phase": "generation",
+  "status": "FAIL"
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "phase7-serving-saturation-rate-contract-v1",
+  "contract_id": "SERVING-SATURATION-RATE-SHORT-C8-NATURAL-V1",
+  "source_pilot_plan": "serving_saturation_pilot_plan_v1.json",
+  "source_runs": [
+    "20260811T194148Z__SERVING-SAT-PILOT-R02-C8-V1",
+    "20260811T194437Z__SERVING-SAT-PILOT-R04-C8-V1",
+    "20260811T194553Z__SERVING-SAT-PILOT-R06-C8-V1",
+    "20260811T194709Z__SERVING-SAT-PILOT-R08-C8-V1",
+    "20260811T194826Z__SERVING-SAT-PILOT-R10-C8-V1"
+  ],
+  "pilot_excluded_from_formal_scoring": true,
+  "workload": {
+    "sampling_mode": "NATURAL_EOS_CAPPED",
+    "input_tokens": 128,
+    "output_tokens_cap": 32,
+    "concurrency": 8,
+    "max_num_seqs": 8,
+    "max_num_batched_tokens": 1024,
+    "arrival_seed": 20260812,
+    "requests_per_rate": 100
+  },
+  "decision_rule": {
+    "description": "median effective completed-request rate of the 6, 8, and 10 rps pilot points after completion-rate and queue-growth review",
+    "plateau_effective_rates_rps": [
+      4.2015268900294815,
+      4.16013869351269,
+      4.188984317542533
+    ],
+    "saturation_rate_rps": 4.188984317542533
+  },
+  "formal_rates_rps": {
+    "P0_fit": {
+      "25_percent": 1.0472460793856333,
+      "50_percent": 2.0944921587712665,
+      "75_percent": 3.1417382381568997
+    },
+    "P1_held_out": {
+      "40_percent": 1.6755937270170132,
+      "65_percent": 2.7228398064027205,
+      "90_percent": 3.77008588578828
+    }
+  },
+  "formal_sample_rule": {
+    "minimum_completed_requests_per_condition": 1000,
+    "maximum_requests_if_p99_ci_unstable": 10000,
+    "failed_or_rejected_requests_remain_in_denominator": true
+  }
+}

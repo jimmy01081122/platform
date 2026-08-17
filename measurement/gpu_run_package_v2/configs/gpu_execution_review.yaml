@@ -1,0 +1,28 @@
+schema_version: gpu-execution-review-policy-v1
+package_id: edgehetero-benchmark-driven-m0-20260718
+governing_decision:
+  decision_id: D-062
+  status: accepted
+  superseded_by: null
+  effect: stop_all_further_paid_gpu_execution_and_remove_platform_holdout
+governance_baseline:
+  decision_id: D-063
+  status: accepted
+  effect: seal_paid_no_go_governance_baseline
+paid_execution:
+  approval_required: true
+  approval_schema: schemas/gpu_execution_approval.schema.json
+  required_distinct_reviewer_roles:
+    - architecture_system
+    - model_benchmark
+    - trace_statistics
+  require_empty_blockers: true
+  require_positive_budget: true
+  require_future_deadline: true
+  require_unexpired_approval: true
+  bind_to:
+    - superseding_decision_id
+    - package_checksums_sha256
+    - matrix_sha256
+    - gpu_profile_id
+local_exceptions: []

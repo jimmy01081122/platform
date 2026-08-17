@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalized Metrics",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "metrics"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer"
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "units": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "object"
+    },
+    "evidence": {
+      "$ref": "evidence.schema.json"
+    },
+    "simulation_fidelity": {
+      "enum": [
+        "fast",
+        "calibrated",
+        "detailed",
+        "rtl-transaction",
+        "rtl-cycle"
+      ]
+    },
+    "calibration_pack": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "failure_classification": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

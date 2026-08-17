@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-s2-classification-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "d0_stage", "d0_status", "environment_eligibility", "formal_status", "classification_basis", "passed_observations", "blocking_findings", "observational_findings", "promotable", "next_legal_action", "authority", "retry_allowed", "resume_allowed", "model_download_performed", "gpu_workload_performed"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-s2-classification-v1"},
+    "d0_stage": {"const": "D0-S2"},
+    "d0_status": {"enum": ["READY_FOR_GATE_M_APPLICATION", "INCOMPLETE_NOT_READY"]},
+    "environment_eligibility": {"enum": ["READY_FOR_GATE_M_APPLICATION", "NOT_READY"]},
+    "formal_status": {"const": "NONFORMAL_DISCOVERY_PROVENANCE"},
+    "classification_basis": {"const": "RUNTIME_IDENTITY_AND_CAPACITY_DISCOVERY_ONLY"},
+    "passed_observations": {"type": "array", "items": {"type": "string"}},
+    "blocking_findings": {"type": "array", "items": {"type": "string"}},
+    "observational_findings": {"type": "array", "items": {"type": "string"}},
+    "promotable": {"const": false},
+    "next_legal_action": {"type": "string", "minLength": 1},
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["d0", "gate_m", "m0", "gpu"],
+      "properties": {"d0": {"const": "NOT_AUTHORIZED"}, "gate_m": {"const": "NOT_AUTHORIZED"}, "m0": {"const": "NOT_AUTHORIZED"}, "gpu": {"const": "NONE"}}
+    },
+    "retry_allowed": {"const": false},
+    "resume_allowed": {"const": false},
+    "model_download_performed": {"const": false},
+    "gpu_workload_performed": {"const": false}
+  }
+}

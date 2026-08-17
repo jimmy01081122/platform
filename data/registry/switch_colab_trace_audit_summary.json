@@ -1,0 +1,46 @@
+{
+  "registry_id": "switch_colab_trace_readonly_v1",
+  "status": "pass",
+  "complete": false,
+  "read_only": true,
+  "quick_audit": {
+    "command": "python3 scripts/audit_external_switch_traces.py --mode quick",
+    "root": "/home/a/prototype/trace_data",
+    "inventory": "/home/a/prototype/data/manifests/TRACE_INVENTORY.csv",
+    "inventory_sha256": "9046f970ebf58459a11cf2aca1d1189e4dac9f08f3fcdd23b93448fe2d8f91eb",
+    "content_set_sha256": "2378bd769156e8884008bd7f42a40b1572b9d2e6312c3f8886a7e03e37ee2b6e",
+    "file_count": 1527,
+    "total_bytes": 11159735788,
+    "files_stat_checked": 1527,
+    "files_sha256_checked": 0,
+    "schema_relation_errors": 0,
+    "error_count": 0
+  },
+  "prior_full_hash_evidence": {
+    "summary_path": "/home/a/prototype/data/manifests/trace_audit_summary.json",
+    "checksum_manifest_path": "/home/a/prototype/data/manifests/trace_manifest.sha256",
+    "checksum_manifest_sha256": "a8d79300e2f1b329b8f734cc6a657d528af2adc6b96f8dc7f21fb7aee1cdd22a",
+    "reported_file_count": 1527,
+    "reported_total_bytes": 11159735788,
+    "reported_schema_or_hash_errors": 0,
+    "reported_raw_trace_modified": false,
+    "full_hash_recomputed_in_this_repo_audit": false
+  },
+  "corpus": {
+    "run_count": 168,
+    "model_expert_counts": [
+      8,
+      16,
+      32
+    ],
+    "benchmark_count": 6,
+    "per_run_trace_type_counts": {
+      "router_token": 168,
+      "hardware_event": 168,
+      "expert_load": 168,
+      "batch_expert_load": 168,
+      "run_metadata": 168,
+      "router_diagnostics": 168
+    }
+  }
+}

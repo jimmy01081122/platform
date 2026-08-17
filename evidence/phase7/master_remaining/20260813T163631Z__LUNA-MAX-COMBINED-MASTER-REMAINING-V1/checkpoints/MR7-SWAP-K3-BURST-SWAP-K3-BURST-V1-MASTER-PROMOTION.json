@@ -1,0 +1,19 @@
+{
+  "checkpoint_id": "MR7-SWAP-K3-BURST-SWAP-K3-BURST-V1-MASTER-PROMOTION",
+  "execution_ledger_sha256": "3b8f144ecb3d0316e2e9fe9b6e573aa4029eb734c03ea3a608c24329a021fb8b",
+  "matrix_completed_points": [
+    "LONG-PREFILL",
+    "DECODE-HEAVY",
+    "MIXED",
+    "BURST"
+  ],
+  "matrix_missing_points": [],
+  "next_ready_gpu_unit": "SWAP-K5",
+  "point_id": "BURST",
+  "raw_file_set_sha256": "620b826e9f29f723440c46eb0dc53244b265368bf5cb85b5db6968746b71acef",
+  "remaining_ledger_sha256": "2ed15d28e73ffaba4c5b4fb2de57224eb2632d44709c6cc4086db6cca15060d9",
+  "required_closed_count": 14,
+  "required_remaining_count": 272,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T01:39:48Z"
+}

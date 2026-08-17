@@ -1,0 +1,19 @@
+{
+  "schema_version": "moe-simulator-three-role-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r3-20260728",
+  "ledger_sha256": "8b94a7d30510102d612f5663a1153fad2fe08aec4a02ffbba210398fd61e4785",
+  "member_count": 89,
+  "verdict": "MODIFY",
+  "blockers": [
+    "MODEL-P4-R3-B1: active candidate ledger omitted one nested historical snapshot member"
+  ],
+  "role_verdicts": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "MODIFY",
+    "Trace/Provenance": "GO"
+  },
+  "phase4_freeze": false,
+  "phase5_authorized": false,
+  "next_legal_action": "CPU-only exact-set packaging correction and fresh same-hash review; source and R3 run may remain unchanged.",
+  "gpu_authority": "NONE"
+}

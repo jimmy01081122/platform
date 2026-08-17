@@ -1,0 +1,61 @@
+{
+  "$id": "https://example.invalid/moe-simulator/artifact-envelope-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "uintString": {"pattern": "^(0|[1-9][0-9]*)$", "type": "string"}
+  },
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {"$ref": "#/$defs/hash"},
+    "bundle_semantic_root": {"$ref": "#/$defs/hash"},
+    "codec_profile_hash": {"$ref": "#/$defs/hash"},
+    "completeness": {"enum": ["COMPLETE", "PARTIAL"]},
+    "contract_hashes": {"items": {"$ref": "#/$defs/hash"}, "type": "array", "uniqueItems": true},
+    "evidence_class": {"enum": ["SYNTHETIC", "MEASURED", "DERIVED", "MIXED"]},
+    "calibration_profiles": {
+      "items": {"type": "object"},
+      "type": "array"
+    },
+    "partitions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "file_path": {"pattern": "^[A-Za-z0-9_.-]+\\.arrow\\.zst$", "type": "string"},
+          "partition_id": {"pattern": "^[A-Za-z0-9_.-]+$", "type": "string"},
+          "file_sha256": {"$ref": "#/$defs/hash"},
+          "ir_kind": {"enum": ["WorkloadIR", "ModelIR", "RoutingIR", "PlacementIR", "PlatformIR", "EventIR", "ClockAlignmentIR", "CalibrationIR", "ResultIR"]},
+          "key_max": {"minLength": 1, "type": "string"},
+          "key_min": {"minLength": 1, "type": "string"},
+          "row_count": {"$ref": "#/$defs/uintString"},
+          "semantic_root": {"$ref": "#/$defs/hash"}
+        },
+        "required": ["partition_id", "ir_kind", "file_path", "file_sha256", "row_count", "key_min", "key_max", "semantic_root"],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "primary_key": {
+      "const": ["ir_kind", "record_id"]
+    },
+    "producer": {
+      "additionalProperties": false,
+      "properties": {
+        "build_hash": {"$ref": "#/$defs/hash"},
+        "tool": {"minLength": 1, "type": "string"},
+        "version": {"minLength": 1, "type": "string"}
+      },
+      "required": ["tool", "version", "build_hash"],
+      "type": "object"
+    },
+    "row_count": {"$ref": "#/$defs/uintString"},
+    "runtime_variant_hashes": {"items": {"$ref": "#/$defs/hash"}, "minItems": 1, "type": "array", "uniqueItems": true},
+    "runtime_variants": {"items": {"type": "object"}, "minItems": 1, "type": "array"},
+    "schema_version": {"const": "artifact-envelope-v1"},
+    "source_artifact_refs": {"items": {"$ref": "#/$defs/hash"}, "type": "array", "uniqueItems": true},
+    "status": {"enum": ["PASS", "FAIL", "INCOMPLETE"]}
+  },
+  "required": ["schema_version", "artifact_id", "bundle_semantic_root", "row_count", "primary_key", "codec_profile_hash", "producer", "contract_hashes", "source_artifact_refs", "runtime_variant_hashes", "runtime_variants", "calibration_profiles", "evidence_class", "completeness", "status", "partitions"],
+  "type": "object"
+}

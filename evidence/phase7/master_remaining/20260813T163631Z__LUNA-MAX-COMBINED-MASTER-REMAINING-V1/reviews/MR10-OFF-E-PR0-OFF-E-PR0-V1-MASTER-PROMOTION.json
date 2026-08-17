@@ -1,0 +1,10 @@
+{
+  "dependency_lineage": "PASS",
+  "next_ready_unit": "OFF-E-PR1",
+  "raw_file_set_sha256": "797462788dcfe47cbe6f9ef83ccc9372fa9dbeba872686f94eb91a404d288aa8",
+  "reviewed_at_utc": "2026-08-14T02:46:36Z",
+  "schema_version": "phase7-combined-master-off-e-pr0-review-v1",
+  "tensor_fidelity": "EXACT_EQUAL",
+  "timing_perturbation_relative_delta": 0.009807710596613773,
+  "validation_state": "VALIDATION_PASS"
+}

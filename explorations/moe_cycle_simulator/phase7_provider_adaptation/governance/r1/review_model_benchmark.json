@@ -1,0 +1,43 @@
+{
+  "schema_version": "phase7-gputw-provider-adaptation-r1/reviewer-output/v1",
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-simulator-phase7-gputw-provider-adaptation-r1-bdb610f",
+  "reviewed_commit": "bdb610fca5470e21556b1509ed22db6f55295995",
+  "reviewed_tree": "a471b8bd588c1e574fefae811f3e13d951d411b2",
+  "reviewed_candidate_ledger_sha256": "67fcf4cc8b17b122efa230b95c4a162fe8582be515ce23a307efe2bea5c23762",
+  "candidate_member_count": 12,
+  "verdict": "GO",
+  "blockers": [],
+  "non_blocking_findings": [
+    "Actual container, CUDA, driver, Python, vLLM, backend, model snapshot, capacity and BF16 runtime outcome remain unresolved prospective D0/Gate M/M0 fields.",
+    "TEMPLATE and CUSTOM_IMAGE are modeled as separate future branches, but no runtime image identity is promoted before live evidence and approval."
+  ],
+  "review_focus": [
+    "Canonical first M0 remains RTX PRO 6000 WS 96GB, mistralai/Mixtral-8x7B-Instruct-v0.1, BF16, vLLM, no quantization and no CPU offload.",
+    "Automatic FP8, quantization and CPU-offload selection are false; a canonical BF16 capacity or runtime failure is preserved as formal evidence.",
+    "Runtime identity supports TEMPLATE and CUSTOM_IMAGE while keeping the selected mode and immutable image identity unresolved; mutable tags do not satisfy reproducibility."
+  ],
+  "commands_executed": [
+    "python3 -c '<assert canonical M0 model, platform, BF16, vLLM, NONE quantization/offload and disabled automatic fallbacks>'",
+    "git grep -n -i -E 'Mixtral|BF16|vLLM|quantization|offload|FP8|INT8|AWQ|GPTQ|TEMPLATE|CUSTOM_IMAGE|container|CUDA|driver|Python|backend|snapshot|capacity' bdb610fca5470e21556b1509ed22db6f55295995 -- candidate paths",
+    "python3 explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/validate_provider_adaptation.py",
+    "python3 -m pytest -q tests/test_phase7_gputw_provider_adaptation.py",
+    "python3 explorations/moe_cycle_simulator/phase7/tests/run_cpu_tests.py"
+  ],
+  "command_results": [
+    "Canonical M0 assertion PASS.",
+    "Search review PASS: alternatives occur only as explicitly forbidden or separately identified future variants; no silent fallback is authorized.",
+    "Provider validator PASS: network_free=true and all live execution authorities remain NONE/NOT_AUTHORIZED.",
+    "Focused adaptation tests PASS: 17 passed.",
+    "Existing Phase 7 CPU/mock suite PASS: Ran 126 tests; OK."
+  ],
+  "claim_boundary": "This is a read-only model-contract and benchmark-governance review. It claims no model snapshot, runtime identity, GPU capacity, BF16 load, throughput, calibration, generation result, D0, Gate M, M0, GPU query, workload, or model download.",
+  "side_effects": {
+    "ssh": false,
+    "provider_network_probe": false,
+    "instance_creation": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  }
+}

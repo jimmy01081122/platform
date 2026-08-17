@@ -1,0 +1,119 @@
+{
+  "schema_version": "g25-gpu-pilot-session-contract-v1",
+  "contract_revision": "granite-c1-g25-rtx3050-session-v1.2.1-s4-r4-application",
+  "status": "application_implemented_pending_fresh_review_not_authorized",
+  "session_id": "granite-c1a-g25-qualification-r1-20260719",
+  "execution_role": "workload_termination_qualification",
+  "authority": {
+    "gpu_execution": "not_authorized",
+    "formal_g3_r5": "not_authorized",
+    "paid_gpu": "not_authorized",
+    "archive_release": "not_authorized"
+  },
+  "execution_scope": {
+    "gpu_profile": "rtx3050_6gb",
+    "exact_product_name_regex": "^NVIDIA GeForce RTX 3050(?: Laptop GPU)?$",
+    "logical_pass": "P0_ONLY",
+    "routing_capture": false,
+    "routing_hook_registration": "forbidden_and_runtime_verified",
+    "profiler": false,
+    "formal_c1_evidence": false,
+    "model_qualification": false,
+    "shared_generation_core": "collectors.c1_common.run_generation"
+  },
+  "matrix_path": "configs/test_suites/granite_c1/g25_gpu_pilot_matrix_v1.json",
+  "generation_profile_path": "configs/test_suites/granite_c1/g25_generation_profiles_v1.yaml",
+  "expected_artifacts_path": "configs/test_suites/granite_c1/g25_expected_artifacts_v1.json",
+  "frozen_identity": {
+    "model_id": "ibm-granite/granite-3.1-1b-a400m-instruct",
+    "model_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+    "tokenizer_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+    "snapshot_inventory_path": "configs/model_snapshots/granite-3.1-1b-a400m-instruct/0da7a48b0276d500ce5922fd2b33944091fc6c09/inventory.json",
+    "snapshot_inventory_sha256": "b4f64b26df1c79336af48a363fda4214506b87b61bd5e8f3bdb3af9c844626fd",
+    "chat_template_sha256": "08962c2f15d56767854b46dfc4070b37f4c443551833bba65b417191735f3187",
+    "sample_manifest_path": "configs/test_suites/granite_c1/sample_manifest.jsonl",
+    "sample_manifest_sha256": "f32aa23823c2b88f7f2fab2a11cbbafe39c10adc54d5570ca7474b27996cd2bd",
+    "prompt_construction_revision": "granite-c1-fixed-system-date-v1",
+    "system_message_sha256": "2d870b377ad178dacfce968718fd67e7d34c18f2f9c6ef82455ff53913ece630",
+    "tokenizer_config_sha256": "ab17e0d532ecf47e9d8451939dd81f25dd98c5fba4b6742584549bbf9c1f06b9",
+    "generation_config_file_sha256": "df006c64ad35b18712527cb5130a7a13a4d8a7c5c23653feea59be88e2e2a4ca",
+    "special_tokens_map_sha256": "596d752bf46f5cace1f6826b52ed7d913347a4eea0ecce8ab2f869471ca40369",
+    "eos_token_id": 0,
+    "pad_token_id": 0,
+    "generation_profile_sha256": "35269e74bfd75d5a7d75f7ffca0fc94bff77f6d5e838760df2af0ef17bbc58a6",
+    "torch_version": "2.7.1+cu128",
+    "transformers_version": "4.47.0",
+    "seed": 20260718,
+    "required_device_fields": ["name", "uuid", "pci_bus_id", "total_vram_bytes", "free_vram_bytes"]
+  },
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "use_cache": true,
+    "legal_stop_reasons": ["eos_token"],
+    "eos_token_id": 0,
+    "pad_token_id": 0,
+    "dynamic_generation_override": false
+  },
+  "process_strategy": {
+    "model_lifetime": "fresh_model_process_per_cell",
+    "reason": "strongest_state_isolation_using_existing_reviewed_parent_timeout_path",
+    "model_load_in_cell_timeout": true,
+    "generation_state_reset": "new_process",
+    "rng_reset": "seed_before_each_generation",
+    "cache_reuse_between_cells": false,
+    "failed_cell_contaminates_next_cell": false
+  },
+  "deadlines": {
+    "cell_timeout_seconds": 480,
+    "term_grace_seconds": 30,
+    "latest_new_dispatch_elapsed_seconds": 5790,
+    "execution_cutoff_elapsed_seconds": 6300,
+    "session_hard_deadline_seconds": 7200,
+    "outer_command_timeout_seconds": 7500,
+    "outer_kill_after_seconds": 30,
+    "audit_reserve_seconds": 900,
+    "package_verify_reserve_seconds": 300,
+    "stop_new_dispatch_remaining_seconds": 1410,
+    "termination_sequence": ["SIGTERM_process_group", "30_second_grace", "SIGKILL_process_group"],
+    "deadline_expiry_disposition": "INCOMPLETE_HARD_STOP"
+  },
+  "failure_and_resume": {
+    "classification_changes_dispatch_denominator": false,
+    "max_attempts_per_cell": 1,
+    "completed_cells_preserved": true,
+    "resume_same_session": false,
+    "retry_failed": false,
+    "new_attempt_requires_fresh_session_contract_review_and_owner_approval": true,
+    "incomplete_session_can_pass": false
+  },
+  "preflight": {
+    "minimum_free_vram_bytes": 5000000000,
+    "minimum_free_disk_bytes": 8589934592,
+    "exact_gpu_uuid": "GPU-4d160805-02d8-24aa-ef6a-2685832658a3",
+    "exact_pci_bus_id": "00000000:01:00.0",
+    "exact_total_vram_bytes": 6442450944,
+    "cuda_visible_devices": "GPU-4d160805-02d8-24aa-ef6a-2685832658a3",
+    "precision": "bf16",
+    "other_compute_processes_allowed": false,
+    "offline_mode_required": true,
+    "clean_worktree_required": true,
+    "complete_package_checksum_required": true,
+    "annotated_review_tag_required": true,
+    "fresh_session_required": true,
+    "r3_session_sha256": "ce1220cf78655a24123f116dfd6414fee7d176c917798f9b5bb83eb9a90a9c80",
+    "r4_session_sha256": "767887e9d90a4980deeb56dfd005014a1981e72a5e377d41deb2a75edf890dff"
+  },
+  "selector": {
+    "rule": "smallest_ceiling_where_all_four_frozen_samples_are_QUALIFIED",
+    "no_common_ceiling": "NO_COMMON_CEILING_WITHIN_CONTRACT",
+    "automatic_ceiling_expansion": false,
+    "formal_gate_pass": false
+  },
+  "gpu_application_blockers": [
+    "new_s4_r2_application_source_not_yet_same_hash_reviewed",
+    "fresh_three_role_GO_not_yet_recorded",
+    "5_6sol_GO_not_yet_recorded",
+    "owner_exact_command_approval_not_yet_recorded"
+  ]
+}

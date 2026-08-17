@@ -1,0 +1,53 @@
+{
+  "schema_version": "moe-simulator-phase7-m0-materialization-approval-v1",
+  "application_id": "mixtral-rtxpro6000-bf16-m0-r12-20260729",
+  "approval_id": "[BLOCKING:ONE_SHOT_MATERIALIZATION_APPROVAL_ID]",
+  "approval_token_sha256": "[BLOCKING:ONE_SHOT_MATERIALIZATION_TOKEN_SHA256]",
+  "used_once_registry_path": "[BLOCKING:ABSOLUTE_ONE_SHOT_MATERIALIZATION_REGISTRY_PATH]",
+  "application_ledger_sha256": "[BLOCKING:FROZEN_RECURSIVE_APPLICATION_LEDGER_SHA256]",
+  "materialization_plan_sha256": "[BLOCKING:FROZEN_MATERIALIZATION_PLAN_FILE_SHA256]",
+  "exact_materialization_commands_sha256": "[BLOCKING:EXACT_MATERIALIZATION_AND_PROMPT_COMMANDS_SHA256]",
+  "approved_ssh_host_key_sha256": "[BLOCKING:SSH_HOST_KEY_SHA256]",
+  "approved_d0_result_sha256": "[BLOCKING:COMPLETE_D0_RESULT_FILE_SHA256]",
+  "approved_vault_mount_identity_sha256": "[BLOCKING:D0_VAULT_MOUNT_IDENTITY_SHA256]",
+  "approved_deployment_project_root": "[BLOCKING:FRESH_DEPLOYED_PROJECT_ROOT_UNDER_VAULT]",
+  "approved_application_target": "[BLOCKING:ABSOLUTE_DEPLOYED_MATERIALIZATION_APPLICATION_PATH]",
+  "approved_deployment_receipt_path": "[BLOCKING:ABSOLUTE_DEPLOYMENT_RECEIPT_PATH]",
+  "approved_maximum_spend_amount": "0",
+  "approved_maximum_spend_currency": "TWD",
+  "allocation_window": {
+    "start_trigger": "OWNER_RELEASES_FRESH_SSH_HANDOFF",
+    "lease_start_utc": "[BLOCKING:FRESH_SSH_HANDOFF_UTC]",
+    "lease_deadline_utc": "[BLOCKING:EXACTLY_SIX_HOURS_AFTER_HANDOFF_UTC]",
+    "total_seconds": 21600,
+    "billing_mode": "PREPAID_FIXED_WINDOW",
+    "extension_allowed": false,
+    "additional_cost_allowed": false,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "release_reserve_seconds": 900
+  },
+  "owner_authority_record_sha256": "[BLOCKING:OWNER_ENVIRONMENT_DECISION_FILE_SHA256]",
+  "application_decision": "PENDING",
+  "materialization_decision": "PENDING",
+  "approved_at_utc": "[BLOCKING:UTC_TIMESTAMP]",
+  "owner_identity": "[BLOCKING:OWNER_ID]",
+  "authority": [
+    "approved SSH connection and environment capture",
+    "exact target GPU identity preflight without workload",
+    "one pinned Mixtral snapshot materialization and checksum ledger"
+  ],
+  "not_authorized": [
+    "M0 GPU workload",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "retry-failed",
+    "resume",
+    "quantization",
+    "CPU offload",
+    "allocation extension",
+    "additional cost"
+  ]
+}

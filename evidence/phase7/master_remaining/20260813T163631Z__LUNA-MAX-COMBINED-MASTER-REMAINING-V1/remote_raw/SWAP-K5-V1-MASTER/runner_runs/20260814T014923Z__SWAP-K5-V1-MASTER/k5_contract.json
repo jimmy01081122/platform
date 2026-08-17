@@ -1,0 +1,112 @@
+{
+  "schema_version": "phase7-swap-k5-exhaustion-contract-v1",
+  "contract_state": "FROZEN_BEFORE_EXECUTION",
+  "canonical_experiment_id": "SWAP-K5",
+  "runtime_class": "SERVING_VARIANT_DIAGNOSTIC",
+  "scientific_question": "When the native CPU KV offload pool is intentionally smaller than the admitted working set, which observable exhaustion response occurs: CPU-LRU eviction, scheduler preemption/recompute/backpressure, explicit rejection, or request failure?",
+  "claim_boundary": "Diagnostic exhaustion/fallback evidence only; not a formal steady-state serving tail-CI claim and not SWAP-K4 OFFxKV interaction evidence.",
+  "model": {
+    "path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "dtype": "bfloat16"
+  },
+  "engine": {
+    "vllm_version": "0.23.0",
+    "torch_version": "2.11.0+cu130",
+    "max_model_len": 32768,
+    "max_num_seqs": 8,
+    "max_num_batched_tokens": 4096,
+    "gpu_memory_utilization": 0.97,
+    "enforce_eager": true,
+    "enable_prefix_caching": false,
+    "enable_chunked_prefill": true,
+    "disable_log_stats": false,
+    "kv_cache_metrics": true,
+    "enable_logging_iteration_details": true,
+    "kv_offloading_backend": "native",
+    "kv_offloading_size_gib": 0.25,
+    "kv_event_endpoint": "tcp://*:5625"
+  },
+  "capacity_derivation": {
+    "reference_full_block_bytes": 2097152,
+    "host_capacity_bytes": 268435456,
+    "expected_complete_host_blocks": 128,
+    "block_size_tokens": 16,
+    "expected_host_token_capacity": 2048,
+    "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+    "derivation_basis": "Validated SWAP-K1/K2 Mixtral BF16 cross-layer native-offload block geometry."
+  },
+  "workload": {
+    "arrival_mode": "CLOSED_LOOP_SIMULTANEOUS_BURST",
+    "bursts": 1,
+    "concurrency": 8,
+    "distinct_prompt_sequences": true,
+    "input_tokens_per_request": 16384,
+    "forced_output_tokens_per_request": 32,
+    "requested_request_count": 8,
+    "aggregate_input_tokens": 131072,
+    "aggregate_requested_output_tokens": 256,
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "seed": 0,
+      "ignore_eos": true,
+      "min_tokens": 32,
+      "max_tokens": 32
+    }
+  },
+  "predeclared_scientific_outcomes": [
+    "CPU_HOST_POOL_LRU_EVICTION_OBSERVED",
+    "SCHEDULER_PREEMPTION_OR_RECOMPUTE_OBSERVED",
+    "QUEUE_OR_BACKPRESSURE_OBSERVED",
+    "EXPLICIT_REJECTION_OBSERVED",
+    "REQUEST_FAILURE_OR_CENSORING_OBSERVED",
+    "NO_EXHAUSTION_RESPONSE_OBSERVED"
+  ],
+  "required_evidence": [
+    "exact engine and sampling arguments",
+    "eight distinct input token-ID fixtures and hashes",
+    "per-request arrival, first-yield, completion, output IDs, finish reason, error and censor state",
+    "decoded ZMQ KV BlockStored and BlockRemoved events with sequence and payload hashes",
+    "removed-hash subset and host-pool occupancy reconstruction",
+    "GPU plus host VmRSS/VmPin/Mlocked telemetry and peaks",
+    "stdout/stderr logs including scheduler preemption or queue signals when emitted",
+    "SHA-256 manifest and immutable local raw backup"
+  ],
+  "validity_rules": {
+    "technical_failure": "A runner, launch, decode, checksum, or missing-evidence defect is INVALID and must be repaired before scientific adjudication.",
+    "scientific_failure": "A completed run with request failures, rejection, censoring, or no exhaustion response remains valid evidence and must not be discarded.",
+    "denominator": "All eight submitted request IDs remain in the denominator regardless of terminal outcome.",
+    "success_not_assumed": true
+  },
+  "session_guard_lineage": {
+    "attempt_id": "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+    "gpu_uuid": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521",
+    "review_sha256": "b0d282aa557d0cef489a409b126715f4207348c4d688a44890346786e839913d",
+    "promotion_status": "VALIDATION_PASS_WITH_UM_LIMITATION",
+    "required_current_dispatch_gate": "Same GPU UUID, zero foreign compute processes, and zero foreign serving processes immediately before engine creation."
+  },
+  "source_contract": [
+    {
+      "path": "/usr/local/lib/python3.12/dist-packages/vllm/v1/kv_offload/cpu/manager.py",
+      "sha256": "fd89bb49d46a01fdf6acfdf6c3c1867e5cb3116a0b24bc47859cc83de34841bd",
+      "semantic_anchor": "prepare_store computes required evictions from keys_to_store minus free blocks; failed protected-key eviction returns None; successful eviction emits removed=True OffloadingEvent."
+    },
+    {
+      "path": "/usr/local/lib/python3.12/dist-packages/vllm/v1/core/sched/scheduler.py",
+      "sha256": "9ae1491f57a6294e32416b93ef2ea68107fa0d65c3a4d7f745f1261012f735e9",
+      "semantic_anchor": "_preempt_request frees KV, resets computed tokens, increments num_preemptions, records PREEMPTED and prepends the request to waiting."
+    },
+    {
+      "path": "/usr/local/lib/python3.12/dist-packages/vllm/distributed/kv_events.py",
+      "sha256": "24841685ad6db3543a19b9639eea24e1992ab37c4773c775da9f4140bb813322",
+      "semantic_anchor": "ZMQ publisher emits topic, monotonically increasing sequence and msgpack EventBatch payload."
+    },
+    {
+      "path": "/usr/local/lib/python3.12/dist-packages/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py",
+      "sha256": "42dddd1dd728622d6f6488eae58b26c51c76d6b80c20874233cda2a87f75b7c6",
+      "semantic_anchor": "Offloading scheduler tracks preempted requests and connector scheduling decisions."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "g25-gpu-pilot-matrix-v1",
+  "matrix_revision": "granite-c1-g25-rtx3050-matrix-v1.0.1",
+  "suite": "granite_c1_smoke_v1",
+  "stage": "C1-A",
+  "task": "T1",
+  "logical_pass": "P0",
+  "instances": ["c1a-t1-00", "c1a-t1-01", "c1a-t1-02", "c1a-t1-03"],
+  "frozen_rendered_inputs": {
+    "c1a-t1-00": {"rendered_chat_sha256": "94a818d9a552fb87cf9f9429d854e80ae086aaee58008b33def6623645be2719", "input_token_count": 95, "input_token_ids_sha256": "615a2561a760998bf0b726c121522c98e6854dd2dace2b3aa8ab80aad3d90e9c"},
+    "c1a-t1-01": {"rendered_chat_sha256": "a1da333af8a9d36d53ff39271a3423c3e812c19d14fdc3764c6752fb13212351", "input_token_count": 118, "input_token_ids_sha256": "fdf16fb30a783cc5ec4439c01835b2a1be9f3dc7c2feb65284176c7c6e8d364d"},
+    "c1a-t1-02": {"rendered_chat_sha256": "e62426dd47f02a15740e4577bc296cdd1ea717d10c040278aec2fa5f644abe3d", "input_token_count": 102, "input_token_ids_sha256": "90b2053e3bc071a3ca00990d5e8bc5659064df20a2d8ba94ba0b64bc2f280b24"},
+    "c1a-t1-03": {"rendered_chat_sha256": "2267695e2e6d4e4a5eec28efc22a3869f1ef4f775bc76e703a7980dd633c8af9", "input_token_count": 120, "input_token_ids_sha256": "49198437d9becac46e083386e9a5d2ee688ae7b032e6b9f890e2b7089291357b"}
+  },
+  "ceilings": [256, 384, 512],
+  "executions_per_cell": 1,
+  "expected_cells": 12,
+  "schedule": "ceiling_ascending_then_instance_ascending_full_cartesian",
+  "early_success_stop": false,
+  "per_sample_ceiling": false,
+  "answer_correctness_affects_dispatch_or_selection": false,
+  "r4_cell_or_generation_reuse": false,
+  "ceiling_above_512": false
+}

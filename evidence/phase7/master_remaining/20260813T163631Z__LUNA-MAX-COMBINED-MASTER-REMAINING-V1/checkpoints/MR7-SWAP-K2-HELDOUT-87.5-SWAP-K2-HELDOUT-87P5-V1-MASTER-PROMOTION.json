@@ -1,0 +1,22 @@
+{
+  "checkpoint_id": "MR7-SWAP-K2-HELDOUT-87.5-SWAP-K2-HELDOUT-87P5-V1-MASTER-PROMOTION",
+  "execution_ledger_sha256": "29c8257439e17c340715a147b2971b79dbb986effba40d87a84ee1d29867809e",
+  "matrix_completed_points": [
+    "FIT-25",
+    "FIT-50",
+    "FIT-75",
+    "FIT-100",
+    "HELDOUT-37.5",
+    "HELDOUT-62.5",
+    "HELDOUT-87.5"
+  ],
+  "matrix_missing_points": [],
+  "next_ready_gpu_unit": "SWAP-K3",
+  "point_id": "HELDOUT-87.5",
+  "raw_file_set_sha256": "f40746da2b2edad35b54a1eb6f0484d4ae30e7cac3a7e9ec1e935535d09f2e87",
+  "remaining_ledger_sha256": "de363b62bca896afae16977eb2ccea3b40ed5bbed64fd9f308996bb0161d3346",
+  "required_closed_count": 13,
+  "required_remaining_count": 273,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T01:11:11Z"
+}

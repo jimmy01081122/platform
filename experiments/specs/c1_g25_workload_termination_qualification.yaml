@@ -1,0 +1,217 @@
+experiment_id: c1_g25_workload_termination_qualification
+stage: C1_G2_5
+mechanism: Granite C1-A formal workload termination qualification
+status: s4_r4_review_no_go_immutable_gpu_not_run
+governance_phase: G2_5_S4_R4_APPLICATION_REVIEW_COMPLETE_NO_GO
+platform_profile: configs/platforms/discrete_edge_workstation.yaml
+research_question: >
+  Can every frozen C1-A T1 candidate produce a complete, parseable, legally
+  terminated P0 execution under one common bounded generation ceiling?
+claim_boundary:
+  establishes: bounded execution compatibility only
+  does_not_establish:
+    - task correctness
+    - model capability
+    - collector correctness
+    - cross-pass alignment
+    - formal C1 acceptance
+scope:
+  suite: granite_c1_smoke_v1
+  task: T1
+  instances: [c1a-t1-00, c1a-t1-01, c1a-t1-02, c1a-t1-03]
+  pass: P0
+  routing_collector: disabled
+  profiler: disabled
+controlled_variables:
+  model_revision: 0da7a48b0276d500ce5922fd2b33944091fc6c09
+  tokenizer_revision: 0da7a48b0276d500ce5922fd2b33944091fc6c09
+  prompt_template: pinned_chat_template
+  prompt_construction_revision: granite-c1-fixed-system-date-v1
+  system_message_sha256: 2d870b377ad178dacfce968718fd67e7d34c18f2f9c6ef82455ff53913ece630
+  eos_token_id: 0
+  pad_token_id: 0
+  seed: 20260718
+  do_sample: false
+  num_beams: 1
+  effective_generation_keys: [max_new_tokens, do_sample, num_beams, use_cache, seed]
+independent_variable:
+  token_ceiling_candidates: [256, 384, 512]
+bounds:
+  per_unit_timeout_seconds: 480
+  term_grace_seconds: 30
+  latest_new_dispatch_elapsed_seconds: 5790
+  execution_cutoff_elapsed_seconds: 6300
+  session_hard_deadline_seconds: 7200
+  audit_reserve_seconds: 900
+  package_verify_reserve_seconds: 300
+  legal_stop_reasons: [eos_token]
+selection_rule: smallest ceiling at which all four candidates are QUALIFIED
+failure_rule: any non-QUALIFIED candidate at 512 makes R5 NOT_ELIGIBLE
+classifications: [INVALID_EVIDENCE, RUNTIME_FAILURE, TIMEOUT, TRUNCATED, INVALID_OUTPUT, QUALIFIED]
+gpu_authorization: none
+formal_r5_authorization: none
+execution_status: NOT_RUN
+actual_results: null
+implementation_status: G2_5_S2_IMPLEMENTATION_PASS
+s4_application_implementation:
+  status: S4_R4_REVIEW_NO_GO_IMMUTABLE
+  first_review:
+    target_tag: c1-g25-s4-gpu-application-review-20260722
+    tag_object: ad3568026957855de26c0de68da339e030111f15
+    commit: 8aea7255005c04dc93250b98c74e5a621a1739b5
+    commit_tree: f05ef27edd559e834423a2e35cd94d7653db3559
+    package_tree: 95a30500a1747993fdab517a8f5f218d1f0cdac6
+    architecture_system: NO_GO
+    model_benchmark: MODIFY
+    trace_provenance: MODIFY
+    aggregate: NO_GO
+  s4_r2_review:
+    target_tag: c1-g25-s4-r2-gpu-application-review-20260722
+    tag_object: 191a9f8f696392a13bf02d5ac735b3ed8c86648c
+    commit: 4937dbd3ce6ce70e75c9c626513c1af470005a22
+    commit_tree: 02c1c0607dba184927d6ae430aae68ecb2c91305
+    package_tree: 8d58ce7d25aab2e4a99d137f4ed49fb66a977733
+    architecture_system: NO_GO
+    model_benchmark: NO_GO
+    trace_provenance: NO_GO
+    aggregate: NO_GO
+  s4_r3_review:
+    target_tag: c1-g25-s4-r3-gpu-application-review-20260722
+    tag_object: 3af225f27220ea4e9a3244f0845c93778819ff53
+    commit: d7a3cf8a4e113339dead287a5ef56d66daf74212
+    commit_tree: 425191a425fc3b074aea15491ba7c5e356462fe6
+    package_tree: cfd44099653a891fcd0f8dd952b28e22ecc9cb1b
+    architecture_system: NO_GO
+    model_benchmark: NO_GO
+    trace_provenance: NO_GO
+    aggregate: NO_GO
+    gpt_5_6_sol_eligible: false
+  s4_r4_review:
+    target_tag: c1-g25-s4-r4-gpu-application-review-20260723
+    tag_object: a24d1ae5adcdb8eb7664671ab41a1e47c6efb48f
+    commit: e129039b1ca0c50b326f03de976afd4d9bcee5b2
+    commit_tree: e21d7280b74cb76d5faf164ea88a118296543863
+    package_tree: a933f4bf148df6f07d9420c89aad4b18a81d4f4f
+    architecture_system: NO_GO
+    model_benchmark: NO_GO
+    trace_provenance: NO_GO
+    aggregate: NO_GO
+    gpt_5_6_sol_eligible: false
+    owner_application_eligible: false
+  completed:
+    - parent_authoritative_os_return_code_timeout_and_wall_time
+    - worker_timeout_sigterm_30_second_grace_then_sigkill
+    - hash_bound_approval_enforcement
+    - real_worker_and_frozen_argv_factory
+    - package_wide_gpu_lease
+    - deadline_dispatcher_and_journal
+    - session_local_snapshots
+    - exact_dynamic_hardware_preflight
+    - partial_session_audit_and_terminal_seal
+    - terminal_pass_requires_complete_clean_audits_and_post_audit_deadline
+    - parent_signal_cleans_detached_worker_process_group
+    - exact_observed_outer_parent_argv
+    - bounded_dynamic_preflight_subprocesses
+    - one_model_load_per_cell
+    - pre_and_post_generation_actual_bf16_evidence
+    - strict_snapshot_and_source_ledger_exact_set_replay
+    - journal_bound_named_authorization_preflight_and_worker_io_artifacts
+    - full_g3_r4_immutable_evidence_hash_gate
+    - independent_three_role_and_gpt_5_6_sol_decision_records
+    - exact_clean_environment_and_complete_runtime_import_ledger
+    - strict_compute_process_row_parsing
+    - shared_outer_internal_monotonic_deadline_origin
+    - actual_pre_post_tensor_parameter_observation_and_cuda_normalization
+    - post_terminal_journal_bound_composite_final_seal
+    - exact_per_cell_cross_file_replay
+    - exact_application_command_review_binding
+  remaining:
+    - live_loaded_system_dependency_closure
+    - os_enforced_supervisor_worker_lifetime
+    - independent_eos_and_parser_replay
+    - exact_and_present_model_snapshot_set
+    - external_immutable_final_seal_anchor
+    - recursive_exact_full_session_inventory
+    - new_revision_fresh_three_role_same_hash_review
+    - gpt_5_6_sol_GO_evaluation
+    - owner_exact_command_approval
+  cpu_mock_only: true
+  gpu_used: false
+pilot_contract:
+  session: granite-c1a-g25-qualification-r1-20260719
+  status: s4_r4_review_no_go_not_authorized
+  model_lifetime: fresh_model_process_per_cell
+  max_attempts_per_cell: 1
+  resume_same_session: false
+  gpu_application: blocked
+  qualification_gpu_cells: 0
+  blockers:
+    - s4_r4_same_source_review_no_go
+    - prospective_repair_not_implemented_or_frozen
+    - new_revision_fresh_three_role_GO_not_recorded
+    - gpt_5_6_sol_GO_not_yet_recorded
+    - owner_exact_command_approval_not_yet_recorded
+synthetic_governance:
+  session: g25-synthetic-governance-s2-r3-20260719
+  cells: 12
+  audit_findings: 0
+  selected_common_ceiling: 384
+  selected_ceiling_claim: synthetic_test_scenario_only_not_granite_measurement
+  gpu_used: false
+  formal_gate_pass: false
+s4_r2_cpu_mock_evidence:
+  run: runs/20260722T143148Z__c1_g25_s4_r2_cpu_mock__S4R2
+  focused_tests: 90
+  full_tests: 324
+  full_test_skips: 9
+  package_inventory_files: 221
+  package_checksum_entries: 220
+  source_package_validation: PASS
+  extracted_cleanroom_validation: PASS
+  qualification_gpu_cells: 0
+  gpu_used: false
+s4_r2_same_source_review_evidence:
+  run: runs/20260722T150157Z__c1_g25_s4_r2_same_source_review__S4R2
+  aggregate: NO_GO
+  immutable: true
+  reusable_for_s4_r3: false
+s4_r3_cpu_mock_evidence:
+  run: runs/20260722T154432Z__c1_g25_s4_r3_cpu_mock__S4R3
+  full_tests: 332
+  full_test_skips: 9
+  runtime_distributions: 71
+  runtime_record_bound_files: 22491
+  package_inventory_files: 224
+  package_checksum_entries: 223
+  source_package_validation: PASS
+  extracted_cleanroom_validation: PASS
+  cleanroom_tests: 332
+  cleanroom_test_skips: 12
+  qualification_gpu_cells: 0
+  gpu_used: false
+s4_r3_same_source_review_evidence:
+  run: runs/20260722T160252Z__c1_g25_s4_r3_same_source_review__S4R3
+  aggregate: NO_GO
+  immutable: true
+  reusable_for_s4_r4: false
+  normalized_blocker_areas: 4
+s4_r4_cpu_only_evidence:
+  run: runs/20260722T164833Z__c1_g25_s4_r4_cpu_only__S4R4
+  full_tests: 336
+  full_test_skips: 9
+  package_inventory_files: 225
+  package_checksum_entries: 224
+  source_package_validation: PASS
+  extracted_cleanroom_validation: PASS
+  qualification_gpu_cells: 0
+  gpu_used: false
+s4_r4_same_source_review_evidence:
+  run: runs/20260722T170830Z__c1_g25_s4_r4_same_source_review__S4R4
+  aggregate: NO_GO
+  immutable: true
+  gpt_5_6_sol_eligible: false
+  owner_application_eligible: false
+  normalized_blocker_areas: 6
+  qualification_gpu_cells: 0
+  gpu_used: false
+next_gate: PROSPECTIVE_CPU_ONLY_REPAIR_THEN_NEW_IMMUTABLE_FREEZE_AND_FRESH_SAME_HASH_REVIEW

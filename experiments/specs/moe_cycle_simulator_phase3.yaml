@@ -1,0 +1,44 @@
+experiment_id: moe_cycle_simulator_phase3_event_core
+stage: S3
+status: r5_candidate_for_same_hash_review
+goal: Freeze a deterministic C++20 event/resource core with exact rational time and portable checkpoints.
+scope:
+  - one authoritative C++20 scheduler
+  - exact unsigned-128 femtosecond time
+  - rational clock edges and deterministic CDC ceiling
+  - seven-field event ordering
+  - dependencies, bounded resources, queues and bridges
+  - deadlock and Zeno diagnostics
+  - hash-bound canonical checkpoint and restore
+service_mode: REPLAY_VALIDATE
+trusted_input_boundary:
+  - frozen Phase 2 Canonical IR validation
+  - NFC-normalized identity strings
+  - Phase 0 priority registry enforced by Phase 2 validate_events
+non_goals:
+  - Phase 4 performance service models
+  - GPU execution or profiling
+  - model or benchmark materialization
+  - calibration PASS
+inputs:
+  - Phase 2 ledger dd2b9d9f8217fd6b78c1ae8b6f6e52c94a45774919cb36f0b407b53762c3d984
+  - Phase 2 semantic root c07d9ec1cbc4d67652f3f73e34e69e27ffc15427d186c8bbb7e28e93f3e5efd7
+outputs:
+  - explorations/moe_cycle_simulator/phase3
+  - immutable R1 MODIFY snapshot and reviews
+  - withdrawn unreviewed R2 ledger
+  - immutable R3 MODIFY snapshot and reviews
+  - immutable R4 MODIFY snapshot and reviews
+  - runs/20260728T113936Z__moe_cycle_simulator_phase3_event_core_r6__S3
+acceptance:
+  - source and sealed-run validators pass
+  - normal C++ and Python CTest pass
+  - C++ ASAN/UBSAN with leak detection passes
+  - Python binding ASAN/UBSAN smoke passes
+  - checkpoint equivalence holds at every event boundary
+  - GPU and model use remain false
+forbidden_actions:
+  - GPU query or execution
+  - model or benchmark download
+  - formal runtime profiling
+  - calibration or platform qualification claims

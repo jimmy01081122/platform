@@ -1,0 +1,10 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "description": "Round-2 convergence sample: 30 queries of Qwen3-235B mmlu/abstract_algebra to measure sampling convergence of expert-load distribution and residency miss-rate (how many queries are needed to stabilize within tolerance).",
+  "seed": 12345,
+  "max_bytes": 2147483648,
+  "variants": ["Qwen/Qwen3-235B-A22B-FP8"],
+  "domains": ["mmlu"],
+  "subjects_per_domain": 1,
+  "queries_per_subject": 30
+}

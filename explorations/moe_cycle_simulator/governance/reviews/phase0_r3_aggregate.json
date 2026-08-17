@@ -1,0 +1,21 @@
+{
+  "schema_version": "moe-simulator-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase0-amendment2-r3-20260726",
+  "ledger_sha256": "4a53c3d2fbbab330151679ea2b831b91b404239b88db7edc616f2900d61544bc",
+  "roles": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "blockers": [],
+  "verdict": "GO",
+  "authorized_next_stage": "Phase 1 CPU/mock trace-schema-alignment spike",
+  "not_authorized": [
+    "Canonical IR freeze",
+    "Mixtral download",
+    "GPU query or workload",
+    "paid server",
+    "formal profiling",
+    "calibration PASS"
+  ]
+}

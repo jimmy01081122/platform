@@ -1,0 +1,6 @@
+{
+  "error": "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}",
+  "finished_at_utc": "2026-08-11T19:36:27Z",
+  "run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T193607Z__SERVING-NATURAL-S4-MIXED-C4-V1",
+  "status": "FAIL"
+}

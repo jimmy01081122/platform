@@ -1,0 +1,56 @@
+schema_version: granite-c1-suite-v1
+suite_revision: granite-c1-v1.1.0
+seed: 20260718
+source_suite:
+  revision: v1.4.0
+  manifest: configs/test_suites/frozen/v1.4.0/sample_manifest.jsonl
+  manifest_sha256: 4de9eda6a8eabb5e49c897563033e2fa9d9a8b62db7b81790bb9a4c871f5621e
+selection_manifest: configs/test_suites/granite_c1/sample_manifest.jsonl
+selection_manifest_sha256: f32aa23823c2b88f7f2fab2a11cbbafe39c10adc54d5570ca7474b27996cd2bd
+snapshot_inventory: configs/test_suites/granite_c1/snapshot_inventory.json
+snapshot_inventory_revision: granite-c1-snapshots-v1.1.0
+snapshot_inventory_sha256: 3c7da0e1f7951acb0657e606bde10bf48e8ad6b8515c1960bf9defc37aff6fc4
+model:
+  id: ibm-granite/granite-3.1-1b-a400m-instruct
+  revision: 0da7a48b0276d500ce5922fd2b33944091fc6c09
+  tokenizer_revision: 0da7a48b0276d500ce5922fd2b33944091fc6c09
+  architecture_evidence: pinned_config_json
+  architecture: GraniteMoeForCausalLM
+  transformers_version: 4.47.0
+suites:
+  granite_c1_smoke_v1:
+    stage: C1-A
+    enabled: true
+    eligible: true
+    unique_samples: {T0: 4, T1: 4}
+    evaluation_instances: {T0: 4, T1: 4}
+    repetitions: 1
+    passes: [P0, P2]
+    generation_profile: c1_a
+  granite_c1_integration_v1:
+    stage: C1-B
+    enabled: true
+    eligible: true
+    eligibility_blockers: []
+    unique_samples: {T0: 4, T1: 8, T2: 8}
+    evaluation_instances: {T0: 8, T1: 8, T2: 8}
+    t0_instance_policy: each_of_four_frozen_fixtures_twice
+    mmlu_strata:
+      mathematics_or_statistics: 2
+      computer_science: 2
+      other_stem: 2
+      humanities_or_social_science: 2
+    mmlu_required_subject_groups:
+      mathematics_or_statistics: present
+      computer_science: present
+      other_stem: present
+      humanities_or_social_science: present
+    repetitions: 3
+    passes: [P0, P1, P2, P3, P5_BASIC]
+    generation_profile: c1_b
+  granite_c1_regression_v1:
+    stage: C1-C
+    enabled: false
+    eligible: false
+    status: definition_only_do_not_execute
+    requested_samples: {gsm8k: 32, mmlu: 32, code: 8, chinese: 8, long_context: 8}

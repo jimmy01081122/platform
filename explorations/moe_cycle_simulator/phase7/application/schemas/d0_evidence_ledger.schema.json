@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "d0_evidence_ledger.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "ledger_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "member_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "members": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "size_bytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "size_bytes",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "moe-simulator-phase7-d0-evidence-ledger-v2"
+    },
+    "terminal_marker": {
+      "enum": [
+        "D0_COMPLETE_AUDITED",
+        "D0_FAILED_IMMUTABLE_NO_RETRY",
+        "D0_INCOMPLETE_IMMUTABLE_NO_RETRY"
+      ]
+    },
+    "terminal_status": {
+      "enum": [
+        "COMPLETE",
+        "FAILED",
+        "INCOMPLETE"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "terminal_status",
+    "terminal_marker",
+    "member_count",
+    "members",
+    "ledger_sha256"
+  ],
+  "type": "object"
+}

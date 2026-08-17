@@ -1,0 +1,13 @@
+{
+  "comparison": "R0 routing vs F1 clean reference",
+  "input_token_ids_equal": true,
+  "output_token_ids_equal": true,
+  "r0_output_sha256": "f9988d1ebb0736d31a2b2774ffe6c8f576f9389116006ded7b75b1d707d04f8e",
+  "clean_output_sha256": "f9988d1ebb0736d31a2b2774ffe6c8f576f9389116006ded7b75b1d707d04f8e",
+  "routing_shape": [
+    58,
+    32,
+    2
+  ],
+  "routing_validation_status": "PASS"
+}

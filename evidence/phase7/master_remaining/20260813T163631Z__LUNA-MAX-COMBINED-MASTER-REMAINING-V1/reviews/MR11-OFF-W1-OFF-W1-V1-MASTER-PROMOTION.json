@@ -1,0 +1,11 @@
+{
+  "disabled_state": "PASS",
+  "next_ready_unit": "OFF-W2",
+  "raw_backup": "VERIFIED",
+  "raw_file_set_sha256": "1a54e48ff475f83139eb52e3f0a9afebf02d819fd5a98d8cfae9df5121904bdc",
+  "request_correctness": "PASS",
+  "reviewed_at_utc": "2026-08-14T02:21:38Z",
+  "routing_equivalence": "PASS",
+  "schema_version": "phase7-combined-master-off-w1-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

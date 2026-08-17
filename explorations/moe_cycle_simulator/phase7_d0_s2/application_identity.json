@@ -1,0 +1,22 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-s2-application-identity-v1",
+  "application_id": "phase7-gputw-d0-s2-20260809",
+  "identity_status": "FROZEN_CPU_ONLY_CANDIDATE",
+  "identity_preimage": {
+    "application_id": "phase7-gputw-d0-s2-20260809",
+    "revision": "D0-S2",
+    "purpose": "CPU_ONLY_RUNTIME_IDENTITY_AND_CAPACITY_DISCOVERY",
+    "superseded_s1_evidence_ledger_sha256": "93714369f475d5ab5716c181c4682dcf253d28def680991e51de387e4c31228b",
+    "historical_s1_status": "INCOMPLETE_NOT_READY_IMMUTABLE_NO_RETRY",
+    "container_digest_policy": "EXPLICIT_UNAVAILABLE_NONBLOCKING_IF_RUNTIME_HASHES_COMPLETE",
+    "time_fields_policy": "OBSERVATIONAL_NONBLOCKING",
+    "authority_boundary": {
+      "d0": "NOT_AUTHORIZED",
+      "gate_m": "NOT_AUTHORIZED",
+      "m0": "NOT_AUTHORIZED",
+      "gpu": "NONE"
+    },
+    "forbidden": ["SSH", "NETWORK", "MODEL_DOWNLOAD", "MODEL_LOAD", "INFERENCE", "CUDA_BENCHMARK", "GPU_WORKLOAD"]
+  },
+  "application_identity_sha256": "f0c86fa4930231bd25cd6d185e59cccfacd01a76c99d3351344a2d7a78ba28cc"
+}

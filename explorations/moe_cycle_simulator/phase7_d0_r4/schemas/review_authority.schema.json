@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-r4-review-authority-v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "candidate_id", "reviewed_commit", "reviewed_tree", "candidate_ledger_sha256", "application_identity_file_sha256", "application_identity_semantic_sha256", "application_ledger_file_sha256", "reviewer_verdicts", "blockers", "side_effects"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-r4-review-authority-v1"},
+    "candidate_id": {"type": "string", "minLength": 1},
+    "reviewed_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "reviewed_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "candidate_ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "application_identity_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "application_identity_semantic_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "application_ledger_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reviewer_verdicts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["Architecture/System", "Model/Benchmark", "Trace/Provenance"],
+      "properties": {"Architecture/System": {"const": "GO"}, "Model/Benchmark": {"const": "GO"}, "Trace/Provenance": {"const": "GO"}}
+    },
+    "blockers": {"type": "array"},
+    "side_effects": {"const": false}
+  }
+}

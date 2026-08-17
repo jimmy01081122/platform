@@ -1,0 +1,1113 @@
+{
+  "records": [
+    {
+      "ir_kind": "CalibrationIR",
+      "payload": {
+        "bootstrap_ci_95": {
+          "lower": "0",
+          "upper": "0"
+        },
+        "bootstrap_resamples": 10000,
+        "bootstrap_seed": "1",
+        "calibration_envelope": null,
+        "calibration_profile_hash": null,
+        "evaluation_coordinate": null,
+        "evidence_class": "SYNTHETIC",
+        "fidelity": "FUNCTIONAL_ONLY",
+        "held_out_workload_record_ids": [
+          "workload-request-2"
+        ],
+        "measured_value": "500000",
+        "measurement_noise_floor": "0",
+        "metric": "kernel_service_time",
+        "model_record_id": "model-mixtral-shape",
+        "platform_record_id": "platform-synthetic-discrete",
+        "predicted_value": "500000",
+        "range_status": "RANGE_UNKNOWN",
+        "repetitions": 3,
+        "resampling_strata": [
+          "synthetic-fixture"
+        ],
+        "runtime_variant_hash": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e",
+        "sample_count": 3,
+        "training_workload_record_ids": [
+          "workload-request-1"
+        ],
+        "unit": "femtosecond"
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "calibration-kernel-service-1",
+      "refs": [
+        {
+          "target_ir_kind": "ModelIR",
+          "target_primary_key": {
+            "record_id": "model-mixtral-shape"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "34c7609239087795d7b102d161b55d8d2fa5c1bec52820e9388954cf015eb6d9"
+        },
+        {
+          "target_ir_kind": "PlatformIR",
+          "target_primary_key": {
+            "record_id": "platform-synthetic-discrete"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "24322852cbada1b5cbf3d37d9bab73153131891d641ce42700b15e4cd2402aff"
+        },
+        {
+          "target_ir_kind": "WorkloadIR",
+          "target_primary_key": {
+            "record_id": "workload-request-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "91130289fa154b272d23af33480be64a8a78e8d3be421f870e4bc6aee79e32cb"
+        },
+        {
+          "target_ir_kind": "WorkloadIR",
+          "target_primary_key": {
+            "record_id": "workload-request-2"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "91130289fa154b272d23af33480be64a8a78e8d3be421f870e4bc6aee79e32cb"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "f6eba2d1a9a47d0810acf52eca99f9e8b495b7ee7ecc5b43a0e16eca4ba1b4bd"
+    },
+    {
+      "ir_kind": "ClockAlignmentIR",
+      "payload": {
+        "calibration_method": "synthetic-two-point-anchor",
+        "calibration_points": [
+          {
+            "source_time": "0",
+            "target_time": "1000"
+          },
+          {
+            "source_time": "1200000",
+            "target_time": "3001000"
+          }
+        ],
+        "claimed_grade": "CYCLE_GRADE",
+        "confidence_interval_95_fs": {
+          "lower_error_fs": "0",
+          "upper_error_fs": "0"
+        },
+        "drift_bound_ppm": "0",
+        "grading_inputs": {
+          "shortest_component_duration_fs": "500000",
+          "shortest_component_record_hash": "fad913b575bf2a63610d15e3406d42f17f1d268b5a64a45a11e32428b8fac975",
+          "target_clock_profile_hash": "457503bbecd57c2ee141f88340a08b9f1906a24449676a32b39254c796c46fda",
+          "target_period_denominator": "1",
+          "target_period_numerator_fs": "1"
+        },
+        "offset_fs": "1000",
+        "platform_record_id": "platform-synthetic-discrete",
+        "residual_error_fs": "0",
+        "scale_denominator": "2",
+        "scale_numerator": "5",
+        "segments": [],
+        "source_clock_id": "gpu0-clock",
+        "target_clock_id": "global",
+        "transform_type": "AFFINE_RATIONAL",
+        "valid_time_range": {
+          "source_end": "2000000",
+          "source_start": "0"
+        }
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "alignment-gpu0-global",
+      "refs": [
+        {
+          "target_ir_kind": "PlatformIR",
+          "target_primary_key": {
+            "record_id": "platform-synthetic-discrete"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "24322852cbada1b5cbf3d37d9bab73153131891d641ce42700b15e4cd2402aff"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "fbe72f39fd673caf764df8ad1fb573b239c2377dd081b97b486c48fd8db3d32a"
+    },
+    {
+      "ir_kind": "EventIR",
+      "payload": {
+        "aligned_interval_fs": {
+          "lower_fs": "3001000",
+          "upper_fs": "3001000"
+        },
+        "alignment_grade": "CYCLE_GRADE",
+        "alignment_record_id": "alignment-gpu0-global",
+        "component_id": "gpu0",
+        "dependencies": [
+          "event-compute-start"
+        ],
+        "event_priority": 30,
+        "event_type": "COMPUTE_COMPLETE",
+        "layer_index": 0,
+        "placement_record_id": "placement-snapshot-1",
+        "platform_record_id": "platform-synthetic-discrete",
+        "quantity": "1",
+        "request_id": "request-1-attempt-0",
+        "resource_action": "RELEASE",
+        "resource_id": "gpu0",
+        "runtime_variant_hash": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e",
+        "service_demand": "500000",
+        "source_clock_id": "gpu0-clock",
+        "source_timestamp": "1200000",
+        "time_fs": "3001000",
+        "token_index": 0,
+        "workload_record_id": "workload-request-1"
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "event-compute-complete",
+      "refs": [
+        {
+          "target_ir_kind": "WorkloadIR",
+          "target_primary_key": {
+            "record_id": "workload-request-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "91130289fa154b272d23af33480be64a8a78e8d3be421f870e4bc6aee79e32cb"
+        },
+        {
+          "target_ir_kind": "PlatformIR",
+          "target_primary_key": {
+            "record_id": "platform-synthetic-discrete"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "24322852cbada1b5cbf3d37d9bab73153131891d641ce42700b15e4cd2402aff"
+        },
+        {
+          "target_ir_kind": "PlacementIR",
+          "target_primary_key": {
+            "record_id": "placement-snapshot-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "f60a76aac30b47332c5542651f34ba7898f8b556fe31d63cfae0a3a99d281d8b"
+        },
+        {
+          "target_ir_kind": "ClockAlignmentIR",
+          "target_primary_key": {
+            "record_id": "alignment-gpu0-global"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "9167f0363f9421555f60844a915958533c4154040c8f2184e257f386c48634d7"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "2f56325f89a4ebc7e73302e1f4e52b4fe3c61727b726189e68e442c6fee3d0d7"
+    },
+    {
+      "ir_kind": "EventIR",
+      "payload": {
+        "aligned_interval_fs": {
+          "lower_fs": "2501000",
+          "upper_fs": "2501000"
+        },
+        "alignment_grade": "CYCLE_GRADE",
+        "alignment_record_id": "alignment-gpu0-global",
+        "component_id": "gpu0",
+        "dependencies": [],
+        "event_priority": 100,
+        "event_type": "COMPUTE_START",
+        "layer_index": 0,
+        "placement_record_id": "placement-snapshot-1",
+        "platform_record_id": "platform-synthetic-discrete",
+        "quantity": "1",
+        "request_id": "request-1-attempt-0",
+        "resource_action": "ACQUIRE",
+        "resource_id": "gpu0",
+        "runtime_variant_hash": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e",
+        "service_demand": "0",
+        "source_clock_id": "gpu0-clock",
+        "source_timestamp": "1000000",
+        "time_fs": "2501000",
+        "token_index": 0,
+        "workload_record_id": "workload-request-1"
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "event-compute-start",
+      "refs": [
+        {
+          "target_ir_kind": "WorkloadIR",
+          "target_primary_key": {
+            "record_id": "workload-request-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "91130289fa154b272d23af33480be64a8a78e8d3be421f870e4bc6aee79e32cb"
+        },
+        {
+          "target_ir_kind": "PlatformIR",
+          "target_primary_key": {
+            "record_id": "platform-synthetic-discrete"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "24322852cbada1b5cbf3d37d9bab73153131891d641ce42700b15e4cd2402aff"
+        },
+        {
+          "target_ir_kind": "PlacementIR",
+          "target_primary_key": {
+            "record_id": "placement-snapshot-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "f60a76aac30b47332c5542651f34ba7898f8b556fe31d63cfae0a3a99d281d8b"
+        },
+        {
+          "target_ir_kind": "ClockAlignmentIR",
+          "target_primary_key": {
+            "record_id": "alignment-gpu0-global"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "9167f0363f9421555f60844a915958533c4154040c8f2184e257f386c48634d7"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "2f56325f89a4ebc7e73302e1f4e52b4fe3c61727b726189e68e442c6fee3d0d7"
+    },
+    {
+      "ir_kind": "ModelIR",
+      "payload": {
+        "active_parameter_count": "12900000000",
+        "expert_bytes": "1000",
+        "experts": 8,
+        "hidden_size": 64,
+        "layers": 2,
+        "model_id": "synthetic-mixtral-shape",
+        "operators": [
+          {
+            "expert_id": 0,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-0",
+            "operator_kind": "EXPERT_FFN"
+          },
+          {
+            "expert_id": 1,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-1",
+            "operator_kind": "EXPERT_FFN"
+          },
+          {
+            "expert_id": 2,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-2",
+            "operator_kind": "EXPERT_FFN"
+          },
+          {
+            "expert_id": 3,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-3",
+            "operator_kind": "EXPERT_FFN"
+          },
+          {
+            "expert_id": 4,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-4",
+            "operator_kind": "EXPERT_FFN"
+          },
+          {
+            "expert_id": 5,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-5",
+            "operator_kind": "EXPERT_FFN"
+          },
+          {
+            "expert_id": 6,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-6",
+            "operator_kind": "EXPERT_FFN"
+          },
+          {
+            "expert_id": 7,
+            "layer_index": 0,
+            "operator_id": "layer-0-expert-7",
+            "operator_kind": "EXPERT_FFN"
+          }
+        ],
+        "precision": "BF16",
+        "revision": "fixture-v1",
+        "tensors": [
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 0,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-0-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 0,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-0-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 1,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-1-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 1,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-1-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 2,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-2-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 2,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-2-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 3,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-3-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 3,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-3-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 4,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-4-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 4,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-4-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 5,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-5-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 5,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-5-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 6,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-6-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 6,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-6-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 7,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-7-weight-0"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "500",
+            "expert_id": 7,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              250
+            ],
+            "tensor_id": "expert-7-weight-1"
+          },
+          {
+            "dtype": "BF16",
+            "exact_bytes": "200",
+            "expert_id": null,
+            "layout": "ROW_MAJOR",
+            "shape": [
+              100
+            ],
+            "tensor_id": "shared-weight"
+          }
+        ],
+        "top_k": 2,
+        "total_parameter_count": "46700000000"
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "model-mixtral-shape",
+      "refs": [],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "46b96e539d3f408bdb1ceb1e932a0a1dc266f9dfa86aa1007d40350019df7409"
+    },
+    {
+      "ir_kind": "PlacementIR",
+      "payload": {
+        "expert_locations": [
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 0,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "0",
+            "owner": true,
+            "replica_id": "expert-0-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-0-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 0,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "500",
+            "owner": true,
+            "replica_id": "expert-0-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-0-weight-1"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 1,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "1000",
+            "owner": true,
+            "replica_id": "expert-1-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-1-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 1,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "1500",
+            "owner": true,
+            "replica_id": "expert-1-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-1-weight-1"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 2,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "2000",
+            "owner": true,
+            "replica_id": "expert-2-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-2-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 2,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "2500",
+            "owner": true,
+            "replica_id": "expert-2-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-2-weight-1"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 3,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "3000",
+            "owner": true,
+            "replica_id": "expert-3-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-3-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 3,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "3500",
+            "owner": true,
+            "replica_id": "expert-3-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-3-weight-1"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 4,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "4000",
+            "owner": true,
+            "replica_id": "expert-4-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-4-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 4,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "4500",
+            "owner": true,
+            "replica_id": "expert-4-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-4-weight-1"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 5,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "5000",
+            "owner": true,
+            "replica_id": "expert-5-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-5-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 5,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "5500",
+            "owner": true,
+            "replica_id": "expert-5-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-5-weight-1"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 6,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "6000",
+            "owner": true,
+            "replica_id": "expert-6-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-6-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 6,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "6500",
+            "owner": true,
+            "replica_id": "expert-6-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-6-weight-1"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 7,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "7000",
+            "owner": true,
+            "replica_id": "expert-7-tensor-0-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-7-weight-0"
+          },
+          {
+            "compute_domain_id": "gpu0",
+            "expert_id": 7,
+            "memory_domain_id": "vram0",
+            "memory_offset_bytes": "7500",
+            "owner": true,
+            "replica_id": "expert-7-tensor-1-owner",
+            "shard_bytes": "500",
+            "shard_offset_bytes": "0",
+            "tensor_id": "expert-7-weight-1"
+          }
+        ],
+        "migration_event_ids": [],
+        "model_record_id": "model-mixtral-shape",
+        "platform_id": "synthetic-discrete",
+        "platform_record_id": "platform-synthetic-discrete",
+        "policy_id": "all-resident-fixture",
+        "predecessor_snapshot_id": null,
+        "snapshot_id": "snapshot-1",
+        "state_allocations": [
+          {
+            "allocation_id": "shared-weight-owner",
+            "compute_domain_id": "gpu0",
+            "exact_bytes": "200",
+            "memory_domain_id": "vram0",
+            "object_class": "NON_EXPERT_WEIGHT",
+            "offset_bytes": "8000",
+            "tensor_id": "shared-weight"
+          },
+          {
+            "allocation_id": "request-1-kv",
+            "compute_domain_id": "gpu0",
+            "exact_bytes": "100",
+            "memory_domain_id": "vram0",
+            "object_class": "KV_CACHE",
+            "offset_bytes": "8200",
+            "tensor_id": null
+          }
+        ],
+        "valid_from_fs": "0",
+        "valid_to_fs": null,
+        "version": 1
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "placement-snapshot-1",
+      "refs": [
+        {
+          "target_ir_kind": "ModelIR",
+          "target_primary_key": {
+            "record_id": "model-mixtral-shape"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "34c7609239087795d7b102d161b55d8d2fa5c1bec52820e9388954cf015eb6d9"
+        },
+        {
+          "target_ir_kind": "PlatformIR",
+          "target_primary_key": {
+            "record_id": "platform-synthetic-discrete"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "24322852cbada1b5cbf3d37d9bab73153131891d641ce42700b15e4cd2402aff"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "32936ecbe859e71b34dcfebedddb951c316e3761995a4622202bcf2f3671031d"
+    },
+    {
+      "ir_kind": "PlatformIR",
+      "payload": {
+        "bridges": [
+          {
+            "ack_sync_cycles": 2,
+            "backpressure_policy": "STALL_SOURCE",
+            "bridge_id": "global-gpu0",
+            "forward_latency_fs": "1000",
+            "protocol": "REQUEST_ACK",
+            "queue_capacity": 8,
+            "receiver_sync_cycles": 2,
+            "reverse_latency_fs": "1000",
+            "schema_version": "bridge-v1",
+            "source_clock_id": "global",
+            "target_clock_id": "gpu0-clock"
+          }
+        ],
+        "calibrated_components": [
+          {
+            "component_record_id": "synthetic-kernel-service-minimum",
+            "duration_fs": "500000",
+            "evidence_root": "fad913b575bf2a63610d15e3406d42f17f1d268b5a64a45a11e32428b8fac975"
+          }
+        ],
+        "clocks": [
+          {
+            "clock_id": "global",
+            "frequency_denominator_hz": "1",
+            "frequency_numerator_hz": "1000000000000000",
+            "phase_offset_fs": "0"
+          },
+          {
+            "clock_id": "gpu0-clock",
+            "frequency_denominator_hz": "1",
+            "frequency_numerator_hz": "400000000000000",
+            "phase_offset_fs": "1000"
+          }
+        ],
+        "compute_domains": [
+          {
+            "clock_id": "gpu0-clock",
+            "domain_id": "gpu0",
+            "kind": "GPU",
+            "service_rate_units_per_second": "1000000000",
+            "service_slots": 2
+          }
+        ],
+        "interconnects": [
+          {
+            "bandwidth_bytes_per_second": "1000000000",
+            "copy_engine_id": "copy0",
+            "destination_domain_id": "vram0",
+            "latency_fs": "1000",
+            "link_id": "gpu0-vram0",
+            "shared_resource_id": "gpu0-vram-fabric",
+            "source_domain_id": "gpu0"
+          }
+        ],
+        "memory_domains": [
+          {
+            "capacity_bytes": "100000",
+            "domain_id": "host",
+            "kind": "HOST"
+          },
+          {
+            "capacity_bytes": "10000",
+            "domain_id": "vram0",
+            "kind": "DEVICE"
+          }
+        ],
+        "platform_id": "synthetic-discrete",
+        "queues": [
+          {
+            "arbitration": "FIFO",
+            "capacity": 8,
+            "domain_id": "gpu0",
+            "queue_id": "gpu0-submit"
+          }
+        ]
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "platform-synthetic-discrete",
+      "refs": [],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "8b46fa1037d9216c517f0fc181673ca673dd4a4415dcdc34c7bb94a4bfb801d0"
+    },
+    {
+      "ir_kind": "ResultIR",
+      "payload": {
+        "calibration_record_id": "calibration-kernel-service-1",
+        "completed": true,
+        "evidence_availability": "CONFIRMED",
+        "evidence_class": "SYNTHETIC",
+        "execution_valid": true,
+        "formal_pass": false,
+        "latency_fs": "3001000",
+        "model_record_id": "model-mixtral-shape",
+        "output_token_ids": [
+          4
+        ],
+        "platform_record_id": "platform-synthetic-discrete",
+        "range_status": "RANGE_UNKNOWN",
+        "request_id": "request-1-attempt-0",
+        "runtime_variant_hash": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e",
+        "stop_reason": "EOS",
+        "workload_record_id": "workload-request-1"
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "result-request-1",
+      "refs": [
+        {
+          "target_ir_kind": "WorkloadIR",
+          "target_primary_key": {
+            "record_id": "workload-request-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "91130289fa154b272d23af33480be64a8a78e8d3be421f870e4bc6aee79e32cb"
+        },
+        {
+          "target_ir_kind": "ModelIR",
+          "target_primary_key": {
+            "record_id": "model-mixtral-shape"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "34c7609239087795d7b102d161b55d8d2fa5c1bec52820e9388954cf015eb6d9"
+        },
+        {
+          "target_ir_kind": "PlatformIR",
+          "target_primary_key": {
+            "record_id": "platform-synthetic-discrete"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "24322852cbada1b5cbf3d37d9bab73153131891d641ce42700b15e4cd2402aff"
+        },
+        {
+          "target_ir_kind": "CalibrationIR",
+          "target_primary_key": {
+            "record_id": "calibration-kernel-service-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "caf9b1e35238c5c0dd17f034ca001698d984452caf9a9eee28fe084ad61a7681"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "420d8d31b22e172383f5a7c0ea476efa5fa4fecdbb0ce762cdd87531bbbfb3e2"
+    },
+    {
+      "ir_kind": "RoutingIR",
+      "payload": {
+        "aggregate_expert_demand": null,
+        "ambiguity_set": [
+          1,
+          2
+        ],
+        "canonical_scores": [
+          "1",
+          "0.89999997615814208984375",
+          "0.89999902248382568359375",
+          "0.5",
+          "0.4000000059604644775390625",
+          "0.300000011920928955078125",
+          "0.20000000298023223876953125",
+          "0.100000001490116119384765625"
+        ],
+        "k_boundary_score": "0.89999997615814208984375",
+        "layer_index": 0,
+        "model_record_id": "model-mixtral-shape",
+        "request_id": "request-1-attempt-0",
+        "routing_scope": "TOKEN",
+        "score_dtype": "float32",
+        "score_tolerance_absolute": "0.000000238418579101562500",
+        "score_tolerance_relative": "0.00001",
+        "selected_experts": [
+          0,
+          1
+        ],
+        "token_index": 0,
+        "workload_record_id": "workload-request-1"
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "routing-request-1-token-0-layer-0",
+      "refs": [
+        {
+          "target_ir_kind": "ModelIR",
+          "target_primary_key": {
+            "record_id": "model-mixtral-shape"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "34c7609239087795d7b102d161b55d8d2fa5c1bec52820e9388954cf015eb6d9"
+        },
+        {
+          "target_ir_kind": "WorkloadIR",
+          "target_primary_key": {
+            "record_id": "workload-request-1"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "91130289fa154b272d23af33480be64a8a78e8d3be421f870e4bc6aee79e32cb"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "73ccee5238b67f3659a081779fc4b36176ab288e5bf2f9c22a6a00619142a8f9"
+    },
+    {
+      "ir_kind": "WorkloadIR",
+      "payload": {
+        "arrival_time_fs": "0",
+        "attempt": 0,
+        "dataset_id": "synthetic",
+        "dataset_revision": "fixture-v1",
+        "generation_profile_id": "deterministic-fixture-v1",
+        "input_token_ids": [
+          1,
+          2,
+          3
+        ],
+        "model_record_id": "model-mixtral-shape",
+        "request_instance_id": "request-1-attempt-0",
+        "runtime_variant_hash": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e",
+        "sample_id": "sample-1",
+        "sequence_id": "sequence-1",
+        "tokens": [
+          {
+            "position": 0,
+            "role": "USER",
+            "token_id": 1
+          },
+          {
+            "position": 1,
+            "role": "USER",
+            "token_id": 2
+          },
+          {
+            "position": 2,
+            "role": "USER",
+            "token_id": 3
+          }
+        ]
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "workload-request-1",
+      "refs": [
+        {
+          "target_ir_kind": "ModelIR",
+          "target_primary_key": {
+            "record_id": "model-mixtral-shape"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "34c7609239087795d7b102d161b55d8d2fa5c1bec52820e9388954cf015eb6d9"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "7359dfb2bd4ac49b1d6201d31103a2b8e20519866365542f308418c11509615c"
+    },
+    {
+      "ir_kind": "WorkloadIR",
+      "payload": {
+        "arrival_time_fs": "0",
+        "attempt": 0,
+        "dataset_id": "synthetic",
+        "dataset_revision": "fixture-v1",
+        "generation_profile_id": "deterministic-fixture-v1",
+        "input_token_ids": [
+          5,
+          6
+        ],
+        "model_record_id": "model-mixtral-shape",
+        "request_instance_id": "request-2-attempt-0",
+        "runtime_variant_hash": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e",
+        "sample_id": "sample-2",
+        "sequence_id": "sequence-2",
+        "tokens": [
+          {
+            "position": 0,
+            "role": "USER",
+            "token_id": 5
+          },
+          {
+            "position": 1,
+            "role": "USER",
+            "token_id": 6
+          }
+        ]
+      },
+      "provenance": {
+        "producer": "phase2-canonical-fixture",
+        "producer_version": "1",
+        "source_content_ids": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "record_id": "workload-request-2",
+      "refs": [
+        {
+          "target_ir_kind": "ModelIR",
+          "target_primary_key": {
+            "record_id": "model-mixtral-shape"
+          },
+          "target_schema_version": "canonical-ir-v1",
+          "target_semantic_root": "34c7609239087795d7b102d161b55d8d2fa5c1bec52820e9388954cf015eb6d9"
+        }
+      ],
+      "schema_version": "canonical-ir-v1",
+      "semantic_descriptor_hash": "7359dfb2bd4ac49b1d6201d31103a2b8e20519866365542f308418c11509615c"
+    }
+  ],
+  "schema_version": "canonical-ir-fixture-bundle-v1"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "moe-simulator-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r3-20260802",
+  "ledger_path": "checksums.sha256",
+  "roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "allowed_verdicts": [
+    "GO",
+    "MODIFY",
+    "NO-GO"
+  ],
+  "promotion_rule": {
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "identical_ledger_sha256_required": true,
+    "exact_set_verification_required": true
+  },
+  "review_questions": [
+    "Does the one-SSH Gate M transport bound stdin, stdout, RSS, time and every descendant while preserving exact host-key and command identity?",
+    "Is remote COMPLETE insufficient by itself, with local exact-set and semantic replay required before COMPLETE_M0_ELIGIBLE?",
+    "Does M0 reject before hardware preflight or approval consumption unless the parent binds the reviewed source, application ledger, three GO roles and both remote/local projections?",
+    "Are D0, Gate M/materialization and M0 separate one-shot authorities with no resume, retry, overwrite or implicit promotion?",
+    "Do all mandatory work, audit, seal and release reserves fit inside exactly 21600 seconds, with the provider grace excluded from formal credit?",
+    "Are /vault mount identity, no-replace publication, retained approval bytes, exact ledgers and terminal failure evidence revalidated at each mutating boundary?",
+    "Is the model/runtime contract still exact Mixtral-8x7B-Instruct-v0.1 BF16 with no quantization or persistent CPU offload and exactly three fresh M0 launches?",
+    "Do test and archive evidence exercise short/extra/hash-drifted transport, detached descendants, stale paths, output/RSS/deadline bounds and parent tamper?",
+    "Does a clean archive without .git reproduce the CPU evidence while binding the exact source commit and tree?",
+    "Are all GPU, measured capacity, runtime availability, calibration and platform qualification claims absent?",
+    "Does the candidate preserve frozen Phase 6 and historical G3/S4 evidence without modification or reinterpretation?"
+  ],
+  "review_results_are_not_part_of_reviewed_source": true,
+  "gpu_authority": "NONE"
+}

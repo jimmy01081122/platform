@@ -1,0 +1,18 @@
+{
+  "cell_id": "OFF-E-PR3-CAP-097",
+  "metrics": {
+    "capacity_bytes": 87375740928,
+    "capacity_objects": 248,
+    "d2h_writeback_bytes": 0,
+    "demand_load_count": 361,
+    "h2d_bytes": 127188074496,
+    "hit_count": 9815,
+    "immutable_discard_count": 113,
+    "total_h2d_cuda_elapsed_ms": 4509.744923591614
+  },
+  "next_ready_unit": "OFF-E-PR3",
+  "raw_file_set_sha256": "a78dac7ce4f6f2006b84d4b0d3763f67bb26c5202e784d34ce5866189477281b",
+  "reviewed_at_utc": "2026-08-14T03:29:50Z",
+  "schema_version": "phase7-combined-master-off-e-pr3-point-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

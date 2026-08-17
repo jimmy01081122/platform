@@ -1,0 +1,118 @@
+{
+  "tool": "Ramulator2 (CMU-SAFARI) cycle-level DRAM",
+  "image": "edgehetero-mem:1",
+  "standard": "LPDDR5-6400 x16, 12.8 GB/s per-channel JEDEC peak (integrated CPU-GPU unified LPDDR)",
+  "trigger_under_test": "a P-I region where DRAM-timing interaction flips the SW-vs-HW decision",
+  "work_unit": {
+    "fixture": "switch-base-32",
+    "transfers_per_step": 7.172,
+    "expert_bytes": 9437184,
+    "bytes_per_step": 67682304
+  },
+  "control_cost_us_per_step": {
+    "hardware": 0.18,
+    "software": 2.07,
+    "firmware": 10.44
+  },
+  "dram_calibrated_points": [
+    {
+      "regime": "transfer_only(seq)",
+      "channels": 2,
+      "dram_eff_bw_GBs": 23.86,
+      "t_transfer_us_per_step": 2836.31,
+      "ctrl_max_us_per_step": 10.44,
+      "transfer_dominates_control": true,
+      "ratio_transfer_over_ctrlmax": 271.7
+    },
+    {
+      "regime": "transfer_only(seq)",
+      "channels": 4,
+      "dram_eff_bw_GBs": 47.73,
+      "t_transfer_us_per_step": 1418.16,
+      "ctrl_max_us_per_step": 10.44,
+      "transfer_dominates_control": true,
+      "ratio_transfer_over_ctrlmax": 135.8
+    },
+    {
+      "regime": "transfer_only(seq)",
+      "channels": 8,
+      "dram_eff_bw_GBs": 95.45,
+      "t_transfer_us_per_step": 709.08,
+      "ctrl_max_us_per_step": 10.44,
+      "transfer_dominates_control": true,
+      "ratio_transfer_over_ctrlmax": 67.9
+    },
+    {
+      "regime": "moderate_contention(mix:0.5)",
+      "channels": 2,
+      "dram_eff_bw_GBs": 7.66,
+      "t_transfer_us_per_step": 8832.58,
+      "ctrl_max_us_per_step": 10.44,
+      "transfer_dominates_control": true,
+      "ratio_transfer_over_ctrlmax": 846.0
+    },
+    {
+      "regime": "moderate_contention(mix:0.5)",
+      "channels": 4,
+      "dram_eff_bw_GBs": 15.33,
+      "t_transfer_us_per_step": 4416.29,
+      "ctrl_max_us_per_step": 10.44,
+      "transfer_dominates_control": true,
+      "ratio_transfer_over_ctrlmax": 423.0
+    },
+    {
+      "regime": "moderate_contention(mix:0.5)",
+      "channels": 8,
+      "dram_eff_bw_GBs": 30.65,
+      "t_transfer_us_per_step": 2208.15,
+      "ctrl_max_us_per_step": 10.44,
+      "transfer_dominates_control": true,
+      "ratio_transfer_over_ctrlmax": 211.5
+    }
+  ],
+  "analytic_vs_dram_at_4ch": {
+    "analytic_guess": [
+      {
+        "config": "shared_51GBs|light_0.8",
+        "eff_bw_GBs": 40.8,
+        "t_transfer_us_per_step": 1658.88
+      },
+      {
+        "config": "shared_51GBs|moderate_0.6",
+        "eff_bw_GBs": 30.6,
+        "t_transfer_us_per_step": 2211.84
+      },
+      {
+        "config": "shared_51GBs|heavy_0.4",
+        "eff_bw_GBs": 20.4,
+        "t_transfer_us_per_step": 3317.76
+      }
+    ],
+    "dram_measured": [
+      {
+        "regime": "transfer_only(seq)",
+        "channels": 4,
+        "dram_eff_bw_GBs": 47.73,
+        "t_transfer_us_per_step": 1418.16,
+        "ctrl_max_us_per_step": 10.44,
+        "transfer_dominates_control": true,
+        "ratio_transfer_over_ctrlmax": 135.8
+      },
+      {
+        "regime": "moderate_contention(mix:0.5)",
+        "channels": 4,
+        "dram_eff_bw_GBs": 15.33,
+        "t_transfer_us_per_step": 4416.29,
+        "ctrl_max_us_per_step": 10.44,
+        "transfer_dominates_control": true,
+        "ratio_transfer_over_ctrlmax": 423.0
+      }
+    ]
+  },
+  "transfer_dominates_on_all_points": true,
+  "min_ratio_transfer_over_ctrlmax": 67.9,
+  "sw_vs_hw_crossover_GBs": 4559.0,
+  "max_dram_effective_GBs": 95.45,
+  "flip_detected": false,
+  "conclusion": "Under REAL DRAM timing (Ramulator2, LPDDR5-6400), pure expert-weight streaming reaches 93% of JEDEC peak (97% row-hit), while co-running compute erodes the transfer-available bandwidth MORE than the analytic guess (mix:0.5 -> 0.30 vs guessed 0.60). Either way transfer time per step still dominates the largest per-step control cost by >=68x on every point; the highest DRAM-effective bandwidth reached (95 GB/s) is ~48x below the ~4559 GB/s SW-vs-HW crossover. NO P-I region flips the decision, so the deferred-tool adoption trigger is NOT met: the SW-sufficiency-for-decision conclusion is robust to cycle-accurate DRAM timing, and realistic contention makes the system MORE transfer-bound, not less."
+}

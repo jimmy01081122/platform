@@ -1,0 +1,8 @@
+{
+  "finished_at_utc": "2026-08-11T14:21:54Z",
+  "logical_request_id": "DEC1-512x256-routing",
+  "measured_count": 1,
+  "phase": "complete",
+  "status": "PASS",
+  "warmup_count": 0
+}

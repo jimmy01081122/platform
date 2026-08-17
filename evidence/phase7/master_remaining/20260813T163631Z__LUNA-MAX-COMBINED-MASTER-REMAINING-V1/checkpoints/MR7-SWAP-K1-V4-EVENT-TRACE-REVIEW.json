@@ -1,0 +1,37 @@
+{
+  "checkpoint_id": "MR7-SWAP-K1-V4-EVENT-TRACE-REVIEW",
+  "event_summary": {
+    "block_stored_hash_counts": [
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128
+    ],
+    "block_stored_media": [
+      "CPU"
+    ],
+    "declared_block_removed_event_count": 0,
+    "declared_block_stored_event_count": 7,
+    "decode_errors": null,
+    "decoded_block_stored_message_count": 8,
+    "decoded_message_counts": {
+      "BlockStored": 8
+    },
+    "event_envelopes": 7,
+    "message_field_counts": [
+      11
+    ]
+  },
+  "execution_ledger_sha256": "0ecb72c318f09a358cda128ba88881d12e293a89d8ba74e62cfe75e3a88b12f6",
+  "next_ready_gpu_unit": "SWAP-K1",
+  "raw_file_set_sha256": "458acc77f4610625018437a39eb84142eaa9fca6df419782a6a63f9ab7f0925d",
+  "remaining_ledger_sha256": "d1ee469eae332637804099ace2c785b5892fd6ee631f1226b03bbafa0ec255bb",
+  "required_closed_count": 11,
+  "required_remaining_count": 275,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T00:28:49Z"
+}

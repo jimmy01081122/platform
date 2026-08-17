@@ -1,0 +1,24 @@
+{
+  "experiment_id": "SERVING-S0-C2-V1",
+  "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "model_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "runtime_class": "SERVING_VARIANT",
+  "schema_version": "phase7-serving-burst-manifest-v1",
+  "started_at_utc": "2026-08-11T18:42:29Z",
+  "status": "RUNNING",
+  "variables": {
+    "bursts": 3,
+    "concurrency": 2,
+    "experiment_id": "SERVING-S0-C2-V1",
+    "gpu_memory_utilization": 0.97,
+    "input_tokens": 128,
+    "inter_burst_gap_ms": 0.0,
+    "intra_burst_gap_ms": 0.0,
+    "max_num_batched_tokens": 512,
+    "max_num_seqs": 2,
+    "model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "output_tokens": 32,
+    "run_root": "/vault/flow/moe_simulator_phase7/real_campaign/runs",
+    "warmup_burst": true
+  }
+}

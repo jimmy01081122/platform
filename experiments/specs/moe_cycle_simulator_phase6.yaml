@@ -1,0 +1,44 @@
+experiment_id: moe_cycle_simulator_phase6_multi_domain
+stage: S4
+status: r4_candidate_for_same_hash_review
+goal: Freeze a deterministic CPU-synthetic multi-domain scheduler for directed two-GPU P2P and two-agent coherent UMA semantics.
+scope:
+  - one global MultiDomainSchedulerV1
+  - two private-VRAM compute domains with explicit directed single-hop P2P
+  - two compute agents sharing one coherent UMA domain
+  - exact rational CDC, finite crossing queues, REQUEST_ACK and CREDIT
+  - per-domain capacity, whole-expert replication and pin-safe move rejection
+  - exact ExpertKey/content and verified Phase 5 compiled-action binding
+  - exact token-level request, token and layer identity across routing chains
+  - frozen missing-value sentinel rejection for required token identity
+  - object-granular serialized functional coherent visibility and checked versions
+  - distinct ACK_OR_CREDIT terminal transition at frozen priority 40
+  - hash-bound synthetic clock alignment and live-prefix checkpoint
+profile_origin: CPU_SYNTHETIC
+inputs:
+  - Phase 5 ledger b6b593a1fe79f1ddb60706c5c4af17470608c08589cd654eb7ea006d71ded834
+  - Phase 5 review ledger fb08d88c0f7ea381492a067ea10ee8286e24e63ca205e706bf0805967f10d93e
+  - Phase 6 source root dad66c54d0f84e2ad24926f3e614589fac22f1e5f3aa08aa5305ec9ff8c23c74
+outputs:
+  - explorations/moe_cycle_simulator/phase6
+  - runs/20260729T105347Z__moe_cycle_simulator_phase6_multi_domain_r4__S4
+acceptance:
+  - source and sealed-run validators pass
+  - normal Phase 6 and inherited Phase 3/4/5 regressions pass
+  - native ASAN and UBSAN regressions pass
+  - R1 blockers, MODEL-P6-R2-B1 and TRACE-P6-R3-B1 are closed by explicit fail-atomic, token/sentinel identity, priority, alignment, topology, coherence and canonicalization regressions
+  - topology, crossing, pressure, coherence, checkpoint and 1000-operation tests pass
+  - exact-set candidate ledger passes
+  - three roles return GO on one candidate ledger
+non_goals:
+  - measured NVLink, P2P, PCIe or coherent-UMA behavior
+  - adaptive placement, multi-hop, collectives or cache-line coherence
+  - Mixtral, runtime, model or benchmark execution
+  - calibration, DSE ranking or production-scale claims
+forbidden_actions:
+  - GPU query or execution
+  - model or benchmark download
+  - formal profiling
+  - calibration or platform qualification claims
+  - aggregate VRAM capacity substitution
+  - modification or reinterpretation of frozen G3 or S4 evidence

@@ -1,0 +1,28 @@
+{
+  "cpu_offload_gb": 0,
+  "dtype": "bfloat16",
+  "enable_expert_parallel": false,
+  "enable_prefix_caching": false,
+  "enforce_eager": true,
+  "gpu_memory_utilization": 0.97,
+  "kv_cache_dtype": "auto",
+  "kv_cache_metrics": true,
+  "kv_events_config": {
+    "repr": "KVEventsConfig(enable_kv_cache_events=True, publisher='zmq', endpoint='tcp://*:5614', replay_endpoint=None, buffer_steps=10000, hwm=100000, max_queue_size=100000, topic='')",
+    "type": "vllm.config.kv_events.KVEventsConfig"
+  },
+  "kv_offloading_backend": "native",
+  "kv_offloading_size": 3.0,
+  "load_format": "safetensors",
+  "max_model_len": 32768,
+  "max_num_batched_tokens": 2048,
+  "max_num_seqs": 3,
+  "model": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "pipeline_parallel_size": 1,
+  "quantization": null,
+  "safetensors_prefetch_block_size": 16777216,
+  "safetensors_prefetch_num_threads": 1,
+  "seed": 0,
+  "tensor_parallel_size": 1,
+  "trust_remote_code": false
+}

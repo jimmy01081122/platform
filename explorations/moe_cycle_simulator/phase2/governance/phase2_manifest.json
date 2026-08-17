@@ -1,0 +1,104 @@
+{
+  "schema_version": "moe-simulator-phase2-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r6-20260726",
+  "goal": "Freeze a strict nine-kind Canonical IR and partitioned Arrow IPC plus mandatory outer-Zstd ABI.",
+  "scope": [
+    "nine IR semantic schemas and descriptors",
+    "typed content-addressed cross-IR reference closure",
+    "immutable placement and exact alignment lineage",
+    "ArtifactEnvelope and partition manifest",
+    "atomic Arrow/Zstd codec",
+    "cross-language semantic hashing"
+  ],
+  "non_goals": [
+    "Phase 3 event execution",
+    "real runtime adapter",
+    "Mixtral or benchmark materialization",
+    "GPU work",
+    "formal profiling",
+    "calibration PASS"
+  ],
+  "inputs": {
+    "phase1_ledger_sha256": "478674f22a8022c5ae8fdc343cb67173435d8308cf4e742b1629da975310b445"
+  },
+  "outputs": {
+    "formal_run": "20260726T074835Z__moe_cycle_simulator_phase2_canonical_ir_r6__S2",
+    "record_count": 11,
+    "ir_kind_count": 9,
+    "partition_count": 9,
+    "bundle_semantic_root": "c07d9ec1cbc4d67652f3f73e34e69e27ffc15427d186c8bbb7e28e93f3e5efd7"
+  },
+  "dependencies": {
+    "jsonschema": "4.24.0",
+    "pyarrow": "20.0.0",
+    "libzstd": "1.4.8"
+  },
+  "unknowns": [
+    "real runtime event population",
+    "production trace partition sizing",
+    "measured alignment uncertainty"
+  ],
+  "risks": [
+    "canonical JSON binary payload prioritizes a stable semantic ABI over typed Arrow projection performance",
+    "ephemeral dependency root must be reconstructed to exact content roots for replay"
+  ],
+  "validation_method": [
+    "strict Draft 2020-12 validation",
+    "bundle-wide cross-IR invariants",
+    "Arrow/Zstd round trip",
+    "physical layout independence",
+    "negative corruption and provenance tests",
+    "Python/C++ hash golden"
+  ],
+  "acceptance_criteria": [
+    "source validator PASS",
+    "formal run validator PASS",
+    "43 tests PASS",
+    "run ledger exact-set PASS",
+    "three roles GO on one ledger with empty blockers"
+  ],
+  "estimated_resources": {
+    "execution": "CPU-only, under one minute",
+    "storage": "under ten MiB"
+  },
+  "owner_decisions": [
+    "Phase 1 GO authorizes Phase 2 CPU-only implementation."
+  ],
+  "next_legal_action": "After same-hash GO, begin Phase 3 deterministic event/resource core on CPU.",
+  "forbidden_actions": [
+    "GPU query or execution",
+    "model or benchmark download",
+    "formal profiling",
+    "calibration PASS",
+    "modification of frozen G3/S4 evidence"
+  ],
+  "status": "candidate_r6_unreviewed",
+  "supersedes_candidate": {
+    "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r5-20260726",
+    "verdict": "MODIFY",
+    "ledger_sha256": "ac1d3c8f3a81e50302f5bf3debc8a6f33717d24de33f0f5f00e50138bfcd8fb2",
+    "evidence_policy": "immutable failure evidence; never promoted or reinterpreted"
+  }
+  ,"prior_candidates": [
+    {
+      "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r1-20260726",
+      "ledger_sha256": "f12a8178e6070d64c14b4c573ab1bbf35b5d8a3425008776bffcd5a15d9d2ed9",
+      "verdict": "MODIFY"
+    },
+    {
+      "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r2-20260726",
+      "ledger_sha256": "5ae4f8d98923087385d7face44adf5b451428b15b6faf0eab44867f5b2d2baa6",
+      "verdict": "MODIFY"
+    },
+    {
+      "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r3-20260726",
+      "ledger_sha256": "2f713135b64efb2dc4c9f72e93421183ff0e3ea40448d85c59aeeb77d3f3f2d0",
+      "verdict": "MODIFY"
+    },
+    {
+      "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r4-20260726",
+      "ledger_sha256": "4774792f298d398a4c3d7df8e521afa0c0b2e8543da5ad9d7ed7c49ac3f0156a",
+      "verdict": "MODIFY"
+    }
+  ]
+}

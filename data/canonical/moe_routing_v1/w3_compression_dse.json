@@ -1,0 +1,516 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+  "ratios": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "control_cost_us_per_step": {
+    "hardware": 0.18,
+    "software": 2.07,
+    "firmware": 10.44
+  },
+  "bandwidth_mid_name": "pcie_mid_16GBs",
+  "bandwidth_mid_GBs": 16.0,
+  "note": "compression/mixed-precision residency DSE; transfer lever (t_xfer 1/r, shared-link E=1) + capacity lever (C'=min(N,C0*r)) + decompressor sizing. r is a SYSTEMS parameter; accuracy of low-precision experts is out of scope.",
+  "models": {
+    "cognitivecomputations/DeepSeek-R1-AWQ": {
+      "config": {
+        "model_id": "deepseek-ai/DeepSeek-R1",
+        "trace_variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+        "num_experts": 256,
+        "top_k": 8,
+        "num_moe_layers": 58,
+        "precision": "awq_int4",
+        "bytes_per_param": 0.5,
+        "expert_params": 44040192,
+        "expert_weight_bytes": 22020096,
+        "expert_weight_MiB": 21.0,
+        "shared_expert_bytes": 22020096
+      },
+      "num_steps": 7482,
+      "capacity0": 128,
+      "native_expert_MiB": 21.0,
+      "transfer_lever": [
+        {
+          "r": 1,
+          "store_precision": "~int4",
+          "eff_expert_MiB": 21.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 15050.26,
+            "pcie_mid_16GBs": 7529.228,
+            "pcie_hi_32GBs": 3768.713
+          },
+          "t_transfer_us_per_step_mid": 7529.228,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 721.19
+        },
+        {
+          "r": 2,
+          "store_precision": "~int2",
+          "eff_expert_MiB": 10.5,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 7529.228,
+            "pcie_mid_16GBs": 3768.713,
+            "pcie_hi_32GBs": 1888.455
+          },
+          "t_transfer_us_per_step_mid": 3768.713,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 360.99
+        },
+        {
+          "r": 4,
+          "store_precision": "~int1",
+          "eff_expert_MiB": 5.25,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 3768.713,
+            "pcie_mid_16GBs": 1888.455,
+            "pcie_hi_32GBs": 948.326
+          },
+          "t_transfer_us_per_step_mid": 1888.455,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 180.89
+        },
+        {
+          "r": 8,
+          "store_precision": "~int1",
+          "eff_expert_MiB": 2.625,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 1888.455,
+            "pcie_mid_16GBs": 948.326,
+            "pcie_hi_32GBs": 478.262
+          },
+          "t_transfer_us_per_step_mid": 948.326,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 90.84
+        }
+      ],
+      "r_star_to_control_mid": 721.19,
+      "regime_flips_within_8x_mid": false,
+      "capacity_lever": [
+        {
+          "r": 1,
+          "capacity_experts": 128,
+          "capacity_frac_of_N": 0.5,
+          "demand_misses": 40888,
+          "miss_reduction_vs_r1_pct": 0.0
+        },
+        {
+          "r": 2,
+          "capacity_experts": 256,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 256,
+          "miss_reduction_vs_r1_pct": 99.37
+        },
+        {
+          "r": 4,
+          "capacity_experts": 256,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 256,
+          "miss_reduction_vs_r1_pct": 99.37
+        },
+        {
+          "r": 8,
+          "capacity_experts": 256,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 256,
+          "miss_reduction_vs_r1_pct": 99.37
+        }
+      ],
+      "decompressor_required_GBs_out": {
+        "pcie_lo_8GBs": {
+          "1": 8.0,
+          "2": 16.0,
+          "4": 32.0,
+          "8": 64.0
+        },
+        "pcie_mid_16GBs": {
+          "1": 16.0,
+          "2": 32.0,
+          "4": 64.0,
+          "8": 128.0
+        },
+        "pcie_hi_32GBs": {
+          "1": 32.0,
+          "2": 64.0,
+          "4": 128.0,
+          "8": 256.0
+        }
+      }
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "config": {
+        "model_id": "moonshotai/Kimi-K2-Thinking",
+        "trace_variant": "moonshotai/Kimi-K2-Thinking",
+        "num_experts": 384,
+        "top_k": 8,
+        "num_moe_layers": 60,
+        "precision": "int4_compressed_tensors",
+        "bytes_per_param": 0.5,
+        "expert_params": 44040192,
+        "expert_weight_bytes": 22020096,
+        "expert_weight_MiB": 21.0,
+        "shared_expert_bytes": 22020096
+      },
+      "num_steps": 7740,
+      "capacity0": 192,
+      "native_expert_MiB": 21.0,
+      "transfer_lever": [
+        {
+          "r": 1,
+          "store_precision": "~int4",
+          "eff_expert_MiB": 21.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 13663.315,
+            "pcie_mid_16GBs": 6835.379,
+            "pcie_hi_32GBs": 3421.41
+          },
+          "t_transfer_us_per_step_mid": 6835.379,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 654.73
+        },
+        {
+          "r": 2,
+          "store_precision": "~int2",
+          "eff_expert_MiB": 10.5,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 6835.379,
+            "pcie_mid_16GBs": 3421.41,
+            "pcie_hi_32GBs": 1714.426
+          },
+          "t_transfer_us_per_step_mid": 3421.41,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 327.72
+        },
+        {
+          "r": 4,
+          "store_precision": "~int1",
+          "eff_expert_MiB": 5.25,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 3421.41,
+            "pcie_mid_16GBs": 1714.426,
+            "pcie_hi_32GBs": 860.934
+          },
+          "t_transfer_us_per_step_mid": 1714.426,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 164.22
+        },
+        {
+          "r": 8,
+          "store_precision": "~int1",
+          "eff_expert_MiB": 2.625,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 1714.426,
+            "pcie_mid_16GBs": 860.934,
+            "pcie_hi_32GBs": 434.188
+          },
+          "t_transfer_us_per_step_mid": 860.934,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 82.46
+        }
+      ],
+      "r_star_to_control_mid": 654.73,
+      "regime_flips_within_8x_mid": false,
+      "capacity_lever": [
+        {
+          "r": 1,
+          "capacity_experts": 192,
+          "capacity_frac_of_N": 0.5,
+          "demand_misses": 38400,
+          "miss_reduction_vs_r1_pct": 0.0
+        },
+        {
+          "r": 2,
+          "capacity_experts": 384,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 384,
+          "miss_reduction_vs_r1_pct": 99.0
+        },
+        {
+          "r": 4,
+          "capacity_experts": 384,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 384,
+          "miss_reduction_vs_r1_pct": 99.0
+        },
+        {
+          "r": 8,
+          "capacity_experts": 384,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 384,
+          "miss_reduction_vs_r1_pct": 99.0
+        }
+      ],
+      "decompressor_required_GBs_out": {
+        "pcie_lo_8GBs": {
+          "1": 8.0,
+          "2": 16.0,
+          "4": 32.0,
+          "8": 64.0
+        },
+        "pcie_mid_16GBs": {
+          "1": 16.0,
+          "2": 32.0,
+          "4": 64.0,
+          "8": 128.0
+        },
+        "pcie_hi_32GBs": {
+          "1": 32.0,
+          "2": 64.0,
+          "4": 128.0,
+          "8": 256.0
+        }
+      }
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+      "config": {
+        "model_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+        "trace_variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+        "num_experts": 128,
+        "top_k": 1,
+        "num_moe_layers": 24,
+        "precision": "bf16",
+        "bytes_per_param": 2.0,
+        "expert_params": 125829120,
+        "expert_weight_bytes": 251658240,
+        "expert_weight_MiB": 240.0,
+        "shared_expert_bytes": 503316480
+      },
+      "num_steps": 3096,
+      "capacity0": 64,
+      "native_expert_MiB": 240.0,
+      "transfer_lever": [
+        {
+          "r": 1,
+          "store_precision": "~16-bit",
+          "eff_expert_MiB": 240.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 12355.903,
+            "pcie_mid_16GBs": 6178.246,
+            "pcie_hi_32GBs": 3089.418
+          },
+          "t_transfer_us_per_step_mid": 6178.246,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 591.79
+        },
+        {
+          "r": 2,
+          "store_precision": "~8-bit",
+          "eff_expert_MiB": 120.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 6178.246,
+            "pcie_mid_16GBs": 3089.418,
+            "pcie_hi_32GBs": 1545.003
+          },
+          "t_transfer_us_per_step_mid": 3089.418,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 295.92
+        },
+        {
+          "r": 4,
+          "store_precision": "~int4",
+          "eff_expert_MiB": 60.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 3089.418,
+            "pcie_mid_16GBs": 1545.003,
+            "pcie_hi_32GBs": 772.796
+          },
+          "t_transfer_us_per_step_mid": 1545.003,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 147.99
+        },
+        {
+          "r": 8,
+          "store_precision": "~int2",
+          "eff_expert_MiB": 30.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 1545.003,
+            "pcie_mid_16GBs": 772.796,
+            "pcie_hi_32GBs": 386.693
+          },
+          "t_transfer_us_per_step_mid": 772.796,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 74.02
+        }
+      ],
+      "r_star_to_control_mid": 591.79,
+      "regime_flips_within_8x_mid": false,
+      "capacity_lever": [
+        {
+          "r": 1,
+          "capacity_experts": 64,
+          "capacity_frac_of_N": 0.5,
+          "demand_misses": 1216,
+          "miss_reduction_vs_r1_pct": 0.0
+        },
+        {
+          "r": 2,
+          "capacity_experts": 128,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 128,
+          "miss_reduction_vs_r1_pct": 89.47
+        },
+        {
+          "r": 4,
+          "capacity_experts": 128,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 128,
+          "miss_reduction_vs_r1_pct": 89.47
+        },
+        {
+          "r": 8,
+          "capacity_experts": 128,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 128,
+          "miss_reduction_vs_r1_pct": 89.47
+        }
+      ],
+      "decompressor_required_GBs_out": {
+        "pcie_lo_8GBs": {
+          "1": 8.0,
+          "2": 16.0,
+          "4": 32.0,
+          "8": 64.0
+        },
+        "pcie_mid_16GBs": {
+          "1": 16.0,
+          "2": 32.0,
+          "4": 64.0,
+          "8": 128.0
+        },
+        "pcie_hi_32GBs": {
+          "1": 32.0,
+          "2": 64.0,
+          "4": 128.0,
+          "8": 256.0
+        }
+      }
+    },
+    "Qwen/Qwen3-235B-A22B-FP8": {
+      "config": {
+        "model_id": "Qwen/Qwen3-235B-A22B-FP8",
+        "trace_variant": "Qwen/Qwen3-235B-A22B-FP8",
+        "num_experts": 128,
+        "top_k": 8,
+        "num_moe_layers": 94,
+        "precision": "fp8",
+        "bytes_per_param": 1.0,
+        "expert_params": 18874368,
+        "expert_weight_bytes": 18874368,
+        "expert_weight_MiB": 18.0,
+        "shared_expert_bytes": 0
+      },
+      "num_steps": 12126,
+      "capacity0": 64,
+      "native_expert_MiB": 18.0,
+      "transfer_lever": [
+        {
+          "r": 1,
+          "store_precision": "~8-bit",
+          "eff_expert_MiB": 18.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 10954.358,
+            "pcie_mid_16GBs": 5480.659,
+            "pcie_hi_32GBs": 2743.81
+          },
+          "t_transfer_us_per_step_mid": 5480.659,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 524.97
+        },
+        {
+          "r": 2,
+          "store_precision": "~int4",
+          "eff_expert_MiB": 9.0,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 5480.659,
+            "pcie_mid_16GBs": 2743.81,
+            "pcie_hi_32GBs": 1375.385
+          },
+          "t_transfer_us_per_step_mid": 2743.81,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 262.82
+        },
+        {
+          "r": 4,
+          "store_precision": "~int2",
+          "eff_expert_MiB": 4.5,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 2743.81,
+            "pcie_mid_16GBs": 1375.385,
+            "pcie_hi_32GBs": 691.173
+          },
+          "t_transfer_us_per_step_mid": 1375.385,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 131.74
+        },
+        {
+          "r": 8,
+          "store_precision": "~int1",
+          "eff_expert_MiB": 2.25,
+          "t_transfer_us_per_step_by_bw": {
+            "pcie_lo_8GBs": 1375.385,
+            "pcie_mid_16GBs": 691.173,
+            "pcie_hi_32GBs": 349.066
+          },
+          "t_transfer_us_per_step_mid": 691.173,
+          "dominates_control_mid": true,
+          "ratio_over_ctrlmax_mid": 66.2
+        }
+      ],
+      "r_star_to_control_mid": 524.97,
+      "regime_flips_within_8x_mid": false,
+      "capacity_lever": [
+        {
+          "r": 1,
+          "capacity_experts": 64,
+          "capacity_frac_of_N": 0.5,
+          "demand_misses": 56266,
+          "miss_reduction_vs_r1_pct": 0.0
+        },
+        {
+          "r": 2,
+          "capacity_experts": 128,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 128,
+          "miss_reduction_vs_r1_pct": 99.77
+        },
+        {
+          "r": 4,
+          "capacity_experts": 128,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 128,
+          "miss_reduction_vs_r1_pct": 99.77
+        },
+        {
+          "r": 8,
+          "capacity_experts": 128,
+          "capacity_frac_of_N": 1.0,
+          "demand_misses": 128,
+          "miss_reduction_vs_r1_pct": 99.77
+        }
+      ],
+      "decompressor_required_GBs_out": {
+        "pcie_lo_8GBs": {
+          "1": 8.0,
+          "2": 16.0,
+          "4": 32.0,
+          "8": 64.0
+        },
+        "pcie_mid_16GBs": {
+          "1": 16.0,
+          "2": 32.0,
+          "4": 64.0,
+          "8": 128.0
+        },
+        "pcie_hi_32GBs": {
+          "1": 32.0,
+          "2": 64.0,
+          "4": 128.0,
+          "8": 256.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase5-routing-residency-r2-20260728",
+  "ledger_sha256": "b6b593a1fe79f1ddb60706c5c4af17470608c08589cd654eb7ea006d71ded834",
+  "member_count": 46,
+  "verdict": "GO",
+  "blockers": [],
+  "claim_boundary": "TRACE_COMPILED_NON_ADAPTIVE CPU-synthetic functional replay with RANGE_UNKNOWN only. Token-level top-k and selected experts are conserved; aggregate reconstruction and routing weights are absent; total byte capacity includes reserved nonexpert bytes. HINT establishes supplied-event causality, not predictor realizability. Ablations are not performance evidence.",
+  "authorized_next_stage": "After identical-ledger GO from all three roles and Phase 5 freeze, begin Phase 6 CPU-synthetic multi-GPU NVLink/coherent-UMA implementation only.",
+  "gpu_authority": "NONE"
+}

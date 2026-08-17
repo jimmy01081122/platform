@@ -1,0 +1,81 @@
+{
+  "batch_status": {
+    "completed_runs": 12,
+    "current_experiment": null,
+    "message": "All K0-K5 canaries and formal profiler rows passed runner gates; audit pending",
+    "status": "PASS",
+    "total_runs": 12,
+    "updated_at_utc": "2026-08-11T17:05:23.194527+00:00"
+  },
+  "canaries_excluded_from_fit": true,
+  "errors": [],
+  "status": "PASS",
+  "targets": {
+    "K0-F0": {
+      "decode_marker_count": 31,
+      "fit_role": "fit",
+      "input_token_count": 28,
+      "kernel_event_count": 15040,
+      "model_kernel_event_count": 12480,
+      "output_token_count": 32,
+      "prefill_marker_count": 1,
+      "run": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_k_profile_backup/raw/runs/20260811T165501Z__K0-F0",
+      "trace_event_count": 252902
+    },
+    "K1-P0-128": {
+      "decode_marker_count": 31,
+      "fit_role": "fit",
+      "input_token_count": 128,
+      "kernel_event_count": 16032,
+      "model_kernel_event_count": 13472,
+      "output_token_count": 32,
+      "prefill_marker_count": 1,
+      "run": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_k_profile_backup/raw/runs/20260811T165611Z__K1-P0-128",
+      "trace_event_count": 258866
+    },
+    "K2-P0-8192": {
+      "decode_marker_count": 31,
+      "fit_role": "fit",
+      "input_token_count": 8192,
+      "kernel_event_count": 31437,
+      "model_kernel_event_count": 28319,
+      "output_token_count": 32,
+      "prefill_marker_count": 32,
+      "run": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_k_profile_backup/raw/runs/20260811T165737Z__K2-P0-8192",
+      "trace_event_count": 492483
+    },
+    "K3-P1-28672": {
+      "decode_marker_count": 31,
+      "fit_role": "held-out",
+      "input_token_count": 28672,
+      "kernel_event_count": 71357,
+      "model_kernel_event_count": 66799,
+      "output_token_count": 32,
+      "prefill_marker_count": 112,
+      "run": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_k_profile_backup/raw/runs/20260811T165958Z__K3-P1-28672",
+      "trace_event_count": 1095632
+    },
+    "K4-DEC0-512": {
+      "decode_marker_count": 94,
+      "fit_role": "fit",
+      "input_token_count": 512,
+      "kernel_event_count": 47904,
+      "model_kernel_event_count": 40160,
+      "output_token_count": 512,
+      "prefill_marker_count": 2,
+      "run": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_k_profile_backup/raw/runs/20260811T170203Z__K4-DEC0-512",
+      "trace_event_count": 776782
+    },
+    "K5-DEC1-1024": {
+      "decode_marker_count": 92,
+      "fit_role": "held-out",
+      "input_token_count": 1024,
+      "kernel_event_count": 47904,
+      "model_kernel_event_count": 40288,
+      "output_token_count": 1024,
+      "prefill_marker_count": 4,
+      "run": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_k_profile_backup/raw/runs/20260811T170352Z__K5-DEC1-1024",
+      "trace_event_count": 775652
+    }
+  }
+}

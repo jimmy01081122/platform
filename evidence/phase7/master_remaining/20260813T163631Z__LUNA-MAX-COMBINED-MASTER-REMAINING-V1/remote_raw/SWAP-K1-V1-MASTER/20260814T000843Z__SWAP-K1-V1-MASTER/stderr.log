@@ -1,0 +1,233 @@
+(EngineCore pid=41994) Loading safetensors checkpoint shards:   0% Completed | 0/19 [00:00<?, ?it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:   5% Completed | 1/19 [00:00<00:10,  1.75it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  11% Completed | 2/19 [00:01<00:09,  1.73it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  16% Completed | 3/19 [00:01<00:09,  1.73it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  21% Completed | 4/19 [00:02<00:08,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  26% Completed | 5/19 [00:02<00:08,  1.75it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  32% Completed | 6/19 [00:03<00:07,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  37% Completed | 7/19 [00:04<00:06,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  42% Completed | 8/19 [00:04<00:06,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  47% Completed | 9/19 [00:05<00:05,  1.73it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  53% Completed | 10/19 [00:05<00:05,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  58% Completed | 11/19 [00:06<00:04,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  63% Completed | 12/19 [00:06<00:04,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  68% Completed | 13/19 [00:07<00:03,  1.74it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  74% Completed | 14/19 [00:07<00:02,  1.79it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  79% Completed | 15/19 [00:08<00:02,  1.85it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  84% Completed | 16/19 [00:08<00:01,  1.90it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  89% Completed | 17/19 [00:09<00:01,  1.93it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards:  95% Completed | 18/19 [00:09<00:00,  1.95it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:10<00:00,  2.03it/s]
+(EngineCore pid=41994) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:10<00:00,  1.82it/s]
+(EngineCore pid=41994) 
+(EngineCore pid=41994) Process EngineCore:
+(EngineCore pid=41994) Traceback (most recent call last):
+(EngineCore pid=41994)   File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=41994)     self.run()
+(EngineCore pid=41994)   File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+(EngineCore pid=41994)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py", line 1199, in run_engine_core
+(EngineCore pid=41994)     raise e
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py", line 1164, in run_engine_core
+(EngineCore pid=41994)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=41994)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=41994)     return func(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py", line 930, in __init__
+(EngineCore pid=41994)     super().__init__(
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py", line 132, in __init__
+(EngineCore pid=41994)     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=41994)                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=41994)     return func(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py", line 257, in _initialize_kv_caches
+(EngineCore pid=41994)     available_gpu_memory = self.model_executor.determine_available_memory()
+(EngineCore pid=41994)                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/abstract.py", line 147, in determine_available_memory
+(EngineCore pid=41994)     return self.collective_rpc("determine_available_memory")
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/uniproc_executor.py", line 92, in collective_rpc
+(EngineCore pid=41994)     result = run_method(self.driver_worker, method, args, kwargs)
+(EngineCore pid=41994)              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/serial_utils.py", line 510, in run_method
+(EngineCore pid=41994)     return func(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=41994)     return func(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py", line 410, in determine_available_memory
+(EngineCore pid=41994)     self.model_runner.profile_run()
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_model_runner.py", line 6228, in profile_run
+(EngineCore pid=41994)     hidden_states, last_hidden_states = self._dummy_run(
+(EngineCore pid=41994)                                         ^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=41994)     return func(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_model_runner.py", line 5888, in _dummy_run
+(EngineCore pid=41994)     outputs = self.model(
+(EngineCore pid=41994)               ^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+(EngineCore pid=41994)     return self._call_impl(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+(EngineCore pid=41994)     return forward_call(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/mixtral.py", line 571, in forward
+(EngineCore pid=41994)     hidden_states = self.model(
+(EngineCore pid=41994)                     ^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/compilation/decorators.py", line 507, in __call__
+(EngineCore pid=41994)     return self.forward(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/mixtral.py", line 359, in forward
+(EngineCore pid=41994)     hidden_states, residual = layer(positions, hidden_states, residual)
+(EngineCore pid=41994)                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+(EngineCore pid=41994)     return self._call_impl(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+(EngineCore pid=41994)     return forward_call(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/mixtral.py", line 292, in forward
+(EngineCore pid=41994)     hidden_states = self.block_sparse_moe(hidden_states)
+(EngineCore pid=41994)                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+(EngineCore pid=41994)     return self._call_impl(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+(EngineCore pid=41994)     return forward_call(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/mixtral.py", line 153, in forward
+(EngineCore pid=41994)     final_hidden_states = self.experts(hidden_states, router_logits)
+(EngineCore pid=41994)                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+(EngineCore pid=41994)     return self._call_impl(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+(EngineCore pid=41994)     return forward_call(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/layer.py", line 1324, in forward
+(EngineCore pid=41994)     return self.runner.forward(
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/runner/moe_runner.py", line 637, in forward
+(EngineCore pid=41994)     result = self._forward_entry(
+(EngineCore pid=41994)              ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/torch/_ops.py", line 1269, in __call__
+(EngineCore pid=41994)     return self._op(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/runner/moe_runner.py", line 99, in _moe_forward
+(EngineCore pid=41994)     return layer.runner._forward_impl(
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/runner/moe_runner.py", line 790, in _forward_impl
+(EngineCore pid=41994)     shared_output, hidden_states = self._apply_quant_method(
+(EngineCore pid=41994)                                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/runner/moe_runner.py", line 532, in _apply_quant_method
+(EngineCore pid=41994)     fused_out = self._quant_method.apply(
+(EngineCore pid=41994)                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/unquantized_fused_moe_method.py", line 293, in apply
+(EngineCore pid=41994)     return self.forward(
+(EngineCore pid=41994)            ^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/custom_op.py", line 136, in forward
+(EngineCore pid=41994)     return self._forward_method(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/unquantized_fused_moe_method.py", line 335, in forward_cuda
+(EngineCore pid=41994)     return self.forward_native(
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/unquantized_fused_moe_method.py", line 312, in forward_native
+(EngineCore pid=41994)     return self.moe_kernel.apply(
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1617, in apply
+(EngineCore pid=41994)     return self.impl.apply(
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1400, in apply
+(EngineCore pid=41994)     fused_out = self._fused_experts(
+(EngineCore pid=41994)                 ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1255, in _fused_experts
+(EngineCore pid=41994)     self.fused_experts.apply(
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/experts/flashinfer_cutlass_moe.py", line 375, in apply
+(EngineCore pid=41994)     _ = flashinfer_cutlass_fused_moe(
+(EngineCore pid=41994)         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/vllm/utils/flashinfer.py", line 108, in wrapper
+(EngineCore pid=41994)     return impl(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/flashinfer/api_logging.py", line 2333, in _auto_dump_wrapper
+(EngineCore pid=41994)     return _inner(*args, **kwargs)
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/flashinfer/fused_moe/core.py", line 973, in cutlass_fused_moe
+(EngineCore pid=41994)     return get_cutlass_fused_moe_module(device_arch).cutlass_fused_moe(
+(EngineCore pid=41994)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=41994)   File "/usr/local/lib/python3.12/dist-packages/flashinfer/fused_moe/core.py", line 565, in cutlass_fused_moe
+(EngineCore pid=41994)     run_moe(
+(EngineCore pid=41994)   File "python/tvm_ffi/cython/function.pxi", line 929, in tvm_ffi.core.Function.__call__
+(EngineCore pid=41994)   File "<unknown>", line 0, in FusedMoeRunner::GetFunction(tvm::ffi::String const&)::{lambda(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long)#1}::operator()(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long) const
+(EngineCore pid=41994)   File "<unknown>", line 0, in FusedMoeRunner::runMoe(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, tensorrt_llm::kernels::cutlass_kernels::ActivationType) [clone .isra.0]
+(EngineCore pid=41994)   File "<unknown>", line 0, in FusedMoeRunner::getWorkspaceInfo(long, long, long, int, int, tensorrt_llm::kernels::cutlass_kernels::ActivationType, tensorrt_llm::kernels::cutlass_kernels::MOEParallelismConfig, bool)
+(EngineCore pid=41994)   File "<unknown>", line 0, in TVMFFIEnvTensorAlloc
+(EngineCore pid=41994)   File "<unknown>", line 0, in TorchDLPackExchangeAPI::ManagedTensorAllocator(DLTensor*, DLManagedTensorVersioned**, void*, void (*)(void*, char const*, char const*))
+(EngineCore pid=41994) MemoryError: CUDA out of memory. Tried to allocate 5.25 GiB. GPU 0 has a total capacity of 94.97 GiB of which 728.25 MiB is free. Including non-PyTorch memory, this process has 94.25 GiB memory in use. Of the allocated memory 88.51 GiB is allocated by PyTorch, and 5.01 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+(EngineCore pid=41994) Exception raised from malloc at /pytorch/c10/cuda/CUDACachingAllocator.cpp:1574 (most recent call first):
+(EngineCore pid=41994) frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x711d4af7305d in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+(EngineCore pid=41994) frame #1: <unknown function> + 0x4434a (0x711d4b35534a in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10_cuda.so)
+(EngineCore pid=41994) frame #2: <unknown function> + 0x445e2 (0x711d4b3555e2 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10_cuda.so)
+(EngineCore pid=41994) frame #3: <unknown function> + 0x44c9f (0x711d4b355c9f in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10_cuda.so)
+(EngineCore pid=41994) frame #4: at::detail::empty_generic(c10::ArrayRef<long>, c10::Allocator*, c10::DispatchKeySet, c10::ScalarType, std::optional<c10::MemoryFormat>) + 0x5cc (0x711caff9846c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+(EngineCore pid=41994) frame #5: at::detail::empty_cuda(c10::ArrayRef<long>, c10::ScalarType, std::optional<c10::Device>, std::optional<c10::MemoryFormat>) + 0x7f (0x711c9766d35f in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+(EngineCore pid=41994) frame #6: at::detail::empty_cuda(c10::ArrayRef<long>, std::optional<c10::ScalarType>, std::optional<c10::Layout>, std::optional<c10::Device>, std::optional<bool>, std::optional<c10::MemoryFormat>) + 0x6e (0x711c9766d56e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+(EngineCore pid=41994) frame #7: at::native::empty_cuda(c10::ArrayRef<long>, std::optional<c10::ScalarType>, std::optional<c10::Layout>, std::optional<c10::Device>, std::optional<bool>, std::optional<c10::MemoryFormat>) + 0x43 (0x711c979871f3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+(EngineCore pid=41994) frame #8: <unknown function> + 0x36aa702 (0x711c9a047702 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+(EngineCore pid=41994) frame #9: <unknown function> + 0x36aa81c (0x711c9a04781c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+(EngineCore pid=41994) frame #10: at::_ops::empty_memory_format::redispatch(c10::DispatchKeySet, c10::ArrayRef<c10::SymInt>, std::optional<c10::ScalarType>, std::optional<c10::Layout>, std::optional<c10::Device>, std::optional<bool>, std::optional<c10::MemoryFormat>) + 0xe6 (0x711cb10d0cf6 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+(EngineCore pid=41994) frame #11: <unknown function> + 0x2f19ec9 (0x711cb153aec9 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+(EngineCore pid=41994) frame #12: at::_ops::empty_memory_format::call(c10::ArrayRef<c10::SymInt>, std::optional<c10::ScalarType>, std::optional<c10::Layout>, std::optional<c10::Device>, std::optional<bool>, std::optional<c10::MemoryFormat>) + 0x154 (0x711cb11a5834 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+(EngineCore pid=41994) frame #13: <unknown function> + 0x770145 (0x711cc4424145 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #14: TVMFFIEnvTensorAlloc + 0x68 (0x711b61e55968 in /usr/local/lib/python3.12/dist-packages/tvm_ffi/lib/libtvm_ffi.so)
+(EngineCore pid=41994) frame #15: FusedMoeRunner::getWorkspaceInfo(long, long, long, int, int, tensorrt_llm::kernels::cutlass_kernels::ActivationType, tensorrt_llm::kernels::cutlass_kernels::MOEParallelismConfig, bool) + 0x186 (0x710306ca6616 in /usr/local/lib/python3.12/dist-packages/flashinfer_jit_cache/jit_cache/fused_moe_120/fused_moe_120.so)
+(EngineCore pid=41994) frame #16: <unknown function> + 0x8120d1 (0x710306ccf0d1 in /usr/local/lib/python3.12/dist-packages/flashinfer_jit_cache/jit_cache/fused_moe_120/fused_moe_120.so)
+(EngineCore pid=41994) frame #17: FusedMoeRunner::GetFunction(tvm::ffi::String const&)::{lambda(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long)#6}::operator()(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long) const + 0x2ec (0x710306cd619c in /usr/local/lib/python3.12/dist-packages/flashinfer_jit_cache/jit_cache/fused_moe_120/fused_moe_120.so)
+(EngineCore pid=41994) frame #18: tvm::ffi::Function::FromTyped<FusedMoeRunner::GetFunction(tvm::ffi::String const&)::{lambda(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long)#1}>(FusedMoeRunner::GetFunction(tvm::ffi::String const&)::{lambda(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long)#1}&&)::{lambda(tvm::ffi::AnyView const*, int, tvm::ffi::Any*)#1}::operator()(tvm::ffi::AnyView const*, int, tvm::ffi::Any*) + 0x136aa (0x710306cfc13a in /usr/local/lib/python3.12/dist-packages/flashinfer_jit_cache/jit_cache/fused_moe_120/fused_moe_120.so)
+(EngineCore pid=41994) frame #19: tvm::ffi::details::FunctionObjImpl<tvm::ffi::Function::FromTyped<FusedMoeRunner::GetFunction(tvm::ffi::String const&)::{lambda(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long)#1}>(FusedMoeRunner::GetFunction(tvm::ffi::String const&)::{lambda(tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::TensorView, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::Array<tvm::ffi::Tensor, void>, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, tvm::ffi::Optional<tvm::ffi::TensorView, void>, bool, long, long, long, long, long, long, bool, bool, tvm::ffi::Optional<tvm::ffi::Array<long, void>, void>, bool, long)#1}&&)::{lambda(tvm::ffi::AnyView const*, int, tvm::ffi::Any*)#1}>::SafeCall(void*, TVMFFIAny const*, int, TVMFFIAny*) + 0x373 (0x710306cab363 in /usr/local/lib/python3.12/dist-packages/flashinfer_jit_cache/jit_cache/fused_moe_120/fused_moe_120.so)
+(EngineCore pid=41994) frame #20: <unknown function> + 0x57914 (0x711c284e0914 in /usr/local/lib/python3.12/dist-packages/tvm_ffi/core.abi3.so)
+(EngineCore pid=41994) frame #21: _PyObject_Call + 0x93 (0x580f33 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #22: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #23: VLLM::EngineCore() [0x59961d]
+(EngineCore pid=41994) frame #24: VLLM::EngineCore() [0x5991ae]
+(EngineCore pid=41994) frame #25: _PyObject_Call + 0xed (0x580f8d in VLLM::EngineCore)
+(EngineCore pid=41994) frame #26: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #27: <unknown function> + 0xa57a96 (0x711cc470ba96 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #28: <unknown function> + 0xdcef45 (0x711cc4a82f45 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #29: <unknown function> + 0x66fbc8c (0x711cb4d1cc8c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+(EngineCore pid=41994) frame #30: <unknown function> + 0xb21344 (0x711cc47d5344 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #31: <unknown function> + 0xb21848 (0x711cc47d5848 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #32: torch::jit::_get_operation_for_overload_or_packet(std::vector<std::shared_ptr<torch::jit::Operator>, std::allocator<std::shared_ptr<torch::jit::Operator> > > const&, c10::Symbol, pybind11::args const&, pybind11::kwargs const&, bool, std::optional<c10::DispatchKey>) + 0x38 (0x711cc47d5b58 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #33: <unknown function> + 0xa0547d (0x711cc46b947d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #34: <unknown function> + 0x411060 (0x711cc40c5060 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+(EngineCore pid=41994) frame #35: VLLM::EngineCore() [0x56cc2d]
+(EngineCore pid=41994) frame #36: _PyObject_Call + 0x93 (0x580f33 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #37: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #38: _PyObject_FastCallDictTstate + 0x1d8 (0x541b48 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #39: _PyObject_Call_Prepend + 0xbe (0x57e34e in VLLM::EngineCore)
+(EngineCore pid=41994) frame #40: VLLM::EngineCore() [0x6690fd]
+(EngineCore pid=41994) frame #41: _PyObject_MakeTpCall + 0x2fb (0x53f2ab in VLLM::EngineCore)
+(EngineCore pid=41994) frame #42: _PyEval_EvalFrameDefault + 0x700 (0x549fe0 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #43: VLLM::EngineCore() [0x59915f]
+(EngineCore pid=41994) frame #44: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #45: VLLM::EngineCore() [0x59915f]
+(EngineCore pid=41994) frame #46: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #47: _PyObject_FastCallDictTstate + 0x1d8 (0x541b48 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #48: _PyObject_Call_Prepend + 0x59 (0x57e2e9 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #49: VLLM::EngineCore() [0x6690fd]
+(EngineCore pid=41994) frame #50: _PyObject_MakeTpCall + 0x2fb (0x53f2ab in VLLM::EngineCore)
+(EngineCore pid=41994) frame #51: _PyEval_EvalFrameDefault + 0x700 (0x549fe0 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #52: VLLM::EngineCore() [0x59915f]
+(EngineCore pid=41994) frame #53: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #54: VLLM::EngineCore() [0x59915f]
+(EngineCore pid=41994) frame #55: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #56: _PyObject_FastCallDictTstate + 0x1d8 (0x541b48 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #57: _PyObject_Call_Prepend + 0x59 (0x57e2e9 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #58: VLLM::EngineCore() [0x6690fd]
+(EngineCore pid=41994) frame #59: _PyObject_MakeTpCall + 0x2fb (0x53f2ab in VLLM::EngineCore)
+(EngineCore pid=41994) frame #60: _PyEval_EvalFrameDefault + 0x700 (0x549fe0 in VLLM::EngineCore)
+(EngineCore pid=41994) frame #61: VLLM::EngineCore() [0x59915f]
+(EngineCore pid=41994) frame #62: _PyEval_EvalFrameDefault + 0x4fd7 (0x54e8b7 in VLLM::EngineCore)
+(EngineCore pid=41994) 

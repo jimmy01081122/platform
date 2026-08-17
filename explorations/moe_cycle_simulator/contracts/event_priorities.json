@@ -1,0 +1,19 @@
+{
+  "schema_version": "moe-simulator-event-priorities-v1",
+  "priorities": [
+    {"name": "CLOCK_EDGE", "value": 0},
+    {"name": "RESOURCE_RELEASE", "value": 10},
+    {"name": "TRANSFER_COMPLETE", "value": 20},
+    {"name": "COMPUTE_COMPLETE", "value": 30},
+    {"name": "ACK_OR_CREDIT", "value": 40},
+    {"name": "DEPENDENCY_READY", "value": 50},
+    {"name": "REQUEST_ARRIVAL", "value": 60},
+    {"name": "QUEUE_ARBITRATION", "value": 70},
+    {"name": "RESOURCE_ACQUIRE", "value": 80},
+    {"name": "TRANSFER_START", "value": 90},
+    {"name": "COMPUTE_START", "value": 100},
+    {"name": "TELEMETRY_SAMPLE", "value": 110}
+  ],
+  "unknown_priority": "reject",
+  "duplicate_value": "reject"
+}

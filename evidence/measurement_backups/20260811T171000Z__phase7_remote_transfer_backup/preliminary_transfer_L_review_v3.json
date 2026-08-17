@@ -1,0 +1,2142 @@
+{
+  "adoption_allowed": true,
+  "checks": [
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "transfer.manifest_status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "GPU_TRANSFER_PROBE",
+      "name": "transfer.measurement_class",
+      "observed": "GPU_TRANSFER_PROBE",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive bytes",
+      "name": "transfer.object_E_bytes",
+      "observed": 352321536,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "XFER-L0..L3 complete",
+      "name": "transfer.linear_matrix",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "file",
+      "name": "transfer.topology_artifact",
+      "observed": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v2-20260811T1740Z-L/topology.json",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-4KiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-4KiB-H2D.repetitions",
+      "observed": 14,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-4KiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-4KiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-4KiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-4KiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-4KiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-4KiB-H2D.bandwidth_range",
+      "observed": 0.13538817666187536,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4KiB-H2D.effective_bandwidth",
+      "observed": 0.13538817666187536,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-4KiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-4KiB-D2H.repetitions",
+      "observed": 11,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-4KiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-4KiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-4KiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-4KiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-4KiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-4KiB-D2H.bandwidth_range",
+      "observed": 0.1409093257101433,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4KiB-D2H.effective_bandwidth",
+      "observed": 0.1409093257101433,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-1MiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-1MiB-H2D.repetitions",
+      "observed": 15,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-1MiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-1MiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-1MiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-1MiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-1MiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-1MiB-H2D.bandwidth_range",
+      "observed": 18.908040969640645,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-1MiB-H2D.effective_bandwidth",
+      "observed": 18.908040969640645,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-1MiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-1MiB-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-1MiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-1MiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-1MiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-1MiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-1MiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-1MiB-D2H.bandwidth_range",
+      "observed": 19.894118725554108,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-1MiB-D2H.effective_bandwidth",
+      "observed": 19.894118725554108,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-16MiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-16MiB-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-16MiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-16MiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-16MiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-16MiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-16MiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-16MiB-H2D.bandwidth_range",
+      "observed": 23.806404036956682,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-16MiB-H2D.effective_bandwidth",
+      "observed": 23.806404036956682,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-16MiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-16MiB-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-16MiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-16MiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-16MiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-16MiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-16MiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-16MiB-D2H.bandwidth_range",
+      "observed": 25.777702988068842,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-16MiB-D2H.effective_bandwidth",
+      "observed": 25.777702988068842,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-E-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-E-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-E-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-E-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-E-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-E-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-E-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-E-H2D.bandwidth_range",
+      "observed": 26.17328087908722,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-E-H2D.effective_bandwidth",
+      "observed": 26.17328087908722,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-E-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-E-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-E-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-E-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-E-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-E-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-E-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-E-D2H.bandwidth_range",
+      "observed": 26.272497665200664,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-E-D2H.effective_bandwidth",
+      "observed": 26.272497665200664,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-4E-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-4E-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-4E-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-4E-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-4E-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-4E-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-4E-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-4E-H2D.bandwidth_range",
+      "observed": 26.250940308681855,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4E-H2D.effective_bandwidth",
+      "observed": 26.250940308681855,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L0-4E-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L0-4E-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L0-4E-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L0-4E-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L0-4E-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L0-4E-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L0-4E-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L0-4E-D2H.bandwidth_range",
+      "observed": 26.294250330939438,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4E-D2H.effective_bandwidth",
+      "observed": 26.294250330939438,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-64KiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-64KiB-H2D.repetitions",
+      "observed": 13,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-64KiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-64KiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-64KiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-64KiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-64KiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-64KiB-H2D.bandwidth_range",
+      "observed": 2.1923547503591956,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-64KiB-H2D.effective_bandwidth",
+      "observed": 2.1923547503591956,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-64KiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-64KiB-D2H.repetitions",
+      "observed": 18,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-64KiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-64KiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-64KiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-64KiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-64KiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-64KiB-D2H.bandwidth_range",
+      "observed": 2.2720055185378203,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-64KiB-D2H.effective_bandwidth",
+      "observed": 2.2720055185378203,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-4MiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-4MiB-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-4MiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-4MiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-4MiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-4MiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-4MiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-4MiB-H2D.bandwidth_range",
+      "observed": 22.721323871568174,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-4MiB-H2D.effective_bandwidth",
+      "observed": 22.721323871568174,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-4MiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-4MiB-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-4MiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-4MiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-4MiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-4MiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-4MiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-4MiB-D2H.bandwidth_range",
+      "observed": 24.43605494945451,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-4MiB-D2H.effective_bandwidth",
+      "observed": 24.43605494945451,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-0.5E-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-0.5E-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-0.5E-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-0.5E-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-0.5E-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-0.5E-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-0.5E-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-0.5E-H2D.bandwidth_range",
+      "observed": 25.696179493990638,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-0.5E-H2D.effective_bandwidth",
+      "observed": 25.696179493990638,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-0.5E-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-0.5E-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-0.5E-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-0.5E-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-0.5E-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-0.5E-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-0.5E-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-0.5E-D2H.bandwidth_range",
+      "observed": 26.250739220816456,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-0.5E-D2H.effective_bandwidth",
+      "observed": 26.250739220816456,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-2E-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-2E-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-2E-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-2E-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-2E-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-2E-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-2E-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-2E-H2D.bandwidth_range",
+      "observed": 26.209809354140173,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-2E-H2D.effective_bandwidth",
+      "observed": 26.209809354140173,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L1-2E-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L1-2E-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L1-2E-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L1-2E-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L1-2E-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L1-2E-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L1-2E-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L1-2E-D2H.bandwidth_range",
+      "observed": 26.287670231441655,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-2E-D2H.effective_bandwidth",
+      "observed": 26.287670231441655,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-4KiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-4KiB-H2D.repetitions",
+      "observed": 30,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-4KiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-4KiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-4KiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-4KiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-4KiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-4KiB-H2D.bandwidth_range",
+      "observed": 0.1385349094140398,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4KiB-H2D.effective_bandwidth",
+      "observed": 0.1385349094140398,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-4KiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-4KiB-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-4KiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-4KiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-4KiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-4KiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-4KiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-4KiB-D2H.bandwidth_range",
+      "observed": 0.11992886272714412,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4KiB-D2H.effective_bandwidth",
+      "observed": 0.11992886272714412,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-1MiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-1MiB-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-1MiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-1MiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-1MiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-1MiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-1MiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-1MiB-H2D.bandwidth_range",
+      "observed": 10.392500638515239,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-1MiB-H2D.effective_bandwidth",
+      "observed": 10.392500638515239,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-1MiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-1MiB-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-1MiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-1MiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-1MiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-1MiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-1MiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-1MiB-D2H.bandwidth_range",
+      "observed": 7.951427338457529,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-1MiB-D2H.effective_bandwidth",
+      "observed": 7.951427338457529,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-16MiB-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-16MiB-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-16MiB-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-16MiB-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-16MiB-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-16MiB-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-16MiB-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-16MiB-H2D.bandwidth_range",
+      "observed": 20.624340021119323,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-16MiB-H2D.effective_bandwidth",
+      "observed": 20.624340021119323,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-16MiB-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-16MiB-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-16MiB-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-16MiB-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-16MiB-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-16MiB-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-16MiB-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-16MiB-D2H.bandwidth_range",
+      "observed": 16.159959292416143,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-16MiB-D2H.effective_bandwidth",
+      "observed": 16.159959292416143,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-E-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-E-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-E-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-E-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-E-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-E-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-E-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-E-H2D.bandwidth_range",
+      "observed": 17.175563678444867,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-E-H2D.effective_bandwidth",
+      "observed": 17.175563678444867,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-E-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-E-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-E-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-E-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-E-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-E-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-E-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-E-D2H.bandwidth_range",
+      "observed": 15.999329844451408,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-E-D2H.effective_bandwidth",
+      "observed": 15.999329844451408,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-4E-H2D.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-4E-H2D.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-4E-H2D.direction",
+      "observed": "H2D",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-4E-H2D.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-4E-H2D.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-4E-H2D.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-4E-H2D.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-4E-H2D.bandwidth_range",
+      "observed": 17.19909799674538,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4E-H2D.effective_bandwidth",
+      "observed": 17.19909799674538,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "XFER-L2-4E-D2H.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "XFER-L2-4E-D2H.repetitions",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "H2D or D2H",
+      "name": "XFER-L2-4E-D2H.direction",
+      "observed": "D2H",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "completed=requested for every sample",
+      "name": "XFER-L2-4E-D2H.byte_conservation",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive finite",
+      "name": "XFER-L2-4E-D2H.duration_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "no NVML errors",
+      "name": "XFER-L2-4E-D2H.nvml_completeness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS with copy event",
+      "name": "XFER-L2-4E-D2H.copy_profiler_canary",
+      "observed": {
+        "copy_event": true,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "0 < GiB/s < 1000",
+      "name": "XFER-L2-4E-D2H.bandwidth_range",
+      "observed": 16.022235469169143,
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4E-D2H.effective_bandwidth",
+      "observed": 16.022235469169143,
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "only XFER-L3 may be unavailable",
+      "name": "XFER-L3-E-H2D.unavailable_is_topology_variant",
+      "observed": "NOT_RUN_UNAVAILABLE_ALLOCATOR",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "only XFER-L3 may be unavailable",
+      "name": "XFER-L3-E-D2H.unavailable_is_topology_variant",
+      "observed": "NOT_RUN_UNAVAILABLE_ALLOCATOR",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "only XFER-L3 may be unavailable",
+      "name": "XFER-L3-2E-H2D.unavailable_is_topology_variant",
+      "observed": "NOT_RUN_UNAVAILABLE_ALLOCATOR",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "only XFER-L3 may be unavailable",
+      "name": "XFER-L3-2E-D2H.unavailable_is_topology_variant",
+      "observed": "NOT_RUN_UNAVAILABLE_ALLOCATOR",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "phase7-expert-catalog-v1",
+      "name": "catalog.schema",
+      "observed": "phase7-expert-catalog-v1",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 256,
+      "name": "catalog.object_count",
+      "observed": 256,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "empty",
+      "name": "catalog.each_object_has_w1_w2_w3_and_bytes",
+      "observed": [],
+      "status": "PASS"
+    }
+  ],
+  "critical_failure_count": 0,
+  "critical_failures": [],
+  "raw_unchanged": true,
+  "reviewer_tool_revision": "preliminary-review-v2",
+  "schema_version": "phase7-preliminary-measurement-review-v1",
+  "status": "PASS",
+  "warning_count": 28,
+  "warnings": [
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4KiB-H2D.effective_bandwidth",
+      "observed": 0.13538817666187536,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4KiB-D2H.effective_bandwidth",
+      "observed": 0.1409093257101433,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-1MiB-H2D.effective_bandwidth",
+      "observed": 18.908040969640645,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-1MiB-D2H.effective_bandwidth",
+      "observed": 19.894118725554108,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-16MiB-H2D.effective_bandwidth",
+      "observed": 23.806404036956682,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-16MiB-D2H.effective_bandwidth",
+      "observed": 25.777702988068842,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-E-H2D.effective_bandwidth",
+      "observed": 26.17328087908722,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-E-D2H.effective_bandwidth",
+      "observed": 26.272497665200664,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4E-H2D.effective_bandwidth",
+      "observed": 26.250940308681855,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L0-4E-D2H.effective_bandwidth",
+      "observed": 26.294250330939438,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-64KiB-H2D.effective_bandwidth",
+      "observed": 2.1923547503591956,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-64KiB-D2H.effective_bandwidth",
+      "observed": 2.2720055185378203,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-4MiB-H2D.effective_bandwidth",
+      "observed": 22.721323871568174,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-4MiB-D2H.effective_bandwidth",
+      "observed": 24.43605494945451,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-0.5E-H2D.effective_bandwidth",
+      "observed": 25.696179493990638,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-0.5E-D2H.effective_bandwidth",
+      "observed": 26.250739220816456,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-2E-H2D.effective_bandwidth",
+      "observed": 26.209809354140173,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L1-2E-D2H.effective_bandwidth",
+      "observed": 26.287670231441655,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4KiB-H2D.effective_bandwidth",
+      "observed": 0.1385349094140398,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4KiB-D2H.effective_bandwidth",
+      "observed": 0.11992886272714412,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-1MiB-H2D.effective_bandwidth",
+      "observed": 10.392500638515239,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-1MiB-D2H.effective_bandwidth",
+      "observed": 7.951427338457529,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-16MiB-H2D.effective_bandwidth",
+      "observed": 20.624340021119323,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-16MiB-D2H.effective_bandwidth",
+      "observed": 16.159959292416143,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-E-H2D.effective_bandwidth",
+      "observed": 17.175563678444867,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-E-D2H.effective_bandwidth",
+      "observed": 15.999329844451408,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4E-H2D.effective_bandwidth",
+      "observed": 17.19909799674538,
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "reported for cross-point reasonableness review",
+      "name": "XFER-L2-4E-D2H.effective_bandwidth",
+      "observed": 16.022235469169143,
+      "status": "WARNING"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "checkpoint_id": "MR7-SWAP-K1-LAUNCH-INTERRUPTION",
+  "execution_ledger_sha256": "73f19949f74b27999c77a4709635039297a2fa62df3baf2fa9430816a716bdcb",
+  "next_ready_gpu_unit": "SWAP-K1",
+  "remaining_ledger_sha256": "0e7e5085700b9cc8c4e08abf849911b6ca7761b6b204ffe679f493e53cc96368",
+  "required_closed_count": 11,
+  "required_remaining_count": 275,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T00:16:23Z"
+}

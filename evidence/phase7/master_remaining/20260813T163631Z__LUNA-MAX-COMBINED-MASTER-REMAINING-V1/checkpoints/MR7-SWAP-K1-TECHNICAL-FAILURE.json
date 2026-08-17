@@ -1,0 +1,10 @@
+{
+  "checkpoint_id": "MR7-SWAP-K1-TECHNICAL-FAILURE",
+  "execution_ledger_sha256": "02b055024ef955e45ac8c744fa7186ec88fb959232d72cd9e68b7666e385c447",
+  "next_ready_gpu_unit": "SWAP-K1",
+  "remaining_ledger_sha256": "a6eabc49ffc6eb5619bee4221498bdf90152d30284b21cf33d8827bbcfda0a49",
+  "required_closed_count": 11,
+  "required_remaining_count": 275,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T00:12:31Z"
+}

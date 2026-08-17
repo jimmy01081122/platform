@@ -1,0 +1,1007 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+  "bandwidth_name": "pcie_mid_16GBs",
+  "bandwidth_GBs": 16.0,
+  "prefetch_depth": 1,
+  "engine_sweep": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "note": "per-query recomputation of the four W3 signals over ALL sampled queries; shared-link copy-engine model (D-048); C=0.5N, d*=1.",
+  "models": {
+    "Qwen/Qwen3-235B-A22B-FP8": {
+      "num_experts": 128,
+      "capacity": 64,
+      "expert_weight_MiB": 18.0,
+      "num_queries": 36,
+      "miss_reduction": {
+        "n": 36,
+        "median": 99.7,
+        "min": 90.11,
+        "max": 99.91,
+        "mean": 98.944
+      },
+      "stall_reduction": {
+        "n": 36,
+        "median": 99.7,
+        "min": 90.11,
+        "max": 99.91,
+        "mean": 98.944
+      },
+      "bandwidth_fraction_e1": {
+        "n": 36,
+        "median": 0.999,
+        "min": 0.999,
+        "max": 0.999,
+        "mean": 0.999
+      },
+      "transfer_bound_queries": "36/36",
+      "e_star_1_queries": "36/36",
+      "robust_transfer_bound": true,
+      "robust_e_star_1": true,
+      "robust_prefetch_helps": true,
+      "by_benchmark": {
+        "livecodebench": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 90.43,
+            "min": 90.11,
+            "max": 93.36,
+            "mean": 91.3
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 90.43,
+            "min": 90.11,
+            "max": 93.36,
+            "mean": 91.3
+          }
+        },
+        "mmlu": {
+          "n": 30,
+          "miss_reduction": {
+            "n": 30,
+            "median": 99.7,
+            "min": 98.91,
+            "max": 99.91,
+            "mean": 99.617
+          },
+          "stall_reduction": {
+            "n": 30,
+            "median": 99.7,
+            "min": 98.91,
+            "max": 99.91,
+            "mean": 99.617
+          }
+        },
+        "mmlu_ZH_CN": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 99.86,
+            "min": 99.86,
+            "max": 99.87,
+            "mean": 99.863
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 99.86,
+            "min": 99.86,
+            "max": 99.87,
+            "mean": 99.863
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 12126,
+          "miss_reduction_pct": 90.43,
+          "stall_reduction_pct": 90.43,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 12126,
+          "miss_reduction_pct": 90.11,
+          "stall_reduction_pct": 90.11,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 12126,
+          "miss_reduction_pct": 93.36,
+          "stall_reduction_pct": 93.36,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 12126,
+          "miss_reduction_pct": 99.73,
+          "stall_reduction_pct": 99.73,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 12126,
+          "miss_reduction_pct": 99.74,
+          "stall_reduction_pct": 99.74,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "10",
+          "steps": 12126,
+          "miss_reduction_pct": 99.56,
+          "stall_reduction_pct": 99.56,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "11",
+          "steps": 12126,
+          "miss_reduction_pct": 99.84,
+          "stall_reduction_pct": 99.84,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "12",
+          "steps": 12126,
+          "miss_reduction_pct": 99.81,
+          "stall_reduction_pct": 99.81,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "13",
+          "steps": 12126,
+          "miss_reduction_pct": 99.43,
+          "stall_reduction_pct": 99.43,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "14",
+          "steps": 12126,
+          "miss_reduction_pct": 99.87,
+          "stall_reduction_pct": 99.87,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "15",
+          "steps": 12126,
+          "miss_reduction_pct": 99.68,
+          "stall_reduction_pct": 99.68,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "16",
+          "steps": 12126,
+          "miss_reduction_pct": 99.8,
+          "stall_reduction_pct": 99.8,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "17",
+          "steps": 12126,
+          "miss_reduction_pct": 99.78,
+          "stall_reduction_pct": 99.78,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "18",
+          "steps": 12126,
+          "miss_reduction_pct": 99.9,
+          "stall_reduction_pct": 99.9,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "19",
+          "steps": 12126,
+          "miss_reduction_pct": 98.91,
+          "stall_reduction_pct": 98.91,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 12126,
+          "miss_reduction_pct": 99.71,
+          "stall_reduction_pct": 99.71,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "20",
+          "steps": 12126,
+          "miss_reduction_pct": 99.22,
+          "stall_reduction_pct": 99.22,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "21",
+          "steps": 12126,
+          "miss_reduction_pct": 99.67,
+          "stall_reduction_pct": 99.67,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "22",
+          "steps": 12126,
+          "miss_reduction_pct": 99.24,
+          "stall_reduction_pct": 99.24,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "23",
+          "steps": 12126,
+          "miss_reduction_pct": 99.91,
+          "stall_reduction_pct": 99.91,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "24",
+          "steps": 12126,
+          "miss_reduction_pct": 99.69,
+          "stall_reduction_pct": 99.69,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "25",
+          "steps": 12126,
+          "miss_reduction_pct": 99.81,
+          "stall_reduction_pct": 99.81,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "26",
+          "steps": 12126,
+          "miss_reduction_pct": 99.78,
+          "stall_reduction_pct": 99.78,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "27",
+          "steps": 12126,
+          "miss_reduction_pct": 99.28,
+          "stall_reduction_pct": 99.28,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "28",
+          "steps": 12126,
+          "miss_reduction_pct": 99.41,
+          "stall_reduction_pct": 99.41,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "29",
+          "steps": 12126,
+          "miss_reduction_pct": 99.77,
+          "stall_reduction_pct": 99.77,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "3",
+          "steps": 12126,
+          "miss_reduction_pct": 99.05,
+          "stall_reduction_pct": 99.05,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "4",
+          "steps": 12126,
+          "miss_reduction_pct": 99.62,
+          "stall_reduction_pct": 99.62,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "5",
+          "steps": 12126,
+          "miss_reduction_pct": 99.36,
+          "stall_reduction_pct": 99.36,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "6",
+          "steps": 12126,
+          "miss_reduction_pct": 99.52,
+          "stall_reduction_pct": 99.52,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "7",
+          "steps": 12126,
+          "miss_reduction_pct": 99.62,
+          "stall_reduction_pct": 99.62,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "8",
+          "steps": 12126,
+          "miss_reduction_pct": 99.89,
+          "stall_reduction_pct": 99.89,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "9",
+          "steps": 12126,
+          "miss_reduction_pct": 99.91,
+          "stall_reduction_pct": 99.91,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 12126,
+          "miss_reduction_pct": 99.87,
+          "stall_reduction_pct": 99.87,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 12126,
+          "miss_reduction_pct": 99.86,
+          "stall_reduction_pct": 99.86,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 12126,
+          "miss_reduction_pct": 99.86,
+          "stall_reduction_pct": 99.86,
+          "bandwidth_fraction_e1": 0.9987,
+          "transfer_bound": true,
+          "e_star": 1
+        }
+      ]
+    },
+    "cognitivecomputations/DeepSeek-R1-AWQ": {
+      "num_experts": 256,
+      "capacity": 128,
+      "expert_weight_MiB": 21.0,
+      "num_queries": 9,
+      "miss_reduction": {
+        "n": 9,
+        "median": 99.48,
+        "min": 76.38,
+        "max": 99.64,
+        "mean": 93.112
+      },
+      "stall_reduction": {
+        "n": 9,
+        "median": 99.48,
+        "min": 76.38,
+        "max": 99.64,
+        "mean": 93.112
+      },
+      "bandwidth_fraction_e1": {
+        "n": 9,
+        "median": 0.999,
+        "min": 0.999,
+        "max": 0.999,
+        "mean": 0.999
+      },
+      "transfer_bound_queries": "9/9",
+      "e_star_1_queries": "9/9",
+      "robust_transfer_bound": true,
+      "robust_e_star_1": true,
+      "robust_prefetch_helps": true,
+      "by_benchmark": {
+        "livecodebench": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 78.17,
+            "min": 76.38,
+            "max": 86.21,
+            "mean": 80.253
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 78.17,
+            "min": 76.38,
+            "max": 86.21,
+            "mean": 80.253
+          }
+        },
+        "mmlu": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 99.56,
+            "min": 99.48,
+            "max": 99.64,
+            "mean": 99.56
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 99.56,
+            "min": 99.48,
+            "max": 99.64,
+            "mean": 99.56
+          }
+        },
+        "mmlu_ZH_CN": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 99.5,
+            "min": 99.45,
+            "max": 99.62,
+            "mean": 99.523
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 99.5,
+            "min": 99.45,
+            "max": 99.62,
+            "mean": 99.523
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 7482,
+          "miss_reduction_pct": 78.17,
+          "stall_reduction_pct": 78.17,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 7482,
+          "miss_reduction_pct": 76.38,
+          "stall_reduction_pct": 76.38,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 7482,
+          "miss_reduction_pct": 86.21,
+          "stall_reduction_pct": 86.21,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 7482,
+          "miss_reduction_pct": 99.64,
+          "stall_reduction_pct": 99.64,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 7482,
+          "miss_reduction_pct": 99.48,
+          "stall_reduction_pct": 99.48,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 7482,
+          "miss_reduction_pct": 99.56,
+          "stall_reduction_pct": 99.56,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4387",
+          "steps": 7482,
+          "miss_reduction_pct": 99.45,
+          "stall_reduction_pct": 99.45,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4388",
+          "steps": 7482,
+          "miss_reduction_pct": 99.62,
+          "stall_reduction_pct": 99.62,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4389",
+          "steps": 7482,
+          "miss_reduction_pct": 99.5,
+          "stall_reduction_pct": 99.5,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        }
+      ]
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+      "num_experts": 128,
+      "capacity": 64,
+      "expert_weight_MiB": 240.0,
+      "num_queries": 9,
+      "miss_reduction": {
+        "n": 9,
+        "median": 97.62,
+        "min": 96.68,
+        "max": 98.87,
+        "mean": 97.783
+      },
+      "stall_reduction": {
+        "n": 9,
+        "median": 97.62,
+        "min": 96.68,
+        "max": 98.87,
+        "mean": 97.782
+      },
+      "bandwidth_fraction_e1": {
+        "n": 9,
+        "median": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "mean": 1.0
+      },
+      "transfer_bound_queries": "9/9",
+      "e_star_1_queries": "9/9",
+      "robust_transfer_bound": true,
+      "robust_e_star_1": true,
+      "robust_prefetch_helps": true,
+      "by_benchmark": {
+        "livecodebench": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 96.88,
+            "min": 96.68,
+            "max": 97.44,
+            "mean": 97.0
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 96.87,
+            "min": 96.68,
+            "max": 97.44,
+            "mean": 96.997
+          }
+        },
+        "mmlu": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 98.03,
+            "min": 97.62,
+            "max": 98.29,
+            "mean": 97.98
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 98.03,
+            "min": 97.62,
+            "max": 98.29,
+            "mean": 97.98
+          }
+        },
+        "mmlu_ZH_CN": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 98.69,
+            "min": 97.55,
+            "max": 98.87,
+            "mean": 98.37
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 98.69,
+            "min": 97.55,
+            "max": 98.87,
+            "mean": 98.37
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 3096,
+          "miss_reduction_pct": 96.88,
+          "stall_reduction_pct": 96.87,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 3096,
+          "miss_reduction_pct": 96.68,
+          "stall_reduction_pct": 96.68,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 3096,
+          "miss_reduction_pct": 97.44,
+          "stall_reduction_pct": 97.44,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 3096,
+          "miss_reduction_pct": 97.62,
+          "stall_reduction_pct": 97.62,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 3096,
+          "miss_reduction_pct": 98.03,
+          "stall_reduction_pct": 98.03,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 3096,
+          "miss_reduction_pct": 98.29,
+          "stall_reduction_pct": 98.29,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 3096,
+          "miss_reduction_pct": 98.87,
+          "stall_reduction_pct": 98.87,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 3096,
+          "miss_reduction_pct": 98.69,
+          "stall_reduction_pct": 98.69,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 3096,
+          "miss_reduction_pct": 97.55,
+          "stall_reduction_pct": 97.55,
+          "bandwidth_fraction_e1": 0.9999,
+          "transfer_bound": true,
+          "e_star": 1
+        }
+      ]
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "num_experts": 384,
+      "capacity": 192,
+      "expert_weight_MiB": 21.0,
+      "num_queries": 6,
+      "miss_reduction": {
+        "n": 6,
+        "median": 99.62,
+        "min": 95.2,
+        "max": 99.78,
+        "mean": 98.703
+      },
+      "stall_reduction": {
+        "n": 6,
+        "median": 99.62,
+        "min": 95.2,
+        "max": 99.78,
+        "mean": 98.703
+      },
+      "bandwidth_fraction_e1": {
+        "n": 6,
+        "median": 0.999,
+        "min": 0.999,
+        "max": 0.999,
+        "mean": 0.999
+      },
+      "transfer_bound_queries": "6/6",
+      "e_star_1_queries": "6/6",
+      "robust_transfer_bound": true,
+      "robust_e_star_1": true,
+      "robust_prefetch_helps": true,
+      "by_benchmark": {
+        "livecodebench": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 98.3,
+            "min": 95.2,
+            "max": 99.56,
+            "mean": 97.687
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 98.3,
+            "min": 95.2,
+            "max": 99.56,
+            "mean": 97.687
+          }
+        },
+        "mmlu": {
+          "n": 3,
+          "miss_reduction": {
+            "n": 3,
+            "median": 99.7,
+            "min": 99.68,
+            "max": 99.78,
+            "mean": 99.72
+          },
+          "stall_reduction": {
+            "n": 3,
+            "median": 99.7,
+            "min": 99.68,
+            "max": 99.78,
+            "mean": 99.72
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 7740,
+          "miss_reduction_pct": 98.3,
+          "stall_reduction_pct": 98.3,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 7740,
+          "miss_reduction_pct": 95.2,
+          "stall_reduction_pct": 95.2,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 7740,
+          "miss_reduction_pct": 99.56,
+          "stall_reduction_pct": 99.56,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 7740,
+          "miss_reduction_pct": 99.78,
+          "stall_reduction_pct": 99.78,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 7740,
+          "miss_reduction_pct": 99.68,
+          "stall_reduction_pct": 99.68,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 7740,
+          "miss_reduction_pct": 99.7,
+          "stall_reduction_pct": 99.7,
+          "bandwidth_fraction_e1": 0.9989,
+          "transfer_bound": true,
+          "e_star": 1
+        }
+      ]
+    }
+  }
+}

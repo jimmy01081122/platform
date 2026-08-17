@@ -1,0 +1,8 @@
+{
+  "capability_status": "RUNTIME_NATIVE_CPU_WEIGHT_OFFLOAD_AVAILABLE",
+  "configuration_gate": "PASS",
+  "finished_at_utc": "2026-08-14T02:13:54Z",
+  "request_correctness": "PASS",
+  "runtime_log_offloaded_gib": 1.75,
+  "status": "PASS"
+}

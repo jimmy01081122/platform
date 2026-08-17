@@ -1,0 +1,18 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r3-20260728",
+  "ledger_sha256": "8b94a7d30510102d612f5663a1153fad2fe08aec4a02ffbba210398fd61e4785",
+  "member_count": 89,
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "MODEL-P4-R3-B1",
+      "finding": "The top-level candidate ledger is hash-valid but omits one file from the declared exact-set closure.",
+      "missing_path": "explorations/moe_cycle_simulator/phase4/governance/history/r2/source_snapshot/explorations/moe_cycle_simulator/phase3/governance/checksums.sha256",
+      "required_fix": "Generate a fresh candidate ledger using an exact active-ledger exclusion rather than a recursive checksums filename exclusion."
+    }
+  ],
+  "claim_boundary": "CPU-synthetic RANGE_UNKNOWN single-GPU topology implementation only; not model, benchmark, GPU measurement, performance or calibration evidence.",
+  "authorized_next_stage": "CPU-only governance packaging correction and a fresh same-hash review.",
+  "gpu_authority": "NONE"
+}

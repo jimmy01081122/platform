@@ -1,0 +1,1 @@
+"""Granite adapter regression tests."""

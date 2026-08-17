@@ -1,0 +1,81 @@
+INFO 08-11 15:50:50 [api_utils.py:273] non-default args: {'safetensors_prefetch_num_threads': 1, 'load_format': 'safetensors', 'dtype': 'bfloat16', 'max_model_len': 32768, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.97, 'max_num_batched_tokens': 256, 'max_num_seqs': 1, 'disable_log_stats': True, 'enforce_eager': True, 'model': '/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors'}
+INFO 08-11 15:50:50 [model.py:611] Resolved architecture: MixtralForCausalLM
+INFO 08-11 15:50:50 [model.py:1745] Using max model len 32768
+INFO 08-11 15:50:50 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=256.
+INFO 08-11 15:50:50 [vllm.py:999] Asynchronous scheduling is enabled.
+WARNING 08-11 15:50:50 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 08-11 15:50:50 [vllm.py:1097] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 08-11 15:50:50 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 08-11 15:50:50 [vllm.py:1273] Cudagraph is disabled under eager mode
+INFO 08-11 15:50:50 [compilation.py:321] Enabled custom fusions: norm_quant, act_quant
+WARNING 08-11 15:50:50 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(EngineCore pid=51846) INFO 08-11 15:50:55 [core.py:113] Initializing a V1 LLM engine (v0.23.0) with config: model='/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors', speculative_config=None, tokenizer='/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=safetensors, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [256], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=51846) INFO 08-11 15:50:56 [parallel_state.py:1568] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.42.2.180:49793 backend=nccl
+(EngineCore pid=51846) INFO 08-11 15:50:56 [parallel_state.py:1903] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+(EngineCore pid=51846) INFO 08-11 15:50:57 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+(EngineCore pid=51846) INFO 08-11 15:50:57 [gpu_model_runner.py:5092] Starting to load model /vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors...
+(EngineCore pid=51846) INFO 08-11 15:50:57 [cuda.py:378] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=51846) INFO 08-11 15:50:57 [flash_attn.py:636] Using FlashAttention version 2
+(EngineCore pid=51846) INFO 08-11 15:50:57 [unquantized.py:291] Using FlashInfer CUTLASS Unquantized MoE backend out of potential backends: ['FlashInfer TRTLLM', 'FlashInfer CUTLASS', 'TRITON', 'BATCHED_TRITON'].
+(EngineCore pid=51846) INFO 08-11 15:50:57 [weight_utils.py:922] Filesystem type for checkpoints: NFS4. Checkpoint size: 86.99 GiB. Available RAM: 114.40 GiB.
+(EngineCore pid=51846) INFO 08-11 15:50:57 [weight_utils.py:884] Prefetching checkpoint files into page cache started (in background, num_threads=1, block_size=16777216 bytes)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:   0% Completed | 0/19 [00:00<?, ?it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:   5% Completed | 1/19 [00:00<00:08,  2.02it/s]
+(EngineCore pid=51846) INFO 08-11 15:50:58 [weight_utils.py:856] Prefetching checkpoint files: 10% (2/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  11% Completed | 2/19 [00:01<00:08,  1.92it/s]
+(EngineCore pid=51846) INFO 08-11 15:50:59 [weight_utils.py:856] Prefetching checkpoint files: 20% (4/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  16% Completed | 3/19 [00:01<00:07,  2.02it/s]
+(EngineCore pid=51846) INFO 08-11 15:50:59 [weight_utils.py:856] Prefetching checkpoint files: 30% (6/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  21% Completed | 4/19 [00:01<00:07,  2.09it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  26% Completed | 5/19 [00:02<00:06,  2.12it/s]
+(EngineCore pid=51846) INFO 08-11 15:51:00 [weight_utils.py:856] Prefetching checkpoint files: 40% (8/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  32% Completed | 6/19 [00:02<00:06,  2.14it/s]
+(EngineCore pid=51846) INFO 08-11 15:51:00 [weight_utils.py:856] Prefetching checkpoint files: 50% (10/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  37% Completed | 7/19 [00:03<00:05,  2.17it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  42% Completed | 8/19 [00:03<00:05,  2.18it/s]
+(EngineCore pid=51846) INFO 08-11 15:51:01 [weight_utils.py:856] Prefetching checkpoint files: 60% (12/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  47% Completed | 9/19 [00:04<00:04,  2.12it/s]
+(EngineCore pid=51846) INFO 08-11 15:51:02 [weight_utils.py:856] Prefetching checkpoint files: 70% (14/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  53% Completed | 10/19 [00:04<00:04,  2.07it/s]
+(EngineCore pid=51846) INFO 08-11 15:51:02 [weight_utils.py:856] Prefetching checkpoint files: 80% (16/19)
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  58% Completed | 11/19 [00:05<00:03,  2.05it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  63% Completed | 12/19 [00:05<00:03,  2.04it/s]
+(EngineCore pid=51846) INFO 08-11 15:51:03 [weight_utils.py:856] Prefetching checkpoint files: 90% (18/19)
+(EngineCore pid=51846) INFO 08-11 15:51:03 [weight_utils.py:856] Prefetching checkpoint files: 100% (19/19)
+(EngineCore pid=51846) INFO 08-11 15:51:03 [weight_utils.py:879] Prefetching checkpoint files into page cache finished in 6.22s
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  68% Completed | 13/19 [00:06<00:02,  2.04it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  74% Completed | 14/19 [00:06<00:02,  2.12it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  79% Completed | 15/19 [00:07<00:01,  2.19it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  84% Completed | 16/19 [00:07<00:01,  2.22it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  89% Completed | 17/19 [00:08<00:00,  2.21it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards:  95% Completed | 18/19 [00:08<00:00,  2.20it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:08<00:00,  2.35it/s]
+(EngineCore pid=51846) Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:08<00:00,  2.15it/s]
+(EngineCore pid=51846) 
+(EngineCore pid=51846) INFO 08-11 15:51:06 [default_loader.py:397] Loading weights took 8.86 seconds
+(EngineCore pid=51846) INFO 08-11 15:51:06 [unquantized.py:347] Using MoEPrepareAndFinalizeNoDPEPModular
+(EngineCore pid=51846) INFO 08-11 15:51:07 [gpu_model_runner.py:5187] Model loading took 87.0 GiB memory and 9.065077 seconds
+(EngineCore pid=51846) INFO 08-11 15:51:08 [gpu_worker.py:480] Available KV cache memory: 4.86 GiB
+(EngineCore pid=51846) INFO 08-11 15:51:08 [kv_cache_utils.py:1744] GPU KV cache size: 39,840 tokens
+(EngineCore pid=51846) INFO 08-11 15:51:08 [kv_cache_utils.py:1745] Maximum concurrency for 32,768 tokens per request: 1.22x
+(EngineCore pid=51846) 2026-08-11 15:51:08,185 - INFO - autotuner.py:622 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=51846) [AutoTuner]: Tuning trtllm::fused_moe::gemm1:   0%|          | 0/1 [00:00<?, ?profile/s]2026-08-11 15:51:08,231 - INFO - autotuner.py:1287 - flashinfer.jit: [Autotuner]: Skipped 2 unsupported tactic(s) for trtllm::fused_moe::gemm1 (enable debug logs to see details)
+(EngineCore pid=51846) [AutoTuner]: Tuning trtllm::fused_moe::gemm1: 100%|██████████| 1/1 [00:00<00:00, 24.23profile/s]
+(EngineCore pid=51846) [AutoTuner]: Tuning trtllm::fused_moe::gemm2:   0%|          | 0/1 [00:00<?, ?profile/s][AutoTuner]: Tuning trtllm::fused_moe::gemm2: 100%|██████████| 1/1 [00:00<00:00, 34.51profile/s]
+(EngineCore pid=51846) 2026-08-11 15:51:08,286 - INFO - autotuner.py:641 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(EngineCore pid=51846) INFO 08-11 15:51:08 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=51846) INFO 08-11 15:51:08 [core.py:313] init engine (profile, create kv cache, warmup model) took 1.44 s
+(EngineCore pid=51846) INFO 08-11 15:51:08 [vllm.py:999] Asynchronous scheduling is enabled.
+(EngineCore pid=51846) WARNING 08-11 15:51:08 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=51846) WARNING 08-11 15:51:08 [vllm.py:1097] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=51846) INFO 08-11 15:51:08 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(EngineCore pid=51846) INFO 08-11 15:51:08 [vllm.py:1273] Cudagraph is disabled under eager mode
+(EngineCore pid=51846) INFO 08-11 15:51:08 [compilation.py:321] Enabled custom fusions: norm_quant, act_quant
+/usr/local/lib/python3.12/dist-packages/torch/profiler/profiler.py:224: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+(EngineCore pid=51846) WARNING 08-11 15:51:09 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+{"status": "PASS", "run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T155045Z__W2-KERNEL-PROFILE", "completed_request_count": 1, "request_plan_id": null}
+(EngineCore pid=51846) INFO 08-11 15:51:30 [core.py:1178] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=51846) INFO 08-11 15:51:30 [core.py:1297] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=51846) INFO 08-11 15:51:30 [core.py:1328] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=51846) INFO 08-11 15:51:30 [core.py:1191] [shutdown] EngineCore: exiting busy loop

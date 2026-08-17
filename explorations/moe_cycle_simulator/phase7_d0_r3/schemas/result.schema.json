@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-r3-result-v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "terminal_status", "application_id", "application_identity_sha256", "application_ledger_sha256", "reviewed_commit", "reviewed_tree", "command_binding_sha256", "owner_authority_sha256", "owner_approval_sha256", "session_id", "one_shot_registry_sha256", "retained_input_hashes", "probe_input_sha256", "probe_result_sha256", "result_evidence_identity_sha256", "environment_eligibility", "eligibility_findings", "timing", "transport", "next_legal_action"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-r3-result-v1"},
+    "terminal_status": {"const": "COMPLETE"},
+    "application_id": {"type": "string", "minLength": 1},
+    "application_identity_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "application_ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reviewed_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "reviewed_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "command_binding_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "owner_authority_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "owner_approval_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "session_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{7,127}$"},
+    "one_shot_registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "retained_input_hashes": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "probe_input_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "probe_result_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "result_evidence_identity_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "environment_eligibility": {"enum": ["READY_FOR_MATERIALIZATION_APPLICATION", "NOT_READY"]},
+    "eligibility_findings": {"type": "array", "items": {"type": "string"}},
+    "timing": {"$ref": "#/$defs/timing"},
+    "transport": {"$ref": "#/$defs/transport"},
+    "next_legal_action": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "timing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["controller_start_utc", "controller_end_utc", "elapsed_monotonic_ns", "outer_timeout_seconds", "timed_out"],
+      "properties": {"controller_start_utc": {"type": "string"}, "controller_end_utc": {"type": "string"}, "elapsed_monotonic_ns": {"type": "integer", "minimum": 0}, "outer_timeout_seconds": {"const": 300}, "timed_out": {"const": false}}
+    },
+    "transport": {
+      "type": "object", "additionalProperties": false,
+      "required": ["returncode", "stdout_sha256", "stderr_sha256", "stdout_bytes", "stderr_bytes", "output_limited"],
+      "properties": {"returncode": {"type": "integer"}, "stdout_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "stderr_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "stdout_bytes": {"type": "integer", "minimum": 0}, "stderr_bytes": {"type": "integer", "minimum": 0}, "output_limited": {"const": false}}
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "contention": {
+    "per_extra_concurrency": 1.0046410877379799
+  },
+  "copy_engine": {
+    "stream_latency_factors": {
+      "1": 1.0,
+      "2": 1.7384584273483465,
+      "4": 2.762992620065082
+    }
+  },
+  "cpu_runtime": {
+    "per_call_ms": 4.1776208660000005e-05
+  },
+  "fit_split": "calibration",
+  "gpu_service": {
+    "operation_ms": {
+      "dequant": 0.1476092425306868,
+      "gather_scatter": 0.029257923583977493,
+      "grouped_gemm": 0.24318667127233437,
+      "selected_expert": 0.22010173496012017
+    }
+  },
+  "memory": {
+    "bandwidth_bytes_per_ms": 68396254670.230995,
+    "intercept_ms": 0.005769699879949218
+  },
+  "pcie": {
+    "d2h": {
+      "bandwidth_bytes_per_ms": 28408685.50988128,
+      "intercept_ms": 0.014215807554351478
+    },
+    "h2d": {
+      "bandwidth_bytes_per_ms": 28480108.698140044,
+      "intercept_ms": 0.015341920668000775
+    }
+  },
+  "queueing": {
+    "intercept_ms": 0.00027215933966720507,
+    "per_queue_entry_ms": 0.006485015066192163
+  },
+  "schema_version": "calibrated-backend-parameters-v1"
+}

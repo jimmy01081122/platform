@@ -1,0 +1,12 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r4-20260729",
+  "ledger_sha256": "eb920b9bf068677af00dfa99d0b1718d6735387db10261e1bfe0faa38dab4a34",
+  "member_count": 488,
+  "exact_set_verification": "PASS",
+  "verdict": "GO",
+  "blockers": [],
+  "claim_boundary": "All historical Model/Benchmark blockers are closed. TOKEN_ONLY routing enforces non-sentinel request/token/layer identity, route-layer experts and identity propagation through dispatch, compute, return and combine. UMA remains a generic functional model. Evidence is CPU_SYNTHETIC, FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER with RANGE_UNKNOWN; no model-quality, hardware, calibration, DSE or performance inference is authorized.",
+  "authorized_next_stage": "After identical-ledger GO from all roles, freeze Phase 6 and begin only local Phase 7 framework preparation.",
+  "gpu_authority": "NONE"
+}

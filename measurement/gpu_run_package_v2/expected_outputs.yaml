@@ -1,0 +1,214 @@
+schema_version: expected-gpu-outputs-v2
+measurement_status: "C1-FAIL: G3-R4 is FINAL FAIL / IMMUTABLE after c1a-t1-01/P0 reached max_new_tokens=256 and failed QG-1; C1-B is NOT-ELIGIBLE and G4-G6 are STOPPED; the fresh G2.5-S4-R4 review was NO-GO and prospective S4-R5 CPU-only remediation is eligible only for a new immutable same-hash three-role review, then gpt-5.6-sol GO and owner exact-command approval; qualification GPU cells remain zero and GPU authorization is NONE"
+release_class: pipeline_smoke
+evidence_distribution:
+  source_package: PASS
+  embedded_measurement_evidence: NOT_INCLUDED
+  external_evidence_environment_variable: M0_EVIDENCE_ROOT
+  missing_external_evidence_test_result: explicit_skip
+  skip_satisfies_formal_or_paid_gate: false
+paid_gpu_execution:
+  status: no_go
+  governing_decision: D-062
+  governance_baseline_decision: D-063
+  second_decision_layer_gate_required_after_supersession: true
+  required_distinct_reviewer_roles:
+    - architecture_system
+    - model_benchmark
+    - trace_statistics
+  approval_bound_to_superseding_decision_id: true
+planned_session:
+  status: planned
+  capture_complete_claimed: false
+  required_files:
+    - SESSION_MANIFEST.json
+    - TRACE_CAPTURE_PLAN.yaml
+    - TRACE_CAPABILITY_MATRIX.json
+    - checksums.sha256
+  required_pass_directories: [P0, P1, P2, P3, P4, P5, P6]
+  pass_manifest_policy:
+    every_profile_plans_P0_through_P6: true
+    maximal_requires_manifest_for_every_pass_and_repetition: true
+    unsupported_requires_manifest: true
+  repetitions:
+    formal_minimum: 3
+    maximal_recommended: 5
+required_per_experiment:
+  - result.json
+  - environment.json
+  - profiler.json
+result_contract:
+  status: measured
+  required_fields:
+    - schema_version
+    - evidence
+    - metric_scope
+    - split
+    - experiment
+    - seed
+    - command
+    - package_id
+    - package_revision
+    - package_manifest_sha256
+    - checksums_sha256
+    - device
+    - runtime
+    - timestamp_utc
+    - raw_profiler_output
+    - raw_benchmarks
+  required_operations:
+    - h2d_pinned
+    - d2h_pinned
+    - selected_expert
+    - grouped_gemm
+    - gather_scatter
+    - dequant
+    - window_replay
+  calibration_required_operations:
+    - cpu_runtime
+    - device_memory
+    - queue_depth
+    - contention_fixed_shape
+  required_record_fields:
+    - record_id
+    - operation
+    - case
+    - warmup
+    - outer_repeats
+    - inner_iterations
+    - minimum_inner_seconds
+    - statistics.variance
+    - statistics.ci95
+    - statistics.unit
+  transfer_fields:
+    - direction
+    - bytes
+    - copy_streams
+    - calibration_role
+  calibration_roles:
+    - cpu_runtime
+    - gpu_service
+    - pcie_transfer
+    - copy_engine
+    - memory
+    - queueing
+    - contention
+  replay_feature_fields:
+    - tokens
+    - cpu_calls
+    - gpu_operations
+    - memory_bytes
+    - queue_depth
+    - transfers
+    - phase
+    - concurrency
+  required_evaluation_metrics:
+    - component_latency
+    - pcie_transfer_latency
+    - moe_replay_tpot
+    - moe_replay_throughput
+  repeat_fields:
+    - warmup
+    - outer_repeats
+    - inner_iterations
+    - minimum_inner_seconds
+    - repeats_ms
+    - statistics.variance
+    - statistics.ci95
+    - statistics.unit
+  required_metric_name: MoE-replay TPOT
+  evaluation_measured_policy: derive_from_source_record_repeat_mean
+archive:
+  input: --session-root
+  required_manifest: RESULT_PACKAGE_MANIFEST.json
+  required_source_verify_exit_codes: [0, 10]
+  pattern: <session-root-name>-*.tar.gz
+  sidecar_pattern: <session-root-name>-*.tar.gz.sha256
+  post_package_verification_required: true
+prohibited:
+  - cpu_or_dry_run_values_labeled_as_gpu_measurements
+  - symmetric_int4_proxy_labeled_as_checkpoint_awq_or_fused_kernel
+  - holdout_results_labeled_as_calibration
+  - colab_results_labeled_as_high_trust_calibration
+allowed_with_explicit_scope:
+  - shape-faithful synthetic operand values timed on the target GPU
+benchmark_suite:
+  suite_revision: v1.4.0
+  frozen_inventory: configs/test_suites/frozen/v1.4.0/inventory.json
+  frozen_manifest_sha256: 4de9eda6a8eabb5e49c897563033e2fa9d9a8b62db7b81790bb9a4c871f5621e
+  required_task_mapping: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+  external_snapshot_inventory: datasets/snapshots/snapshot_inventory_v1.json
+capture_matrix:
+  schema_version: benchmark-capture-matrix-v1
+  required_passes: [P0, P1, P2, P3, P4, P5, P6]
+  mandatory_gates: [P0, P2, P3]
+  profiler_concurrency: 1
+  simultaneous_profilers_forbidden: true
+  plan_is_capture_complete: false
+  blocked_or_planned_states_must_not_be_labeled_complete: true
+benchmark_smoke:
+  implementation: scripts/executable_moe_benchmark.py
+  purpose: tiny_Qwen2MoE_M0_pipeline_and_correctness
+  measured_regression_evidence: external
+  external_evidence_environment_variable: M0_EVIDENCE_ROOT
+  source_package_unit_fixture: tests/fixtures/model_snapshot
+  distinct_from_legacy_smoke_microbenchmark: true
+  exact_measured_samples: 8
+  sample_breakdown: {gsm8k: 4, mmlu: 4}
+  default_overwrite_policy: refuse
+  online_preflight_required_for_gpu_execution: true
+  offline_preflight_may_claim_gpu_measurement: false
+  required_outputs:
+    - run_manifest.json
+    - model_snapshot_inventory.json
+    - cross_pass_consistency.json
+    - checksums.json
+    - p0/native.jsonl
+    - p2/native.jsonl
+    - p3/native.jsonl
+session_ingest:
+  source: executable_M0_artifact
+  required_measured_passes: [P0, P1, P2, P3, P5]
+  conditional_optional_passes: [P4, P6]
+  exact_measured_samples_per_pass: 8
+  warmups_explicit_and_excluded: true
+  required_outputs:
+    - SESSION_MANIFEST.json
+    - RESULT_PACKAGE_MANIFEST.json
+    - raw_traces/RAW_INVENTORY.json
+    - checksums.sha256
+    - TRACE_COMPLETENESS_REPORT.json
+  archive_must_verify_after_creation: true
+canonical_m0:
+  required_outputs:
+    - m0_moe_routing.json
+    - benchmark_trace_records.jsonl
+  raw_checksum_verification_required: true
+  cross_pass_output_consistency_required: true
+  evidence_class: measured_gpu_route
+workload_expansion:
+  input: canonical_m0_routing
+  output_schema: m0-expanded-system-events-v1
+  routing_evidence_preserved: true
+  timing_model:
+    service_time: null
+    evidence: unmeasured
+    latency_prediction_allowed: false
+simulation:
+  input: expanded_system_events
+  output: route_and_residency_analysis
+  predicted_latency: null
+  hardware_latency_claim: false
+m0_evidence_limits:
+  tier: M0
+  model_is_random_tiny: true
+  allowed_claims:
+    - pipeline_execution
+    - checkpoint_compatibility_remap
+    - trace_collection_and_conversion
+    - deterministic_cross_pass_correctness
+  prohibited_claims:
+    - model_quality_or_generalization
+    - production_performance
+    - scaling_to_other_models_or_hardware
+    - capture_plan_as_completed_measurement

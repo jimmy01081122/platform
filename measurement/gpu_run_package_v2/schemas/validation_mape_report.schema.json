@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "validation_mape_report.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "calibration_parameters_sha256",
+    "fit_split",
+    "score_split",
+    "validation_refit_performed",
+    "zero_policy",
+    "skipped_zero_point_ids",
+    "per_metric_domain",
+    "overall_mape_percent",
+    "gate_percent",
+    "gate_pass"
+  ],
+  "properties": {
+    "schema_version": {"const": "validation-mape-report-v1"},
+    "calibration_parameters_sha256": {"$ref": "#/$defs/hash"},
+    "fit_split": {"const": "calibration"},
+    "score_split": {"const": "validation"},
+    "validation_refit_performed": {"const": false},
+    "zero_policy": {"enum": ["reject", "skip"]},
+    "skipped_zero_point_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "per_metric_domain": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "metric",
+          "domain",
+          "n",
+          "mape_percent",
+          "gate_percent",
+          "pass"
+        ],
+        "properties": {
+          "metric": {"type": "string", "minLength": 1},
+          "domain": {"type": "string", "minLength": 1},
+          "n": {"type": "integer", "minimum": 1},
+          "mape_percent": {"type": "number", "minimum": 0},
+          "gate_percent": {"const": 15.0},
+          "pass": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "overall_mape_percent": {"type": "number", "minimum": 0},
+    "gate_percent": {"const": 15.0},
+    "gate_pass": {"type": "boolean"}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

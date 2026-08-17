@@ -1,0 +1,8 @@
+{
+  "exception_type": "CampaignFailure",
+  "failed_at_utc": "2026-08-11T13:52:58Z",
+  "message": "routing token coverage mismatch: got 58, expected 59 with prefix caching disabled",
+  "phase": "generation",
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 930, in main\n    record = run_one_request(\n             ^^^^^^^^^^^^^^^^\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 721, in run_one_request\n    routing = save_routing(run_dir, logical_id, completion, input_count, actual_output_count, model_config)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py\", line 578, in save_routing\n    raise CampaignFailure(\"; \".join(validation_errors))\nCampaignFailure: routing token coverage mismatch: got 58, expected 59 with prefix caching disabled\n"
+}

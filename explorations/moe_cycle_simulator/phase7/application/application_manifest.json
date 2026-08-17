@@ -1,0 +1,99 @@
+{
+  "schema_version": "moe-simulator-phase7-m0-application-v1",
+  "application_id": "mixtral-rtxpro6000-bf16-m0-r12-20260729",
+  "status": "DRAFT_NOT_AUTHORIZED",
+  "purpose": "BF16_CAPACITY_AND_RUNTIME_QUALIFICATION",
+  "requested_promotion_stage": "M0_ONLY",
+  "target": {
+    "gpu_count": 1,
+    "exact_product_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "nominal_memory": "96GB",
+    "minimum_memory_bytes": 96000000000,
+    "exclusive_access_required": true
+  },
+  "model": {
+    "model_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "repository_commit": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "precision": "BF16",
+    "quantization": null,
+    "cpu_offload_gb": 0,
+    "swap_space_gb": 0
+  },
+  "runtime": "vLLM",
+  "qualification_envelope": {
+    "max_model_length_tokens": 32768,
+    "input_tokens": 28672,
+    "forced_output_tokens": 4096,
+    "max_sequences": 1,
+    "fresh_launch_repetitions": 3,
+    "ignore_eos_for_capacity_probe": true,
+    "outer_timeout_seconds": 14400
+  },
+  "allocation_window_contract": {
+    "total_seconds": 21600,
+    "start_trigger": "OWNER_RELEASES_FRESH_SSH_HANDOFF",
+    "billing_mode": "PREPAID_FIXED_WINDOW",
+    "extension_allowed": false,
+    "additional_cost_allowed": false,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "release_reserve_seconds": 900
+  },
+  "current_project_state": {
+    "phase0_through_phase6_same_hash_go": true,
+    "phase6_candidate_ledger_sha256": "eb920b9bf068677af00dfa99d0b1718d6735387db10261e1bfe0faa38dab4a34",
+    "phase6_review_aggregate_sha256": "c7218aaa9a49d2916fa8ffe99b42525a795708cbba6b7784b5636195f87ec805",
+    "phase7_local_framework": "R12_R5_CPU_TWO_BLOCKER_REPAIR_CANDIDATE",
+    "phase7_gate_m_live_evidence": "NONE",
+    "phase7_m0_parent": "BLOCKING_TEMPLATE_NOT_INSTANTIATED",
+    "phase7_gpu_evidence": "NONE"
+  },
+  "estimated_resources": {
+    "reservation_hours": 6,
+    "working_storage_gb_range": [
+      160,
+      220
+    ],
+    "minimum_free_storage_gb": 300,
+    "archive_excluding_model_cache_gb_upper_bound": 10,
+    "billing_mode": "PREPAID_FIXED_WINDOW",
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "extension_allowed": false
+  },
+  "required_approvals": {
+    "application": "OWNER_ENVIRONMENT_ENVELOPE_APPROVED",
+    "environment_disclosure": "EXACT_D0_PENDING",
+    "materialization": "PENDING",
+    "exact_command": "PENDING",
+    "maximum_spend": "APPROVE_ZERO_INCREMENTAL"
+  },
+  "ssh": {
+    "endpoint": "[BLOCKING:OWNER_PROVIDED_APPROVED_SSH_ENDPOINT]",
+    "credential_storage": "OUTSIDE_REPOSITORY"
+  },
+  "authorized": [],
+  "not_authorized": [
+    "SSH connection",
+    "GPU query",
+    "remote file write",
+    "package installation",
+    "model download",
+    "paid allocation",
+    "M0 execution",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "formal profiling",
+    "calibration PASS",
+    "retry-failed",
+    "resume"
+  ],
+  "fallback_if_m0_fails": {
+    "canonical_precision": "BF16_UNCHANGED",
+    "platform_role": "BF16_NEAR_CAPACITY_OR_OFFLOAD_RESEARCH",
+    "all_resident_discrete_bf16_baseline": "DEFERRED",
+    "automatic_retry": false
+  }
+}

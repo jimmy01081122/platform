@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "consequence": "No final SERV-P0 tail-CI/calibration/control requirement claim.",
+      "gap_id": "GAP-P0-25-TAIL",
+      "source": "runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_serving_p0_25_remote_environment_loss_v1.json",
+      "status": "SUPPLEMENT_REQUIRED"
+    },
+    {
+      "consequence": "New-host guards are validated and backed up; UM remains negative evidence only.",
+      "gap_id": "GAP-NEW-SESSION-GUARD",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "consequence": "No cycle-grade support-processor/control-latency claim.",
+      "gap_id": "GAP-CLK4",
+      "source": "existing clock audit",
+      "status": "UNAVAILABLE_WITH_CONSEQUENCE"
+    },
+    {
+      "consequence": "Exact object bytes, granularity, ownership and immutable discard/reload semantics are closed; runtime dynamic residency remains separately gated by OFF-E-RT0.",
+      "gap_id": "GAP-CATALOG",
+      "source": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/adopted/EXPERT-CATALOG-V6-TRANSFER-V4/EQ",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "consequence": "No compute-integrated policy ranking or accelerator break-even claim.",
+      "gap_id": "GAP-POLICY-CAL3",
+      "source": "ADOPT-POL0-POL5",
+      "status": "SUPPLEMENT_REQUIRED"
+    },
+    {
+      "consequence": "No formal 60-sample GPU dispatch before explicit owner release.",
+      "gap_id": "GAP-FORMAL-OWNER",
+      "source": "FORMAL-MANIFEST",
+      "status": "OWNER_DISPATCH_GATE"
+    },
+    {
+      "consequence": "No calibrated surrogate/DSE/requirements closure.",
+      "gap_id": "GAP-IR-OFFLINE",
+      "source": "IR0-REP0",
+      "status": "BLOCKED_BY_MEASUREMENT_DEPENDENCIES"
+    },
+    {
+      "consequence": "Capability is established; exact block identity, moved bytes, and swap event remain unobserved and block K1-K5 performance claims until their gates run.",
+      "gap_id": "GAP-SWAP-K0-BLOCK-TRACE",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K0-V1-MASTER",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "consequence": "No SWAP-K1 block-movement result; repair and rerun only the affected gate with the frozen 128-token fixture.",
+      "gap_id": "GAP-SWAP-K1-TECHNICAL-FAILURE",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V1-MASTER",
+      "status": "SUPPLEMENT_REQUIRED"
+    },
+    {
+      "consequence": "No SWAP-K1 gate result; rerun in detached namespace with no PTY lifetime dependency.",
+      "gap_id": "GAP-SWAP-K1-LAUNCH-INTERRUPTION",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V2-MASTER",
+      "status": "SUPPLEMENT_REQUIRED"
+    },
+    {
+      "consequence": "V5 closed the forced movement gate with CPU BlockStored/BlockRemoved identity lineage; event-level block_size/parent metadata remains incomplete and K2 must own exact capacity sweep accounting.",
+      "gap_id": "GAP-SWAP-K1-EVENT-TRACE-V4",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V5-MASTER",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "consequence": "K1 bytes are derived from measured runtime shape/dtype; raw event block_size=0 and parent/token metadata are retained as limitations, so no K1 copy-performance claim is allowed.",
+      "gap_id": "GAP-SWAP-K1-EVENT-BYTES-METADATA",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K1-V5-MASTER/derived_swap_k1_v5_event_lineage_and_bytes.json",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "completed_points": [
+        "FIT-25",
+        "FIT-50",
+        "FIT-75",
+        "FIT-100",
+        "HELDOUT-37.5",
+        "HELDOUT-62.5",
+        "HELDOUT-87.5"
+      ],
+      "consequence": "All seven complete-block fit/held-out points are required before K2 closure; raw event metadata limitations remain bound to the per-point sidecars.",
+      "gap_id": "GAP-SWAP-K2-CAPACITY-MATRIX",
+      "missing_points": [],
+      "source": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-87P5-V1-MASTER",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "completed_points": [
+        "LONG-PREFILL",
+        "DECODE-HEAVY",
+        "MIXED",
+        "BURST"
+      ],
+      "consequence": "All four K3 serving-pressure points are required; evidence remains diagnostic and cannot replace formal SERV tail-CI or object-level KV performance evidence.",
+      "gap_id": "GAP-SWAP-K3-SERVING-PRESSURE-MATRIX",
+      "missing_points": [],
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K3-BURST-V1-MASTER/derived_swap_k3_burst_swap_k3_burst_v1_master_serving_events.json",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "consequence": "Host-pool store-refusal fallback is validated; no preemption, rejection, LRU BlockRemoved, pinned-memory, or formal serving performance claim is supported.",
+      "gap_id": "GAP-SWAP-K5-EXHAUSTION",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K5-V1-MASTER/derived_swap_k5_store_refusal_fallback.json",
+      "status": "CLOSED_WITH_LIMITATION"
+    },
+    {
+      "consequence": "Runtime-native OFF-E claims are forbidden; OFF-E-PR compute-integrated replay and shared-fabric OFFKV remain required.",
+      "gap_id": "GAP-OFF-E-RUNTIME-CAPABILITY",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-E-RT0-V1-MASTER",
+      "status": "CLOSED_WITH_NEGATIVE_EVIDENCE"
+    },
+    {
+      "consequence": "OFF-W1/2/3 are triggered and remain open; dynamic expert residency claims remain forbidden.",
+      "gap_id": "GAP-OFF-W-CAPABILITY",
+      "source": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/OFF-W0-V2-MASTER",
+      "status": "CLOSED_POSITIVE_CAPABILITY_TRIGGERED_CHILDREN"
+    }
+  ],
+  "schema_version": "phase7-combined-master-gap-register-v1"
+}

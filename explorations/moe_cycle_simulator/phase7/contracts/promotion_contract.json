@@ -1,0 +1,72 @@
+{
+  "schema_version": "moe-simulator-phase7-promotion-contract-v1",
+  "authority": "LOCAL_CPU_ONLY_FRAMEWORK",
+  "gpu_authority": "NONE",
+  "stage_order": ["M0", "M1", "M2", "M3", "M4"],
+  "approval": {
+    "required_per_stage": true,
+    "decision": "APPROVE",
+    "bindings": [
+      "stage",
+      "session_id",
+      "variant_hash",
+      "plan_hash",
+      "approval_id",
+      "token_sha256"
+    ],
+    "token_reuse": "FORBIDDEN"
+  },
+  "matrix": {
+    "M0": {
+      "role": "runtime_capacity_qualification",
+      "minimum_units": 1
+    },
+    "M1": {
+      "role": "collector_canary",
+      "sample_count": 8
+    },
+    "M2": {
+      "sample_count": 48,
+      "repetitions": 3,
+      "passes": ["P0", "P2"],
+      "exact_cell_count": 288
+    },
+    "M3": {
+      "sample_count": 12,
+      "repetitions": 3,
+      "passes": ["P1", "P3", "P4"],
+      "exact_cell_count": 108
+    },
+    "M4": {
+      "scenario_count": 6,
+      "repetitions": 3,
+      "modes": ["CLEAN", "INSTRUMENTED"],
+      "exact_session_count": 36
+    }
+  },
+  "identity_fields_requiring_new_m1": [
+    "collector_hash",
+    "adapter_hash",
+    "schema_hash",
+    "correlation_hash",
+    "alignment_hash",
+    "routing_hook_hash",
+    "generation_identity_hash"
+  ],
+  "variant_change_rule": {
+    "completed_m1_or_later": "INVALIDATE_M1_THROUGH_M4_AND_REQUIRE_FRESH_SESSION",
+    "completed_m0_only": "REQUIRE_FRESH_SESSION"
+  },
+  "session": {
+    "fresh_session": true,
+    "old_session_resume": false,
+    "retry_failed": false,
+    "copy_prior_evidence": false
+  },
+  "v0": {
+    "execution_role": "OFFLINE_VALIDATION",
+    "gpu_execution": false,
+    "runtime_pass": false
+  }
+}
+

@@ -1,0 +1,18 @@
+{
+  "attempt_id": "OFF-E-RT0-V1-MASTER",
+  "capability_status": "RUNTIME_EXPERT_OFFLOAD_UNAVAILABLE_WITH_CONSEQUENCE",
+  "next_ready_unit": "OFF-W0",
+  "raw_backup": "VERIFIED",
+  "raw_file_set_sha256": "b27e112ddeb12deb7f5596817b1a9bd11a37cf9d57ceafdd342498a86be8da32",
+  "request_correctness": "PASS",
+  "resolved_children": [
+    "OFF-E-RT1",
+    "OFF-E-RT2",
+    "OFF-E-RT3"
+  ],
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T02:05:36Z",
+  "routing_evidence": "PASS",
+  "schema_version": "phase7-combined-master-off-e-rt0-review-v1",
+  "validation_state": "NEGATIVE_EVIDENCE"
+}

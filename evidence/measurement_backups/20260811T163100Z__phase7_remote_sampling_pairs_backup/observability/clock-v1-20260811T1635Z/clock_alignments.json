@@ -1,0 +1,1195 @@
+{
+  "alignments": [
+    {
+      "alignment_id": "CLK0",
+      "calibration_method": "paired nvidia-smi host anchors",
+      "calibration_points": [
+        {
+          "source_time_fs": 3561277869512903000000,
+          "target_time_fs": 1786466584055083364000000
+        },
+        {
+          "source_time_fs": 3561277910836097000000,
+          "target_time_fs": 1786466584096405531000000
+        },
+        {
+          "source_time_fs": 3561277949754395000000,
+          "target_time_fs": 1786466584135323909000000
+        },
+        {
+          "source_time_fs": 3561277988655435000000,
+          "target_time_fs": 1786466584174224839000000
+        },
+        {
+          "source_time_fs": 3561278027716282000000,
+          "target_time_fs": 1786466584213285626000000
+        },
+        {
+          "source_time_fs": 3561278067140911000000,
+          "target_time_fs": 1786466584252710350000000
+        },
+        {
+          "source_time_fs": 3561278106841095000000,
+          "target_time_fs": 1786466584292410354000000
+        },
+        {
+          "source_time_fs": 3561278145343312000000,
+          "target_time_fs": 1786466584330912561000000
+        },
+        {
+          "source_time_fs": 3561278183961638000000,
+          "target_time_fs": 1786466584369530852000000
+        },
+        {
+          "source_time_fs": 3561278223658617000000,
+          "target_time_fs": 1786466584409227820000000
+        },
+        {
+          "source_time_fs": 3561278262776040000000,
+          "target_time_fs": 1786466584448345544000000
+        },
+        {
+          "source_time_fs": 3561278301536114000000,
+          "target_time_fs": 1786466584487105452000000
+        },
+        {
+          "source_time_fs": 3561278340573627000000,
+          "target_time_fs": 1786466584526142860000000
+        },
+        {
+          "source_time_fs": 3561278379696726000000,
+          "target_time_fs": 1786466584565265990000000
+        },
+        {
+          "source_time_fs": 3561278417653854000000,
+          "target_time_fs": 1786466584603223097000000
+        },
+        {
+          "source_time_fs": 3561278453640560000000,
+          "target_time_fs": 1786466584639209779000000
+        },
+        {
+          "source_time_fs": 3561278490392988000000,
+          "target_time_fs": 1786466584675962287000000
+        },
+        {
+          "source_time_fs": 3561278528303402000000,
+          "target_time_fs": 1786466584713872866000000
+        },
+        {
+          "source_time_fs": 3561278565325043000000,
+          "target_time_fs": 1786466584750894382000000
+        },
+        {
+          "source_time_fs": 3561278603561273000000,
+          "target_time_fs": 1786466584789130516000000
+        },
+        {
+          "source_time_fs": 3561278642239933000000,
+          "target_time_fs": 1786466584827809192000000
+        },
+        {
+          "source_time_fs": 3561278680720710000000,
+          "target_time_fs": 1786466584866289933000000
+        },
+        {
+          "source_time_fs": 3561278719763497000000,
+          "target_time_fs": 1786466584905332871000000
+        },
+        {
+          "source_time_fs": 3561278757636171000000,
+          "target_time_fs": 1786466584943205544000000
+        },
+        {
+          "source_time_fs": 3561278795540924000000,
+          "target_time_fs": 1786466584981110213000000
+        },
+        {
+          "source_time_fs": 3561278841207044000000,
+          "target_time_fs": 1786466585026776333000000
+        },
+        {
+          "source_time_fs": 3561278892353523000000,
+          "target_time_fs": 1786466585077922907000000
+        },
+        {
+          "source_time_fs": 3561278943575675000000,
+          "target_time_fs": 1786466585129144969000000
+        },
+        {
+          "source_time_fs": 3561278995618261000000,
+          "target_time_fs": 1786466585181187550000000
+        },
+        {
+          "source_time_fs": 3561279046831051000000,
+          "target_time_fs": 1786466585232400259000000
+        },
+        {
+          "source_time_fs": 3561279099529977000000,
+          "target_time_fs": 1786466585285099135000000
+        },
+        {
+          "source_time_fs": 3561279152765986000000,
+          "target_time_fs": 1786466585338335455000000
+        },
+        {
+          "source_time_fs": 3561279204861001000000,
+          "target_time_fs": 1786466585390430375000000
+        },
+        {
+          "source_time_fs": 3561279257702271000000,
+          "target_time_fs": 1786466585443271555000000
+        },
+        {
+          "source_time_fs": 3561279310396493000000,
+          "target_time_fs": 1786466585495965846000000
+        },
+        {
+          "source_time_fs": 3561279363211833000000,
+          "target_time_fs": 1786466585548781292000000
+        },
+        {
+          "source_time_fs": 3561279415772904000000,
+          "target_time_fs": 1786466585601342182000000
+        },
+        {
+          "source_time_fs": 3561279469301681000000,
+          "target_time_fs": 1786466585654870945000000
+        },
+        {
+          "source_time_fs": 3561279522814244000000,
+          "target_time_fs": 1786466585708383742000000
+        },
+        {
+          "source_time_fs": 3561279573617139000000,
+          "target_time_fs": 1786466585759186603000000
+        },
+        {
+          "source_time_fs": 3561279624100576000000,
+          "target_time_fs": 1786466585809670040000000
+        },
+        {
+          "source_time_fs": 3561279675319732000000,
+          "target_time_fs": 1786466585860889211000000
+        },
+        {
+          "source_time_fs": 3561279726509833000000,
+          "target_time_fs": 1786466585912079253000000
+        },
+        {
+          "source_time_fs": 3561279777159364000000,
+          "target_time_fs": 1786466585962728718000000
+        },
+        {
+          "source_time_fs": 3561279828075684000000,
+          "target_time_fs": 1786466586013645097000000
+        },
+        {
+          "source_time_fs": 3561279878200478000000,
+          "target_time_fs": 1786466586063769802000000
+        },
+        {
+          "source_time_fs": 3561279927861622000000,
+          "target_time_fs": 1786466586113431021000000
+        },
+        {
+          "source_time_fs": 3561279978401296000000,
+          "target_time_fs": 1786466586163970604000000
+        },
+        {
+          "source_time_fs": 3561280028663344000000,
+          "target_time_fs": 1786466586214232683000000
+        },
+        {
+          "source_time_fs": 3561280079655853000000,
+          "target_time_fs": 1786466586265225106000000
+        },
+        {
+          "source_time_fs": 3561280131393147000000,
+          "target_time_fs": 1786466586316962501000000
+        },
+        {
+          "source_time_fs": 3561280181748347000000,
+          "target_time_fs": 1786466586367317726000000
+        },
+        {
+          "source_time_fs": 3561280232505025000000,
+          "target_time_fs": 1786466586418074453000000
+        },
+        {
+          "source_time_fs": 3561280283894367000000,
+          "target_time_fs": 1786466586469463741000000
+        },
+        {
+          "source_time_fs": 3561280334982221000000,
+          "target_time_fs": 1786466586520551569000000
+        },
+        {
+          "source_time_fs": 3561280386792082000000,
+          "target_time_fs": 1786466586572361516000000
+        },
+        {
+          "source_time_fs": 3561280437828158000000,
+          "target_time_fs": 1786466586623397446000000
+        },
+        {
+          "source_time_fs": 3561280488361920000000,
+          "target_time_fs": 1786466586673931379000000
+        },
+        {
+          "source_time_fs": 3561280539533010000000,
+          "target_time_fs": 1786466586725102489000000
+        },
+        {
+          "source_time_fs": 3561280591180099000000,
+          "target_time_fs": 1786466586776750194000000
+        },
+        {
+          "source_time_fs": 3561280641883206000000,
+          "target_time_fs": 1786466586827452625000000
+        },
+        {
+          "source_time_fs": 3561280692501914000000,
+          "target_time_fs": 1786466586878071247000000
+        },
+        {
+          "source_time_fs": 3561280743761156000000,
+          "target_time_fs": 1786466586929330499000000
+        },
+        {
+          "source_time_fs": 3561280794416401000000,
+          "target_time_fs": 1786466586979985866000000
+        }
+      ],
+      "claimed_grade": "ORDERING_ONLY",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "-165547720",
+        "upper_error_fs": "389502280"
+      },
+      "drift_bound_ppm": "0.340524055",
+      "offset_fs": "1782905306185569371422720",
+      "provenance": {
+        "producer": "clock_alignment_probe.py",
+        "producer_version": "phase7-clock-probe-v1",
+        "source_content_ids": [
+          "619c423636a711592f0b42b31c2331958a62e5627bcc4e75b7e4e913a6664f67",
+          "35b9fc6131b48f8c61ace6e881b3df311ef636e68bc091d0636287597353f93a",
+          "43dfe0588648e4c451540568cd1ff4817cbebdb935f10d4f23a03efefe671398",
+          "473b0eb92e995d4883dfe280e8f66e55ab1cf8560dab512269807bdae8556dee"
+        ]
+      },
+      "residual_error_fs": "1089577280",
+      "scale_denominator": "1",
+      "scale_numerator": "1",
+      "schema_version": "phase7-clock-alignment-evidence-v1",
+      "shortest_component_duration_fs": "15233000000",
+      "source_clock_id": "cpu_monotonic_fs",
+      "target_clock_id": "cpu_wall_fs",
+      "transform_type": "AFFINE_RATIONAL",
+      "units": "femtoseconds for source/target calibration values",
+      "valid_time_range": {
+        "source_end_fs": "3561280794416401000000",
+        "source_start_fs": "3561277869512903000000"
+      }
+    },
+    {
+      "alignment_id": "CLK1",
+      "calibration_method": "record_function host bounds matched to profiler user annotations",
+      "calibration_points": [
+        {
+          "source_time_fs": 3561281677862527000000,
+          "target_time_fs": 3498799864323691773952
+        },
+        {
+          "source_time_fs": 3561281678924202000000,
+          "target_time_fs": 3498799864491881791488
+        },
+        {
+          "source_time_fs": 3561281679009818500000,
+          "target_time_fs": 3498799864571592966144
+        },
+        {
+          "source_time_fs": 3561281679087074500000,
+          "target_time_fs": 3498799864653352009728
+        },
+        {
+          "source_time_fs": 3561281679158875500000,
+          "target_time_fs": 3498799864724615331840
+        },
+        {
+          "source_time_fs": 3561281679229759000000,
+          "target_time_fs": 3498799864795846148096
+        },
+        {
+          "source_time_fs": 3561281679300232000000,
+          "target_time_fs": 3498799864866148974592
+        },
+        {
+          "source_time_fs": 3561281679369949000000,
+          "target_time_fs": 3498799864936516288512
+        },
+        {
+          "source_time_fs": 3561281679438458500000,
+          "target_time_fs": 3498799865004707282944
+        },
+        {
+          "source_time_fs": 3561281679506767500000,
+          "target_time_fs": 3498799865072897753088
+        },
+        {
+          "source_time_fs": 3561281679574996000000,
+          "target_time_fs": 3498799865140960821248
+        },
+        {
+          "source_time_fs": 3561281679646862000000,
+          "target_time_fs": 3498799865210368163840
+        },
+        {
+          "source_time_fs": 3561281679719208500000,
+          "target_time_fs": 3498799865286238928896
+        },
+        {
+          "source_time_fs": 3561281679787828000000,
+          "target_time_fs": 3498799865354078126080
+        },
+        {
+          "source_time_fs": 3561281679855591000000,
+          "target_time_fs": 3498799865421853884416
+        },
+        {
+          "source_time_fs": 3561281679922888000000,
+          "target_time_fs": 3498799865489467637760
+        },
+        {
+          "source_time_fs": 3561281679994273000000,
+          "target_time_fs": 3498799865555483885568
+        },
+        {
+          "source_time_fs": 3561281680067781500000,
+          "target_time_fs": 3498799865634746269696
+        },
+        {
+          "source_time_fs": 3561281680139337000000,
+          "target_time_fs": 3498799865702937788416
+        },
+        {
+          "source_time_fs": 3561281680210170500000,
+          "target_time_fs": 3498799865776857153536
+        },
+        {
+          "source_time_fs": 3561281680278489500000,
+          "target_time_fs": 3498799865844663844864
+        },
+        {
+          "source_time_fs": 3561281680346042500000,
+          "target_time_fs": 3498799865912439078912
+        },
+        {
+          "source_time_fs": 3561281680416114000000,
+          "target_time_fs": 3498799865984437977088
+        },
+        {
+          "source_time_fs": 3561281680486306500000,
+          "target_time_fs": 3498799866053492998144
+        },
+        {
+          "source_time_fs": 3561281680553213500000,
+          "target_time_fs": 3498799866119571636224
+        },
+        {
+          "source_time_fs": 3561281680619558500000,
+          "target_time_fs": 3498799866186290954240
+        },
+        {
+          "source_time_fs": 3561281680686655000000,
+          "target_time_fs": 3498799866252434079744
+        },
+        {
+          "source_time_fs": 3561281680754323000000,
+          "target_time_fs": 3498799866320528605184
+        },
+        {
+          "source_time_fs": 3561281680823598500000,
+          "target_time_fs": 3498799866387409403904
+        },
+        {
+          "source_time_fs": 3561281680893611000000,
+          "target_time_fs": 3498799866460368273408
+        },
+        {
+          "source_time_fs": 3561281680961309000000,
+          "target_time_fs": 3498799866527278956544
+        },
+        {
+          "source_time_fs": 3561281681035970000000,
+          "target_time_fs": 3498799866607757688832
+        },
+        {
+          "source_time_fs": 3561281681110841500000,
+          "target_time_fs": 3498799866677356920832
+        },
+        {
+          "source_time_fs": 3561281681177697500000,
+          "target_time_fs": 3498799866743948312576
+        },
+        {
+          "source_time_fs": 3561281681243882500000,
+          "target_time_fs": 3498799866809643171840
+        },
+        {
+          "source_time_fs": 3561281681310207500000,
+          "target_time_fs": 3498799866876649799680
+        },
+        {
+          "source_time_fs": 3561281681376958500000,
+          "target_time_fs": 3498799866943017320448
+        },
+        {
+          "source_time_fs": 3561281681443244000000,
+          "target_time_fs": 3498799867009735589888
+        },
+        {
+          "source_time_fs": 3561281681508472000000,
+          "target_time_fs": 3498799867074887286784
+        },
+        {
+          "source_time_fs": 3561281681573745000000,
+          "target_time_fs": 3498799867140007002112
+        },
+        {
+          "source_time_fs": 3561281681639189000000,
+          "target_time_fs": 3498799867205541953536
+        },
+        {
+          "source_time_fs": 3561281681704497500000,
+          "target_time_fs": 3498799867271172849664
+        },
+        {
+          "source_time_fs": 3561281681769470000000,
+          "target_time_fs": 3498799867335811792896
+        },
+        {
+          "source_time_fs": 3561281681834057000000,
+          "target_time_fs": 3498799867400643149824
+        },
+        {
+          "source_time_fs": 3561281681898448500000,
+          "target_time_fs": 3498799867465025716224
+        },
+        {
+          "source_time_fs": 3561281681969327000000,
+          "target_time_fs": 3498799867529504751616
+        },
+        {
+          "source_time_fs": 3561281682043287000000,
+          "target_time_fs": 3498799867610399768576
+        },
+        {
+          "source_time_fs": 3561281682110914500000,
+          "target_time_fs": 3498799867677310976000
+        },
+        {
+          "source_time_fs": 3561281682176668500000,
+          "target_time_fs": 3498799867742974377984
+        },
+        {
+          "source_time_fs": 3561281682242523000000,
+          "target_time_fs": 3498799867808925614080
+        },
+        {
+          "source_time_fs": 3561281682308052000000,
+          "target_time_fs": 3498799867874557034496
+        },
+        {
+          "source_time_fs": 3561281682373175000000,
+          "target_time_fs": 3498799867939516317696
+        },
+        {
+          "source_time_fs": 3561281682441178500000,
+          "target_time_fs": 3498799868008730722304
+        },
+        {
+          "source_time_fs": 3561281682510409000000,
+          "target_time_fs": 3498799868076826296320
+        },
+        {
+          "source_time_fs": 3561281682576283500000,
+          "target_time_fs": 3498799868142329266176
+        },
+        {
+          "source_time_fs": 3561281682641677000000,
+          "target_time_fs": 3498799868208024125440
+        },
+        {
+          "source_time_fs": 3561281682706900500000,
+          "target_time_fs": 3498799868273527095296
+        },
+        {
+          "source_time_fs": 3561281682772458500000,
+          "target_time_fs": 3498799868339381862400
+        },
+        {
+          "source_time_fs": 3561281682838102500000,
+          "target_time_fs": 3498799868404789936128
+        },
+        {
+          "source_time_fs": 3561281682903060500000,
+          "target_time_fs": 3498799868469780676608
+        },
+        {
+          "source_time_fs": 3561281682967683000000,
+          "target_time_fs": 3498799868534324199424
+        },
+        {
+          "source_time_fs": 3561281683044653000000,
+          "target_time_fs": 3498799868610099019776
+        },
+        {
+          "source_time_fs": 3561281683116844500000,
+          "target_time_fs": 3498799868681201909760
+        },
+        {
+          "source_time_fs": 3561281683185604500000,
+          "target_time_fs": 3498799868752561176576
+        }
+      ],
+      "claimed_grade": "ORDERING_ONLY",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "-4842359665",
+        "upper_error_fs": "3418750515"
+      },
+      "drift_bound_ppm": "167987.052109611",
+      "offset_fs": "-62481814433622695936",
+      "provenance": {
+        "producer": "clock_alignment_probe.py",
+        "producer_version": "phase7-clock-probe-v1",
+        "source_content_ids": [
+          "619c423636a711592f0b42b31c2331958a62e5627bcc4e75b7e4e913a6664f67",
+          "35b9fc6131b48f8c61ace6e881b3df311ef636e68bc091d0636287597353f93a",
+          "43dfe0588648e4c451540568cd1ff4817cbebdb935f10d4f23a03efefe671398",
+          "473b0eb92e995d4883dfe280e8f66e55ab1cf8560dab512269807bdae8556dee"
+        ]
+      },
+      "residual_error_fs": "894787469888",
+      "scale_denominator": "1",
+      "scale_numerator": "1",
+      "schema_version": "phase7-clock-alignment-evidence-v1",
+      "shortest_component_duration_fs": "15233000000",
+      "source_clock_id": "cpu_monotonic_fs",
+      "target_clock_id": "profiler_fs",
+      "transform_type": "AFFINE_RATIONAL",
+      "units": "femtoseconds for source/target calibration values",
+      "valid_time_range": {
+        "source_end_fs": "3561281683185604500000",
+        "source_start_fs": "3561281677862527000000"
+      }
+    },
+    {
+      "alignment_id": "CLK2",
+      "calibration_method": "CUDA event host completion bounds and origin event",
+      "calibration_points": [
+        {
+          "source_time_fs": 3561280938602960000000,
+          "target_time_fs": 19083135604858
+        },
+        {
+          "source_time_fs": 3561280948227195000000,
+          "target_time_fs": 19230464935303
+        },
+        {
+          "source_time_fs": 3561280948321343000000,
+          "target_time_fs": 19302431106567
+        },
+        {
+          "source_time_fs": 3561280948391260000000,
+          "target_time_fs": 19372320175171
+        },
+        {
+          "source_time_fs": 3561280948459283000000,
+          "target_time_fs": 19439392089844
+        },
+        {
+          "source_time_fs": 3561280948526921000000,
+          "target_time_fs": 19506208419800
+        },
+        {
+          "source_time_fs": 3561280948591668000000,
+          "target_time_fs": 19570688247681
+        },
+        {
+          "source_time_fs": 3561280948658755000000,
+          "target_time_fs": 19639904022217
+        },
+        {
+          "source_time_fs": 3561280948726693000000,
+          "target_time_fs": 19706495285034
+        },
+        {
+          "source_time_fs": 3561280948791140000000,
+          "target_time_fs": 19769439697266
+        },
+        {
+          "source_time_fs": 3561280948853257000000,
+          "target_time_fs": 19831232070923
+        },
+        {
+          "source_time_fs": 3561280948915154000000,
+          "target_time_fs": 19893119812012
+        },
+        {
+          "source_time_fs": 3561280948981083000000,
+          "target_time_fs": 19955680847168
+        },
+        {
+          "source_time_fs": 3561280949051436000000,
+          "target_time_fs": 20032384872437
+        },
+        {
+          "source_time_fs": 3561280949118022000000,
+          "target_time_fs": 20096672058105
+        },
+        {
+          "source_time_fs": 3561280949186261000000,
+          "target_time_fs": 20165376663208
+        },
+        {
+          "source_time_fs": 3561280949249505000000,
+          "target_time_fs": 20227519989014
+        },
+        {
+          "source_time_fs": 3561280949312129000000,
+          "target_time_fs": 20290559768677
+        },
+        {
+          "source_time_fs": 3561280949374276000000,
+          "target_time_fs": 20352415084839
+        },
+        {
+          "source_time_fs": 3561280949437099000000,
+          "target_time_fs": 20415903091431
+        },
+        {
+          "source_time_fs": 3561280949499572000000,
+          "target_time_fs": 20477535247803
+        },
+        {
+          "source_time_fs": 3561280949561444000000,
+          "target_time_fs": 20539487838745
+        },
+        {
+          "source_time_fs": 3561280949623361000000,
+          "target_time_fs": 20601535797119
+        },
+        {
+          "source_time_fs": 3561280949684983000000,
+          "target_time_fs": 20662815093994
+        },
+        {
+          "source_time_fs": 3561280949747456000000,
+          "target_time_fs": 20725887298584
+        },
+        {
+          "source_time_fs": 3561280949810560000000,
+          "target_time_fs": 20788831710815
+        },
+        {
+          "source_time_fs": 3561280949873228000000,
+          "target_time_fs": 20851711273193
+        },
+        {
+          "source_time_fs": 3561280949935931000000,
+          "target_time_fs": 20914112091064
+        },
+        {
+          "source_time_fs": 3561280950005177000000,
+          "target_time_fs": 20990432739258
+        },
+        {
+          "source_time_fs": 3561280950078130000000,
+          "target_time_fs": 21058752059937
+        },
+        {
+          "source_time_fs": 3561280950142596000000,
+          "target_time_fs": 21120767593384
+        },
+        {
+          "source_time_fs": 3561280950204193000000,
+          "target_time_fs": 21181983947754
+        },
+        {
+          "source_time_fs": 3561280950264887000000,
+          "target_time_fs": 21242431640625
+        },
+        {
+          "source_time_fs": 3561280950326098000000,
+          "target_time_fs": 21303936004639
+        },
+        {
+          "source_time_fs": 3561280950387159000000,
+          "target_time_fs": 21364992141724
+        },
+        {
+          "source_time_fs": 3561280950448084000000,
+          "target_time_fs": 21425823211670
+        },
+        {
+          "source_time_fs": 3561280950511092000000,
+          "target_time_fs": 21490623474121
+        },
+        {
+          "source_time_fs": 3561280950575599000000,
+          "target_time_fs": 21554496765137
+        },
+        {
+          "source_time_fs": 3561280950637742000000,
+          "target_time_fs": 21615776062012
+        },
+        {
+          "source_time_fs": 3561280950699263000000,
+          "target_time_fs": 21677312850952
+        },
+        {
+          "source_time_fs": 3561280950761225000000,
+          "target_time_fs": 21739360809326
+        },
+        {
+          "source_time_fs": 3561280950823512000000,
+          "target_time_fs": 21801727294922
+        },
+        {
+          "source_time_fs": 3561280950885485000000,
+          "target_time_fs": 21863840103149
+        },
+        {
+          "source_time_fs": 3561280950946890000000,
+          "target_time_fs": 21924512863159
+        },
+        {
+          "source_time_fs": 3561280951019242000000,
+          "target_time_fs": 22004959106445
+        },
+        {
+          "source_time_fs": 3561280951089525000000,
+          "target_time_fs": 22067712783813
+        },
+        {
+          "source_time_fs": 3561280951151341000000,
+          "target_time_fs": 22129312515259
+        },
+        {
+          "source_time_fs": 3561280951212993000000,
+          "target_time_fs": 22190719604492
+        },
+        {
+          "source_time_fs": 3561280951274384000000,
+          "target_time_fs": 22252128601074
+        },
+        {
+          "source_time_fs": 3561280951335705000000,
+          "target_time_fs": 22313407897949
+        },
+        {
+          "source_time_fs": 3561280951396435000000,
+          "target_time_fs": 22374303817749
+        },
+        {
+          "source_time_fs": 3561280951457480000000,
+          "target_time_fs": 22435359954834
+        },
+        {
+          "source_time_fs": 3561280951518174000000,
+          "target_time_fs": 22495872497559
+        },
+        {
+          "source_time_fs": 3561280951579806000000,
+          "target_time_fs": 22557664871216
+        },
+        {
+          "source_time_fs": 3561280951640956000000,
+          "target_time_fs": 22618751525879
+        },
+        {
+          "source_time_fs": 3561280951702222000000,
+          "target_time_fs": 22680095672607
+        },
+        {
+          "source_time_fs": 3561280951763157000000,
+          "target_time_fs": 22740671157837
+        },
+        {
+          "source_time_fs": 3561280951823446000000,
+          "target_time_fs": 22801183700562
+        },
+        {
+          "source_time_fs": 3561280951884261000000,
+          "target_time_fs": 22862079620361
+        },
+        {
+          "source_time_fs": 3561280951944710000000,
+          "target_time_fs": 22922176361084
+        },
+        {
+          "source_time_fs": 3561280952017773000000,
+          "target_time_fs": 23003456115723
+        },
+        {
+          "source_time_fs": 3561280952088727000000,
+          "target_time_fs": 23066976547241
+        },
+        {
+          "source_time_fs": 3561280952150208000000,
+          "target_time_fs": 23128095626831
+        },
+        {
+          "source_time_fs": 3561280952211243000000,
+          "target_time_fs": 23188959121704
+        }
+      ],
+      "claimed_grade": "ORDERING_ONLY",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "-643809031",
+        "upper_error_fs": "15039405462"
+      },
+      "drift_bound_ppm": "698284.969760990",
+      "offset_fs": "-3561280929021862346752",
+      "provenance": {
+        "producer": "clock_alignment_probe.py",
+        "producer_version": "phase7-clock-probe-v1",
+        "source_content_ids": [
+          "619c423636a711592f0b42b31c2331958a62e5627bcc4e75b7e4e913a6664f67",
+          "35b9fc6131b48f8c61ace6e881b3df311ef636e68bc091d0636287597353f93a",
+          "43dfe0588648e4c451540568cd1ff4817cbebdb935f10d4f23a03efefe671398",
+          "473b0eb92e995d4883dfe280e8f66e55ab1cf8560dab512269807bdae8556dee"
+        ]
+      },
+      "residual_error_fs": "9502037951610",
+      "scale_denominator": "1",
+      "scale_numerator": "1",
+      "schema_version": "phase7-clock-alignment-evidence-v1",
+      "shortest_component_duration_fs": "15233000000",
+      "source_clock_id": "cpu_monotonic_fs",
+      "target_clock_id": "cuda_event_fs",
+      "transform_type": "AFFINE_RATIONAL",
+      "units": "femtoseconds for source/target calibration values",
+      "valid_time_range": {
+        "source_end_fs": "3561280952211243000000",
+        "source_start_fs": "3561280938602960000000"
+      }
+    },
+    {
+      "alignment_id": "CLK3",
+      "calibration_method": "nvidia-smi timestamp bracketed by host capture",
+      "calibration_points": [
+        {
+          "source_time_fs": 3561277869512903000000,
+          "target_time_fs": 1786466584062000128000000
+        },
+        {
+          "source_time_fs": 3561277910836097000000,
+          "target_time_fs": 1786466584104000000000000
+        },
+        {
+          "source_time_fs": 3561277949754395000000,
+          "target_time_fs": 1786466584142999808000000
+        },
+        {
+          "source_time_fs": 3561277988655435000000,
+          "target_time_fs": 1786466584180999936000000
+        },
+        {
+          "source_time_fs": 3561278027716282000000,
+          "target_time_fs": 1786466584220999936000000
+        },
+        {
+          "source_time_fs": 3561278067140911000000,
+          "target_time_fs": 1786466584260000000000000
+        },
+        {
+          "source_time_fs": 3561278106841095000000,
+          "target_time_fs": 1786466584299000064000000
+        },
+        {
+          "source_time_fs": 3561278145343312000000,
+          "target_time_fs": 1786466584339000064000000
+        },
+        {
+          "source_time_fs": 3561278183961638000000,
+          "target_time_fs": 1786466584376000000000000
+        },
+        {
+          "source_time_fs": 3561278223658617000000,
+          "target_time_fs": 1786466584416999936000000
+        },
+        {
+          "source_time_fs": 3561278262776040000000,
+          "target_time_fs": 1786466584454999808000000
+        },
+        {
+          "source_time_fs": 3561278301536114000000,
+          "target_time_fs": 1786466584493999872000000
+        },
+        {
+          "source_time_fs": 3561278340573627000000,
+          "target_time_fs": 1786466584532999936000000
+        },
+        {
+          "source_time_fs": 3561278379696726000000,
+          "target_time_fs": 1786466584572999936000000
+        },
+        {
+          "source_time_fs": 3561278417653854000000,
+          "target_time_fs": 1786466584611000064000000
+        },
+        {
+          "source_time_fs": 3561278453640560000000,
+          "target_time_fs": 1786466584645999872000000
+        },
+        {
+          "source_time_fs": 3561278490392988000000,
+          "target_time_fs": 1786466584684000000000000
+        },
+        {
+          "source_time_fs": 3561278528303402000000,
+          "target_time_fs": 1786466584720999936000000
+        },
+        {
+          "source_time_fs": 3561278565325043000000,
+          "target_time_fs": 1786466584757999872000000
+        },
+        {
+          "source_time_fs": 3561278603561273000000,
+          "target_time_fs": 1786466584796000000000000
+        },
+        {
+          "source_time_fs": 3561278642239933000000,
+          "target_time_fs": 1786466584835000064000000
+        },
+        {
+          "source_time_fs": 3561278680720710000000,
+          "target_time_fs": 1786466584872999936000000
+        },
+        {
+          "source_time_fs": 3561278719763497000000,
+          "target_time_fs": 1786466584913000192000000
+        },
+        {
+          "source_time_fs": 3561278757636171000000,
+          "target_time_fs": 1786466584948999936000000
+        },
+        {
+          "source_time_fs": 3561278795540924000000,
+          "target_time_fs": 1786466584987000064000000
+        },
+        {
+          "source_time_fs": 3561278841207044000000,
+          "target_time_fs": 1786466585032999936000000
+        },
+        {
+          "source_time_fs": 3561278892353523000000,
+          "target_time_fs": 1786466585083000064000000
+        },
+        {
+          "source_time_fs": 3561278943575675000000,
+          "target_time_fs": 1786466585134000128000000
+        },
+        {
+          "source_time_fs": 3561278995618261000000,
+          "target_time_fs": 1786466585186000128000000
+        },
+        {
+          "source_time_fs": 3561279046831051000000,
+          "target_time_fs": 1786466585237999872000000
+        },
+        {
+          "source_time_fs": 3561279099529977000000,
+          "target_time_fs": 1786466585289999872000000
+        },
+        {
+          "source_time_fs": 3561279152765986000000,
+          "target_time_fs": 1786466585344000000000000
+        },
+        {
+          "source_time_fs": 3561279204861001000000,
+          "target_time_fs": 1786466585396000000000000
+        },
+        {
+          "source_time_fs": 3561279257702271000000,
+          "target_time_fs": 1786466585448999936000000
+        },
+        {
+          "source_time_fs": 3561279310396493000000,
+          "target_time_fs": 1786466585502000128000000
+        },
+        {
+          "source_time_fs": 3561279363211833000000,
+          "target_time_fs": 1786466585552999936000000
+        },
+        {
+          "source_time_fs": 3561279415772904000000,
+          "target_time_fs": 1786466585607000064000000
+        },
+        {
+          "source_time_fs": 3561279469301681000000,
+          "target_time_fs": 1786466585657999872000000
+        },
+        {
+          "source_time_fs": 3561279522814244000000,
+          "target_time_fs": 1786466585713999872000000
+        },
+        {
+          "source_time_fs": 3561279573617139000000,
+          "target_time_fs": 1786466585765000192000000
+        },
+        {
+          "source_time_fs": 3561279624100576000000,
+          "target_time_fs": 1786466585816000000000000
+        },
+        {
+          "source_time_fs": 3561279675319732000000,
+          "target_time_fs": 1786466585865999872000000
+        },
+        {
+          "source_time_fs": 3561279726509833000000,
+          "target_time_fs": 1786466585917999872000000
+        },
+        {
+          "source_time_fs": 3561279777159364000000,
+          "target_time_fs": 1786466585969000192000000
+        },
+        {
+          "source_time_fs": 3561279828075684000000,
+          "target_time_fs": 1786466586020000000000000
+        },
+        {
+          "source_time_fs": 3561279878200478000000,
+          "target_time_fs": 1786466586068999936000000
+        },
+        {
+          "source_time_fs": 3561279927861622000000,
+          "target_time_fs": 1786466586119000064000000
+        },
+        {
+          "source_time_fs": 3561279978401296000000,
+          "target_time_fs": 1786466586168999936000000
+        },
+        {
+          "source_time_fs": 3561280028663344000000,
+          "target_time_fs": 1786466586220000000000000
+        },
+        {
+          "source_time_fs": 3561280079655853000000,
+          "target_time_fs": 1786466586269999872000000
+        },
+        {
+          "source_time_fs": 3561280131393147000000,
+          "target_time_fs": 1786466586323000064000000
+        },
+        {
+          "source_time_fs": 3561280181748347000000,
+          "target_time_fs": 1786466586372999936000000
+        },
+        {
+          "source_time_fs": 3561280232505025000000,
+          "target_time_fs": 1786466586424999936000000
+        },
+        {
+          "source_time_fs": 3561280283894367000000,
+          "target_time_fs": 1786466586476000000000000
+        },
+        {
+          "source_time_fs": 3561280334982221000000,
+          "target_time_fs": 1786466586527000064000000
+        },
+        {
+          "source_time_fs": 3561280386792082000000,
+          "target_time_fs": 1786466586578000128000000
+        },
+        {
+          "source_time_fs": 3561280437828158000000,
+          "target_time_fs": 1786466586630000128000000
+        },
+        {
+          "source_time_fs": 3561280488361920000000,
+          "target_time_fs": 1786466586678999808000000
+        },
+        {
+          "source_time_fs": 3561280539533010000000,
+          "target_time_fs": 1786466586731000064000000
+        },
+        {
+          "source_time_fs": 3561280591180099000000,
+          "target_time_fs": 1786466586782000128000000
+        },
+        {
+          "source_time_fs": 3561280641883206000000,
+          "target_time_fs": 1786466586832000000000000
+        },
+        {
+          "source_time_fs": 3561280692501914000000,
+          "target_time_fs": 1786466586884000000000000
+        },
+        {
+          "source_time_fs": 3561280743761156000000,
+          "target_time_fs": 1786466586934000128000000
+        },
+        {
+          "source_time_fs": 3561280794416401000000,
+          "target_time_fs": 1786466586984999936000000
+        }
+      ],
+      "claimed_grade": "AGGREGATE_ONLY",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "-1628042325880",
+        "upper_error_fs": "1851908199120"
+      },
+      "drift_bound_ppm": "650.855661153",
+      "offset_fs": "1782905306191605142650880",
+      "provenance": {
+        "producer": "clock_alignment_probe.py",
+        "producer_version": "phase7-clock-probe-v1",
+        "source_content_ids": [
+          "619c423636a711592f0b42b31c2331958a62e5627bcc4e75b7e4e913a6664f67",
+          "35b9fc6131b48f8c61ace6e881b3df311ef636e68bc091d0636287597353f93a",
+          "43dfe0588648e4c451540568cd1ff4817cbebdb935f10d4f23a03efefe671398",
+          "473b0eb92e995d4883dfe280e8f66e55ab1cf8560dab512269807bdae8556dee"
+        ]
+      },
+      "residual_error_fs": "2906951650880",
+      "scale_denominator": "1",
+      "scale_numerator": "1",
+      "schema_version": "phase7-clock-alignment-evidence-v1",
+      "shortest_component_duration_fs": "15233000000",
+      "source_clock_id": "cpu_monotonic_fs",
+      "target_clock_id": "nvml_wall_fs",
+      "transform_type": "AFFINE_RATIONAL",
+      "units": "femtoseconds for source/target calibration values",
+      "valid_time_range": {
+        "source_end_fs": "3561280794416401000000",
+        "source_start_fs": "3561277869512903000000"
+      }
+    },
+    {
+      "alignment_id": "CLK4",
+      "claimed_grade": "UNAVAILABLE",
+      "control_latency_requirement": "UNAVAILABLE_NOT_VALIDATED",
+      "provenance": {
+        "producer": "clock_alignment_probe.py",
+        "producer_version": "phase7-clock-probe-v1",
+        "source_content_ids": [
+          "619c423636a711592f0b42b31c2331958a62e5627bcc4e75b7e4e913a6664f67",
+          "35b9fc6131b48f8c61ace6e881b3df311ef636e68bc091d0636287597353f93a",
+          "43dfe0588648e4c451540568cd1ff4817cbebdb935f10d4f23a03efefe671398",
+          "473b0eb92e995d4883dfe280e8f66e55ab1cf8560dab512269807bdae8556dee"
+        ]
+      },
+      "reason": "support-processor target frequency and clock profile are not selected before calibration/DSE",
+      "schema_version": "phase7-clock-alignment-evidence-v1",
+      "source_clock_id": "profiler_or_cuda_fs",
+      "target_clock_id": "simulator_target_clock_unselected",
+      "transform_type": "UNAVAILABLE"
+    }
+  ],
+  "clk4_status": "UNAVAILABLE_NOT_VALIDATED",
+  "schema_version": "phase7-clock-alignment-set-v1",
+  "shortest_component_duration_fs": 15233000000
+}

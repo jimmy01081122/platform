@@ -1,0 +1,14 @@
+{
+  "blockers": [],
+  "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r6-20260726",
+  "ledger_sha256": "dd2b9d9f8217fd6b78c1ae8b6f6e52c94a45774919cb36f0b407b53762c3d984",
+  "role": "Model/Benchmark",
+  "schema_version": "moe-simulator-review-v1",
+  "verdict": "GO",
+  "verification_summary": [
+    "62/62 direct members and R1-R5 recursive history passed",
+    "R6 sealed run, validator and 43 tests passed",
+    "Event ordering changes caused no model, routing or calibration regression",
+    "Final active Phase 2 tree contained no bytecode"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session_ledger.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "ledger_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "member_count": {"minimum": 1, "type": "integer"},
+    "members": {"items": {"additionalProperties": false, "properties": {"path": {"type": "string"}, "sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"}, "size_bytes": {"minimum": 0, "type": "integer"}}, "required": ["path", "size_bytes", "sha256"], "type": "object"}, "minItems": 1, "type": "array"},
+    "schema_version": {"const": "moe-simulator-phase7-m0-session-ledger-v2"},
+    "session_id": {"type": "string"},
+    "terminal_outcome": {"enum": ["PASS", "FAIL", "INCOMPLETE"]},
+    "terminal_status": {"enum": ["M0_PASS_AUDITED", "M0_FAIL_IMMUTABLE_NO_RESUME", "M0_INCOMPLETE_IMMUTABLE_NO_RESUME"]}
+  },
+  "required": ["schema_version", "session_id", "terminal_outcome", "terminal_status", "member_count", "members", "ledger_sha256"],
+  "type": "object"
+}

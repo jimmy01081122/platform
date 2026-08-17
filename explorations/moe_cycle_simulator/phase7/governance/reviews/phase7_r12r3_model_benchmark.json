@@ -1,0 +1,36 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r3-20260802",
+  "source_commit_sha1": "d850648378bd2360fbb606c3714c0f378bd75ffe",
+  "source_tree_sha1": "0d01cf408f46e2533e3596694a1adb291aabf447",
+  "ledger_sha256": "924eb51b816a7b1da15ffa22e0bdf3828980c8a3b34a96ccfd6e48c4a9ad8f5e",
+  "member_count": 169,
+  "exact_set_verification": "PASS",
+  "archive_regression": "PASS_119_OF_119_CPU_MOCK",
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "MODEL-P7-R12R3-B1",
+      "location": "explorations/moe_cycle_simulator/phase7/application/validate_application.py:442",
+      "summary": "Execution-ready validation does not require the Gate M parent model-ledger and capacity-fixture hashes to equal the M0 runtime model hashes."
+    },
+    {
+      "id": "MODEL-P7-R12R3-B2",
+      "location": "explorations/moe_cycle_simulator/phase7/application/executor/qualify.py:127",
+      "summary": "The worker preserves unbound PYTHONPATH and records but does not bind the actual imported vLLM origin/hash back to the frozen installed-distribution ledger, allowing module shadowing."
+    },
+    {
+      "id": "MODEL-P7-R12R3-B3",
+      "location": "explorations/moe_cycle_simulator/phase7/application/executor/common.py:740",
+      "summary": "Model-ledger verification rebuilds from self-declared model identity without comparing it to the exact M0 Mixtral model ID and revision."
+    }
+  ],
+  "observations": [
+    "Static Mixtral model, revision, BF16, no-quantization, zero-offload and zero-swap fields are internally consistent.",
+    "Three fresh launches and the bounded 28672 plus 4096 token capacity contract are strictly represented.",
+    "The M0 claim excludes correctness, quality, throughput, latency, routing, calibration and platform qualification."
+  ],
+  "claim_boundary": "CPU/mock governance and clean-archive reproducibility only; actual model, loaded vLLM, GPU and capacity identities are not established.",
+  "authorized_next_stage": "CPU-only prospective repair and fresh same-hash review only.",
+  "gpu_authority": "NONE"
+}

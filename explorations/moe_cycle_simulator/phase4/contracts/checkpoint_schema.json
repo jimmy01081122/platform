@@ -1,0 +1,29 @@
+{
+  "schema_version": "phase4-checkpoint-v1",
+  "wire_magic": "moe-phase4-checkpoint-v1",
+  "wire_fields": [
+    "trace_count",
+    "terminal_status",
+    "canonical_body_byte_count",
+    "complete_canonical_body",
+    "canonical_body_sha256"
+  ],
+  "canonical_body_framing": "LENGTH_PREFIXED_TAGGED_COUNTED",
+  "restore_rule": "DETERMINISTIC_REACHABLE_PREFIX_AND_EXACT_BODY",
+  "trailing_bytes": "FORBIDDEN",
+  "checkpointable_state": [
+    "global_time",
+    "terminal_status",
+    "operation_states",
+    "active_reservations",
+    "completion_times",
+    "remaining_dependencies",
+    "future_arrivals",
+    "ready_queues",
+    "completion_queue",
+    "primary_busy_masks",
+    "shared_busy_mask",
+    "clock_cursor",
+    "schedule_result"
+  ]
+}

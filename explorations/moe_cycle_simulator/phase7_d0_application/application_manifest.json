@@ -1,0 +1,84 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-application-manifest-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r1",
+  "status": "FROZEN_READY_FOR_OWNER_REVIEW",
+  "application_identity_path": "application_identity.json",
+  "application_identity_sha256": "5470f9b8b0265e3a669c638e55bcaed028e409d61fba29cbeef2bbccfe8d4d6d",
+  "d0_contract_path": "d0_contract.json",
+  "known_hosts_path": "known_hosts.gputw",
+  "known_hosts_sha256": "b19c0603ac7cc77fa91ba455734a8783f3502535e0fbe0918813f3d676aa6ec2",
+  "ssh_argv_path": "ssh_argv.json",
+  "ssh_argv_sha256": "ed6b316dbab3018e2b23a9dcfbae7918d82097a4cd0adf49405419957613a90a",
+  "remote_payload_binding_path": "remote_payload_binding.json",
+  "remote_payload_sha256": "87b7da0f6acddcfe6b5bfe33c4e90ac49a57f3dea3701b980194a215a3d2bbf1",
+  "application_ledger_path": "application_ledger.sha256",
+  "checksums_path": "checksums.sha256",
+  "logical_path_mapping": {
+    "logical_known_hosts_path": "phase7/application/known_hosts.gputw",
+    "actual_overlay_path": "explorations/moe_cycle_simulator/phase7_d0_application/known_hosts.gputw",
+    "reason": "The historical phase7/application directory is part of immutable R12-R5 evidence; the fresh D0 overlay must not alter its application ledger."
+  },
+  "core_members": [
+    "D0_APPLICATION.md",
+    "application_identity.json",
+    "application_manifest.json",
+    "d0_contract.json",
+    "known_hosts.gputw",
+    "remote_payload_binding.json",
+    "schemas/d0_application.schema.json",
+    "ssh_argv.json",
+    "validate_d0_application.py"
+  ],
+  "governance_members_excluded_from_core_ledger": [
+    "approval_request.json",
+    "status.json",
+    "application_ledger.sha256",
+    "checksums.sha256"
+  ],
+  "frozen_execution_machinery": [
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/environment_probe.py",
+      "sha256": "87b7da0f6acddcfe6b5bfe33c4e90ac49a57f3dea3701b980194a215a3d2bbf1"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/disclosure_driver.py",
+      "sha256": "8f4cbfa8bdeb3c0e2208b1268981d9d226d69e9dfe005a0b04e810b0f8ac9bca"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/disclosure.py",
+      "sha256": "0aa09a215851c4312b7b5626555a64ef64af9669fde9be0fc27f65bdd615f352"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/process_tree.py",
+      "sha256": "4ba00f15843da2f28121cf56e105f9adb01ee188c517990f450404d3c53d32a7"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/authority.py",
+      "sha256": "7b4001de87f836b8551ea34253c3722f2afd9a6330fcd6ea624adb65e5d97ac7"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/package_ledger.py",
+      "sha256": "31137e6e08988c0a7379e00491cc96a8465d8476716761dec807f8e5d3f7e252"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/d0_finalize.py",
+      "sha256": "31ae48269ebae7bf0ba61814a89ab75e02839a03b506686558cb68460e455219"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/common.py",
+      "sha256": "f285fcddc433b51486d4162c9174ab2b600b37d07d8ac3e5e6201adf9a13e211"
+    },
+    {
+      "path": "explorations/moe_cycle_simulator/phase7/application/executor/allocation.py",
+      "sha256": "e10cf3465085f914d4e85e70c02b87fd090bccd429db4e69feae80b723ae945a"
+    }
+  ],
+  "side_effects": {
+    "ssh": false,
+    "provider_network_probe": false,
+    "instance_creation": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  }
+}

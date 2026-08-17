@@ -1,0 +1,134 @@
+{
+  "adaptive_refinement_decision": "DEFERRED_UNTIL_REQUIRED_HELD_OUT_POINTS_COMPLETE",
+  "claim_boundary": "FIT-only capacity replay result; no held-out, runtime-native, end-to-end speedup, CAL3 or hardware break-even claim.",
+  "fit_only_interpretation": "Demand H2D remains nonzero at every required FIT point through 99%; the all-resident zero-H2D boundary occurs only at the 100% control under the frozen empty-initial-cache LRU replay.",
+  "fit_points": [
+    {
+      "capacity_bytes": 22548578304,
+      "capacity_objects": 64,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 7295,
+      "fit_role": "FIT",
+      "h2d_bytes": 2570185605120,
+      "hit_count": 2881,
+      "immutable_discard_count": 7231,
+      "label": "025",
+      "total_h2d_cuda_elapsed_ms": 91121.09742164612
+    },
+    {
+      "capacity_bytes": 45097156608,
+      "capacity_objects": 128,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 4852,
+      "fit_role": "FIT",
+      "h2d_bytes": 1709464092672,
+      "hit_count": 5324,
+      "immutable_discard_count": 4724,
+      "label": "050",
+      "total_h2d_cuda_elapsed_ms": 60600.223269462585
+    },
+    {
+      "capacity_bytes": 67645734912,
+      "capacity_objects": 192,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 2329,
+      "fit_role": "FIT",
+      "h2d_bytes": 820556857344,
+      "hit_count": 7847,
+      "immutable_discard_count": 2137,
+      "label": "075",
+      "total_h2d_cuda_elapsed_ms": 29066.397554397583
+    },
+    {
+      "capacity_bytes": 71873593344,
+      "capacity_objects": 204,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 1850,
+      "fit_role": "FIT",
+      "h2d_bytes": 651794841600,
+      "hit_count": 8326,
+      "immutable_discard_count": 1646,
+      "label": "080",
+      "total_h2d_cuda_elapsed_ms": 23063.159061431885
+    },
+    {
+      "capacity_bytes": 76453773312,
+      "capacity_objects": 217,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 1324,
+      "fit_role": "FIT",
+      "h2d_bytes": 466473713664,
+      "hit_count": 8852,
+      "immutable_discard_count": 1107,
+      "label": "085",
+      "total_h2d_cuda_elapsed_ms": 16488.63403892517
+    },
+    {
+      "capacity_bytes": 81033953280,
+      "capacity_objects": 230,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 889,
+      "fit_role": "FIT",
+      "h2d_bytes": 313213845504,
+      "hit_count": 9287,
+      "immutable_discard_count": 659,
+      "label": "090",
+      "total_h2d_cuda_elapsed_ms": 11111.310248374939
+    },
+    {
+      "capacity_bytes": 85614133248,
+      "capacity_objects": 243,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 462,
+      "fit_role": "FIT",
+      "h2d_bytes": 162772549632,
+      "hit_count": 9714,
+      "immutable_discard_count": 219,
+      "label": "095",
+      "total_h2d_cuda_elapsed_ms": 5774.499808311462
+    },
+    {
+      "capacity_bytes": 89137348608,
+      "capacity_objects": 253,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 259,
+      "fit_role": "FIT",
+      "h2d_bytes": 91251277824,
+      "hit_count": 9917,
+      "immutable_discard_count": 6,
+      "label": "099",
+      "total_h2d_cuda_elapsed_ms": 3232.8438425064087
+    },
+    {
+      "capacity_bytes": 90194313216,
+      "capacity_objects": 256,
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 0,
+      "fit_role": "CONTROL",
+      "h2d_bytes": 0,
+      "hit_count": 10176,
+      "immutable_discard_count": 0,
+      "label": "100",
+      "total_h2d_cuda_elapsed_ms": 0.0
+    }
+  ],
+  "gates": {
+    "all_resident_control_zero_demand_h2d": true,
+    "capacity_monotonic": true,
+    "demand_load_count_strictly_decreases": true,
+    "held_out_untouched_before_review": true,
+    "measured_h2d_time_strictly_decreases": true,
+    "policy_trace_capacity_alignment_unchanged": true
+  },
+  "held_out_unlock": [
+    "0375",
+    "0625",
+    "0825",
+    "0875",
+    "0925",
+    "097"
+  ],
+  "reviewed_at_utc": "2026-08-14T03:19:51Z",
+  "schema_version": "phase7-off-e-pr3-fit-review-v1",
+  "status": "PASS"
+}

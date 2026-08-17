@@ -1,0 +1,24 @@
+{
+  "array_path": "routing/off-e-pr0-TRACE-ONLY__measured-01.npy",
+  "array_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+  "dtype": "uint8",
+  "excluded_trailing_sampled_token_count": 1,
+  "expected_forwarded_token_count": 159,
+  "experts_from_model_config": 8,
+  "input_token_count": 128,
+  "layers_from_model_config": 32,
+  "logical_request_id": "off-e-pr0-TRACE-ONLY__measured-01",
+  "maximum_expert_id": 7,
+  "minimum_expert_id": 0,
+  "output_token_count": 32,
+  "semantics": "per token that completed a model forward pass, actual model layer, top-k expert IDs; the final sampled output token is excluded because it is not forwarded again",
+  "shape": [
+    159,
+    32,
+    2
+  ],
+  "source_field": "vllm.CompletionOutput.routed_experts",
+  "top_k_from_model_config": 2,
+  "validation_errors": [],
+  "validation_status": "PASS"
+}

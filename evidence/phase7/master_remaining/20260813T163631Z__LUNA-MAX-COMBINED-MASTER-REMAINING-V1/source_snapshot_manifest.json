@@ -1,0 +1,69 @@
+{
+  "canonical_domain": {
+    "cpu_offload": false,
+    "eager": true,
+    "gpu": "single NVIDIA RTX PRO 6000 Workstation Edition 96 GB",
+    "kv": "BF16",
+    "max_num_seqs": 1,
+    "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "quantization": "none",
+    "revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "runtime": "vLLM",
+    "runtime_kv_swap": false,
+    "tp_pp_ep": "1/1/1",
+    "weights": "BF16"
+  },
+  "generated_at_utc": "2026-08-13T23:11:33.444919Z",
+  "historical_sources": {
+    "old_campaign_id": "20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1",
+    "old_execution_ledger": {
+      "path": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/execution_ledger.json",
+      "sha256": "b5aaa5e5e887809e4c474cf2c6f825bdf0d2293e41316ab5f140516323aab704"
+    },
+    "old_guard_attempt_sha256s": {
+      "path": "artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1/SHA256SUMS_ATTEMPT",
+      "sha256": "af322f9f187d1471381786b7feeb160bb5d464db29e96729fbf8548f5559e7ed"
+    }
+  },
+  "master_campaign_id": "20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1",
+  "new_host_observation": {
+    "driver": "595.71.05",
+    "endpoint": "pod-9ebe2f5c-81af-44c1-8fb0-a06bfd2d4f9c@ssh.gputw.ai:2222",
+    "full_weight_hash_scan": "DEFERRED_OUTSIDE_SENSITIVE_WINDOW",
+    "gpu_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "gpu_uuid": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521",
+    "hostname": "gpu-9ebe2f5c-81af-44c1-8fb0-a06bfd2d4f9c",
+    "serving_interference": "CLEAR_AT_LAST_READ_ONLY_PREFLIGHT",
+    "torch": "2.11.0+cu130",
+    "vllm": "0.23.0",
+    "vram_mib": 97887
+  },
+  "schema_version": "phase7-combined-master-source-snapshot-v1",
+  "source_documents": {
+    "combined_master_guide": {
+      "path": "docs/status/MOE_SIMULATOR_PHASE7_LUNA_MAX_COMBINED_MASTER_REMAINING_LEDGER_GUIDE.md",
+      "sha256": "7f56430bc231f27fc573f207ce40f1b5214bcd815a63f37e03cc1e498a7edf17"
+    },
+    "execution_guidance": {
+      "path": "docs/status/MOE_SIMULATOR_PHASE7_LUNA_MAX_TEST_EXECUTION_GUIDANCE_PROMPT.md",
+      "sha256": "ed4cfa40029167c080397190273fedf3394aa9e9ed5d624e70f8dd7c5bc9f814"
+    },
+    "new_session_handoff": {
+      "path": "docs/status/MOE_SIMULATOR_PHASE7_LUNA_MAX_NEW_SESSION_HANDOFF_AFTER_SERV_P0_25_20260813.md",
+      "sha256": "d29a723ab82c6facd1e29d9982313d5c3e6cadfc9a8b3c6982716ee7dbb878bf"
+    },
+    "real_run_matrix": {
+      "path": "docs/status/MOE_SIMULATOR_PHASE7_GOAL_REAL_RUN_FLOW_AND_TEST_MATRIX.md",
+      "sha256": "8f2139e2f0cffb8acf86de0d52d9a0725bd38256a9447651f225c46c080a168b"
+    },
+    "rtx_patch": {
+      "path": "docs/status/MOE_SIMULATOR_PHASE7_SINGLE_RTX_PRO_6000_EXPERIMENT_PATCH.md",
+      "sha256": "1aaf3b9a89c60bbfda8c250c20e9f9235c5a8ea87acb794168d159aba9583e47"
+    },
+    "special_mechanism": {
+      "path": "docs/status/MOE_SIMULATOR_PHASE7_LUNA_MAX_SPECIAL_MECHANISM_TRACE_CLOSURE_GOAL_PROMPT_20260813.md",
+      "sha256": "4e11fef9c0cbd05a3886fec6f33429f92f502440c754c78b10227b3e2958cdf0"
+    }
+  },
+  "source_drift_detected": false
+}

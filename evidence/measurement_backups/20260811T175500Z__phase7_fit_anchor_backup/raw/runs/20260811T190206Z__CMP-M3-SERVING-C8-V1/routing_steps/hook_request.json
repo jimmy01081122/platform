@@ -1,0 +1,7 @@
+{
+  "expected_kernel_correlation": false,
+  "experiment_id": "CMP-M3-SERVING-C8-V1",
+  "hook_revision": "sitecustomize-v2",
+  "runtime_class": "SERVING_VARIANT",
+  "schema_version": "phase7-serving-routing-step-hook-request-v1"
+}

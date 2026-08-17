@@ -1,0 +1,44 @@
+{
+  "actual_compute_end_monotonic_ns": 3770218680084713,
+  "actual_compute_start_monotonic_ns": 3770218608696344,
+  "all_resident_control": true,
+  "allclose_rtol_1e-3_atol_1e-3": true,
+  "call_index": 1,
+  "d2h_writeback_bytes": 0,
+  "dependency_lineage": [
+    "hidden_states_ready",
+    "router_logits_ready",
+    "top2_policy_decision",
+    "expert_compute_start",
+    "expert_compute_end",
+    "completion_visible"
+  ],
+  "exact_equal": true,
+  "h2d_bytes": 0,
+  "hidden_dtype": "torch.bfloat16",
+  "hidden_shape": [
+    256,
+    4096
+  ],
+  "immutable_eviction_count": 0,
+  "max_abs_error": 0.0,
+  "mean_abs_error": 0.0,
+  "module_type": "vllm.model_executor.layers.fused_moe.layer.FusedMoE",
+  "output_dtype": "torch.bfloat16",
+  "output_shape": [
+    256,
+    4096
+  ],
+  "replay_compute_end_monotonic_ns": 3770218682334833,
+  "replay_compute_start_monotonic_ns": 3770218680093179,
+  "route_decision_count": 512,
+  "route_decision_top_k": 2,
+  "router_dtype": "torch.bfloat16",
+  "router_shape": [
+    256,
+    8
+  ],
+  "schema_version": "phase7-off-e-pr0-actual-compute-replay-v1",
+  "tensor_file": "expert_replay_tensors.pt",
+  "tensor_file_sha256": "fb9511003476e86124eed33ab193043b7e182187c12c06db815c71081ec0cda1"
+}

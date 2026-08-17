@@ -1,0 +1,44 @@
+{
+  "schema_version": "moe-simulator-semantic-hash-v1",
+  "hash_algorithm": "SHA-256",
+  "text_encoding": "UTF-8",
+  "unicode_normalization": "NFC",
+  "json": {
+    "object_key_order": "normalized UTF-8 byte lexicographic",
+    "separators": [",", ":"],
+    "floats": "forbidden",
+    "integers": "minimal base-10 JSON integer",
+    "rational_values": "object with normalized decimal-string numerator and positive denominator",
+    "negative_zero": "forbidden",
+    "null": "JSON null",
+    "arrays": "order preserving",
+    "duplicate_object_keys": "reject"
+  },
+  "dataset": {
+    "schema_fingerprint": "SHA-256 of canonical schema descriptor",
+    "primary_key": "schema-declared ordered field list",
+    "duplicate_primary_key": "reject",
+    "row_order": "canonical primary-key byte order",
+    "row_hash": "SHA256(UTF8('moe-row-v1\\u0000') || schema_fingerprint_bytes || UTF8('\\u0000') || canonical_row_bytes)",
+    "aggregate_hash": "SHA256(UTF8('moe-dataset-v1\\u0000') || schema_fingerprint_bytes || concatenated_binary_row_hashes)"
+  },
+  "arrow": {
+    "semantic_input": "logical rows after schema-controlled scalar conversion",
+    "ipc_bytes_are_semantic": false,
+    "bound_schema_fields": [
+      "schema_id",
+      "schema_version",
+      "field_order",
+      "logical_types",
+      "nullability",
+      "units",
+      "semantic_metadata"
+    ],
+    "ignored_physical_layout": [
+      "record_batch_chunking",
+      "IPC_compression",
+      "dictionary_encoding"
+    ],
+    "required_equivalence": "JSON and Arrow representations of the same bound logical rows have the same aggregate hash"
+  }
+}

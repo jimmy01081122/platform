@@ -1,0 +1,63 @@
+{
+  "schema_version": "phase5-routing-residency-policy-v1",
+  "execution_mode": "TRACE_COMPILED_NON_ADAPTIVE",
+  "execution_scope": "CPU_SYNTHETIC_ONLY",
+  "scheduler": {
+    "authority": "Phase4 SingleGpuModel",
+    "run_count": 1,
+    "runtime_callbacks": false,
+    "dynamic_admission": false,
+    "compiler_predicts_runtime_timing_or_lanes": false
+  },
+  "routing_input": {
+    "granularity": "TOKEN_ONLY",
+    "aggregate_routing_accepted": false,
+    "routing_weights_modeled": false,
+    "selected_expert_ids_and_top_k": "HASH_BOUND_FROZEN_TOKEN_INPUT",
+    "provenance_required": true
+  },
+  "capacity": {
+    "unit": "bytes",
+    "total_capacity_bytes": "required",
+    "reserved_nonexpert_bytes": "required",
+    "invariant": "reserved_nonexpert_bytes + expert_resident_bytes <= total_capacity_bytes",
+    "expert_bytes_source": "frozen expert catalog"
+  },
+  "prefetch_hint": {
+    "arrival_identity": "complete EventKey",
+    "hash_bound": true,
+    "must_strictly_precede_target": true,
+    "must_select_target_expert": true,
+    "future_oracle": false
+  },
+  "eviction": {
+    "state": "CLEAN_IMMUTABLE",
+    "writeback": false
+  },
+  "policies": {
+    "prefetch": ["OFF", "HINT"],
+    "eviction": ["LRU", "FIFO"]
+  },
+  "action_dag": [
+    "HINT_BARRIER",
+    "ROUTE_BARRIER",
+    "CLEAN_EVICT",
+    "H2D_LOAD",
+    "COMPUTE_ASSIGNMENT"
+  ],
+  "invariants": [
+    "selected expert identity and top_k are frozen inputs",
+    "clean eviction is an explicit MEMORY operation",
+    "load is an explicit H2D operation",
+    "assignment is an explicit COMPUTE operation",
+    "victims never intersect the active required expert set",
+    "resident bytes never exceed configured capacity",
+    "every selected expert has exactly one assignment",
+    "postprocessing replays the complete Phase4 trace fail-closed"
+  ],
+  "postprocess_repair": false,
+  "fidelity": "FUNCTIONAL_ONLY",
+  "range_status": "RANGE_UNKNOWN",
+  "calibration_pass": false,
+  "gpu_authority": "NONE"
+}

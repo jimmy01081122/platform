@@ -1,0 +1,46 @@
+{
+  "schema_version": "canonical-ir-schema-evolution-v1",
+  "current_major": 1,
+  "unknown_major": "REJECT",
+  "unknown_minor": "REJECT",
+  "extra_field": "REJECT",
+  "missing_field": "REJECT",
+  "implicit_default": "FORBIDDEN",
+  "exact_integer_abi": {
+    "unsigned_decimal_string_max_bits": 128,
+    "signed_decimal_string_max_bits": 128,
+    "schema_driven_validation": true,
+    "floating_point_exact_fields": "FORBIDDEN"
+  },
+  "embedded_auxiliary_contracts": {
+    "runtime_variant": {
+      "identity": "variant_id",
+      "manifest_required": true,
+      "validator": "Phase 0 strict runtime_variant contract"
+    },
+    "calibration_profile": {
+      "identity": "domain-separated canonical semantic SHA-256",
+      "manifest_required_when_referenced": true,
+      "unreferenced_manifest": "REJECT"
+    },
+    "event_order": {
+      "identity": "Phase 0 seven-field event tie key",
+      "missing_token_index": "null maps to unsigned 64-bit maximum sentinel",
+      "missing_layer_index": "null maps to unsigned 32-bit maximum sentinel",
+      "priority_registry": "event_priorities.json",
+      "unknown_or_mismatched_priority": "REJECT"
+    }
+  },
+  "upgrade_contract": {
+    "implementation": "versioned pure function",
+    "required_bindings": [
+      "source_file_sha256",
+      "source_semantic_root",
+      "source_schema_version",
+      "target_schema_version",
+      "upgrader_build_hash",
+      "output_semantic_root"
+    ],
+    "in_place_reinterpretation": "FORBIDDEN"
+  }
+}

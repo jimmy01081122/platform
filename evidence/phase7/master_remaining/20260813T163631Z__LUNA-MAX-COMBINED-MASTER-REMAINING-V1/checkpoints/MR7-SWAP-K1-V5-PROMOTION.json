@@ -1,0 +1,12 @@
+{
+  "checkpoint_id": "MR7-SWAP-K1-V5-PROMOTION",
+  "derived_sidecar_sha256": "522c992b94e731f6fa58e341d07fe0636b1724f61dece60ade89fedc16cf9c0d",
+  "execution_ledger_sha256": "8c179edb14efd028407d3e9eac3e02cf4e325e9e174177bd8a3f4cefedba65c3",
+  "next_ready_gpu_unit": "SWAP-K2",
+  "raw_file_set_sha256": "3f03ff125785b108dc658be2fda17816f6a2f4d01f8f21d92b7b7e61a5dacd9e",
+  "remaining_ledger_sha256": "39d81552387337ec983bda1cb677e57beeb6538249dda56746a5b158bfa1deb1",
+  "required_closed_count": 12,
+  "required_remaining_count": 274,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T00:40:53Z"
+}

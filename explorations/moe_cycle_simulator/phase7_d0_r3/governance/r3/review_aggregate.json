@@ -1,0 +1,36 @@
+{
+  "schema_version": "phase7-gputw-d0-r3/review-aggregate/v1",
+  "candidate_identity": {
+    "candidate_id": "moe-simulator-phase7-gputw-d0-r3-0d05c23",
+    "reviewed_commit": "0d05c23d1fb78e852f8a404b5a61c9086863a18e",
+    "reviewed_tree": "433108ece0624443bb1f6c1f5c2b9ab6443a991a",
+    "candidate_member_count": 22,
+    "candidate_ledger_sha256": "df2f5ec6726e0b6df09ae27cbcc49f98e2596dcd060b827e04f61991bc4ee245"
+  },
+  "reviewer_verdicts": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "MODIFY",
+    "Trace/Provenance": "MODIFY"
+  },
+  "verdict": "MODIFY/MODIFY/MODIFY",
+  "identity_equality": "PASS",
+  "cpu_evidence_replay": "PASS",
+  "clean_archive_replay": "PASS",
+  "historical_integrity": "PASS",
+  "blocking_finding_count_by_role": {
+    "Architecture/System": 4,
+    "Model/Benchmark": 1,
+    "Trace/Provenance": 6
+  },
+  "execution_authority": {
+    "d0_execution": "NOT_AUTHORIZED",
+    "ssh": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE"
+  },
+  "next_legal_action": "CPU_ONLY_D0_R4_REMEDIATION_AND_FRESH_SAME_HASH_REVIEW",
+  "prospective_owner_boundary": "owner_r4_planning_boundary.json",
+  "claim_boundary": "This records an unsuccessful CPU-only same-hash review. It is not a D0, SSH, Gate M, M0 or GPU approval and makes no live runtime, model, capacity or performance claim.",
+  "side_effects": false
+}

@@ -1,0 +1,202 @@
+{
+  "adaptive_refinement": {
+    "reason": "All six frozen held-out anchors fell in strict monotonic order between neighboring fit anchors; no anomaly or ordering inversion requires a refinement child.",
+    "state": "NOT_TRIGGERED_WITH_EVIDENCE"
+  },
+  "claim_boundary": "Complete trace-driven GPU policy replay capacity curve only; not runtime-native residency, end-to-end speedup, CAL3 ranking, software comparison or hardware break-even.",
+  "gates": {
+    "all_15_atomic_children_legally_closed": true,
+    "capacity_strictly_increases": true,
+    "control_zero_demand_h2d": true,
+    "fit_review_preceded_held_out_execution": true,
+    "load_count_strictly_decreases": true,
+    "measured_h2d_time_strictly_decreases": true,
+    "output_routing_dependency_and_byte_gates_all_pass": true
+  },
+  "points": [
+    {
+      "capacity_bytes": 22548578304,
+      "capacity_objects": 64,
+      "cell_id": "OFF-E-PR3-CAP-025",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 7295,
+      "fit_role": "FIT",
+      "h2d_bytes": 2570185605120,
+      "hit_count": 2881,
+      "immutable_discard_count": 7231,
+      "total_h2d_cuda_elapsed_ms": 91121.09742164612
+    },
+    {
+      "capacity_bytes": 33822867456,
+      "capacity_objects": 96,
+      "cell_id": "OFF-E-PR3-CAP-0375",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 6620,
+      "fit_role": "HELD_OUT",
+      "h2d_bytes": 2332368568320,
+      "hit_count": 3556,
+      "immutable_discard_count": 6524,
+      "total_h2d_cuda_elapsed_ms": 82599.70801258087
+    },
+    {
+      "capacity_bytes": 45097156608,
+      "capacity_objects": 128,
+      "cell_id": "OFF-E-PR3-CAP-050",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 4852,
+      "fit_role": "FIT",
+      "h2d_bytes": 1709464092672,
+      "hit_count": 5324,
+      "immutable_discard_count": 4724,
+      "total_h2d_cuda_elapsed_ms": 60600.223269462585
+    },
+    {
+      "capacity_bytes": 56371445760,
+      "capacity_objects": 160,
+      "cell_id": "OFF-E-PR3-CAP-0625",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 3485,
+      "fit_role": "HELD_OUT",
+      "h2d_bytes": 1227840552960,
+      "hit_count": 6691,
+      "immutable_discard_count": 3325,
+      "total_h2d_cuda_elapsed_ms": 43520.62023353577
+    },
+    {
+      "capacity_bytes": 67645734912,
+      "capacity_objects": 192,
+      "cell_id": "OFF-E-PR3-CAP-075",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 2329,
+      "fit_role": "FIT",
+      "h2d_bytes": 820556857344,
+      "hit_count": 7847,
+      "immutable_discard_count": 2137,
+      "total_h2d_cuda_elapsed_ms": 29066.397554397583
+    },
+    {
+      "capacity_bytes": 71873593344,
+      "capacity_objects": 204,
+      "cell_id": "OFF-E-PR3-CAP-080",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 1850,
+      "fit_role": "FIT",
+      "h2d_bytes": 651794841600,
+      "hit_count": 8326,
+      "immutable_discard_count": 1646,
+      "total_h2d_cuda_elapsed_ms": 23063.159061431885
+    },
+    {
+      "capacity_bytes": 74339844096,
+      "capacity_objects": 211,
+      "cell_id": "OFF-E-PR3-CAP-0825",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 1549,
+      "fit_role": "HELD_OUT",
+      "h2d_bytes": 545746059264,
+      "hit_count": 8627,
+      "immutable_discard_count": 1338,
+      "total_h2d_cuda_elapsed_ms": 19348.159316062927
+    },
+    {
+      "capacity_bytes": 76453773312,
+      "capacity_objects": 217,
+      "cell_id": "OFF-E-PR3-CAP-085",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 1324,
+      "fit_role": "FIT",
+      "h2d_bytes": 466473713664,
+      "hit_count": 8852,
+      "immutable_discard_count": 1107,
+      "total_h2d_cuda_elapsed_ms": 16488.63403892517
+    },
+    {
+      "capacity_bytes": 78920024064,
+      "capacity_objects": 224,
+      "cell_id": "OFF-E-PR3-CAP-0875",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 1124,
+      "fit_role": "HELD_OUT",
+      "h2d_bytes": 396009406464,
+      "hit_count": 9052,
+      "immutable_discard_count": 900,
+      "total_h2d_cuda_elapsed_ms": 14023.180710792542
+    },
+    {
+      "capacity_bytes": 81033953280,
+      "capacity_objects": 230,
+      "cell_id": "OFF-E-PR3-CAP-090",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 889,
+      "fit_role": "FIT",
+      "h2d_bytes": 313213845504,
+      "hit_count": 9287,
+      "immutable_discard_count": 659,
+      "total_h2d_cuda_elapsed_ms": 11111.310248374939
+    },
+    {
+      "capacity_bytes": 83147882496,
+      "capacity_objects": 236,
+      "cell_id": "OFF-E-PR3-CAP-0925",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 665,
+      "fit_role": "HELD_OUT",
+      "h2d_bytes": 234293821440,
+      "hit_count": 9511,
+      "immutable_discard_count": 429,
+      "total_h2d_cuda_elapsed_ms": 8308.386083602905
+    },
+    {
+      "capacity_bytes": 85614133248,
+      "capacity_objects": 243,
+      "cell_id": "OFF-E-PR3-CAP-095",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 462,
+      "fit_role": "FIT",
+      "h2d_bytes": 162772549632,
+      "hit_count": 9714,
+      "immutable_discard_count": 219,
+      "total_h2d_cuda_elapsed_ms": 5774.499808311462
+    },
+    {
+      "capacity_bytes": 87375740928,
+      "capacity_objects": 248,
+      "cell_id": "OFF-E-PR3-CAP-097",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 361,
+      "fit_role": "HELD_OUT",
+      "h2d_bytes": 127188074496,
+      "hit_count": 9815,
+      "immutable_discard_count": 113,
+      "total_h2d_cuda_elapsed_ms": 4509.744923591614
+    },
+    {
+      "capacity_bytes": 89137348608,
+      "capacity_objects": 253,
+      "cell_id": "OFF-E-PR3-CAP-099",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 259,
+      "fit_role": "FIT",
+      "h2d_bytes": 91251277824,
+      "hit_count": 9917,
+      "immutable_discard_count": 6,
+      "total_h2d_cuda_elapsed_ms": 3232.8438425064087
+    },
+    {
+      "capacity_bytes": 90194313216,
+      "capacity_objects": 256,
+      "cell_id": "OFF-E-PR3-CAP-100",
+      "d2h_writeback_bytes": 0,
+      "demand_load_count": 0,
+      "fit_role": "CONTROL",
+      "h2d_bytes": 0,
+      "hit_count": 10176,
+      "immutable_discard_count": 0,
+      "total_h2d_cuda_elapsed_ms": 0.0
+    }
+  ],
+  "reviewed_at_utc": "2026-08-14T03:31:01Z",
+  "schema_version": "phase7-off-e-pr3-composite-review-v1",
+  "scientific_result": "Under the frozen empty-initial-cache LRU replay, every sub-100% capacity incurs nonzero demand H2D; the separately defined 100% all-resident control incurs zero demand H2D.",
+  "status": "PASS"
+}

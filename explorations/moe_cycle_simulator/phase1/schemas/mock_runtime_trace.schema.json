@@ -1,0 +1,254 @@
+{
+  "$id": "https://example.invalid/moe-simulator/mock-runtime-trace-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "evidence_class": {
+      "const": "synthetic-cpu-mock"
+    },
+    "fixture_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "producer": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "raw_events": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "type": "object"
+          },
+          "correlation_id": {
+            "type": "string"
+          },
+          "dependencies": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "event_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "layer_index": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "rank": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "request_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "shape": {
+            "enum": [
+              "request",
+              "tokenization",
+              "allocator",
+              "copy",
+              "kernel",
+              "router",
+              "collective",
+              "p2p",
+              "kernel_complete",
+              "telemetry"
+            ]
+          },
+          "source_clock_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_timestamp": {
+            "pattern": "^(0|[1-9][0-9]*)$",
+            "type": "string"
+          },
+          "stream_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "token_index": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "event_id",
+          "shape",
+          "source_clock_id",
+          "source_timestamp",
+          "request_id",
+          "token_index",
+          "layer_index",
+          "rank",
+          "stream_id",
+          "correlation_id",
+          "dependencies",
+          "attributes"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "routing": {
+      "additionalProperties": false,
+      "properties": {
+        "ambiguity_set": {
+          "items": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "canonical_scores": {
+          "items": {
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "k_boundary_score": {
+          "type": "string"
+        },
+        "layer_index": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "num_experts": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "request_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "score_dtype": {
+          "enum": [
+            "float16",
+            "bfloat16",
+            "float32",
+            "float64"
+          ]
+        },
+        "score_tolerance_absolute": {
+          "type": "string"
+        },
+        "score_tolerance_relative": {
+          "type": "string"
+        },
+        "selected_experts": {
+          "items": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "token_index": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "top_k": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "request_id",
+        "token_index",
+        "layer_index",
+        "num_experts",
+        "top_k",
+        "canonical_scores",
+        "score_dtype",
+        "score_tolerance_absolute",
+        "score_tolerance_relative",
+        "selected_experts",
+        "k_boundary_score",
+        "ambiguity_set"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "moe-simulator-mock-runtime-trace-v1"
+    },
+    "source_clocks": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "clock_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "offset_fs": {
+            "pattern": "^-?(0|[1-9][0-9]*)$",
+            "type": "string"
+          },
+          "rank": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "scale_denominator": {
+            "pattern": "^[1-9][0-9]*$",
+            "type": "string"
+          },
+          "scale_numerator": {
+            "pattern": "^[1-9][0-9]*$",
+            "type": "string"
+          },
+          "unit": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "clock_id",
+          "unit",
+          "rank",
+          "scale_numerator",
+          "scale_denominator",
+          "offset_fs"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "fixture_id",
+    "evidence_class",
+    "producer",
+    "source_clocks",
+    "raw_events",
+    "routing"
+  ],
+  "type": "object"
+}

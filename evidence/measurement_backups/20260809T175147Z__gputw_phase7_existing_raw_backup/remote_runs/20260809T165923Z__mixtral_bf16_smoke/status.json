@@ -1,0 +1,10 @@
+{
+  "exception": "Engine core initialization failed. See root cause above. Failed core proc(s): {'EngineCore': 1}",
+  "exception_type": "RuntimeError",
+  "expected_repo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "expected_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "failed_at_utc": "2026-08-09T17:02:51.014744Z",
+  "model_dir": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "started_at_utc": "2026-08-09T17:02:34.644564Z",
+  "state": "MODEL_SMOKE_TEST_FAIL"
+}

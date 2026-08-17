@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator/bridge-v1",
+  "title": "Clock-domain crossing bridge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "bridge_id", "source_clock_id", "target_clock_id",
+    "protocol", "forward_latency_fs", "reverse_latency_fs",
+    "receiver_sync_cycles", "ack_sync_cycles", "queue_capacity",
+    "backpressure_policy"
+  ],
+  "properties": {
+    "schema_version": {"const": "bridge-v1"},
+    "bridge_id": {"type": "string", "minLength": 1},
+    "source_clock_id": {"type": "string", "minLength": 1},
+    "target_clock_id": {"type": "string", "minLength": 1},
+    "protocol": {"enum": ["ONE_WAY", "REQUEST_ACK", "CREDIT"]},
+    "forward_latency_fs": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "reverse_latency_fs": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "receiver_sync_cycles": {"type": "integer", "minimum": 0},
+    "ack_sync_cycles": {"type": "integer", "minimum": 0},
+    "queue_capacity": {"type": "integer", "minimum": 1},
+    "backpressure_policy": {"enum": ["STALL_SOURCE", "REJECT", "CREDIT_BLOCK"]}
+  }
+}

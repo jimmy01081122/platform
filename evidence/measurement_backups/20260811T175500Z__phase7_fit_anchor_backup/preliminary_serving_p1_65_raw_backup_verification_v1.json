@@ -1,0 +1,14 @@
+{
+  "expected_raw_file_count": 9,
+  "local_log": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/logs/SERV-P1-65-SHORT-C8-NATURAL-EXT10K-V1.log",
+  "local_log_exists": true,
+  "local_run_dir": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260811T213347Z__SERV-P1-65-SHORT-C8-NATURAL-EXT10K-V1",
+  "local_run_dir_exists": true,
+  "missing_expected_raw_files": [],
+  "recursive_scp_run_returncode": 0,
+  "schema_version": "phase7-serving-raw-backup-verification-v1",
+  "scp_log_returncode": 0,
+  "state": "REVIEW_COMPLETE_WITH_FAILURE",
+  "state_path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_serving_p1_65_extension_monitor_state.json",
+  "status": "PASS"
+}

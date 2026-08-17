@@ -1,0 +1,2261 @@
+{
+  "adoption_allowed": false,
+  "checks": [
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "component.manifest_status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "name": "component.measurement_class",
+      "observed": "CHECKPOINT_BACKED_COMPONENT_PROBE",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "component.not_end_to_end_flag",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "32/8/2",
+      "name": "component.model_dimensions",
+      "observed": {
+        "hidden_size": 4096,
+        "intermediate_size": 14336,
+        "num_attention_heads": 32,
+        "num_experts_per_tok": 2,
+        "num_hidden_layers": 32,
+        "num_key_value_heads": 8,
+        "num_local_experts": 8,
+        "torch_dtype": "bfloat16"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "five-dimensional attention coordinate",
+      "name": "component.attention_coordinate_schema",
+      "observed": "query/chunk length x past-KV length x active sequences/batch x phase x KV fragmentation",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "exact matrix for families ['CMP-A']",
+      "name": "component.expected_point_set",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "unique",
+      "name": "component.no_duplicate_ids",
+      "observed": 20,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 24,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 8805.055467795124,
+        "ci95_halfwidth_over_median": 0.048404957932728934,
+        "ci_rule_stable": true,
+        "count": 24,
+        "max": 287872.0,
+        "mean": 188342.66666666666,
+        "median": 181904.0,
+        "min": 179040.0,
+        "stddev": 22008.0541357154
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 1048576,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 128,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 128
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 1733.3240616449461,
+        "ci95_halfwidth_over_median": 0.0026070355165040463,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 671488.0,
+        "mean": 664963.2,
+        "median": 664864.0,
+        "min": 661952.0,
+        "stddev": 2796.5571214143533
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 16777216,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 2048,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 2048
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2527.398104751999,
+        "ci95_halfwidth_over_median": 0.0007446629906140687,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 3403552.0,
+        "mean": 3394947.2,
+        "median": 3394016.0,
+        "min": 3389280.0,
+        "stddev": 4077.721716841403
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 67108864,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 8192,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 8192
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 27266.341374718922,
+        "ci95_halfwidth_over_median": 0.002890044171006617,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 9564256.0,
+        "mean": 9446793.6,
+        "median": 9434576.0,
+        "min": 9416576.0,
+        "stddev": 43991.705206019615
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 134217728,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 16384,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 16384
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 186445.5617538809,
+        "ci95_halfwidth_over_median": 0.009898589562289076,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 19187201.0,
+        "mean": 18846262.3,
+        "median": 18835568.5,
+        "min": 18462591.0,
+        "stddev": 300812.56876114366
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 201326592,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 24576,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 24576
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 259006.56126348476,
+        "ci95_halfwidth_over_median": 0.008652004893953902,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 30055584.0,
+        "mean": 29722409.7,
+        "median": 29936016.5,
+        "min": 28940672.0,
+        "stddev": 417882.9910819136
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 260046848,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 31744,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 31744
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4303.730135182735,
+        "ci95_halfwidth_over_median": 0.019044401971744614,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 243392.0,
+        "mean": 229104.0,
+        "median": 225984.0,
+        "min": 223616.0,
+        "stddev": 6943.668194837654
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 4194304,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 512,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 512
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2407.0283964386917,
+        "ci95_halfwidth_over_median": 0.0017382178071985283,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 1396384.0,
+        "mean": 1386080.0,
+        "median": 1384768.0,
+        "min": 1382528.0,
+        "stddev": 3883.516390535201
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 33554432,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 4096,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 4096
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 2305.106721256186,
+        "ci95_halfwidth_over_median": 0.00036920459254132117,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 6247936.0,
+        "mean": 6242697.6,
+        "median": 6243440.0,
+        "min": 6236480.0,
+        "stddev": 3719.075249455315
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 100663296,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 12288,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 12288
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 229603.89472816806,
+        "ci95_halfwidth_over_median": 0.009201451757996228,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 25135744.0,
+        "mean": 24787942.4,
+        "median": 24953007.5,
+        "min": 24140896.0,
+        "stddev": 370444.5239727236
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 0,
+        "query_input_bytes": 234881024,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 28672,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 0,
+        "phase": "prefill",
+        "query_length": 28672
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3833.3637575734097,
+        "ci95_halfwidth_over_median": 0.020254056543100692,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 206560.0,
+        "mean": 191443.2,
+        "median": 189264.0,
+        "min": 185792.0,
+        "stddev": 6184.775802996688
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 2097152,
+        "query_input_bytes": 8192,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 1,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 512,
+        "phase": "decode",
+        "query_length": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4164.6038018720465,
+        "ci95_halfwidth_over_median": 0.019423008552869405,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 228960.0,
+        "mean": 215142.4,
+        "median": 214416.0,
+        "min": 207840.0,
+        "stddev": 6719.200799036875
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 67108864,
+        "query_input_bytes": 32768,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 4,
+        "batch_size": 4,
+        "chunk_length": 1,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 4096,
+        "phase": "decode",
+        "query_length": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3337.6732159605504,
+        "ci95_halfwidth_over_median": 0.0174476895280641,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 205632.0,
+        "mean": 193209.6,
+        "median": 191296.0,
+        "min": 187616.0,
+        "stddev": 5385.025228456327
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 67108864,
+        "query_input_bytes": 8192,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 1,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 16384,
+        "phase": "decode",
+        "query_length": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3646.238346788768,
+        "ci95_halfwidth_over_median": 0.005964767226987856,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 628384.0,
+        "mean": 613603.2,
+        "median": 611296.0,
+        "min": 608096.0,
+        "stddev": 5882.8663610711255
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 268435456,
+        "query_input_bytes": 32768,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.attention_coordinate",
+      "observed": {
+        "active_sequences": 4,
+        "batch_size": 4,
+        "chunk_length": 1,
+        "kv_fragmentation": {
+          "fragment_count": 16,
+          "mode": "segmented-16"
+        },
+        "past_kv_length": 16384,
+        "phase": "decode",
+        "query_length": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 6048.015014434037,
+        "ci95_halfwidth_over_median": 0.0043971492863622095,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 1402112.0,
+        "mean": 1378380.8,
+        "median": 1375440.0,
+        "min": 1368768.0,
+        "stddev": 9757.909575769232
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 6291456,
+        "query_input_bytes": 4194304,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 1,
+        "batch_size": 1,
+        "chunk_length": 512,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 1536,
+        "phase": "chunked-prefill",
+        "query_length": 512
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 6650.4547141473295,
+        "ci95_halfwidth_over_median": 0.0003242115088360525,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 20532160.0,
+        "mean": 20512320.0,
+        "median": 20512704.0,
+        "min": 20497631.0,
+        "stddev": 10729.88998597428
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 125829120,
+        "query_input_bytes": 16777216,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.attention_coordinate",
+      "observed": {
+        "active_sequences": 4,
+        "batch_size": 4,
+        "chunk_length": 512,
+        "kv_fragmentation": {
+          "fragment_count": 16,
+          "mode": "segmented-16"
+        },
+        "past_kv_length": 7680,
+        "phase": "chunked-prefill",
+        "query_length": 512
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 4070.332028838488,
+        "ci95_halfwidth_over_median": 0.01901882115747649,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 229856.0,
+        "mean": 216236.8,
+        "median": 214016.0,
+        "min": 211392.0,
+        "stddev": 6567.102063399891
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 16777216,
+        "query_input_bytes": 16384,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.attention_coordinate",
+      "observed": {
+        "active_sequences": 2,
+        "batch_size": 2,
+        "chunk_length": 1,
+        "kv_fragmentation": {
+          "fragment_count": 1,
+          "mode": "contiguous"
+        },
+        "past_kv_length": 2048,
+        "phase": "decode",
+        "query_length": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3198.8047187038123,
+        "ci95_halfwidth_over_median": 0.005301933142011994,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 616064.0,
+        "mean": 605395.2,
+        "median": 603328.0,
+        "min": 601184.0,
+        "stddev": 5160.973827141971
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 268435456,
+        "query_input_bytes": 65536,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.attention_coordinate",
+      "observed": {
+        "active_sequences": 8,
+        "batch_size": 8,
+        "chunk_length": 1,
+        "kv_fragmentation": {
+          "fragment_count": 16,
+          "mode": "segmented-16"
+        },
+        "past_kv_length": 8192,
+        "phase": "decode",
+        "query_length": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 3883.2077784988246,
+        "ci95_halfwidth_over_median": 0.0071204484716495976,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 562752.0,
+        "mean": 546473.6,
+        "median": 545360.0,
+        "min": 538752.0,
+        "stddev": 6265.194493744344
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 234881024,
+        "query_input_bytes": 16384,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.attention_coordinate",
+      "observed": {
+        "active_sequences": 2,
+        "batch_size": 2,
+        "chunk_length": 1,
+        "kv_fragmentation": {
+          "fragment_count": 16,
+          "mode": "segmented-16"
+        },
+        "past_kv_length": 28672,
+        "phase": "decode",
+        "query_length": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "10..30",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.repetition_count",
+      "observed": 10,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "finite positive",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.duration_summary",
+      "observed": {
+        "ci95_halfwidth": 9632.007030728699,
+        "ci95_halfwidth_over_median": 0.0002717090271147949,
+        "ci_rule_stable": true,
+        "count": 10,
+        "max": 35487328.0,
+        "mean": 35455808.4,
+        "median": 35449713.0,
+        "min": 35440800.0,
+        "stddev": 15540.347273397007
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.profiler_canary",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "positive known bytes",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.known_bytes",
+      "observed": {
+        "expert_weight_bytes": null,
+        "input_bytes": null,
+        "kv_cache_bytes": 230686720,
+        "query_input_bytes": 8388608,
+        "router_weight_bytes": null,
+        "weight_bytes": 83886080
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 0,
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.nvml_completeness",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "all finite",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.sample_finiteness",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "query/chunk x past-KV x active sequences/batch x phase x KV fragmentation",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.attention_coordinate",
+      "observed": {
+        "active_sequences": 2,
+        "batch_size": 2,
+        "chunk_length": 512,
+        "kv_fragmentation": {
+          "fragment_count": 16,
+          "mode": "segmented-16"
+        },
+        "past_kv_length": 28160,
+        "phase": "chunked-prefill",
+        "query_length": 512
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "isolated shape evidence only until correlation gate",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.isolated_claim_boundary",
+      "observed": {
+        "model_bound_claim_allowed": false,
+        "not_vllm_fused_kernel": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": "every held-out coordinate is bounded by same-phase/same-fragmentation fit anchors on query, past-KV and active-sequence axes",
+      "name": "component.attention_held_out_envelope",
+      "observed": [
+        {
+          "candidate_fit_ids": [
+            "CMP-A2-q1-p16384-b4-decode-segmented-16"
+          ],
+          "coordinate": {
+            "active_sequences": 8,
+            "batch_size": 8,
+            "chunk_length": 1,
+            "kv_fragmentation": {
+              "fragment_count": 16,
+              "mode": "segmented-16"
+            },
+            "past_kv_length": 8192,
+            "phase": "decode",
+            "query_length": 1
+          },
+          "id": "CMP-A3-q1-p8192-b8-decode-segmented-16"
+        },
+        {
+          "candidate_fit_ids": [
+            "CMP-A2-q1-p16384-b4-decode-segmented-16"
+          ],
+          "coordinate": {
+            "active_sequences": 2,
+            "batch_size": 2,
+            "chunk_length": 1,
+            "kv_fragmentation": {
+              "fragment_count": 16,
+              "mode": "segmented-16"
+            },
+            "past_kv_length": 28672,
+            "phase": "decode",
+            "query_length": 1
+          },
+          "id": "CMP-A3-q1-p28672-b2-decode-segmented-16"
+        },
+        {
+          "candidate_fit_ids": [
+            "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16"
+          ],
+          "coordinate": {
+            "active_sequences": 2,
+            "batch_size": 2,
+            "chunk_length": 512,
+            "kv_fragmentation": {
+              "fragment_count": 16,
+              "mode": "segmented-16"
+            },
+            "past_kv_length": 28160,
+            "phase": "chunked-prefill",
+            "query_length": 512
+          },
+          "id": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 35449713.0,
+        "min": 181904.0
+      },
+      "status": "WARNING"
+    },
+    {
+      "critical": true,
+      "expected": [
+        "phase7-expert-catalog-v1",
+        "phase7-expert-catalog-v2"
+      ],
+      "name": "catalog.schema",
+      "observed": "phase7-expert-catalog-v1",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 256,
+      "name": "catalog.object_count",
+      "observed": 256,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "empty",
+      "name": "catalog.each_object_has_w1_w2_w3_and_bytes",
+      "observed": [],
+      "status": "PASS"
+    }
+  ],
+  "critical_failure_count": 1,
+  "critical_failures": [
+    {
+      "critical": true,
+      "expected": "every held-out coordinate is bounded by same-phase/same-fragmentation fit anchors on query, past-KV and active-sequence axes",
+      "name": "component.attention_held_out_envelope",
+      "observed": [
+        {
+          "candidate_fit_ids": [
+            "CMP-A2-q1-p16384-b4-decode-segmented-16"
+          ],
+          "coordinate": {
+            "active_sequences": 8,
+            "batch_size": 8,
+            "chunk_length": 1,
+            "kv_fragmentation": {
+              "fragment_count": 16,
+              "mode": "segmented-16"
+            },
+            "past_kv_length": 8192,
+            "phase": "decode",
+            "query_length": 1
+          },
+          "id": "CMP-A3-q1-p8192-b8-decode-segmented-16"
+        },
+        {
+          "candidate_fit_ids": [
+            "CMP-A2-q1-p16384-b4-decode-segmented-16"
+          ],
+          "coordinate": {
+            "active_sequences": 2,
+            "batch_size": 2,
+            "chunk_length": 1,
+            "kv_fragmentation": {
+              "fragment_count": 16,
+              "mode": "segmented-16"
+            },
+            "past_kv_length": 28672,
+            "phase": "decode",
+            "query_length": 1
+          },
+          "id": "CMP-A3-q1-p28672-b2-decode-segmented-16"
+        },
+        {
+          "candidate_fit_ids": [
+            "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16"
+          ],
+          "coordinate": {
+            "active_sequences": 2,
+            "batch_size": 2,
+            "chunk_length": 512,
+            "kv_fragmentation": {
+              "fragment_count": 16,
+              "mode": "segmented-16"
+            },
+            "past_kv_length": 28160,
+            "phase": "chunked-prefill",
+            "query_length": 512
+          },
+          "id": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16"
+        }
+      ],
+      "status": "FAIL"
+    }
+  ],
+  "raw_unchanged": true,
+  "reviewer_tool_revision": "preliminary-review-v5",
+  "schema_version": "phase7-preliminary-measurement-review-v2",
+  "status": "PRELIMINARY_REVIEW_FAIL",
+  "warning_count": 21,
+  "warnings": [
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q128-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q2048-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q8192-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q16384-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q24576-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A0-q31744-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q512-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q4096-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q12288-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A1-q28672-p0-b1-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p512-b1-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p4096-b4-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p16384-b1-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q1-p16384-b4-decode-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q512-p1536-b1-chunked-prefill-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A2-q512-p7680-b4-chunked-prefill-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q1-p2048-b2-decode-contiguous.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q1-p8192-b8-decode-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q1-p28672-b2-decode-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "PENDING is allowed only for isolated shape evidence; fused-path calibration remains blocked",
+      "name": "CMP-A3-q512-p28160-b2-chunked-prefill-segmented-16.fused_path_correlation",
+      "observed": "PENDING_VLLM_FUSED_PATH_GATE",
+      "status": "WARNING"
+    },
+    {
+      "critical": false,
+      "expected": "spread is reported for review; no monotonicity assumption forced",
+      "name": "component.cross_point_duration_spread",
+      "observed": {
+        "max": 35449713.0,
+        "min": 181904.0
+      },
+      "status": "WARNING"
+    }
+  ]
+}

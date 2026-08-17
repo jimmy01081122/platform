@@ -1,0 +1,16 @@
+{
+  "schema_version": "moe-simulator-three-role-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase5-routing-residency-r2-20260728",
+  "ledger_sha256": "b6b593a1fe79f1ddb60706c5c4af17470608c08589cd654eb7ea006d71ded834",
+  "member_count": 46,
+  "verdict": "GO",
+  "blockers": [],
+  "role_verdicts": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "phase5_freeze": true,
+  "phase6_authorized_scope": "CPU_SYNTHETIC_MULTI_GPU_NVLINK_AND_COHERENT_UMA_ONLY",
+  "gpu_authority": "NONE"
+}

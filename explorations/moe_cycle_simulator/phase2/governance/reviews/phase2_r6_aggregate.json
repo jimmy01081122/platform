@@ -1,0 +1,24 @@
+{
+  "authorized_next_stage": "Phase 3 deterministic event/resource core CPU-only implementation",
+  "blockers": [],
+  "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r6-20260726",
+  "claim_boundary": "Phase 2 GO freezes the strict Canonical IR, codec and CPU synthetic replay ABI; it is not GPU, model execution, profiling or calibration evidence.",
+  "ledger_sha256": "dd2b9d9f8217fd6b78c1ae8b6f6e52c94a45774919cb36f0b407b53762c3d984",
+  "not_authorized": [
+    "GPU query or workload",
+    "Mixtral or benchmark download",
+    "real vLLM or Mistral profiling",
+    "paid server",
+    "formal calibration PASS",
+    "platform qualification",
+    "modification or reinterpretation of frozen S4 or G3 evidence"
+  ],
+  "promotion_eligible": true,
+  "roles": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "schema_version": "moe-simulator-review-aggregate-v1",
+  "verdict": "GO"
+}

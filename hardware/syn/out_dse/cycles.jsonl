@@ -1,0 +1,10 @@
+{"case":"cycles","capacity":8,"depth":0,"num_steps":192,"cycles_total":16749,"cycles_per_step":87.2344}
+{"case":"cycles","capacity":16,"depth":0,"num_steps":192,"cycles_total":16671,"cycles_per_step":86.8281}
+{"case":"cycles","capacity":24,"depth":0,"num_steps":192,"cycles_total":15866,"cycles_per_step":82.6354}
+{"case":"cycles","capacity":28,"depth":0,"num_steps":192,"cycles_total":14576,"cycles_per_step":75.9167}
+{"case":"cycles","capacity":32,"depth":0,"num_steps":192,"cycles_total":13090,"cycles_per_step":68.1771}
+{"case":"cycles","capacity":8,"depth":1,"num_steps":192,"cycles_total":12364,"cycles_per_step":64.3958}
+{"case":"cycles","capacity":16,"depth":1,"num_steps":192,"cycles_total":12590,"cycles_per_step":65.5729}
+{"case":"cycles","capacity":24,"depth":1,"num_steps":192,"cycles_total":12667,"cycles_per_step":65.9740}
+{"case":"cycles","capacity":28,"depth":1,"num_steps":192,"cycles_total":12172,"cycles_per_step":63.3958}
+{"case":"cycles","capacity":32,"depth":1,"num_steps":192,"cycles_total":12866,"cycles_per_step":67.0104}

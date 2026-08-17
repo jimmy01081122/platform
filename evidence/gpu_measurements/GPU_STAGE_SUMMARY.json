@@ -1,0 +1,296 @@
+{
+  "schema_version": "gpu-stage-summary-v1",
+  "project": "edge_hetero_exploration_workspace",
+  "evidence_cutoff_utc": "2026-07-18T03:08:43Z",
+  "scope": {
+    "metric_scope": "MoE-replay and component microbenchmarks; not full-model TPOT or throughput",
+    "source_rounds": [
+      "rtx-pro-6000-20260718",
+      "rtx-pro-6000-v3-20260718"
+    ],
+    "raw_artifacts_modified": false
+  },
+  "hardware_runtime": {
+    "evidence": "measured",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "architecture": "Blackwell",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "memory_bytes": 101973491712,
+    "pcie": {
+      "generation_current": 4,
+      "link_width_current": 16,
+      "replays_since_reset": 0,
+      "replay_rollovers": 0
+    },
+    "driver": "595.71.05",
+    "nvidia_smi_cuda": "13.2",
+    "python": "3.10.12",
+    "torch": "2.7.1+cu128",
+    "torch_cuda_runtime": "12.8",
+    "cudnn": 90701,
+    "nvcc": "unavailable"
+  },
+  "rounds": [
+    {
+      "id": "rtx-pro-6000-20260718",
+      "role": "initial",
+      "evidence": "measured",
+      "created_utc": "2026-07-18T02:44:28Z",
+      "splits": {
+        "calibration": {
+          "records": 84,
+          "moe_replay_evaluation_points": 6,
+          "record_ids_present": 0
+        },
+        "validation": {
+          "records": 84,
+          "moe_replay_evaluation_points": 6,
+          "record_ids_present": 0
+        }
+      },
+      "notes": [
+        "Contains PCIe, component, proxy-dequant, and MoE-replay measurements.",
+        "Does not contain the supplemental CPU runtime, device-memory, queue-depth, and fixed-shape contention probes."
+      ]
+    },
+    {
+      "id": "rtx-pro-6000-v3-20260718",
+      "role": "supplemental-probes",
+      "evidence": "measured",
+      "created_utc": "2026-07-18T03:08:43Z",
+      "splits": {
+        "calibration": {
+          "records": 91,
+          "moe_replay_evaluation_points": 6,
+          "record_ids_present": 91,
+          "supplemental_probe_records": {
+            "cpu_runtime": 1,
+            "device_memory": 2,
+            "queue_depth": 2,
+            "contention_fixed_shape": 2
+          }
+        },
+        "validation": {
+          "records": 84,
+          "moe_replay_evaluation_points": 6,
+          "record_ids_present": 84
+        }
+      },
+      "q1_scoring_evaluation_points": 90
+    }
+  ],
+  "representative_measured_statistics": {
+    "pcie_88080384_bytes_stream_1": {
+      "unit": "ms",
+      "calibration": {
+        "h2d": {
+          "mean": 3.112910621279762,
+          "ci95": [
+            3.112802178470418,
+            3.1130190640891064
+          ],
+          "n": 5
+        },
+        "d2h": {
+          "mean": 3.119546768717961,
+          "ci95": [
+            3.119417238683063,
+            3.119676298752859
+          ],
+          "n": 5
+        }
+      },
+      "validation": {
+        "h2d": {
+          "mean": 3.1129961121757077,
+          "ci95": [
+            3.112815022386883,
+            3.1131772019645325
+          ],
+          "n": 5
+        },
+        "d2h": {
+          "mean": 3.119454965681684,
+          "ci95": [
+            3.1193821505300505,
+            3.1195277808333177
+          ],
+          "n": 5
+        }
+      }
+    },
+    "v3_validation_moe_replay": {
+      "scope": "MoE-replay; not full-model inference",
+      "points": [
+        {
+          "case": "validation-livecodebench-execution-q1,concurrency=1",
+          "tpot_ms_per_token_mean": 0.17088179380997368,
+          "throughput_tokens_per_second_mean": 5853.907004121056
+        },
+        {
+          "case": "validation-livecodebench-execution-q1,concurrency=4",
+          "tpot_ms_per_token_mean": 0.04380797273972455,
+          "throughput_tokens_per_second_mean": 22860.69389377561
+        },
+        {
+          "case": "validation-mmlu-abstract_algebra-q1,concurrency=1",
+          "tpot_ms_per_token_mean": 0.17042777117560892,
+          "throughput_tokens_per_second_mean": 5867.671449176494
+        },
+        {
+          "case": "validation-mmlu-abstract_algebra-q1,concurrency=4",
+          "tpot_ms_per_token_mean": 0.04244471006495978,
+          "throughput_tokens_per_second_mean": 23560.50030473283
+        },
+        {
+          "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,concurrency=1",
+          "tpot_ms_per_token_mean": 0.17251336041618798,
+          "throughput_tokens_per_second_mean": 5801.38499661327
+        },
+        {
+          "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,concurrency=4",
+          "tpot_ms_per_token_mean": 0.04437476042862777,
+          "throughput_tokens_per_second_mean": 22566.67505145679
+        }
+      ]
+    }
+  },
+  "derived_fitted_parameters": {
+    "evidence": "derived from v3 calibration split only",
+    "schema_version": "calibrated-backend-parameters-v1",
+    "fit_split": "calibration",
+    "pcie": {
+      "h2d": {
+        "bandwidth_bytes_per_ms": 28480108.698140044,
+        "intercept_ms": 0.015341920668000775
+      },
+      "d2h": {
+        "bandwidth_bytes_per_ms": 28408685.50988128,
+        "intercept_ms": 0.014215807554351478
+      }
+    },
+    "copy_engine_stream_latency_factors": {
+      "1": 1.0,
+      "2": 1.7384584273483465,
+      "4": 2.762992620065082
+    },
+    "contention_per_extra_concurrency": 1.0046410877379799,
+    "cpu_runtime_per_call_ms": 0.000041776208660000005,
+    "memory": {
+      "bandwidth_bytes_per_ms": 68396254670.230995,
+      "intercept_ms": 0.005769699879949218
+    },
+    "queueing": {
+      "intercept_ms": 0.00027215933966720507,
+      "per_queue_entry_ms": 0.006485015066192163
+    }
+  },
+  "validation": {
+    "evidence": "derived scoring against measured validation records",
+    "split": "validation",
+    "status": "fail",
+    "thresholds_pct": {
+      "mape": 15.0,
+      "single_point_ape": 20.0
+    },
+    "evaluation_points": 90,
+    "point_verdicts": {
+      "pass": 17,
+      "fail": 73
+    },
+    "gates": {
+      "component_latency": {
+        "mape_pct": 304.4176915358957,
+        "mape_pass": false,
+        "points": 48,
+        "point_pass": 9,
+        "point_fail": 39
+      },
+      "pcie_transfer_latency": {
+        "mape_pct": 66.87867723065833,
+        "mape_pass": false,
+        "points": 30,
+        "point_pass": 8,
+        "point_fail": 22
+      },
+      "moe_replay_tpot": {
+        "mape_pct": 293.93585475217463,
+        "mape_pass": false,
+        "points": 6,
+        "point_pass": 0,
+        "point_fail": 6
+      },
+      "moe_replay_throughput": {
+        "mape_pct": 60.65838277241878,
+        "mape_pass": false,
+        "points": 6,
+        "point_pass": 0,
+        "point_fail": 6
+      }
+    },
+    "gate_verdict": "fail",
+    "calibrated_pass_claim": false
+  },
+  "integrity": {
+    "manifest_verification": {
+      "method": "local SHA-256 and byte-count verification of every manifest entry",
+      "rtx-pro-6000-20260718": {
+        "entries": 11,
+        "verified": 11,
+        "failed": 0
+      },
+      "rtx-pro-6000-v3-20260718": {
+        "entries": 11,
+        "verified": 11,
+        "failed": 0
+      }
+    },
+    "archive_verification": {
+      "status": "not-run",
+      "reason": "The .tar.gz archives are absent from the workspace; only SHA-256 sidecars are present.",
+      "sidecars": {
+        "gpu-results-20260718T024428Z.tar.gz": "f17692739a75646aee8df246020398db092b118627d918d3bcc9784f8263287e",
+        "gpu-results-20260718T030843Z.tar.gz": "4d4fc5fafbd1d59e5cdc8bebef25f4d197ea92b87b17270ab6d99ffbdcda9e0f"
+      }
+    },
+    "postprocessing_files_in_archive_manifest": false,
+    "postprocessing_files": [
+      "rtx-q0-fitted-parameters.json",
+      "rtx-q1-validation-report.json"
+    ]
+  },
+  "evidence_classification": {
+    "measured": [
+      "RTX PRO 6000 hardware/runtime snapshots",
+      "PCIe and component benchmark records",
+      "MoE-replay TPOT and throughput records"
+    ],
+    "derived": [
+      "rtx-q0-fitted-parameters.json",
+      "rtx-q1-validation-report.json",
+      "MAPE and gate verdicts"
+    ],
+    "failed_or_not_run": [
+      "All four Q1 MAPE gates failed.",
+      "Archive-body verification was not run because archive files are absent.",
+      "H100 was removed/not-run by user decision and is not a future execution item.",
+      "Real checkpoint AWQ codec/layout compatibility was not run."
+    ]
+  },
+  "limitations": [
+    "The dequant benchmark is a synthetic symmetric INT4 proxy, not checkpoint AWQ and not evidence of real AWQ compatibility.",
+    "The replay metrics cover a MoE slice, not end-to-end full-model TPOT or throughput.",
+    "The Q1 validation status is fail; no calibrated-pass claim is supported.",
+    "The initial round lacks stable record_id fields and the supplemental calibration probes.",
+    "The archive manifests cover extracted result files, but not the later Q0 fit and Q1 report.",
+    "H100 is removed/not-run by user decision and must not be retained as a future action."
+  ],
+  "h100": {
+    "status": "removed/not-run",
+    "basis": "user decision",
+    "future_execution_item": false
+  }
+}

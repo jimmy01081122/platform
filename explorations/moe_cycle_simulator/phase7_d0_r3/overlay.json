@@ -1,0 +1,151 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r3-overlay-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r3",
+  "revision": "D0-R3",
+  "status": "CPU_ONLY_DISCOVERY_PACKAGE",
+  "historical_boundary": {
+    "d0_r1_commit": "d0de3dc8ba068b924627cd2ad5915dcbc9fa0792",
+    "d0_r1_tree": "c94e3087cdfd71c617a879eda7d7d1cc78f049c1",
+    "r12_r5_commit": "da3d33238365664435664e6ae1d18714e6b68ee2",
+    "r12_r5_tree": "4bb9c4d6d462338f43eb0d4e63cc129a44be887b",
+    "provider_r1_commit": "bdb610fca5470e21556b1509ed22db6f55295995",
+    "provider_r1_tree": "a471b8bd588c1e574fefae811f3e13d951d411b2",
+    "historical_artifacts_immutable": true
+  },
+  "target": {
+    "provider": "GPUtw.ai",
+    "instance_id": null,
+    "gpu_count": 1,
+    "exact_product_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "minimum_memory_bytes": 96000000000
+  },
+  "environment": {
+    "selected_environment_family": "vLLM Inference Server",
+    "selection_status": "PENDING_OWNER_CONFIRMATION",
+    "selected_image_or_template_identity": null,
+    "environment_change_from_d0_r1": "REJECT_UNAPPROVED_UBUNTU_CUDA_LABEL",
+    "container_digest": null,
+    "container_digest_policy": "REQUIRED_FOR_PROMOTABLE_D0",
+    "unobserved_digest_action": "DISCOVERY_ONLY_NOT_PROMOTABLE"
+  },
+  "owner_authority": {
+    "status": "PENDING_OWNER_CONFIRMATION",
+    "maximum_runtime_seconds": 21600,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "compute_cap": {
+      "amount": "0",
+      "currency": "TWD",
+      "classification": "ZERO_SPEND_PROHIBITION_UNTIL_NUMERIC_OWNER_APPROVAL"
+    },
+    "storage_cap": {
+      "amount": "0",
+      "currency": "TWD",
+      "classification": "ZERO_SPEND_PROHIBITION"
+    },
+    "port_cap": {
+      "amount": "0",
+      "currency": "TWD",
+      "classification": "ZERO_SPEND_PROHIBITION"
+    },
+    "top_up_allowed": false,
+    "extension_allowed": false,
+    "provider_grace_credit_seconds": 0,
+    "historical_300_twd_semantics": "UNUSED_UNTIL_OWNER_EXPLICITLY_CLASSIFIES_IT"
+  },
+  "time_contract": {
+    "start_trigger": "FRESH_OWNER_SSH_HANDOFF",
+    "time_origin_status": "REQUIRES_FRESH_HANDOFF",
+    "control_plane_start_utc": null,
+    "lease_start_utc": null,
+    "lease_deadline_utc": null,
+    "total_seconds": 21600,
+    "stage_bounds_seconds": {
+      "D0": 300,
+      "Gate_M": 5400,
+      "M0": 14400,
+      "release": 900
+    },
+    "bounded_work_seconds": 21000,
+    "shared_transition_slack_seconds": 600,
+    "remaining_time_required_before_each_stage": true
+  },
+  "command_contract": {
+    "controller_path": "controller.py",
+    "probe_path": "probe.py",
+    "remote_argv_template": [
+      "env",
+      "MOE_PHASE7_CONTAINER_DIGEST={approved_container_digest}",
+      "python3",
+      "-I",
+      "-B",
+      "-"
+    ],
+    "transport": "STDIN_EXACT_PROBE_BYTES",
+    "outer_timeout_seconds": 300,
+    "inner_probe_timeout_seconds": 120,
+    "max_stdout_bytes": 1048576,
+    "max_stderr_bytes": 262144,
+    "process_tree_cleanup": "PROCESS_GROUP_AND_DESCENDANT_CONTAINMENT",
+    "manual_raw_argv_allowed": false
+  },
+  "provenance_contract": {
+    "known_hosts_source": "AUTHENTICATED_PROVIDER_SOURCE_REQUIRED",
+    "known_hosts_sha256": null,
+    "host_key_provenance": null,
+    "local_ssh_executable_path": null,
+    "local_ssh_executable_sha256": null,
+    "client_public_key_fingerprint": null,
+    "credential_selector": null,
+    "private_key_material_policy": "FORBIDDEN_IN_REPOSITORY_VAULT_WORKSPACE_LOGS_AND_ARGV"
+  },
+  "probe_contract": {
+    "required_schema": "schemas/probe.schema.json",
+    "required_top_level_fields": [
+      "schema_version",
+      "capture_status",
+      "captured_at_utc",
+      "provider",
+      "instance",
+      "host",
+      "gpu",
+      "runtime",
+      "storage",
+      "observed_commands",
+      "prohibitions"
+    ],
+    "remote_writes": false,
+    "package_install": false,
+    "model_access": false,
+    "gpu_workload": false
+  },
+  "promotion": {
+    "execution_mode": "DISCOVERY_ONLY",
+    "promotable": false,
+    "reason": "CONTAINER_DIGEST_AND_OWNER_LIVE_INPUTS_UNOBSERVED",
+    "promotion_requires_new_application": true
+  },
+  "authority": {
+    "d0_execution": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE"
+  },
+  "forbidden_actions": [
+    "SSH_BEFORE_EXACT_OWNER_APPROVAL",
+    "MANUAL_RAW_SSH_ARGV",
+    "AMBIENT_DEFAULT_SSH_KEY_OR_AGENT",
+    "UNPINNED_HOST_KEY",
+    "REMOTE_WRITE",
+    "PACKAGE_INSTALL",
+    "MODEL_DOWNLOAD",
+    "MODEL_ACCESS",
+    "GPU_WORKLOAD",
+    "RETRY",
+    "RESUME",
+    "ALLOCATION_EXTENSION",
+    "ADDITIONAL_SPEND",
+    "QUANTIZATION",
+    "CPU_OFFLOAD"
+  ]
+}

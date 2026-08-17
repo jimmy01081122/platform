@@ -1,0 +1,72 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-owner-approval-request-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r1",
+  "request_status": "PENDING_OWNER_APPROVAL",
+  "application_status": "READY_FOR_OWNER_REVIEW",
+  "d0_execution_approval_eligible": false,
+  "cost_authority_status": "COST_AUTHORITY_INCOMPLETE",
+  "application_identity_sha256": "5470f9b8b0265e3a669c638e55bcaed028e409d61fba29cbeef2bbccfe8d4d6d",
+  "application_ledger_sha256": "d3f3df86570dc6993307be5380750380c456d8ed3d1284814ae4324c2d514a71",
+  "instance_id": "7f9804d4-2dd0-4196-8215-9049a1d28942",
+  "provider": "GPUtw.ai",
+  "ssh_gateway": "[ssh.gputw.ai]:2222",
+  "ssh_principal": "pod-7f9804d4-2dd0-4196-8215-9049a1d28942",
+  "known_hosts_sha256": "b19c0603ac7cc77fa91ba455734a8783f3502535e0fbe0918813f3d676aa6ec2",
+  "host_key_fingerprint": "SHA256:NHS1jkKSV3aKwfQwgC1/wSJVlZkJuuG/AH3cUjAZGwU",
+  "host_key_trust_provenance": "OFFICIAL_PROVIDER_CONFIRMATION",
+  "exact_ssh_argv_sha256": "ed6b316dbab3018e2b23a9dcfbae7918d82097a4cd0adf49405419957613a90a",
+  "exact_remote_d0_payload_sha256": "87b7da0f6acddcfe6b5bfe33c4e90ac49a57f3dea3701b980194a215a3d2bbf1",
+  "exact_command_binding_sha256": "ac769a67bffd217471930ab6cc62702990654f058ce4924938cbafab001c7184",
+  "d0_timeout_seconds": 300,
+  "inner_probe_timeout_seconds": 120,
+  "owner_runtime_cap_seconds": 21600,
+  "observed_compute_price": {
+    "amount": "34.36",
+    "currency": "NTD",
+    "unit": "per_hour"
+  },
+  "owner_total_cost_cap": {
+    "amount": "300",
+    "currency": "NTD"
+  },
+  "owner_sub_cap_policy": {
+    "compute": "ZERO_SPEND_REQUIRED_UNTIL_SEPARATE_NUMERIC_SUB_CAP_APPROVAL",
+    "storage": "ZERO_SPEND_REQUIRED",
+    "ports": "ZERO_SPEND_REQUIRED_FORBIDDEN_UNLESS_EXPLICITLY_APPROVED"
+  },
+  "authority": [
+    "one exact read-only D0 execution over this exact application identity",
+    "strict pinned host-key verification",
+    "local evidence capture and atomic sealing"
+  ],
+  "read_only_scope": [
+    "provider and instance identity",
+    "GPU model/count/VRAM identity",
+    "driver and CUDA-visible identity",
+    "container/environment identity",
+    "Python and timeout executable identity",
+    "vLLM and backend presence without inference",
+    "/vault and workspace mount/storage identity",
+    "basic OS/kernel identity"
+  ],
+  "not_authorized": [
+    "remote file write",
+    "package installation",
+    "model download or model access",
+    "Mixtral load",
+    "GPU workload or CUDA benchmark",
+    "Gate M",
+    "M0",
+    "automatic retry or changed parameters",
+    "automatic instance replacement or restart",
+    "runtime installation",
+    "allocation extension or unapproved spend"
+  ],
+  "one_shot_rule": "Owner approval authorizes only one exact D0 execution over the exact application_identity and exact command/payload hashes above.",
+  "approval_decision": "PENDING",
+  "d0_execution": "NOT_AUTHORIZED",
+  "ssh": "NOT_AUTHORIZED",
+  "gate_m": "NOT_AUTHORIZED",
+  "m0": "NOT_AUTHORIZED",
+  "gpu_authority": "NONE"
+}

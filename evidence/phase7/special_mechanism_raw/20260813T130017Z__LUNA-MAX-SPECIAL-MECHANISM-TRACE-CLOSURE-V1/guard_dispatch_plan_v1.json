@@ -1,0 +1,45 @@
+{
+  "schema_version": "phase7-special-mechanism-guard-dispatch-plan-v1",
+  "campaign_id": "20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1",
+  "status": "READY_AFTER_P0_TERMINAL",
+  "experiment_id": "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1",
+  "remote_runner": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/code/capture_special_mechanism_guards.py",
+  "remote_gpu_campaign_runner": "/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner.py",
+  "local_guard_reviewer": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/explorations/moe_cycle_simulator/phase7/real_run/review_special_mechanism_guards.py",
+  "remote_model_path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+  "remote_attempt_root_template": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1",
+  "local_attempt_root_template": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V1",
+  "runner_interface": "gpu_campaign",
+  "canonical_arguments": {
+    "runtime_class": "CLEAN",
+    "input_tokens": 128,
+    "output_tokens": 32,
+    "sampling_mode": "NATURAL_EOS_CAPPED",
+    "warmup_count": 1,
+    "measured_count": 1,
+    "max_num_seqs": 1,
+    "max_num_batched_tokens": 1024,
+    "gpu_memory_utilization": 0.97,
+    "tp_pp_ep": "1/1/1",
+    "enforce_eager": true,
+    "cpu_offload_gb": 0,
+    "runtime_kv_swap": false,
+    "quantization": "none"
+  },
+  "required_guards": {
+    "MECH-G0": ["resolved runtime flags", "model identity", "worker process identity", "special mechanism configuration"],
+    "KV-G0": ["KV allocation/residency", "preemption/recompute/swap counters or equivalent", "block identity"],
+    "OS-SWAP-G0": ["process/cgroup VmSwap", "major faults", "swap-in/out context"],
+    "UM-G0": ["runtime/profiler managed-memory/page-migration evidence or explicit unavailable state"]
+  },
+  "dispatch_guard": "Do not upload, launch, or reserve GPU resources until the active P0-25 run has terminal result and its raw backup monitor has reached terminal state.",
+  "post_run_actions": [
+    "upload runner into independent remote special-mechanism code namespace",
+    "launch one fresh-process canonical canary",
+    "preserve stdout/stderr/exact argv/guard_trace/runner raw",
+    "copy to local partial namespace",
+    "verify per-file bytes and SHA-256",
+    "run preliminary guard correctness review",
+    "report MECH-G0/KV-G0/OS-SWAP-G0/UM-G0 separately"
+  ]
+}

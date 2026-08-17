@@ -1,0 +1,21 @@
+{
+  "schema_version": "moe-simulator-phase4-candidate-set-policy-v1",
+  "include": [
+    "experiments/specs/moe_cycle_simulator_phase4.yaml",
+    "every regular file recursively below explorations/moe_cycle_simulator/phase4",
+    "explorations/moe_cycle_simulator/phase3/governance/checksums.sha256",
+    "explorations/moe_cycle_simulator/phase3/governance/reviews/phase3_r5_aggregate.json",
+    "every regular file recursively below runs/20260728T123113Z__moe_cycle_simulator_phase4_single_gpu_r3__S4"
+  ],
+  "exclude_exact_paths": [
+    "explorations/moe_cycle_simulator/phase4/governance/checksums.sha256"
+  ],
+  "exclude_name_prefixes": [
+    "explorations/moe_cycle_simulator/phase4/governance/reviews/phase4_r4_"
+  ],
+  "symlinks": "FORBIDDEN",
+  "duplicates": "FORBIDDEN",
+  "hash": "SHA-256",
+  "path_order": "LC_ALL=C lexical",
+  "nested_checksum_ledgers": "INCLUDED"
+}

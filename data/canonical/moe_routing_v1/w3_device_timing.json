@@ -1,0 +1,575 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+  "note": "expert_weight_bytes derived from model config; bandwidth swept (H1).",
+  "models": {
+    "cognitivecomputations/DeepSeek-R1-AWQ": {
+      "config": {
+        "model_id": "deepseek-ai/DeepSeek-R1",
+        "trace_variant": "cognitivecomputations/DeepSeek-R1-AWQ",
+        "num_experts": 256,
+        "top_k": 8,
+        "num_moe_layers": 58,
+        "precision": "awq_int4",
+        "bytes_per_param": 0.5,
+        "expert_params": 44040192,
+        "expert_weight_bytes": 22020096,
+        "expert_weight_MiB": 21.0,
+        "shared_expert_bytes": 22020096
+      },
+      "capacity": 128,
+      "num_steps": 7482,
+      "on_demand_misses": 40888,
+      "prefetch_misses": 10347,
+      "stimulus": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/0.jsonl",
+      "sweep": [
+        {
+          "platform": "P-D",
+          "config": "pcie_lo_8GBs",
+          "eff_bw_GBs": 8.0,
+          "transfer_time_per_expert_us": 2754.01,
+          "on_demand_stall_ms": 61505.35,
+          "prefetch_stall_ms": 14290.568,
+          "stall_reduction_pct": 76.8,
+          "breakeven_compute_us_per_step": 8220.442
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_mid_16GBs",
+          "eff_bw_GBs": 16.0,
+          "transfer_time_per_expert_us": 1377.76,
+          "on_demand_stall_ms": 30769.425,
+          "prefetch_stall_ms": 7149.176,
+          "stall_reduction_pct": 76.8,
+          "breakeven_compute_us_per_step": 4112.46
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_hi_32GBs",
+          "eff_bw_GBs": 32.0,
+          "transfer_time_per_expert_us": 689.63,
+          "on_demand_stall_ms": 15401.462,
+          "prefetch_stall_ms": 3578.48,
+          "stall_reduction_pct": 76.8,
+          "breakeven_compute_us_per_step": 2058.469
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|heavy_0.4",
+          "eff_bw_GBs": 10.0,
+          "transfer_time_per_expert_us": 2202.51,
+          "on_demand_stall_ms": 90056.213,
+          "prefetch_stall_ms": 22789.367,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 12036.382
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|moderate_0.6",
+          "eff_bw_GBs": 15.0,
+          "transfer_time_per_expert_us": 1468.51,
+          "on_demand_stall_ms": 60044.29,
+          "prefetch_stall_ms": 15194.636,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 8025.166
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|light_0.8",
+          "eff_bw_GBs": 20.0,
+          "transfer_time_per_expert_us": 1101.5,
+          "on_demand_stall_ms": 45038.328,
+          "prefetch_stall_ms": 11397.27,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 6019.557
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|heavy_0.4",
+          "eff_bw_GBs": 20.4,
+          "transfer_time_per_expert_us": 1079.92,
+          "on_demand_stall_ms": 44155.625,
+          "prefetch_stall_ms": 11173.896,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 5901.58
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|moderate_0.6",
+          "eff_bw_GBs": 30.6,
+          "transfer_time_per_expert_us": 720.11,
+          "on_demand_stall_ms": 29443.898,
+          "prefetch_stall_ms": 7450.988,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 3935.298
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|light_0.8",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 540.21,
+          "on_demand_stall_ms": 22088.034,
+          "prefetch_stall_ms": 5589.535,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 2952.156
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|heavy_0.4",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 540.21,
+          "on_demand_stall_ms": 22088.034,
+          "prefetch_stall_ms": 5589.535,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 2952.156
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|moderate_0.6",
+          "eff_bw_GBs": 61.2,
+          "transfer_time_per_expert_us": 360.31,
+          "on_demand_stall_ms": 14732.171,
+          "prefetch_stall_ms": 3728.081,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 1969.015
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|light_0.8",
+          "eff_bw_GBs": 81.6,
+          "transfer_time_per_expert_us": 270.35,
+          "on_demand_stall_ms": 11054.239,
+          "prefetch_stall_ms": 2797.354,
+          "stall_reduction_pct": 74.7,
+          "breakeven_compute_us_per_step": 1477.444
+        }
+      ]
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "config": {
+        "model_id": "moonshotai/Kimi-K2-Thinking",
+        "trace_variant": "moonshotai/Kimi-K2-Thinking",
+        "num_experts": 384,
+        "top_k": 8,
+        "num_moe_layers": 60,
+        "precision": "int4_compressed_tensors",
+        "bytes_per_param": 0.5,
+        "expert_params": 44040192,
+        "expert_weight_bytes": 22020096,
+        "expert_weight_MiB": 21.0,
+        "shared_expert_bytes": 22020096
+      },
+      "capacity": 192,
+      "num_steps": 7740,
+      "on_demand_misses": 38400,
+      "prefetch_misses": 3370,
+      "stimulus": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/0.jsonl",
+      "sweep": [
+        {
+          "platform": "P-D",
+          "config": "pcie_lo_8GBs",
+          "eff_bw_GBs": 8.0,
+          "transfer_time_per_expert_us": 2754.01,
+          "on_demand_stall_ms": 58269.386,
+          "prefetch_stall_ms": 4681.82,
+          "stall_reduction_pct": 92.0,
+          "breakeven_compute_us_per_step": 7528.344
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_mid_16GBs",
+          "eff_bw_GBs": 16.0,
+          "transfer_time_per_expert_us": 1377.76,
+          "on_demand_stall_ms": 29150.561,
+          "prefetch_stall_ms": 2342.185,
+          "stall_reduction_pct": 92.0,
+          "breakeven_compute_us_per_step": 3766.222
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_hi_32GBs",
+          "eff_bw_GBs": 32.0,
+          "transfer_time_per_expert_us": 689.63,
+          "on_demand_stall_ms": 14591.149,
+          "prefetch_stall_ms": 1172.368,
+          "stall_reduction_pct": 92.0,
+          "breakeven_compute_us_per_step": 1885.161
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|heavy_0.4",
+          "eff_bw_GBs": 10.0,
+          "transfer_time_per_expert_us": 2202.51,
+          "on_demand_stall_ms": 84576.369,
+          "prefetch_stall_ms": 7422.457,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 10927.179
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|moderate_0.6",
+          "eff_bw_GBs": 15.0,
+          "transfer_time_per_expert_us": 1468.51,
+          "on_demand_stall_ms": 56390.646,
+          "prefetch_stall_ms": 4948.867,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 7285.613
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|light_0.8",
+          "eff_bw_GBs": 20.0,
+          "transfer_time_per_expert_us": 1101.5,
+          "on_demand_stall_ms": 42297.784,
+          "prefetch_stall_ms": 3712.071,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 5464.83
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|heavy_0.4",
+          "eff_bw_GBs": 20.4,
+          "transfer_time_per_expert_us": 1079.92,
+          "on_demand_stall_ms": 41468.792,
+          "prefetch_stall_ms": 3639.319,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 5357.725
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|moderate_0.6",
+          "eff_bw_GBs": 30.6,
+          "transfer_time_per_expert_us": 720.11,
+          "on_demand_stall_ms": 27652.262,
+          "prefetch_stall_ms": 2426.774,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 3572.644
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|light_0.8",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 540.21,
+          "on_demand_stall_ms": 20743.996,
+          "prefetch_stall_ms": 1820.502,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 2680.103
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|heavy_0.4",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 540.21,
+          "on_demand_stall_ms": 20743.996,
+          "prefetch_stall_ms": 1820.502,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 2680.103
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|moderate_0.6",
+          "eff_bw_GBs": 61.2,
+          "transfer_time_per_expert_us": 360.31,
+          "on_demand_stall_ms": 13835.731,
+          "prefetch_stall_ms": 1214.23,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 1787.562
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|light_0.8",
+          "eff_bw_GBs": 81.6,
+          "transfer_time_per_expert_us": 270.35,
+          "on_demand_stall_ms": 10381.598,
+          "prefetch_stall_ms": 911.093,
+          "stall_reduction_pct": 91.2,
+          "breakeven_compute_us_per_step": 1341.292
+        }
+      ]
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+      "config": {
+        "model_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+        "trace_variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+        "num_experts": 128,
+        "top_k": 1,
+        "num_moe_layers": 24,
+        "precision": "bf16",
+        "bytes_per_param": 2.0,
+        "expert_params": 125829120,
+        "expert_weight_bytes": 251658240,
+        "expert_weight_MiB": 240.0,
+        "shared_expert_bytes": 503316480
+      },
+      "capacity": 64,
+      "num_steps": 3096,
+      "on_demand_misses": 1216,
+      "prefetch_misses": 38,
+      "stimulus": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/0.jsonl",
+      "sweep": [
+        {
+          "platform": "P-D",
+          "config": "pcie_lo_8GBs",
+          "eff_bw_GBs": 8.0,
+          "transfer_time_per_expert_us": 31458.78,
+          "on_demand_stall_ms": 32528.379,
+          "prefetch_stall_ms": 597.717,
+          "stall_reduction_pct": 98.2,
+          "breakeven_compute_us_per_step": 10506.582
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_mid_16GBs",
+          "eff_bw_GBs": 16.0,
+          "transfer_time_per_expert_us": 15730.14,
+          "on_demand_stall_ms": 16264.965,
+          "prefetch_stall_ms": 298.873,
+          "stall_reduction_pct": 98.2,
+          "breakeven_compute_us_per_step": 5253.542
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_hi_32GBs",
+          "eff_bw_GBs": 32.0,
+          "transfer_time_per_expert_us": 7865.82,
+          "on_demand_stall_ms": 8133.258,
+          "prefetch_stall_ms": 149.451,
+          "stall_reduction_pct": 98.2,
+          "breakeven_compute_us_per_step": 2627.021
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|heavy_0.4",
+          "eff_bw_GBs": 10.0,
+          "transfer_time_per_expert_us": 25166.32,
+          "on_demand_stall_ms": 30602.25,
+          "prefetch_stall_ms": 956.32,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 9884.448
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|moderate_0.6",
+          "eff_bw_GBs": 15.0,
+          "transfer_time_per_expert_us": 16777.72,
+          "on_demand_stall_ms": 20401.703,
+          "prefetch_stall_ms": 637.553,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 6589.697
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|light_0.8",
+          "eff_bw_GBs": 20.0,
+          "transfer_time_per_expert_us": 12583.41,
+          "on_demand_stall_ms": 15301.429,
+          "prefetch_stall_ms": 478.17,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 4942.322
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|heavy_0.4",
+          "eff_bw_GBs": 20.4,
+          "transfer_time_per_expert_us": 12336.69,
+          "on_demand_stall_ms": 15001.413,
+          "prefetch_stall_ms": 468.794,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 4845.418
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|moderate_0.6",
+          "eff_bw_GBs": 30.6,
+          "transfer_time_per_expert_us": 8224.63,
+          "on_demand_stall_ms": 10001.145,
+          "prefetch_stall_ms": 312.536,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 3230.344
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|light_0.8",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 6168.59,
+          "on_demand_stall_ms": 7501.01,
+          "prefetch_stall_ms": 234.407,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 2422.807
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|heavy_0.4",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 6168.59,
+          "on_demand_stall_ms": 7501.01,
+          "prefetch_stall_ms": 234.407,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 2422.807
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|moderate_0.6",
+          "eff_bw_GBs": 61.2,
+          "transfer_time_per_expert_us": 4112.56,
+          "on_demand_stall_ms": 5000.876,
+          "prefetch_stall_ms": 156.277,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 1615.27
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|light_0.8",
+          "eff_bw_GBs": 81.6,
+          "transfer_time_per_expert_us": 3084.55,
+          "on_demand_stall_ms": 3750.809,
+          "prefetch_stall_ms": 117.213,
+          "stall_reduction_pct": 96.9,
+          "breakeven_compute_us_per_step": 1211.502
+        }
+      ]
+    },
+    "Qwen/Qwen3-235B-A22B-FP8": {
+      "config": {
+        "model_id": "Qwen/Qwen3-235B-A22B-FP8",
+        "trace_variant": "Qwen/Qwen3-235B-A22B-FP8",
+        "num_experts": 128,
+        "top_k": 8,
+        "num_moe_layers": 94,
+        "precision": "fp8",
+        "bytes_per_param": 1.0,
+        "expert_params": 18874368,
+        "expert_weight_bytes": 18874368,
+        "expert_weight_MiB": 18.0,
+        "shared_expert_bytes": 0
+      },
+      "capacity": 64,
+      "num_steps": 12126,
+      "on_demand_misses": 56266,
+      "prefetch_misses": 7388,
+      "stimulus": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/0.jsonl",
+      "sweep": [
+        {
+          "platform": "P-D",
+          "config": "pcie_lo_8GBs",
+          "eff_bw_GBs": 8.0,
+          "transfer_time_per_expert_us": 2360.8,
+          "on_demand_stall_ms": 73581.29,
+          "prefetch_stall_ms": 8777.44,
+          "stall_reduction_pct": 88.1,
+          "breakeven_compute_us_per_step": 6068.06
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_mid_16GBs",
+          "eff_bw_GBs": 16.0,
+          "transfer_time_per_expert_us": 1181.15,
+          "on_demand_stall_ms": 36814.021,
+          "prefetch_stall_ms": 4391.508,
+          "stall_reduction_pct": 88.1,
+          "breakeven_compute_us_per_step": 3035.958
+        },
+        {
+          "platform": "P-D",
+          "config": "pcie_hi_32GBs",
+          "eff_bw_GBs": 32.0,
+          "transfer_time_per_expert_us": 591.32,
+          "on_demand_stall_ms": 18430.386,
+          "prefetch_stall_ms": 2198.543,
+          "stall_reduction_pct": 88.1,
+          "breakeven_compute_us_per_step": 1519.907
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|heavy_0.4",
+          "eff_bw_GBs": 10.0,
+          "transfer_time_per_expert_us": 1887.94,
+          "on_demand_stall_ms": 106226.652,
+          "prefetch_stall_ms": 13948.077,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 8760.238
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|moderate_0.6",
+          "eff_bw_GBs": 15.0,
+          "transfer_time_per_expert_us": 1258.79,
+          "on_demand_stall_ms": 70827.146,
+          "prefetch_stall_ms": 9299.949,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 5840.932
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_25GBs|light_0.8",
+          "eff_bw_GBs": 20.0,
+          "transfer_time_per_expert_us": 944.22,
+          "on_demand_stall_ms": 53127.392,
+          "prefetch_stall_ms": 6975.886,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 4381.279
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|heavy_0.4",
+          "eff_bw_GBs": 20.4,
+          "transfer_time_per_expert_us": 925.71,
+          "on_demand_stall_ms": 52086.231,
+          "prefetch_stall_ms": 6839.176,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 4295.417
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|moderate_0.6",
+          "eff_bw_GBs": 30.6,
+          "transfer_time_per_expert_us": 617.31,
+          "on_demand_stall_ms": 34733.531,
+          "prefetch_stall_ms": 4560.682,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 2864.385
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_51GBs|light_0.8",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 463.11,
+          "on_demand_stall_ms": 26057.182,
+          "prefetch_stall_ms": 3421.435,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 2148.869
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|heavy_0.4",
+          "eff_bw_GBs": 40.8,
+          "transfer_time_per_expert_us": 463.11,
+          "on_demand_stall_ms": 26057.182,
+          "prefetch_stall_ms": 3421.435,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 2148.869
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|moderate_0.6",
+          "eff_bw_GBs": 61.2,
+          "transfer_time_per_expert_us": 308.9,
+          "on_demand_stall_ms": 17380.832,
+          "prefetch_stall_ms": 2282.188,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 1433.352
+        },
+        {
+          "platform": "P-I",
+          "config": "shared_102GBs|light_0.8",
+          "eff_bw_GBs": 81.6,
+          "transfer_time_per_expert_us": 231.8,
+          "on_demand_stall_ms": 13042.657,
+          "prefetch_stall_ms": 1712.564,
+          "stall_reduction_pct": 86.9,
+          "breakeven_compute_us_per_step": 1075.594
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version":"phase7-off-w3-representative-profiler-contract-v1","contract_state":"FROZEN_BEFORE_EXECUTION","canonical_experiment_id":"OFF-W3",
+  "model_path":"/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors","model_revision":"eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "workload":{"input_tokens":4096,"output_tokens":128,"runtime_class":"ROUTING_PROFILE","sampling_mode":"FORCED_LENGTH_CONTROLLED","seed":0,"warmup_count":0,"measured_count":1,"max_num_seqs":1,"max_num_batched_tokens":4096,"gpu_memory_utilization":0.97,"profiler_max_iterations":96},
+  "paired_variants":[{"point_id":"DISABLED","offload_backend":"auto","cpu_offload_gb":0.0,"cpu_offload_params":[]},{"point_id":"UVA-HELDOUT","offload_backend":"uva","cpu_offload_gb":4.0,"cpu_offload_params":["experts"]}],
+  "source_contract":[{"path":"/usr/local/lib/python3.12/dist-packages/vllm/model_executor/offloader/uva.py","sha256":"3694e031dd231566671eadf61c27bd4ac14b66878ca3d16e0bef34f50e4f72ec"},{"path":"/vault/flow/moe_simulator_phase7/real_campaign/code/off_w2_traced_runner.py","sha256":"4fd63d54b4c47f78f0889a729160cf3206164715d43240a917f4bc82699b1002"}],
+  "validation_gate":["both variants complete exact 4096-to-128 request","output tokens, finish and routed-expert arrays are pair-equivalent","worker profiler JSON parses and contains GPU kernels, model kernels, prefill/decode, attention/MoE and correlation evidence","H2D/D2H event counts and bytes are retained without requiring a favorable direction","GPU/host memory records are retained","UVA actual tensor bytes equal runtime log","terminal cleanup between variants"],
+  "claim_boundary":"Representative one-pair profiling and correctness evidence. Retain observed copy/kernel/memory differences, including null or adverse outcomes; do not claim formal latency speedup, bandwidth or dynamic expert residency."
+}

@@ -1,0 +1,18 @@
+
+5. Printing statistics.
+
+=== moe_residency_top ===
+
+   Number of wires:              27315
+   Number of wire bits:          29345
+   Number of public wires:          79
+   Number of public wire bits:    1782
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              28396
+     $_AND_                      15681
+     $_DFFE_PN0P_                  832
+     $_DFF_PN0_                    165
+     $_NOT_                      11718
+

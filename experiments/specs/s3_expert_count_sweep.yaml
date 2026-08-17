@@ -1,0 +1,45 @@
+experiment_id: s3_expert_count_sweep
+revision: 1
+status: active
+question: >-
+  Across expert counts 8/16/32, in which region of (capacity C, prefetch depth d)
+  does router-guided prefetch reduce critical-path expert miss rate versus
+  on-demand and LRU baselines, and where does it fail or regress? Freeze the
+  algorithm revision that S4/S5 will share.
+platform_profile: discrete_edge_workstation
+workload:
+  ids:
+    - moe_switch8_mbpp_s64_bs8_len64
+    - moe_switch16_mbpp_s64_bs4_len128
+    - moe_switch32_mbpp_s64_bs4_len128
+  source_registry: data/registry/sources.yaml
+  access_class: measured
+algorithm:
+  semantic_revision: 1
+  baseline_ids: [on_demand, lru]
+  proposed_id: prefetch
+models:
+  - configs/model/switch_base_8.yaml
+  - configs/model/switch_base_16.yaml
+  - configs/model/switch_base_32.yaml
+stages: [S3]
+parameters:
+  fixed:
+    link_bandwidth_gbytes_per_s: 32   # PCIe Gen4 x16 (vendor_spec), single point for miss-rate focus
+    link_latency_us: 2.0
+    copy_engines: 2
+  sweep:
+    capacity_fraction_of_num_experts: [0.25, 0.5, 0.75, 0.875, 1.0]
+    prefetch_depth: [0, 1, 2, 3]
+metrics:
+  primary: [miss_rate, prefetch_relative_reduction_vs_on_demand]
+  secondary: [wasted_prefetches, transfers]
+repetitions:
+  warmup: 0
+  measured: 1
+provenance:
+  unregistered_parameters_allowed: false
+notes: >-
+  Miss rate is assumption-free (measured demand + capacity + policy). Operating
+  region = (model, C, d) where prefetch miss_rate < on_demand by a margin;
+  negative region recorded explicitly.

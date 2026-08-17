@@ -1,0 +1,18 @@
+{
+  "schema_version": "platform-profile-v1",
+  "profile_id": "P-D-A6000",
+  "name": "Discrete CPU-GPU with NVIDIA A6000 (UNCALIBRATED)",
+  "class": "discrete",
+  "fidelity": {"hardware": "H3", "status": "uncalibrated"},
+  "provenance": "H3 target. All device values are vendor-spec bounds or swept; NONE are measured. Do not treat as truth until component-calibrated on real A6000.",
+  "link_bandwidth_bytes_per_s_sweep": {
+    "pcie4x16_spec_25GBs": 25.0e9,
+    "pcie4x16_eff_22GBs": 22.0e9,
+    "pcie4x16_eff_16GBs": 16.0e9
+  },
+  "link_latency_s": null,
+  "copy_engines": null,
+  "hbm_bandwidth_bytes_per_s": null,
+  "kernel_compute_model": null,
+  "note": "A6000: PCIe 4.0 x16 host link, 48GB GDDR6. link_latency_s, copy_engines, hbm_bandwidth, kernel_compute_model MUST be measured (H3) before any performance claim."
+}

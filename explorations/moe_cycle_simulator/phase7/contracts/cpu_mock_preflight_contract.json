@@ -1,0 +1,19 @@
+{
+  "schema_version": "moe-simulator-phase7-cpu-mock-preflight-contract-v1",
+  "execution_profile": "CPU_MOCK_DRY_RUN",
+  "allowed_action": "PREFLIGHT_ONLY",
+  "execution": false,
+  "network": false,
+  "gpu_query": false,
+  "gpu_workload": false,
+  "model_download": false,
+  "paid_server": false,
+  "formal_profiling": false,
+  "old_session_resume": false,
+  "v0": {
+    "execution_role": "OFFLINE_VALIDATION",
+    "gpu_execution": false,
+    "runtime_pass": false
+  }
+}
+

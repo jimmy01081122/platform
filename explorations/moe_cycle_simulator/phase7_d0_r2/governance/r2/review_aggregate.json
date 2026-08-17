@@ -1,0 +1,56 @@
+{
+  "schema_version": "phase7-gputw-d0-r2/review-aggregate/v1",
+  "candidate_identity": {
+    "candidate_id": "moe-simulator-phase7-gputw-d0-r2-4643f2e",
+    "reviewed_commit": "4643f2e46be4caedd1219c316a3ffd0d9adf45ca",
+    "reviewed_tree": "d63d63b77d631260fe415d43fef62d9b77a5a175",
+    "candidate_member_count": 22,
+    "candidate_ledger_sha256": "24aeb8650ecf90ba603d3f0b2214e6a84a3b442019514253337167b4ac48de26"
+  },
+  "reviewer_verdicts": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "verdict": "GO/GO/GO",
+  "blockers": [],
+  "identity_equality": "PASS",
+  "cpu_evidence_replay": "PASS",
+  "clean_archive_replay": "PASS",
+  "historical_integrity": "PASS",
+  "promotion_rule": "Exactly three GO verdicts, every reviewer blocker list empty, identical candidate identity, CPU evidence replay PASS, clean archive replay PASS and historical integrity PASS.",
+  "evidence": {
+    "d0_r2_validator": "PASS",
+    "d0_r2_focused_pytest": "9 passed",
+    "phase7_cpu_mock_suite": "126 tests passed",
+    "d0_r1_validator": "PASS",
+    "r12_r5_validator": "PASS",
+    "provider_r1_validator": "PASS",
+    "py_compile": "PASS",
+    "candidate_set_replay": "PASS via validate_review.py",
+    "archive_replay": "PASS via archive_replay.json",
+    "archive_has_git_metadata": false,
+    "gpu_authority": "NONE",
+    "network_free": true
+  },
+  "reviewer_outputs": [
+    "explorations/moe_cycle_simulator/phase7_d0_r2/governance/r2/review_architecture_system.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/governance/r2/review_model_benchmark.json",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/governance/r2/review_trace_provenance.json"
+  ],
+  "external_execution_blockers": [
+    "OWNER_ENVIRONMENT_CONFIRMATION_PENDING",
+    "FRESH_TIME_ORIGIN_AND_DEADLINE_REQUIRED",
+    "CONTAINER_DIGEST_UNOBSERVED_DISCOVERY_ONLY",
+    "FRESH_HOST_KEY_SOURCE_AND_CLIENT_KEY_SELECTOR_REQUIRED"
+  ],
+  "execution_authority": {
+    "d0_execution": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE",
+    "ssh": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "The aggregate closes only the CPU-only D0-R2 repair and governance review. It grants no GPU, SSH, D0, Gate M or M0 authority and makes no live provider, runtime, storage, model, capacity, calibration, price or performance claim.",
+  "side_effects": false
+}

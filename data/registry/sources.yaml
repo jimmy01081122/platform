@@ -1,0 +1,140 @@
+schema_version: 1
+description: >-
+  Read-only registry of raw trace sources. Raw data must never be modified.
+  Only new canonical or derived datasets may be produced. Entries record
+  provenance, access class, and integrity anchors.
+
+policy:
+  raw_data_is_immutable: true
+  full_download_of_remote_traces_forbidden: true
+  max_local_download_bytes: 10737418240   # 10 GB hard cap per project rule
+
+sources:
+  - id: switch_colab_trace_readonly_v1
+    kind: local_readonly
+    path: /home/a/prototype/trace_data
+    root_alias: SWITCH_COLAB_TRACE_ROOT
+    access_class: mixed_measured_and_derived
+    registry: data/registry/switch_colab_trace_readonly_v1.yaml
+    schema: schemas/external_trace_registry.schema.json
+    audit_summary: data/registry/switch_colab_trace_audit_summary.json
+    methodology: docs/methodology/SWITCH_COLAB_TRACE_PROVENANCE.md
+    complete: false
+    note: >-
+      Small commit-safe registry for the 1,527-file external corpus; no raw trace
+      or full inventory is copied. hardware_event traces are derived logical
+      events, not measured hardware events.
+
+  - id: switch_base8_multiworkload
+    kind: local_readonly
+    path: /home/a/prototype/trace_data/moe_router_trace_switch_base_8_multiworkload_results
+    origin: prototype MoE router tracing sweep (Switch-Transformer google/switch-base-8)
+    model_name: google/switch-base-8
+    num_experts: 8
+    access_class: measured
+    total_bytes_approx: 9878000000
+    contents:
+      - hardware_event_trace.csv       # per-token route/dispatch/expert_compute/gather events
+      - router_token_trace.csv         # per-token top1/top2/entropy/margin
+      - expert_load_trace.csv          # per-sample per-layer per-expert assigned tokens
+      - batch_expert_load_trace.csv    # per-batch per-layer per-expert assigned tokens (primary work-unit source)
+      - run_metadata.json
+      - router_diagnostics.json
+    note: >-
+      Categories: coding(humaneval,mbpp), general_text(wikitext),
+      long_text(arxiv_summarization,cnn_dailymail), math_reasoning(gsm8k).
+      Grid: samples in {64,128} x batch_size in {1,2,4,8} x len in {64,128,256}.
+
+  - id: switch_model_sweep_16_32
+    kind: local_readonly
+    path: /home/a/prototype/trace_data/moe_router_trace_switch_model_sweep_16_32_results
+    origin: prototype MoE router tracing sweep (switch-base-16 / switch-base-32)
+    access_class: measured
+    total_bytes_approx: 1300000000
+    note: Reserved for cross-model expert-count sensitivity (16 and 32 experts).
+
+  - id: model_sweep_analysis
+    kind: local_readonly
+    path: /home/a/prototype/trace_data/model_sweep8_16_32_analysis
+    origin: prototype aggregate analysis CSVs
+    access_class: derived
+    total_bytes_approx: 120000
+
+  - id: hf_moe_expert_selection_trace
+    kind: remote_gated
+    remote: huggingface:core12345/MoE_expert_selection_trace
+    access_class: measured
+    status: partially_sampled
+    gated: auto
+    source_revision_discovered: see data/registry/dataset_structure.json
+    structure_summary:
+      total_json_files: 99540
+      path_schema: <model_family>/<model_variant>/<benchmark>/<subject>/<query>.json
+      trace_unit: >-
+        one query; outer list = generation steps (0=prefill, >=1=decode);
+        step = {layer_id: [per-token top-k expert ids]}; dense layers = null.
+      model_variants:
+        Qwen/Qwen3-235B-A22B-FP8:        {layers: 94, moe_layers: 94, top_k: 8, experts: 128}
+        cognitivecomputations/DeepSeek-R1-AWQ: {layers: 61, moe_layers: 58, top_k: 8, experts: 256}
+        meta-llama/Llama-4-Maverick-17B-128E-Instruct: {layers: 48, moe_layers: 24, top_k: 1, experts: 128}
+        moonshotai/Kimi-K2-Thinking:     {held_out_for_generalization: true, layers: 61, moe_layers: 60, top_k: 8, experts: 384, sampled: "6 files (holdout_kimi.json), NOT in calibration set"}
+    sampled_subset:
+      config: configs/sampling/round1.json
+      registry: data/registry/hf_downloads.json          # per-file sha256 + source_revision
+      canonical: data/canonical/moe_routing_v1/manifest.json
+      count: 27
+      bytes: 54007438
+    token_handling: >-
+      Token is never stored in the repo or printed. Resolved at runtime from
+      $HF_TOKEN / $HUGGINGFACE_TOKEN or ~/.cache/huggingface/token and sent only
+      as a Bearer header to huggingface.co.
+    note: >-
+      Large-model traces. Full download is forbidden by project rule. Only a
+      stratified subset is fetched under the byte cap by
+      scripts/hf_sample_download.py; every fetched file's sha256 and source
+      revision are recorded in data/registry/hf_downloads.json before use.
+
+committed_fixtures:
+  - id: moe_switch8_mbpp_s64_bs8_len64
+    path: data/fixtures/moe_switch8_mbpp_s64_bs8_len64
+    derived_from: switch_base8_multiworkload
+    source_config: coding/mbpp/samples_64/bs_8_len_64
+    access_class: measured
+    files:
+      batch_expert_load_trace.csv:
+        sha256: 9833ed2e2ea00bba11163110d870da69982b9827a1160351965957388af87f95
+      expert_load_trace.csv:
+        sha256: 3762db9a9356cd61cdd3ef06a7148cb13bfeb32b07e5ecfa35c01f271aa02f5f
+      router_diagnostics.json:
+        sha256: b251e9c44cf367350cfd1892a574a9348a225fdd0cd7a0cbd697ac58f6104aa5
+      run_metadata.json:
+        sha256: 8af753fec9071e94c89fcb00f4aa679171732b0dd8db705c2d0eab9eb9c75ff1
+    note: >-
+      Small real slice committed to the repository so the S1 vertical slice is
+      reproducible without access to the 9 GB read-only source tree.
+
+  - id: moe_switch16_mbpp_s64_bs4_len128
+    path: data/fixtures/moe_switch16_mbpp_s64_bs4_len128
+    derived_from: switch_model_sweep_16_32
+    source_config: google__switch_base_16/coding/mbpp/samples_64/bs_4_len_128
+    access_class: measured
+    files:
+      batch_expert_load_trace.csv:
+        sha256: 83e353864366e5e131414f0d6d5ea6ddaeebbf114f59dbf7c9c76a38314c5a50
+      run_metadata.json:
+        sha256: e64e0924bc94f33068626138ac3ead3f7a8a9db063af37cb5128618b7d996162
+
+  - id: moe_switch32_mbpp_s64_bs4_len128
+    path: data/fixtures/moe_switch32_mbpp_s64_bs4_len128
+    derived_from: switch_model_sweep_16_32
+    source_config: google__switch_base_32/coding/mbpp/samples_64/bs_4_len_128
+    access_class: measured
+    files:
+      batch_expert_load_trace.csv:
+        sha256: 1814321b129b0d2d71553fbf5b9539f3571910a398f8c02dcf8f3ac9f28736d0
+      run_metadata.json:
+        sha256: 6242573bead2048c51fb8cfd283a2a39a0b370fff5cd98171912f876693d73a0
+    note: >-
+      32-expert fixture is the primary S3+ operating point: per-layer working set
+      (~22/32) is smaller than num_experts, so residency capacity C<num_experts is
+      meaningful and prefetch shows the strongest benefit.

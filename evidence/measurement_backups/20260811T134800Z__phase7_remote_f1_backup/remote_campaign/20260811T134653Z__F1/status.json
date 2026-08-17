@@ -1,0 +1,8 @@
+{
+  "finished_at_utc": "2026-08-11T13:47:21Z",
+  "logical_request_id": "F1-canary",
+  "measured_count": 5,
+  "phase": "complete",
+  "status": "PASS",
+  "warmup_count": 1
+}

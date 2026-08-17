@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator/clock-domain-v1",
+  "title": "Exact rational clock domain",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "clock_id", "frequency_numerator_hz",
+    "frequency_denominator_hz", "phase_offset_fs", "local_cycle",
+    "fractional_remainder"
+  ],
+  "properties": {
+    "schema_version": {"const": "clock-domain-v1"},
+    "clock_id": {"type": "string", "minLength": 1},
+    "frequency_numerator_hz": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+    "frequency_denominator_hz": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+    "phase_offset_fs": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "local_cycle": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "fractional_remainder": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"}
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "phase7-gputw-d0-r4/owner-planning-boundary/v1",
+  "status": "PROSPECTIVE_NOT_EXECUTION_AUTHORITY",
+  "supersedes_runtime_planning_only": "D0-R3 21600-second planning boundary",
+  "prepaid_compute_entitlement_seconds": 28800,
+  "entitlement_components": {
+    "original_prepaid_seconds": 21600,
+    "additional_prepaid_buffer_seconds": 7200
+  },
+  "cost_boundary": {
+    "additional_spend_amount": "0",
+    "additional_spend_currency": "TWD",
+    "top_up_allowed": false,
+    "extension_beyond_28800_allowed": false,
+    "provider_grace_credit_seconds": 0
+  },
+  "stage_bounds_seconds": {
+    "D0": 300,
+    "Gate_M": 5400,
+    "M0": 14400,
+    "release": 900
+  },
+  "bounded_work_seconds": 21000,
+  "unallocated_transition_and_failure_slack_seconds": 7800,
+  "slack_is_not_workload_authority": true,
+  "session_roles": {
+    "current_session": "DECISION_AND_PLANNING_ONLY",
+    "future_gpu_session_owner_designated_model": "5.6 luna max",
+    "future_model_availability": "MUST_BE_CONFIRMED_IN_NEW_SESSION"
+  },
+  "required_new_identity": "D0-R4",
+  "separate_exact_approvals_required": ["D0", "Gate M", "M0"],
+  "execution_authority": {
+    "d0": "NOT_AUTHORIZED",
+    "ssh": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu": "NONE"
+  },
+  "forbidden": [
+    "modify or reinterpret D0-R3 evidence",
+    "retry or resume an old D0 or GPU session",
+    "use the 7800-second slack as extra workload authority",
+    "incur additional spend or extend beyond 28800 seconds",
+    "start GPU work without a fresh exact approval"
+  ]
+}

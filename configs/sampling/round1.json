@@ -1,0 +1,15 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "description": "Round-1 stratified calibration sample. Train/calibration variants: Qwen3-235B, DeepSeek-R1, Llama-4-Maverick. Hold-out for generalization: moonshotai/Kimi-K2-Thinking (NOT sampled here). Domains chosen to be present in all three train variants: code (livecodebench), general knowledge (mmlu), Chinese knowledge (mmlu_ZH_CN).",
+  "seed": 12345,
+  "max_bytes": 2147483648,
+  "variants": [
+    "Qwen/Qwen3-235B-A22B-FP8",
+    "cognitivecomputations/DeepSeek-R1-AWQ",
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct"
+  ],
+  "domains": ["livecodebench", "mmlu", "mmlu_ZH_CN"],
+  "subjects_per_domain": 1,
+  "queries_per_subject": 3,
+  "holdout_variants": ["moonshotai/Kimi-K2-Thinking"]
+}

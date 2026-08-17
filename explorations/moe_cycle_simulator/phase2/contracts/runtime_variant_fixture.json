@@ -1,0 +1,46 @@
+{
+  "adapter_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+  "attention_backend": "cpu-mock",
+  "collector_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+  "container": {
+    "name": "none",
+    "revision": "host-cpu-mock"
+  },
+  "cuda": {
+    "name": "not-applicable",
+    "revision": "none"
+  },
+  "distributed_executor": "single-process",
+  "driver": {
+    "name": "not-applicable",
+    "revision": "none"
+  },
+  "execution_mode": "EAGER",
+  "expert_parallel_size": 1,
+  "fused_moe_backend": "cpu-mock",
+  "generation": {
+    "do_sample": false
+  },
+  "kernel_backend": "synthetic",
+  "kv_cache_dtype": "bf16-mock-contract-only",
+  "max_batched_tokens": 4096,
+  "max_model_length": 32768,
+  "max_sequences": 1,
+  "nccl_environment": {},
+  "offload": {
+    "enabled": false
+  },
+  "pipeline_parallel_size": 1,
+  "placement": {
+    "mode": "cpu-mock"
+  },
+  "runtime": {
+    "name": "vllm-mock",
+    "revision": "phase1-cpu-fixture"
+  },
+  "scheduler_policy": "fcfs",
+  "schema_version": "runtime-variant-v1",
+  "seed": 0,
+  "tensor_parallel_size": 1,
+  "variant_id": "18ffe161f052a055df6a03c10e028268bd59fd35f29d3e6657bd1b6e6cc0464e"
+}

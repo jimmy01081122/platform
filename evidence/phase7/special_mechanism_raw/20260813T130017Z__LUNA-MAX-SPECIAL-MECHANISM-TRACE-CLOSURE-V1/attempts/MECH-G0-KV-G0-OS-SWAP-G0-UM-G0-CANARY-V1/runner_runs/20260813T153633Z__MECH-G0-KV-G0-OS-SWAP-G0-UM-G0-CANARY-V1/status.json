@@ -1,0 +1,12 @@
+{
+  "finished_at_utc": "2026-08-13T15:38:13Z",
+  "logical_request_id": "request-0001",
+  "measured_count": 1,
+  "phase": "complete",
+  "request_count_per_sequence": null,
+  "request_plan_id": null,
+  "sequence_count": null,
+  "status": "PASS",
+  "total_completed_requests": 2,
+  "warmup_count": 1
+}

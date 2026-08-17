@@ -1,0 +1,7 @@
+{
+  "expected_kernel_correlation": true,
+  "experiment_id": "CMP-M3-PROFILE-V3",
+  "hook_revision": "phase7-step-trace-hook-v2",
+  "runtime_class": "ROUTING_PROFILE",
+  "schema_version": "phase7-routing-step-hook-request-v1"
+}

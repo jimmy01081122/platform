@@ -1,0 +1,51 @@
+experiment_id: moe_cycle_simulator_phase0
+stage: S0
+status: candidate
+goal: Freeze and review the Amendment 2 CPU-only governance and evidence contract.
+scope:
+  - master plan artifact
+  - source registry
+  - CPU authority boundary
+  - checksum-bound three-role review
+non_goals:
+  - Mixtral download or execution
+  - GPU discovery or execution
+  - simulator performance claims
+  - modification of G3 or S4 evidence
+inputs:
+  - explorations/moe_cycle_simulator/governance/MASTER_SIMULATOR_DEVELOPMENT_PLAN_AMENDMENT_2.md
+  - AGENTS.md
+  - docs/status/CURRENT_STATUS.md
+outputs:
+  - explorations/moe_cycle_simulator/governance/phase0_manifest.json
+  - explorations/moe_cycle_simulator/governance/checksums.sha256
+  - explorations/moe_cycle_simulator/governance/review_bundle.json
+dependencies:
+  - Python 3.10 or newer for CPU validators
+assumptions:
+  - Three independent roles can review one content-addressed bundle.
+unknowns:
+  - Exact Mixtral checkpoint revision remains deferred to a separately approved Phase 7 application.
+risks:
+  - Pre-existing dirty S4-R6 worktree must not be included or modified.
+validation:
+  - SHA-256 ledger replay
+  - JSON/YAML parse checks
+  - three-role same-hash review
+acceptance:
+  - Architecture/System GO with no blockers
+  - Model/Benchmark GO with no blockers
+  - Trace/Provenance GO with no blockers
+estimated_resources:
+  cpu_time_minutes: 10
+  gpu_time: 0
+  storage_megabytes: 5
+required_owner_decisions:
+  - CPU-only implementation is authorized by the request to implement Amendment 2.
+next_legal_action:
+  - Implement Phase 1 CPU/mock spike only after unanimous same-hash GO.
+forbidden_actions:
+  - GPU query or workload
+  - model download
+  - paid server
+  - frozen evidence modification

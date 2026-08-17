@@ -1,0 +1,68 @@
+{
+  "adjudication": {
+    "adjudication_basis": "vLLM offloading scheduler line 802 logs prepare_store=None as 'cannot store blocks'; CPU manager source returns None when protected-key eviction cannot satisfy capacity.",
+    "affected_logical_request_ids": [
+      "swap-k5-00",
+      "swap-k5-01",
+      "swap-k5-02",
+      "swap-k5-03",
+      "swap-k5-04",
+      "swap-k5-05",
+      "swap-k5-06",
+      "swap-k5-07"
+    ],
+    "attempt_id": "SWAP-K5-V1-MASTER",
+    "block_removed_message_count": 0,
+    "block_stored_message_count": 0,
+    "cannot_store_warning_count": 287,
+    "censored_request_count": 0,
+    "checksum_manifest_sha256": "857fb706422d370879a962c88d3c1a05bcaccfbb088a0528591139f4aba31f49",
+    "completion_latency_ns": {
+      "count": 8,
+      "max": 26398442797,
+      "median": 17812985082.5,
+      "min": 6573683014
+    },
+    "failed_request_count": 0,
+    "finish_reasons": [
+      "length"
+    ],
+    "kv_event_batch_count": 0,
+    "output_token_counts": [
+      32
+    ],
+    "passed_request_count": 8,
+    "peak_process_vmpin_kib": 0,
+    "peak_process_vmrss_kib": 1018248,
+    "peak_system_mlocked_kib": 26588,
+    "raw_file_count": 17,
+    "raw_file_set_sha256": "4d11d357e04d69bab53d3e30e70d6524020f8a4ca779f2e45f5dc38a241a7a23",
+    "rejected_request_count": 0,
+    "request_denominator": 8,
+    "runner_initial_outcome": "NO_EXHAUSTION_RESPONSE_OBSERVED",
+    "scientific_outcome": "HOST_POOL_STORE_REFUSED_FALLBACK_OBSERVED",
+    "stderr_sha256": "7be2ac9aa4486a319c088d3eae81783586e7ef5ed929b18a37c50395f92be31f",
+    "stdout_sha256": "be2ffc81cb1ccf9b5bffb4363a0e1a79d6ab679be60cb9198f076ca15eb17ec4",
+    "telemetry_sample_count": 83,
+    "ttft_ns": {
+      "count": 8,
+      "max": 25529124283,
+      "median": 14161423247.5,
+      "min": 2862390070
+    },
+    "validation_state": "VALIDATION_PASS",
+    "zero_event_interpretation": "Expected for prepare_store=None: no store is issued and therefore no BlockStored/BlockRemoved event is published."
+  },
+  "attempt_id": "SWAP-K5-V1-MASTER",
+  "derived_sidecar": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K5-V1-MASTER/derived_swap_k5_store_refusal_fallback.json",
+  "derived_sidecar_sha256": "31bb095ced0960ac0fa412a833318dafaf37487a03d2e0998802c984c4157353",
+  "execution_state": "EXECUTION_COMPLETE",
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K5-V1-MASTER",
+  "next_ready_unit": "SWAP-K4_AFTER_CONTRACT_GATE",
+  "raw_backup": "VERIFIED",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/SWAP-K5-V1-MASTER",
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T01:55:17Z",
+  "schema_version": "phase7-combined-master-swap-k5-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

@@ -1,0 +1,32 @@
+{
+  "attempt_id": "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+  "blocked_gpu_units": {
+    "OFF-E-RT0": "ADOPT-EXPERT-CATALOG",
+    "OFF-W0": "ADOPT-EXPERT-CATALOG"
+  },
+  "claims_forbidden": [
+    "runtime-native dynamic expert offload",
+    "runtime-native KV swap performance",
+    "stronger Unified Memory absence than observed telemetry"
+  ],
+  "completed_request_count": null,
+  "guard_manifest_sha256": "bd8239cdc57d8ad2e24b0738608fe7f8761cd1e0ef4739a26dc71974fdadfe17",
+  "guard_status": {
+    "KV-G0": "VALIDATED",
+    "MECH-G0": "VALIDATED",
+    "OS-SWAP-G0": "VALIDATED",
+    "UM-G0": "VALIDATED_NEGATIVE_EVIDENCE"
+  },
+  "guard_terminal_sha256": "9161bc8deccdb5fe2273f1241bbfea5cdb363830557b0f5be7a1488e2a1be7e7",
+  "local_raw_path": "artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+  "next_ready_unit": "SWAP-K0",
+  "promotion_status": "VALIDATION_PASS_WITH_UM_LIMITATION",
+  "raw_file_count": 18,
+  "raw_file_set_sha256": "0f9d152953a634c22cfc0c598bda36f01cfcc5e402d4c8d6959e033dd4e38784",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+  "reviewed_at_utc": "2026-08-13T23:52:03Z",
+  "runner_returncode": 0,
+  "runner_status": "PASS",
+  "schema_version": "phase7-combined-master-guard-promotion-review-v1",
+  "trace_row_count": 4845
+}

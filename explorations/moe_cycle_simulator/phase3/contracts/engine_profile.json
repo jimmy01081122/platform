@@ -1,0 +1,62 @@
+{
+  "arbitration": {
+    "FIFO": "SUPPORTED",
+    "PRIORITY": "SUPPORTED",
+    "ROUND_ROBIN": "UNSUPPORTED_FAIL_CLOSED"
+  },
+  "checkpoint": {
+    "heap_layout_serialization": "FORBIDDEN",
+    "required_hashes": [
+      "phase2_ledger_sha256",
+      "canonical_bundle_semantic_root",
+      "engine_build_sha256",
+      "engine_profile_sha256",
+      "checkpoint_schema_sha256"
+    ],
+    "restore_policy": "REBUILD_SORTED_STATE_AND_REVALIDATE",
+    "version": "checkpoint-v1"
+  },
+  "event_order": [
+    "time_fs",
+    "event_priority",
+    "request_id",
+    "token_index",
+    "layer_index",
+    "component_id",
+    "event_id"
+  ],
+  "limits": {
+    "enforcement": "construction, every completion transition, checkpoint restore and deadlock traversal",
+    "maxima_are_normative": true,
+    "smaller_test_limits_allowed": true,
+    "max_events_per_run": 1000000,
+    "max_same_time_events": 100000,
+    "max_wait_for_nodes": 100000
+  },
+  "resource_state": {
+    "arithmetic": "CHECKED_ARBITRARY_PRECISION_THEN_U128",
+    "fresh_constructor_waiters": "FORBIDDEN",
+    "holder_sum": "EXACT_CPP_INT_EQUALS_OCCUPANCY",
+    "restore_waiters": "PRIVATE_RECONSTRUCTION_PATH_ONLY"
+  },
+  "phase2_ledger_sha256": "dd2b9d9f8217fd6b78c1ae8b6f6e52c94a45774919cb36f0b407b53762c3d984",
+  "resource_support": {
+    "BRIDGE_CREDITS": "SUPPORTED",
+    "BRIDGE_QUEUE_ENTRIES": "SUPPORTED",
+    "COMPUTE_SLOTS": "SUPPORTED",
+    "COPY_ENGINE": "UNSUPPORTED_PHASE4_RESOURCE",
+    "INTERCONNECT_BANDWIDTH": "UNSUPPORTED_PHASE4_RESOURCE",
+    "MEMORY_BYTES": "SUPPORTED",
+    "QUEUE_ENTRIES": "SUPPORTED",
+    "SHARED_FABRIC": "UNSUPPORTED_PHASE4_RESOURCE"
+  },
+  "schema_version": "moe-simulator-phase3-engine-profile-v1",
+  "service_mode": "REPLAY_VALIDATE",
+  "service_semantics": {
+    "completion_generation": "FORBIDDEN",
+    "service_demand": "ACCOUNTING_ONLY",
+    "time_fs": "AUTHORITATIVE"
+  },
+  "unsupported_action": "FAIL_CLOSED",
+  "zero_default_capacity": "FORBIDDEN"
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_workload_qualification.schema.json",
+  "title": "G2.5 workload execution qualification contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_revision",
+    "status",
+    "purpose",
+    "claim_boundary",
+    "authority",
+    "frozen_inputs",
+    "candidate_scope",
+    "execution_controls",
+    "classification",
+    "common_ceiling_rule",
+    "eligibility_rule",
+    "r4_immutability",
+    "r5_entry_conditions",
+    "implementation_status",
+    "remaining_gpu_application_conditions"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-workload-qualification-v1"},
+    "contract_revision": {"const": "granite-c1-g25-termination-v1.4.1-s4-r4-application"},
+    "status": {"const": "s4_r4_application_cpu_only_remediation_gpu_not_run_pending_review"},
+    "purpose": {"const": "formal_workload_termination_qualification"},
+    "claim_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["establishes", "does_not_establish"],
+      "properties": {
+        "establishes": {"const": "bounded_execution_compatibility_only"},
+        "does_not_establish": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gpu_execution", "paid_gpu", "formal_r5"],
+      "properties": {
+        "gpu_execution": {"const": "not_authorized"},
+        "paid_gpu": {"const": "not_authorized"},
+        "formal_r5": {"const": "not_authorized"}
+      }
+    },
+    "frozen_inputs": {
+      "type": "object",
+      "required": ["prompt_construction_revision", "system_message_sha256", "tokenizer_config_sha256", "generation_config_file_sha256", "special_tokens_map_sha256", "eos_token_id", "pad_token_id"],
+      "properties": {
+        "prompt_construction_revision": {"const": "granite-c1-fixed-system-date-v1"},
+        "system_message_sha256": {"const": "2d870b377ad178dacfce968718fd67e7d34c18f2f9c6ef82455ff53913ece630"},
+        "tokenizer_config_sha256": {"const": "ab17e0d532ecf47e9d8451939dd81f25dd98c5fba4b6742584549bbf9c1f06b9"},
+        "generation_config_file_sha256": {"const": "df006c64ad35b18712527cb5130a7a13a4d8a7c5c23653feea59be88e2e2a4ca"},
+        "special_tokens_map_sha256": {"const": "596d752bf46f5cace1f6826b52ed7d913347a4eea0ecce8ab2f869471ca40369"},
+        "eos_token_id": {"const": 0},
+        "pad_token_id": {"const": 0}
+      }
+    },
+    "candidate_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["suite", "stage", "tasks", "instances", "selection_policy"],
+      "properties": {
+        "suite": {"const": "granite_c1_smoke_v1"},
+        "stage": {"const": "C1-A"},
+        "tasks": {"const": ["T1"]},
+        "instances": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^c1a-t1-[0-9]{2}$"}
+        },
+        "selection_policy": {"const": "all_frozen_candidates_no_per_sample_exception"}
+      }
+    },
+    "execution_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_pass",
+        "routing_collector",
+        "do_sample",
+        "num_beams",
+        "seed",
+        "token_ceiling_candidates",
+        "per_unit_timeout_seconds",
+        "legal_stop_reasons"
+      ],
+      "properties": {
+        "logical_pass": {"const": "P0"},
+        "routing_collector": {"const": "disabled"},
+        "do_sample": {"const": false},
+        "num_beams": {"const": 1},
+        "seed": {"type": "integer"},
+        "token_ceiling_candidates": {"const": [256, 384, 512]},
+        "per_unit_timeout_seconds": {"const": 480},
+        "legal_stop_reasons": {"const": ["eos_token"]}
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["labels", "qualified_definition", "precedence"],
+      "properties": {
+        "labels": {
+          "const": [
+            "INVALID_EVIDENCE",
+            "QUALIFIED",
+            "TRUNCATED",
+            "TIMEOUT",
+            "INVALID_OUTPUT",
+            "RUNTIME_FAILURE"
+          ]
+        },
+        "qualified_definition": {
+          "const": "legal_stop_and_complete_parseable_output_within_token_and_wall_time_ceilings"
+        },
+        "precedence": {
+          "const": [
+            "INVALID_EVIDENCE",
+            "RUNTIME_FAILURE",
+            "TIMEOUT",
+            "TRUNCATED",
+            "INVALID_OUTPUT",
+            "QUALIFIED"
+          ]
+        }
+      }
+    },
+    "common_ceiling_rule": {"type": "object"},
+    "eligibility_rule": {"type": "object"},
+    "r4_immutability": {"type": "object"},
+    "r5_entry_conditions": {"type": "array", "minItems": 8, "uniqueItems": true},
+    "implementation_status": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {"type": "string"}
+    },
+    "remaining_gpu_application_conditions": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {"type": "string"}
+    }
+  }
+}

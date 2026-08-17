@@ -1,0 +1,20 @@
+schema_version: benchmark-hardware-holdout-axis-v1
+axis_revision: v1.4.0
+axis_name: hardware_holdout
+assignment_unit: hardware_profile_id
+status: unassigned_pending_future_decision
+active_split: false
+assignments: []
+historical_retired_assignments:
+  - label: h100_blind
+    hardware_family: H100
+    status: removed_by_D-062
+    participates_in_active_split: false
+orthogonality:
+  independent_of_sample_split: true
+  independent_of_domain_split: true
+  independent_of_model_holdout: true
+  labels_must_not_be_copied_to_sample_manifest_rows: true
+reactivation_requires:
+  - recorded_decision_superseding_D-062
+  - explicit_hardware_profile_assignment

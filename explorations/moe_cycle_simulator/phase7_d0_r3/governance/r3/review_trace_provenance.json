@@ -1,0 +1,24 @@
+{
+  "schema_version": "phase7-gputw-d0-r3/reviewer-output/v1",
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r3-0d05c23",
+  "reviewed_commit": "0d05c23d1fb78e852f8a404b5a61c9086863a18e",
+  "reviewed_tree": "433108ece0624443bb1f6c1f5c2b9ab6443a991a",
+  "reviewed_candidate_ledger_sha256": "df2f5ec6726e0b6df09ae27cbcc49f98e2596dcd060b827e04f61991bc4ee245",
+  "candidate_member_count": 22,
+  "verdict": "MODIFY",
+  "blockers": [
+    "TP-D0-R3-B1: reviewed commit/tree are not verified against the same-hash candidate",
+    "TP-D0-R3-B2: the approved client key is only required to be present in a multi-key agent and the actual authentication key is not uniquely bound or retained",
+    "TP-D0-R3-B3: known-hosts and agent socket are verified and later reused by external pathname, leaving a check/use replacement window",
+    "TP-D0-R3-B4: terminal verification does not reload the semantic result/failure or rederive the result evidence identity closure",
+    "TP-D0-R3-B5: a detached setsid child can survive when its leader exits before the timeout descendant snapshot",
+    "TP-D0-R3-B6: live package loading validates ledger members but does not reject extra package-root files and import-shadow inputs"
+  ],
+  "positive_findings": [
+    "The 18-member application ledger replays exactly and the command preimage is recomputed.",
+    "Host-key provenance and the full evidence-root pathname are hash-bound.",
+    "A missing container digest correctly keeps the result discovery-only and non-promotable."
+  ],
+  "side_effects": false
+}

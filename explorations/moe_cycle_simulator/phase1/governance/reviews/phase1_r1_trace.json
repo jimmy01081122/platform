@@ -1,0 +1,12 @@
+{
+  "role": "Trace/Provenance",
+  "ledger_sha256": "1cef7f8632c3fe6ff9f4b37f1e51e8f16f50dfa853837af28ca370dd86f77ad6",
+  "verdict": "MODIFY",
+  "blockers": [
+    "TP-P1-001: dependency and test provenance were incomplete.",
+    "TP-P1-002: nested run inventory ignored filesystem special entries.",
+    "TP-P1-003: source clock uniqueness and event-rank binding were not enforced."
+  ],
+  "review_mode": "read-only",
+  "gpu_used": false
+}

@@ -1,0 +1,224 @@
+capabilities:
+  workload_capture:
+    required_output: schemas/trace.schema.json
+    example_tools: [runtime_profiler, framework_hooks, hardware_profiler, trace_importer]
+  reference_model:
+    required_output: schemas/metrics.schema.json
+    example_tools: [python, cpp, rust]
+  event_simulation:
+    required_output: schemas/metrics.schema.json
+    example_tools: [custom_des, simpy]
+  system_simulation:
+    required_output: schemas/metrics.schema.json
+    example_tools: [gem5, qemu_extensions, custom_system_model]
+  gpu_microarchitecture:
+    required_output: schemas/metrics.schema.json
+    example_tools: [accel_sim, gpgpu_sim, trace_model]
+  memory_simulation:
+    required_output: schemas/metrics.schema.json
+    example_tools: [dramsim3, ramulator2, custom_memory_model]
+  firmware_execution:
+    required_output: schemas/metrics.schema.json
+    example_tools: [native_emulation, spike, qemu, gem5, verilator_soc]
+  rtl_simulation:
+    required_output: schemas/metrics.schema.json
+    example_tools: [verilator, iverilog, commercial_if_available]
+  formal_verification:
+    required_output: schemas/metrics.schema.json
+    example_tools: [sby, yosys_smtbmc]
+  synthesis:
+    required_output: schemas/metrics.schema.json
+    example_tools: [yosys]
+  physical_design:
+    required_output: schemas/metrics.schema.json
+    example_tools: [openroad, openlane]
+  power_estimation:
+    required_output: schemas/metrics.schema.json
+    example_tools: [openroad_power, activity_based_estimator]
+  dse:
+    required_output: schemas/metrics.schema.json
+    example_tools: [python_search, optuna, nevergrad, custom_pareto_runner]
+
+adapter_rule: >-
+  Any tool may be used when an adapter records version, command, inputs, outputs,
+  parameter provenance, return code, and failure classification.
+
+# --------------------------------------------------------------------------------
+# Per-tool registry (charter §934-951). Records the tools ACTUALLY used, with real
+# versions queried from the pinned container images. Rationale: docs/methodology/
+# TOOL_SELECTION.md. Deferred candidates are listed with an adoption trigger.
+# --------------------------------------------------------------------------------
+tools:
+  - name: Verilator
+    version: "5.006 2023-01-22 (Debian 5.006-3)"
+    source: https://github.com/verilator/verilator
+    revision: "5.006"
+    license: LGPL-3.0-or-later / Artistic-2.0
+    capability: rtl_simulation
+    fidelity_level: cycle_behavioral
+    calibration_status: validated_against_reference   # four-layer equivalence
+    supported_platforms: [P-D, P-I]
+    supported_events: [expert_demand, dma_issue, dma_complete, evict]
+    known_limitations: "2-state sim; no wire delay; not gate-level timing"
+    adapter_path: rtl/run_verify.sh
+    reproduction_method: "docker edgehetero-rtl:1 (pinned)"
+  - name: gcc (native reference)
+    version: "12.2.0 (Debian 12.2.0-14+deb12u1)"
+    source: https://gcc.gnu.org
+    revision: "12.2.0"
+    license: GPL-3.0-with-GCC-exception
+    capability: reference_model
+    fidelity_level: functional_golden
+    calibration_status: golden
+    supported_platforms: [P-D, P-I]
+    supported_events: [expert_demand, prefetch, evict, transfer]
+    known_limitations: "no timing; counters only"
+    adapter_path: firmware/build_and_measure.sh
+    reproduction_method: "docker edgehetero-fw:1 (pinned)"
+  - name: riscv64-linux-gnu-gcc + qemu-user
+    version: "gcc 12.2.0 (Debian 12.2.0-13); qemu-riscv64 7.2.22 (Debian 1:7.2+dfsg-7+deb12u18+b3)"
+    source: "https://gcc.gnu.org ; https://www.qemu.org"
+    revision: "gcc 12.2.0 / qemu 7.2.22"
+    license: "GPL-3.0-with-GCC-exception ; GPL-2.0"
+    capability: firmware_execution
+    fidelity_level: isa_instret
+    calibration_status: validated_against_reference   # same counters as native C
+    supported_platforms: [P-D, P-I]
+    supported_events: [expert_demand, prefetch, evict, transfer]
+    known_limitations: "instret via qemu-user (functional ISA), not micro-arch cycles; CPI assumed 1"
+    adapter_path: firmware/build_and_measure.sh
+    reproduction_method: "docker edgehetero-fw:1 (pinned)"
+  - name: Yosys
+    version: "0.23 (git sha1 7ce5011c24b)"
+    source: https://github.com/YosysHQ/yosys
+    revision: "7ce5011c24b"
+    license: ISC
+    capability: synthesis
+    fidelity_level: gate_mapped
+    calibration_status: tool_default
+    supported_platforms: [asic_nangate45]
+    supported_events: n/a
+    known_limitations: "abc buffer segfaults on one-hot FSM netlist (D-047)"
+    adapter_path: sta/gen_netlist.sh, syn/sta_one.sh
+    reproduction_method: "docker edgehetero-syn:1 (pinned)"
+  - name: sv2v
+    version: "v0.0.12"
+    source: https://github.com/zachjs/sv2v
+    revision: "v0.0.12"
+    license: BSD-3-Clause
+    capability: synthesis   # SystemVerilog -> Verilog-2005 front-end for Yosys
+    fidelity_level: source_transform
+    calibration_status: validated_against_reference   # post-convert RTL still four-layer equiv
+    supported_platforms: [asic_nangate45]
+    supported_events: n/a
+    known_limitations: "SystemVerilog subset; packed-array idioms required"
+    adapter_path: sta/gen_netlist.sh
+    reproduction_method: "docker edgehetero-syn:1 (pinned)"
+  - name: OpenSTA
+    version: "3.1.0"
+    source: https://github.com/parallaxsw/OpenSTA
+    revision: "3.1.0"
+    license: GPL-3.0
+    capability: [timing_analysis]
+    fidelity_level: predictive_library_pre_layout
+    calibration_status: monotonicity_checked
+    supported_platforms: [asic_nangate45]
+    supported_events: n/a
+    known_limitations: "architecture-DSE only: fanout wire-load model not SPEF, ideal clock, no CTS/OCV/hold closure; historical default-activity power is non-authoritative"
+    adapter_path: sta/run_sta.tcl, scripts/sta_banked.sh
+    reproduction_method: "docker edgehetero-sta:1 (pinned, built from source w/ CUDD)"
+  - name: Nangate45 / FreePDK45 liberty
+    version: "NangateOpenCellLibrary typical"
+    source: "academic FreePDK45 / Nangate open cell library"
+    revision: "typ; see syn/lib/PROVENANCE.md"
+    license: "academic (not committed; fetched via scripts/fetch_pdk.sh)"
+    capability: [synthesis, timing_analysis, power_estimation]
+    fidelity_level: academic_pdk
+    calibration_status: vendor_spec
+    supported_platforms: [asic_nangate45]
+    supported_events: n/a
+    known_limitations: "academic PDK, not a foundry sign-off library"
+    adapter_path: scripts/fetch_pdk.sh
+    reproduction_method: "scripts/fetch_pdk.sh (not committed)"
+  - name: edgeflow (internal)
+    version: "in-repo"
+    source: "this repository"
+    revision: "tracked in git"
+    license: project
+    capability: [reference_model, event_simulation, dse, workload_capture]
+    fidelity_level: fast_and_transaction_model
+    calibration_status: functional_reference_validated_hardware_calibration_pending
+    supported_platforms: [P-D, P-I]
+    supported_events: [expert_demand, prefetch, evict, transfer, dma_batch]
+    known_limitations: "first-order H1 analytical/swept transfer timing; no measured TPOT/throughput validation yet; calibrated promotion requires phase1 calibration pack MAPE gates"
+    adapter_path: src/edgeflow/
+    reproduction_method: "python3 scripts/*.py (deterministic)"
+  - name: Yosys native sat (minisat)
+    version: "Yosys 0.23 built-in sat; yosys-smtbmc present but no SMT solver installed"
+    source: https://github.com/YosysHQ/yosys
+    revision: "7ce5011c24b"
+    license: ISC
+    capability: formal_verification
+    fidelity_level: complete_bounded_bmc
+    calibration_status: proven   # argmin==comb (D-051) + engine port-safety invariants (D-052)
+    supported_platforms: [rtl]
+    supported_events: n/a
+    known_limitations: "per-config bounded BMC (not param-general/unbounded); SAT scales superlinearly (engine ~0.45-0.9M vars @MAX_EXPERTS=8); tempinduct did not converge; no external SMT solver so no sby unbounded induction"
+    adapter_path: scripts/formal_argmin.sh + rtl/verification/lru_victim_formal.sv (argmin); scripts/formal_engine.sh + rtl/verification/residency_engine_formal.sv (engine safety)
+    reproduction_method: "docker edgehetero-syn:1 (pinned)"
+  - name: Ramulator2 (CMU-SAFARI)
+    version: "Ramulator 2.1"
+    source: https://github.com/CMU-SAFARI/ramulator2
+    revision: "99a0e1e87a9321587492fef5b0bd6197928f8d68"
+    license: MIT
+    capability: memory_simulation
+    fidelity_level: cycle_simulated_dram
+    calibration_status: standalone_simulator_not_hardware_calibrated
+    supported_platforms: [P-I]
+    supported_events: [expert_transfer_stream, compute_contention]
+    known_limitations: "adopted as a STANDALONE calibrator only (per-channel LoadStoreTrace saturates one channel; aggregate = per-channel x n_channels); contention modeled by interleaved random traffic; get_tCK not exposed (latency in cycles); NOT a simulator-in-the-loop"
+    adapter_path: "mem/Dockerfile, mem/run_ramulator.py, mem/gen_trace.py, scripts/mem_calibrate.py, scripts/w3_mem_recheck.py"
+    reproduction_method: "docker build -t edgehetero-mem:1 mem/ ; python3 scripts/mem_calibrate.py ; python3 scripts/w3_mem_recheck.py"
+  - name: Docker
+    version: "29.2.1 (build a5c7197)"
+    source: https://www.docker.com
+    revision: "29.2.1"
+    license: Apache-2.0 (engine)
+    capability: reproducibility
+    fidelity_level: n/a
+    calibration_status: n/a
+    supported_platforms: [host]
+    supported_events: n/a
+    known_limitations: "images pinned by tag, not digest"
+    adapter_path: "*/Dockerfile"
+    reproduction_method: "scripts/reproduce_all.sh"
+
+deferred_tools:   # evaluated, not adopted for the current slice; each has a trigger
+  - name: gem5
+    capability: system_simulation
+    reason: "transfer-bound margin 79-8460x makes CPU/DMA cycles non-decisive; high integration cost"
+    adoption_trigger: "a compute-bound operating region, or FW/DMA control cost within ~2x of transfer"
+  - name: [Ramulator2 in-the-loop, DRAMSys]
+    capability: memory_simulation
+    reason: "Ramulator2 ADOPTED as a standalone P-I calibrator (see tools:); the trigger below was then TESTED with real DRAM timing and is UNMET -- transfer dominates control >=68x, ~48x below the SW-vs-HW crossover, and realistic contention makes the system MORE transfer-bound (scripts/w3_mem_recheck.py, D-053). So simulator-in-the-loop (gem5 external-frontend) integration stays deferred."
+    adoption_trigger: "a P-I region where DRAM-timing interaction flips the SW-vs-HW decision (tested unmet at LPDDR5-6400; would require ~48x more effective BW or a >>10 us/step control cost), or a need for controller/refresh/thermal co-design detail"
+  - name: [Accel-Sim, GPGPU-Sim]
+    capability: gpu_microarchitecture
+    reason: "current contract requires an optional detailed backend for representative selected-expert/grouped-GEMM/gather-scatter/windows; adapter not yet adopted"
+    adoption_trigger: "mandatory platform capability: select after architecture-mapping feasibility and smoke evaluation"
+  - name: [SymbiYosys, yosys-smtbmc + external SMT solver]
+    capability: formal_verification
+    reason: "native Yosys sat already PROVES argmin==ref for all inputs (D-051); sby/smt only needed for unbounded (parameter-general) induction"
+    adoption_trigger: "parameter-general (unbounded-N) proof, or properties needing an SMT theory beyond bit-blasted SAT"
+  - name: [OpenROAD, OpenLane]
+    capability: physical_design
+    reason: "two-track adoption in progress: sky130 flow validation and ASAP7/consistent predictive-library architecture DSE; candidate-specific PnR remains workload-gated"
+    adoption_trigger: "sky130 smoke is unconditional platform work; selected-candidate PnR requires frozen workload/config/clock/activity"
+  - name: [McPAT, CACTI]
+    capability: power_estimation
+    reason: "no current power tool output satisfies the valid-library + clock + activity-trace contract"
+    adoption_trigger: "select the appropriate estimator only after workload VCD/SAIF and implementation context are available"
+  - name: SimPy
+    capability: event_simulation
+    reason: "deterministic residency model needs no DES kernel"
+    adoption_trigger: "stochastic/queueing dynamics requiring a general DES"

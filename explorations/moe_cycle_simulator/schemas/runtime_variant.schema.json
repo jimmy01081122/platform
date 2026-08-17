@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator/runtime-variant-v1",
+  "title": "Complete serving runtime semantic identity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "variant_id", "runtime", "container", "cuda", "driver",
+    "attention_backend", "fused_moe_backend", "tensor_parallel_size",
+    "expert_parallel_size", "pipeline_parallel_size", "distributed_executor",
+    "execution_mode", "max_model_length", "max_batched_tokens", "max_sequences",
+    "scheduler_policy", "kv_cache_dtype", "nccl_environment", "placement",
+    "offload", "kernel_backend", "seed", "generation", "collector_hash",
+    "adapter_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "runtime-variant-v1"},
+    "variant_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "runtime": {"$ref": "#/$defs/versionedComponent"},
+    "container": {"$ref": "#/$defs/versionedComponent"},
+    "cuda": {"$ref": "#/$defs/versionedComponent"},
+    "driver": {"$ref": "#/$defs/versionedComponent"},
+    "attention_backend": {"type": "string", "minLength": 1},
+    "fused_moe_backend": {"type": "string", "minLength": 1},
+    "tensor_parallel_size": {"type": "integer", "minimum": 1},
+    "expert_parallel_size": {"type": "integer", "minimum": 1},
+    "pipeline_parallel_size": {"type": "integer", "minimum": 1},
+    "distributed_executor": {"type": "string", "minLength": 1},
+    "execution_mode": {"enum": ["EAGER", "CUDA_GRAPH"]},
+    "max_model_length": {"type": "integer", "minimum": 1},
+    "max_batched_tokens": {"type": "integer", "minimum": 1},
+    "max_sequences": {"type": "integer", "minimum": 1},
+    "scheduler_policy": {"type": "string", "minLength": 1},
+    "kv_cache_dtype": {"type": "string", "minLength": 1},
+    "nccl_environment": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "placement": {"type": "object"},
+    "offload": {"type": "object"},
+    "kernel_backend": {"type": "string", "minLength": 1},
+    "seed": {"type": "integer", "minimum": 0},
+    "generation": {"type": "object"},
+    "collector_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "adapter_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "$defs": {
+    "versionedComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "revision"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "revision": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

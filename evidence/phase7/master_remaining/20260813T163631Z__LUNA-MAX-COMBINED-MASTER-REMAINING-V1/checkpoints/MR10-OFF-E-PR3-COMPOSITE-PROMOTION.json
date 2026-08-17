@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR10-OFF-E-PR3-COMPOSITE-PROMOTION",
+  "composite_review_sha256": "2dee200a650ec13280306d212cea0aef299aedf6a7dda78ed68bfca5c1f19768",
+  "execution_ledger_sha256": "e1d4f1fe4953319d5b8e162f467d99a95f8b9287e73fdd78402571de25098f86",
+  "next_ready_cpu_unit": "OFF-E-PR4-CONTRACT-FREEZE",
+  "remaining_ledger_sha256": "e4f25e45479a591b24c0a7055b27c0a6feaa36d561f079a87243803e1afe2b0b",
+  "required_closed_count": 44,
+  "required_remaining_count": 242,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T03:31:01Z"
+}

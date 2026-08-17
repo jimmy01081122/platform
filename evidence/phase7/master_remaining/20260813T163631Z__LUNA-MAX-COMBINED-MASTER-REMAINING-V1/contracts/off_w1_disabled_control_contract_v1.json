@@ -1,0 +1,51 @@
+{
+  "schema_version": "phase7-off-w1-disabled-control-contract-v1",
+  "contract_state": "FROZEN_BEFORE_EXECUTION",
+  "canonical_experiment_id": "OFF-W1",
+  "role": "INDEPENDENT_DISABLED_CONTROL_FOR_OFF_W0",
+  "scientific_question": "Does the exact OFF-W0 routing canary preserve output, finish and routed-expert semantics when runtime-native CPU weight offload is disabled?",
+  "model": {
+    "path": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "dtype": "bfloat16"
+  },
+  "control_runtime": {
+    "vllm_version": "0.23.0",
+    "offload_backend": "auto",
+    "cpu_offload_gb": 0.0,
+    "cpu_offload_params": [],
+    "enable_expert_parallel": false,
+    "enable_prefix_caching": false,
+    "enforce_eager": true
+  },
+  "canary": {
+    "runtime_class": "ROUTING",
+    "input_tokens": 128,
+    "output_tokens": 32,
+    "sampling_mode": "FORCED_LENGTH_CONTROLLED",
+    "seed": 0,
+    "warmup_count": 0,
+    "measured_count": 1,
+    "max_num_seqs": 1,
+    "max_num_batched_tokens": 256,
+    "gpu_memory_utilization": 0.97
+  },
+  "off_w0_reference": {
+    "attempt_id": "OFF-W0-V2-MASTER",
+    "raw_file_set_sha256": "ac8a84f9af23df521dd0beeebbaba8ddf55e89045542bd4a7abd112d99b85978",
+    "result_sha256": "70985785a749ef6279d6786b4e5a13d90728f103a66b34b4f3f87e6c0b59f01d",
+    "routing_array_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+    "expected_output_token_ids": [19630, 434, 282, 28475, 15921, 20284, 28723, 3981, 5803, 3459, 6029, 9161, 1312, 6535, 2979, 710, 5806, 304, 21503, 12068, 28723, 28705, 26306, 28705, 28787, 19630, 434, 282, 28475, 15921, 20284, 28723],
+    "expected_finish_reason": "length",
+    "expected_routing_shape": [159, 32, 2]
+  },
+  "validation_gate": [
+    "requested and resolved CPU offload budget is zero with no selected parameters",
+    "runtime log contains no positive Total CPU offloaded parameters value",
+    "one request completes exactly 128 input and 32 output tokens with length finish",
+    "output token IDs equal the frozen OFF-W0 reference",
+    "routing validates and the routing array hash equals the frozen OFF-W0 reference",
+    "terminal GPU cleanup has no compute process"
+  ],
+  "claim_boundary": "Correctness/equivalence disabled control only. One canary is not performance evidence. OFF-W2 byte-budget and OFF-W3 representative profiling remain independent requirements. Generic CPU weight offload is not dynamic expert residency."
+}

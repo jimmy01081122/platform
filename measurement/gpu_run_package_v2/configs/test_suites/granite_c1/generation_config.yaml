@@ -1,0 +1,26 @@
+schema_version: granite-generation-config-v1
+generation_config_revision: granite-c1-generation-v3
+common:
+  batch_size: 1
+  do_sample: false
+  num_beams: 1
+  use_cache: true
+  compile: false
+  speculative_decoding: false
+profiles:
+  c1_a:
+    max_new_tokens: 256
+  c1_b:
+    max_new_tokens: 256
+determinism:
+  seed: 20260718
+  torch_deterministic_algorithms: true
+  cublas_workspace_config: ":4096:8"
+  cuda_launch_blocking: true
+  cuda_matmul_allow_tf32: false
+  cudnn_allow_tf32: false
+  cudnn_benchmark: false
+  cudnn_deterministic: true
+  cuda_matmul_allow_bf16_reduced_precision_reduction: false
+  cuda_matmul_allow_fp16_reduced_precision_reduction: false
+  rationale: strict deterministic kernels and runtime flags are mandatory and fail-closed

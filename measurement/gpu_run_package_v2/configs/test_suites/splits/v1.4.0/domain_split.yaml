@@ -1,0 +1,18 @@
+schema_version: benchmark-domain-split-axis-v1
+axis_revision: v1.4.0
+seed: 20260718
+assignment_unit: dataset_domain
+partitions: [non_holdout_domain, domain_holdout]
+invariants:
+  heldout_domains_absent_from_other_partitions: true
+assignment:
+  mmlu:
+    stratify_by: subject
+    domain_holdout_subjects:
+      - high_school_world_history
+  ceval:
+    stratify_by: subject
+    domain_holdout_subjects:
+      - high_school_history
+leakage_policy:
+  domain_holdout_overlap: reject

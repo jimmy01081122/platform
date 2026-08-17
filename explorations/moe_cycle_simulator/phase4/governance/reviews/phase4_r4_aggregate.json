@@ -1,0 +1,20 @@
+{
+  "schema_version": "moe-simulator-three-role-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r4-20260728",
+  "ledger_sha256": "2109278b1b2ad66803cb59b60e29015a958b95db64b26f82f4ca4ef56fe9675b",
+  "member_count": 189,
+  "verdict": "GO",
+  "blockers": [],
+  "closed_blockers": [
+    "ARCH-P4-R2-B1",
+    "MODEL-P4-R3-B1"
+  ],
+  "role_verdicts": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "phase4_freeze": true,
+  "phase5_authorized_scope": "CPU_SYNTHETIC_ROUTING_RESIDENCY_POLICY_ONLY",
+  "gpu_authority": "NONE"
+}

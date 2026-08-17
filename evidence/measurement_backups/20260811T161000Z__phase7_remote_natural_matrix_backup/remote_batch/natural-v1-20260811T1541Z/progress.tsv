@@ -1,0 +1,16 @@
+completed_at_utc	experiment_id	workload_id	runtime_class	run_dir	status	provenance
+2026-08-11T15:40:04Z	W0-CLEAN	W0	CLEAN	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T153919Z__W0-CLEAN	PASS	adopted_prebatch_gate
+2026-08-11T15:42:46.789338+00:00	W0-ROUTING	W0	ROUTING	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154214Z__W0-ROUTING	PASS	executed
+2026-08-11T15:43:19.020257+00:00	W0-TELEMETRY	W0	TELEMETRY	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154246Z__W0-TELEMETRY	PASS	executed
+2026-08-11T15:44:34.855557+00:00	W1-CLEAN	W1	CLEAN	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154319Z__W1-CLEAN	PASS	executed
+2026-08-11T15:45:14.655723+00:00	W1-ROUTING	W1	ROUTING	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154434Z__W1-ROUTING	PASS	executed
+2026-08-11T15:45:53.887953+00:00	W1-TELEMETRY	W1	TELEMETRY	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154514Z__W1-TELEMETRY	PASS	executed
+2026-08-11T15:46:33.284005+00:00	W1-KERNEL-PROFILE	W1	KERNEL_PROFILE	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154553Z__W1-KERNEL-PROFILE	PASS	executed
+2026-08-11T15:47:14.653184+00:00	W1-MEMORY-PROFILE	W1	MEMORY_PROFILE	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154633Z__W1-MEMORY-PROFILE	PASS	executed
+2026-08-11T15:49:07.877400+00:00	W2-CLEAN	W2	CLEAN	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154714Z__W2-CLEAN	PASS	executed
+2026-08-11T15:49:57.209880+00:00	W2-ROUTING	W2	ROUTING	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154907Z__W2-ROUTING	PASS	executed
+2026-08-11T15:50:45.023271+00:00	W2-TELEMETRY	W2	TELEMETRY	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T154957Z__W2-TELEMETRY	PASS	executed
+2026-08-11T15:51:33.372206+00:00	W2-KERNEL-PROFILE	W2	KERNEL_PROFILE	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T155045Z__W2-KERNEL-PROFILE	PASS	executed
+2026-08-11T15:52:21.223747+00:00	W2-MEMORY-PROFILE	W2	MEMORY_PROFILE	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T155133Z__W2-MEMORY-PROFILE	PASS	executed
+2026-08-11T16:00:45.784341+00:00	W3-CLEAN	W3	CLEAN	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T155221Z__W3-CLEAN	PASS	executed
+2026-08-11T16:09:18.141221+00:00	W3-TELEMETRY	W3	TELEMETRY	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T160045Z__W3-TELEMETRY	PASS	executed

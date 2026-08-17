@@ -1,0 +1,32 @@
+{
+  "schema_version": "phase7-gputw-provider-adaptation-r1/candidate-set-policy/v1",
+  "candidate_id": "moe-simulator-phase7-gputw-provider-adaptation-r1-bdb610f",
+  "reviewed_commit": "bdb610fca5470e21556b1509ed22db6f55295995",
+  "reviewed_tree": "a471b8bd588c1e574fefae811f3e13d951d411b2",
+  "hash_algorithm": "SHA-256",
+  "member_order": "LC_ALL=C lexical path order",
+  "candidate_member_count": 12,
+  "candidate_ledger": "explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/candidate_ledger.sha256",
+  "candidate_ledger_sha256": "67fcf4cc8b17b122efa230b95c4a162fe8582be515ce23a307efe2bea5c23762",
+  "candidate_paths": [
+    "docs/status/MOE_SIMULATOR_PHASE7_GPUtw_PROVIDER_ADAPTATION_R1_20260809.md",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/README.md",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/__init__.py",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/__init__.py",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/checksums.sha256",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/known_hosts.gputw.template",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/provider_adaptation.json",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/provider_adaptation.schema.json",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/provider_adaptation_manifest.json",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/review_request.json",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/gputw_r1/validate_provider_adaptation.py",
+    "tests/test_phase7_gputw_provider_adaptation.py"
+  ],
+  "exclusion_rules": [
+    "review artifacts under explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1 are excluded",
+    "gpu_run_package_v2, runs, unrelated tracked changes, and unrelated untracked files are excluded",
+    "symlinks, special files, duplicate paths, pycache, and generated files are rejected"
+  ],
+  "replay_rule": "reconstruct every member with git show <reviewed_commit>:<path> and compare its SHA-256 to the ledger",
+  "side_effects": false
+}

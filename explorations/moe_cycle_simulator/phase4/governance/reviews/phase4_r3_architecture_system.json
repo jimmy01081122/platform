@@ -1,0 +1,14 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase4-single-gpu-r3-20260728",
+  "ledger_sha256": "8b94a7d30510102d612f5663a1153fad2fe08aec4a02ffbba210398fd61e4785",
+  "member_count": 89,
+  "verdict": "GO",
+  "blockers": [],
+  "closed_blockers": [
+    "ARCH-P4-R2-B1"
+  ],
+  "claim_boundary": "CPU-synthetic single-discrete-GPU timed-service, contention, exact rational timing and checkpoint replay only.",
+  "authorized_next_stage": "No promotion unless all three roles return GO with empty blockers on the identical ledger.",
+  "gpu_authority": "NONE"
+}

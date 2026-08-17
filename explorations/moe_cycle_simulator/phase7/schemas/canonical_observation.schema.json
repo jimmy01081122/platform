@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/moe-simulator/phase7/canonical-observation-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "observation_id",
+    "pass_id",
+    "source_clock_id",
+    "source_timestamp",
+    "aligned_time_fs",
+    "alignment_id",
+    "alignment_grade",
+    "alignment_use",
+    "request_id",
+    "rank",
+    "stream_id",
+    "correlation_id",
+    "observability",
+    "evidence_class",
+    "runtime_variant_hash",
+    "raw_source_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "phase7-canonical-observation-v1"},
+    "observation_id": {"type": "string", "minLength": 1},
+    "pass_id": {"enum": ["P0", "P1", "P2", "P3", "P4", "P5"]},
+    "source_clock_id": {"type": "string", "minLength": 1},
+    "source_timestamp": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "aligned_time_fs": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "alignment_id": {"type": "string", "minLength": 1},
+    "alignment_grade": {
+      "enum": ["CYCLE_GRADE", "ORDERING_ONLY", "AGGREGATE_ONLY", "UNAVAILABLE"]
+    },
+    "alignment_use": {
+      "enum": [
+        "CROSS_DOMAIN_CALIBRATION",
+        "EVENT_ORDERING",
+        "SAME_SOURCE_DURATION",
+        "AGGREGATE_STATISTICS"
+      ]
+    },
+    "request_id": {"type": ["string", "null"], "minLength": 1},
+    "rank": {"type": ["integer", "null"], "minimum": 0},
+    "stream_id": {"type": ["string", "null"], "minLength": 1},
+    "correlation_id": {"type": ["string", "null"], "minLength": 1},
+    "observability": {"$ref": "observability.schema.json"},
+    "evidence_class": {"const": "SYNTHETIC_CPU_MOCK"},
+    "runtime_variant_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "raw_source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
+

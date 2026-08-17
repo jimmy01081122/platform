@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/g25_gpu_entrypoint_policy.schema.json",
+  "schema_version": "g25-gpu-entrypoint-policy-v1",
+  "stage": "G2.5-S4-R6",
+  "policy": "single_attested_qualification_gpu_route",
+  "gpu_capable_entrypoints": [
+    {
+      "entrypoint_id": "legacy_cuda_smoke",
+      "command_prefix": "./run.sh --smoke",
+      "disposition": "hard_disabled",
+      "enforcement": "run_sh_before_preflight"
+    },
+    {
+      "entrypoint_id": "legacy_cuda_experiment",
+      "command_prefix": "./run.sh --experiment",
+      "disposition": "hard_disabled",
+      "enforcement": "run_sh_before_preflight"
+    },
+    {
+      "entrypoint_id": "benchmark_smoke_gpu",
+      "command_prefix": "./run.sh --benchmark-smoke --device auto|cuda",
+      "disposition": "hard_disabled",
+      "enforcement": "run_sh_before_review_or_preflight"
+    },
+    {
+      "entrypoint_id": "c1_model_smoke",
+      "command_prefix": "./projectctl model smoke",
+      "disposition": "hard_disabled",
+      "enforcement": "projectctl_before_adapter_import"
+    },
+    {
+      "entrypoint_id": "c1_run_start",
+      "command_prefix": "./projectctl run start",
+      "disposition": "hard_disabled",
+      "enforcement": "projectctl_before_lock_or_preflight"
+    },
+    {
+      "entrypoint_id": "c1_run_resume",
+      "command_prefix": "./projectctl run resume",
+      "disposition": "hard_disabled",
+      "enforcement": "projectctl_before_session_load_or_preflight"
+    },
+    {
+      "entrypoint_id": "c1_run_retry_failed",
+      "command_prefix": "./projectctl run retry-failed",
+      "disposition": "hard_disabled",
+      "enforcement": "projectctl_before_session_load_or_preflight"
+    },
+    {
+      "entrypoint_id": "c1_trace_run",
+      "command_prefix": "./projectctl trace run",
+      "disposition": "hard_disabled",
+      "enforcement": "projectctl_before_lock_or_preflight"
+    },
+    {
+      "entrypoint_id": "c1_diagnostic_run",
+      "command_prefix": "./projectctl diagnostic run",
+      "disposition": "hard_disabled",
+      "enforcement": "projectctl_before_lock_or_preflight"
+    },
+    {
+      "entrypoint_id": "g25_qualification_start",
+      "command_prefix": "attested-loader projectctl qualification start",
+      "disposition": "qualification_only",
+      "enforcement": "attested_loader_exact_argv_and_package_lease"
+    }
+  ],
+  "cpu_only_entrypoints": [
+    "benchmark_smoke_cpu",
+    "c1_model_preflight",
+    "c1_status_audit_package_verify",
+    "g25_plan_preflight_status_synthetic_replay_audit"
+  ],
+  "fallback_policy": "fail_closed_no_pgid_or_legacy_gpu_fallback"
+}

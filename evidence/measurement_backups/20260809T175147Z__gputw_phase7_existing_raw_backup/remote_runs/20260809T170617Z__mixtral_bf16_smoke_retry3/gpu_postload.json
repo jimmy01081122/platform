@@ -1,0 +1,23 @@
+{
+  "captured_at_utc": "2026-08-09T17:06:54.624670Z",
+  "processes": {
+    "argv": [
+      "nvidia-smi",
+      "--query-compute-apps=gpu_uuid,pid,process_name,used_memory",
+      "--format=csv,noheader,nounits"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, 45015, VLLM::EngineCore, 94912\n"
+  },
+  "query": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,name,driver_version,memory.total,memory.used,memory.free,utilization.gpu,temperature.gpu",
+      "--format=csv,noheader,nounits"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0, GPU-177cc8e4-ff4d-a649-ac29-a3807141b521, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 595.71.05, 97887, 94922, 2329, 3, 44\n"
+  }
+}

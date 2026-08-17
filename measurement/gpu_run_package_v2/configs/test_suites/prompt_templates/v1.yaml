@@ -1,0 +1,61 @@
+schema_version: prompt-templates-v1
+template_revision: v1.3.0
+templates:
+  gsm8k:
+    task: T1
+    literal: "Solve the problem. Give the final numeric answer after ####.\n\n{question}"
+  mmlu:
+    task: T2
+    literal: "{question}\nA. {choice_a}\nB. {choice_b}\nC. {choice_c}\nD. {choice_d}\nAnswer with one letter only."
+  humaneval:
+    task: T3
+    literal: "{prompt}"
+  ceval:
+    task: T5
+    literal: "{question}\nA. {choice_a}\nB. {choice_b}\nC. {choice_c}\nD. {choice_d}\n只回答一個選項字母。"
+fixed_T0:
+  - name: identity_single_token
+    split: smoke
+    prompt: "MICRO_FIXTURE identity token 7"
+    input_token_ids: [7]
+    expected_output_token_ids: [7]
+    expected: identity
+  - name: ordered_pair
+    split: calibration
+    prompt: "MICRO_FIXTURE preserve ordered tokens 3 5"
+    input_token_ids: [3, 5]
+    expected_output_token_ids: [3, 5]
+    expected: ordered_copy
+  - name: deterministic_reverse
+    split: validation
+    prompt: "MICRO_FIXTURE reverse tokens 2 4 6"
+    input_token_ids: [2, 4, 6]
+    expected_output_token_ids: [6, 4, 2]
+    expected: reverse
+  - name: fixed_reduce
+    split: sample_holdout
+    prompt: "MICRO_FIXTURE sum tokens 8 13"
+    input_token_ids: [8, 13]
+    expected_output_token_ids: [21]
+    expected: integer_sum
+fixed_T4:
+  - name: concise_instruction
+    role: instruction
+    split: calibration
+    content: "Summarize the purpose of a deterministic benchmark in exactly two sentences."
+  - name: constraint_instruction
+    role: instruction
+    split: validation
+    content: "List three risks of non-reproducible evaluation. Use a numbered list and no preamble."
+  - name: technical_conversation
+    role: conversation
+    split: sample_holdout
+    messages:
+      - {role: system, content: "You are a precise systems research assistant."}
+      - {role: user, content: "Why must calibration and holdout samples remain disjoint?"}
+  - name: chinese_conversation
+    role: conversation
+    split: domain_holdout
+    messages:
+      - {role: system, content: "你是嚴謹的研究助理。"}
+      - {role: user, content: "請用繁體中文說明為何不能把估算值冒充實測值。"}

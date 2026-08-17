@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_external_seal_anchor.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "session_relative_path",
+    "terminal_bound_event_sha256", "session_file_inventory", "final_seal",
+    "anchor_payload_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-external-seal-anchor-v1"},
+    "session_id": {"const": "granite-c1a-g25-qualification-r1-20260719"},
+    "session_relative_path": {"const": "granite-c1a-g25-qualification-r1-20260719"},
+    "terminal_bound_event_sha256": {"$ref": "#/$defs/sha256"},
+    "session_file_inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "entries_sha256"],
+      "properties": {
+        "path": {"const": "session_file_inventory.json"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "entries_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "final_seal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "final_seal.json"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "anchor_payload_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

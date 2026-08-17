@@ -1,0 +1,90 @@
+{
+  "schema_version": "moe-simulator-phase1-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase1-cpu-mock-r2-20260726",
+  "goal": "Prove frozen trace shape, exact rational alignment, correlation, observability and V0 replay contracts using CPU-only synthetic evidence.",
+  "scope": [
+    "CPU/mock fixture",
+    "four independent source clocks",
+    "two synthetic ranks",
+    "EventIR and RoutingIR conversion",
+    "V0 offline replay",
+    "negative fail-closed validation",
+    "exact CPU dependency and test provenance",
+    "complete regular-file/directory inventory with special-entry rejection"
+  ],
+  "non_goals": [
+    "real vLLM or Mistral observability",
+    "Mixtral materialization",
+    "GPU execution",
+    "formal profiling",
+    "calibration",
+    "Canonical IR freeze"
+  ],
+  "inputs": [
+    "fixtures/mock_runtime_trace.json",
+    "../governance/reviews/phase0_r3_aggregate.json"
+  ],
+  "outputs": [
+    "run 20260726T054917Z__moe_cycle_simulator_phase1_cpu_mock_r2__S1",
+    "PHASE1_RESULT.md",
+    "observability_matrix.json"
+  ],
+  "dependencies": {
+    "phase0_ledger_sha256": "4a53c3d2fbbab330151679ea2b831b91b404239b88db7edc616f2900d61544bc",
+    "jsonschema": "4.24.0",
+    "pytest": "9.1.1"
+  },
+  "assumptions": [
+    "Synthetic shapes are sufficient to validate contracts but not real collector feasibility.",
+    "Exact synthetic alignment has zero uncertainty by fixture construction."
+  ],
+  "unknowns": [
+    "real vLLM event availability",
+    "real CUDA and profiler clock alignment residual",
+    "real rank-to-rank timestamp alignment",
+    "platform telemetry observability"
+  ],
+  "alternative_designs": [
+    "small local MoE runtime trace after separate dependency approval",
+    "existing legally sourced trace import"
+  ],
+  "risks": [
+    "synthetic fixtures can miss runtime-specific event shapes",
+    "mock exact alignment does not predict measurement uncertainty"
+  ],
+  "validation_method": [
+    "strict JSON Schema Draft 2020-12",
+    "semantic contract validation",
+    "exact replay comparison",
+    "complete run checksum ledger and exact file/directory closure",
+    "hash-bound dependency RECORD and installed-content roots",
+    "retained validator and test command/stdout/stderr/return codes",
+    "negative tamper, malformed-input, rank-binding and filesystem tests"
+  ],
+  "acceptance_criteria": [
+    "all ten required shapes present",
+    "four distinct source alignment records",
+    "two source ranks represented",
+    "V0 zero findings",
+    "fresh run replay validates",
+    "16 tests pass under the recorded environment",
+    "GPU and model use false"
+  ],
+  "estimated_resources": {
+    "execution": "CPU-only, under one minute",
+    "storage": "under one MiB"
+  },
+  "owner_decisions": [
+    "Amendment 2 authorizes approved Phase 1 CPU/mock implementation only."
+  ],
+  "next_legal_action": "After identical-hash three-role GO, draft and validate Phase 2 Canonical IR/codec on CPU only.",
+  "forbidden_actions": [
+    "GPU query or execution",
+    "Mixtral or benchmark download",
+    "paid server",
+    "formal profiling",
+    "calibration PASS",
+    "modification of frozen Phase 0 or S4 evidence"
+  ],
+  "status": "candidate_r2_unreviewed"
+}

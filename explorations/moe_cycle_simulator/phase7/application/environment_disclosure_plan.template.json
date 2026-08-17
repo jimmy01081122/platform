@@ -1,0 +1,89 @@
+{
+  "schema_version": "moe-simulator-phase7-d0-plan-v1",
+  "application_id": "mixtral-rtxpro6000-bf16-m0-r12-20260729",
+  "status": "DRAFT_WITH_BLOCKING_FIELDS",
+  "fresh_session_required": true,
+  "resume_allowed": false,
+  "retry_allowed": false,
+  "target": {
+    "provider": "GPUtw",
+    "gpu_count": 1,
+    "exact_product_name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "minimum_memory_bytes": 96000000000
+  },
+  "ssh": {
+    "executable": "[BLOCKING:ABSOLUTE_LOCAL_SSH_EXECUTABLE]",
+    "executable_sha256": "[BLOCKING:LOCAL_SSH_EXECUTABLE_SHA256]",
+    "host": "[BLOCKING:FRESH_OWNER_PROVIDED_SSH_HOST]",
+    "port": 2222,
+    "username": "[BLOCKING:FRESH_OWNER_PROVIDED_SSH_USERNAME]",
+    "known_hosts_file": "[BLOCKING:FRESH_DEDICATED_KNOWN_HOSTS_PATH]",
+    "known_hosts_file_sha256": "[BLOCKING:FRESH_DEDICATED_KNOWN_HOSTS_SHA256]",
+    "runtime_known_hosts_relative_path": "disclosure_inputs/known_hosts",
+    "host_key_algorithm": "ssh-ed25519",
+    "host_public_key_blob_sha256": "[BLOCKING:APPROVED_HOST_PUBLIC_KEY_BLOB_SHA256]",
+    "openssh_fingerprint": "[BLOCKING:APPROVED_OPENSSH_HOST_FINGERPRINT]",
+    "credential_storage": "EXTERNAL_NOT_RECORDED"
+  },
+  "probe": {
+    "source_relative_path": "executor/environment_probe.py",
+    "source_sha256": "[BLOCKING:FROZEN_DISCLOSURE_PROBE_SHA256]",
+    "controller_relative_path": "executor/disclosure_driver.py",
+    "controller_sha256": "[BLOCKING:FROZEN_DISCLOSURE_CONTROLLER_SHA256]",
+    "remote_argv": [
+      "env",
+      "MOE_PHASE7_CONTAINER_DIGEST=[BLOCKING:PROVIDER_ATTESTED_CONTAINER_DIGEST]",
+      "python3",
+      "-I",
+      "-B",
+      "-"
+    ],
+    "exact_ssh_argv_sha256": "[BLOCKING:EXACT_SSH_ARGV_SHA256]",
+    "timeout_seconds": 120,
+    "max_stdout_bytes": 1048576,
+    "max_stderr_bytes": 262144,
+    "transport": "PYTHON_STDLIB_SOURCE_OVER_STDIN"
+  },
+  "allocation_window": {
+    "start_trigger": "OWNER_RELEASES_FRESH_SSH_HANDOFF",
+    "lease_start_utc": "[BLOCKING:FRESH_SSH_HANDOFF_UTC]",
+    "lease_deadline_utc": "[BLOCKING:EXACTLY_SIX_HOURS_AFTER_HANDOFF_UTC]",
+    "total_seconds": 21600,
+    "billing_mode": "PREPAID_FIXED_WINDOW",
+    "extension_allowed": false,
+    "additional_cost_allowed": false,
+    "maximum_additional_spend_amount": "0",
+    "maximum_additional_spend_currency": "TWD",
+    "release_reserve_seconds": 900
+  },
+  "storage_expectation": {
+    "persistent_mount": "/vault",
+    "ephemeral_mount": "/workspace",
+    "persistent_project_prefix": "/vault/flow",
+    "minimum_persistent_free_bytes": 300000000000,
+    "remote_write_test": "NOT_AUTHORIZED_IN_D0",
+    "credentials_in_persistent_storage": "FORBIDDEN",
+    "credentials_in_workspace": "FORBIDDEN"
+  },
+  "output": {
+    "local_evidence_root": "[BLOCKING:FRESH_ABSOLUTE_LOCAL_D0_EVIDENCE_ROOT]",
+    "terminal_sealing": "REQUIRED"
+  },
+  "authority": {
+    "required_unlock": "OWNER_DELEGATED_EXACT_D0_COMMAND",
+    "remote_file_write": false,
+    "download": false,
+    "package_install": false,
+    "model_access": false,
+    "gpu_compute": false,
+    "allowed_remote_commands": [
+      "nvidia-smi"
+    ],
+    "allowed_remote_files": [
+      "/etc/os-release",
+      "/proc/cpuinfo",
+      "/proc/meminfo",
+      "/proc/sys/kernel/random/boot_id"
+    ]
+  }
+}

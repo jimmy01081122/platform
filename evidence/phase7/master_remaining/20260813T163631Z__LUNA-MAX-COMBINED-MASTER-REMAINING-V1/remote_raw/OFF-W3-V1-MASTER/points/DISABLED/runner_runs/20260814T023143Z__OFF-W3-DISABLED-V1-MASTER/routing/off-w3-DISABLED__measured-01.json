@@ -1,0 +1,24 @@
+{
+  "array_path": "routing/off-w3-DISABLED__measured-01.npy",
+  "array_sha256": "26546e41d43eb414e24d81a876b7c0d583358bfbe83b6191d8f851bf0c461fcf",
+  "dtype": "uint8",
+  "excluded_trailing_sampled_token_count": 1,
+  "expected_forwarded_token_count": 4223,
+  "experts_from_model_config": 8,
+  "input_token_count": 4096,
+  "layers_from_model_config": 32,
+  "logical_request_id": "off-w3-DISABLED__measured-01",
+  "maximum_expert_id": 7,
+  "minimum_expert_id": 0,
+  "output_token_count": 128,
+  "semantics": "per token that completed a model forward pass, actual model layer, top-k expert IDs; the final sampled output token is excluded because it is not forwarded again",
+  "shape": [
+    4223,
+    32,
+    2
+  ],
+  "source_field": "vllm.CompletionOutput.routed_experts",
+  "top_k_from_model_config": 2,
+  "validation_errors": [],
+  "validation_status": "PASS"
+}

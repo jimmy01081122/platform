@@ -1,0 +1,7 @@
+{
+  "execution_state": "EXECUTION_COMPLETE",
+  "finished_at_utc": "2026-08-14T01:50:13Z",
+  "run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/attempts/SWAP-K5-V1-MASTER/runner_runs/20260814T014923Z__SWAP-K5-V1-MASTER",
+  "scientific_outcome": "NO_EXHAUSTION_RESPONSE_OBSERVED",
+  "status": "PASS"
+}

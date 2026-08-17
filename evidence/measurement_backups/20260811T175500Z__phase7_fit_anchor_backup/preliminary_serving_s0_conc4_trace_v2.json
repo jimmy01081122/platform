@@ -1,0 +1,117 @@
+{
+  "adoption_allowed": true,
+  "checks": [
+    {
+      "critical": true,
+      "expected": "PASS",
+      "name": "manifest.status",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": "SERVING_VARIANT",
+      "name": "runtime_class",
+      "observed": "SERVING_VARIANT",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": 8,
+      "name": "request_count",
+      "observed": 8,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "request_ids_unique",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": [],
+      "name": "request_errors",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "positive_output_lengths",
+      "observed": [
+        32
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": [],
+      "name": "timing_order",
+      "observed": [],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=4",
+      "name": "observed_max_overlap",
+      "observed": 4,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=2",
+      "name": "telemetry_rows",
+      "observed": 4,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">0",
+      "name": "routing_rows",
+      "observed": 384,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": true,
+      "name": "routing_vector_shape",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": [
+        "PASS"
+      ],
+      "name": "routing_conservation",
+      "observed": [
+        "PASS"
+      ],
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "expected": ">=4",
+      "name": "active_batch_observed",
+      "observed": 4,
+      "status": "PASS"
+    }
+  ],
+  "critical_failure_count": 0,
+  "critical_failures": [],
+  "raw_unchanged": true,
+  "routing_summary": {
+    "max_active_sequences": 4,
+    "present": true,
+    "route_conservation_statuses": [
+      "PASS"
+    ],
+    "row_count": 384,
+    "vector_shape_valid": true
+  },
+  "schema_version": "phase7-serving-burst-review-v1",
+  "status": "PASS",
+  "tool_revision": "serving-burst-review-v1"
+}

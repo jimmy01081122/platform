@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<swap-k2-fit-25>", line 157
+    write("environment.json",{"captured_at_utc":now(),"python":sys.version,"platform":platform.platform(),"hostname":platform.node(),"pid":os.getpid(),"cuda_visible_devices":os.environ.get("CUDA_VISIBLE_DEVICES"),"vllm_version":ver,"torch_version":getattr(torch,"__version__",None),"torch_cuda_version":getattr(getattr(torch,"version",None),"cuda",None),"cuda_available":bool(torch.cuda.is_available()),"gpu_count":int(torch.cuda.device_count()) if torch.cuda.is_available() else 0})
+IndentationError: unexpected indent

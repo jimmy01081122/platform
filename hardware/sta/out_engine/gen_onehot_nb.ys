@@ -1,0 +1,6 @@
+read_verilog /work/sta/out_engine/flat_onehot_me128.v
+synth -top moe_residency_top -flatten
+dfflibmap -liberty /work/syn/lib/nangate45.lib
+abc -liberty /work/syn/lib/nangate45.lib
+clean
+write_verilog -noattr /work/sta/out_engine/netlist_onehot_me128_nb.v

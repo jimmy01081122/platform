@@ -1,0 +1,355 @@
+schema_version: model-compatibility-v2
+registry_ref: model_registry.yaml
+matrix_status: pre_calibration_candidates_only
+
+execution_fidelities:
+  F:
+    name: full_resident_execution
+    description: Complete model execution with checkpoint-native floating-point weights resident on one GPU.
+  Q:
+    name: quantized_resident_execution
+    description: Complete model execution with an independently validated quantized checkpoint resident on one GPU.
+  O:
+    name: offload_execution
+    description: Complete model execution with measured CPU/GPU weight or layer offload.
+  L:
+    name: layer_or_kernel_replay
+    description: Shape-faithful selected layer, expert, kernel, or execution-window replay.
+  T:
+    name: trace_replay
+    description: Routing trace and calibrated service-model replay; not full-model execution.
+
+confirmation_contract:
+  applies_to: [F, Q]
+  initial_status: candidate
+  confirmed_only_if_all_gates_pass: true
+  gates:
+    G1_estimates:
+      required_checks:
+        - weight_size_estimate
+        - runtime_overhead_estimate
+      evidence_required: estimate
+    G2_execution_smoke:
+      required_checks:
+        - allocation_smoke_test
+        - short_context_generation_smoke_test
+      evidence_required: measured
+    G3_profiler:
+      required_checks:
+        - profiler_compatibility_test
+      evidence_required: measured
+  failure_policy:
+    retain_capacity_boundary: true
+    remove_failed_candidate_from_matrix: false
+    allowed_terminal_statuses: [confirmed, capacity_boundary, runtime_incompatible, profiler_incompatible]
+
+m3_policy:
+  full_single_gpu_execution: prohibited
+  prohibited_fidelities: [F, Q, O]
+  allowed_candidate_fidelities: [L, T]
+  timing_sources:
+    - executable_model_measurement
+    - kernel_or_layer_replay
+    - microbenchmark
+    - calibrated_service_model
+
+quantization_formats:
+  awq:
+    interchangeable_with: []
+    not_interchangeable_with: [gptq, compressed_tensors]
+    required_checkpoint_fields:
+      - checkpoint_id
+      - revision
+      - layout
+      - qweight
+      - qzeros
+      - scales
+      - reference_dequant
+    fused_kernel_gate:
+      required: true
+      checks:
+        - checkpoint_tensor_names_and_shapes_verified
+        - bit_exact_against_reference_dequant
+        - supported_compute_capability
+        - representative_shape_execution
+        - profiler_compatibility
+  gptq:
+    interchangeable_with: []
+    not_interchangeable_with: [awq, compressed_tensors]
+    required_checkpoint_fields: [checkpoint_id, revision, layout, quantization_config]
+  compressed_tensors:
+    interchangeable_with: []
+    not_interchangeable_with: [awq, gptq]
+    required_checkpoint_fields: [checkpoint_id, revision, layout, quantization_config]
+
+comparison_policy:
+  different_precision_is_not_pure_gpu_speed_comparison: true
+  pure_gpu_speed_comparison_requires:
+    - same_model_id
+    - same_revision
+    - same_precision_id
+    - same_quantization_method
+    - same_checkpoint_layout
+    - same_backend
+    - same_workload_hash
+  cross_precision_label: precision_runtime_ablation
+
+profile_aliases:
+  rtx3050_6gb: rtx_3050_6gb
+  rtx3090_24gb: rtx_3090_24gb
+  rtx4090_24gb: rtx_4090_24gb
+  rtx5090_32gb: rtx_5090
+  rtx_pro_6000_blackwell_workstation_96gb: rtx_pro_6000
+  h100_pcie_80gb: h100
+  h100_sxm5_80gb: h100
+  a6000_48gb: a6000
+  a100_40gb: a100
+  a100_80gb: a100
+  v100_16gb: v100
+  v100_32gb: v100
+
+candidate_templates:
+  standard: &standard_candidates
+    F:
+      status: candidate
+      tiers:
+        M0: candidate
+        M1: candidate
+        M2: candidate
+        M3: prohibited
+      confirmation_contract: [G1_estimates, G2_execution_smoke, G3_profiler]
+    Q:
+      status: candidate
+      tiers:
+        M0: candidate
+        M1: candidate
+        M2: candidate
+        M3: prohibited
+      confirmation_contract: [G1_estimates, G2_execution_smoke, G3_profiler]
+    O:
+      status: candidate
+      tiers:
+        M0: candidate
+        M1: candidate
+        M2: candidate
+        M3: prohibited
+      required_evidence: measured_transfer_and_runtime_trace
+    L:
+      status: candidate
+      tiers: {M0: candidate, M1: candidate, M2: candidate, M3: candidate}
+      required_evidence: shape_and_kernel_mapping
+    T:
+      status: candidate
+      tiers: {M0: candidate, M1: candidate, M2: candidate, M3: candidate}
+      required_evidence: trace_provenance_and_calibration_status
+
+gpu_profiles:
+  rtx_3050_6gb:
+    gpu_match: NVIDIA RTX 3050
+    role: local_pipeline_validation
+    vram_gib:
+      value: 6
+      evidence: estimate
+      basis: named target profile; verify detected device memory
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, awq, gptq, compressed_tensors]
+      prohibited: [fp8]
+      note: Quantized formats remain separate candidates and require format-specific kernels.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - backend_and_kernel_must_support_detected_compute_capability
+        - no_backend_candidate_is_confirmed_before_smoke_and_profiler_gates
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  rtx_3090_24gb:
+    gpu_match: NVIDIA RTX 3090
+    role: consumer_edge_workstation
+    vram_gib:
+      value: 24
+      evidence: estimate
+      basis: named target profile; verify detected device memory
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, awq, gptq, compressed_tensors]
+      prohibited: [fp8]
+      note: FP8 is not a native execution candidate for this profile.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - single_gpu_profile_has_no_nvlink_assumption
+        - backend_and_kernel_must_support_detected_compute_capability
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  rtx_4090_24gb:
+    gpu_match: NVIDIA RTX 4090
+    role: consumer_edge_workstation
+    vram_gib:
+      value: 24
+      evidence: estimate
+      basis: named target profile; verify detected device memory
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, fp8, awq, gptq, compressed_tensors]
+      prohibited: []
+      note: FP8 requires checkpoint-layout and backend-kernel compatibility; no NVLink assumption.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - fp8_requires_backend_kernel_gate
+        - rtx_4090_profile_must_not_enable_nvlink
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  rtx_5090:
+    gpu_match: NVIDIA RTX 5090
+    role: consumer_edge_workstation
+    vram_gib:
+      value: null
+      evidence: estimate
+      basis: query detected device; do not assume board memory from name alone
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, fp8, awq, gptq, compressed_tensors]
+      prohibited: []
+      note: Every low-precision path requires a backend and fused-kernel gate.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - backend_build_must_explicitly_support_detected_compute_capability
+        - no_forward_compatibility_assumption
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  rtx_pro_6000:
+    gpu_match: NVIDIA RTX PRO 6000
+    role: primary_professional_workstation_calibration
+    vram_gib:
+      value: null
+      evidence: estimate
+      basis: exact generation and detected device memory must be recorded
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, fp8, awq, gptq, compressed_tensors]
+      prohibited: []
+      note: Match exact RTX PRO 6000 generation before selecting kernels.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - exact_gpu_generation_and_compute_capability_required
+        - calibration_requires_raw_profiler_artifacts
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  h100:
+    gpu_match: NVIDIA H100
+    role: frozen_blind_datacenter_holdout
+    vram_gib:
+      value: null
+      evidence: estimate
+      basis: query detected H100 SKU and device memory
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, fp8, awq, gptq, compressed_tensors]
+      prohibited: []
+      note: Holdout results must not be used for pre-freeze fitting or candidate selection.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - holdout_is_scored_before_any_h100_local_fitting
+        - preserve_native_profiler_outputs
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  a6000:
+    gpu_match: NVIDIA RTX A6000
+    role: optional_cross_platform_validation
+    vram_gib:
+      value: 48
+      evidence: estimate
+      basis: named target profile; verify detected device memory
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, awq, gptq, compressed_tensors]
+      prohibited: [fp8]
+      note: FP8 is not a native execution candidate for this profile.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - profile_remains_uncalibrated_until_measured
+        - backend_and_kernel_must_support_detected_compute_capability
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  a100:
+    gpu_match: NVIDIA A100
+    role: optional_cross_platform_validation
+    vram_gib:
+      value: null
+      evidence: estimate
+      basis: query detected 40GB or 80GB SKU
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, bf16, awq, gptq, compressed_tensors]
+      prohibited: [fp8]
+      note: Do not infer native FP8 support from newer datacenter profiles.
+    backend:
+      allowed_candidates: [transformers, accelerate, vllm, sglang, autoawq, autogptq, compressed_tensors]
+      restrictions:
+        - profile_remains_uncalibrated_until_measured
+        - record_mig_state_and_sku
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]
+
+  v100:
+    gpu_match: NVIDIA V100
+    role: optional_legacy_cross_platform_validation
+    vram_gib:
+      value: null
+      evidence: estimate
+      basis: query detected 16GB or 32GB SKU
+    execution_candidates: *standard_candidates
+    precision:
+      allowed_candidates: [fp16, awq, gptq, compressed_tensors]
+      prohibited: [bf16, fp8]
+      note: BF16 and FP8 are prohibited; quantized kernels must explicitly support SM70.
+    backend:
+      allowed_candidates: [transformers, accelerate, autoawq, autogptq, compressed_tensors]
+      restricted_candidates: [vllm, sglang]
+      restrictions:
+        - bf16_is_prohibited
+        - fp8_is_prohibited
+        - quantized_fused_kernel_requires_explicit_sm70_support
+        - backend_must_not_silently_cast_to_a_prohibited_precision
+    fallback:
+      M0: [F, Q, O, L, T]
+      M1: [F, Q, O, L, T]
+      M2: [F, Q, O, L, T]
+      M3: [L, T]

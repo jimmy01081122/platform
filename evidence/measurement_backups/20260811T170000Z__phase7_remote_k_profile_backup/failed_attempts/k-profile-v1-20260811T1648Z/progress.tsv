@@ -1,0 +1,2 @@
+completed_at_utc	experiment_id	workload_id	run_dir	status	fit_role	row_role
+2026-08-11T16:49:21.049292+00:00	K0-F0-CANARY	F0	/vault/flow/moe_simulator_phase7/real_campaign/runs/20260811T164853Z__K0-F0-CANARY	FAIL	fit	bounded_profiler_canary

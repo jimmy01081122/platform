@@ -1,0 +1,25 @@
+schema_version: generation-configs-v1
+config_revision: v1.0.0
+configs:
+  deterministic_greedy:
+    do_sample: false
+    temperature: 0.0
+    top_p: 1.0
+    max_new_tokens: 256
+    seed: 20260718
+  code_greedy:
+    do_sample: false
+    temperature: 0.0
+    top_p: 1.0
+    max_new_tokens: 512
+    seed: 20260718
+  long_context_greedy:
+    do_sample: false
+    temperature: 0.0
+    top_p: 1.0
+    max_new_tokens: 64
+    seed: 20260718
+determinism:
+  record_tokenizer_revision: true
+  record_runtime_backend: true
+  record_effective_generation_config: true

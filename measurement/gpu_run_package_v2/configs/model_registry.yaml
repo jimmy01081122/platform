@@ -1,0 +1,384 @@
+schema_version: model-registry-v2
+registry_status: pre_calibration
+
+evidence_policy:
+  measured_values_require_artifact: true
+  estimate_shape:
+    required_fields: [value, evidence, basis]
+    evidence_value: estimate
+  unknown_values: null
+  revision_policy: >-
+    Every checkpoint has an explicit revision field. A null revision is unresolved
+    and must be pinned to an immutable commit hash before weights are acquired.
+  m3_single_gpu_full_execution: prohibited
+
+precision_taxonomy:
+  fp32:
+    family: floating_point
+    nominal_bits_per_weight: 32
+  bf16:
+    family: floating_point
+    nominal_bits_per_weight: 16
+  fp16:
+    family: floating_point
+    nominal_bits_per_weight: 16
+  fp8:
+    family: floating_point
+    nominal_bits_per_weight: 8
+    checkpoint_layout_required: true
+  awq:
+    family: weight_only_quantization
+    distinct_from: [gptq, compressed_tensors]
+    checkpoint_layout_required: true
+  gptq:
+    family: weight_only_quantization
+    distinct_from: [awq, compressed_tensors]
+    checkpoint_layout_required: true
+  compressed_tensors:
+    family: compressed_tensors
+    distinct_from: [awq, gptq]
+    checkpoint_layout_required: true
+
+comparison_policy:
+  same_precision_gpu_speed_comparison_only: true
+  cross_precision_results_are_ablation_only: true
+  prohibited_claim: >-
+    Results produced with different precision or checkpoint formats must not be
+    presented as a pure GPU speed comparison.
+  required_match_fields:
+    - model_id
+    - revision
+    - precision_id
+    - quantization_method
+    - checkpoint_layout
+    - workload_hash
+    - runtime_backend
+
+models:
+  tiny_random_qwen2moe_m0:
+    display_name: Tiny Random Qwen2MoE
+    model_id: hf-internal-testing/tiny-random-Qwen2MoeForCausalLM
+    revision: f736f270816032b3c721f7422c62dea1381f49d7
+    weights_revision: f736f270816032b3c721f7422c62dea1381f49d7
+    tokenizer_revision: f736f270816032b3c721f7422c62dea1381f49d7
+    tier: M0
+    role: pipeline_only
+    identity: M0_pipeline_only
+    random_tiny_model: true
+    release_eligible: false
+    full_single_gpu_allowed: true
+    allowed_tasks: [T1, T2]
+    allowed_splits: [smoke]
+    precision_candidates:
+      - precision_id: fp32
+        quantization_method: null
+        checkpoint_id: hf-internal-testing/tiny-random-Qwen2MoeForCausalLM
+        revision: f736f270816032b3c721f7422c62dea1381f49d7
+
+  switch_small:
+    display_name: Small Switch
+    model_id: google/switch-base-8
+    revision: null
+    tier: M0
+    role: correctness_and_pipeline
+    full_single_gpu_allowed: true
+    precision_candidates:
+      - precision_id: bf16
+        quantization_method: null
+        checkpoint_id: google/switch-base-8
+        revision: null
+      - precision_id: fp16
+        quantization_method: null
+        checkpoint_id: google/switch-base-8
+        revision: null
+    size_estimates:
+      total_parameters_billion:
+        value: 0.62
+        evidence: estimate
+        basis: published architecture shape; verify from pinned checkpoint index
+      bf16_weight_only_gib:
+        value: 1.15
+        evidence: estimate
+        basis: total_parameters_billion * 2 bytes / 2^30
+
+  olmoe_1b_7b:
+    display_name: OLMoE-1B-7B
+    model_id: null
+    revision: null
+    tier: M0
+    role: correctness_and_pipeline
+    full_single_gpu_allowed: true
+    identity_note: >-
+      Exact upstream checkpoint variant remains unresolved; do not infer a
+      repository ID from the display name.
+    precision_candidates:
+      - precision_id: bf16
+        quantization_method: null
+        checkpoint_id: null
+        revision: null
+      - precision_id: fp16
+        quantization_method: null
+        checkpoint_id: null
+        revision: null
+    size_estimates:
+      total_parameters_billion:
+        value: 7.0
+        evidence: estimate
+        basis: model family name; verify from pinned checkpoint index
+      active_parameters_billion:
+        value: 1.0
+        evidence: estimate
+        basis: model family name; verify routing and shared-parameter accounting
+      bf16_weight_only_gib:
+        value: 13.04
+        evidence: estimate
+        basis: total_parameters_billion * 2 bytes / 2^30
+
+  deepseek_moe_16b:
+    display_name: DeepSeek-MoE 16B
+    model_id: deepseek-ai/deepseek-moe-16b-base
+    revision: null
+    tier: M1
+    role: executable_medium_moe
+    full_single_gpu_allowed: true
+    precision_candidates:
+      - precision_id: bf16
+        quantization_method: null
+        checkpoint_id: deepseek-ai/deepseek-moe-16b-base
+        revision: null
+      - precision_id: fp16
+        quantization_method: null
+        checkpoint_id: deepseek-ai/deepseek-moe-16b-base
+        revision: null
+      - precision_id: awq_int4
+        quantization_method: awq
+        checkpoint_id: null
+        revision: null
+        awq_contract: &pending_awq_contract
+          layout: null
+          qweight: null
+          qzeros: null
+          scales: null
+          reference_dequant: null
+          fused_kernel_gate:
+            status: pending
+            required: true
+            checks:
+              - bit_exact_against_reference_dequant
+              - supported_compute_capability
+              - representative_shape_execution
+              - profiler_compatibility
+    size_estimates:
+      total_parameters_billion:
+        value: 16.4
+        evidence: estimate
+        basis: model card family value; verify from pinned checkpoint index
+      active_parameters_billion:
+        value: 2.8
+        evidence: estimate
+        basis: model card family value; verify routing and shared-parameter accounting
+      bf16_weight_only_gib:
+        value: 30.55
+        evidence: estimate
+        basis: total_parameters_billion * 2 bytes / 2^30
+
+  qwen3_30b_a3b:
+    display_name: Qwen3-30B-A3B
+    model_id: Qwen/Qwen3-30B-A3B
+    revision: null
+    tier: M1
+    role: primary_modern_medium_moe
+    full_single_gpu_allowed: true
+    precision_candidates:
+      - precision_id: bf16
+        quantization_method: null
+        checkpoint_id: Qwen/Qwen3-30B-A3B
+        revision: null
+      - precision_id: fp16
+        quantization_method: null
+        checkpoint_id: Qwen/Qwen3-30B-A3B
+        revision: null
+      - precision_id: fp8
+        quantization_method: fp8
+        checkpoint_id: null
+        revision: null
+        checkpoint_layout: null
+      - precision_id: awq_int4
+        quantization_method: awq
+        checkpoint_id: null
+        revision: null
+        awq_contract: *pending_awq_contract
+      - precision_id: gptq_int4
+        quantization_method: gptq
+        checkpoint_id: null
+        revision: null
+        checkpoint_layout: null
+      - precision_id: compressed_tensors_int4
+        quantization_method: compressed_tensors
+        checkpoint_id: null
+        revision: null
+        checkpoint_layout: null
+    size_estimates:
+      total_parameters_billion:
+        value: 30.5
+        evidence: estimate
+        basis: model family name; verify from pinned checkpoint index
+      active_parameters_billion:
+        value: 3.3
+        evidence: estimate
+        basis: model family name; verify routing and shared-parameter accounting
+      bf16_weight_only_gib:
+        value: 56.81
+        evidence: estimate
+        basis: total_parameters_billion * 2 bytes / 2^30
+
+  mixtral_8x7b:
+    display_name: Mixtral 8x7B
+    model_id: mistralai/Mixtral-8x7B-v0.1
+    revision: null
+    tier: M2
+    role: primary_executable_pressure_model
+    full_single_gpu_allowed: true
+    precision_candidates:
+      - precision_id: bf16
+        quantization_method: null
+        checkpoint_id: mistralai/Mixtral-8x7B-v0.1
+        revision: null
+      - precision_id: fp16
+        quantization_method: null
+        checkpoint_id: mistralai/Mixtral-8x7B-v0.1
+        revision: null
+      - precision_id: awq_int4
+        quantization_method: awq
+        checkpoint_id: null
+        revision: null
+        awq_contract: *pending_awq_contract
+      - precision_id: gptq_int4
+        quantization_method: gptq
+        checkpoint_id: null
+        revision: null
+        checkpoint_layout: null
+      - precision_id: compressed_tensors_int4
+        quantization_method: compressed_tensors
+        checkpoint_id: null
+        revision: null
+        checkpoint_layout: null
+    size_estimates:
+      total_parameters_billion:
+        value: 46.7
+        evidence: estimate
+        basis: architecture-level parameter estimate; verify from pinned checkpoint index
+      active_parameters_billion:
+        value: 12.9
+        evidence: estimate
+        basis: architecture-level estimate; verify shared and routed parameter accounting
+      bf16_weight_only_gib:
+        value: 86.99
+        evidence: estimate
+        basis: total_parameters_billion * 2 bytes / 2^30
+
+  deepseek_r1:
+    display_name: DeepSeek-R1
+    model_id: deepseek-ai/DeepSeek-R1
+    revision: null
+    tier: M3
+    role: primary_large_trace_derived_model
+    full_single_gpu_allowed: false
+    allowed_execution_fidelities: [L, T]
+    precision_candidates:
+      - precision_id: bf16
+        quantization_method: null
+        checkpoint_id: deepseek-ai/DeepSeek-R1
+        revision: null
+        use_for_full_single_gpu: false
+      - precision_id: awq_int4_g64
+        quantization_method: awq
+        checkpoint_id: cognitivecomputations/DeepSeek-R1-AWQ
+        revision: null
+        use_for_full_single_gpu: false
+        awq_contract:
+          layout: null
+          group_size: 64
+          zero_point: true
+          qweight: null
+          qzeros: null
+          scales: null
+          reference_dequant: null
+          fused_kernel_gate:
+            status: pending
+            required: true
+            checks:
+              - checkpoint_tensor_names_and_shapes_verified
+              - bit_exact_against_reference_dequant
+              - supported_compute_capability
+              - representative_expert_shape_execution
+              - profiler_compatibility
+    size_estimates:
+      total_parameters_billion:
+        value: 671.0
+        evidence: estimate
+        basis: model family published scale; verify from pinned checkpoint index
+      active_parameters_billion:
+        value: 37.0
+        evidence: estimate
+        basis: model family published scale; verify routing and shared-parameter accounting
+      bf16_weight_only_gib:
+        value: 1249.83
+        evidence: estimate
+        basis: total_parameters_billion * 2 bytes / 2^30
+
+  qwen3_235b:
+    display_name: Qwen3-235B-A22B
+    model_id: Qwen/Qwen3-235B-A22B
+    revision: null
+    tier: M3
+    role: large_trace_derived_model
+    full_single_gpu_allowed: false
+    allowed_execution_fidelities: [L, T]
+    precision_candidates:
+      - precision_id: bf16
+        quantization_method: null
+        checkpoint_id: Qwen/Qwen3-235B-A22B
+        revision: null
+        use_for_full_single_gpu: false
+      - precision_id: fp8
+        quantization_method: fp8
+        checkpoint_id: Qwen/Qwen3-235B-A22B-FP8
+        revision: null
+        checkpoint_layout: null
+        use_for_full_single_gpu: false
+    size_estimates:
+      total_parameters_billion:
+        value: 235.0
+        evidence: estimate
+        basis: model family name; verify from pinned checkpoint index
+      active_parameters_billion:
+        value: 22.0
+        evidence: estimate
+        basis: model family name; verify routing and shared-parameter accounting
+      bf16_weight_only_gib:
+        value: 437.72
+        evidence: estimate
+        basis: total_parameters_billion * 2 bytes / 2^30
+
+  large_moe_holdout:
+    display_name: TBD large-MoE holdout
+    model_id: null
+    revision: null
+    tier: M3
+    role: blind_large_moe_holdout
+    selection_status: TBD
+    lifecycle: frozen_before_calibration
+    identity_access_during_calibration: prohibited
+    full_single_gpu_allowed: false
+    allowed_execution_fidelities: [L, T]
+    precision_candidates: []
+    size_estimates:
+      total_parameters_billion:
+        value: null
+        evidence: estimate
+        basis: unavailable until holdout selection is frozen and unblinded
+      active_parameters_billion:
+        value: null
+        evidence: estimate
+        basis: unavailable until holdout selection is frozen and unblinded

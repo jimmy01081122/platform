@@ -1,0 +1,32 @@
+{
+  "schema_version": "phase7-gputw-d0-r4/review-aggregate/v1",
+  "candidate_identity": {
+    "candidate_id": "moe-simulator-phase7-gputw-d0-r4-7fe4a2a",
+    "reviewed_commit": "7fe4a2a657af0ccd0795d7cdd44581ade37f34b8",
+    "reviewed_tree": "062d178bf0ca793ce996c33daee1b65c5bdbb6fc",
+    "candidate_member_count": 24,
+    "candidate_ledger_sha256": "c9c708c35de2d81a4cc5ad13d2f8696811a08e41b354e39d1488dc7c9205b212",
+    "application_identity_file_sha256": "fc49ab3dc605c9388aa4437d2191f5a0e4f14961b2e0fb65bcd5c970e6f1d767",
+    "application_identity_semantic_sha256": "54bab574a97e3d7129c35cc4d670a4b7a49a87685cac3236a1231495946b4d3b",
+    "application_ledger_file_sha256": "9ce54b660c5cb7ec84f410298e17168df789480d5022ca53a5ecd7f25e52b252"
+  },
+  "reviewer_verdicts": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "MODIFY",
+    "Trace/Provenance": "MODIFY"
+  },
+  "verdict": "MODIFY/MODIFY/MODIFY",
+  "clean_archive_replay": "PASS",
+  "focused_tests": "21_PASS",
+  "phase7_cpu_regression": "126_PASS_48_SUBTESTS_PASS",
+  "execution_authority": {
+    "d0_execution": "NOT_AUTHORIZED",
+    "ssh": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE"
+  },
+  "next_legal_action": "CREATE_NEW_D0_R4_C2_SEMANTIC_IDENTITY_AND_REPEAT_SAME_HASH_REVIEW",
+  "claim_boundary": "R4-C1 is an immutable rejected candidate. It is not an execution approval and cannot be resumed, retried or patched in place.",
+  "side_effects": false
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "moe-simulator-phase7-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r4-20260802",
+  "candidate_ledger": "explorations/moe_cycle_simulator/phase7/governance/r12r4/checksums.sha256",
+  "required_roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "required_checks": [
+    "recompute the exact candidate set and every member SHA-256",
+    "confirm the R12-R3 evidence and review remain unchanged",
+    "reproduce the 125-test CPU/mock regression and draft fail-closed validation",
+    "verify the no-.git archive replay binding and result",
+    "review the five R12-R3 blocker closures under the role-specific threat model",
+    "report GO or MODIFY with explicit blockers",
+    "make no live SSH, network, model or GPU action"
+  ],
+  "review_questions": [
+    "Is local Gate M decode/replay constrained before execution by an OS-enforced address-space limit, absolute deadline, bounded logs and process-tree cleanup?",
+    "Are remote timeout and Python executable paths absolute, content-hashed and revalidated before transfer and immediately at remote entry?",
+    "Does M0 reject any Gate M parent whose model-ledger or prompt-fixture hashes differ from the exact M0 runtime inputs?",
+    "Does every model-ledger validation bind the exact frozen Mixtral model ID and revision rather than trusting self-declared ledger fields?",
+    "Is Python isolated from PYTHONPATH/user site influence and is every loaded vllm module or extension bound to the frozen installed-distribution inventory?",
+    "Are all formal stages, audit, sealing and release inside 21600 seconds with zero PASS credit assigned to the non-guaranteed grace?"
+  ],
+  "promotion_rule": "Only GO/GO/GO with three empty blocker arrays permits push and later exact D0 application instantiation.",
+  "gpu_authority": "NONE"
+}

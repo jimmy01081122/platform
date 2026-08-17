@@ -1,0 +1,30 @@
+profile_id: embedded_integrated_cpu_gpu
+profile_revision: 1
+system:
+  cpu:
+    isa: unspecified
+    cores: null
+    frequency_hz: null
+  gpu:
+    compute_service_model: trace_or_measured
+  shared_memory:
+    capacity_bytes: null
+    aggregate_bandwidth_bytes_per_s: null
+    latency_s: null
+  coherence:
+    mode: configurable
+    options: [fully_coherent, io_coherent, software_managed, mixed]
+  caches:
+    ownership_model: configurable
+    maintenance_cost_s: null
+  contention:
+    cpu_gpu_shared_bandwidth: true
+  dma_or_copy:
+    present: null
+    engines: null
+  constraints:
+    power_cap_w: null
+    thermal_model: optional
+parameter_policy:
+  shared_address_does_not_imply_zero_cost: true
+  null_values_must_be_measured_registered_or_swept: true

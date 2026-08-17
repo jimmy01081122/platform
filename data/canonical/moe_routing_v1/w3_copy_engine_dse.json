@@ -1,0 +1,238 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+  "model_note": "shared-link copy-engine model (D-048): latency parallelizes over engines, bandwidth is shared; crit = ceil(m/E)*lat + m*bytes/B.",
+  "bandwidth_name": "pcie_mid_16GBs",
+  "bandwidth_GBs": 16.0,
+  "link_latency_us": 1.5,
+  "engine_sweep": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "knee_pct": 2.0,
+  "models": {
+    "cognitivecomputations/DeepSeek-R1-AWQ": {
+      "capacity": 128,
+      "expert_weight_MiB": 21.0,
+      "num_experts": 256,
+      "e_star": 1,
+      "bandwidth_fraction_at_e1": 0.9989,
+      "regime": "bandwidth-bound",
+      "sweep": [
+        {
+          "engines": 1,
+          "shared_stall_ms": 56333.6873,
+          "optimistic_stall_ms": 56333.6873,
+          "latency_component_ms": 61.332,
+          "bandwidth_component_ms": 56272.3553,
+          "stall_drop_vs_prev_pct": null,
+          "optimistic_overcredit_x": 1.0
+        },
+        {
+          "engines": 2,
+          "shared_stall_ms": 56305.8548,
+          "optimistic_stall_ms": 30769.4247,
+          "latency_component_ms": 33.4995,
+          "bandwidth_component_ms": 56272.3553,
+          "stall_drop_vs_prev_pct": 0.05,
+          "optimistic_overcredit_x": 1.83
+        },
+        {
+          "engines": 4,
+          "shared_stall_ms": 56291.7638,
+          "optimistic_stall_ms": 17826.7849,
+          "latency_component_ms": 19.4085,
+          "bandwidth_component_ms": 56272.3553,
+          "stall_drop_vs_prev_pct": 0.03,
+          "optimistic_overcredit_x": 3.16
+        },
+        {
+          "engines": 8,
+          "shared_stall_ms": 56285.5313,
+          "optimistic_stall_ms": 12102.2087,
+          "latency_component_ms": 13.176,
+          "bandwidth_component_ms": 56272.3553,
+          "stall_drop_vs_prev_pct": 0.01,
+          "optimistic_overcredit_x": 4.65
+        },
+        {
+          "engines": 16,
+          "shared_stall_ms": 56284.5098,
+          "optimistic_stall_ms": 11163.9569,
+          "latency_component_ms": 12.1545,
+          "bandwidth_component_ms": 56272.3553,
+          "stall_drop_vs_prev_pct": 0.0,
+          "optimistic_overcredit_x": 5.04
+        }
+      ]
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "capacity": 192,
+      "expert_weight_MiB": 21.0,
+      "num_experts": 384,
+      "e_star": 1,
+      "bandwidth_fraction_at_e1": 0.9989,
+      "regime": "bandwidth-bound",
+      "sweep": [
+        {
+          "engines": 1,
+          "shared_stall_ms": 52905.8304,
+          "optimistic_stall_ms": 52905.8304,
+          "latency_component_ms": 57.6,
+          "bandwidth_component_ms": 52848.2304,
+          "stall_drop_vs_prev_pct": null,
+          "optimistic_overcredit_x": 1.0
+        },
+        {
+          "engines": 2,
+          "shared_stall_ms": 52879.9674,
+          "optimistic_stall_ms": 29150.5614,
+          "latency_component_ms": 31.737,
+          "bandwidth_component_ms": 52848.2304,
+          "stall_drop_vs_prev_pct": 0.05,
+          "optimistic_overcredit_x": 1.81
+        },
+        {
+          "engines": 4,
+          "shared_stall_ms": 52866.8799,
+          "optimistic_stall_ms": 17129.6403,
+          "latency_component_ms": 18.6495,
+          "bandwidth_component_ms": 52848.2304,
+          "stall_drop_vs_prev_pct": 0.02,
+          "optimistic_overcredit_x": 3.09
+        },
+        {
+          "engines": 8,
+          "shared_stall_ms": 52861.1244,
+          "optimistic_stall_ms": 11843.1906,
+          "latency_component_ms": 12.894,
+          "bandwidth_component_ms": 52848.2304,
+          "stall_drop_vs_prev_pct": 0.01,
+          "optimistic_overcredit_x": 4.46
+        },
+        {
+          "engines": 16,
+          "shared_stall_ms": 52860.4449,
+          "optimistic_stall_ms": 11219.0671,
+          "latency_component_ms": 12.2145,
+          "bandwidth_component_ms": 52848.2304,
+          "stall_drop_vs_prev_pct": 0.0,
+          "optimistic_overcredit_x": 4.71
+        }
+      ]
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+      "capacity": 64,
+      "expert_weight_MiB": 240.0,
+      "num_experts": 128,
+      "e_star": 1,
+      "bandwidth_fraction_at_e1": 0.9999,
+      "regime": "bandwidth-bound",
+      "sweep": [
+        {
+          "engines": 1,
+          "shared_stall_ms": 19127.8502,
+          "optimistic_stall_ms": 19127.8502,
+          "latency_component_ms": 1.824,
+          "bandwidth_component_ms": 19126.0262,
+          "stall_drop_vs_prev_pct": null,
+          "optimistic_overcredit_x": 1.0
+        },
+        {
+          "engines": 2,
+          "shared_stall_ms": 19127.5772,
+          "optimistic_stall_ms": 16264.9648,
+          "latency_component_ms": 1.551,
+          "bandwidth_component_ms": 19126.0262,
+          "stall_drop_vs_prev_pct": 0.0,
+          "optimistic_overcredit_x": 1.18
+        },
+        {
+          "engines": 4,
+          "shared_stall_ms": 19127.4452,
+          "optimistic_stall_ms": 14880.7124,
+          "latency_component_ms": 1.419,
+          "bandwidth_component_ms": 19126.0262,
+          "stall_drop_vs_prev_pct": 0.0,
+          "optimistic_overcredit_x": 1.29
+        },
+        {
+          "engines": 8,
+          "shared_stall_ms": 19127.3732,
+          "optimistic_stall_ms": 14125.6657,
+          "latency_component_ms": 1.347,
+          "bandwidth_component_ms": 19126.0262,
+          "stall_drop_vs_prev_pct": 0.0,
+          "optimistic_overcredit_x": 1.35
+        },
+        {
+          "engines": 16,
+          "shared_stall_ms": 19127.3387,
+          "optimistic_stall_ms": 13763.8725,
+          "latency_component_ms": 1.3125,
+          "bandwidth_component_ms": 19126.0262,
+          "stall_drop_vs_prev_pct": 0.0,
+          "optimistic_overcredit_x": 1.39
+        }
+      ]
+    },
+    "Qwen/Qwen3-235B-A22B-FP8": {
+      "capacity": 64,
+      "expert_weight_MiB": 18.0,
+      "num_experts": 128,
+      "e_star": 1,
+      "bandwidth_fraction_at_e1": 0.9987,
+      "regime": "bandwidth-bound",
+      "sweep": [
+        {
+          "engines": 1,
+          "shared_stall_ms": 66458.4734,
+          "optimistic_stall_ms": 66458.4734,
+          "latency_component_ms": 84.399,
+          "bandwidth_component_ms": 66374.0744,
+          "stall_drop_vs_prev_pct": null,
+          "optimistic_overcredit_x": 1.0
+        },
+        {
+          "engines": 2,
+          "shared_stall_ms": 66420.8264,
+          "optimistic_stall_ms": 36814.0209,
+          "latency_component_ms": 46.752,
+          "bandwidth_component_ms": 66374.0744,
+          "stall_drop_vs_prev_pct": 0.06,
+          "optimistic_overcredit_x": 1.8
+        },
+        {
+          "engines": 4,
+          "shared_stall_ms": 66401.7314,
+          "optimistic_stall_ms": 21778.0068,
+          "latency_component_ms": 27.657,
+          "bandwidth_component_ms": 66374.0744,
+          "stall_drop_vs_prev_pct": 0.03,
+          "optimistic_overcredit_x": 3.05
+        },
+        {
+          "engines": 8,
+          "shared_stall_ms": 66393.6209,
+          "optimistic_stall_ms": 15391.5396,
+          "latency_component_ms": 19.5465,
+          "bandwidth_component_ms": 66374.0744,
+          "stall_drop_vs_prev_pct": 0.01,
+          "optimistic_overcredit_x": 4.31
+        },
+        {
+          "engines": 16,
+          "shared_stall_ms": 66392.8664,
+          "optimistic_stall_ms": 14797.4221,
+          "latency_component_ms": 18.792,
+          "bandwidth_component_ms": 66374.0744,
+          "stall_drop_vs_prev_pct": 0.0,
+          "optimistic_overcredit_x": 4.49
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,528 @@
+{
+  "schema_version": "moe-phase7-mock-vllm-trace-v1",
+  "fixture_id": "phase7-vllm-shape-contract-cpu-mock",
+  "evidence_class": "SYNTHETIC_CPU_MOCK",
+  "producer": "phase7-vllm-mock-adapter",
+  "runtime_variant": {
+    "schema_version": "runtime-variant-v1",
+    "variant_id": "392cc67342bfdc7759d0f2d6e9d56803f436a4b8b0c0b63adf3e3825c686d757",
+    "runtime": {
+      "name": "vllm",
+      "revision": "NOT_INSTALLED_CPU_MOCK_CONTRACT"
+    },
+    "container": {
+      "name": "none",
+      "revision": "host-cpu-mock"
+    },
+    "cuda": {
+      "name": "not-applicable",
+      "revision": "none"
+    },
+    "driver": {
+      "name": "not-applicable",
+      "revision": "none"
+    },
+    "attention_backend": "cpu-mock-contract",
+    "fused_moe_backend": "cpu-mock-contract",
+    "tensor_parallel_size": 1,
+    "expert_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "distributed_executor": "single-process-cpu-mock",
+    "execution_mode": "EAGER",
+    "max_model_length": 32768,
+    "max_batched_tokens": 4096,
+    "max_sequences": 2,
+    "scheduler_policy": "fcfs",
+    "kv_cache_dtype": "bf16-contract-only",
+    "nccl_environment": {
+      "authority": "NOT_APPLICABLE_CPU_MOCK"
+    },
+    "placement": {
+      "mode": "cpu-mock-no-device"
+    },
+    "offload": {
+      "enabled": false
+    },
+    "kernel_backend": "synthetic-no-kernel",
+    "seed": 0,
+    "generation": {
+      "do_sample": false,
+      "temperature": "0",
+      "top_p": "1"
+    },
+    "collector_hash": "ac522bcc7fb69188dbbaf1975531a2e574116555d3c3be226057a42219aff2cc",
+    "adapter_hash": "32f1c0a7268dd021e3d01f3a49666950240b797a4b650229892521052efd5a6c"
+  },
+  "pass_contracts": [
+    {
+      "pass_id": "P0",
+      "scope": "SAMPLE",
+      "purpose": "CLEAN_CORRECTNESS_AUTHORITATIVE_TIMING",
+      "execution_role": "RUNTIME_PASS",
+      "gpu_execution": true,
+      "runtime_pass": true,
+      "minimum_steady_state_seconds": null
+    },
+    {
+      "pass_id": "P1",
+      "scope": "SAMPLE",
+      "purpose": "OPERATOR_KERNEL_SERVICE_TIMING",
+      "execution_role": "RUNTIME_PASS",
+      "gpu_execution": true,
+      "runtime_pass": true,
+      "minimum_steady_state_seconds": null
+    },
+    {
+      "pass_id": "P2",
+      "scope": "SAMPLE",
+      "purpose": "ROUTING_TOPK_TOKEN_EXPERT_MAPPING",
+      "execution_role": "RUNTIME_PASS",
+      "gpu_execution": true,
+      "runtime_pass": true,
+      "minimum_steady_state_seconds": null
+    },
+    {
+      "pass_id": "P3",
+      "scope": "SAMPLE",
+      "purpose": "ALLOCATION_RESIDENCY_COPY_ENGINE",
+      "execution_role": "RUNTIME_PASS",
+      "gpu_execution": true,
+      "runtime_pass": true,
+      "minimum_steady_state_seconds": null
+    },
+    {
+      "pass_id": "P4",
+      "scope": "SAMPLE",
+      "purpose": "P2P_NVLINK",
+      "execution_role": "RUNTIME_PASS",
+      "gpu_execution": true,
+      "runtime_pass": true,
+      "minimum_steady_state_seconds": null
+    },
+    {
+      "pass_id": "P5",
+      "scope": "SESSION",
+      "purpose": "STEADY_STATE_TELEMETRY",
+      "execution_role": "RUNTIME_PASS",
+      "gpu_execution": true,
+      "runtime_pass": true,
+      "minimum_steady_state_seconds": 30
+    },
+    {
+      "pass_id": "V0",
+      "scope": "OFFLINE",
+      "purpose": "IR_CONVERSION_REPLAY_VALIDATION",
+      "execution_role": "OFFLINE_VALIDATION",
+      "gpu_execution": false,
+      "runtime_pass": false,
+      "minimum_steady_state_seconds": null
+    }
+  ],
+  "global_clock": {
+    "schema_version": "clock-domain-v1",
+    "clock_id": "global",
+    "frequency_numerator_hz": "1000000000",
+    "frequency_denominator_hz": "1",
+    "phase_offset_fs": "0",
+    "local_cycle": "0",
+    "fractional_remainder": "0"
+  },
+  "shortest_component": {
+    "record_id": "phase7-shortest-synthetic-component",
+    "duration_fs": "100000"
+  },
+  "clock_alignments": [
+    {
+      "schema_version": "clock-alignment-v1",
+      "alignment_id": "host-monotonic-ns-to-global",
+      "source_clock_id": "host-monotonic-ns",
+      "target_clock_id": "global",
+      "source_rank": null,
+      "target_rank": null,
+      "transform_type": "AFFINE_RATIONAL",
+      "scale_numerator": "1000000",
+      "scale_denominator": "1",
+      "offset_fs": "0",
+      "calibration_method": "synthetic-exact-two-anchor",
+      "calibration_points": [
+        {"source_time": "0", "target_time": "0"},
+        {"source_time": "10", "target_time": "10000000"}
+      ],
+      "residual_error_fs": "0",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "0",
+        "upper_error_fs": "0"
+      },
+      "valid_time_range": {"source_start": "0", "source_end": "10"},
+      "drift_bound_ppm": "0",
+      "grading_inputs": {
+        "target_clock_profile_hash": "b01bdd4785c708c9e950653395174cd9f24ed57c50f87c2dab3cd8eef9b9ae8e",
+        "target_period_numerator_fs": "1000000000000000",
+        "target_period_denominator": "1000000000",
+        "shortest_component_record_hash": "c845d841616d7249a4c3331045ba65e8784f6ecd0efd87a58ae3fc9bff89bfc8",
+        "shortest_component_duration_fs": "100000"
+      },
+      "provenance": {
+        "producer": "phase7-cpu-mock-alignment",
+        "producer_version": "1",
+        "source_content_ids": ["32f1c0a7268dd021e3d01f3a49666950240b797a4b650229892521052efd5a6c"]
+      },
+      "claimed_grade": "CYCLE_GRADE"
+    },
+    {
+      "schema_version": "clock-alignment-v1",
+      "alignment_id": "device-rank0-tick-to-global",
+      "source_clock_id": "device-rank0-tick",
+      "target_clock_id": "global",
+      "source_rank": 0,
+      "target_rank": null,
+      "transform_type": "AFFINE_RATIONAL",
+      "scale_numerator": "1000",
+      "scale_denominator": "1",
+      "offset_fs": "0",
+      "calibration_method": "synthetic-exact-two-anchor",
+      "calibration_points": [
+        {"source_time": "0", "target_time": "0"},
+        {"source_time": "10000", "target_time": "10000000"}
+      ],
+      "residual_error_fs": "0",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "0",
+        "upper_error_fs": "0"
+      },
+      "valid_time_range": {"source_start": "0", "source_end": "10000"},
+      "drift_bound_ppm": "0",
+      "grading_inputs": {
+        "target_clock_profile_hash": "b01bdd4785c708c9e950653395174cd9f24ed57c50f87c2dab3cd8eef9b9ae8e",
+        "target_period_numerator_fs": "1000000000000000",
+        "target_period_denominator": "1000000000",
+        "shortest_component_record_hash": "c845d841616d7249a4c3331045ba65e8784f6ecd0efd87a58ae3fc9bff89bfc8",
+        "shortest_component_duration_fs": "100000"
+      },
+      "provenance": {
+        "producer": "phase7-cpu-mock-alignment",
+        "producer_version": "1",
+        "source_content_ids": ["32f1c0a7268dd021e3d01f3a49666950240b797a4b650229892521052efd5a6c"]
+      },
+      "claimed_grade": "CYCLE_GRADE"
+    },
+    {
+      "schema_version": "clock-alignment-v1",
+      "alignment_id": "profiler-rank0-tick-to-global",
+      "source_clock_id": "profiler-rank0-tick",
+      "target_clock_id": "global",
+      "source_rank": 0,
+      "target_rank": null,
+      "transform_type": "AFFINE_RATIONAL",
+      "scale_numerator": "100",
+      "scale_denominator": "1",
+      "offset_fs": "0",
+      "calibration_method": "synthetic-exact-two-anchor",
+      "calibration_points": [
+        {"source_time": "0", "target_time": "0"},
+        {"source_time": "100000", "target_time": "10000000"}
+      ],
+      "residual_error_fs": "0",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "0",
+        "upper_error_fs": "0"
+      },
+      "valid_time_range": {"source_start": "0", "source_end": "100000"},
+      "drift_bound_ppm": "0",
+      "grading_inputs": {
+        "target_clock_profile_hash": "b01bdd4785c708c9e950653395174cd9f24ed57c50f87c2dab3cd8eef9b9ae8e",
+        "target_period_numerator_fs": "1000000000000000",
+        "target_period_denominator": "1000000000",
+        "shortest_component_record_hash": "c845d841616d7249a4c3331045ba65e8784f6ecd0efd87a58ae3fc9bff89bfc8",
+        "shortest_component_duration_fs": "100000"
+      },
+      "provenance": {
+        "producer": "phase7-cpu-mock-alignment",
+        "producer_version": "1",
+        "source_content_ids": ["32f1c0a7268dd021e3d01f3a49666950240b797a4b650229892521052efd5a6c"]
+      },
+      "claimed_grade": "CYCLE_GRADE"
+    },
+    {
+      "schema_version": "clock-alignment-v1",
+      "alignment_id": "telemetry-us-to-global",
+      "source_clock_id": "telemetry-us",
+      "target_clock_id": "global",
+      "source_rank": null,
+      "target_rank": null,
+      "transform_type": "AFFINE_RATIONAL",
+      "scale_numerator": "1000000000",
+      "scale_denominator": "1",
+      "offset_fs": "0",
+      "calibration_method": "synthetic-exact-two-anchor",
+      "calibration_points": [
+        {"source_time": "0", "target_time": "0"},
+        {"source_time": "60", "target_time": "60000000000"}
+      ],
+      "residual_error_fs": "0",
+      "confidence_interval_95_fs": {
+        "lower_error_fs": "0",
+        "upper_error_fs": "0"
+      },
+      "valid_time_range": {"source_start": "0", "source_end": "60"},
+      "drift_bound_ppm": "0",
+      "grading_inputs": {
+        "target_clock_profile_hash": "b01bdd4785c708c9e950653395174cd9f24ed57c50f87c2dab3cd8eef9b9ae8e",
+        "target_period_numerator_fs": "1000000000000000",
+        "target_period_denominator": "1000000000",
+        "shortest_component_record_hash": "c845d841616d7249a4c3331045ba65e8784f6ecd0efd87a58ae3fc9bff89bfc8",
+        "shortest_component_duration_fs": "100000"
+      },
+      "provenance": {
+        "producer": "phase7-cpu-mock-alignment",
+        "producer_version": "1",
+        "source_content_ids": ["32f1c0a7268dd021e3d01f3a49666950240b797a4b650229892521052efd5a6c"]
+      },
+      "claimed_grade": "CYCLE_GRADE"
+    }
+  ],
+  "raw_events": [
+    {
+      "raw_event_id": "request-0",
+      "pass_id": "P0",
+      "shape": "request",
+      "source_clock_id": "host-monotonic-ns",
+      "source_timestamp": "1",
+      "request_id": "request-0",
+      "token_index": null,
+      "layer_index": null,
+      "rank": null,
+      "stream_id": null,
+      "correlation_id": "corr-request-0",
+      "dependencies": [],
+      "alignment_use": "EVENT_ORDERING",
+      "observability": {
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      },
+      "attributes": {"operation": "request_admission"}
+    },
+    {
+      "raw_event_id": "kernel-0",
+      "pass_id": "P1",
+      "shape": "kernel",
+      "source_clock_id": "device-rank0-tick",
+      "source_timestamp": "2000",
+      "request_id": "request-0",
+      "token_index": 0,
+      "layer_index": 0,
+      "rank": 0,
+      "stream_id": "compute-0",
+      "correlation_id": "corr-request-0",
+      "dependencies": ["request-0"],
+      "alignment_use": "CROSS_DOMAIN_CALIBRATION",
+      "observability": {
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      },
+      "attributes": {"kernel_class": "synthetic_moe"}
+    },
+    {
+      "raw_event_id": "router-0",
+      "pass_id": "P2",
+      "shape": "router",
+      "source_clock_id": "device-rank0-tick",
+      "source_timestamp": "2100",
+      "request_id": "request-0",
+      "token_index": 0,
+      "layer_index": 0,
+      "rank": 0,
+      "stream_id": "compute-0",
+      "correlation_id": "corr-request-0",
+      "dependencies": ["kernel-0"],
+      "alignment_use": "CROSS_DOMAIN_CALIBRATION",
+      "observability": {
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      },
+      "attributes": {"operation": "canonical_score_before_top_k"}
+    },
+    {
+      "raw_event_id": "allocation-0",
+      "pass_id": "P3",
+      "shape": "allocation",
+      "source_clock_id": "host-monotonic-ns",
+      "source_timestamp": "3",
+      "request_id": "request-0",
+      "token_index": 0,
+      "layer_index": 0,
+      "rank": null,
+      "stream_id": null,
+      "correlation_id": "corr-request-0",
+      "dependencies": ["router-0"],
+      "alignment_use": "EVENT_ORDERING",
+      "observability": {
+        "availability": "CONDITIONAL",
+        "evidence_mode": "NONE",
+        "expected_evidence_modes": ["INSTRUMENTED", "DERIVED"]
+      },
+      "attributes": {"bytes": 4096}
+    },
+    {
+      "raw_event_id": "copy-0",
+      "pass_id": "P3",
+      "shape": "copy",
+      "source_clock_id": "device-rank0-tick",
+      "source_timestamp": "4000",
+      "request_id": "request-0",
+      "token_index": 0,
+      "layer_index": 0,
+      "rank": 0,
+      "stream_id": "copy-0",
+      "correlation_id": "corr-request-0",
+      "dependencies": ["allocation-0"],
+      "alignment_use": "CROSS_DOMAIN_CALIBRATION",
+      "observability": {
+        "availability": "CONFIRMED",
+        "evidence_mode": "DERIVED"
+      },
+      "attributes": {"bytes": 4096, "direction": "H2D"}
+    },
+    {
+      "raw_event_id": "p2p-0",
+      "pass_id": "P4",
+      "shape": "p2p",
+      "source_clock_id": "profiler-rank0-tick",
+      "source_timestamp": "50000",
+      "request_id": "request-0",
+      "token_index": 0,
+      "layer_index": 0,
+      "rank": 0,
+      "stream_id": "comm-0",
+      "correlation_id": "corr-p2p-0",
+      "dependencies": ["copy-0"],
+      "alignment_use": "EVENT_ORDERING",
+      "observability": {
+        "availability": "CONDITIONAL",
+        "evidence_mode": "NONE",
+        "expected_evidence_modes": ["MEASURED", "INSTRUMENTED"]
+      },
+      "attributes": {"peer_rank": 1}
+    },
+    {
+      "raw_event_id": "telemetry-0",
+      "pass_id": "P5",
+      "shape": "telemetry",
+      "source_clock_id": "telemetry-us",
+      "source_timestamp": "30",
+      "request_id": null,
+      "token_index": null,
+      "layer_index": null,
+      "rank": null,
+      "stream_id": null,
+      "correlation_id": "telemetry-session-0",
+      "dependencies": [],
+      "alignment_use": "AGGREGATE_STATISTICS",
+      "observability": {
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      },
+      "attributes": {"sample": "synthetic_memory_pressure"}
+    }
+  ],
+  "routing_records": [
+    {
+      "request_id": "request-0",
+      "token_index": 0,
+      "layer_index": 0,
+      "num_experts": 8,
+      "top_k": 2,
+      "canonical_scores": [
+        "1",
+        "0.89999997615814208984375",
+        "0.89999902248382568359375",
+        "0.5",
+        "0.4000000059604644775390625",
+        "0.300000011920928955078125",
+        "0.20000000298023223876953125",
+        "0.100000001490116119384765625"
+      ],
+      "score_dtype": "float32",
+      "score_tolerance_absolute": "0.000000238418579101562500",
+      "score_tolerance_relative": "0.00001",
+      "selected_experts": [0, 1],
+      "k_boundary_score": "0.89999997615814208984375",
+      "ambiguity_set": [1, 2],
+      "observability": {
+        "schema_version": "observability-v1",
+        "availability": "CONFIRMED",
+        "evidence_mode": "INSTRUMENTED"
+      }
+    }
+  ],
+  "identity_contracts": [
+    {
+      "contract_id": "single-request-identity",
+      "mode": "SINGLE_REQUEST",
+      "runtime_variant_hash": "392cc67342bfdc7759d0f2d6e9d56803f436a4b8b0c0b63adf3e3825c686d757",
+      "request_set": [
+        {
+          "request_id": "request-0",
+          "input_token_ids": [1, 2, 3],
+          "output_token_ids": [4, 5],
+          "stop_reason": "eos"
+        }
+      ],
+      "arrival_trace": null,
+      "generation_parameters": {"do_sample": false, "max_new_tokens": 32},
+      "execution_validity": "VALID",
+      "completion_set": null,
+      "blocking_fields": [
+        "input_token_ids",
+        "generation_parameters",
+        "output_token_ids",
+        "stop_reason",
+        "execution_validity"
+      ],
+      "routing_comparison": "TOPK_AMBIGUITY_RULE_WEIGHTS_TOLERANCE_BOUND",
+      "aggregate_routing_demand": null,
+      "observational_fields": []
+    },
+    {
+      "contract_id": "serving-replay-identity",
+      "mode": "SERVING_REPLAY",
+      "runtime_variant_hash": "392cc67342bfdc7759d0f2d6e9d56803f436a4b8b0c0b63adf3e3825c686d757",
+      "request_set": [
+        {
+          "request_id": "request-0",
+          "input_token_ids": [1, 2, 3],
+          "output_token_ids": [4, 5],
+          "stop_reason": "eos"
+        },
+        {
+          "request_id": "request-1",
+          "input_token_ids": [6, 7],
+          "output_token_ids": [8],
+          "stop_reason": "registered_stop"
+        }
+      ],
+      "arrival_trace": [
+        {"request_id": "request-0", "arrival_time_fs": "0"},
+        {"request_id": "request-1", "arrival_time_fs": "1000000"}
+      ],
+      "generation_parameters": {"do_sample": false, "max_new_tokens": 32},
+      "execution_validity": "VALID",
+      "completion_set": ["request-0", "request-1"],
+      "blocking_fields": [
+        "request_set",
+        "arrival_trace",
+        "generation_parameters",
+        "execution_validity",
+        "completion_set"
+      ],
+      "routing_comparison": "AGGREGATE_CONFIDENCE_BOUND",
+      "aggregate_routing_demand": "CONFIDENCE_BOUND",
+      "observational_fields": [
+        "batch_formation",
+        "schedule",
+        "stream_ordering",
+        "event_timing"
+      ]
+    }
+  ]
+}

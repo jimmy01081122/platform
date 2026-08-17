@@ -1,0 +1,47 @@
+{
+  "schema_version": "moe-simulator-phase7-gate-m-parent-evidence-v1",
+  "status": "[BLOCKING:COMPLETE_M0_ELIGIBLE]",
+  "gate_m_session_id": "[BLOCKING:IMMUTABLE_GATE_M_SESSION_ID]",
+  "source": {
+    "commit_sha1": "[BLOCKING:GATE_M_SOURCE_COMMIT_SHA1]",
+    "tree_sha1": "[BLOCKING:GATE_M_SOURCE_TREE_SHA1]",
+    "application_ledger_sha256": "[BLOCKING:GATE_M_APPLICATION_LEDGER_SHA256]",
+    "same_hash_review_aggregate_sha256": "[BLOCKING:GATE_M_SAME_HASH_REVIEW_AGGREGATE_SHA256]",
+    "architecture_system": "[BLOCKING:GO]",
+    "model_benchmark": "[BLOCKING:GO]",
+    "trace_provenance": "[BLOCKING:GO]",
+    "blockers": [
+      "[BLOCKING:EMPTY_REVIEW_BLOCKER_SET]"
+    ]
+  },
+  "local_terminal": {
+    "evidence_ledger_file_sha256": "[BLOCKING:LOCAL_GATE_M_EVIDENCE_LEDGER_FILE_SHA256]",
+    "evidence_ledger_sha256": "[BLOCKING:LOCAL_GATE_M_EVIDENCE_LEDGER_SEMANTIC_SHA256]",
+    "deployment_result_file_sha256": "[BLOCKING:LOCAL_GATE_M_DEPLOYMENT_RESULT_SHA256]",
+    "transport_sha256": "[BLOCKING:LOCAL_GATE_M_TRANSPORT_SHA256]",
+    "export_manifest_sha256": "[BLOCKING:LOCAL_GATE_M_EXPORT_MANIFEST_SHA256]",
+    "export_status_sha256": "[BLOCKING:LOCAL_GATE_M_EXPORT_STATUS_SHA256]",
+    "local_replay_status": "[BLOCKING:COMPLETE_REPLAYED]"
+  },
+  "remote": {
+    "project_root": "[BLOCKING:ABSOLUTE_GATE_M_PROJECT_ROOT]",
+    "application_target": "[BLOCKING:ABSOLUTE_GATE_M_APPLICATION_TARGET]",
+    "deployment_receipt_path": "[BLOCKING:ABSOLUTE_GATE_M_DEPLOYMENT_RECEIPT_PATH]",
+    "deployment_bundle_sha256": "[BLOCKING:GATE_M_DEPLOYMENT_BUNDLE_SHA256]",
+    "deployment_receipt_sha256": "[BLOCKING:GATE_M_DEPLOYMENT_RECEIPT_SHA256]",
+    "materialization_evidence_root": "[BLOCKING:ABSOLUTE_GATE_M_MATERIALIZATION_EVIDENCE_ROOT]",
+    "runtime_provenance_root": "[BLOCKING:ABSOLUTE_GATE_M_RUNTIME_PROVENANCE_ROOT]",
+    "export_root": "[BLOCKING:ABSOLUTE_GATE_M_EXPORT_ROOT]",
+    "export_status_path": "[BLOCKING:ABSOLUTE_GATE_M_EXPORT_STATUS_PATH]",
+    "materialization_evidence_ledger_sha256": "[BLOCKING:GATE_M_MATERIALIZATION_LEDGER_SHA256]",
+    "runtime_provenance_ledger_sha256": "[BLOCKING:GATE_M_RUNTIME_PROVENANCE_LEDGER_SHA256]",
+    "runtime_provenance_record_sha256": "[BLOCKING:GATE_M_RUNTIME_PROVENANCE_RECORD_SHA256]",
+    "model_ledger_sha256": "[BLOCKING:GATE_M_MODEL_LEDGER_SHA256]",
+    "capacity_prompt_fixture_sha256": "[BLOCKING:GATE_M_CAPACITY_PROMPT_FIXTURE_SHA256]",
+    "export_manifest_sha256": "[BLOCKING:GATE_M_EXPORT_MANIFEST_SHA256]",
+    "export_status_sha256": "[BLOCKING:GATE_M_EXPORT_STATUS_SHA256]"
+  },
+  "remote_summary": "[BLOCKING:EXACT_GATE_M_REMOTE_SUMMARY_OBJECT]",
+  "gpu_workload_performed": false,
+  "claim_boundary": "GATE_M_CPU_IO_PROVENANCE_ONLY_NOT_M0_CAPACITY_PASS"
+}

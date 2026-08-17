@@ -1,0 +1,20 @@
+{
+  "schema_version": "moe-simulator-role-review-v1",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r5-20260728",
+  "role": "Model/Benchmark",
+  "ledger_sha256": "c4b9209d95bbf91c607d65a70062e3bbb03a5892807ce08d8a4a370000535e42",
+  "member_count": 408,
+  "verdict": "GO",
+  "blockers": [],
+  "findings": [
+    "The 408-member ledger is unique, exact-set complete and independently checksum-valid.",
+    "The frozen Phase 2 ledger and unanimous GO aggregate verify, and the Phase 2 Canonical IR/NFC/priority gate remains the explicit trusted input boundary.",
+    "REPLAY_VALIDATE preserves and hashes service_demand but does not derive completion latency or make model, routing, benchmark, throughput or calibration claims.",
+    "Both R4 blockers are prospectively closed in the R6 source root.",
+    "R1, R3 and R4 remain immutable MODIFY evidence; R2 remains withdrawn and is not positive evidence.",
+    "The 26-member R6 nested ledger exact-set verifies with Release, sanitizer and Python binding PASS, gpu_used false and model_downloaded false."
+  ],
+  "claim_boundary": "CPU-only deterministic REPLAY_VALIDATE evidence; not model, benchmark, routing, GPU performance or calibration evidence.",
+  "authorized_next_stage": "After unanimous same-hash GO aggregate, Phase 4 CPU synthetic single-discrete-GPU resource-model implementation only.",
+  "gpu_authority": "NONE"
+}

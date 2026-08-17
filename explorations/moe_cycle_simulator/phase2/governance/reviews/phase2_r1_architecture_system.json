@@ -1,0 +1,14 @@
+{
+  "blockers": [
+    "ARCH-P2-B1: ClockAlignmentIR lacks complete grading, valid-range, piecewise segments, calibration provenance, and validator-derived grade.",
+    "ARCH-P2-B2: Platform bridge/resource and Event demand ABIs cannot yet drive the Phase 3 resource-constrained core.",
+    "ARCH-P2-B3: PlacementIR lacks tensor/shard range, non-expert state, migration lineage, and cross-snapshot conservation.",
+    "ARCH-P2-B4: Typed-reference semantic roots do not bind the full logical schema and invariant contract.",
+    "ARCH-P2-B5: The codec permits only one physical partition per IR kind.",
+    "ARCH-P2-B6: Synthetic calibration and ResultIR records can cross the formal evidence boundary."
+  ],
+  "ledger_sha256": "f12a8178e6070d64c14b4c573ab1bbf35b5d8a3425008776bffcd5a15d9d2ed9",
+  "role": "Architecture/System",
+  "schema_version": "moe-simulator-role-review-v1",
+  "verdict": "MODIFY"
+}

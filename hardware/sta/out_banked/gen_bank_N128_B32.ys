@@ -1,0 +1,7 @@
+read_verilog /work/sta/out_banked/flat_bank_N128_B32.v
+synth -top lru_banked_top -flatten
+dfflibmap -liberty /work/syn/lib/nangate45.lib
+abc -liberty /work/syn/lib/nangate45.lib -script /work/sta/out_banked/abc_bank_N128_B32.do
+clean
+stat -liberty /work/syn/lib/nangate45.lib
+write_verilog -noattr /work/sta/out_banked/netlist_bank_N128_B32.v

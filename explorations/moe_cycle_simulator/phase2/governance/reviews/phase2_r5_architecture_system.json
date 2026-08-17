@@ -1,0 +1,10 @@
+{
+  "blockers": [
+    "ARCH-P2-R5-B1: Canonical EventIR lacks the frozen Phase 0 seven-field event-order ABI, token_index/layer_index, priority registry binding and validate_events/event_tie_key semantics. Add explicit nullable indices, bind the Phase 0 event contracts, reject unknown or mismatched priorities, and seal a new candidate."
+  ],
+  "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r5-20260726",
+  "ledger_sha256": "ac1d3c8f3a81e50302f5bf3debc8a6f33717d24de33f0f5f00e50138bfcd8fb2",
+  "role": "Architecture/System",
+  "schema_version": "moe-simulator-review-v1",
+  "verdict": "MODIFY"
+}

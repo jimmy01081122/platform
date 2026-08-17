@@ -1,0 +1,31 @@
+schema_version: g25-generation-profile-map-v1
+profile_map_revision: granite-c1-g25-profiles-v1.0.1
+frozen: true
+prompt_construction:
+  revision: granite-c1-fixed-system-date-v1
+  system_message: |-
+    Knowledge Cutoff Date: April 2024.
+    Today's Date: July 19, 2026.
+  system_message_sha256: 2d870b377ad178dacfce968718fd67e7d34c18f2f9c6ef82455ff53913ece630
+common:
+  do_sample: false
+  num_beams: 1
+  use_cache: true
+  seed: 20260718
+task_profiles:
+  T0:
+    profile: granite_c1_fixture_generation_v1
+    role: fixture_not_executed_by_g25
+    max_new_tokens: 256
+  T1:
+    profile: granite_c1_natural_qualification_v1
+    role: termination_qualification
+    candidate_ceilings: [256, 384, 512]
+    timeout_seconds: 480
+    legal_stop_reasons: [eos_token]
+mapping_policy:
+  source: frozen_task_id
+  dynamic_output_based_override: forbidden
+  per_sample_override: forbidden
+  unknown_task: reject
+executable_generation_keys: [max_new_tokens, do_sample, num_beams, use_cache, seed]

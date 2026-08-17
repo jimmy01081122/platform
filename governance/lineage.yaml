@@ -1,0 +1,246 @@
+schema_version: platform-lineage-v1
+
+# Provenance record for the /home/a/platform repository.
+# Every tree in this repo was migrated from the frozen source workspace below.
+# The source repo remains read-only as evidence-of-record.
+
+source:
+  repo: git@github.com:jimmy01081122/dis.git
+  workspace_path: /home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace
+  commit: e804b1633a376f63d57aeba60e7fd15068181ea4
+  branch: codex/c1-quality-contract-v2-20260718
+  commit_date: "2026-08-09 18:08:14 +0800"
+  commit_subject: "feat: capture remote D0-S2 freshness evidence"
+  note: >
+    The source working tree was dirty at migration time (93 modified/untracked paths,
+    including artifacts/phase7 which was never committed). Migration therefore copied
+    the WORKING TREE state, not the committed state. The commit hash above identifies
+    the last common committed ancestor only; per-file integrity is established by the
+    SHA-256 manifests in governance/lineage/ instead.
+
+migration:
+  date: "2026-08-17"
+  destination: /home/a/platform
+  destination_repo: git@github.com:jimmy01081122/platform.git
+  method: rsync -a with explicit excludes, verified by rsync -acn (checksum dry-run)
+
+integrity:
+  evidence_manifest: governance/lineage/EVIDENCE_SHA256SUMS
+  evidence_manifest_sha256: 4e2c2433551e981bf01ab460f7fcb620fc5136e57946929d4c7cbcb268a3c806
+  evidence_file_count: 4423
+  code_manifest: governance/lineage/CODE_SHA256SUMS
+  code_manifest_sha256: f4b8ca0fc7822cefde437e9fb6e3c48bf55a9d8ac8503d0d8c6ead060953bd9f
+  code_file_count: 1221
+  verification:
+    source_file_count: 4423
+    destination_file_count: 4423
+    checksum_differences: 0
+    verified: true
+
+# ---------------------------------------------------------------------------
+# Tree mapping: source path -> destination path
+# ---------------------------------------------------------------------------
+
+trees:
+  - dest: evidence/gpu_measurements
+    src: artifacts/gpu_measurements
+    size: 9.5M
+    content: q0 fitted parameters and q1 validation reports (2026-07-18, two rounds)
+    mutability: IMMUTABLE
+
+  - dest: evidence/phase7
+    src: artifacts/phase7
+    size: 124M
+    content: >
+      47 GPU campaigns (2026-08-13..14): OFF-E-PR0..PR4 including the 15-point expert
+      capacity sweep, OFF-W0..W3, SWAP-K0..K5, expert catalog, session guards,
+      combined master remaining ledger.
+    mutability: IMMUTABLE
+
+  - dest: evidence/measurement_backups
+    src: runs/*backup*
+    size: 447M
+    dir_count: 18
+    content: >
+      SERV-P0-25 serving anchor (1000 requests, Poisson, concurrency 8);
+      controlled matrix (CTRL-P0/DEC0/DEC1/PX0 in clean/routing/telemetry variants);
+      K0-K11 profiles; W0-W3 natural matrix; sampling pairs; transfer microbenchmarks
+      v1-v4; component microbenchmarks; F0/C0A/C0BC/F1/T-CANARY/R0 qualification cells;
+      step traces.
+    mutability: IMMUTABLE
+
+  - dest: explorations/moe_cycle_simulator
+    src: explorations/moe_cycle_simulator
+    size: 6.2M
+    excluded: [governance/history/, __pycache__/, "*.pyc", .pytest_cache/]
+    path_preserved: true
+    content: >
+      phase1-2 = nine-family Canonical IR; phase3-6 = C++ cycle-resolved engine
+      (core / single-GPU service model / routing-residency policy / multi-domain);
+      phase7 = GPU campaign runners, hooks, adapters, schemas.
+
+  - dest: src/edgeflow
+    src: src/edgeflow
+    size: 88K
+    path_preserved: true
+    content: canonical trace conversion, MoE routing normalizer, residency model, calibrated backend, multifidelity dispatcher
+
+  - dest: data/{registry,fixtures,canonical}
+    src: data/{registry,fixtures,canonical}
+    size: 1.8M
+    kept_only_for_canonical: ["*.json", "*.md"]
+    content: >
+      Source registry for the external read-only trace corpus, deterministic
+      fixtures, and the committed canonical manifests/stats/W3 result JSONs.
+      The 439 MB of canonical JSONL and raw corpus is NOT migrated (see below).
+
+  - dest: measurement/gpu_run_package_v2
+    src: gpu_run_package_v2
+    size: 18M
+    excluded: [.benchmark-runtime/, models/, cache/, scheduler_runs/, __pycache__/]
+    excluded_size: 16.7G
+    content: collectors (P0/P1/P2/P3/P5_BASIC), schemas, scheduler, adapters, trace capture plan
+
+  - dest: hardware/rtl
+    src: rtl
+    content: SystemVerilog residency engine, LRU victim (comb/banked), DMA model, expert decompressor, formal harnesses
+  - dest: hardware/firmware
+    src: firmware
+    content: frozen semantic_revision=1 scheduler kernel (golden reference for C / RV64 / RTL)
+  - dest: hardware/formal
+    src: formal
+    content: Yosys SAT BMC proof results (argmin, engine, DMA, residency completion)
+  - dest: hardware/mem
+    src: mem
+    content: Ramulator2 LPDDR5 DRAM timing harness
+  - dest: hardware/syn
+    src: syn
+    excluded: ["flat_*.v", "netlist_*.v", "top_*.sv", "*.log"]
+    content: Yosys DSE scripts, Nangate45 library, dse_synth.csv, pareto.csv, s6_analysis.json, argmin_fix.csv, sta_dse.csv
+  - dest: hardware/sta
+    src: sta
+    excluded: ["flat_*.v", "netlist_*.v", "top_*.sv", "*.log"]
+    content: OpenSTA scripts, sta_scale.csv, sta_banked.csv, sta_decomp.csv, sta_engine.csv
+  - dest: hardware/verification
+    src: verification
+    kept_only: ["*.log", "*.json"]
+    content: Verilator regression evidence (residency_legacy, dma_verilator)
+
+  - dest: governance
+    src: project
+    content: charter.yaml, evidence_levels.yaml, capability_registry.yaml
+  - dest: configs
+    src: configs
+  - dest: schemas
+    src: schemas
+  - dest: scripts
+    src: scripts
+  - dest: experiments
+    src: experiments
+  - dest: tests
+    src: tests
+  - dest: docs/methodology
+    src: docs/methodology
+  - dest: docs/tutorials
+    src: docs/tutorials
+
+# ---------------------------------------------------------------------------
+# Deliberately NOT migrated
+# ---------------------------------------------------------------------------
+
+not_migrated:
+  - path: data/canonical/moe_routing_v1 + data/raw
+    size: 439M
+    reason: >
+      Third-party HuggingFace dataset (core12345/MoE_expert_selection_trace) covering
+      Qwen3-235B, DeepSeek-R1, Llama-4-Maverick, Kimi-K2. Not produced by this project,
+      re-fetchable from HuggingFace, and carries router_scores=null throughout.
+    recovery: manifests, stats, registry and fetch scripts are retained under configs/ and scripts/
+
+  - path: gpu_run_package_v2/{.benchmark-runtime,models,cache,scheduler_runs}
+    size: 16.7G
+    reason: vendored Python runtime, model weights, HuggingFace cache, and CPU/mock scheduler runs
+    recovery: rebuildable from pinned requirements and model registry
+
+  - path: explorations/**/governance/history/**
+    size: ~10M
+    reason: >
+      Recursive source snapshots (~29 KLOC duplicated). Also the direct cause of pytest
+      basename collisions that broke collection at the source repo root.
+    recovery: present in the frozen source repo
+
+  - path: syn/**, sta/** generated netlists and tool logs
+    size: ~85M
+    reason: derived artifacts regenerable via scripts/reproduce_all.sh --with-sta in Docker
+    recovery: result CSV/JSON summaries are retained; netlists regenerate from hardware/rtl
+
+  - path: detailed_gpu/
+    reason: >
+      Contained only two orphaned .pyc files; the Accel-Sim normalization source was
+      never committed. Registered as a deferred capability instead.
+
+# ---------------------------------------------------------------------------
+# Structural deviation from PLATFORM_FLOW_SPECIFICATION.md section 12
+# ---------------------------------------------------------------------------
+
+structure_deviation:
+  spec_proposed: separate ir/ and engine/{core,single_gpu,residency,multi_domain} trees
+  actual: source paths preserved verbatim (explorations/moe_cycle_simulator/phaseN, src/edgeflow)
+  reason: >
+    A rename to simulator/ was attempted during migration and reverted. Measured cost of
+    renaming: 119 non-evidence files reference the literal path explorations/moe_cycle_simulator
+    or the module path explorations.moe_cycle_simulator, including governance JSON whose
+    hashes feed the project's own exact-file-set and ledger integrity checks. Two files
+    inside the immutable evidence/ tree also record that path and must not be edited.
+    Phase names are additionally baked into CMake target names (moe_sim_phase3,
+    moe_sim_phase3_c) and exported C API symbols (moe_phase3_engine_create).
+    Flattening src/edgeflow to edgeflow was likewise reverted: repo-root resolution walks
+    up a fixed number of parents, so the missing src/ layer resolved the root to /home/a
+    and broke schema lookup. pyproject.toml also declares packages.find where = ["src"].
+  conceptual_mapping:
+    ir: explorations/moe_cycle_simulator/phase1 + phase2
+    engine_core: explorations/moe_cycle_simulator/phase3
+    engine_single_gpu: explorations/moe_cycle_simulator/phase4
+    engine_residency: explorations/moe_cycle_simulator/phase5
+    engine_multi_domain: explorations/moe_cycle_simulator/phase6
+    measurement_runners: explorations/moe_cycle_simulator/phase7
+  revisit_when: >
+    Only if a rename buys something concrete. It does not today, and it would invalidate
+    governance hashes that the project uses to detect tampering.
+
+# ---------------------------------------------------------------------------
+# Post-migration baseline (measured 2026-08-17)
+# ---------------------------------------------------------------------------
+
+baseline:
+  environment:
+    python: 3.10.12
+    venv: .venv
+    pinned: {jsonschema: 4.24.0, pyarrow: 20.0.0}
+    also_installed: [PyYAML, pytest, zstandard]
+    required_env:
+      PYTHONPATH: "$REPO:$REPO/src"
+      PYTHONDONTWRITEBYTECODE: "1"
+    pythondontwritebytecode_reason: >
+      phase7_d0_r4 governance tests assert the exact file set of the application
+      package. Auto-generated __pycache__ directories fail that assertion and
+      accounted for 19 of the 23 failures seen immediately after migration.
+  python_tests:
+    tests: 96
+    moe_cycle_simulator_tests: 36
+    phase1_tests: 16
+    phase2_tests: 43
+    phase7_tests: "126 + 48 subtests"
+    total: 317
+    failures: 0
+  cpp_ctest:
+    phase3: "2/2"
+    phase4: "3/3"
+    phase5: "4/4"
+    phase6: "5/5"
+    failures: 0
+  resolved_pre_existing_failures: >
+    The source repo had 45 failures caused solely by an unmet dependency pin
+    (jsonschema 3.2.0 installed vs 4.24.0 required) across phase1/phase2, plus
+    broken pytest collection at repo root from the recursive governance/history
+    snapshots. Installing the pinned versions and excluding history resolved both.

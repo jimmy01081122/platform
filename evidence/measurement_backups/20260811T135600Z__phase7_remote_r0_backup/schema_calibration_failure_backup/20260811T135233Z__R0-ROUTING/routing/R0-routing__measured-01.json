@@ -1,0 +1,24 @@
+{
+  "array_path": "routing/R0-routing__measured-01.npy",
+  "array_sha256": "fd6c6d0e633ae58d83c6d20f995846cd4b274b3473f73bf16a4810a072109933",
+  "dtype": "uint8",
+  "experts_from_model_config": 8,
+  "input_token_count": 27,
+  "layers_from_model_config": 32,
+  "logical_request_id": "R0-routing__measured-01",
+  "maximum_expert_id": 7,
+  "minimum_expert_id": 0,
+  "output_token_count": 32,
+  "semantics": "per executed token, actual model layer, top-k expert IDs",
+  "shape": [
+    58,
+    32,
+    2
+  ],
+  "source_field": "vllm.CompletionOutput.routed_experts",
+  "top_k_from_model_config": 2,
+  "validation_errors": [
+    "routing token coverage mismatch: got 58, expected 59 with prefix caching disabled"
+  ],
+  "validation_status": "FAIL"
+}

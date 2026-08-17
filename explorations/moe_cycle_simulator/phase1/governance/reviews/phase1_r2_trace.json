@@ -1,0 +1,16 @@
+{
+  "role": "Trace/Provenance",
+  "ledger_sha256": "478674f22a8022c5ae8fdc343cb67173435d8308cf4e742b1629da975310b445",
+  "verdict": "GO",
+  "blockers": [],
+  "verified_results": [
+    "16 top-level and 21 nested-run members verified",
+    "TP-P1-001 prospectively closed",
+    "TP-P1-002 prospectively closed",
+    "TP-P1-003 prospectively closed",
+    "Phase 1 replay PASS",
+    "16 Phase 1 tests PASS"
+  ],
+  "review_mode": "read-only",
+  "gpu_used": false
+}

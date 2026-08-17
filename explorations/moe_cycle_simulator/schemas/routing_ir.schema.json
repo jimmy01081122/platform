@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator/routing-ir-v1",
+  "title": "Model-derived semantic routing record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "request_id", "token_index", "layer_index",
+    "num_experts", "top_k", "canonical_scores", "score_dtype",
+    "score_tolerance_absolute", "score_tolerance_relative",
+    "selected_experts", "k_boundary_score", "ambiguity_set",
+    "observability", "model_profile_hash", "semantic_descriptor_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "routing-ir-v1"},
+    "request_id": {"type": "string", "minLength": 1},
+    "token_index": {"type": "integer", "minimum": 0},
+    "layer_index": {"type": "integer", "minimum": 0},
+    "num_experts": {"type": "integer", "minimum": 1},
+    "top_k": {"type": "integer", "minimum": 1},
+    "canonical_scores": {
+      "type": ["array", "null"],
+      "items": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"}
+    },
+    "score_dtype": {
+      "type": ["string", "null"],
+      "enum": ["float32", "float16", "bfloat16", null]
+    },
+    "score_tolerance_absolute": {
+      "type": ["string", "null"],
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "score_tolerance_relative": {
+      "type": ["string", "null"],
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "selected_experts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "integer", "minimum": 0}
+    },
+    "k_boundary_score": {
+      "type": ["string", "null"],
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "ambiguity_set": {
+      "type": ["array", "null"],
+      "uniqueItems": true,
+      "items": {"type": "integer", "minimum": 0}
+    },
+    "observability": {
+      "$ref": "https://edgeflow.local/schemas/moe-simulator/observability-v1"
+    },
+    "model_profile_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "semantic_descriptor_hash": {
+      "type": "string", "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

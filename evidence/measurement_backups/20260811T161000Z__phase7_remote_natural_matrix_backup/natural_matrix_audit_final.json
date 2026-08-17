@@ -1,0 +1,126 @@
+{
+  "batch_status": {
+    "completed_runs": 15,
+    "current_experiment": null,
+    "message": "All frozen natural workload runs passed; local backup pending",
+    "status": "PASS",
+    "total_runs": 15,
+    "updated_at_utc": "2026-08-11T16:09:18.165999+00:00"
+  },
+  "checksum_files_verified": 228,
+  "errors": [],
+  "invalid_parent_profiler_runs_preserved": [
+    "W1-KERNEL-PROFILE",
+    "W2-KERNEL-PROFILE"
+  ],
+  "request_count_by_class": {
+    "CLEAN": 108,
+    "KERNEL_PROFILE": 2,
+    "MEMORY_PROFILE": 2,
+    "ROUTING": 3,
+    "TELEMETRY": 99
+  },
+  "residency_monitor": {
+    "historical_count": 1,
+    "live_count": 14,
+    "raw_sample_count": 6501,
+    "status": "PASS"
+  },
+  "routing_array_count": 3,
+  "run_count": 15,
+  "status": "PASS",
+  "telemetry_sample_count": 1922,
+  "warnings": [
+    "Original W1/W2 parent-process torch.profiler runs are preserved but are not accepted as K6/K7; only worker-profiler repair runs satisfy deep kernel evidence."
+  ],
+  "worker_profiler_repair_history": [
+    {
+      "failure_preserved": false,
+      "run": "20260811T161042Z__K6-W1-WORKER-PROFILE",
+      "status": "PASS"
+    },
+    {
+      "failure_preserved": true,
+      "run": "20260811T161621Z__K6-W1-WORKER-PROFILE-V2",
+      "status": "FAIL"
+    },
+    {
+      "failure_preserved": false,
+      "run": "20260811T161641Z__K6-W1-WORKER-PROFILE-V3",
+      "status": "PASS"
+    },
+    {
+      "failure_preserved": false,
+      "run": "20260811T161818Z__K7-W2-WORKER-PROFILE-V2",
+      "status": "PASS"
+    }
+  ],
+  "worker_profiler_repairs": {
+    "K6-W1-WORKER-PROFILE-V3": {
+      "copy_bytes_by_direction": {
+        "Memcpy DtoD (Device -> Device)": 4267572664,
+        "Memcpy DtoH (Device -> Pinned)": 384,
+        "Memcpy HtoD (Pinned -> Device)": 1112884
+      },
+      "copy_event_count_by_direction": {
+        "Memcpy DtoD (Device -> Device)": 4320,
+        "Memcpy DtoH (Device -> Pinned)": 96,
+        "Memcpy HtoD (Pinned -> Device)": 738
+      },
+      "correlation_event_count": 158250,
+      "decode_marker_count": 32,
+      "kernel_event_count": 47968,
+      "model_kernel_event_count": 44192,
+      "prefill_marker_count": 64,
+      "stream_ids": [
+        7,
+        13
+      ],
+      "trace_event_count": 741783,
+      "trace_files": [
+        {
+          "bytes": 11281694,
+          "cuda_related_event_count": 158250,
+          "kernel_event_count": 47968,
+          "model_kernel_event_count": 44192,
+          "path": "profiler/worker/K6-W1-worker-profile-v3__measured-01_dp0_pp0_tp0_dcp0_ep0_rank0.1786465036063847014.pt.trace.json.gz",
+          "sha256": "ab297b2fc18cb663815df9fbbe30eeb0f1dca88a40d3e7d609b969f0a0f9d4dc",
+          "trace_event_count": 741783
+        }
+      ]
+    },
+    "K7-W2-WORKER-PROFILE-V2": {
+      "copy_bytes_by_direction": {
+        "Memcpy DtoD (Device -> Device)": 581191016,
+        "Memcpy DtoH (Device -> Pinned)": 384,
+        "Memcpy HtoD (Pinned -> Device)": 830300
+      },
+      "copy_event_count_by_direction": {
+        "Memcpy DtoD (Device -> Device)": 6168,
+        "Memcpy DtoH (Device -> Pinned)": 96,
+        "Memcpy HtoD (Pinned -> Device)": 682
+      },
+      "correlation_event_count": 152760,
+      "decode_marker_count": 88,
+      "kernel_event_count": 47904,
+      "model_kernel_event_count": 40544,
+      "prefill_marker_count": 8,
+      "stream_ids": [
+        7,
+        13
+      ],
+      "trace_event_count": 773388,
+      "trace_files": [
+        {
+          "bytes": 11753419,
+          "cuda_related_event_count": 152760,
+          "kernel_event_count": 47904,
+          "model_kernel_event_count": 40544,
+          "path": "profiler/worker/K7-W2-worker-profile-v2__measured-01_dp0_pp0_tp0_dcp0_ep0_rank0.1786465127823480627.pt.trace.json.gz",
+          "sha256": "c24ed517b85af326e5b55324e6caa6bd7e52c8fd3f3e0f5c24dcc4d04988afa5",
+          "trace_event_count": 773388
+        }
+      ]
+    }
+  }
+}

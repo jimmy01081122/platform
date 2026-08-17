@@ -1,0 +1,43 @@
+{
+  "schema_version": "phase7-gputw-provider-adaptation-r1/review-aggregate/v1",
+  "candidate_identity": {
+    "candidate_id": "moe-simulator-phase7-gputw-provider-adaptation-r1-bdb610f",
+    "reviewed_commit": "bdb610fca5470e21556b1509ed22db6f55295995",
+    "reviewed_tree": "a471b8bd588c1e574fefae811f3e13d951d411b2",
+    "candidate_member_count": 12,
+    "candidate_ledger_sha256": "67fcf4cc8b17b122efa230b95c4a162fe8582be515ce23a307efe2bea5c23762"
+  },
+  "reviewer_verdicts": {
+    "Architecture/System": "GO",
+    "Model/Benchmark": "GO",
+    "Trace/Provenance": "GO"
+  },
+  "verdict": "GO/GO/GO",
+  "blockers": [],
+  "identity_equality": "PASS",
+  "cpu_evidence_replay": "PASS",
+  "historical_r12_r3_r4_r5_integrity": "PASS",
+  "promotion_rule": "Exactly three GO verdicts, every blocker list empty, identical candidate identity, CPU evidence replay PASS and historical R12-R3/R12-R4/R12-R5 integrity PASS.",
+  "evidence": {
+    "provider_adaptation_validator": "PASS",
+    "gputw_adaptation_tests": "17 passed",
+    "phase7_cpu_mock_suite": "126 tests passed",
+    "py_compile": "PASS",
+    "git_diff_check": "PASS",
+    "candidate_set_replay": "PASS via validate_review.py",
+    "historical_r12_r5": {
+      "member_count": 192,
+      "candidate_ledger_sha256": "61d95a0886b54ce35799002f322836260d1feb703ec31deee8c9430a0555fba3",
+      "nested_checksum_ledgers": "INCLUDED",
+      "gpu_authority": "NONE"
+    }
+  },
+  "reviewer_outputs": [
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/review_architecture_system.json",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/review_model_benchmark.json",
+    "explorations/moe_cycle_simulator/phase7_provider_adaptation/governance/r1/review_trace_provenance.json"
+  ],
+  "review_artifacts_excluded_from_reviewed_source_candidate": true,
+  "claim_boundary": "The aggregate closes only the prospective CPU-only GPUtw Provider Adaptation R1 governance review. It grants no GPU, SSH, D0, Gate M or M0 authority and makes no live provider, runtime, storage, model, capacity, calibration or performance claim.",
+  "side_effects": false
+}

@@ -1,0 +1,53 @@
+{
+  "counts": {
+    "by_role": {
+      "chinese_multiple_choice": 152,
+      "code": 132,
+      "context_length": 5,
+      "conversation": 2,
+      "instruction": 2,
+      "math": 132,
+      "micro_fixture": 4,
+      "multiple_choice": 369,
+      "router_stress": 8,
+      "serving_schedule": 4
+    },
+    "by_split": {
+      "calibration": 135,
+      "domain_holdout": 262,
+      "sample_holdout": 262,
+      "smoke": 17,
+      "validation": 134
+    },
+    "by_task": {
+      "T0": 4,
+      "T1": 132,
+      "T2": 369,
+      "T3": 132,
+      "T4": 4,
+      "T5": 152,
+      "T6": 5,
+      "T7": 4,
+      "T8": 8
+    }
+  },
+  "frozen_manifest_sha256": "3b4c6e8930421da9ac55fa5a399a2c17215705204f3bc76b592cd0fe6f1a203f",
+  "merkle": {
+    "algorithm": "sha256",
+    "leaf_contract": "sha256(canonical_json(manifest_row))",
+    "odd_leaf_rule": "duplicate_last",
+    "root": "198a44442690e514445d9fc6c07d7a017397a1cd8bec69136264b230cd92b6c2"
+  },
+  "sample_count": 810,
+  "schema_version": "frozen-benchmark-suite-v1",
+  "source_files": {
+    "configs/test_suites/benchmark_registry.yaml": "b77236d959045a72a0c8c6fc4fb20e7188f91624202de0c7e8056e6ae070e42d",
+    "configs/test_suites/moe_trace_suite_v1.yaml": "9475db3ab3901954f28fc0ade0976e49daa04641c0f5489656916ca103a98cb0",
+    "configs/test_suites/sample_manifest_v1.jsonl": "3b4c6e8930421da9ac55fa5a399a2c17215705204f3bc76b592cd0fe6f1a203f",
+    "configs/test_suites/splits/v1.yaml": "c376cfef2ead61df1e98ec5f725d3c2c39c2f7bfc050b58f1a65c68bdcc17840",
+    "datasets/snapshots/snapshot_inventory_v1.json": "285b5c29b04cd5653d202d2bbdc9fd7ce0e09d218057020a0d80643e52c1082c"
+  },
+  "suite_id": "moe-trace-suite",
+  "suite_revision": "v1.2.0",
+  "unresolved_gates": []
+}

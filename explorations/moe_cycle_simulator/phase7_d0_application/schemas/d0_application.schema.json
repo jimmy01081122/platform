@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-application-v1",
+  "title": "Phase 7 GPUtw D0 application package",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "application_id",
+    "status",
+    "application_identity_path",
+    "d0_contract_path",
+    "known_hosts_path",
+    "ssh_argv_path",
+    "remote_payload_binding_path",
+    "application_ledger_path",
+    "core_members",
+    "frozen_execution_machinery"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-application-manifest-v1"},
+    "application_id": {"type": "string", "minLength": 1},
+    "status": {"const": "FROZEN_READY_FOR_OWNER_REVIEW"},
+    "application_identity_path": {"type": "string"},
+    "d0_contract_path": {"type": "string"},
+    "known_hosts_path": {"type": "string"},
+    "ssh_argv_path": {"type": "string"},
+    "remote_payload_binding_path": {"type": "string"},
+    "application_ledger_path": {"type": "string"},
+    "core_members": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "frozen_execution_machinery": {"type": "array", "minItems": 1, "items": {"type": "object"}}
+  }
+}

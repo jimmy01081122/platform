@@ -1,0 +1,58 @@
+experiment_id: moe_simulator_handoff_cpu_readiness_20260809
+goal: >-
+  Revalidate the CPU-side foundations needed while the real Mixtral model is
+  downloading, and identify the shortest technical path from measured trace to
+  Canonical IR, simulator replay, calibration, DSE and accelerator requirements.
+scope:
+  - Phase 1 and Phase 2 Python tests under the pinned dependency root
+  - Phase 3 through Phase 6 Release CTest
+  - Phase 7 CPU/mock regression and D0-S2 focused tests
+  - legacy calibrated backend and residency tests
+  - read-only project completion and bridge-gap audit
+non_goals:
+  - SSH or live server inspection
+  - model download, load or inference
+  - GPU execution or profiling
+  - calibration or DSE performance claims
+  - modifying user-owned gpu_run_package_v2 work
+inputs:
+  repository_head: e804b1633a376f63d57aeba60e7fd15068181ea4
+  repository_tree: ac700f0ca23f4e96275bd8b753bff5f6df2f278d
+  phase0_6_freeze_commit: 2633510463bc587927367ab07be21ca60729e96f
+outputs:
+  run: runs/20260809T104738Z__moe_simulator_project_handoff_cpu_readiness__S2
+  handoff_prompt: docs/status/MOE_SIMULATOR_PROJECT_COMPLETION_NEW_SESSION_HANDOFF_PROMPT_20260809.md
+assumptions:
+  - The owner-reported model download is running on the supplied server; this CPU task does not verify that external state.
+  - Release CTest can validate functional C++ behavior in the current environment even when LeakSanitizer cannot run under ptrace.
+unknowns:
+  - real vLLM routing-hook feasibility
+  - real profiler clock correlation and alignment quality
+  - BF16 all-resident capacity on the current instance
+risks:
+  - Phase 1 and Phase 2 require exact jsonschema 4.24.0 and pyarrow 20.0.0 rather than system Python dependencies.
+  - Current Codex execution uses ptrace-like supervision that prevents LeakSanitizer completion.
+validation_method:
+  - pinned-dependency pytest
+  - Release CMake build and CTest
+  - existing Phase 7 CPU/mock regression
+  - focused legacy calibration/residency tests
+acceptance_criteria:
+  - all functional CPU tests pass under their qualified dependencies
+  - sanitizer limitation is reported rather than promoted to PASS
+  - highest-priority missing bridges are identified without fabricating GPU evidence
+estimated_resources:
+  execution: CPU-only, under five minutes
+  storage: temporary builds under /tmp plus a small repository run record
+owner_decisions:
+  - Project completion chain is the highest priority.
+  - Instance, naming and document-format issues are nonblocking.
+  - Technical failures stop and require owner direction.
+next_legal_action: >-
+  Continue non-GPU implementation of the measured trace adapter and IR-to-simulator
+  bridge while the model downloads; after download, run the fixed BF16 technical plan.
+forbidden_actions:
+  - overwrite raw or user-owned artifacts
+  - fabricate model, GPU, trace, calibration or DSE results
+  - silently fallback after technical failure
+

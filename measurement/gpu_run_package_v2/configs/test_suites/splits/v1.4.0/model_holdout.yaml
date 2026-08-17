@@ -1,0 +1,14 @@
+schema_version: benchmark-model-holdout-axis-v1
+axis_revision: v1.4.0
+axis_name: model_holdout
+assignment_unit: model_id
+status: assigned
+active_split: true
+cohorts:
+  large_moe_blind:
+    purpose: blind_generalization_evaluation_on_unseen_large_moe_models
+    model_ids: [deepseek_r1, qwen3_235b]
+orthogonality:
+  independent_of_sample_split: true
+  independent_of_domain_split: true
+  labels_must_not_be_copied_to_sample_manifest_rows: true

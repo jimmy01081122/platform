@@ -1,0 +1,24 @@
+{
+  "schema_version": "moe-model-config-v1",
+  "model_id": "moonshotai/Kimi-K2-Thinking",
+  "trace_variant": "moonshotai/Kimi-K2-Thinking",
+  "role": "holdout_generalization",
+  "provenance": {
+    "config_source": "https://huggingface.co/moonshotai/Kimi-K2-Thinking/resolve/main/config.json",
+    "access": "public",
+    "note": "kimi_k2 (DeepSeek-V3-style); first_k_dense_replace=1 -> 60 MoE layers of 61; n_routed_experts=384, top-8, n_shared_experts=1. Native INT4 (compressed-tensors, W4A16). HELD OUT of the round-1 calibration set."
+  },
+  "hidden_size": 7168,
+  "moe_intermediate_size": 2048,
+  "num_experts": 384,
+  "top_k": 8,
+  "num_hidden_layers": 61,
+  "num_moe_layers": 60,
+  "num_shared_experts": 1,
+  "mlp_kind": "gated_swiglu",
+  "weight_precision": {
+    "name": "int4_compressed_tensors",
+    "bytes_per_param": 0.5,
+    "overhead_note": "INT4 W4A16 = 0.5 byte/param; group scales add small overhead. Nominal 0.5."
+  }
+}

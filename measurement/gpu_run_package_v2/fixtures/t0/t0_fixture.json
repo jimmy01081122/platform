@@ -1,0 +1,36 @@
+{
+  "schema_version": "t0-fixture-spec-v1",
+  "fixture_id": "t0-moe-vertical-20260718",
+  "seed": 20260718,
+  "prompt": "T0 deterministic MoE",
+  "token_sequence": [101, 17],
+  "expected_generated_tokens": [42, 43],
+  "model_profile": {
+    "profile_id": "fixture-moe-3e-top2-v1",
+    "revision": "fixture-model-revision-0001",
+    "expert_count": 3,
+    "top_k": 2,
+    "expert_service_ns": {"0": 4, "1": 6, "2": 3}
+  },
+  "platform_profile": {
+    "profile_id": "fixture-cpu-system-v1",
+    "execution_device": "CPU",
+    "dma_resource": "fixture_dma0",
+    "dma_load_ns": 5,
+    "dispatch_ns": 1,
+    "combine_ns": 2,
+    "queue_capacity": 1
+  },
+  "routing": [
+    {"token_index": 0, "token_id": 101, "experts": [0, 1], "weights": [0.75, 0.25]},
+    {"token_index": 1, "token_id": 17, "experts": [1, 2], "weights": [0.60, 0.40]}
+  ],
+  "expected": {
+    "latency_ns": 25,
+    "dma_wait_ns": 15,
+    "backpressure_events": 2,
+    "max_dma_queue_depth": 2,
+    "residency_high_water_experts": 3,
+    "routing_assignments": 4
+  }
+}

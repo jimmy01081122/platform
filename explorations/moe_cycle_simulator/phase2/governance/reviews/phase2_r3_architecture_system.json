@@ -1,0 +1,11 @@
+{
+  "blockers": [
+    "ARCH-P2-R3-B1: runtime variant fixture does not conform to the frozen Phase 0 contract",
+    "ARCH-P2-R3-B2: calibration profile hash is not closed by a validated source artifact",
+    "ARCH-P2-R3-B3: exact-integer ABI omits several u128 fields"
+  ],
+  "ledger_sha256": "2f713135b64efb2dc4c9f72e93421183ff0e3ea40448d85c59aeeb77d3f3f2d0",
+  "role": "Architecture/System",
+  "schema_version": "moe-simulator-role-review-v1",
+  "verdict": "MODIFY"
+}

@@ -1,0 +1,41 @@
+experiment_id: moe_cycle_simulator_phase2_canonical_ir
+stage: S2
+status: r6_candidate_for_same_hash_review
+goal: Freeze nine Canonical IR families and an exact Arrow IPC plus outer-Zstd bundle ABI.
+scope:
+  - nine strict IR payload contracts
+  - typed content-addressed cross-IR references
+  - immutable placement snapshots and alignment lineage
+  - multi-partition-per-kind Arrow IPC file payloads
+  - mandatory single outer Zstd frame
+  - semantic hashes independent of physical batching and input order
+  - atomic bundle publication and sidecar ArtifactEnvelope
+  - Python/C++ semantic hash golden
+non_goals:
+  - event execution engine
+  - GPU execution or profiling
+  - model or benchmark materialization
+  - calibration PASS
+inputs:
+  - Phase 1 ledger 478674f22a8022c5ae8fdc343cb67173435d8308cf4e742b1629da975310b445
+outputs:
+  - explorations/moe_cycle_simulator/phase2
+  - immutable MODIFY evidence runs/20260726T062336Z__moe_cycle_simulator_phase2_canonical_ir_r1__S2
+  - immutable MODIFY evidence runs/20260726T064153Z__moe_cycle_simulator_phase2_canonical_ir_r2__S2
+  - immutable MODIFY evidence runs/20260726T070128Z__moe_cycle_simulator_phase2_canonical_ir_r3__S2
+  - immutable MODIFY evidence runs/20260726T072622Z__moe_cycle_simulator_phase2_canonical_ir_r4__S2
+  - immutable MODIFY evidence runs/20260726T073953Z__moe_cycle_simulator_phase2_canonical_ir_r5__S2
+  - immutable source snapshots for R1 through R5
+  - runs/20260726T074835Z__moe_cycle_simulator_phase2_canonical_ir_r6__S2
+acceptance:
+  - all nine IR kinds validate
+  - exact cross-reference and bundle closure
+  - one or more non-overlapping partitions per IR kind round-trip under mandatory Zstd
+  - 43 Phase 2 tests pass
+  - C++ and Python semantic roots agree
+  - GPU and model use remain false
+forbidden_actions:
+  - GPU query or execution
+  - model or benchmark download
+  - formal runtime profiling
+  - calibration or platform qualification claims

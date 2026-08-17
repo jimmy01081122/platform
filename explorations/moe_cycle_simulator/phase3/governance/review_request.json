@@ -1,0 +1,39 @@
+{
+  "schema_version": "moe-simulator-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r5-20260728",
+  "ledger_path": "checksums.sha256",
+  "roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "allowed_verdicts": [
+    "GO",
+    "MODIFY",
+    "NO-GO"
+  ],
+  "promotion_rule": {
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "identical_ledger_sha256_required": true
+  },
+  "review_questions": [
+    "Are all R1, R3 and R4 MODIFY findings prospectively closed while all reviewed snapshots remain immutable?",
+    "Does exact rational edge generation match the frozen floor reference without repeated rounded-period addition?",
+    "Is the complete seven-field EventIR key used deterministically, with Phase 2 validation as an explicit trusted precondition?",
+    "Are dependency, capacity, bridge, queue, deadlock and Zeno semantics deterministic and fail-closed?",
+    "Does REPLAY_VALIDATE avoid inventing Phase 4 compute, memory, copy or interconnect completion timing?",
+    "Are unsupported Phase 4 resources and ROUND_ROBIN rejected rather than assigned implicit behavior?",
+    "Do checkpoint serialization and restore bind all contract hashes and reject corruption, conservation drift and clock-remainder drift?",
+    "Does checkpoint identity cover the complete canonical body and do restore invariants cover event/state, waiter/state, trace/state, counters, terminal state and time monotonicity?",
+    "Are max_events, max_same_time_events and max_wait_for_nodes enforced at every relevant boundary using bounded traversal?",
+    "Does holder conservation use non-wrapping arithmetic across the complete unsigned-128 range?",
+    "Does the public fresh constructor reject preloaded waiters while checkpoint restore uses a distinct private reconstruction path?",
+    "Does max_same_time_events count each blocked or completed transition, including every waiter completed inside one release step?",
+    "Can every accepted checkpoint be reconstructed as an exact deterministic scheduler prefix from reverse-derived initial resources?",
+    "Is a transition-limit failure state-atomic and self-restorable, and are FAILED checkpoints explicitly non-resumable?",
+    "Do normal, sanitizer and Python-binding evidence all bind the same source root?",
+    "Are model, benchmark, GPU, profiling and calibration claims absent?"
+  ],
+  "review_results_are_not_part_of_reviewed_source": true
+}

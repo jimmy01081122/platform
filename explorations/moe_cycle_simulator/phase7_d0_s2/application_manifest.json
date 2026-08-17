@@ -1,0 +1,43 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-s2-application-manifest-v1",
+  "application_id": "phase7-gputw-d0-s2-20260809",
+  "status": "CPU_ONLY_DISCOVERY_PACKAGE",
+  "application_ledger_path": "application_ledger.sha256",
+  "ledger_members": [
+    "README.md",
+    "__init__.py",
+    "application_identity.json",
+    "application_manifest.json",
+    "classifier.py",
+    "d0_s2_plan.json",
+    "overlay.json",
+    "probe.py",
+    "run_cpu_probe.py",
+    "schemas/classification.schema.json",
+    "schemas/evidence_ledger.schema.json",
+    "schemas/probe.schema.json",
+    "tests/test_d0_s2.py",
+    "validate_d0_s2.py"
+  ],
+  "ledger_exclusions": ["application_ledger.sha256"],
+  "historical_artifacts_untouched": [
+    "explorations/moe_cycle_simulator/phase7_d0_application/",
+    "explorations/moe_cycle_simulator/phase7_d0_r2/",
+    "explorations/moe_cycle_simulator/phase7_d0_r3/",
+    "explorations/moe_cycle_simulator/phase7_d0_r4/",
+    "runs/20260809T090801Z__pod-a92587c7/"
+  ],
+  "mutable_external_inputs": [
+    "fresh provider endpoint",
+    "owner operational SSH waiver",
+    "provider image/template identity",
+    "fresh remote probe stdout/stderr",
+    "provider billing state"
+  ],
+  "execution_authority": {
+    "d0": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu": "NONE"
+  }
+}

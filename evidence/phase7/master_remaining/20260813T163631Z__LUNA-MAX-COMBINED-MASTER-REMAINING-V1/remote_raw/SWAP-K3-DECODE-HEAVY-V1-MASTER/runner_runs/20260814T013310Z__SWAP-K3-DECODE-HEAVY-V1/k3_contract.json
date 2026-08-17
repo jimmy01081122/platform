@@ -1,0 +1,90 @@
+{
+  "attempt_experiment_id": "SWAP-K3-DECODE-HEAVY-V1",
+  "contract_id": "SWAP-K3-SERVING-PRESSURE-V1",
+  "measurement_contract": {
+    "arrival_to_completion_events": true,
+    "claim_boundary": "diagnostic serving-pressure evidence; not formal SERV tail-CI closure",
+    "failed_rejected_censored_remain_in_denominator": true,
+    "required_fields": [
+      "request_id",
+      "arrival_index",
+      "input_ids_sha256",
+      "output_ids_sha256",
+      "submitted_monotonic_ns",
+      "first_yield_monotonic_ns",
+      "completed_monotonic_ns",
+      "ttft_ns",
+      "completion_latency_ns",
+      "finish_reason",
+      "error",
+      "gpu_telemetry",
+      "host_memory"
+    ]
+  },
+  "runtime": {
+    "dtype": "bfloat16",
+    "enable_prefix_caching": false,
+    "enforce_eager": true,
+    "gpu_memory_utilization": 0.97,
+    "kv_offloading_backend": "native",
+    "kv_offloading_size_gib": 2.0,
+    "max_model_len": 32768,
+    "max_num_batched_tokens": 4096,
+    "model": "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors"
+  },
+  "schema_version": "phase7-swap-k3-serving-pressure-contract-v1",
+  "selected_point_id": "DECODE-HEAVY",
+  "source_documents": {
+    "execution_guidance_sha256": "ed4cfa40029167c080397190273fedf3394aa9e9ed5d624e70f8dd7c5bc9f814",
+    "frozen_mixed_plan_sha256": "10358ce5bd41ca62fcdc2a5c7e472b68807ae31c4a8f328a8b443f8657a17962",
+    "master_ledger_guide_sha256": "7f56430bc231f27fc573f207ce40f1b5214bcd815a63f37e03cc1e498a7edf17",
+    "serving_formal_matrix_plan_sha256": "f3ee7bb758c84230fb008ccea4261321809a10d1a1ef08fa713da62be80e4a8e"
+  },
+  "status": "FROZEN_BEFORE_NEW_RESULTS",
+  "workloads": [
+    {
+      "bursts": 1,
+      "concurrency": 8,
+      "input_tokens": 8192,
+      "max_num_batched_tokens": 4096,
+      "max_num_seqs": 8,
+      "mode": "CLOSED_LOOP_BURST",
+      "output_tokens": 32,
+      "point_id": "LONG-PREFILL",
+      "request_plan": null
+    },
+    {
+      "bursts": 1,
+      "concurrency": 8,
+      "input_tokens": 512,
+      "max_num_batched_tokens": 4096,
+      "max_num_seqs": 8,
+      "mode": "CLOSED_LOOP_BURST",
+      "output_tokens": 512,
+      "point_id": "DECODE-HEAVY",
+      "request_plan": null
+    },
+    {
+      "bursts": 1,
+      "concurrency": 4,
+      "input_tokens": 128,
+      "max_num_batched_tokens": 4096,
+      "max_num_seqs": 8,
+      "mode": "CLOSED_LOOP_BURST",
+      "output_tokens": 32,
+      "point_id": "MIXED",
+      "request_plan": "serving_s4_mixed_plan_v1.json"
+    },
+    {
+      "bursts": 1,
+      "concurrency": 32,
+      "input_tokens": 128,
+      "max_num_batched_tokens": 4096,
+      "max_num_seqs": 32,
+      "mode": "CLOSED_LOOP_BURST",
+      "output_tokens": 32,
+      "point_id": "BURST",
+      "request_plan": null
+    }
+  ]
+}

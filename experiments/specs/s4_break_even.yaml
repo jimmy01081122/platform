@@ -1,0 +1,25 @@
+experiment_id: s4_break_even
+revision: 1
+status: draft
+question: "State a falsifiable engineering question"
+platform_profile: discrete_edge_workstation
+workload:
+  id: replace_me
+  trace_ref: null
+algorithm:
+  semantic_revision: 1
+  baseline_ids: []
+  proposed_id: null
+stages: []
+parameters:
+  fixed: {}
+  sweep: {}
+metrics:
+  primary: []
+  secondary: []
+repetitions:
+  warmup: 0
+  measured: 1
+provenance:
+  unregistered_parameters_allowed: false
+notes: ""

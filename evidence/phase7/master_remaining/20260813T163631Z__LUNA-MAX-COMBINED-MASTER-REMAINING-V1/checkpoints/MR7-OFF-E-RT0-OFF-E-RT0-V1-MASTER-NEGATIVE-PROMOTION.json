@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "MR7-OFF-E-RT0-OFF-E-RT0-V1-MASTER-NEGATIVE-PROMOTION",
+  "execution_ledger_sha256": "7aacdb7c420edfc040ba0ac4834f6babe2553d33c6b3be28afd366a35af1373c",
+  "next_ready_gpu_unit": "OFF-W0",
+  "raw_file_set_sha256": "b27e112ddeb12deb7f5596817b1a9bd11a37cf9d57ceafdd342498a86be8da32",
+  "remaining_ledger_sha256": "edcda046dca13848ff08ea24b73b7a714c2dc2d7a4e2637e78416215504646e8",
+  "required_closed_count": 21,
+  "required_remaining_count": 265,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "timestamp_utc": "2026-08-14T02:05:36Z"
+}

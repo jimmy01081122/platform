@@ -1,0 +1,91 @@
+{
+  "attempt_id": "SWAP-K2-HELDOUT-87P5-V1-MASTER",
+  "claims_forbidden": [
+    "complete K2 matrix",
+    "K2/K3/K5 performance or serving benefit"
+  ],
+  "derived_sidecar": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-87P5-V1-MASTER/derived_swap_k2_heldout-87p5_swap-k2-heldout-87p5-v1-master_event_lineage_and_capacity.json",
+  "derived_sidecar_sha256": "fac79a7cf79b48d39552d1acbd6469336b628a97dbcd6292b55bb9c921378a47",
+  "execution_state": "EXECUTION_COMPLETE",
+  "local_raw_path": "flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/master_remaining/20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1/remote_raw/SWAP-K2-HELDOUT-87P5-V1-MASTER",
+  "matrix_complete": true,
+  "missing_points": [],
+  "next_ready_unit": "SWAP-K3",
+  "point_id": "HELDOUT-87.5",
+  "point_result": {
+    "attempt_id": "SWAP-K2-HELDOUT-87P5-V1-MASTER",
+    "checksum_manifest_sha256": "568cb6d6116c5a198ff11cc121b09a6854102c4e46a578b6b9ea7a7a6cc0d9c7",
+    "derived_bytes_per_full_block": 2097152,
+    "dtype": "bfloat16",
+    "event_analysis": {
+      "declared_block_removed_event_count": 12,
+      "declared_block_stored_event_count": 25,
+      "decode_errors": null,
+      "decoded_block_removed_message_count": 12,
+      "decoded_block_stored_message_count": 26,
+      "event_envelope_count": 28,
+      "removed_hash_count_groups": [
+        1,
+        127,
+        128
+      ],
+      "removed_hash_record_count": 1280,
+      "removed_hashes_not_previously_stored": [],
+      "removed_hashes_subset_of_stored": true,
+      "removed_media": [
+        "CPU"
+      ],
+      "removed_unique_hash_count": 1280,
+      "stored_event_block_size_values": [
+        0
+      ],
+      "stored_hash_count_groups": [
+        1,
+        127,
+        128
+      ],
+      "stored_hash_record_count": 3072,
+      "stored_hashes_without_remove": 1792,
+      "stored_media": [
+        "CPU"
+      ],
+      "stored_parent_null_count": 26,
+      "stored_token_id_count_values": [
+        0
+      ],
+      "stored_unique_hash_count": 3072
+    },
+    "expected_host_blocks": 1792,
+    "expected_rounded_bytes": 3758096384,
+    "fraction": 0.875,
+    "host_capacity_bytes": 3758096384,
+    "host_capacity_gib": 3.5,
+    "movement_observed": true,
+    "point_id": "HELDOUT-87.5",
+    "raw_file_count": 19,
+    "raw_file_set_sha256": "f40746da2b2edad35b54a1eb6f0484d4ae30e7cac3a7e9ec1e935535d09f2e87",
+    "reference_full_block_bytes": 2097152,
+    "reference_working_set_bytes": 4294967296,
+    "role": "HELDOUT",
+    "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+    "runtime_block_size_tokens": 16,
+    "runtime_cache_shape": [
+      2308,
+      8,
+      32,
+      2,
+      16,
+      128
+    ],
+    "stderr_sha256": "6cd6cd9d660be8c00705de56b11088c8e7a5ae5045ff48b4ea4e60bcc388c0db",
+    "stdout_sha256": "46159e7e1b36d5e8ceb3205bcf47d238208e7642969ede16d54300eca8d42b3e",
+    "validation_state": "VALIDATION_PASS"
+  },
+  "raw_backup": "VERIFIED",
+  "remote_raw_path": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T163631Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V2/attempts/SWAP-K2-HELDOUT-87P5-V1-MASTER",
+  "request_correctness": "PASS",
+  "review_state": "REVIEW_WITH_LIMITATION",
+  "reviewed_at_utc": "2026-08-14T01:11:11Z",
+  "schema_version": "phase7-combined-master-swap-k2-point-review-v1",
+  "validation_state": "VALIDATION_PASS"
+}

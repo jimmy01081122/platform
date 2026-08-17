@@ -1,0 +1,106 @@
+{
+  "schema_version": "moe-simulator-phase5-manifest-v1",
+  "candidate_id": "moe-cycle-simulator-phase5-routing-residency-r2-20260728",
+  "goal": "Freeze deterministic CPU-synthetic token routing, expert residency and non-adaptive policy replay above the sole Phase 4 scheduler.",
+  "scope": [
+    "hash-bound token-level selected-expert demand",
+    "byte-authoritative expert and reserved nonexpert capacity",
+    "explicit clean eviction, H2D load, route barrier and compute assignment DAG",
+    "LRU/FIFO and OFF/HINT policy ablations",
+    "fail-closed Phase 4 trace replay",
+    "live-prefix checkpoint and exact continuation"
+  ],
+  "non_goals": [
+    "adaptive completion-dependent policy",
+    "aggregate-to-token routing reconstruction",
+    "routing weights or weighted expert combination",
+    "multi-GPU, NVLink, P2P or coherent UMA",
+    "model, benchmark, GPU, profiling or calibration execution"
+  ],
+  "inputs": {
+    "phase4_ledger_sha256": "2109278b1b2ad66803cb59b60e29015a958b95db64b26f82f4ca4ef56fe9675b",
+    "phase5_source_root_sha256": "828971fa2e035ab1940abf4ac00293c8f1bc036fb9f90b8a5a7537474ad63d3f",
+    "build_authority_sha256": "30a5987d2682db7da485e0aff7fdc676df6b9c06d65bb96114df7fba407fb68c",
+    "policy_contract_sha256": "03ffa9592bcd71c4a4cb8193010e9ae15d5adf67e65322f30b5a738e76ed468d",
+    "checkpoint_schema_sha256": "8c12cf9716b8d968366ef2300c4bef60c804ce6f8d66d6f77d730344cdb753ec"
+  },
+  "outputs": {
+    "formal_run": "20260728T130835Z__moe_cycle_simulator_phase5_routing_residency_r2__S4",
+    "run_ledger_sha256": "e7762348513b1aacbb7f8cb6d5ac1b496980616c11e1a37b44c0949fa24e6884",
+    "execution_mode": "TRACE_COMPILED_NON_ADAPTIVE",
+    "profile_origin": "CPU_SYNTHETIC",
+    "range_status": "RANGE_UNKNOWN",
+    "gpu_used": false,
+    "model_downloaded": false,
+    "calibration_pass": false
+  },
+  "dependencies": {
+    "phase4_model": "frozen sole timed scheduler",
+    "phase2_ir": "token-level routing identity and provenance semantics",
+    "language": "C++20",
+    "build": "CMake"
+  },
+  "assumptions": [
+    "Selected expert IDs and top-k have passed the frozen token-level IR boundary.",
+    "Expert sizes and nonexpert reservation are frozen byte counts.",
+    "Policy actions are fully compiled before the Phase 4 scheduler starts."
+  ],
+  "unknowns": [
+    "measured residency and transfer service curves",
+    "production trace scale",
+    "adaptive policy value",
+    "multi-platform behavior"
+  ],
+  "alternative_designs": [
+    "Dynamic completion callbacks were deferred because frozen Phase 4 has no dynamic submission API.",
+    "Aggregate routing reconstruction was rejected because it cannot conserve token identity.",
+    "Terminal-state plus earlier-cursor checkpointing was rejected in favor of a real live prefix."
+  ],
+  "risks": [
+    "The serialized token chain is a minimal deterministic implementation rather than a production serving scheduler.",
+    "Synthetic service work cannot support latency, speedup or break-even claims.",
+    "Prefetch hints are useful only when their earlier arrival and target provenance are available."
+  ],
+  "validation_method": [
+    "source contract validator",
+    "clean Release build and CTest",
+    "native Phase 5 and inherited Phase 3/4 ASAN/UBSAN execution",
+    "routing, assignment, capacity, causality and ablation tests",
+    "live object and wire checkpoint exact-continuation tests",
+    "tamper, corruption, invalid enum, invalid routing and capacity negative tests",
+    "1000-demand indexed replay envelope",
+    "sealed run and candidate exact-set checksum validation"
+  ],
+  "acceptance_criteria": [
+    "source root equals 828971fa2e035ab1940abf4ac00293c8f1bc036fb9f90b8a5a7537474ad63d3f",
+    "formal R2 run validator PASS",
+    "normal CTest 4/4 PASS",
+    "native ASAN and UBSAN PASS",
+    "run ledger exact-set PASS",
+    "three roles GO on one candidate ledger with empty blockers"
+  ],
+  "estimated_resources": {
+    "execution": "CPU-only, under two minutes",
+    "storage": "under ten MiB"
+  },
+  "owner_decisions": [
+    "Phase 4 GO authorizes Phase 5 CPU-synthetic routing, residency and policy implementation.",
+    "Push is permitted after each completed phase."
+  ],
+  "next_legal_action": "After same-hash GO, freeze Phase 5 and begin Phase 6 CPU-synthetic multi-GPU NVLink and coherent UMA implementation.",
+  "forbidden_actions": [
+    "GPU query or execution",
+    "model or benchmark download",
+    "formal profiling",
+    "calibration or platform qualification claims",
+    "postprocess repair",
+    "modification or reinterpretation of frozen G3 or S4 evidence"
+  ],
+  "status": "candidate_r2_unreviewed",
+  "stale_run": {
+    "run_id": "20260728T130501Z__moe_cycle_simulator_phase5_routing_residency_r1__S4",
+    "status": "STALE_BEFORE_REVIEW",
+    "reason": "The run began before the implementation agent completed the final reserved-capacity replay checks.",
+    "promotion_policy": "excluded from the candidate ledger; never promote or reinterpret"
+  }
+}

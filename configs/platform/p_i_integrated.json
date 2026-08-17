@@ -1,0 +1,20 @@
+{
+  "schema_version": "platform-profile-v1",
+  "profile_id": "P-I",
+  "name": "Integrated CPU-GPU (shared LPDDR5, unified memory)",
+  "class": "integrated",
+  "provenance": "H1 service model. Aggregate bandwidth = A-007 swept shared-memory range; effective = aggregate x contention (compute and transfer share the bus). Latency + copy engines registered/swept. H2-UPGRADE: the contention factors below are now cross-checked against DRAM-timing-measured values (Ramulator2 LPDDR5-6400, data/canonical/moe_routing_v1/mem_timing.json): streaming-only ~0.93 (better than guessed 0.8); moderate compute contention ~0.30 (worse than guessed 0.6, row-thrashing). The SW-vs-HW decision does not flip under either (scripts/w3_mem_recheck.py).",
+  "link_bandwidth_bytes_per_s_sweep": {
+    "shared_25GBs": 25.0e9,
+    "shared_51GBs": 51.0e9,
+    "shared_102GBs": 102.0e9
+  },
+  "contention_sweep": {
+    "heavy_0.4": 0.4,
+    "moderate_0.6": 0.6,
+    "light_0.8": 0.8
+  },
+  "link_latency_s": 0.5e-6,
+  "copy_engines": 1,
+  "note": "effective bandwidth = aggregate * contention; prefetch_bw_fraction = contention (transfers overlap compute only using the spare fraction)."
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-r3-overlay-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "application_id",
+    "revision",
+    "status",
+    "historical_boundary",
+    "target",
+    "environment",
+    "owner_authority",
+    "time_contract",
+    "command_contract",
+    "provenance_contract",
+    "probe_contract",
+    "promotion",
+    "authority",
+    "forbidden_actions"
+  ],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-r3-overlay-v1"},
+    "application_id": {"type": "string", "minLength": 1},
+    "revision": {"const": "D0-R3"},
+    "status": {"const": "CPU_ONLY_DISCOVERY_PACKAGE"},
+    "historical_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["d0_r1_commit", "d0_r1_tree", "r12_r5_commit", "r12_r5_tree", "provider_r1_commit", "provider_r1_tree", "historical_artifacts_immutable"],
+      "properties": {
+        "d0_r1_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "d0_r1_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "r12_r5_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "r12_r5_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "provider_r1_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "provider_r1_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "historical_artifacts_immutable": {"const": true}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "instance_id", "gpu_count", "exact_product_name", "minimum_memory_bytes"],
+      "properties": {
+        "provider": {"const": "GPUtw.ai"},
+        "instance_id": {"type": ["string", "null"]},
+        "gpu_count": {"const": 1},
+        "exact_product_name": {"const": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"},
+        "minimum_memory_bytes": {"const": 96000000000}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selected_environment_family", "selection_status", "selected_image_or_template_identity", "environment_change_from_d0_r1", "container_digest", "container_digest_policy", "unobserved_digest_action"],
+      "properties": {
+        "selected_environment_family": {"const": "vLLM Inference Server"},
+        "selection_status": {"const": "PENDING_OWNER_CONFIRMATION"},
+        "selected_image_or_template_identity": {"type": ["string", "null"]},
+        "environment_change_from_d0_r1": {"const": "REJECT_UNAPPROVED_UBUNTU_CUDA_LABEL"},
+        "container_digest": {"type": ["string", "null"]},
+        "container_digest_policy": {"const": "REQUIRED_FOR_PROMOTABLE_D0"},
+        "unobserved_digest_action": {"const": "DISCOVERY_ONLY_NOT_PROMOTABLE"}
+      }
+    },
+    "owner_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "maximum_runtime_seconds", "maximum_additional_spend_amount", "maximum_additional_spend_currency", "compute_cap", "storage_cap", "port_cap", "top_up_allowed", "extension_allowed", "provider_grace_credit_seconds", "historical_300_twd_semantics"],
+      "properties": {
+        "status": {"const": "PENDING_OWNER_CONFIRMATION"},
+        "maximum_runtime_seconds": {"const": 21600},
+        "maximum_additional_spend_amount": {"const": "0"},
+        "maximum_additional_spend_currency": {"const": "TWD"},
+        "compute_cap": {"$ref": "#/$defs/zero_cap"},
+        "storage_cap": {"$ref": "#/$defs/zero_cap"},
+        "port_cap": {"$ref": "#/$defs/zero_cap"},
+        "top_up_allowed": {"const": false},
+        "extension_allowed": {"const": false},
+        "provider_grace_credit_seconds": {"const": 0},
+        "historical_300_twd_semantics": {"const": "UNUSED_UNTIL_OWNER_EXPLICITLY_CLASSIFIES_IT"}
+      }
+    },
+    "time_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_trigger", "time_origin_status", "control_plane_start_utc", "lease_start_utc", "lease_deadline_utc", "total_seconds", "stage_bounds_seconds", "bounded_work_seconds", "shared_transition_slack_seconds", "remaining_time_required_before_each_stage"],
+      "properties": {
+        "start_trigger": {"const": "FRESH_OWNER_SSH_HANDOFF"},
+        "time_origin_status": {"const": "REQUIRES_FRESH_HANDOFF"},
+        "control_plane_start_utc": {"type": ["string", "null"]},
+        "lease_start_utc": {"type": ["string", "null"]},
+        "lease_deadline_utc": {"type": ["string", "null"]},
+        "total_seconds": {"const": 21600},
+        "stage_bounds_seconds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["D0", "Gate_M", "M0", "release"],
+          "properties": {"D0": {"const": 300}, "Gate_M": {"const": 5400}, "M0": {"const": 14400}, "release": {"const": 900}}
+        },
+        "bounded_work_seconds": {"const": 21000},
+        "shared_transition_slack_seconds": {"const": 600},
+        "remaining_time_required_before_each_stage": {"const": true}
+      }
+    },
+    "command_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["controller_path", "probe_path", "remote_argv_template", "transport", "outer_timeout_seconds", "inner_probe_timeout_seconds", "max_stdout_bytes", "max_stderr_bytes", "process_tree_cleanup", "manual_raw_argv_allowed"],
+      "properties": {
+        "controller_path": {"const": "controller.py"},
+        "probe_path": {"const": "probe.py"},
+        "remote_argv_template": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "transport": {"const": "STDIN_EXACT_PROBE_BYTES"},
+        "outer_timeout_seconds": {"const": 300},
+        "inner_probe_timeout_seconds": {"const": 120},
+        "max_stdout_bytes": {"const": 1048576},
+        "max_stderr_bytes": {"const": 262144},
+        "process_tree_cleanup": {"const": "PROCESS_GROUP_AND_DESCENDANT_CONTAINMENT"},
+        "manual_raw_argv_allowed": {"const": false}
+      }
+    },
+    "provenance_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["known_hosts_source", "known_hosts_sha256", "host_key_provenance", "local_ssh_executable_path", "local_ssh_executable_sha256", "client_public_key_fingerprint", "credential_selector", "private_key_material_policy"],
+      "properties": {
+        "known_hosts_source": {"const": "AUTHENTICATED_PROVIDER_SOURCE_REQUIRED"},
+        "known_hosts_sha256": {"type": ["string", "null"]},
+        "host_key_provenance": {"type": ["string", "null"]},
+        "local_ssh_executable_path": {"type": ["string", "null"]},
+        "local_ssh_executable_sha256": {"type": ["string", "null"]},
+        "client_public_key_fingerprint": {"type": ["string", "null"]},
+        "credential_selector": {"type": ["string", "null"]},
+        "private_key_material_policy": {"const": "FORBIDDEN_IN_REPOSITORY_VAULT_WORKSPACE_LOGS_AND_ARGV"}
+      }
+    },
+    "probe_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_schema", "required_top_level_fields", "remote_writes", "package_install", "model_access", "gpu_workload"],
+      "properties": {
+        "required_schema": {"const": "schemas/probe.schema.json"},
+        "required_top_level_fields": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "remote_writes": {"const": false},
+        "package_install": {"const": false},
+        "model_access": {"const": false},
+        "gpu_workload": {"const": false}
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_mode", "promotable", "reason", "promotion_requires_new_application"],
+      "properties": {
+        "execution_mode": {"const": "DISCOVERY_ONLY"},
+        "promotable": {"const": false},
+        "reason": {"const": "CONTAINER_DIGEST_AND_OWNER_LIVE_INPUTS_UNOBSERVED"},
+        "promotion_requires_new_application": {"const": true}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["d0_execution", "gate_m", "m0", "gpu_authority"],
+      "properties": {"d0_execution": {"const": "NOT_AUTHORIZED"}, "gate_m": {"const": "NOT_AUTHORIZED"}, "m0": {"const": "NOT_AUTHORIZED"}, "gpu_authority": {"const": "NONE"}}
+    },
+    "forbidden_actions": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "$defs": {
+    "zero_cap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "currency", "classification"],
+      "properties": {
+        "amount": {"const": "0"},
+        "currency": {"const": "TWD"},
+        "classification": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

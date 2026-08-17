@@ -1,0 +1,49 @@
+{
+  "schema_version": "canonical-ir-codec-profile-v1",
+  "profile_id": "arrow-ipc-file-outer-zstd-v1",
+  "container": "ARROW_IPC_FILE",
+  "ipc_metadata_version": "V5",
+  "body_compression": "NONE",
+  "outer_compression": "ZSTD_FRAME",
+  "pyarrow_version": "20.0.0",
+  "zstd_version": "1.4.8",
+  "zstd_level": 3,
+  "columns": [
+    {"name": "record_id", "logical_type": "utf8", "nullable": false},
+    {"name": "semantic_descriptor_hash", "logical_type": "fixed_size_binary[32]", "nullable": false},
+    {"name": "canonical_json", "logical_type": "binary", "nullable": false}
+  ],
+  "semantic_scalar_abi": {
+    "u64_u128": "canonical unsigned decimal JSON string where schema declares exact integer",
+    "s128": "canonical signed decimal JSON string; negative zero forbidden",
+    "rational": "gcd-normalized numerator/positive-denominator canonical decimal strings",
+    "exact_decimal": "canonical decimal JSON string; exponent notation forbidden",
+    "sha256": "lowercase hex in JSON and fixed-size 32-byte Arrow redundancy",
+    "enum": "closed UTF-8 string",
+    "null_vs_absent": "distinct; schema required fields preserve explicit null",
+    "endianness": "not applicable to canonical JSON binary and fixed SHA-256 bytes"
+  },
+  "limits": {
+    "maximum_partition_file_bytes": "1073741824",
+    "maximum_uncompressed_partition_bytes": "2147483648",
+    "maximum_decompression_ratio": "1000",
+    "maximum_rows_per_partition": "10000000",
+    "maximum_canonical_row_bytes": "16777216"
+    ,"maximum_artifact_envelope_bytes": "1048576"
+    ,"maximum_artifact_envelope_nodes": "10000"
+    ,"maximum_artifact_envelope_depth": "32"
+  },
+  "writer": {
+    "dictionary_encoding": false,
+    "atomic_publish": "same-directory temporary file, close, fsync, read-back validation, os.replace, parent-directory fsync",
+    "silent_uncompressed_fallback": false,
+    "concatenated_zstd_frames": "FORBIDDEN"
+  },
+  "reader": {
+    "unknown_metadata": "REJECT",
+    "unknown_field": "REJECT",
+    "trailing_or_concatenated_payload": "REJECT",
+    "oversized_input": "REJECT",
+    "schema_coercion": "FORBIDDEN"
+  }
+}

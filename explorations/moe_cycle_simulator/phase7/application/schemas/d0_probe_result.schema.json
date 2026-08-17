@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "d0_probe_result.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-d0-probe-result-v1"},
+    "capture_status": {"const": "COMPLETE"},
+    "captured_at_utc": {"type": "string"},
+    "host": {"type": "object"},
+    "gpu": {"type": "object"},
+    "mounts": {"type": "object"},
+    "software": {"type": "object"},
+    "environment_presence": {"type": "object"},
+    "prohibitions": {"type": "object"}
+  },
+  "required": [
+    "schema_version", "capture_status", "captured_at_utc", "host", "gpu",
+    "mounts", "software", "environment_presence", "prohibitions"
+  ],
+  "type": "object"
+}

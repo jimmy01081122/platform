@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_parent_output_replay.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "required", "frozen_eos_token_id", "frozen_ceiling",
+    "output_token_ids_sha256", "output_token_count", "terminal_token_id",
+    "eos_occurrence_count", "eos_is_unique_terminal", "ceiling_reached",
+    "within_frozen_ceiling",
+    "derived_stop_reason", "legal_stop", "worker_claimed_stop_reason",
+    "worker_text_sha256", "parent_decoded_text_sha256",
+    "worker_text_matches_parent_decode", "source_sample_id", "raw_sample_hash",
+    "frozen_source_sample_sha256", "evaluator", "evaluator_result_sha256",
+    "parser_validity", "derived_parser_outcome",
+    "worker_claimed_parser_outcome", "stop_claim_matches",
+    "parser_claim_matches", "worker_claims_match",
+    "correctness_used_for_eligibility", "replay_error", "replay_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-parent-output-replay-v2"},
+    "required": {"type": "boolean"},
+    "frozen_eos_token_id": {"type": "integer", "minimum": 0},
+    "frozen_ceiling": {"enum": [256, 384, 512]},
+    "output_token_ids_sha256": {"$ref": "#/$defs/nullableSha256"},
+    "output_token_count": {"type": ["integer", "null"], "minimum": 0},
+    "terminal_token_id": {"type": ["integer", "null"], "minimum": 0},
+    "eos_occurrence_count": {"type": "integer", "minimum": 0},
+    "eos_is_unique_terminal": {"type": "boolean"},
+    "ceiling_reached": {"type": "boolean"},
+    "within_frozen_ceiling": {"type": "boolean"},
+    "derived_stop_reason": {
+      "enum": ["eos_token", "max_new_tokens", "illegal_stop", "not_run"]
+    },
+    "legal_stop": {"type": "boolean"},
+    "worker_claimed_stop_reason": {"type": ["string", "null"]},
+    "worker_text_sha256": {"$ref": "#/$defs/sha256"},
+    "parent_decoded_text_sha256": {"$ref": "#/$defs/nullableSha256"},
+    "worker_text_matches_parent_decode": {"type": ["boolean", "null"]},
+    "source_sample_id": {"type": ["string", "null"]},
+    "raw_sample_hash": {"$ref": "#/$defs/nullableSha256"},
+    "frozen_source_sample_sha256": {"$ref": "#/$defs/nullableSha256"},
+    "evaluator": {"type": ["string", "null"]},
+    "evaluator_result_sha256": {"$ref": "#/$defs/nullableSha256"},
+    "parser_validity": {"type": ["boolean", "null"]},
+    "derived_parser_outcome": {
+      "enum": ["parseable", "unparseable", "not_run", "unknown"]
+    },
+    "worker_claimed_parser_outcome": {
+      "enum": ["parseable", "unparseable", "not_run", "unknown"]
+    },
+    "stop_claim_matches": {"type": "boolean"},
+    "parser_claim_matches": {"type": "boolean"},
+    "worker_claims_match": {"type": "boolean"},
+    "correctness_used_for_eligibility": {"const": false},
+    "replay_error": {"type": ["string", "null"]},
+    "replay_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nullableSha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

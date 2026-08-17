@@ -1,0 +1,1208 @@
+{
+  "schema_version": "moe-routing-v1",
+  "converter_version": "moe-routing-converter/1.0.0",
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+  "queries": [
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "raw_sha256": "becbc8c7c3b47bb131702ea2ceef9b101bdc469bbb204269677e2ff653fae437",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/0.jsonl",
+      "canonical_sha256": "87de2d7fc6e7f2bb3b945273fbecb4c7d08a1816acbfcca37daad23c155004db",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 85,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "raw_sha256": "af26c315e56feac8a338b7764b90fdf083e28156de67c640c1fb8e398fa9a002",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/1.jsonl",
+      "canonical_sha256": "76090986feaedf91636a2404ebedf6170100cd4993c67e179df3874a77a57ce3",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 100,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "raw_sha256": "ca443b3321ac638d975fa5a49910387c252d2d262034a24be4517f28ebd016c1",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/2.jsonl",
+      "canonical_sha256": "4cfd00a44199c1a59d6d31ea2bd7932921173f2a6a630027fee4ca9fdee4d1f4",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 60,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "raw_sha256": "19f09986b8288d1bc09fb356f1df8199f1fbe348c5670a7324a79189f294e149",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/0.jsonl",
+      "canonical_sha256": "317419809e6bbe737f8ac9b0a831af45c677fdb9c108ce53e02240eb77554fd0",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 25,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "raw_sha256": "51586971176a8edb268d4a0b511c62a930b6849f938165054ef88536f6be2b80",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/1.jsonl",
+      "canonical_sha256": "ede02a718b3c57e3329f7ddb6fd6e520424ce05281f9711ddf8e2a9ea142bc48",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 37,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "raw_sha256": "61b95f6d2e8ee50ff8d67d269a3da8d2ec0ed49ed8254d2d406d8c6c300648b1",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/2.jsonl",
+      "canonical_sha256": "8b4e6e31085a5f6198399e254070594ed399b8d24eda64777e5e3282d527a4f7",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 38,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "raw_sha256": "5d37f01bc00df9c17e21cbd80882a607f6f30f138f9e688548ddc266eed8cd5d",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/0.jsonl",
+      "canonical_sha256": "e3345c51cb0357bc5b6ff44a1ff4444825eb0b4335cbb669d1aaf76ee235972b",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 24,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "raw_sha256": "8c29ea8137bd4054d8eff8b7593a1a0e20e2b699e2c6663818465189d8c21bab",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/1.jsonl",
+      "canonical_sha256": "c6d25d4293d350e057f2fa6d1aa472a61bd4ea353828b8a768e38b4032982528",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 36,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "raw_sha256": "47a120c62c057ded2b0a497146e39660ba43834e901a632b420b8a81675df494",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu_ZH_CN/abstract_algebra/2.jsonl",
+      "canonical_sha256": "e67a557685c06358ab560352de7f885cb394a59002f0d776e10ed12593b6dfe9",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 37,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "raw_sha256": "f3b935f32cae3a79755b74b12645fa5e2db57fef6b330ccde4412352499f3664",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/0.jsonl",
+      "canonical_sha256": "206916c84b2513ddb0e042a567d54ab292e8e43d557cad0305f9c2f9acdafb57",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 88,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "raw_sha256": "250c8eeb8904cbc01177c4a075c7dc0563a3a359f38bc191c25c251f8d37a390",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/1.jsonl",
+      "canonical_sha256": "7cef381f8021e693cd885df20fe3597246120220ddcf0ff7dc02b2e6258f253f",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 102,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "raw_sha256": "87caf5a57852a3652ca28176b3f77715dbc41586bd0fa940e6b22ed270ae8e35",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/2.jsonl",
+      "canonical_sha256": "7d75ec0b18ae61ba2924f32fd2f15185968a8917815cc31e7a45bdf1f86346ae",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 62,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "raw_sha256": "eb34107bacbd9eae88e475952e08d2beb4ea898e3fbf6d11165555023833e238",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/0.jsonl",
+      "canonical_sha256": "e8e7a15efcaa1931466dc2096f9bc2f514af693137c22b33334f44c474ace4ed",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 26,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "raw_sha256": "2034f7ce869e57d0c145c8ae560fc08cb9a05273338e70f93249ff928d392ddd",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/1.jsonl",
+      "canonical_sha256": "f490181eb5da7bc9659342846fcc41a1fcdfd3427d49b301f67aca91dde0f388",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 37,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "raw_sha256": "84f52223d92037f8ae71646c43695526ed3b765685dc9ac25deb490f8056bd00",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu/abstract_algebra/2.jsonl",
+      "canonical_sha256": "b505f901656f846f3f4f5557a28e87ce479671c674c71cf40508019e32f32294",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 38,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4387",
+      "raw_sha256": "5d04e7b4dbaec91981cf7eec0f7a4b8f8c3d1c0b50fe9b21c0ce53d3134beafd",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4387.jsonl",
+      "canonical_sha256": "61a4bafcba2e38c338722eeda4cbea76c20b26f73cffe6cc1e2bdf0690b8fa82",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 34,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4388",
+      "raw_sha256": "7a7b73d9b56661e129cd66e30a33acf8b4775891effb4683de55ee1ae632bc66",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4388.jsonl",
+      "canonical_sha256": "4384c62203ca965dc0c8064740cf60d777b22e3e24d3ae7ce39d6ae724650cb5",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 29,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "cognitivecomputations/DeepSeek-R1-AWQ",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "high_school_mathematics",
+      "query_id": "4389",
+      "raw_sha256": "650a8c72e6b2215e1853fc837730cea2645eb33f9f8264aea81f046116b6b19d",
+      "canonical_path": "cognitivecomputations/DeepSeek-R1-AWQ/mmlu_ZH_CN/high_school_mathematics/4389.jsonl",
+      "canonical_sha256": "17721e8b64db17f6b4ef634cf6619bd8bc8710c0f8e5ffbd005768464edbbc7a",
+      "records": 7482,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 58,
+        "top_k": 8,
+        "num_experts_observed": 256,
+        "num_steps": 129,
+        "prefill_tokens": 34,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "raw_sha256": "05e19d0f9da7e52eaecc72163b0eebf7818f667ed8d7dbdbe66d3b08cae8d885",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/0.jsonl",
+      "canonical_sha256": "901cb1048a163e7ee3198c49ea793b41262a3c74d7f2c3ca3aad1d81e518de23",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 85,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "raw_sha256": "841de75b0bcaf23f5c535e78a535eb4824bb72d06d8aba69261d569963fb916d",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/1.jsonl",
+      "canonical_sha256": "7bb78ee65aa0ad25d6fd083c5fad307ddbaae3a1c3cf55917bec81f6cf636c6e",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 100,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "raw_sha256": "00667dedbedf805573ae2bb4764ee7198e08b22ab0a13a8c1a19388cd040919c",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/2.jsonl",
+      "canonical_sha256": "f822165620463e29f6015db5776b032370fe639dbf973142beb28ca172c5a5d2",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 60,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "raw_sha256": "c095e372fc1249f85cb914f9007a7a01b92824d84009156454b5bc388424e4b4",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/0.jsonl",
+      "canonical_sha256": "4c6491026a09e4a1bfd28c164589c9b3c5ce137ba138aa60bdfb96690f7a5c91",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 25,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "raw_sha256": "9268f54f8f17176732269860f14a26a5c813366d886e21ed7edff9e6c6d24719",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/1.jsonl",
+      "canonical_sha256": "281d1bbbc1bf2b669c5a27179387beb9231d8ee1832af192320351ae1c99c86b",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 37,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "raw_sha256": "5ab24e330dcc1a486c3046cdaeeeecee92d82099aa1f7d3ac4837b0a4f76c779",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu/abstract_algebra/2.jsonl",
+      "canonical_sha256": "2bb29663e7d47b99acfb18913ae5b3a3e1b88679ac2256fd4372f249440f3c48",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 38,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "raw_sha256": "ff9ccf98de2e263c49332e8ecdf5034d6e303e7445f57cfebcb47e42905a53f0",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/0.jsonl",
+      "canonical_sha256": "9359a71d197a8dc2fbf9c9d2b814d0676a4553ef172d27f016a24ff847e5145c",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 23,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "raw_sha256": "337f6fb8a86ee4b9fe8137c9dd0b6c61d2c70c895ded1f944f3d74bfeab1849a",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/1.jsonl",
+      "canonical_sha256": "3b68d91392a51f144c8d319a443b85d4f7807e391003e9e864ac2d5853a302eb",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 36,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "benchmark": "mmlu_ZH_CN",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "raw_sha256": "380ea17f22e13bfa9f8ecdd694d4754f694cdaaeaa07ba8f995d2af3f9473566",
+      "canonical_path": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/mmlu_ZH_CN/abstract_algebra/2.jsonl",
+      "canonical_sha256": "3b470d05863e401ceb5c4b31dc962ed110be2f83106b5e840dd8db3a14d94b92",
+      "records": 3096,
+      "dims": {
+        "num_layers": 48,
+        "num_moe_layers": 24,
+        "top_k": 1,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 37,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "0",
+      "raw_sha256": "1bb4a46380cc31966d1e9bb6b1005034dc56af7b8acc74bffd17678f50f6a45c",
+      "canonical_path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/0.jsonl",
+      "canonical_sha256": "881bff74b090054dbf3f1ffceb6a4c993df24450426d7257262c4a505931b4d5",
+      "records": 7740,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 60,
+        "top_k": 8,
+        "num_experts_observed": 384,
+        "num_steps": 129,
+        "prefill_tokens": 85,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "1",
+      "raw_sha256": "33bf1c0c811d49042a5c8ce54d97ab9329e95e5a96d4b701c9a67ffd13750605",
+      "canonical_path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/1.jsonl",
+      "canonical_sha256": "d7ad84c7c1e897b9c2a3c7c8b51124bb11c575e81e9502f147c26519599a2348",
+      "records": 7740,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 60,
+        "top_k": 8,
+        "num_experts_observed": 384,
+        "num_steps": 129,
+        "prefill_tokens": 100,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "livecodebench",
+      "subject": "execution",
+      "query_id": "2",
+      "raw_sha256": "57340a4e0f1b2f23ca60f34df30af3300274c401ab144c1239712e445e8971fe",
+      "canonical_path": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/2.jsonl",
+      "canonical_sha256": "dc32b76fe4cffb589270bb5bd47947cfa1b86750b8b060ba45745f6c9e359ca3",
+      "records": 7740,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 60,
+        "top_k": 8,
+        "num_experts_observed": 384,
+        "num_steps": 129,
+        "prefill_tokens": 60,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "0",
+      "raw_sha256": "1714134b7539a2407cb92347401b7b0e3939d70224888d3eefbc61276507202b",
+      "canonical_path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/0.jsonl",
+      "canonical_sha256": "98cf391be99cfc9c810e0469fb37bc657ef15e3d2b516ea5f250caff46f64162",
+      "records": 7740,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 60,
+        "top_k": 8,
+        "num_experts_observed": 384,
+        "num_steps": 129,
+        "prefill_tokens": 25,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "1",
+      "raw_sha256": "2d42ffda21209cd7c5ad1d9140231dc5d79e7bc3c990738674c3af338c40cf1b",
+      "canonical_path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/1.jsonl",
+      "canonical_sha256": "38e37f6e1cc3873f70eb17aa3c8b52e005358d6113722b9b92448f2ed6a5c337",
+      "records": 7740,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 60,
+        "top_k": 8,
+        "num_experts_observed": 384,
+        "num_steps": 129,
+        "prefill_tokens": 37,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "moonshotai/Kimi-K2-Thinking",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "2",
+      "raw_sha256": "79cc7b89bf121f40dc5ae692c2dccb55b06522203fda2f77a8ae03fd72eabf94",
+      "canonical_path": "moonshotai/Kimi-K2-Thinking/mmlu/abstract_algebra/2.jsonl",
+      "canonical_sha256": "7f4928c4531e04117491f43e882312eae038fc28855f16e15bed71cf26256004",
+      "records": 7740,
+      "dims": {
+        "num_layers": 61,
+        "num_moe_layers": 60,
+        "top_k": 8,
+        "num_experts_observed": 384,
+        "num_steps": 129,
+        "prefill_tokens": 38,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "3",
+      "raw_sha256": "1fb31e5550fe3f3f2c8b2985cf2362955a5a01085e27528fbabef0b3c4c2c346",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/3.jsonl",
+      "canonical_sha256": "da2e5580c476376238cc46d847bd3100aecf92a4caa8f55e6f47ac6d802e2285",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 50,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "4",
+      "raw_sha256": "d639d9e5a9c371fa881bd11a5913c978e9e61f69a856b300acd7b6444eadd0d7",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/4.jsonl",
+      "canonical_sha256": "d9df803a988147c1a75579200eb7585f65aae73368b401835ca432970369367c",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 45,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "5",
+      "raw_sha256": "18a3b2616f818cdf1a95f8988abd4c34cab369d16c8dfd72345f688bc28bd4fc",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/5.jsonl",
+      "canonical_sha256": "9925614a9f6e93a9f7ab79e0a446d6c0bddacfabc87146a57a6cfd0f69d0b3c0",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 59,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "6",
+      "raw_sha256": "5e1df2dbe1516b52878e888cada49672cd7192f3de7b143340c5f4fd7e12770b",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/6.jsonl",
+      "canonical_sha256": "e9e7d3400db9854c6bd56fc09fb511b960bdc8a54416e5705cf6f6b08faa2f0e",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 47,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "7",
+      "raw_sha256": "74dad343a1a175496538d35febfe5eeeba382c2ecff44992d356470a805470a9",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/7.jsonl",
+      "canonical_sha256": "f386ee16ad16bcca7e6446e7c5eaeb2b4c9fd5116e715084706d9e584bcfba00",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 29,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "8",
+      "raw_sha256": "580342b7d63ecb80dc74508911cf1f9e7ede2d8d1c64f94eee439f862d2f2cb0",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/8.jsonl",
+      "canonical_sha256": "fabeae7e972c0fea2e22524f2951c09151f41acdb440e143f9f6e1c7b1566b12",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 9,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "9",
+      "raw_sha256": "9128a25575114114704cd71251d57873f84a468e0192e37720931526b6b3ad37",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/9.jsonl",
+      "canonical_sha256": "a72a28d8b762e40710155e11df57d8069cb8e41b3e493bc03b654a2b5af2da1c",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 12,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "10",
+      "raw_sha256": "9e895dd3edac84a935f919ec363fd4d0aa150ed82ce272aa77cb98a46017b24e",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/10.jsonl",
+      "canonical_sha256": "5622a3f7288118fdfe4bcd58ee478d01a58e973a7546a9b3ee8a312e377cbeed",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 50,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "11",
+      "raw_sha256": "2769b6d80b960e89fb4d03f0f5b8a225f2b3bb0d40a20029a573461db751ed7b",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/11.jsonl",
+      "canonical_sha256": "5008182bac4d90706df8f16e4bb7a2a33cc3e4da531c29a0062c0ca1e36732bd",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 29,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "12",
+      "raw_sha256": "37acb9dae185972d034f9702f869a78968af89118ecd453048673d58df06782d",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/12.jsonl",
+      "canonical_sha256": "294ab43a81281fcfe188812c02d22106617a03b8efbc81f3c337503b649570b6",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 22,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "13",
+      "raw_sha256": "2518e79a1c0335b2487e7affb0d758eccd8c17ae4d3747e9ab23ba75ad8dc4d4",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/13.jsonl",
+      "canonical_sha256": "9332fa8e897107e0a50a7e1f3e7cb83ff9926ba48716ad8999d99503c404ef68",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 36,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "14",
+      "raw_sha256": "08b1480cf71e78c1eea0afcf970212b83b6065cf765dee778a43791f816ca341",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/14.jsonl",
+      "canonical_sha256": "5348f3620b1324f282c50378f4d26fad9cd3bba566723820ea8a0609602845a7",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 16,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "15",
+      "raw_sha256": "0809bfc756de050b51fd19bec586757e223d56f233155df433b10170f04efbfb",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/15.jsonl",
+      "canonical_sha256": "2b7b0bdbc0a636e611afd86710e15282583ea8e1b22646990706dad2f3c60096",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 25,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "16",
+      "raw_sha256": "66ccf3cf2eebce3d8c50577a2115f61b1c4da02c75d319cfdadb9ad1ff226bff",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/16.jsonl",
+      "canonical_sha256": "27fed30240186555d99f9b0f7c24e8ba278bd5e5e39a590482f440ba0d0ea3bf",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 22,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "17",
+      "raw_sha256": "e50d626fd877aef838f0aa62a66055292e26aa74dda5cf5ccb8f8c1e4023b1f3",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/17.jsonl",
+      "canonical_sha256": "cef47fd74cf5a631662bf1d76694c277b1f9dfaeb13e80ef1d8e88a33830b760",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 25,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "18",
+      "raw_sha256": "4844715b45d038b90e935ee07d0fcf8350533066172b4defe67703f859cacce4",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/18.jsonl",
+      "canonical_sha256": "f3b5bb23be6d7e8d912f1ecca6594ed4cf4a7aee2b7b9689fff50ef7e55d674a",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 15,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "19",
+      "raw_sha256": "120a67fdd54180e88b8a1e80009446b106aef0264f3118e33ef37e7875bcbff7",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/19.jsonl",
+      "canonical_sha256": "3940e2ef04c2b7deec116f06b77672b0158b4297c120674cdb3a6afde3675bd3",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 59,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "20",
+      "raw_sha256": "2c4c53b1b392c4bc7cb839217b66c82c1e9073946c5018161fbbc2bebe490161",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/20.jsonl",
+      "canonical_sha256": "c382278f93bc44dd7f1e31507a9068b09a689053135c9abc904f2aeca55aa099",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 58,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "21",
+      "raw_sha256": "fd639abd042c5e9ceefacb851f3abcf940b5fb9ce2058b9877036296ff56d91c",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/21.jsonl",
+      "canonical_sha256": "9326fcb5332ca2a19d5634e92c274645fae92507429e0685718870b40a49306d",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 45,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "22",
+      "raw_sha256": "d290fe87f92d83a2ff4c27026e4993860b5a059ad65ca65390d8fae8ae9590ec",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/22.jsonl",
+      "canonical_sha256": "a048be31c9123cb8edab9fc23edac20a0a156024a15b67b2ab37de6d2204196a",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 50,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "23",
+      "raw_sha256": "8e9be9256c2fb87af20711d9444927f08ccae7e6079ce4984a4333234bdf606d",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/23.jsonl",
+      "canonical_sha256": "9aa399779cdf2b5b61d38bdaa8620c190f4df890a5c3c122d194ef3f096c5a2b",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 12,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "24",
+      "raw_sha256": "e8488f395bfb685a6c9be8f49120c34873378d38cf63b8c27c73cb7aabce8071",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/24.jsonl",
+      "canonical_sha256": "c2ad1eab33511cd7e0df844dcaba762406a1f798683aec038f626c1f6b07c1f9",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 31,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "25",
+      "raw_sha256": "3fb2efd13db382cb0a05686fa5e736ab335be084c08b3cc40b997f4a83150850",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/25.jsonl",
+      "canonical_sha256": "b2f97e4141af9b310dd22eabe4e5c1ceec04c0c4424b75efead13950f651d9b5",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 27,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "26",
+      "raw_sha256": "39d11b4403a39411cf52611cbc1d0a63b9a286a46eaed219e75c8aa65fb0aca4",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/26.jsonl",
+      "canonical_sha256": "48be0c9150e50a82a5d911a1fc18cbf5467c5c1d95f422154b1b458d66b2b69c",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 35,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "27",
+      "raw_sha256": "02382d84262640a51be965fb6e83c8a69967900882a80938704ee772c7155b6c",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/27.jsonl",
+      "canonical_sha256": "da98f6fec59c6b3e74e52a5c7886ae3f0f3065da2858a4694f456ceb685e6976",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 40,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "28",
+      "raw_sha256": "1627d5f6d0020f90fa5b905c4b45399e28c3250afa6fd08f7ab934b99a6eaaf3",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/28.jsonl",
+      "canonical_sha256": "5e69ba7efa99bd2b3b808529f9ace030ab9c20267f4c534a00c7e3932733580d",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 47,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    },
+    {
+      "model": "Qwen/Qwen3-235B-A22B-FP8",
+      "benchmark": "mmlu",
+      "subject": "abstract_algebra",
+      "query_id": "29",
+      "raw_sha256": "1458afaf701759f7d11093ccfb8f6116e3ec408bdcc3824d02ea995e73996fea",
+      "canonical_path": "Qwen/Qwen3-235B-A22B-FP8/mmlu/abstract_algebra/29.jsonl",
+      "canonical_sha256": "70b4d941fac84eea746264a85d32076bf858508b1ff5ee98c8c0f0bff8aa6ee7",
+      "records": 12126,
+      "dims": {
+        "num_layers": 94,
+        "num_moe_layers": 94,
+        "top_k": 8,
+        "num_experts_observed": 128,
+        "num_steps": 129,
+        "prefill_tokens": 27,
+        "decode_steps": 128
+      },
+      "validation_errors": 0
+    }
+  ]
+}

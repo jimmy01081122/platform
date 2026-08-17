@@ -1,0 +1,33 @@
+{
+  "schema_version": "moe-simulator-same-hash-review-request-v1",
+  "candidate_id": "moe-cycle-simulator-phase2-canonical-ir-r6-20260726",
+  "ledger_path": "checksums.sha256",
+  "roles": [
+    "Architecture/System",
+    "Model/Benchmark",
+    "Trace/Provenance"
+  ],
+  "allowed_verdicts": ["GO", "MODIFY", "NO-GO"],
+  "promotion_rule": {
+    "required_verdict": "GO",
+    "blockers_must_be_empty": true,
+    "identical_ledger_sha256_required": true
+  },
+  "recursive_historical_verification": [
+    "Verify each history/r1-r5 snapshot_checksums.sha256 from its containing directory.",
+    "Verify each historical source_snapshot Phase 2 governance ledger from the source_snapshot root.",
+    "Verify each nested sealed run checksums.sha256 from that run directory."
+  ],
+  "review_questions": [
+    "Are all R1/R2/R3/R4/R5 MODIFY findings prospectively closed without reusing old evidence?",
+    "Does EventIR carry the complete Phase 0 tie key and reuse the frozen priority registry plus validate_events semantics, including nullable sentinel behavior?",
+    "Does every embedded PlatformIR bridge pass the frozen Phase 0 bridge-v1 schema and validate_bridge CREDIT/backpressure/strict-progress rules?",
+    "Are the exact Phase 0 runtime manifest and every calibration profile content-bound and source-closed?",
+    "Does schema-driven u128/s128 validation cover every exact Canonical IR integer field?",
+    "Are R1/R2/R3 source bytes and sealed runs independently recoverable from immutable historical snapshots?",
+    "Does the IR identity/reference/time/resource ABI avoid Phase 3-9 key redesign?",
+    "Are model, routing, workload and result claim boundaries exact?",
+    "Is the Arrow/Zstd/envelope/provenance codec fail-closed and replayable?"
+  ],
+  "review_results_are_not_part_of_reviewed_source": true
+}

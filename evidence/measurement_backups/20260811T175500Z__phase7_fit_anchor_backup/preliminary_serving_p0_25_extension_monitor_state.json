@@ -1,0 +1,12 @@
+{
+  "expected_request_count": 10000,
+  "local_run_dir": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/raw/runs/20260813T121215Z__SERV-P0-25-SHORT-C8-NATURAL-EXT10K-V1",
+  "poll_seconds": 45,
+  "remote_run_dir": "/vault/flow/moe_simulator_phase7/real_campaign/runs/20260813T121215Z__SERV-P0-25-SHORT-C8-NATURAL-EXT10K-V1",
+  "schema_version": "phase7-serving-extension-monitor-v1",
+  "status": "REMOTE_ENVIRONMENT_UNAVAILABLE",
+  "terminal_evidence": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/runs/20260811T175500Z__phase7_fit_anchor_backup/preliminary_serving_p0_25_remote_environment_loss_v1.json",
+  "completion_claim_allowed": false,
+  "raw_backup_verified": false,
+  "action": "STOP_AFFECTED_BRANCH_PRESERVE_EVIDENCE_DO_NOT_RESTART_ON_CURRENT_ENDPOINT"
+}

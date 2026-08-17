@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_qualification_ledger.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "evidence_role", "formal_c1_evidence", "synthetic",
+    "contract_sha256", "profile_map_sha256", "candidate_manifest_sha256",
+    "execution_identity_set_sha256",
+    "expected_cell_count", "complete_cell_count", "ceilings", "instances",
+    "cells", "cell_set_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-qualification-ledger-v1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "evidence_role": {"const": "termination_qualification_non_formal"},
+    "formal_c1_evidence": {"const": false},
+    "synthetic": {"type": "boolean"},
+    "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile_map_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "candidate_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "execution_identity_set_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "expected_cell_count": {"const": 12},
+    "complete_cell_count": {"const": 12},
+    "ceilings": {"const": [256, 384, 512]},
+    "instances": {
+      "type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^c1a-t1-[0-9]{2}$"}
+    },
+    "cells": {
+      "type": "array", "minItems": 12, "maxItems": 12, "uniqueItems": true,
+      "items": {"$ref": "g25_qualification_cell.schema.json"}
+    },
+    "cell_set_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

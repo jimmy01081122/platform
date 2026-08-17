@@ -1,0 +1,29 @@
+{
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r4-20260802",
+  "source_commit_sha1": "4f8fd4f3cfc94348a340357ca52dbfb56dae1e7d",
+  "source_tree_sha1": "bedf1edccc38a3594035fb259ab675c536060b3c",
+  "ledger_sha256": "4241d872975bbf9f375316765dd5bb159028c1c8fa0cc1bd2d84c1425d339f2a",
+  "member_count": 181,
+  "exact_set_verification": "PASS",
+  "tests": {
+    "cpu_regression": "PASS_125_OF_125",
+    "formal_application_ledger": "PASS_72_MEMBERS_99f9e5aafbc2a1b0339d80ad85a203f1e495034f71eb09b10074386283744384",
+    "formal_run_ledger": "PASS_47_MEMBERS_cd4951f0ca2ea5cbb8b4afb82908d1beb9b75d8860e95ac18dda03dbec7eae32",
+    "clean_archive_source_binding": "PASS_EXPLICIT_ARCHIVE_BINDING_NO_DOT_GIT",
+    "clean_archive_regression": "PASS_125_OF_125",
+    "historical_r12r3_unchanged": "PASS"
+  },
+  "verdict": "GO",
+  "blockers": [],
+  "observations": [
+    "Candidate commit/tree/ledger and every member hash were independently reproduced; R12-R3 evidence and review bytes remain unchanged.",
+    "Implementation-parent no-.git replay uses EXPLICIT_ARCHIVE_BINDING and reproduces tests, application ledger and run contract.",
+    "Local replay retains the enforced limit, deadline, bounded logs, cleanup and exact-set terminal evidence.",
+    "Remote executable path/hash, Gate M/M0 model-fixture cross-hashes, exact model identity and file-backed loaded-vLLM provenance are retained in the evidence graph.",
+    "Formal time is 21000 of 21600 seconds and provider grace has zero formal credit.",
+    "No SSH, network, model download, GPU query or workload was executed."
+  ],
+  "claim_boundary": "CPU/mock trace and provenance governance only; no live provider, model, runtime, GPU, capacity, calibration, performance or platform qualification evidence.",
+  "gpu_authority": "NONE"
+}

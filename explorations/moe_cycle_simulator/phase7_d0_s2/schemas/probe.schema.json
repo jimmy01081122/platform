@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-s2-probe-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "capture_status", "captured_at_utc", "execution_mode", "provider", "instance", "host", "gpu", "runtime", "storage", "environment_presence", "observed_commands", "prohibitions"],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-s2-probe-v1"},
+    "capture_status": {"const": "COMPLETE"},
+    "captured_at_utc": {"type": "string", "minLength": 1},
+    "execution_mode": {"const": "READ_ONLY_DISCOVERY"},
+    "provider": {"$ref": "#/$defs/provider"},
+    "instance": {"$ref": "#/$defs/instance"},
+    "host": {"$ref": "#/$defs/host"},
+    "gpu": {"$ref": "#/$defs/gpu"},
+    "runtime": {"$ref": "#/$defs/runtime"},
+    "storage": {"$ref": "#/$defs/storage"},
+    "environment_presence": {"type": "object", "additionalProperties": {"type": "boolean"}},
+    "observed_commands": {"type": "array", "minItems": 1, "items": {"type": "array", "minItems": 1, "items": {"type": "string"}}},
+    "prohibitions": {"$ref": "#/$defs/prohibitions"}
+  },
+  "$defs": {
+    "provider": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "instance_id", "instance_state"],
+      "properties": {"name": {"type": "string"}, "instance_id": {"type": ["string", "null"]}, "instance_state": {"type": ["string", "null"]}}
+    },
+    "instance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["principal", "catalog_gpu_id", "node_id", "environment_label", "image_identity"],
+      "properties": {"principal": {"type": ["string", "null"]}, "catalog_gpu_id": {"type": ["string", "null"]}, "node_id": {"type": ["string", "null"]}, "environment_label": {"type": ["string", "null"]}, "image_identity": {"type": "string", "minLength": 1}}
+    },
+    "executable": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "resolved_path", "version", "sha256", "hash_status"],
+      "properties": {"path": {"type": ["string", "null"]}, "resolved_path": {"type": ["string", "null"]}, "version": {"type": ["string", "null"]}, "sha256": {"type": ["string", "null"]}, "hash_status": {"enum": ["HASHED", "UNAVAILABLE"]}}
+    },
+    "host": {
+      "type": "object", "additionalProperties": false,
+      "required": ["hostname", "architecture", "os_release", "os_release_sha256", "kernel_release", "boot_id", "python", "timeout"],
+      "properties": {
+        "hostname": {"type": ["string", "null"]}, "architecture": {"type": ["string", "null"]}, "os_release": {"type": ["string", "null"]}, "os_release_sha256": {"type": ["string", "null"]}, "kernel_release": {"type": ["string", "null"]}, "boot_id": {"type": ["string", "null"]},
+        "python": {"$ref": "#/$defs/executable"}, "timeout": {"$ref": "#/$defs/executable"}
+      }
+    },
+    "command": {
+      "type": "object", "additionalProperties": false,
+      "required": ["argv", "path", "returncode", "stdout_sha256", "stderr_sha256", "stdout_bytes", "stderr_bytes", "status"],
+      "properties": {"argv": {"type": "array", "items": {"type": "string"}}, "path": {"type": ["string", "null"]}, "returncode": {"type": "integer"}, "stdout_sha256": {"type": "string"}, "stderr_sha256": {"type": "string"}, "stdout_bytes": {"type": "integer", "minimum": 0}, "stderr_bytes": {"type": "integer", "minimum": 0}, "status": {"enum": ["COMPLETE", "FAILED", "UNAVAILABLE"]}}
+    },
+    "gpu_device": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "memory_total_bytes", "uuid", "pci_bus_id", "driver_version", "compute_mode", "mig_mode"],
+      "properties": {"name": {"type": ["string", "null"]}, "memory_total_bytes": {"type": ["integer", "null"], "minimum": 0}, "uuid": {"type": ["string", "null"]}, "pci_bus_id": {"type": ["string", "null"]}, "driver_version": {"type": ["string", "null"]}, "compute_mode": {"type": ["string", "null"]}, "mig_mode": {"type": ["string", "null"]}}
+    },
+    "gpu": {
+      "type": "object", "additionalProperties": false,
+      "required": ["query_status", "count", "devices", "command"],
+      "properties": {"query_status": {"type": "string"}, "count": {"type": ["integer", "null"], "minimum": 0}, "devices": {"type": "array", "items": {"$ref": "#/$defs/gpu_device"}}, "command": {"$ref": "#/$defs/command"}}
+    },
+    "package": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "present", "status", "version", "metadata_path", "record_sha256", "distribution_sha256", "hash_method", "file_count", "regular_file_count", "missing_file_count", "symlink_file_count"],
+      "properties": {
+        "name": {"type": "string"}, "present": {"type": "boolean"}, "status": {"enum": ["COMPLETE", "PARTIAL", "NOT_INSTALLED", "UNAVAILABLE"]}, "version": {"type": ["string", "null"]}, "metadata_path": {"type": ["string", "null"]}, "record_sha256": {"type": ["string", "null"]}, "distribution_sha256": {"type": ["string", "null"]}, "hash_method": {"type": "string"}, "file_count": {"type": "integer", "minimum": 0}, "regular_file_count": {"type": "integer", "minimum": 0}, "missing_file_count": {"type": "integer", "minimum": 0}, "symlink_file_count": {"type": "integer", "minimum": 0}, "error_type": {"type": "string"}
+      }
+    },
+    "torch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["import_status", "version", "cuda_build", "cuda_available", "device_count", "query_only"],
+      "properties": {"import_status": {"enum": ["COMPLETE", "FAILED", "NOT_ATTEMPTED"]}, "version": {"type": ["string", "null"]}, "cuda_build": {"type": ["string", "null"]}, "cuda_available": {"type": ["boolean", "null"]}, "device_count": {"type": ["integer", "null"], "minimum": 0}, "query_only": {"const": true}, "error_type": {"type": "string"}, "query_error_type": {"type": "string"}}
+    },
+    "cuda": {
+      "type": "object", "additionalProperties": false,
+      "required": ["runtime_version", "runtime_status", "sources", "torch_build", "nvcc"],
+      "properties": {"runtime_version": {"type": ["string", "null"]}, "runtime_status": {"enum": ["OBSERVED", "UNAVAILABLE"]}, "sources": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["source", "value"], "properties": {"source": {"type": "string"}, "value": {"type": "string"}}}}, "torch_build": {"type": ["string", "null"]}, "nvcc": {"$ref": "#/$defs/command"}}
+    },
+    "runtime": {
+      "type": "object", "additionalProperties": false,
+      "required": ["container_image", "container_digest", "container_digest_status", "cuda", "driver", "torch", "packages", "backends"],
+      "properties": {"container_image": {"type": "string", "minLength": 1}, "container_digest": {"type": "string", "minLength": 1}, "container_digest_status": {"enum": ["OBSERVED", "UNAVAILABLE"]}, "cuda": {"$ref": "#/$defs/cuda"}, "driver": {"type": ["string", "null"]}, "torch": {"$ref": "#/$defs/torch"}, "packages": {"type": "object", "additionalProperties": {"$ref": "#/$defs/package"}}, "backends": {"type": "array", "items": {"type": "string"}}}
+    },
+    "storage_record": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "exists", "mounted", "is_symlink", "realpath", "mount_identity_sha256", "total_bytes", "free_bytes"],
+      "properties": {"path": {"type": "string"}, "exists": {"type": "boolean"}, "mounted": {"type": "boolean"}, "is_symlink": {"type": "boolean"}, "realpath": {"type": ["string", "null"]}, "mount_identity_sha256": {"type": ["string", "null"]}, "total_bytes": {"type": ["integer", "null"], "minimum": 0}, "free_bytes": {"type": ["integer", "null"], "minimum": 0}}
+    },
+    "storage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["vault", "workspace"],
+      "properties": {"vault": {"$ref": "#/$defs/storage_record"}, "workspace": {"$ref": "#/$defs/storage_record"}}
+    },
+    "prohibitions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["remote_writes", "package_install", "model_access", "inference", "cuda_benchmark", "gpu_workload", "network_access"],
+      "properties": {"remote_writes": {"const": false}, "package_install": {"const": false}, "model_access": {"const": false}, "inference": {"const": false}, "cuda_benchmark": {"const": false}, "gpu_workload": {"const": false}, "network_access": {"const": false}}
+    }
+  }
+}

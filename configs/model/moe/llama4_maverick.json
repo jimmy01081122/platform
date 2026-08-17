@@ -1,0 +1,24 @@
+{
+  "schema_version": "moe-model-config-v1",
+  "model_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+  "trace_variant": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+  "provenance": {
+    "config_source": "https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct/resolve/main/config.json",
+    "access": "meta-llama repo is gated; identical dims mirrored from unsloth/Llama-4-Maverick-17B-128E-Instruct (public).",
+    "note": "llama4; interleave_moe_layer_step=2 -> every 2nd layer MoE = 24 MoE layers of 48; top-1 routed expert + a shared/dense MLP (intermediate_size_mlp=16384) that is always resident."
+  },
+  "hidden_size": 5120,
+  "moe_intermediate_size": 8192,
+  "num_experts": 128,
+  "top_k": 1,
+  "num_hidden_layers": 48,
+  "num_moe_layers": 24,
+  "num_shared_experts": 1,
+  "shared_expert_intermediate_size": 16384,
+  "mlp_kind": "gated_swiglu",
+  "weight_precision": {
+    "name": "bf16",
+    "bytes_per_param": 2.0,
+    "overhead_note": "bf16 = 2 bytes/param. FP8 checkpoints exist (1 byte); precision is a registered/swept axis."
+  }
+}

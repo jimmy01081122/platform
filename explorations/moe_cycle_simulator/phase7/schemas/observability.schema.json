@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/moe-simulator/phase7/observability-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["availability", "evidence_mode"],
+  "properties": {
+    "availability": {
+      "enum": ["CONFIRMED", "CONDITIONAL", "UNAVAILABLE", "NOT_APPLICABLE"]
+    },
+    "evidence_mode": {
+      "enum": ["MEASURED", "DERIVED", "INSTRUMENTED", "NONE"]
+    },
+    "expected_evidence_modes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"enum": ["MEASURED", "DERIVED", "INSTRUMENTED"]}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"availability": {"const": "CONDITIONAL"}}},
+      "then": {
+        "required": ["expected_evidence_modes"],
+        "properties": {"evidence_mode": {"const": "NONE"}}
+      },
+      "else": {"not": {"required": ["expected_evidence_modes"]}}
+    },
+    {
+      "if": {
+        "properties": {
+          "availability": {"enum": ["UNAVAILABLE", "NOT_APPLICABLE"]}
+        }
+      },
+      "then": {"properties": {"evidence_mode": {"const": "NONE"}}}
+    },
+    {
+      "if": {"properties": {"availability": {"const": "CONFIRMED"}}},
+      "then": {
+        "properties": {
+          "evidence_mode": {"enum": ["MEASURED", "DERIVED", "INSTRUMENTED"]}
+        }
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,139 @@
+schema_version: gpu-storage-budget-v1
+status:
+  values_are_planning_reservations_not_measurements: true
+  empirical_trace_size_available: false
+  final_estimate_required_at_preflight: true
+  null_or_zero_estimate_policy: no_go
+
+units:
+  storage: GiB
+  bandwidth: MiB_per_second
+  runtime: minutes
+
+storage_classes:
+  S0_smoke:
+    use: minimal_profile_smoke_only
+    planning_reservation_gib: 10
+    hard_minimum_free_gib: 8
+    trace_profile: minimal
+    P6_scope: manifest_only
+  S1_standard:
+    use: local_or_repeatable_standard_capture
+    planning_reservation_gib: 50
+    hard_minimum_free_gib: 40
+    trace_profile: standard
+    P6_scope: selected_replay_or_manifest
+  S2_maximal:
+    use: paid_or_hard_to_repeat_maximal_capture
+    planning_reservation_gib: 200
+    hard_minimum_free_gib: 160
+    trace_profile: maximal
+    P6_scope: bounded_selected_windows
+  S3_maximal_detailed:
+    use: maximal_capture_with_detailed_P6
+    planning_reservation_gib: 500
+    hard_minimum_free_gib: 400
+    trace_profile: maximal
+    P6_scope: approved_detailed_windows
+
+profile_assignment:
+  rtx3050_6gb:
+    default_class: S1_standard
+    paid_session: false
+  rtx3090_24gb: {default_class: S2_maximal, paid_session: true}
+  rtx4090_24gb: {default_class: S2_maximal, paid_session: true}
+  rtx5090_32gb: {default_class: S2_maximal, paid_session: true}
+  rtx_pro_6000_blackwell_workstation_96gb: {default_class: S2_maximal, paid_session: true}
+  h100_pcie_80gb: {default_class: S3_maximal_detailed, paid_session: true}
+  h100_sxm5_80gb: {default_class: S3_maximal_detailed, paid_session: true}
+  a6000_48gb: {default_class: S2_maximal, paid_session: true}
+  a100_40gb: {default_class: S2_maximal, paid_session: true}
+  a100_80gb: {default_class: S2_maximal, paid_session: true}
+  v100_16gb: {default_class: S2_maximal, paid_session: true}
+  v100_32gb: {default_class: S2_maximal, paid_session: true}
+
+preflight_estimate:
+  capture_matrix_coverage:
+    require_every_state_and_pass: true
+    duplicate_state_rows_allowed: false
+    extra_state_rows_allowed: false
+  paid_session_minutes:
+    total_limit: 120
+    package_reserve_required: true
+  required_per_model_and_pass:
+    - state_id
+    - pass_id
+    - expected_runtime_minutes
+    - expected_raw_trace_gib
+    - expected_compressed_gib
+    - temporary_working_gib
+    - sustained_write_mib_per_second
+    - peak_write_mib_per_second
+    - perturbation_risk
+  unknown_defaults:
+    policy: no_go
+    nullable_fields: []
+  nonzero_gates:
+    expected_runtime_minutes: true
+    expected_raw_trace_gib: true
+    expected_compressed_gib: true
+    temporary_working_gib: true
+    package_reserve_gib: true
+    sustained_write_mib_per_second: true
+    peak_write_mib_per_second: true
+    package_reserve_minutes: true
+  write_probe:
+    bytes: 67108864
+    fsync_required: true
+    peak_headroom_ratio: 1.20
+  capacity_gate:
+    temporary_headroom_ratio: 1.25
+    package_reserve_is_additive: true
+  formulas:
+    pass_raw_gib: pass_raw_bytes / 1073741824
+    compressed_gib: pass_raw_gib * measured_or_sampled_compression_ratio
+    temporary_peak_gib: total_raw_gib + total_compressed_gib + converter_working_gib
+    required_free_gib: max(storage_class_hard_minimum_free_gib, temporary_peak_gib * 1.25 + package_reserve_gib)
+    sustained_write_mib_per_second: pass_raw_bytes / active_capture_seconds / 1048576
+    package_time_minutes: total_compressed_bytes / measured_packaging_bytes_per_second / 60
+  sampling_method:
+    - run a bounded representative smoke capture
+    - measure native raw bytes and capture duration
+    - scale only by explicit event token layer request and repetition counts
+    - record scaling assumptions and uncertainty
+    - reject estimate if predicted package time breaches the reserved audit window
+
+retention:
+  persistent_storage_required: true
+  immutable_raw_archive_required: true
+  mandatory_raw_never_delete:
+    - P0_per_repetition_baseline
+    - P1_native_timeline
+    - P2_lossless_routing
+    - model_and_workload_manifests
+    - environment_manifest
+    - failure_logs
+  retain_checksums_and_manifests_with_archive: true
+  canonical_data_does_not_replace_raw: true
+
+over_budget_actions_in_order:
+  - lossless_compression
+  - chunking
+  - columnar_or_binary_format
+  - reduce_P4_kernel_or_window_scope
+  - reduce_P6_kernel_or_window_scope
+  - lower_P5_sampling_frequency
+  - add_session_or_storage_capacity
+
+go_no_go:
+  go_when:
+    - preflight estimate is complete for every planned model and pass
+    - measured free space is at least required_free_gib
+    - measured write bandwidth supports the estimated peak with headroom
+    - package time fits before the 120-minute paid-session deadline
+    - archive destination is persistent
+  no_go_when:
+    - any required estimate remains null for a formal run
+    - mandatory raw data would need deletion to fit
+    - only ephemeral storage is available
+    - audit and packaging reserve cannot be protected

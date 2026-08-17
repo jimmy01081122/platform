@@ -1,0 +1,41 @@
+Serial workload request 24. This is a project-authored mixed-length context. Use only the records below. Preserve record identifiers when answering.
+
+Record 00001: station Birch; shipment code SERIAL24-00001-07919; marker green; quantity 170; observed delay 13 minutes; validation state accepted.
+Record 00002: station Cedar; shipment code SERIAL24-00002-15838; marker violet; quantity 267; observed delay 26 minutes; validation state accepted.
+Record 00003: station Dogwood; shipment code SERIAL24-00003-23757; marker blue; quantity 364; observed delay 39 minutes; validation state accepted.
+Record 00004: station Elm; shipment code SERIAL24-00004-31676; marker indigo; quantity 461; observed delay 5 minutes; validation state accepted.
+Record 00005: station Fir; shipment code SERIAL24-00005-39595; marker white; quantity 558; observed delay 18 minutes; validation state accepted.
+Record 00006: station Grove; shipment code SERIAL24-00006-47514; marker copper; quantity 655; observed delay 31 minutes; validation state accepted.
+Record 00007: station Hazel; shipment code SERIAL24-00007-55433; marker silver; quantity 752; observed delay 44 minutes; validation state accepted.
+Record 00008: station Alder; shipment code SERIAL24-00008-63352; marker amber; quantity 849; observed delay 10 minutes; validation state accepted.
+Record 00009: station Birch; shipment code SERIAL24-00009-71271; marker green; quantity 946; observed delay 23 minutes; validation state accepted.
+Record 00010: station Cedar; shipment code SERIAL24-00010-79190; marker violet; quantity 142; observed delay 36 minutes; validation state accepted.
+Record 00011: station Dogwood; shipment code SERIAL24-00011-87109; marker blue; quantity 239; observed delay 2 minutes; validation state accepted.
+Record 00012: station Elm; shipment code SERIAL24-00012-95028; marker indigo; quantity 336; observed delay 15 minutes; validation state accepted.
+Record 00013: station Fir; shipment code SERIAL24-00013-02947; marker white; quantity 433; observed delay 28 minutes; validation state accepted.
+Record 00014: station Grove; shipment code SERIAL24-00014-10866; marker copper; quantity 530; observed delay 41 minutes; validation state accepted.
+Record 00015: station Hazel; shipment code SERIAL24-00015-18785; marker silver; quantity 627; observed delay 7 minutes; validation state accepted.
+Record 00016: station Alder; shipment code SERIAL24-00016-26704; marker amber; quantity 724; observed delay 20 minutes; validation state accepted.
+Record 00017: station Birch; shipment code SERIAL24-00017-34623; marker green; quantity 821; observed delay 33 minutes; validation state accepted.
+Record 00018: station Cedar; shipment code SERIAL24-00018-42542; marker violet; quantity 918; observed delay 46 minutes; validation state accepted.
+Record 00019: station Dogwood; shipment code SERIAL24-00019-50461; marker blue; quantity 114; observed delay 12 minutes; validation state accepted.
+Record 00020: station Elm; shipment code SERIAL24-00020-58380; marker indigo; quantity 211; observed delay 25 minutes; validation state accepted.
+Record 00021: station Fir; shipment code SERIAL24-00021-66299; marker white; quantity 308; observed delay 38 minutes; validation state accepted.
+Record 00022: station Grove; shipment code SERIAL24-00022-74218; marker copper; quantity 405; observed delay 4 minutes; validation state accepted.
+Record 00023: station Hazel; shipment code SERIAL24-00023-82137; marker silver; quantity 502; observed delay 17 minutes; validation state accepted.
+Record 00024: station Alder; shipment code SERIAL24-00024-90056; marker amber; quantity 599; observed delay 30 minutes; validation state accepted.
+Record 00025: station Birch; shipment code SERIAL24-00025-97975; marker green; quantity 696; observed delay 43 minutes; validation state accepted.
+Record 00026: station Cedar; shipment code SERIAL24-00026-05894; marker violet; quantity 793; observed delay 9 minutes; validation state accepted.
+Record 00027: station Dogwood; shipment code SERIAL24-00027-13813; marker blue; quantity 890; observed delay 22 minutes; validation state accepted.
+Record 00028: station Elm; shipment code SERIAL24-00028-21732; marker indigo; quantity 86; observed delay 35 minutes; validation state accepted.
+Record 00029: station Fir; shipment code SERIAL24-00029-29651; marker white; quantity 183; observed delay 1 minutes; validation state accepted.
+Record 00030: station Grove; shipment code SERIAL24-00030-37570; marker copper; quantity 280; observed delay 14 minutes; validation state accepted.
+Record 00031: station Hazel; shipment code SERIAL24-00031-45489; marker silver; quantity 377; observed delay 27 minutes; validation state accepted.
+Record 00032: station Alder; shipment code SERIAL24-00032-53408; marker amber; quantity 474; observed delay 40 minutes; validation state accepted.
+Record 00033: station Birch; shipment code SERIAL24-00033-61327; marker green; quantity 571; observed delay 6 minutes; validation state accepted.
+Record 00034: station Cedar; shipment code SERIAL24-00034-69246; marker violet; quantity 668; observed delay 19 minutes; validation state accepted.
+Record 00035: station Dogwood; shipment code SERIAL24-00035-77165; marker blue; quantity 765; observed delay 32 minutes; validation state accepted.
+Record 00036: station Elm; shipment code SERIAL24-00036-85084; marker indigo; quantity 862; observed delay 45 minutes; validation state accepted.
+Record 00037: station Fir; shipment code SERIAL24-00037-93003; marker white; quantity 959; observed delay 11 minutes; validation state accepted.
+
+Task for request 24: identify the record with the largest quantity among the final five records, state its shipment code, and give one sentence comparing its delay with the first record.

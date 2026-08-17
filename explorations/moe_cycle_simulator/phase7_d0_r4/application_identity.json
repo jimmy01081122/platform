@@ -1,0 +1,28 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-r4-application-identity-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r4",
+  "identity_status": "FROZEN_CPU_ONLY",
+  "identity_preimage": {
+    "application_id": "phase7-gputw-d0-7f9804d4-20260809-r4",
+    "revision": "D0-R4",
+    "historical_d0_r1_commit": "d0de3dc8ba068b924627cd2ad5915dcbc9fa0792",
+    "historical_d0_r1_tree": "c94e3087cdfd71c617a879eda7d7d1cc78f049c1",
+    "overlay_sha256": "aaac20f6db31e15b9c8efd3f5db69937c579af184f5383566adc93905276763f",
+    "owner_authority_sha256": "d6ecff9467d166d12b3d641ab27488c59a5f28bd38103369b4655dae37a8bfaa",
+    "d0_plan_sha256": "586d05153147961c738e6a3bbbffd4aedc1ac2ced35730df9d07b74e2e84abdd",
+    "controller_sha256": "cb2eb3454f1a9291096527fa2a8c08eff6cfee07f46ecc9ff349bf0a7924cc9e",
+    "probe_sha256": "61190293a0cae6d280d337ebcf2663a10586121c6710f4844e0c7941c4dc4f39",
+    "schema_sha256": "c1383f31dfd948acb12129cea533055c14a0a366122a8c2a41fbde40647e41a4",
+    "dependency_manifest_sha256": "b058b1f4fc7d8c11caeea5969fb776a05f1e3f6e832a1e71e04beae359af1f46",
+    "canonical_m0_reference_sha256": "b9357c2a1e36e87e4769e9249b7462d69c4b7aebf9819cfa5d2fe7006aa628d2",
+    "prepaid_entitlement_seconds": 28800,
+    "authority_boundary": {
+      "d0": "NOT_AUTHORIZED",
+      "gate_m": "NOT_AUTHORIZED",
+      "m0": "NOT_AUTHORIZED",
+      "gpu": "NONE"
+    },
+    "superseded_d0_r3_commit": "0d05c23d1fb78e852f8a404b5a61c9086863a18e"
+  },
+  "application_identity_sha256": "54bab574a97e3d7129c35cc4d670a4b7a49a87685cac3236a1231495946b4d3b"
+}

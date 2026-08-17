@@ -1,0 +1,12 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r3-20260729",
+  "ledger_sha256": "ea5ce045072efda9a6cbf852f71733de5800b985e9385301b1baaedf0b115b9f",
+  "member_count": 240,
+  "exact_set_verification": "PASS",
+  "verdict": "GO",
+  "blockers": [],
+  "claim_boundary": "CPU-synthetic TRACE_COMPILED_NON_ADAPTIVE two-domain direct-P2P and generic object-granular coherent-UMA scheduler evidence only; fidelity is FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER with RANGE_UNKNOWN. Token routing fail-closes on required route identity, route-layer expert binding and request/token/layer propagation. No measured hardware, Mixtral, GPU, calibration, DSE, production-scale or MoE-on-UMA claim.",
+  "authorized_next_stage": "Conditional on independent Model/Benchmark and Trace/Provenance GO verdicts over this identical ledger, freeze Phase 6 and proceed only with Phase 7 local CPU-only framework preparation.",
+  "gpu_authority": "NONE"
+}

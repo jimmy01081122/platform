@@ -1,0 +1,35 @@
+{
+  "schema_version": "phase6-checkpoint-v1",
+  "checkpoint_type": "live exact-prefix resumable checkpoint",
+  "required_bindings": [
+    "topology semantic digest",
+    "all Phase6 contract hashes",
+    "Phase5 ledger hash",
+    "Phase5 plan digest",
+    "Phase5 action digest",
+    "TrafficPayloadProfile hash",
+    "compiled program semantic digest",
+    "checkpoint state digest"
+  ],
+  "required_state": [
+    "global event queue and operation states",
+    "global time",
+    "all local clock cycles and fractional remainders",
+    "atomic resource occupancies",
+    "crossing queue occupancy and credits",
+    "per-domain allocations and pins",
+    "in-flight object and destination reservations",
+    "UMA object states, owners, sharers and versions",
+    "trace and replay cursor",
+    "metrics",
+    "distinct acknowledge or credit trace state"
+  ],
+  "wire": {
+    "body": "canonical complete live state",
+    "integrity": "SHA-256",
+    "restore_method": "deterministic exact-prefix replay plus canonical state comparison",
+    "trailing_bytes": "forbidden",
+    "tamper": "reject"
+  },
+  "continuous_vs_restored_result": "exact semantic digest equality required"
+}

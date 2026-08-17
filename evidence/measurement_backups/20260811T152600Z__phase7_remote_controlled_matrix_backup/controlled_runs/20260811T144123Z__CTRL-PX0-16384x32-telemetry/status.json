@@ -1,0 +1,8 @@
+{
+  "finished_at_utc": "2026-08-11T14:41:54Z",
+  "logical_request_id": "PX0-16384x32-telemetry",
+  "measured_count": 1,
+  "phase": "complete",
+  "status": "PASS",
+  "warmup_count": 0
+}

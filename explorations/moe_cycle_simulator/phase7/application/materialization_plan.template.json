@@ -1,0 +1,73 @@
+{
+  "schema_version": "moe-simulator-phase7-m0-materialization-plan-v1",
+  "status": "DRAFT_WITH_BLOCKING_FIELDS",
+  "model": {
+    "model_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "repository_commit": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61"
+  },
+  "materializer": {
+    "library": "huggingface_hub",
+    "version": "[BLOCKING:HUGGINGFACE_HUB_VERSION]",
+    "method": "snapshot_download_local_dir",
+    "max_workers": 4,
+    "allow_patterns": [
+      "config.json",
+      "generation_config.json",
+      "model-*.safetensors",
+      "model.safetensors.index.json",
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer.model",
+      "tokenizer_config.json"
+    ],
+    "ignore_patterns": [
+      "*.bin",
+      "*.gguf",
+      "*.pt",
+      "consolidated.*"
+    ]
+  },
+  "tokenizer_builder": {
+    "library": "transformers",
+    "version": "[BLOCKING:TRANSFORMERS_VERSION]",
+    "method": "AutoTokenizer.from_pretrained_local_only"
+  },
+  "paths": {
+    "snapshot": "[BLOCKING:FRESH_ABSOLUTE_MODEL_SNAPSHOT_PATH]",
+    "model_ledger": "[BLOCKING:FRESH_ABSOLUTE_MODEL_LEDGER_PATH]",
+    "materialization_result": "[BLOCKING:FRESH_ABSOLUTE_MATERIALIZATION_RESULT_PATH]",
+    "capacity_prompt_fixture": "[BLOCKING:FRESH_ABSOLUTE_CAPACITY_PROMPT_FIXTURE_PATH]"
+  },
+  "storage_contract": {
+    "persistent_mount": "/vault",
+    "persistent_project_root": "[BLOCKING:FRESH_DEPLOYED_PROJECT_ROOT_UNDER_VAULT]",
+    "ephemeral_workspace": "/workspace",
+    "model_snapshot_location": "PERSISTENT",
+    "ledger_fixture_and_evidence_location": "PERSISTENT",
+    "credentials_in_persistent_or_workspace_storage": "FORBIDDEN"
+  },
+  "deployment": {
+    "application_target": "[BLOCKING:ABSOLUTE_DEPLOYED_MATERIALIZATION_APPLICATION_PATH]",
+    "deployment_receipt": "[BLOCKING:ABSOLUTE_DEPLOYMENT_RECEIPT_PATH]"
+  },
+  "runtime_provenance": {
+    "output_root": "[BLOCKING:FRESH_ABSOLUTE_RUNTIME_PROVENANCE_EVIDENCE_ROOT]",
+    "command_argv": [
+      "[BLOCKING:EXACT_STATIC_RUNTIME_PROVENANCE_EXECUTABLE]",
+      "[BLOCKING:EXACT_STATIC_RUNTIME_PROVENANCE_ARGUMENTS]"
+    ],
+    "inspection_mode": "STATIC_FILES_AND_DISTRIBUTION_METADATA_ONLY",
+    "selected_backend_observation": "PENDING_M0_R1_STARTUP",
+    "missing_evidence_disposition": "COMPLETE_M0_BLOCKED_PROVENANCE",
+    "gpu_compute": false,
+    "vllm_model_load": false
+  },
+  "command_argv": [
+    "[BLOCKING:EXACT_MATERIALIZATION_EXECUTABLE]",
+    "[BLOCKING:EXACT_MATERIALIZATION_ARGUMENTS]"
+  ],
+  "prompt_fixture_command_argv": [
+    "[BLOCKING:EXACT_PROMPT_FIXTURE_EXECUTABLE]",
+    "[BLOCKING:EXACT_PROMPT_FIXTURE_ARGUMENTS]"
+  ]
+}

@@ -1,0 +1,13 @@
+usage: -c [-h] --model-path MODEL_PATH --run-root RUN_ROOT --experiment-id
+          EXPERIMENT_ID --input-tokens INPUT_TOKENS --output-tokens
+          OUTPUT_TOKENS
+          [--sampling-mode {FORCED_LENGTH_CONTROLLED,NATURAL_EOS_CAPPED}]
+          [--request-plan REQUEST_PLAN] --concurrency CONCURRENCY
+          [--bursts BURSTS] [--intra-burst-gap-ms INTRA_BURST_GAP_MS]
+          [--inter-burst-gap-ms INTER_BURST_GAP_MS]
+          [--arrival-rate-rps ARRIVAL_RATE_RPS]
+          [--total-requests TOTAL_REQUESTS] [--arrival-seed ARRIVAL_SEED]
+          [--warmup-burst] [--warmup-bursts WARMUP_BURSTS] --max-num-seqs
+          MAX_NUM_SEQS [--max-num-batched-tokens MAX_NUM_BATCHED_TOKENS]
+          [--gpu-memory-utilization GPU_MEMORY_UTILIZATION]
+-c: error: the following arguments are required: --model-path, --run-root, --experiment-id, --input-tokens, --output-tokens, --concurrency, --max-num-seqs

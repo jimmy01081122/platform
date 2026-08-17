@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator/event-ir-v1",
+  "title": "Cycle-resolved EventIR record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "trace_id", "event_id", "event_type", "time_fs",
+    "event_priority", "component_id", "dependencies", "clock_id",
+    "observability", "provenance", "semantic_descriptor_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "event-ir-v1"},
+    "trace_id": {"type": "string", "minLength": 1},
+    "event_id": {"type": "string", "minLength": 1},
+    "event_type": {"type": "string", "minLength": 1},
+    "time_fs": {"type": "string", "pattern": "^(0|[1-9][0-9]*)$"},
+    "event_priority": {"type": "integer", "minimum": 0},
+    "request_id": {"type": ["string", "null"]},
+    "token_index": {"type": ["integer", "null"], "minimum": 0},
+    "layer_index": {"type": ["integer", "null"], "minimum": 0},
+    "component_id": {"type": "string", "minLength": 1},
+    "clock_id": {"type": "string", "minLength": 1},
+    "rank": {"type": ["integer", "null"], "minimum": 0},
+    "stream_id": {"type": ["string", "null"]},
+    "correlation_id": {"type": ["string", "null"]},
+    "semantic_descriptor_hash": {
+      "type": "string", "pattern": "^[0-9a-f]{64}$"
+    },
+    "duration_fs": {
+      "type": ["string", "null"],
+      "pattern": "^(0|[1-9][0-9]*)$"
+    },
+    "dependencies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "observability": {
+      "$ref": "https://edgeflow.local/schemas/moe-simulator/observability-v1"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["producer", "producer_version", "raw_content_ids"],
+      "properties": {
+        "producer": {"type": "string", "minLength": 1},
+        "producer_version": {"type": "string", "minLength": 1},
+        "raw_content_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "attributes": {"type": "object"}
+  }
+}

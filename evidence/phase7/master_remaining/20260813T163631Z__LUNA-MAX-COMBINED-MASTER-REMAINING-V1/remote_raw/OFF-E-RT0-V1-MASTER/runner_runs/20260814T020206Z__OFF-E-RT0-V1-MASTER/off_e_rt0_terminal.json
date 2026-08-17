@@ -1,0 +1,7 @@
+{
+  "capability_status": "RUNTIME_EXPERT_OFFLOAD_UNAVAILABLE_WITH_CONSEQUENCE",
+  "finished_at_utc": "2026-08-14T02:02:40Z",
+  "request_correctness": "PASS",
+  "routing_evidence": "PASS",
+  "status": "PASS_NEGATIVE_EVIDENCE"
+}

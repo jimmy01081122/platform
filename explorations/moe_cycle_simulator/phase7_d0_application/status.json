@@ -1,0 +1,36 @@
+{
+  "schema_version": "moe-simulator-phase7-gputw-d0-status-v1",
+  "application_id": "phase7-gputw-d0-7f9804d4-20260809-r1",
+  "application_status": "READY_FOR_OWNER_REVIEW",
+  "validation_status": "PASS",
+  "application_identity_sha256": "5470f9b8b0265e3a669c638e55bcaed028e409d61fba29cbeef2bbccfe8d4d6d",
+  "application_ledger_sha256": "d3f3df86570dc6993307be5380750380c456d8ed3d1284814ae4324c2d514a71",
+  "d0_execution_approval_eligible": false,
+  "cost_authority_status": "COST_AUTHORITY_INCOMPLETE",
+  "d0_execution": "NOT_AUTHORIZED",
+  "ssh": "NOT_AUTHORIZED",
+  "gate_m": "NOT_AUTHORIZED",
+  "m0": "NOT_AUTHORIZED",
+  "gpu_authority": "NONE",
+  "side_effects": {
+    "ssh": false,
+    "provider_network_probe": false,
+    "instance_creation": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  },
+  "unresolved_live_fields": [
+    "exact CUDA minor version",
+    "NVIDIA driver version",
+    "measured GPU identity and VRAM",
+    "container digest",
+    "template/image identity if not disclosed",
+    "Python path/version/hash",
+    "timeout path/hash",
+    "vLLM version and backend",
+    "/vault mount identity and free capacity",
+    "model snapshot identity and Mixtral/BF16 capacity",
+    "performance and calibration"
+  ]
+}

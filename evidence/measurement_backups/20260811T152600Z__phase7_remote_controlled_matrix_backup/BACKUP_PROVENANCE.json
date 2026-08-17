@@ -1,0 +1,24 @@
+{
+  "schema_version": "phase7-controlled-local-backup-v1",
+  "source_host": "pod-9ebe2f5c-81af-44c1-8fb0-a06bfd2d4f9c@ssh.gputw.ai:2222",
+  "source_batch": "/vault/flow/moe_simulator_phase7/real_campaign/batches/controlled-v1-20260811T1400Z",
+  "source_run_root": "/vault/flow/moe_simulator_phase7/real_campaign/runs",
+  "batch_id": "controlled-v1-20260811T1400Z",
+  "backed_up_run_count": 90,
+  "batch_terminal_status": "PASS",
+  "batch_completed_runs": 90,
+  "backup_method": "read-only SSH tar streams selected by the immutable progress.tsv run_dir list",
+  "contents": {
+    "controlled_runs": "All 90 immutable run directories named by progress.tsv",
+    "remote_batch": "Batch manifest, status, progress, consoles, sidecar raw samples and summaries",
+    "remote_code": "Remote runner/orchestrator/monitor versions plus reconciliation parser version",
+    "controlled_matrix_audit_initial_failure.json": "Preserved first audit that identified the load-log parser mismatch",
+    "controlled_matrix_audit.json": "Final requirement-level audit after non-destructive reconciliation"
+  },
+  "monitor_note": "Monitor v1 was intentionally stopped during semantics correction. Monitor v2 passed with 47 historical log-only loads, 43 live NVML runs, one explicitly left-censored first live load, and 13620 raw samples.",
+  "integrity_roots": {
+    "per_run": "Each immutable run SHA256SUMS, verified by controlled_matrix_audit.json",
+    "local_backup": "Top-level SHA256SUMS generated after download, reconciliation and audit"
+  },
+  "scope_note": "Model checkpoint shards are not duplicated in this raw-result backup; model identity and runtime configuration attestations are retained in every run."
+}

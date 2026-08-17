@@ -1,0 +1,24 @@
+{
+  "array_path": "routing/FITDECODE1280-PERTURB-V2__measured-01.npy",
+  "array_sha256": "04ff7327eec8e6166fcc8de2d8cbc69dd23d2749c38148941c1b15c1a8ce546e",
+  "dtype": "uint8",
+  "excluded_trailing_sampled_token_count": 1,
+  "expected_forwarded_token_count": 1791,
+  "experts_from_model_config": 8,
+  "input_token_count": 512,
+  "layers_from_model_config": 32,
+  "logical_request_id": "FITDECODE1280-PERTURB-V2__measured-01",
+  "maximum_expert_id": 7,
+  "minimum_expert_id": 0,
+  "output_token_count": 1280,
+  "semantics": "per token that completed a model forward pass, actual model layer, top-k expert IDs; the final sampled output token is excluded because it is not forwarded again",
+  "shape": [
+    1791,
+    32,
+    2
+  ],
+  "source_field": "vllm.CompletionOutput.routed_experts",
+  "top_k_from_model_config": 2,
+  "validation_errors": [],
+  "validation_status": "PASS"
+}

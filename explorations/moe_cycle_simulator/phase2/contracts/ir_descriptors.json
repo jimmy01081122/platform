@@ -1,0 +1,24 @@
+{
+  "schema_version": "canonical-ir-descriptor-catalog-v1",
+  "binding": {
+    "logical_schema": "canonical_ir.schema.json canonical SHA-256 is injected into every effective descriptor",
+    "semantic_invariants": "canonical_ir.py source SHA-256 is injected into every effective descriptor",
+    "typed_reference_rule": "target_semantic_root is computed with the effective descriptor, not the abbreviated catalog row"
+  },
+  "descriptors": {
+    "WorkloadIR": {"descriptor_id": "workload-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "ModelIR": {"descriptor_id": "model-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "RoutingIR": {"descriptor_id": "routing-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "PlacementIR": {"descriptor_id": "placement-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "PlatformIR": {"descriptor_id": "platform-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "EventIR": {"descriptor_id": "event-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "ClockAlignmentIR": {"descriptor_id": "clock-alignment-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "CalibrationIR": {"descriptor_id": "calibration-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"},
+    "ResultIR": {"descriptor_id": "result-ir-v1", "primary_key": ["record_id"], "normalization": "canonical-json-nfc-no-float-v1"}
+  },
+  "bundle_descriptor": {
+    "descriptor_id": "canonical-ir-bundle-v1",
+    "primary_key": ["ir_kind", "record_id"],
+    "normalization": "canonical-json-nfc-no-float-v1"
+  }
+}

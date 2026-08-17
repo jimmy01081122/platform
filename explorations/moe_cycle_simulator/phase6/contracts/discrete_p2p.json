@@ -1,0 +1,45 @@
+{
+  "schema_version": "phase6-discrete-p2p-v1",
+  "mode": "DISCRETE_P2P_2GPU",
+  "topology": {
+    "compute_domains": [
+      "gpu0",
+      "gpu1"
+    ],
+    "private_memory_domains": [
+      "vram0",
+      "vram1"
+    ],
+    "required_directed_paths": [
+      "gpu0_to_gpu1",
+      "gpu1_to_gpu0"
+    ],
+    "routing": "explicit directed single-hop only",
+    "link_and_bridge_ids": "globally unique and collision-free",
+    "reverse_pair": "both directions share one exact duplex_group and identical full_duplex mode"
+  },
+  "resources": {
+    "directional_copy_engine_per_link": true,
+    "duplex_group": "shared for half duplex or direction-qualified for full duplex",
+    "finite_queue": true,
+    "finite_credit_or_request_ack": true,
+    "per_memory_domain_capacity": true,
+    "aggregate_capacity_substitution": false
+  },
+  "activation_flow": [
+    "dispatch",
+    "expert compute",
+    "return",
+    "combine"
+  ],
+  "expert_placement": {
+    "granularity": "whole expert object",
+    "replicate_commit": "destination allocation visible only at transfer forward completion",
+    "move_commit": "destination allocation and source removal are atomic at transfer forward completion",
+    "pinned_source_move": "hard-rejected in Phase6 v1; delayed invalidation is out of scope",
+    "capacity_checked_before_start_and_at_commit": true
+    ,
+    "inflight_reservation": "unique (object_id, target_memory_id) until operation completion",
+    "visibility_insertion": "must insert a previously absent destination location"
+  }
+}

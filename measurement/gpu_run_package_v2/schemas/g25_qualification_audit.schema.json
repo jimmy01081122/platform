@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgehetero.local/schemas/g25_qualification_audit.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "status", "finding_count", "findings",
+    "ledger_sha256", "verdict_sha256", "replayed_verdict_sha256",
+    "selector_deterministic", "formal_c1_loader_eligible", "gpu_used"
+  ],
+  "properties": {
+    "schema_version": {"const": "g25-qualification-audit-v1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["complete", "failed"]},
+    "finding_count": {"type": "integer", "minimum": 0},
+    "findings": {"type": "array", "items": {"type": "string"}},
+    "ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "verdict_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "replayed_verdict_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "selector_deterministic": {"type": "boolean"},
+    "formal_c1_loader_eligible": {"const": false},
+    "gpu_used": {"type": "boolean"}
+  }
+}

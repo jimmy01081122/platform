@@ -1,0 +1,40 @@
+schema_version: calibration-pack-v1
+pack_id: replace_me
+status: template
+calibrated_domain: null
+
+data_split:
+  calibration:
+    selector: replace_with_calibration_selector
+    artifact: null
+    sha256: null
+    evidence: unknown
+  validation:
+    selector: replace_with_disjoint_validation_selector
+    artifact: null
+    sha256: null
+    evidence: unknown
+  holdout_workload:
+    selector: replace_with_unseen_workload_selector
+    artifact: null
+    sha256: null
+    evidence: unknown
+  holdout_platform:
+    selector: replace_with_unseen_platform_selector
+    artifact: null
+    sha256: null
+    evidence: unknown
+
+measurement_contract:
+  warmup_policy: replace_me
+  repetition_count: 3
+  raw_measurements: replace_me
+  per_repetition_results: replace_me
+  uncertainty: confidence-interval
+  tool_versions: null
+  hardware_identification: null
+  software_versions: null
+  clock_power_temperature: null
+  environment_manifest: replace_me
+  random_seed: 0
+  command: [replace_me]

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "d0_result.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-d0-result-v1"},
+    "application_id": {"type": "string"},
+    "disclosure_session_id": {"type": "string"},
+    "disclosure_status": {"const": "COMPLETE"},
+    "environment_eligibility": {
+      "enum": ["READY_FOR_MATERIALIZATION_APPLICATION", "NOT_READY"]
+    },
+    "eligibility_findings": {"items": {"type": "string"}, "type": "array"},
+    "authority_evidence_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "plan_file_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "approval_file_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "probe_file_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "exact_ssh_argv_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "timing": {"type": "object"},
+    "ssh": {"type": "object"},
+    "probe_result_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "vault_mount_identity_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "prohibitions": {"type": "object"},
+    "next_legal_action": {"type": "string"}
+  },
+  "required": [
+    "schema_version", "application_id", "disclosure_session_id",
+    "disclosure_status", "environment_eligibility", "eligibility_findings",
+    "authority_evidence_sha256", "plan_file_sha256", "approval_file_sha256",
+    "probe_file_sha256", "exact_ssh_argv_sha256", "timing", "ssh",
+    "probe_result_sha256", "vault_mount_identity_sha256", "prohibitions",
+    "next_legal_action"
+  ],
+  "type": "object"
+}

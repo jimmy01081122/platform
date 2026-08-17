@@ -1,0 +1,1101 @@
+{
+  "cap_fracs": [
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875
+  ],
+  "depths": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "knee_tol": 0.1,
+  "models": {
+    "cognitivecomputations/DeepSeek-R1-AWQ": {
+      "num_experts": 256,
+      "top_k": 8,
+      "num_moe_layers": 58,
+      "stimulus": "cognitivecomputations/DeepSeek-R1-AWQ/livecodebench/execution/0.jsonl",
+      "grid": {
+        "0": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 32,
+            "miss_rate": 0.9017,
+            "transfers": 63383,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 64,
+            "miss_rate": 0.7978,
+            "transfers": 56078,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 96,
+            "miss_rate": 0.6908,
+            "transfers": 48558,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 128,
+            "miss_rate": 0.5817,
+            "transfers": 40888,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 160,
+            "miss_rate": 0.4768,
+            "transfers": 33514,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 192,
+            "miss_rate": 0.2976,
+            "transfers": 20918,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 224,
+            "miss_rate": 0.1291,
+            "transfers": 9075,
+            "wasted": 0
+          }
+        ],
+        "1": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 32,
+            "miss_rate": 0.1482,
+            "transfers": 62862,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 64,
+            "miss_rate": 0.141,
+            "transfers": 55497,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 96,
+            "miss_rate": 0.1341,
+            "transfers": 48034,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 128,
+            "miss_rate": 0.127,
+            "transfers": 40514,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 160,
+            "miss_rate": 0.0865,
+            "transfers": 30828,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 192,
+            "miss_rate": 0.0113,
+            "transfers": 18240,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 224,
+            "miss_rate": 0.0028,
+            "transfers": 7523,
+            "wasted": 0
+          }
+        ],
+        "2": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 32,
+            "miss_rate": 0.1531,
+            "transfers": 62862,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 64,
+            "miss_rate": 0.1511,
+            "transfers": 55497,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 96,
+            "miss_rate": 0.1491,
+            "transfers": 48034,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 128,
+            "miss_rate": 0.1472,
+            "transfers": 40533,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 160,
+            "miss_rate": 0.1437,
+            "transfers": 33069,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 192,
+            "miss_rate": 0.0534,
+            "transfers": 19388,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 224,
+            "miss_rate": 0.012,
+            "transfers": 7586,
+            "wasted": 0
+          }
+        ],
+        "4": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 32,
+            "miss_rate": 0.1548,
+            "transfers": 62860,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 64,
+            "miss_rate": 0.1545,
+            "transfers": 55496,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 96,
+            "miss_rate": 0.1543,
+            "transfers": 48034,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 128,
+            "miss_rate": 0.154,
+            "transfers": 40533,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 160,
+            "miss_rate": 0.1537,
+            "transfers": 33185,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 192,
+            "miss_rate": 0.0782,
+            "transfers": 20479,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 224,
+            "miss_rate": 0.0411,
+            "transfers": 8969,
+            "wasted": 0
+          }
+        ],
+        "8": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 32,
+            "miss_rate": 0.155,
+            "transfers": 56935,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 64,
+            "miss_rate": 0.1548,
+            "transfers": 55491,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 96,
+            "miss_rate": 0.1547,
+            "transfers": 48031,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 128,
+            "miss_rate": 0.1546,
+            "transfers": 40530,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 160,
+            "miss_rate": 0.1544,
+            "transfers": 33181,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 192,
+            "miss_rate": 0.0803,
+            "transfers": 20568,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 224,
+            "miss_rate": 0.0421,
+            "transfers": 8983,
+            "wasted": 0
+          }
+        ]
+      },
+      "optimal_depth_at_C50": 1,
+      "miss_at_C50_optdepth": 0.127,
+      "knee_capacity": 224,
+      "knee_cap_frac": 0.875,
+      "knee_miss_rate": 0.0028,
+      "rtl_engine_max_experts_current": 32,
+      "engine_sizing_gap": 224
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "num_experts": 384,
+      "top_k": 8,
+      "num_moe_layers": 60,
+      "stimulus": "moonshotai/Kimi-K2-Thinking/livecodebench/execution/0.jsonl",
+      "grid": {
+        "0": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 48,
+            "miss_rate": 0.9006,
+            "transfers": 65298,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 96,
+            "miss_rate": 0.7926,
+            "transfers": 57470,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 144,
+            "miss_rate": 0.6856,
+            "transfers": 49710,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 192,
+            "miss_rate": 0.5296,
+            "transfers": 38400,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 240,
+            "miss_rate": 0.4013,
+            "transfers": 29096,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 288,
+            "miss_rate": 0.2226,
+            "transfers": 16137,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 336,
+            "miss_rate": 0.1108,
+            "transfers": 8032,
+            "wasted": 0
+          }
+        ],
+        "1": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 48,
+            "miss_rate": 0.1326,
+            "transfers": 64892,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 96,
+            "miss_rate": 0.1126,
+            "transfers": 57075,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 144,
+            "miss_rate": 0.0673,
+            "transfers": 47534,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 192,
+            "miss_rate": 0.009,
+            "transfers": 36714,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 240,
+            "miss_rate": 0.0025,
+            "transfers": 27357,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 288,
+            "miss_rate": 0.0025,
+            "transfers": 15092,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 336,
+            "miss_rate": 0.0025,
+            "transfers": 7580,
+            "wasted": 0
+          }
+        ],
+        "2": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 48,
+            "miss_rate": 0.142,
+            "transfers": 64892,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 96,
+            "miss_rate": 0.1313,
+            "transfers": 57075,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 144,
+            "miss_rate": 0.1121,
+            "transfers": 48737,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 192,
+            "miss_rate": 0.0465,
+            "transfers": 37131,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 240,
+            "miss_rate": 0.0079,
+            "transfers": 26632,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 288,
+            "miss_rate": 0.0025,
+            "transfers": 14997,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 336,
+            "miss_rate": 0.0025,
+            "transfers": 7580,
+            "wasted": 0
+          }
+        ],
+        "4": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 48,
+            "miss_rate": 0.1493,
+            "transfers": 64891,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 96,
+            "miss_rate": 0.1459,
+            "transfers": 57074,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 144,
+            "miss_rate": 0.1425,
+            "transfers": 49320,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 192,
+            "miss_rate": 0.0809,
+            "transfers": 37599,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 240,
+            "miss_rate": 0.0644,
+            "transfers": 28674,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 288,
+            "miss_rate": 0.0289,
+            "transfers": 15182,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 336,
+            "miss_rate": 0.0029,
+            "transfers": 7079,
+            "wasted": 0
+          }
+        ],
+        "8": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 48,
+            "miss_rate": 0.1519,
+            "transfers": 63065,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 96,
+            "miss_rate": 0.1511,
+            "transfers": 57073,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 144,
+            "miss_rate": 0.1503,
+            "transfers": 49330,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 192,
+            "miss_rate": 0.0954,
+            "transfers": 37958,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 240,
+            "miss_rate": 0.076,
+            "transfers": 28827,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 288,
+            "miss_rate": 0.0477,
+            "transfers": 15863,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 336,
+            "miss_rate": 0.0231,
+            "transfers": 7866,
+            "wasted": 0
+          }
+        ]
+      },
+      "optimal_depth_at_C50": 1,
+      "miss_at_C50_optdepth": 0.009,
+      "knee_capacity": 240,
+      "knee_cap_frac": 0.625,
+      "knee_miss_rate": 0.0025,
+      "rtl_engine_max_experts_current": 32,
+      "engine_sizing_gap": 352
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+      "num_experts": 128,
+      "top_k": 1,
+      "num_moe_layers": 24,
+      "stimulus": "meta-llama/Llama-4-Maverick-17B-128E-Instruct/livecodebench/execution/0.jsonl",
+      "grid": {
+        "0": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.9002,
+            "transfers": 3319,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.591,
+            "transfers": 2179,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.4383,
+            "transfers": 1616,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.3298,
+            "transfers": 1216,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.2436,
+            "transfers": 898,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.1543,
+            "transfers": 569,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.086,
+            "transfers": 317,
+            "wasted": 0
+          }
+        ],
+        "1": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.0841,
+            "transfers": 3300,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.0171,
+            "transfers": 2149,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0103,
+            "transfers": 1557,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0103,
+            "transfers": 1180,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.0103,
+            "transfers": 879,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0103,
+            "transfers": 558,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0103,
+            "transfers": 316,
+            "wasted": 0
+          }
+        ],
+        "2": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.1009,
+            "transfers": 3306,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.0247,
+            "transfers": 2115,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0103,
+            "transfers": 1547,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0103,
+            "transfers": 1180,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.0103,
+            "transfers": 879,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0103,
+            "transfers": 558,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0103,
+            "transfers": 316,
+            "wasted": 0
+          }
+        ],
+        "4": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.1239,
+            "transfers": 3310,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.0654,
+            "transfers": 2139,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0193,
+            "transfers": 1463,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0103,
+            "transfers": 1119,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.0103,
+            "transfers": 871,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0103,
+            "transfers": 558,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0103,
+            "transfers": 316,
+            "wasted": 0
+          }
+        ],
+        "8": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.1435,
+            "transfers": 3316,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.1004,
+            "transfers": 2162,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0692,
+            "transfers": 1540,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0385,
+            "transfers": 1117,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.0133,
+            "transfers": 792,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0103,
+            "transfers": 524,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0103,
+            "transfers": 316,
+            "wasted": 0
+          }
+        ]
+      },
+      "optimal_depth_at_C50": 1,
+      "miss_at_C50_optdepth": 0.0103,
+      "knee_capacity": 48,
+      "knee_cap_frac": 0.375,
+      "knee_miss_rate": 0.0103,
+      "rtl_engine_max_experts_current": 32,
+      "engine_sizing_gap": 96
+    },
+    "Qwen/Qwen3-235B-A22B-FP8": {
+      "num_experts": 128,
+      "top_k": 8,
+      "num_moe_layers": 94,
+      "stimulus": "Qwen/Qwen3-235B-A22B-FP8/livecodebench/execution/0.jsonl",
+      "grid": {
+        "0": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.8986,
+            "transfers": 93758,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.7809,
+            "transfers": 81480,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.6562,
+            "transfers": 68464,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.5393,
+            "transfers": 56266,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.3816,
+            "transfers": 39815,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.1966,
+            "transfers": 20512,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0889,
+            "transfers": 9278,
+            "wasted": 0
+          }
+        ],
+        "1": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.0723,
+            "transfers": 91898,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.0675,
+            "transfers": 79454,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0629,
+            "transfers": 66850,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0516,
+            "transfers": 54263,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.0201,
+            "transfers": 36410,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0031,
+            "transfers": 18743,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.001,
+            "transfers": 8265,
+            "wasted": 0
+          }
+        ],
+        "2": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.0757,
+            "transfers": 91897,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.0743,
+            "transfers": 79454,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0729,
+            "transfers": 66850,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0708,
+            "transfers": 54905,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.0481,
+            "transfers": 37742,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0182,
+            "transfers": 19239,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0031,
+            "transfers": 8281,
+            "wasted": 0
+          }
+        ],
+        "4": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.0772,
+            "transfers": 81768,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.077,
+            "transfers": 79452,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0768,
+            "transfers": 66848,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0765,
+            "transfers": 54956,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.0633,
+            "transfers": 38652,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0307,
+            "transfers": 19812,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0157,
+            "transfers": 8942,
+            "wasted": 0
+          }
+        ],
+        "8": [
+          {
+            "cap_frac": 0.125,
+            "capacity": 16,
+            "miss_rate": 0.2196,
+            "transfers": 79162,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.25,
+            "capacity": 32,
+            "miss_rate": 0.0774,
+            "transfers": 64324,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.375,
+            "capacity": 48,
+            "miss_rate": 0.0774,
+            "transfers": 64207,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.5,
+            "capacity": 64,
+            "miss_rate": 0.0773,
+            "transfers": 54954,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.625,
+            "capacity": 80,
+            "miss_rate": 0.066,
+            "transfers": 38818,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.75,
+            "capacity": 96,
+            "miss_rate": 0.0322,
+            "transfers": 19845,
+            "wasted": 0
+          },
+          {
+            "cap_frac": 0.875,
+            "capacity": 112,
+            "miss_rate": 0.0183,
+            "transfers": 9095,
+            "wasted": 0
+          }
+        ]
+      },
+      "optimal_depth_at_C50": 1,
+      "miss_at_C50_optdepth": 0.0516,
+      "knee_capacity": 112,
+      "knee_cap_frac": 0.875,
+      "knee_miss_rate": 0.001,
+      "rtl_engine_max_experts_current": 32,
+      "engine_sizing_gap": 96
+    }
+  }
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/vault/flow/moe_simulator_phase7/real_campaign/code/off_w3_suite_audit.py", line 28, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "/vault/flow/moe_simulator_phase7/real_campaign/code/off_w3_suite_audit.py", line 17, in main
+    st=json.loads((d/'status.json').read_text()); r=json.loads((d/'result.json').read_text()); e=json.loads((d/'requested_engine_args.json').read_text()); mem=[json.loads(x) for x in (d/'memory.jsonl').read_text().splitlines() if x]; prof=r.get('profiler') or {}; arr=list((d/'routing').glob('*.npy'))
+                   ^
+UnboundLocalError: cannot access local variable 'd' where it is not associated with a value

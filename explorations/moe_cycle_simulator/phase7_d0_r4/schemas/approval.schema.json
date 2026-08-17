@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moe-simulator-phase7-gputw-d0-r4-approval-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "application_id", "approval_id", "session_id", "decision",
+    "execution_mode", "reviewed_commit", "reviewed_tree", "reviewed_candidate_ledger_sha256", "review_closure_input",
+    "owner_authority_sha256", "owner_authority_input", "application_identity_sha256",
+    "application_ledger_sha256", "lease", "endpoint", "host_key", "credential",
+    "local_ssh", "runtime", "evidence", "command_binding_sha256", "remote_payload_sha256",
+    "authority", "not_authorized"
+  ],
+  "properties": {
+    "schema_version": {"const": "moe-simulator-phase7-gputw-d0-r4-approval-v1"},
+    "application_id": {"type": "string", "minLength": 1},
+    "approval_id": {"type": "string", "minLength": 8},
+    "session_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{7,127}$"},
+    "decision": {"enum": ["PENDING", "APPROVE"]},
+    "execution_mode": {"const": "DISCOVERY_ONLY"},
+    "reviewed_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "reviewed_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "reviewed_candidate_ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "review_closure_input": {"$ref": "#/$defs/hash_input"},
+    "owner_authority_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "owner_authority_input": {"$ref": "#/$defs/hash_input"},
+    "application_identity_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "application_ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "lease": {"$ref": "#/$defs/lease"},
+    "endpoint": {"$ref": "#/$defs/endpoint"},
+    "host_key": {"$ref": "#/$defs/host_key"},
+    "credential": {"$ref": "#/$defs/credential"},
+    "local_ssh": {"$ref": "#/$defs/local_ssh"},
+    "runtime": {"$ref": "#/$defs/runtime"},
+    "evidence": {"$ref": "#/$defs/evidence"},
+    "command_binding_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "remote_payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "authority": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "not_authorized": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "hash_input": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "prepaid_entitlement": {
+      "type": "object", "additionalProperties": false,
+      "required": ["original_prepaid_seconds", "additional_prepaid_seconds", "total_prepaid_seconds", "status"],
+      "properties": {
+        "original_prepaid_seconds": {"const": 21600},
+        "additional_prepaid_seconds": {"const": 7200},
+        "total_prepaid_seconds": {"const": 28800},
+        "status": {"const": "FULLY_PREPAID_BEFORE_R4_FREEZE"}
+      }
+    },
+    "stage_bounds": {
+      "type": "object", "additionalProperties": false,
+      "required": ["D0", "Gate_M", "M0", "release"],
+      "properties": {"D0": {"const": 300}, "Gate_M": {"const": 5400}, "M0": {"const": 14400}, "release": {"const": 900}}
+    },
+    "lease": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "start_trigger", "control_plane_start_utc", "lease_start_utc", "lease_deadline_utc",
+        "total_seconds", "prepaid_entitlement", "stage_bounds_seconds", "bounded_work_seconds",
+        "shared_transition_slack_seconds", "maximum_additional_spend_amount",
+        "maximum_additional_spend_currency", "extension_allowed",
+        "extension_beyond_28800_allowed", "top_up_allowed", "provider_grace_credit_seconds"
+      ],
+      "properties": {
+        "start_trigger": {"const": "FRESH_OWNER_SSH_HANDOFF"},
+        "control_plane_start_utc": {"type": "string", "minLength": 1},
+        "lease_start_utc": {"type": "string", "minLength": 1},
+        "lease_deadline_utc": {"type": "string", "minLength": 1},
+        "total_seconds": {"const": 28800},
+        "prepaid_entitlement": {"$ref": "#/$defs/prepaid_entitlement"},
+        "stage_bounds_seconds": {"$ref": "#/$defs/stage_bounds"},
+        "bounded_work_seconds": {"const": 21000},
+        "shared_transition_slack_seconds": {"const": 7800},
+        "maximum_additional_spend_amount": {"const": "0"},
+        "maximum_additional_spend_currency": {"const": "TWD"},
+        "extension_allowed": {"const": false},
+        "extension_beyond_28800_allowed": {"const": false},
+        "top_up_allowed": {"const": false},
+        "provider_grace_credit_seconds": {"const": 0}
+      }
+    },
+    "endpoint": {
+      "type": "object", "additionalProperties": false,
+      "required": ["host", "port", "username", "instance_id"],
+      "properties": {"host": {"type": "string", "minLength": 1}, "port": {"const": 2222}, "username": {"type": "string", "minLength": 1}, "instance_id": {"type": "string", "minLength": 1}}
+    },
+    "host_key": {
+      "type": "object", "additionalProperties": false,
+      "required": ["known_hosts_path", "known_hosts_sha256", "host_key_blob_sha256", "fingerprint", "provenance", "provenance_artifact_path", "provenance_artifact_sha256"],
+      "properties": {
+        "known_hosts_path": {"type": "string", "minLength": 1},
+        "known_hosts_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "host_key_blob_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "fingerprint": {"type": "string", "minLength": 1},
+        "provenance": {"type": "string", "minLength": 1},
+        "provenance_artifact_path": {"type": "string", "minLength": 1},
+        "provenance_artifact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "credential": {
+      "type": "object", "additionalProperties": false,
+      "required": ["selector_kind", "selector", "client_public_key_fingerprint", "agent_query_executable_path", "agent_query_executable_sha256", "private_key_material"],
+      "properties": {
+        "selector_kind": {"const": "SSH_AGENT_SOCKET"},
+        "selector": {"type": "string", "minLength": 1},
+        "client_public_key_fingerprint": {"type": "string", "pattern": "^SHA256:[A-Za-z0-9+/]+$"},
+        "agent_query_executable_path": {"type": "string", "minLength": 1},
+        "agent_query_executable_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "private_key_material": {"const": "FORBIDDEN_NOT_RECORDED"}
+      }
+    },
+    "local_ssh": {
+      "type": "object", "additionalProperties": false,
+      "required": ["executable_path", "executable_sha256"],
+      "properties": {"executable_path": {"type": "string", "minLength": 1}, "executable_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+    },
+    "runtime": {
+      "type": "object", "additionalProperties": false,
+      "required": ["approved_container_digest", "digest_status", "discovery_only_reason"],
+      "properties": {"approved_container_digest": {"type": "null"}, "digest_status": {"const": "UNOBSERVED_DISCOVERY_ONLY"}, "discovery_only_reason": {"type": "string", "minLength": 1}}
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_root", "one_shot_registry_path", "terminal_sealing"],
+      "properties": {"evidence_root": {"type": "string", "minLength": 1}, "one_shot_registry_path": {"type": "string", "minLength": 1}, "terminal_sealing": {"const": "REQUIRED"}}
+    }
+  }
+}

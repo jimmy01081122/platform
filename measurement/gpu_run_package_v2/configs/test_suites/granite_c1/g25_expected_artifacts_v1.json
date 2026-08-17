@@ -1,0 +1,58 @@
+{
+  "schema_version": "g25-expected-artifacts-v1",
+  "revision": "granite-c1-g25-artifacts-v1.3.0-s4-r5",
+  "session_files": ["session.json", "ledger.json", "verdict.json", "audit.json"],
+  "per_cell_directories": ["raw", "cells"],
+  "expected_raw_files": 12,
+  "expected_cell_files": 12,
+  "application_session_files": [
+    "session_state.json", "journal.jsonl", "authorization_manifest.json",
+    "dynamic_preflight.json",
+    "model_snapshot_inventory.json", "application_audit.json", "audit.json",
+    "terminal.json", "final_seal.json", "qualification_evidence_inventory.json",
+    "session_file_inventory.json",
+    "snapshots/inventory.json", "snapshots/source_checksums.txt"
+  ],
+  "application_per_cell_directories": [
+    "cell_state", "descriptors", "worker_io"
+  ],
+  "partial_session_rule": {
+    "ledger_and_verdict_required": false,
+    "terminal_disposition": "INCOMPLETE_HARD_STOP",
+    "qualification_pass": false,
+    "resume": false,
+    "retry_failed": false
+  },
+  "required_bindings": [
+    "contract_sha256", "matrix_sha256", "generation_profile_sha256",
+    "sample_manifest_sha256", "snapshot_inventory_sha256",
+    "execution_identity_set_sha256", "cell_set_sha256",
+    "owner_approval_sha256", "same_source_review_sha256",
+    "evaluation_record_sha256", "exact_command_argv_sha256",
+    "package_snapshot_inventory_sha256", "worker_io_manifest_sha256",
+    "isolated_bootstrap_sha256", "runtime_exact_tree_sha256",
+    "qualification_evidence_inventory_sha256",
+    "session_file_inventory_sha256", "external_seal_anchor_sha256"
+  ],
+  "audit_requirements": {
+    "status": "complete",
+    "finding_count": 0,
+    "terminal_state": "TERMINAL_COMPLETE",
+    "deadline_ok": true,
+    "application_audit_clean": true,
+    "qualification_audit_clean": true,
+    "live_qualification_evidence_replayed": true,
+    "recursive_session_inventory_replayed": true,
+    "trusted_external_seal_anchor_verified": true,
+    "selector_deterministic": true,
+    "formal_c1_loader_eligible": false
+  },
+  "forbidden_artifacts": [
+    "c1_formal_pass_manifest", "routing_trace", "profiler_trace",
+    "P2_artifact", "G3_R5_artifact", "model_capability_claim"
+  ],
+  "release": {
+    "archive_release_authorized": false,
+    "qualification_result_may_authorize_g3_r5": false
+  }
+}

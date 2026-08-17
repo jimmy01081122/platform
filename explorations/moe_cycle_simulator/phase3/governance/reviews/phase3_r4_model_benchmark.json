@@ -1,0 +1,19 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r4-20260728",
+  "ledger_sha256": "6ade9bbfaefacd8cbebbc30fe2181c95b54635fb3da0af581b5e349cf2e6d956",
+  "member_count": 198,
+  "verdict": "GO",
+  "blockers": [],
+  "findings": [
+    "Acceptance binds only R5 and withdrawn R2 is not active evidence.",
+    "Full checkpoint program identity and reachable-prefix replay pass.",
+    "No model, routing, benchmark, GPU, profiling or calibration boundary is exceeded."
+  ],
+  "claim_boundary": "CPU REPLAY_VALIDATE only; not model or performance evidence.",
+  "authorized_next_stage": "Phase 4 only after unanimous same-hash GO.",
+  "not_authorized": [
+    "GPU/model/benchmark/profiling work",
+    "formal calibration PASS"
+  ]
+}

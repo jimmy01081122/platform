@@ -1,0 +1,110 @@
+{
+  "schema_version": "moe-simulator-phase7-r12r5-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase7-r12r5-20260802",
+  "reviewed_commit": "da3d33238365664435664e6ae1d18714e6b68ee2",
+  "reviewed_tree": "4bb9c4d6d462338f43eb0d4e63cc129a44be887b",
+  "reviewed_candidate_ledger_sha256": "61d95a0886b54ce35799002f322836260d1feb703ec31deee8c9430a0555fba3",
+  "candidate_member_count": 192,
+  "source_commit": "cac2a1967b7a91902c46ee014920d704aec57b1f",
+  "source_tree": "ac33145ad2381a5578fd0ab68eceac2906bbd3a4",
+  "review_output_files": [
+    "explorations/moe_cycle_simulator/phase7/governance/r12r5/reviews/phase7_r12r5_architecture_system.json",
+    "explorations/moe_cycle_simulator/phase7/governance/r12r5/reviews/phase7_r12r5_model_benchmark.json",
+    "explorations/moe_cycle_simulator/phase7/governance/r12r5/reviews/phase7_r12r5_trace_provenance.json"
+  ],
+  "reviewers": [
+    {
+      "role": "Architecture/System",
+      "verdict": "GO",
+      "blockers": []
+    },
+    {
+      "role": "Model/Benchmark",
+      "verdict": "GO",
+      "blockers": []
+    },
+    {
+      "role": "Trace/Provenance",
+      "verdict": "GO",
+      "blockers": []
+    }
+  ],
+  "cross_review_identity_equality": "PASS",
+  "verdict": "GO",
+  "verdict_summary": "GO/GO/GO",
+  "blockers": [],
+  "non_blocking_findings": [
+    {
+      "classification": "OPERATOR_INVOCATION_REJECTED",
+      "promotable": false,
+      "summary": "Initial archive replay invocation was rejected before run creation because the supplied output directory already existed. This exercised expected no-overwrite protection. No reviewed candidate member was modified and no provider SSH, environment probe, model download, GPU query or GPU workload occurred."
+    },
+    {
+      "classification": "CPU_MOCK_BOUNDARY",
+      "promotable": true,
+      "summary": "All review and replay claims are CPU/mock reproducibility and governance claims only; GPU authority remains NONE."
+    },
+    {
+      "classification": "PATH_DEPENDENT_REPLAY_LEDGER",
+      "promotable": true,
+      "summary": "The corrected fresh archive output path produced validated 47-member ledger 2e7026cee036c6bd822bdeb09a8abbc04292ca465dbdbfe64ea6ec98262a9c71. The frozen historical archive replay record remains 7ad4fdb626720b17bf5210aa9ea63916a4ea46fd20ce7af50f3d13f3b487d2a0; the 72-member application ledger remains e16d53444efbc8b21c2d273783f1cffc454ca64825e979fba72ab82023849cf6."
+    }
+  ],
+  "candidate_replay": {
+    "exact_set": "PASS_192_OF_192",
+    "nested_sha256_replay": "PASS",
+    "archive_contains_git_directory": false,
+    "source_identity_method": "EXPLICIT_ARCHIVE_BINDING",
+    "source_commit": "cac2a1967b7a91902c46ee014920d704aec57b1f",
+    "source_tree": "ac33145ad2381a5578fd0ab68eceac2906bbd3a4",
+    "cpu_mock_regression": "PASS_126_OF_126",
+    "draft_validation": "PASS_FAIL_CLOSED_217_BLOCKING_FIELDS",
+    "run_contract": "PASS",
+    "application_ledger": "PASS_72_MEMBERS_e16d53444efbc8b21c2d273783f1cffc454ca64825e979fba72ab82023849cf6",
+    "corrected_archive_run_ledger": "PASS_47_MEMBERS_2e7026cee036c6bd822bdeb09a8abbc04292ca465dbdbfe64ea6ec98262a9c71",
+    "corrected_archive_output": "/tmp/r12r5-archive-parent.mywHN7/archive_replay_run"
+  },
+  "initial_archive_invocation": {
+    "classification": "OPERATOR_INVOCATION_REJECTED",
+    "promotion_classification": "NON_PROMOTABLE_DIAGNOSTIC",
+    "run_created": false,
+    "reason": "supplied output directory already existed",
+    "no_overwrite_protection": "EXERCISED",
+    "candidate_modified": false,
+    "provider_ssh": false,
+    "provider_environment_probe": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false
+  },
+  "historical_evidence": {
+    "r12r3_reviews": "BYTE_IDENTICAL",
+    "r12r4_reviews": "BYTE_IDENTICAL",
+    "r12r3_comparison_base": "07adb3840a80fc9febd48501f8f7477c91b5b023",
+    "r12r4_comparison_base": "294b21dfed8b7bd78cd8c01dd2d4f7ffcb0c1edc"
+  },
+  "status_projection": {
+    "r12r5_same_hash_review": "GO/GO/GO",
+    "r12r5_frozen_candidate": "UNCHANGED",
+    "d0_application_instantiation": "ELIGIBLE",
+    "d0_execution": "NOT_AUTHORIZED",
+    "gate_m": "NOT_AUTHORIZED",
+    "m0": "NOT_AUTHORIZED",
+    "gpu_authority": "NONE"
+  },
+  "side_effects": {
+    "provider_ssh": false,
+    "provider_environment_probe": false,
+    "model_download": false,
+    "gpu_query": false,
+    "gpu_workload": false,
+    "git_fetch_origin_identity_sync": true,
+    "network_operations": [
+      "git fetch origin codex/c1-quality-contract-v2-20260718 for repository identity synchronization only"
+    ],
+    "frozen_candidate_modified": false,
+    "historical_evidence_modified": false
+  },
+  "claim_boundary": "R12-R5 same-hash review closure over the exact frozen candidate; CPU/mock reproducibility only, with no live provider, environment, model, runtime, GPU, capacity, performance or calibration claim.",
+  "gpu_authority": "NONE"
+}

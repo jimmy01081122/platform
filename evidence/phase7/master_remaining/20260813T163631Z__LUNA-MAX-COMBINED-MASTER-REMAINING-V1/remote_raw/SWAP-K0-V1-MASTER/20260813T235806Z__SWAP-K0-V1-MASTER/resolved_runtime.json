@@ -1,0 +1,192 @@
+{
+  "llm": {
+    "filtered_noncallable_names": {
+      "_cached_repr": null,
+      "reset_mm_cache": {
+        "callable": true,
+        "type": "method"
+      },
+      "reset_prefix_cache": {
+        "callable": true,
+        "type": "method"
+      }
+    },
+    "model_config": {
+      "block_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'block_size'"
+      },
+      "cache_dtype": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'cache_dtype'"
+      },
+      "cpu_offload_gb": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'cpu_offload_gb'"
+      },
+      "enable_expert_parallel": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'enable_expert_parallel'"
+      },
+      "enable_prefix_caching": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'enable_prefix_caching'"
+      },
+      "enforce_eager": true,
+      "gpu_memory_utilization": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'gpu_memory_utilization'"
+      },
+      "kv_cache_memory_bytes": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'kv_cache_memory_bytes'"
+      },
+      "kv_offloading_backend": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'kv_offloading_backend'"
+      },
+      "kv_offloading_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'kv_offloading_size'"
+      },
+      "max_model_len": 32768,
+      "max_num_batched_tokens": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'max_num_batched_tokens'"
+      },
+      "max_num_seqs": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'max_num_seqs'"
+      },
+      "num_cpu_blocks": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'num_cpu_blocks'"
+      },
+      "num_gpu_blocks": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'num_gpu_blocks'"
+      },
+      "pipeline_parallel_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'pipeline_parallel_size'"
+      },
+      "quantization": null,
+      "tensor_parallel_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'tensor_parallel_size'"
+      },
+      "type": "vllm.config.model.ModelConfig"
+    },
+    "type": "vllm.entrypoints.llm.LLM"
+  },
+  "llm_engine": {
+    "filtered_noncallable_names": {
+      "reset_encoder_cache": {
+        "callable": true,
+        "type": "method"
+      },
+      "reset_mm_cache": {
+        "callable": true,
+        "type": "method"
+      },
+      "reset_prefix_cache": {
+        "callable": true,
+        "type": "method"
+      }
+    },
+    "model_config": {
+      "block_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'block_size'"
+      },
+      "cache_dtype": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'cache_dtype'"
+      },
+      "cpu_offload_gb": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'cpu_offload_gb'"
+      },
+      "enable_expert_parallel": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'enable_expert_parallel'"
+      },
+      "enable_prefix_caching": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'enable_prefix_caching'"
+      },
+      "enforce_eager": true,
+      "gpu_memory_utilization": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'gpu_memory_utilization'"
+      },
+      "kv_cache_memory_bytes": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'kv_cache_memory_bytes'"
+      },
+      "kv_offloading_backend": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'kv_offloading_backend'"
+      },
+      "kv_offloading_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'kv_offloading_size'"
+      },
+      "max_model_len": 32768,
+      "max_num_batched_tokens": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'max_num_batched_tokens'"
+      },
+      "max_num_seqs": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'max_num_seqs'"
+      },
+      "num_cpu_blocks": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'num_cpu_blocks'"
+      },
+      "num_gpu_blocks": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'num_gpu_blocks'"
+      },
+      "pipeline_parallel_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'pipeline_parallel_size'"
+      },
+      "quantization": null,
+      "tensor_parallel_size": {
+        "error": "AttributeError: 'ModelConfig' object has no attribute 'tensor_parallel_size'"
+      },
+      "type": "vllm.config.model.ModelConfig"
+    },
+    "type": "vllm.v1.engine.llm_engine.LLMEngine",
+    "vllm_config": {
+      "block_size": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'block_size'"
+      },
+      "cache_dtype": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'cache_dtype'"
+      },
+      "cpu_offload_gb": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'cpu_offload_gb'"
+      },
+      "enable_expert_parallel": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'enable_expert_parallel'"
+      },
+      "enable_prefix_caching": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'enable_prefix_caching'"
+      },
+      "enforce_eager": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'enforce_eager'"
+      },
+      "gpu_memory_utilization": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'gpu_memory_utilization'"
+      },
+      "kv_cache_memory_bytes": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'kv_cache_memory_bytes'"
+      },
+      "kv_offloading_backend": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'kv_offloading_backend'"
+      },
+      "kv_offloading_size": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'kv_offloading_size'"
+      },
+      "max_model_len": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'max_model_len'"
+      },
+      "max_num_batched_tokens": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'max_num_batched_tokens'"
+      },
+      "max_num_seqs": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'max_num_seqs'"
+      },
+      "num_cpu_blocks": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'num_cpu_blocks'"
+      },
+      "num_gpu_blocks": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'num_gpu_blocks'"
+      },
+      "pipeline_parallel_size": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'pipeline_parallel_size'"
+      },
+      "quantization": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'quantization'"
+      },
+      "tensor_parallel_size": {
+        "error": "AttributeError: 'VllmConfig' object has no attribute 'tensor_parallel_size'"
+      },
+      "type": "vllm.config.vllm.VllmConfig"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": "phase7-special-mechanism-ready-queue-v1",
+  "campaign_id": "20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1",
+  "status": "PREPARED_NOT_DISPATCHED",
+  "dispatch_plan_path": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1/guard_dispatch_plan_v1.json",
+  "reason": "A healthy P0-25 GPU run currently owns the measurement GPU.",
+  "dispatch_guard": {
+    "do_not_overlap_sensitive_gpu_measurement": true,
+    "do_not_interrupt_current_run": true,
+    "do_not_use_filler_workload": true,
+    "first_dispatch_after_current_run": "MECH-G0"
+  },
+  "frozen_runtime_identity": {
+    "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+    "weights": "BF16",
+    "kv": "BF16",
+    "runtime": "vLLM",
+    "gpu": "single NVIDIA RTX PRO 6000 Workstation Edition 96 GB",
+    "tp_pp_ep": "1/1/1",
+    "execution": "eager",
+    "max_num_seqs": 1,
+    "quantization": "none",
+    "persistent_cpu_model_offload": false,
+    "runtime_kv_swap": false
+  },
+  "ready_units": [
+    {
+      "id": "MECH-G0",
+      "order": 1,
+      "status": "READY_AFTER_P0_COMPLETION",
+      "evidence_class": "GPU_MECHANISM_GUARD",
+      "dependencies": ["P0-25 terminal status", "model/runtime identity capture"],
+      "must_capture": ["resolved offload/swap/UM/prefix-cache/chunked-prefill/eager settings", "model and worker process identity", "actual mechanism variant identity"]
+    },
+    {
+      "id": "KV-G0",
+      "order": 2,
+      "status": "READY_AFTER_P0_COMPLETION",
+      "evidence_class": "GPU_MECHANISM_GUARD",
+      "dependencies": ["MECH-G0"],
+      "must_capture": ["KV allocation/residency", "preemption/recompute/swap counters or equivalent evidence", "block identity and terminal state"]
+    },
+    {
+      "id": "OS-SWAP-G0",
+      "order": 3,
+      "status": "READY_AFTER_P0_COMPLETION",
+      "evidence_class": "OS_SWAP_NEGATIVE_DIAGNOSTIC",
+      "dependencies": ["MECH-G0"],
+      "must_capture": ["process/cgroup VmSwap", "major faults", "swap-in/out", "system vmstat as context only"]
+    },
+    {
+      "id": "UM-G0",
+      "order": 4,
+      "status": "READY_AFTER_P0_COMPLETION",
+      "evidence_class": "GPU_MECHANISM_GUARD",
+      "dependencies": ["MECH-G0"],
+      "must_capture": ["managed-memory/page migration evidence or explicit disabled/unavailable state"]
+    },
+    {
+      "id": "OFF-E-RT0",
+      "order": 5,
+      "status": "READY_AFTER_GUARDS",
+      "evidence_class": "GPU_RUNTIME_EXPERT_OFFLOAD",
+      "dependencies": ["MECH-G0", "KV-G0", "OS-SWAP-G0", "UM-G0", "expert catalog adoption audit"],
+      "must_capture": ["installed/authorized runtime capability", "API/build/object identity", "trigger/fallback semantics", "capability negative evidence if unavailable"]
+    },
+    {
+      "id": "SWAP-K0",
+      "order": 6,
+      "status": "READY_AFTER_GUARDS",
+      "evidence_class": "GPU_RUNTIME_KV_SWAP",
+      "dependencies": ["MECH-G0", "KV-G0"],
+      "must_capture": ["runtime mechanism identity", "actual KV block bytes/identity", "swap/preemption/recompute semantics", "trigger method"]
+    },
+    {
+      "id": "OFF-W0",
+      "order": 7,
+      "status": "READY_AFTER_GUARDS",
+      "evidence_class": "GPU_RUNTIME_WEIGHT_OFFLOAD",
+      "dependencies": ["MECH-G0", "expert catalog adoption audit"],
+      "must_capture": ["runtime-native weight-offload capability", "object and writeback semantics", "negative evidence if absent"]
+    }
+  ],
+  "per_attempt_raw_contract": {
+    "remote_namespace": "/vault/flow/moe_simulator_phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1",
+    "local_namespace": "/home/a/flow/edge_hetero_exploration_workspace/edge_hetero_exploration_workspace/artifacts/phase7/special_mechanism_raw/20260813T130017Z__LUNA-MAX-SPECIAL-MECHANISM-TRACE-CLOSURE-V1",
+    "checksum": "SHA-256",
+    "partial_copy_before_verified": true,
+    "remote_delete_before_local_checksum": false
+  }
+}

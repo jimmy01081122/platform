@@ -1,0 +1,84 @@
+{
+  "schema_version": "moe-simulator-architecture-decisions-v1",
+  "time": {
+    "global_unit": "femtosecond",
+    "global_storage": "unsigned_128_bit",
+    "json_encoding": "unsigned_decimal_string",
+    "reference_edge": "phase_offset_fs + floor(cycle * 1000000000000000 * frequency_denominator_hz / frequency_numerator_hz)",
+    "frequency_canonicalization": "divide numerator and denominator by gcd",
+    "frequency_constraints": {
+      "numerator_positive": true,
+      "denominator_positive": true,
+      "maximum_frequency_hz": "1000000000000000",
+      "edge_times_strictly_increasing": true
+    },
+    "repeated_rounded_period_addition": "forbidden",
+    "negative_global_time": "reject",
+    "local_cycle_overflow": "fail_closed",
+    "global_time_overflow": "fail_closed",
+    "intermediate_arithmetic": "checked arbitrary_precision_or_reduced_remainder",
+    "ceil_edge": "smallest cycle n for which edge_time(n) >= arrival_time; an arrival exactly on an edge uses that edge",
+    "synchronization_cycles": "capture edge index plus N receiver cycles",
+    "maximum_drift_from_reference_fs": "0",
+    "fractional_remainder_definition": "(local_cycle * 1000000000000000 * frequency_denominator_hz) mod frequency_numerator_hz",
+    "fractional_remainder_invariant": "0 <= fractional_remainder < frequency_numerator_hz",
+    "checkpoint_restore": "recompute fractional_remainder from canonical clock fields and reject mismatch"
+  },
+  "event_order": {
+    "fields": [
+      "time_fs",
+      "event_priority",
+      "request_id",
+      "token_index",
+      "layer_index",
+      "component_id",
+      "event_id"
+    ],
+    "string_encoding": "UTF-8 NFC normalized bytes compared unsigned lexicographically",
+    "missing_request_id": "empty string sentinel",
+    "missing_token_index": "unsigned 64-bit maximum sentinel",
+    "missing_layer_index": "unsigned 32-bit maximum sentinel",
+    "duplicate_complete_key": "reject",
+    "insertion_order_tie_break": "forbidden",
+    "event_priority_table": "event_priorities.json"
+  },
+  "cdc": {
+    "protocols": [
+      "ONE_WAY",
+      "REQUEST_ACK",
+      "CREDIT"
+    ],
+    "path": [
+      "source_completion",
+      "forward_latency",
+      "receiver_next_edge_ceil",
+      "receiver_sync_cycles",
+      "crossing_queue",
+      "destination_processing",
+      "optional_acknowledge"
+    ],
+    "zero_latency_cycles": "reject unless a queue or clock edge produces strict state/time progress",
+    "bridge_request_path_progress": "forward_latency_fs > 0 or receiver_sync_cycles > 0, including cross-domain bridges",
+    "zeno_detection": "fail after a configurable finite same-time event budget with a dependency-cycle diagnostic"
+  },
+  "alignment": {
+    "signed_offset": true,
+    "rational_floor": "mathematical floor including negative intermediate values",
+    "piecewise_segments": "strictly increasing, non-overlapping, left-closed and right-open except final right-closed segment",
+    "piecewise_gaps": "UNAVAILABLE",
+    "boundary_discontinuity": "allowed only when explicitly declared and never CYCLE_GRADE across the boundary",
+    "out_of_range": "UNAVAILABLE",
+    "extrapolation": "forbidden"
+  },
+  "routing": {
+    "source_scores": "exact decimal expansion of the declared source dtype value",
+    "absolute_tolerance": "exactly four ULP at the source-dtype kth boundary",
+    "relative_tolerance_maximum": "0.00001",
+    "tolerance_change": "Phase 1 may only tighten before formal execution"
+  },
+  "legacy": {
+    "float_trace": "logical-only adapter",
+    "p6": "historical meaning retained; new offline stage is V0",
+    "legacy_evidence_upgrade": "forbidden"
+  }
+}

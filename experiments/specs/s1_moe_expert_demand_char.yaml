@@ -1,0 +1,44 @@
+experiment_id: s1_moe_expert_demand_char
+revision: 1
+status: active
+question: >-
+  For capacity-limited MoE inference (Switch-base-8), does the measured
+  per-layer expert working set exceed a small fast-memory capacity, and is the
+  expert demand temporally predictable enough to justify a prefetch/residency
+  mechanism? Falsifiable: if active experts per layer are few and uncorrelated
+  across layers, prefetching offers no advantage over on-demand loading.
+platform_profile: discrete_edge_workstation
+workload:
+  id: moe_switch8_mbpp_s64_bs8_len64
+  trace_ref: data/fixtures/moe_switch8_mbpp_s64_bs8_len64
+  source_registry: data/registry/sources.yaml
+  access_class: measured
+algorithm:
+  semantic_revision: 0
+  baseline_ids: []
+  proposed_id: null
+  note: S1 is characterization only; algorithms enter at S3.
+stages: [S1]
+parameters:
+  fixed:
+    model_name: google/switch-base-8
+    num_experts: 8
+    batch_size: 8
+    max_input_length: 64
+  sweep: {}
+metrics:
+  primary:
+    - active_experts_per_group_mean
+    - consecutive_group_expert_jaccard_mean
+  secondary:
+    - load_cov_per_group_mean
+    - overflow_fraction
+    - num_layer_groups
+repetitions:
+  warmup: 0
+  measured: 1
+provenance:
+  unregistered_parameters_allowed: false
+notes: >-
+  Converter: scripts/build_canonical.py (edgeflow.canonical CONVERTER_VERSION).
+  No hardware constants used; bytes/duration are null pending S2 registration.

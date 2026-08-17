@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/vault/flow/moe_simulator_phase7/real_campaign/code/swap_k5_exhaustion_runner.py",
+    "--model-path",
+    "/vault/flow/moe_simulator_phase7/models/mistralai__Mixtral-8x7B-Instruct-v0.1__eba92302__bf16_safetensors",
+    "--run-root",
+    "/vault/flow/moe_simulator_phase7/real_campaign/attempts/SWAP-K5-V1-MASTER/runner_runs",
+    "--experiment-id",
+    "SWAP-K5-V1-MASTER",
+    "--contract",
+    "/vault/flow/moe_simulator_phase7/real_campaign/code/swap_k5_exhaustion_fallback_contract_v1.json"
+  ],
+  "cwd": "/root"
+}

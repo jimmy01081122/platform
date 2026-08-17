@@ -1,0 +1,41 @@
+{
+  "schema_version": "phase6-coherent-uma-v1",
+  "mode": "COHERENT_UMA_2COMPUTE",
+  "topology": {
+    "compute_domains": 2,
+    "shared_memory_domains": 1,
+    "shared_fabrics": 1,
+    "p2p_links": 0,
+    "phantom_p2p_events": "forbidden"
+  },
+  "capacity": {
+    "shared_global_capacity": true,
+    "aliases_counted_once": true,
+    "object_bytes_hash_bound": true
+  },
+  "immutable_objects": {
+    "reads": "allowed through shared fabric",
+    "writes": "forbidden"
+  },
+  "mutable_objects": {
+    "states": [
+      "UNCACHED",
+      "SHARED",
+      "MODIFIED"
+    ],
+    "version_monotonic": true,
+    "acquire_write": "exclusive owner and requested base version required",
+    "release": "REQUEST_ACK completion publishes the new version",
+    "read": "required version must be visible before admission",
+    "stale_read": "rejected",
+    "per_object_reservation": "exactly one in-flight UMA operation per object",
+    "invariants": {
+      "UNCACHED": "owner absent and sharers empty",
+      "SHARED": "owner absent and every sharer is a valid compute domain",
+      "MODIFIED": "one valid owner and sharers empty"
+    },
+    "version_increment": "checked uint64 increment"
+  },
+  "fidelity": "FUNCTIONAL_ONLY_RELEASE_ACQUIRE",
+  "claim": "GENERIC_COHERENT_UMA_FUNCTIONAL_ONLY_NOT_MOE_EXECUTION"
+}

@@ -1,0 +1,20 @@
+{
+  "role": "Architecture/System",
+  "ledger_sha256": "478674f22a8022c5ae8fdc343cb67173435d8308cf4e742b1629da975310b445",
+  "verdict": "GO",
+  "blockers": [],
+  "verified_member_counts": {
+    "phase1_top": 16,
+    "phase0_nested": 27,
+    "phase1_run_nested": 21
+  },
+  "verified_results": [
+    "ARCH-P1-B1 prospectively closed",
+    "ARCH-P1-B2 prospectively closed",
+    "Phase 1 replay PASS",
+    "16 Phase 1 tests PASS",
+    "Phase 0 validator and 36 tests PASS"
+  ],
+  "review_mode": "read-only",
+  "gpu_used": false
+}

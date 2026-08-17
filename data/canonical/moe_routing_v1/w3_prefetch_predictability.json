@@ -1,0 +1,2797 @@
+{
+  "dataset": "core12345/MoE_expert_selection_trace",
+  "source_revision": "27febb7b2d24169560a9f6f83d38eb53f94916cf",
+  "bandwidth_name": "pcie_mid_16GBs",
+  "bandwidth_GBs": 16.0,
+  "prefetch_depth": 1,
+  "note": "oracle prefetch (_future_needed) vs causal past-only predictors; C=0.5N, d*=1, shared-link E=1. 'retained' = predictor stall reduction / oracle stall reduction (1.0 = predictor matches perfect lookahead).",
+  "predictors": [
+    "persistence",
+    "frequency",
+    "markov1"
+  ],
+  "models": {
+    "Qwen/Qwen3-235B-A22B-FP8": {
+      "num_experts": 128,
+      "capacity": 64,
+      "num_queries": 36,
+      "oracle_stall_reduction": {
+        "n": 36,
+        "median": 99.7,
+        "min": 90.11,
+        "max": 99.91,
+        "mean": 98.944
+      },
+      "by_predictor": {
+        "persistence": {
+          "retained": {
+            "n": 36,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "stall_reduction": {
+            "n": 36,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "recall": {
+            "n": 36,
+            "median": 0.063,
+            "min": 0.057,
+            "max": 0.071,
+            "mean": 0.063
+          },
+          "precision": {
+            "n": 36,
+            "median": 0.063,
+            "min": 0.057,
+            "max": 0.071,
+            "mean": 0.063
+          }
+        },
+        "frequency": {
+          "retained": {
+            "n": 36,
+            "median": 0.026,
+            "min": 0.018,
+            "max": 0.05,
+            "mean": 0.028
+          },
+          "stall_reduction": {
+            "n": 36,
+            "median": 2.585,
+            "min": 1.76,
+            "max": 4.46,
+            "mean": 2.746
+          },
+          "recall": {
+            "n": 36,
+            "median": 0.105,
+            "min": 0.097,
+            "max": 0.116,
+            "mean": 0.106
+          },
+          "precision": {
+            "n": 36,
+            "median": 0.105,
+            "min": 0.097,
+            "max": 0.116,
+            "mean": 0.106
+          }
+        },
+        "markov1": {
+          "retained": {
+            "n": 36,
+            "median": 0.154,
+            "min": 0.123,
+            "max": 0.208,
+            "mean": 0.155
+          },
+          "stall_reduction": {
+            "n": 36,
+            "median": 15.175,
+            "min": 12.16,
+            "max": 20.74,
+            "mean": 15.383
+          },
+          "recall": {
+            "n": 36,
+            "median": 0.233,
+            "min": 0.208,
+            "max": 0.288,
+            "mean": 0.24
+          },
+          "precision": {
+            "n": 36,
+            "median": 0.233,
+            "min": 0.208,
+            "max": 0.288,
+            "mean": 0.24
+          }
+        }
+      },
+      "by_benchmark": {
+        "livecodebench": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.07,
+              "min": 0.07,
+              "max": 0.071,
+              "mean": 0.07
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": 0.048,
+              "min": 0.047,
+              "max": 0.05,
+              "mean": 0.048
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.115,
+              "min": 0.111,
+              "max": 0.116,
+              "mean": 0.114
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.159,
+              "min": 0.159,
+              "max": 0.163,
+              "mean": 0.16
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.233,
+              "min": 0.23,
+              "max": 0.241,
+              "mean": 0.235
+            }
+          }
+        },
+        "mmlu": {
+          "persistence": {
+            "retained": {
+              "n": 30,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 30,
+              "median": 0.063,
+              "min": 0.057,
+              "max": 0.066,
+              "mean": 0.063
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 30,
+              "median": 0.025,
+              "min": 0.018,
+              "max": 0.035,
+              "mean": 0.026
+            },
+            "recall": {
+              "n": 30,
+              "median": 0.104,
+              "min": 0.097,
+              "max": 0.111,
+              "mean": 0.104
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 30,
+              "median": 0.152,
+              "min": 0.123,
+              "max": 0.208,
+              "mean": 0.153
+            },
+            "recall": {
+              "n": 30,
+              "median": 0.233,
+              "min": 0.208,
+              "max": 0.288,
+              "mean": 0.238
+            }
+          }
+        },
+        "mmlu_ZH_CN": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.064,
+              "min": 0.059,
+              "max": 0.064,
+              "mean": 0.062
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": 0.03,
+              "min": 0.024,
+              "max": 0.03,
+              "mean": 0.028
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.112,
+              "min": 0.11,
+              "max": 0.116,
+              "mean": 0.113
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.177,
+              "min": 0.152,
+              "max": 0.186,
+              "mean": 0.172
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.272,
+              "min": 0.251,
+              "max": 0.28,
+              "mean": 0.268
+            }
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 90.43,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0698,
+              "next_step_precision": 0.0698,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 4.31,
+              "retained_frac": 0.0477,
+              "next_step_recall": 0.1107,
+              "next_step_precision": 0.1107,
+              "wasted_prefetches": 1968
+            },
+            "markov1": {
+              "stall_reduction_pct": 14.34,
+              "retained_frac": 0.1585,
+              "next_step_recall": 0.2332,
+              "next_step_precision": 0.2331,
+              "wasted_prefetches": 7333
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 90.11,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0712,
+              "next_step_precision": 0.0712,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 4.46,
+              "retained_frac": 0.0495,
+              "next_step_recall": 0.1162,
+              "next_step_precision": 0.1161,
+              "wasted_prefetches": 1891
+            },
+            "markov1": {
+              "stall_reduction_pct": 14.3,
+              "retained_frac": 0.1587,
+              "next_step_recall": 0.2301,
+              "next_step_precision": 0.23,
+              "wasted_prefetches": 5998
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 93.36,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0703,
+              "next_step_precision": 0.0703,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 4.41,
+              "retained_frac": 0.0472,
+              "next_step_recall": 0.115,
+              "next_step_precision": 0.115,
+              "wasted_prefetches": 2060
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.25,
+              "retained_frac": 0.1634,
+              "next_step_recall": 0.2413,
+              "next_step_precision": 0.2412,
+              "wasted_prefetches": 7131
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.73,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0632,
+              "next_step_precision": 0.0631,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.41,
+              "retained_frac": 0.0342,
+              "next_step_recall": 0.1081,
+              "next_step_precision": 0.108,
+              "wasted_prefetches": 2077
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.72,
+              "retained_frac": 0.1576,
+              "next_step_recall": 0.2435,
+              "next_step_precision": 0.2435,
+              "wasted_prefetches": 7328
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.74,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0657,
+              "next_step_precision": 0.0656,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.58,
+              "retained_frac": 0.0258,
+              "next_step_recall": 0.1061,
+              "next_step_precision": 0.106,
+              "wasted_prefetches": 2155
+            },
+            "markov1": {
+              "stall_reduction_pct": 13.15,
+              "retained_frac": 0.1318,
+              "next_step_recall": 0.2259,
+              "next_step_precision": 0.2259,
+              "wasted_prefetches": 6509
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "10",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.56,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0624,
+              "next_step_precision": 0.0623,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.39,
+              "retained_frac": 0.0241,
+              "next_step_recall": 0.1006,
+              "next_step_precision": 0.1005,
+              "wasted_prefetches": 2351
+            },
+            "markov1": {
+              "stall_reduction_pct": 14.6,
+              "retained_frac": 0.1466,
+              "next_step_recall": 0.2327,
+              "next_step_precision": 0.2326,
+              "wasted_prefetches": 8792
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "11",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.84,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0641,
+              "next_step_precision": 0.064,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.18,
+              "retained_frac": 0.0319,
+              "next_step_recall": 0.1105,
+              "next_step_precision": 0.1105,
+              "wasted_prefetches": 1920
+            },
+            "markov1": {
+              "stall_reduction_pct": 17.44,
+              "retained_frac": 0.1747,
+              "next_step_recall": 0.2609,
+              "next_step_precision": 0.2608,
+              "wasted_prefetches": 7689
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "12",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.81,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0603,
+              "next_step_precision": 0.0603,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.26,
+              "retained_frac": 0.0326,
+              "next_step_recall": 0.1109,
+              "next_step_precision": 0.1109,
+              "wasted_prefetches": 1687
+            },
+            "markov1": {
+              "stall_reduction_pct": 18.72,
+              "retained_frac": 0.1876,
+              "next_step_recall": 0.2715,
+              "next_step_precision": 0.2715,
+              "wasted_prefetches": 7584
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "13",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.43,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0625,
+              "next_step_precision": 0.0624,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.07,
+              "retained_frac": 0.0208,
+              "next_step_recall": 0.1042,
+              "next_step_precision": 0.1042,
+              "wasted_prefetches": 2360
+            },
+            "markov1": {
+              "stall_reduction_pct": 13.2,
+              "retained_frac": 0.1327,
+              "next_step_recall": 0.229,
+              "next_step_precision": 0.229,
+              "wasted_prefetches": 7841
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "14",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.87,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0644,
+              "next_step_precision": 0.0643,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.73,
+              "retained_frac": 0.0273,
+              "next_step_recall": 0.1055,
+              "next_step_precision": 0.1055,
+              "wasted_prefetches": 1886
+            },
+            "markov1": {
+              "stall_reduction_pct": 19.17,
+              "retained_frac": 0.192,
+              "next_step_recall": 0.2754,
+              "next_step_precision": 0.2754,
+              "wasted_prefetches": 8369
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "15",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.68,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0631,
+              "next_step_precision": 0.063,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.59,
+              "retained_frac": 0.026,
+              "next_step_recall": 0.1036,
+              "next_step_precision": 0.1036,
+              "wasted_prefetches": 2189
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.82,
+              "retained_frac": 0.1587,
+              "next_step_recall": 0.2355,
+              "next_step_precision": 0.2355,
+              "wasted_prefetches": 8395
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "16",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.8,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0621,
+              "next_step_precision": 0.062,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.38,
+              "retained_frac": 0.0239,
+              "next_step_recall": 0.0985,
+              "next_step_precision": 0.0984,
+              "wasted_prefetches": 2308
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.22,
+              "retained_frac": 0.1525,
+              "next_step_recall": 0.2331,
+              "next_step_precision": 0.2331,
+              "wasted_prefetches": 8934
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "17",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.78,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0626,
+              "next_step_precision": 0.0626,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.84,
+              "retained_frac": 0.0284,
+              "next_step_recall": 0.0971,
+              "next_step_precision": 0.097,
+              "wasted_prefetches": 2382
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.81,
+              "retained_frac": 0.1584,
+              "next_step_recall": 0.2307,
+              "next_step_precision": 0.2306,
+              "wasted_prefetches": 9686
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "18",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.9,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0572,
+              "next_step_precision": 0.0572,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.53,
+              "retained_frac": 0.0253,
+              "next_step_recall": 0.1032,
+              "next_step_precision": 0.1032,
+              "wasted_prefetches": 1905
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.76,
+              "retained_frac": 0.1578,
+              "next_step_recall": 0.2307,
+              "next_step_precision": 0.2306,
+              "wasted_prefetches": 8713
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "19",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 98.91,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0631,
+              "next_step_precision": 0.0631,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.45,
+              "retained_frac": 0.0247,
+              "next_step_recall": 0.1045,
+              "next_step_precision": 0.1044,
+              "wasted_prefetches": 2441
+            },
+            "markov1": {
+              "stall_reduction_pct": 13.22,
+              "retained_frac": 0.1337,
+              "next_step_recall": 0.222,
+              "next_step_precision": 0.2219,
+              "wasted_prefetches": 8098
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.71,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0616,
+              "next_step_precision": 0.0615,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.91,
+              "retained_frac": 0.0291,
+              "next_step_recall": 0.1017,
+              "next_step_precision": 0.1016,
+              "wasted_prefetches": 2253
+            },
+            "markov1": {
+              "stall_reduction_pct": 14.16,
+              "retained_frac": 0.142,
+              "next_step_recall": 0.2277,
+              "next_step_precision": 0.2276,
+              "wasted_prefetches": 8379
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "20",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.22,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.064,
+              "next_step_precision": 0.064,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.41,
+              "retained_frac": 0.0243,
+              "next_step_recall": 0.1036,
+              "next_step_precision": 0.1035,
+              "wasted_prefetches": 2337
+            },
+            "markov1": {
+              "stall_reduction_pct": 14.1,
+              "retained_frac": 0.1421,
+              "next_step_recall": 0.227,
+              "next_step_precision": 0.2269,
+              "wasted_prefetches": 7918
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "21",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.67,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0601,
+              "next_step_precision": 0.06,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.2,
+              "retained_frac": 0.0221,
+              "next_step_recall": 0.0977,
+              "next_step_precision": 0.0977,
+              "wasted_prefetches": 2554
+            },
+            "markov1": {
+              "stall_reduction_pct": 13.48,
+              "retained_frac": 0.1353,
+              "next_step_recall": 0.2222,
+              "next_step_precision": 0.2221,
+              "wasted_prefetches": 8695
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "22",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.24,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0638,
+              "next_step_precision": 0.0637,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.33,
+              "retained_frac": 0.0235,
+              "next_step_recall": 0.1031,
+              "next_step_precision": 0.1031,
+              "wasted_prefetches": 2392
+            },
+            "markov1": {
+              "stall_reduction_pct": 12.16,
+              "retained_frac": 0.1226,
+              "next_step_recall": 0.2084,
+              "next_step_precision": 0.2083,
+              "wasted_prefetches": 8344
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "23",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.91,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0602,
+              "next_step_precision": 0.0601,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.43,
+              "retained_frac": 0.0243,
+              "next_step_recall": 0.1069,
+              "next_step_precision": 0.1069,
+              "wasted_prefetches": 1836
+            },
+            "markov1": {
+              "stall_reduction_pct": 17.39,
+              "retained_frac": 0.1741,
+              "next_step_recall": 0.2598,
+              "next_step_precision": 0.2598,
+              "wasted_prefetches": 8144
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "24",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.69,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0611,
+              "next_step_precision": 0.061,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.72,
+              "retained_frac": 0.0273,
+              "next_step_recall": 0.1043,
+              "next_step_precision": 0.1042,
+              "wasted_prefetches": 2092
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.88,
+              "retained_frac": 0.1592,
+              "next_step_recall": 0.242,
+              "next_step_precision": 0.242,
+              "wasted_prefetches": 8900
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "25",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.81,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0632,
+              "next_step_precision": 0.0631,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.82,
+              "retained_frac": 0.0283,
+              "next_step_recall": 0.107,
+              "next_step_precision": 0.1069,
+              "wasted_prefetches": 2029
+            },
+            "markov1": {
+              "stall_reduction_pct": 20.74,
+              "retained_frac": 0.2078,
+              "next_step_recall": 0.2879,
+              "next_step_precision": 0.2879,
+              "wasted_prefetches": 8475
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "26",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.78,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0652,
+              "next_step_precision": 0.0651,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.66,
+              "retained_frac": 0.0267,
+              "next_step_recall": 0.1075,
+              "next_step_precision": 0.1075,
+              "wasted_prefetches": 2066
+            },
+            "markov1": {
+              "stall_reduction_pct": 13.3,
+              "retained_frac": 0.1333,
+              "next_step_recall": 0.2279,
+              "next_step_precision": 0.2278,
+              "wasted_prefetches": 8164
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "27",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.28,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0614,
+              "next_step_precision": 0.0613,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.33,
+              "retained_frac": 0.0234,
+              "next_step_recall": 0.1029,
+              "next_step_precision": 0.1028,
+              "wasted_prefetches": 2402
+            },
+            "markov1": {
+              "stall_reduction_pct": 13.32,
+              "retained_frac": 0.1342,
+              "next_step_recall": 0.2244,
+              "next_step_precision": 0.2244,
+              "wasted_prefetches": 7914
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "28",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.41,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.062,
+              "next_step_precision": 0.0619,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 1.76,
+              "retained_frac": 0.0177,
+              "next_step_recall": 0.1048,
+              "next_step_precision": 0.1048,
+              "wasted_prefetches": 2389
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.19,
+              "retained_frac": 0.1528,
+              "next_step_recall": 0.2433,
+              "next_step_precision": 0.2433,
+              "wasted_prefetches": 8886
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "29",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.77,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0603,
+              "next_step_precision": 0.0602,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.69,
+              "retained_frac": 0.027,
+              "next_step_recall": 0.1025,
+              "next_step_precision": 0.1024,
+              "wasted_prefetches": 2226
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.69,
+              "retained_frac": 0.1573,
+              "next_step_recall": 0.2328,
+              "next_step_precision": 0.2327,
+              "wasted_prefetches": 9356
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "3",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.05,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0616,
+              "next_step_precision": 0.0616,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.46,
+              "retained_frac": 0.0248,
+              "next_step_recall": 0.1088,
+              "next_step_precision": 0.1088,
+              "wasted_prefetches": 2309
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.35,
+              "retained_frac": 0.155,
+              "next_step_recall": 0.2475,
+              "next_step_precision": 0.2474,
+              "wasted_prefetches": 8107
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "4",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.62,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0615,
+              "next_step_precision": 0.0615,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.29,
+              "retained_frac": 0.023,
+              "next_step_recall": 0.0972,
+              "next_step_precision": 0.0972,
+              "wasted_prefetches": 2514
+            },
+            "markov1": {
+              "stall_reduction_pct": 13.74,
+              "retained_frac": 0.1379,
+              "next_step_recall": 0.218,
+              "next_step_precision": 0.2179,
+              "wasted_prefetches": 9509
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "5",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.36,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0649,
+              "next_step_precision": 0.0648,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 1.92,
+              "retained_frac": 0.0193,
+              "next_step_recall": 0.1038,
+              "next_step_precision": 0.1038,
+              "wasted_prefetches": 2432
+            },
+            "markov1": {
+              "stall_reduction_pct": 14.15,
+              "retained_frac": 0.1424,
+              "next_step_recall": 0.2321,
+              "next_step_precision": 0.232,
+              "wasted_prefetches": 9027
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "6",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.52,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0623,
+              "next_step_precision": 0.0623,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.4,
+              "retained_frac": 0.0241,
+              "next_step_recall": 0.1092,
+              "next_step_precision": 0.1091,
+              "wasted_prefetches": 2066
+            },
+            "markov1": {
+              "stall_reduction_pct": 14.34,
+              "retained_frac": 0.1441,
+              "next_step_recall": 0.2333,
+              "next_step_precision": 0.2332,
+              "wasted_prefetches": 8313
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "7",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.62,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0638,
+              "next_step_precision": 0.0638,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.68,
+              "retained_frac": 0.0269,
+              "next_step_recall": 0.1021,
+              "next_step_precision": 0.1021,
+              "wasted_prefetches": 2187
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.14,
+              "retained_frac": 0.1519,
+              "next_step_recall": 0.23,
+              "next_step_precision": 0.2299,
+              "wasted_prefetches": 9277
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "8",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.89,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0652,
+              "next_step_precision": 0.0652,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.51,
+              "retained_frac": 0.0351,
+              "next_step_recall": 0.11,
+              "next_step_precision": 0.1099,
+              "wasted_prefetches": 1395
+            },
+            "markov1": {
+              "stall_reduction_pct": 17.34,
+              "retained_frac": 0.1736,
+              "next_step_recall": 0.2575,
+              "next_step_precision": 0.2574,
+              "wasted_prefetches": 7682
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "9",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.91,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0634,
+              "next_step_precision": 0.0634,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.32,
+              "retained_frac": 0.0232,
+              "next_step_recall": 0.0991,
+              "next_step_precision": 0.099,
+              "wasted_prefetches": 1800
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.16,
+              "retained_frac": 0.1517,
+              "next_step_recall": 0.2352,
+              "next_step_precision": 0.2351,
+              "wasted_prefetches": 8638
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.87,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0638,
+              "next_step_precision": 0.0638,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.05,
+              "retained_frac": 0.0305,
+              "next_step_recall": 0.1164,
+              "next_step_precision": 0.1164,
+              "wasted_prefetches": 1838
+            },
+            "markov1": {
+              "stall_reduction_pct": 17.7,
+              "retained_frac": 0.1772,
+              "next_step_recall": 0.2724,
+              "next_step_precision": 0.2723,
+              "wasted_prefetches": 6033
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.86,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0595,
+              "next_step_precision": 0.0594,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.0,
+              "retained_frac": 0.03,
+              "next_step_recall": 0.1118,
+              "next_step_precision": 0.1118,
+              "wasted_prefetches": 2031
+            },
+            "markov1": {
+              "stall_reduction_pct": 18.58,
+              "retained_frac": 0.1861,
+              "next_step_recall": 0.2797,
+              "next_step_precision": 0.2796,
+              "wasted_prefetches": 7230
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 12126,
+          "oracle_stall_reduction_pct": 99.86,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0637,
+              "next_step_precision": 0.0637,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 2.38,
+              "retained_frac": 0.0238,
+              "next_step_recall": 0.11,
+              "next_step_precision": 0.11,
+              "wasted_prefetches": 2035
+            },
+            "markov1": {
+              "stall_reduction_pct": 15.15,
+              "retained_frac": 0.1517,
+              "next_step_recall": 0.2513,
+              "next_step_precision": 0.2512,
+              "wasted_prefetches": 6700
+            }
+          }
+        }
+      ]
+    },
+    "cognitivecomputations/DeepSeek-R1-AWQ": {
+      "num_experts": 256,
+      "capacity": 128,
+      "num_queries": 9,
+      "oracle_stall_reduction": {
+        "n": 9,
+        "median": 99.48,
+        "min": 76.38,
+        "max": 99.64,
+        "mean": 93.112
+      },
+      "by_predictor": {
+        "persistence": {
+          "retained": {
+            "n": 9,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "stall_reduction": {
+            "n": 9,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "recall": {
+            "n": 9,
+            "median": 0.035,
+            "min": 0.033,
+            "max": 0.039,
+            "mean": 0.035
+          },
+          "precision": {
+            "n": 9,
+            "median": 0.035,
+            "min": 0.033,
+            "max": 0.039,
+            "mean": 0.035
+          }
+        },
+        "frequency": {
+          "retained": {
+            "n": 9,
+            "median": 0.014,
+            "min": -0.016,
+            "max": 0.046,
+            "mean": 0.015
+          },
+          "stall_reduction": {
+            "n": 9,
+            "median": 1.39,
+            "min": -1.57,
+            "max": 3.9,
+            "mean": 1.212
+          },
+          "recall": {
+            "n": 9,
+            "median": 0.047,
+            "min": 0.04,
+            "max": 0.049,
+            "mean": 0.046
+          },
+          "precision": {
+            "n": 9,
+            "median": 0.047,
+            "min": 0.04,
+            "max": 0.049,
+            "mean": 0.046
+          }
+        },
+        "markov1": {
+          "retained": {
+            "n": 9,
+            "median": 0.053,
+            "min": -0.005,
+            "max": 0.064,
+            "mean": 0.04
+          },
+          "stall_reduction": {
+            "n": 9,
+            "median": 4.25,
+            "min": -0.46,
+            "max": 6.32,
+            "mean": 3.623
+          },
+          "recall": {
+            "n": 9,
+            "median": 0.071,
+            "min": 0.049,
+            "max": 0.118,
+            "mean": 0.076
+          },
+          "precision": {
+            "n": 9,
+            "median": 0.071,
+            "min": 0.049,
+            "max": 0.118,
+            "mean": 0.076
+          }
+        }
+      },
+      "by_benchmark": {
+        "livecodebench": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.038,
+              "min": 0.037,
+              "max": 0.039,
+              "mean": 0.038
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": 0.045,
+              "min": 0.039,
+              "max": 0.046,
+              "mean": 0.044
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.049,
+              "min": 0.047,
+              "max": 0.049,
+              "mean": 0.048
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.053,
+              "min": 0.052,
+              "max": 0.056,
+              "mean": 0.054
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.061,
+              "min": 0.057,
+              "max": 0.067,
+              "mean": 0.062
+            }
+          }
+        },
+        "mmlu": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.034,
+              "min": 0.033,
+              "max": 0.034,
+              "mean": 0.033
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": -0.009,
+              "min": -0.016,
+              "max": 0.016,
+              "mean": -0.003
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.044,
+              "min": 0.04,
+              "max": 0.047,
+              "mean": 0.043
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.003,
+              "min": -0.005,
+              "max": 0.054,
+              "mean": 0.017
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.071,
+              "min": 0.049,
+              "max": 0.091,
+              "mean": 0.07
+            }
+          }
+        },
+        "mmlu_ZH_CN": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.035,
+              "min": 0.034,
+              "max": 0.035,
+              "mean": 0.035
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": 0.002,
+              "min": -0.003,
+              "max": 0.014,
+              "mean": 0.004
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.047,
+              "min": 0.045,
+              "max": 0.049,
+              "mean": 0.047
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.054,
+              "min": 0.029,
+              "max": 0.064,
+              "mean": 0.049
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.091,
+              "min": 0.076,
+              "max": 0.118,
+              "mean": 0.095
+            }
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 78.17,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0377,
+              "next_step_precision": 0.0376,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.6,
+              "retained_frac": 0.046,
+              "next_step_recall": 0.0494,
+              "next_step_precision": 0.0493,
+              "wasted_prefetches": 1237
+            },
+            "markov1": {
+              "stall_reduction_pct": 4.07,
+              "retained_frac": 0.0521,
+              "next_step_recall": 0.0615,
+              "next_step_precision": 0.0613,
+              "wasted_prefetches": 3957
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 76.38,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.039,
+              "next_step_precision": 0.0389,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.01,
+              "retained_frac": 0.0394,
+              "next_step_recall": 0.0487,
+              "next_step_precision": 0.0486,
+              "wasted_prefetches": 1107
+            },
+            "markov1": {
+              "stall_reduction_pct": 4.25,
+              "retained_frac": 0.0556,
+              "next_step_recall": 0.0671,
+              "next_step_precision": 0.067,
+              "wasted_prefetches": 4090
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 86.21,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.037,
+              "next_step_precision": 0.0369,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 3.9,
+              "retained_frac": 0.0452,
+              "next_step_recall": 0.047,
+              "next_step_precision": 0.0469,
+              "wasted_prefetches": 1652
+            },
+            "markov1": {
+              "stall_reduction_pct": 4.6,
+              "retained_frac": 0.0533,
+              "next_step_recall": 0.0568,
+              "next_step_precision": 0.0567,
+              "wasted_prefetches": 4107
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 99.64,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0338,
+              "next_step_precision": 0.0338,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 1.57,
+              "retained_frac": 0.0158,
+              "next_step_recall": 0.0439,
+              "next_step_precision": 0.0439,
+              "wasted_prefetches": 1561
+            },
+            "markov1": {
+              "stall_reduction_pct": 5.34,
+              "retained_frac": 0.0536,
+              "next_step_recall": 0.0909,
+              "next_step_precision": 0.0909,
+              "wasted_prefetches": 5889
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 99.48,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0328,
+              "next_step_precision": 0.0327,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -1.57,
+              "retained_frac": -0.0158,
+              "next_step_recall": 0.0467,
+              "next_step_precision": 0.0467,
+              "wasted_prefetches": 1876
+            },
+            "markov1": {
+              "stall_reduction_pct": 0.3,
+              "retained_frac": 0.003,
+              "next_step_recall": 0.0711,
+              "next_step_precision": 0.071,
+              "wasted_prefetches": 5802
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 99.56,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0335,
+              "next_step_precision": 0.0334,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -0.85,
+              "retained_frac": -0.0085,
+              "next_step_recall": 0.0398,
+              "next_step_precision": 0.0397,
+              "wasted_prefetches": 1909
+            },
+            "markov1": {
+              "stall_reduction_pct": -0.46,
+              "retained_frac": -0.0046,
+              "next_step_recall": 0.0492,
+              "next_step_precision": 0.0491,
+              "wasted_prefetches": 5871
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4387",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 99.45,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0335,
+              "next_step_precision": 0.0335,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.16,
+              "retained_frac": 0.0016,
+              "next_step_recall": 0.049,
+              "next_step_precision": 0.0489,
+              "wasted_prefetches": 1691
+            },
+            "markov1": {
+              "stall_reduction_pct": 6.32,
+              "retained_frac": 0.0635,
+              "next_step_recall": 0.1176,
+              "next_step_precision": 0.1176,
+              "wasted_prefetches": 5269
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4388",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 99.62,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0351,
+              "next_step_precision": 0.0351,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 1.39,
+              "retained_frac": 0.0139,
+              "next_step_recall": 0.0448,
+              "next_step_precision": 0.0447,
+              "wasted_prefetches": 1622
+            },
+            "markov1": {
+              "stall_reduction_pct": 5.34,
+              "retained_frac": 0.0536,
+              "next_step_recall": 0.0912,
+              "next_step_precision": 0.0912,
+              "wasted_prefetches": 6820
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "high_school_mathematics",
+          "query_id": "4389",
+          "steps": 7482,
+          "oracle_stall_reduction_pct": 99.5,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0349,
+              "next_step_precision": 0.0348,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -0.3,
+              "retained_frac": -0.003,
+              "next_step_recall": 0.0468,
+              "next_step_precision": 0.0467,
+              "wasted_prefetches": 1745
+            },
+            "markov1": {
+              "stall_reduction_pct": 2.85,
+              "retained_frac": 0.0286,
+              "next_step_recall": 0.0757,
+              "next_step_precision": 0.0756,
+              "wasted_prefetches": 4777
+            }
+          }
+        }
+      ]
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+      "num_experts": 128,
+      "capacity": 64,
+      "num_queries": 9,
+      "oracle_stall_reduction": {
+        "n": 9,
+        "median": 97.62,
+        "min": 96.68,
+        "max": 98.87,
+        "mean": 97.782
+      },
+      "by_predictor": {
+        "persistence": {
+          "retained": {
+            "n": 9,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "stall_reduction": {
+            "n": 9,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "recall": {
+            "n": 9,
+            "median": 0.008,
+            "min": 0.006,
+            "max": 0.022,
+            "mean": 0.01
+          },
+          "precision": {
+            "n": 9,
+            "median": 0.008,
+            "min": 0.007,
+            "max": 0.022,
+            "mean": 0.01
+          }
+        },
+        "frequency": {
+          "retained": {
+            "n": 9,
+            "median": 0.0,
+            "min": -0.011,
+            "max": 0.01,
+            "mean": -0.0
+          },
+          "stall_reduction": {
+            "n": 9,
+            "median": 0.0,
+            "min": -1.11,
+            "max": 0.99,
+            "mean": -0.029
+          },
+          "recall": {
+            "n": 9,
+            "median": 0.055,
+            "min": 0.043,
+            "max": 0.069,
+            "mean": 0.055
+          },
+          "precision": {
+            "n": 9,
+            "median": 0.055,
+            "min": 0.043,
+            "max": 0.069,
+            "mean": 0.054
+          }
+        },
+        "markov1": {
+          "retained": {
+            "n": 9,
+            "median": -0.005,
+            "min": -0.038,
+            "max": 0.056,
+            "mean": 0.003
+          },
+          "stall_reduction": {
+            "n": 9,
+            "median": -0.49,
+            "min": -3.65,
+            "max": 5.54,
+            "mean": 0.338
+          },
+          "recall": {
+            "n": 9,
+            "median": 0.144,
+            "min": 0.101,
+            "max": 0.248,
+            "mean": 0.159
+          },
+          "precision": {
+            "n": 9,
+            "median": 0.143,
+            "min": 0.101,
+            "max": 0.248,
+            "mean": 0.159
+          }
+        }
+      },
+      "by_benchmark": {
+        "livecodebench": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.009,
+              "min": 0.007,
+              "max": 0.011,
+              "mean": 0.009
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": -0.007,
+              "max": 0.01,
+              "mean": 0.001
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.046,
+              "min": 0.043,
+              "max": 0.048,
+              "mean": 0.045
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": -0.013,
+              "min": -0.038,
+              "max": -0.009,
+              "mean": -0.02
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.103,
+              "min": 0.101,
+              "max": 0.113,
+              "mean": 0.106
+            }
+          }
+        },
+        "mmlu": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.01,
+              "min": 0.006,
+              "max": 0.022,
+              "mean": 0.013
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": -0.004,
+              "min": -0.011,
+              "max": 0.001,
+              "mean": -0.005
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.055,
+              "min": 0.049,
+              "max": 0.056,
+              "mean": 0.053
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.007,
+              "min": -0.005,
+              "max": 0.019,
+              "mean": 0.007
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.192,
+              "min": 0.144,
+              "max": 0.248,
+              "mean": 0.195
+            }
+          }
+        },
+        "mmlu_ZH_CN": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.007,
+              "min": 0.007,
+              "max": 0.008,
+              "mean": 0.007
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": 0.004,
+              "min": 0.0,
+              "max": 0.005,
+              "mean": 0.003
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.063,
+              "min": 0.063,
+              "max": 0.069,
+              "mean": 0.065
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.025,
+              "min": -0.014,
+              "max": 0.056,
+              "mean": 0.022
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.194,
+              "min": 0.133,
+              "max": 0.205,
+              "mean": 0.177
+            }
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 96.87,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0115,
+              "next_step_precision": 0.0115,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.99,
+              "retained_frac": 0.0102,
+              "next_step_recall": 0.0475,
+              "next_step_precision": 0.0473,
+              "wasted_prefetches": 51
+            },
+            "markov1": {
+              "stall_reduction_pct": -0.82,
+              "retained_frac": -0.0085,
+              "next_step_recall": 0.1008,
+              "next_step_precision": 0.1008,
+              "wasted_prefetches": 329
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 96.68,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0095,
+              "next_step_precision": 0.0095,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0456,
+              "next_step_precision": 0.0453,
+              "wasted_prefetches": 51
+            },
+            "markov1": {
+              "stall_reduction_pct": -3.65,
+              "retained_frac": -0.0378,
+              "next_step_recall": 0.1028,
+              "next_step_precision": 0.1025,
+              "wasted_prefetches": 307
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 97.44,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.007,
+              "next_step_precision": 0.007,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -0.71,
+              "retained_frac": -0.0072,
+              "next_step_recall": 0.0425,
+              "next_step_precision": 0.0426,
+              "wasted_prefetches": 25
+            },
+            "markov1": {
+              "stall_reduction_pct": -1.23,
+              "retained_frac": -0.0127,
+              "next_step_recall": 0.113,
+              "next_step_precision": 0.1131,
+              "wasted_prefetches": 318
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 97.62,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0099,
+              "next_step_precision": 0.0099,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -0.4,
+              "retained_frac": -0.0041,
+              "next_step_recall": 0.0561,
+              "next_step_precision": 0.0561,
+              "wasted_prefetches": 4
+            },
+            "markov1": {
+              "stall_reduction_pct": 0.66,
+              "retained_frac": 0.0068,
+              "next_step_recall": 0.248,
+              "next_step_precision": 0.2481,
+              "wasted_prefetches": 133
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 98.03,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0065,
+              "next_step_precision": 0.0066,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -1.11,
+              "retained_frac": -0.0113,
+              "next_step_recall": 0.0551,
+              "next_step_precision": 0.055,
+              "wasted_prefetches": 7
+            },
+            "markov1": {
+              "stall_reduction_pct": -0.49,
+              "retained_frac": -0.005,
+              "next_step_recall": 0.1918,
+              "next_step_precision": 0.1918,
+              "wasted_prefetches": 170
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 98.29,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0221,
+              "next_step_precision": 0.0221,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.11,
+              "retained_frac": 0.0011,
+              "next_step_recall": 0.0489,
+              "next_step_precision": 0.0488,
+              "wasted_prefetches": 5
+            },
+            "markov1": {
+              "stall_reduction_pct": 1.92,
+              "retained_frac": 0.0195,
+              "next_step_recall": 0.1437,
+              "next_step_precision": 0.1433,
+              "wasted_prefetches": 221
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 98.87,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0084,
+              "next_step_precision": 0.0084,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.5,
+              "retained_frac": 0.0051,
+              "next_step_recall": 0.0629,
+              "next_step_precision": 0.0631,
+              "wasted_prefetches": 2
+            },
+            "markov1": {
+              "stall_reduction_pct": 5.54,
+              "retained_frac": 0.0561,
+              "next_step_recall": 0.2046,
+              "next_step_precision": 0.2046,
+              "wasted_prefetches": 106
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 98.69,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0067,
+              "next_step_precision": 0.0068,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.36,
+              "retained_frac": 0.0036,
+              "next_step_recall": 0.063,
+              "next_step_precision": 0.0627,
+              "wasted_prefetches": 1
+            },
+            "markov1": {
+              "stall_reduction_pct": 2.5,
+              "retained_frac": 0.0253,
+              "next_step_recall": 0.1935,
+              "next_step_precision": 0.1936,
+              "wasted_prefetches": 154
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu_ZH_CN",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 3096,
+          "oracle_stall_reduction_pct": 97.55,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0074,
+              "next_step_precision": 0.0076,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0694,
+              "next_step_precision": 0.0694,
+              "wasted_prefetches": 7
+            },
+            "markov1": {
+              "stall_reduction_pct": -1.39,
+              "retained_frac": -0.0142,
+              "next_step_recall": 0.1325,
+              "next_step_precision": 0.1324,
+              "wasted_prefetches": 214
+            }
+          }
+        }
+      ]
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "num_experts": 384,
+      "capacity": 192,
+      "num_queries": 6,
+      "oracle_stall_reduction": {
+        "n": 6,
+        "median": 99.62,
+        "min": 95.2,
+        "max": 99.78,
+        "mean": 98.703
+      },
+      "by_predictor": {
+        "persistence": {
+          "retained": {
+            "n": 6,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "stall_reduction": {
+            "n": 6,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0
+          },
+          "recall": {
+            "n": 6,
+            "median": 0.024,
+            "min": 0.022,
+            "max": 0.026,
+            "mean": 0.024
+          },
+          "precision": {
+            "n": 6,
+            "median": 0.024,
+            "min": 0.022,
+            "max": 0.026,
+            "mean": 0.024
+          }
+        },
+        "frequency": {
+          "retained": {
+            "n": 6,
+            "median": 0.008,
+            "min": -0.027,
+            "max": 0.021,
+            "mean": 0.003
+          },
+          "stall_reduction": {
+            "n": 6,
+            "median": 0.755,
+            "min": -2.64,
+            "max": 1.96,
+            "mean": 0.335
+          },
+          "recall": {
+            "n": 6,
+            "median": 0.04,
+            "min": 0.039,
+            "max": 0.04,
+            "mean": 0.04
+          },
+          "precision": {
+            "n": 6,
+            "median": 0.04,
+            "min": 0.039,
+            "max": 0.04,
+            "mean": 0.04
+          }
+        },
+        "markov1": {
+          "retained": {
+            "n": 6,
+            "median": 0.077,
+            "min": 0.008,
+            "max": 0.126,
+            "mean": 0.074
+          },
+          "stall_reduction": {
+            "n": 6,
+            "median": 7.565,
+            "min": 0.75,
+            "max": 12.59,
+            "mean": 7.312
+          },
+          "recall": {
+            "n": 6,
+            "median": 0.117,
+            "min": 0.08,
+            "max": 0.157,
+            "mean": 0.117
+          },
+          "precision": {
+            "n": 6,
+            "median": 0.117,
+            "min": 0.08,
+            "max": 0.157,
+            "mean": 0.117
+          }
+        }
+      },
+      "by_benchmark": {
+        "livecodebench": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.025,
+              "min": 0.023,
+              "max": 0.026,
+              "mean": 0.025
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": -0.003,
+              "min": -0.027,
+              "max": 0.021,
+              "mean": -0.003
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.04,
+              "min": 0.04,
+              "max": 0.04,
+              "mean": 0.04
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.037,
+              "min": 0.008,
+              "max": 0.053,
+              "mean": 0.033
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.083,
+              "min": 0.08,
+              "max": 0.086,
+              "mean": 0.083
+            }
+          }
+        },
+        "mmlu": {
+          "persistence": {
+            "retained": {
+              "n": 3,
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0,
+              "mean": 0.0
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.022,
+              "min": 0.022,
+              "max": 0.025,
+              "mean": 0.023
+            }
+          },
+          "frequency": {
+            "retained": {
+              "n": 3,
+              "median": 0.014,
+              "min": 0.001,
+              "max": 0.015,
+              "mean": 0.01
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.04,
+              "min": 0.039,
+              "max": 0.04,
+              "mean": 0.039
+            }
+          },
+          "markov1": {
+            "retained": {
+              "n": 3,
+              "median": 0.117,
+              "min": 0.101,
+              "max": 0.126,
+              "mean": 0.115
+            },
+            "recall": {
+              "n": 3,
+              "median": 0.151,
+              "min": 0.147,
+              "max": 0.157,
+              "mean": 0.152
+            }
+          }
+        }
+      },
+      "queries": [
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "0",
+          "steps": 7740,
+          "oracle_stall_reduction_pct": 98.3,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0253,
+              "next_step_precision": 0.0252,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -2.64,
+              "retained_frac": -0.0269,
+              "next_step_recall": 0.0404,
+              "next_step_precision": 0.0404,
+              "wasted_prefetches": 2575
+            },
+            "markov1": {
+              "stall_reduction_pct": 0.75,
+              "retained_frac": 0.0077,
+              "next_step_recall": 0.0797,
+              "next_step_precision": 0.0797,
+              "wasted_prefetches": 4966
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "1",
+          "steps": 7740,
+          "oracle_stall_reduction_pct": 95.2,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0259,
+              "next_step_precision": 0.0258,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 1.96,
+              "retained_frac": 0.0206,
+              "next_step_recall": 0.0403,
+              "next_step_precision": 0.0403,
+              "wasted_prefetches": 2540
+            },
+            "markov1": {
+              "stall_reduction_pct": 5.04,
+              "retained_frac": 0.0529,
+              "next_step_recall": 0.0832,
+              "next_step_precision": 0.0832,
+              "wasted_prefetches": 5159
+            }
+          }
+        },
+        {
+          "benchmark": "livecodebench",
+          "subject": "execution",
+          "query_id": "2",
+          "steps": 7740,
+          "oracle_stall_reduction_pct": 99.56,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0233,
+              "next_step_precision": 0.0232,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": -0.33,
+              "retained_frac": -0.0033,
+              "next_step_recall": 0.04,
+              "next_step_precision": 0.04,
+              "wasted_prefetches": 1918
+            },
+            "markov1": {
+              "stall_reduction_pct": 3.7,
+              "retained_frac": 0.0372,
+              "next_step_recall": 0.0865,
+              "next_step_precision": 0.0864,
+              "wasted_prefetches": 5161
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "0",
+          "steps": 7740,
+          "oracle_stall_reduction_pct": 99.78,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0217,
+              "next_step_precision": 0.0216,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 1.42,
+              "retained_frac": 0.0142,
+              "next_step_recall": 0.0389,
+              "next_step_precision": 0.0389,
+              "wasted_prefetches": 671
+            },
+            "markov1": {
+              "stall_reduction_pct": 12.59,
+              "retained_frac": 0.1262,
+              "next_step_recall": 0.1574,
+              "next_step_precision": 0.1573,
+              "wasted_prefetches": 4687
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "1",
+          "steps": 7740,
+          "oracle_stall_reduction_pct": 99.68,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.025,
+              "next_step_precision": 0.025,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 1.51,
+              "retained_frac": 0.0152,
+              "next_step_recall": 0.0397,
+              "next_step_precision": 0.0397,
+              "wasted_prefetches": 1056
+            },
+            "markov1": {
+              "stall_reduction_pct": 11.7,
+              "retained_frac": 0.1174,
+              "next_step_recall": 0.1508,
+              "next_step_precision": 0.1508,
+              "wasted_prefetches": 4914
+            }
+          }
+        },
+        {
+          "benchmark": "mmlu",
+          "subject": "abstract_algebra",
+          "query_id": "2",
+          "steps": 7740,
+          "oracle_stall_reduction_pct": 99.7,
+          "predictors": {
+            "persistence": {
+              "stall_reduction_pct": 0.0,
+              "retained_frac": 0.0,
+              "next_step_recall": 0.0216,
+              "next_step_precision": 0.0216,
+              "wasted_prefetches": 0
+            },
+            "frequency": {
+              "stall_reduction_pct": 0.09,
+              "retained_frac": 0.0009,
+              "next_step_recall": 0.0396,
+              "next_step_precision": 0.0396,
+              "wasted_prefetches": 1001
+            },
+            "markov1": {
+              "stall_reduction_pct": 10.09,
+              "retained_frac": 0.1012,
+              "next_step_recall": 0.147,
+              "next_step_precision": 0.147,
+              "wasted_prefetches": 4920
+            }
+          }
+        }
+      ]
+    }
+  }
+}

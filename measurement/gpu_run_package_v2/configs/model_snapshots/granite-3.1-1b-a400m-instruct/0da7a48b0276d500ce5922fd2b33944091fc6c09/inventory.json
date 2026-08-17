@@ -1,0 +1,33 @@
+{
+  "schema_version": "model-snapshot-inventory-v1",
+  "inventory_kind": "metadata_only_no_weight_payload",
+  "model_id": "ibm-granite/granite-3.1-1b-a400m-instruct",
+  "model_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+  "tokenizer_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+  "license": "Apache-2.0",
+  "source_api": "https://huggingface.co/api/models/ibm-granite/granite-3.1-1b-a400m-instruct/revision/0da7a48b0276d500ce5922fd2b33944091fc6c09?blobs=true",
+  "architecture_evidence": {
+    "source": "config.json at pinned revision",
+    "architecture": "GraniteMoeForCausalLM",
+    "model_type": "granitemoe",
+    "num_hidden_layers": 24,
+    "num_local_experts": 32,
+    "num_experts_per_tok": 8,
+    "torch_dtype": "bfloat16",
+    "transformers_version": "4.47.0"
+  },
+  "files": [
+    {"path": ".gitattributes", "bytes": 1519, "git_blob_sha1": "a6344aac8c09253b3b630fb776ae94478aa0275b"},
+    {"path": "README.md", "bytes": 20461, "git_blob_sha1": "95178adb65e28b7c541407c52f4066937595b33a"},
+    {"path": "added_tokens.json", "bytes": 87, "git_blob_sha1": "183eb810668f005a1ed0e0c8be060e5f47c23f2f"},
+    {"path": "config.json", "bytes": 889, "git_blob_sha1": "030d5997c48254170859214fc6246a2da1a3b160"},
+    {"path": "generation_config.json", "bytes": 132, "git_blob_sha1": "0e7ca8f1a4cf587858c703b962bf0730b90ce699"},
+    {"path": "merges.txt", "bytes": 441810, "git_blob_sha1": "f8479fb696fe07332c55300a6accf8cc191acc6a"},
+    {"path": "model.safetensors", "bytes": 2669283096, "git_blob_sha1": "5a97fab702a858ff0f5355e6d0bd5e4f7829060f", "lfs_sha256": "ac02591061f1344027a7e7b11dbb4143f75f166c47dc09b742f5de3ab1dde1d1", "present_in_package": false},
+    {"path": "special_tokens_map.json", "bytes": 701, "git_blob_sha1": "386500a5040da66c6db3d8b9c44ccd1ee202c744"},
+    {"path": "tokenizer.json", "bytes": 3475806, "git_blob_sha1": "11f3f2c66235d30bc9bf04ad7e1b4a19d80e84da"},
+    {"path": "tokenizer_config.json", "bytes": 8072, "git_blob_sha1": "3e1e4c1b08817b77f3010e7aab1b87ad645e6a42"},
+    {"path": "vocab.json", "bytes": 776995, "git_blob_sha1": "0a11f2016e660fd490f7bf168e6d1f9c86a8f744"}
+  ],
+  "weight_payload_downloaded_by_this_change": false
+}

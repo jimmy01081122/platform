@@ -1,0 +1,27 @@
+{
+  "schema_version": "moe-simulator-review-aggregate-v1",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r3-20260728",
+  "ledger_sha256": "7bf3b31c84f21ba9647729ba6532b1ac8aa99f0d77c5af605884e09a65ecbe38",
+  "roles": {
+    "Architecture/System": "MODIFY",
+    "Model/Benchmark": "MODIFY",
+    "Trace/Provenance": "MODIFY"
+  },
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P3-R3-B1",
+    "ARCH-P3-R3-B2",
+    "ARCH-P3-R3-B3",
+    "MB-P3-R3-B1",
+    "TRACE-P3-R3-B1",
+    "TRACE-P3-R3-B2"
+  ],
+  "promotion_eligible": false,
+  "authorized_next_stage": "Phase 3 CPU-only reachable-checkpoint corrective implementation.",
+  "not_authorized": [
+    "Phase 3 freeze",
+    "Phase 4 promotion",
+    "GPU/model/benchmark/profiling work",
+    "calibration PASS"
+  ]
+}

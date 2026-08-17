@@ -1,0 +1,15 @@
+{
+  "schema_version": "platform-profile-v1",
+  "profile_id": "P-D",
+  "name": "Discrete CPU-GPU (e.g. RTX 3050 laptop over PCIe)",
+  "class": "discrete",
+  "provenance": "H1 service model. Bandwidth = A-006 swept PCIe payload range (gen3x8..gen4x16 effective). Latency + copy engines registered/swept, not vendor-truth.",
+  "link_bandwidth_bytes_per_s_sweep": {
+    "pcie_lo_8GBs": 8.0e9,
+    "pcie_mid_16GBs": 16.0e9,
+    "pcie_hi_32GBs": 32.0e9
+  },
+  "link_latency_s": 1.5e-6,
+  "copy_engines": 2,
+  "prefetch_bw_fraction": 1.0
+}

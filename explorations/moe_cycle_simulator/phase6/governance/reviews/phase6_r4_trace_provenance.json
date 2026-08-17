@@ -1,0 +1,26 @@
+{
+  "role": "Trace/Provenance",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r4-20260729",
+  "ledger_sha256": "eb920b9bf068677af00dfa99d0b1718d6735387db10261e1bfe0faa38dab4a34",
+  "member_count": 488,
+  "exact_set_verification": {
+    "status": "PASS",
+    "nested_checksum_ledgers": "PASS",
+    "r1_reviewed_ledger_sha256": "ef12fc0d8396544aaa63635fa83a14841ea9e5cbeb664382093939d278e25cb0",
+    "r1_snapshot_ledger_sha256": "5b0cca1c17679c1b4099a4ba63746b3d0189739d634e5e7bd717815efa2ddb6e",
+    "r2_reviewed_ledger_sha256": "f28c7ba5f6f9722c839d41ebf3285d0bcc2c99215e91cef197637a9486db9cb3",
+    "r2_snapshot_ledger_sha256": "abd61baf58b883895f11ac6cfd3a3bd8a41bded2a4d69b999e502b1fbaa85c57",
+    "r3_reviewed_ledger_sha256": "ea5ce045072efda9a6cbf852f71733de5800b985e9385301b1baaedf0b115b9f",
+    "r3_snapshot_ledger_sha256": "7d82b0f8c506061a22b131e6ee55aa8f46d43d8296279327a39922132728adf2",
+    "r4_source_root_sha256": "dad66c54d0f84e2ad24926f3e614589fac22f1e5f3aa08aa5305ec9ff8c23c74",
+    "r4_run_ledger_sha256": "6933d64c5a02927efdf35847bcd5131bb4db89a62bebcce40231d75e2c933a8c",
+    "r4_release_ctest": "5/5 PASS",
+    "r4_native_asan_ubsan": "PASS",
+    "missing_sentinel_regressions": "PASS"
+  },
+  "verdict": "GO",
+  "blockers": [],
+  "claim_boundary": "CPU_SYNTHETIC evidence only, with FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER fidelity and RANGE_UNKNOWN. Token identities and canonical hashes fail closed on all frozen missing-value sentinels. ACK priority, alignment, checkpoint and tamper boundaries pass. No Mixtral, GPU, measured-hardware, calibration, DSE, performance, break-even or production-scale claim is established.",
+  "authorized_next_stage": "After identical-ledger GO from all roles and Phase 6 freeze, begin the local CPU-only Phase 7 adapter, collector and profiling-application framework.",
+  "gpu_authority": "NONE"
+}

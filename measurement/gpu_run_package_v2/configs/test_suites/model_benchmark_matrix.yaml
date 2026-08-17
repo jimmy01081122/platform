@@ -1,0 +1,69 @@
+schema_version: model-benchmark-matrix-v1
+matrix_revision: v1.4.0
+task_classes:
+  T0: deterministic_micro_fixtures
+  T1: gsm8k
+  T2: mmlu_subject_stratified
+  T3: humaneval_code
+  T4: fixed_instruction_conversation
+  T5: ceval_chinese
+  T6: long_prefill_context
+  T7: serving_arrivals
+  T8: controlled_synthetic_routing
+fidelities:
+  F: full_model
+  Q: quantized_full_model
+  L: layer_or_kernel_replay
+  T: trace_replay
+models:
+  tiny_random_qwen2moe_m0:
+    tier: M0
+    identity: M0_pipeline_only
+    tasks: [T1, T2]
+    splits: [smoke]
+    fidelities: [F]
+    expected_pairings: 8
+    random_tiny_model: true
+    quality_score_may_be_zero: true
+    release_eligible: false
+  switch_small:
+    tier: M0
+    tasks: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+    fidelities: [F, L, T]
+  olmoe_1b_7b:
+    tier: M0
+    tasks: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+    fidelities: [F, Q, L, T]
+  deepseek_moe_16b:
+    tier: M1
+    tasks: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+    fidelities: [F, Q, L, T]
+  qwen3_30b_a3b:
+    tier: M1
+    tasks: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+    fidelities: [F, Q, L, T]
+  mixtral_8x7b:
+    tier: M2
+    tasks: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+    fidelities: [Q, L, T]
+  deepseek_r1:
+    tier: M3
+    tasks: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+    fidelities: [L, T]
+    prohibit_single_gpu_full_model: true
+  qwen3_235b:
+    tier: M3
+    tasks: [T0, T1, T2, T3, T4, T5, T6, T7, T8]
+    fidelities: [L, T]
+    prohibit_single_gpu_full_model: true
+holdouts:
+  model_holdout:
+    axis_manifest: configs/test_suites/splits/v1.4.0/model_holdout.yaml
+    assignment_unit: model_id
+    independent_of_sample_and_domain_splits: true
+    active_cohorts: [large_moe_blind]
+  hardware_holdout:
+    axis_manifest: configs/test_suites/splits/v1.4.0/hardware_holdout.yaml
+    assignment_unit: hardware_profile_id
+    status: unassigned_pending_future_decision
+    active_split: false

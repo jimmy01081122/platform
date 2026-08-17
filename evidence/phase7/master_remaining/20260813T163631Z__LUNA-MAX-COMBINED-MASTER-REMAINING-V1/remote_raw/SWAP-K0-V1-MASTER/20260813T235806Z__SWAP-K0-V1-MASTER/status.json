@@ -1,0 +1,14 @@
+{
+  "attempt_id": "SWAP-K0-V1-MASTER",
+  "execution_state": "EXECUTION_COMPLETE",
+  "finished_at_utc": "2026-08-14T00:03:54.100681Z",
+  "mechanism": "runtime_native_kv_offload",
+  "object_level_block_trace": "UNAVAILABLE_UNLESS_RUNTIME_EXPOSES",
+  "promotion_status": "PENDING_REVIEW",
+  "raw_capture_status": "RAW_CAPTURED",
+  "requested_kv_offloading_backend": "native",
+  "requested_kv_offloading_size_gib": 1.0,
+  "schema_version": "phase7-swap-k0-status-v1",
+  "status": "PASS",
+  "validation_state": "UNVERIFIED_RUNTIME_NATIVE_TRACE"
+}

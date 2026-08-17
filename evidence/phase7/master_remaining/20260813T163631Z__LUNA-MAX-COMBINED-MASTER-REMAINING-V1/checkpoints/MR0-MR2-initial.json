@@ -1,0 +1,19 @@
+{
+  "OFF-E-PR3-CAP-025": "NOT_RUN / DISTINCT FROM SERV-P0-25",
+  "SERV-P0-25-EXT10K": "INCOMPLETE / NO VERIFIED RAW",
+  "SERV-P0-25-base-1K": "PASS / DO_NOT_RERUN",
+  "conditional_pending_count": 20,
+  "generated_at_utc": "2026-08-13T23:11:33.460649Z",
+  "master_campaign_id": "20260813T163631Z__LUNA-MAX-COMBINED-MASTER-REMAINING-V1",
+  "master_execution_ledger_sha256": "4cdb159253ffa3602c15e65327ec7785cf0e6e2f1c4146920e8abc11cead55f9",
+  "master_ready_queue_sha256": "3a228fb9d5e113e05969f1741316ccbff5dd286bea9a40f90139fd052383e4c0",
+  "master_remaining_ledger_sha256": "6f4a915498242dc619cb6174480e6531f4568a9da4e6387f9788e4ae667a119d",
+  "new_session_guard": "READY_FOR_V3_ATTEMPT",
+  "next_gpu_unit": "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-V3-MASTER",
+  "old_server": "CLOSED",
+  "old_special_ledger": "HISTORICAL SOURCE, NOT MASTER PROJECT LEDGER",
+  "phase7_combined_closure": "INCOMPLETE",
+  "required_remaining_count": 280,
+  "schema_version": "phase7-combined-master-checkpoint-v1",
+  "source_snapshot_manifest_sha256": "23943628b5dfb4c4a62e8fc8ba5eb1566d9c959fe212f6a495a21b007d9f2c81"
+}

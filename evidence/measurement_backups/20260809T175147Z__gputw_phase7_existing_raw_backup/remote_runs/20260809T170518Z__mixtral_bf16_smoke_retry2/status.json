@@ -1,0 +1,12 @@
+{
+  "exception": "Engine core initialization failed. See root cause above. Failed core proc(s): {}",
+  "exception_type": "RuntimeError",
+  "expected_repo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "expected_revision": "eba92302a2861cdc0098cc54bc9f17cb2c47eb61",
+  "failed_at_utc": "2026-08-09T17:05:54.039383Z",
+  "model_dir": "/workspace/moe_phase7_stage/20260809T131351Z__mixtral_http_stage/model",
+  "repair": "smoke-only max_num_batched_tokens reduced to 256 to bound MoE warm-up workspace; model max length and baseline unchanged",
+  "repair_of": "/vault/flow/moe_simulator_phase7/runs/20260809T165923Z__mixtral_bf16_smoke",
+  "started_at_utc": "2026-08-09T17:05:36.020248Z",
+  "state": "MODEL_SMOKE_TEST_FAIL"
+}

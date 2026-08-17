@@ -1,0 +1,49 @@
+{
+  "schema_version": "moe-simulator-benchmark-matrix-v1",
+  "selection_status": "PROSPECTIVE_NOT_MATERIALIZED",
+  "selection_policy": {
+    "uses_model_correctness": false,
+    "uses_routing": false,
+    "uses_latency": false,
+    "primary_order": "sha256(dataset_revision || 0x00 || sample_id)",
+    "stratification": "predeclared tokenizer prompt-length buckets",
+    "tie_break": "UTF-8 NFC sample_id byte order",
+    "selection_occurs_before_model_execution": true
+  },
+  "benchmarks": [
+    {
+      "benchmark_id": "gsm8k",
+      "upstream_commit": "740312add88f781978c0658806c59bc2815b9866",
+      "core_count": 8,
+      "deep_count": 2,
+      "termination_ceiling_ladder": [512, 1024, 2048]
+    },
+    {
+      "benchmark_id": "longbench_v2",
+      "upstream_commit": "2e00731f8d0bff23dc4325161044d0ed8af94c1e",
+      "core_count": 8,
+      "deep_count": 2,
+      "termination_ceiling_ladder": [64, 128, 256],
+      "context_rule": "actual Mixtral tokens plus output ceiling plus frozen guard must not exceed model context"
+    },
+    {
+      "benchmark_id": "humaneval_plus",
+      "upstream_commit": "26d6d00bb1fd0fa37f39c99d5290da67891d1c5e",
+      "core_count": 16,
+      "deep_count": 4,
+      "termination_ceiling_ladder": [512, 1024, 2048],
+      "sandbox_required": true
+    },
+    {
+      "benchmark_id": "bigcodebench_hard_instruct",
+      "upstream_commit": "09dd993f46c3fbf3a799465bb96d524edcb0b199",
+      "core_count": 16,
+      "deep_count": 4,
+      "termination_ceiling_ladder": [1024, 2048, 4096],
+      "sandbox_required": true
+    }
+  ],
+  "sample_manifest": null,
+  "sample_materialization_authorized": false,
+  "formal_use": "forbidden until source artifacts, licenses, tokenization and exact sample IDs are frozen"
+}

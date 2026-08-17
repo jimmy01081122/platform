@@ -1,0 +1,562 @@
+{
+  "bytes": 10725,
+  "plan": {
+    "plan_id": "W3-fixed-32-request-mixed-length-serial-v1",
+    "repeat_count": 3,
+    "requests": [
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_01.txt",
+        "prompt_sha256": "2d47fdff63f17237045d862cdffb01a9de11ee9e58641d95d7eaa55ce5f40d33",
+        "request_id": "W3-01-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_02.txt",
+        "prompt_sha256": "fa67bd19c6f7e6dd5c3eb7843da8bc66f814ff37a9a9e0f7be368aad061db2fe",
+        "request_id": "W3-02-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_03.txt",
+        "prompt_sha256": "72bfec9f9e1a417110079f24e958df337959cb4f644ffaf5961e1f2cae79a1ae",
+        "request_id": "W3-03-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_04.txt",
+        "prompt_sha256": "b888b0ad20ea1b76fc291f5b7dead951b677018d6897dad93069d1f2d53dfd36",
+        "request_id": "W3-04-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_05.txt",
+        "prompt_sha256": "7b1d624ae760d1aab030e52da8b92cbae9385443ecfda79cee300ef24eb90433",
+        "request_id": "W3-05-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_06.txt",
+        "prompt_sha256": "305a1fcfb64154c7b4bbe8cf2aff3593e28b615c45143f6ebfeadfb16b3be7e6",
+        "request_id": "W3-06-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_07.txt",
+        "prompt_sha256": "628dd008ba338606c415a1a7c52ef42127e0c5ef4480b8e537a6757061dd2db7",
+        "request_id": "W3-07-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 1,
+        "output_tokens": 32,
+        "preflight_input_token_count": 130,
+        "prompt_file": "W3_prompts/W3_08.txt",
+        "prompt_sha256": "f142fdab41c2a45fbeeb1effb2be2fcc65afca77fb1e2118f57d44edad7cf9bf",
+        "request_id": "W3-08-in128-out32",
+        "target_input_tokens": 128
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_09.txt",
+        "prompt_sha256": "c96e96646b729a7f1a17c60dbc1975e3b9d8115dc6d6a0e3f36ee49534f2df17",
+        "request_id": "W3-09-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_10.txt",
+        "prompt_sha256": "ca70c7d5a2b1e0214f028d62f21338e95c6c373d8bc30caa3bac6848a53e120e",
+        "request_id": "W3-10-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_11.txt",
+        "prompt_sha256": "e91a7cd53e339e214594772da69f13bb94f4028efd80d6b217ce2048369081b9",
+        "request_id": "W3-11-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_12.txt",
+        "prompt_sha256": "d0d2c0b3cf8cedf2b6e75fc8125646af835c89051691ef6a7090c32c303afb7d",
+        "request_id": "W3-12-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_13.txt",
+        "prompt_sha256": "eb0dd2b1b9f54a657bf6188daec30f2b2cc6665310fd803cb5c73c5070be6801",
+        "request_id": "W3-13-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_14.txt",
+        "prompt_sha256": "9a60d9c2c98d787a1614b78e9671c3b88663e07aa952c9dab8be484e144a9804",
+        "request_id": "W3-14-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_15.txt",
+        "prompt_sha256": "7ab5881dfd36a61ce1f1ddd297a72e5ff5b53b25f5087edc3146e562e566cc60",
+        "request_id": "W3-15-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 9,
+        "output_tokens": 64,
+        "preflight_input_token_count": 557,
+        "prompt_file": "W3_prompts/W3_16.txt",
+        "prompt_sha256": "458bc44f9039abd408718d1b71641b3d71c0026ce4d65ff5bae10d76710890e2",
+        "request_id": "W3-16-in512-out64",
+        "target_input_tokens": 512
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_17.txt",
+        "prompt_sha256": "f067780437c7334b6318d585f875d92acefdf9ab79ddf0d13454fd6eec8a96d7",
+        "request_id": "W3-17-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_18.txt",
+        "prompt_sha256": "b52d2bc9c4fad12b4397a61cef8c28c0222bf255e63a8d11205d8874f1750948",
+        "request_id": "W3-18-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_19.txt",
+        "prompt_sha256": "255af8b08f9ec327479b98d83ad84797b4d13476d811abd520e83f34bffde81c",
+        "request_id": "W3-19-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_20.txt",
+        "prompt_sha256": "6e38ed5b9f24cf45b6a3ab17f689071851f8768ec2f60cab8640c0abfe65b169",
+        "request_id": "W3-20-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_21.txt",
+        "prompt_sha256": "d884760b02e5875652e835ae345a66ff603a03b25a9438cb9029993b40477ff7",
+        "request_id": "W3-21-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_22.txt",
+        "prompt_sha256": "4a0fa115f143f34ed101252ccf793a11e38904c79ff2c4b60c59e7942b39e37f",
+        "request_id": "W3-22-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_23.txt",
+        "prompt_sha256": "02f9b33cc5403a04e1b6b900d7b3542bffb10f84a3d5fb3eae8218540f6fb29d",
+        "request_id": "W3-23-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 37,
+        "output_tokens": 256,
+        "preflight_input_token_count": 2049,
+        "prompt_file": "W3_prompts/W3_24.txt",
+        "prompt_sha256": "7e4af0b1d701be480c1e593c7e3b5083a281aa3ab7ad6e1e791b65469297fe28",
+        "request_id": "W3-24-in2048-out256",
+        "target_input_tokens": 2048
+      },
+      {
+        "generated_record_count": 153,
+        "output_tokens": 32,
+        "preflight_input_token_count": 8226,
+        "prompt_file": "W3_prompts/W3_25.txt",
+        "prompt_sha256": "e5c713dd44049284a4fd46a0c0a7c01dc03ffe9ec22e46059024ecf2bf5aaebd",
+        "request_id": "W3-25-in8192-out32",
+        "target_input_tokens": 8192
+      },
+      {
+        "generated_record_count": 153,
+        "output_tokens": 64,
+        "preflight_input_token_count": 8226,
+        "prompt_file": "W3_prompts/W3_26.txt",
+        "prompt_sha256": "ae383783225e4e99e364ca8c4f291e06f8026f960b32ebf2e644ff71126b29db",
+        "request_id": "W3-26-in8192-out64",
+        "target_input_tokens": 8192
+      },
+      {
+        "generated_record_count": 153,
+        "output_tokens": 256,
+        "preflight_input_token_count": 8226,
+        "prompt_file": "W3_prompts/W3_27.txt",
+        "prompt_sha256": "f8527c06f4cac559b00b4ee76392b7e46235f5d844b91fa7428ff54df81676ff",
+        "request_id": "W3-27-in8192-out256",
+        "target_input_tokens": 8192
+      },
+      {
+        "generated_record_count": 153,
+        "output_tokens": 512,
+        "preflight_input_token_count": 8226,
+        "prompt_file": "W3_prompts/W3_28.txt",
+        "prompt_sha256": "c19da3b394960017de2300612762920218d44a1cc0b7342997868d301dde6fdc",
+        "request_id": "W3-28-in8192-out512",
+        "target_input_tokens": 8192
+      },
+      {
+        "generated_record_count": 307,
+        "output_tokens": 32,
+        "preflight_input_token_count": 16429,
+        "prompt_file": "W3_prompts/W3_29.txt",
+        "prompt_sha256": "9518ba47034ede240b36d938a025bf2f5f3e0363d94ef151d1d913ae468526ff",
+        "request_id": "W3-29-in16384-out32",
+        "target_input_tokens": 16384
+      },
+      {
+        "generated_record_count": 307,
+        "output_tokens": 256,
+        "preflight_input_token_count": 16429,
+        "prompt_file": "W3_prompts/W3_30.txt",
+        "prompt_sha256": "5b5a09c88df69e6611c7240f062c2208a5c5f3462265ef6ad4dc7a79dd67cf64",
+        "request_id": "W3-30-in16384-out256",
+        "target_input_tokens": 16384
+      },
+      {
+        "generated_record_count": 307,
+        "output_tokens": 512,
+        "preflight_input_token_count": 16429,
+        "prompt_file": "W3_prompts/W3_31.txt",
+        "prompt_sha256": "7a24f7e4669e9acd12324bdddb5cabc71c5f9bc8578d1589ecab8757d74351dc",
+        "request_id": "W3-31-in16384-out512",
+        "target_input_tokens": 16384
+      },
+      {
+        "generated_record_count": 307,
+        "output_tokens": 1024,
+        "preflight_input_token_count": 16429,
+        "prompt_file": "W3_prompts/W3_32.txt",
+        "prompt_sha256": "71e2acd418fb28f5a3882226136fc6bcf768f5ccaacfe4bb968a02fe24d142a1",
+        "request_id": "W3-32-in16384-out1024",
+        "target_input_tokens": 16384
+      }
+    ],
+    "schema_version": "phase7-request-plan-v1"
+  },
+  "plan_id": "W3-fixed-32-request-mixed-length-serial-v1",
+  "repeat_count": 3,
+  "request_count_per_sequence": 32,
+  "schema_version": "phase7-request-plan-v1",
+  "sha256": "ce1f9248c621d43893154699feb162418a6fe2de0aa482b36d897bc70bb9b591",
+  "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_request_plan.json",
+  "sources": [
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-01-in128-out32",
+      "sha256": "2d47fdff63f17237045d862cdffb01a9de11ee9e58641d95d7eaa55ce5f40d33",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_01.txt"
+    },
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-02-in128-out32",
+      "sha256": "fa67bd19c6f7e6dd5c3eb7843da8bc66f814ff37a9a9e0f7be368aad061db2fe",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_02.txt"
+    },
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-03-in128-out32",
+      "sha256": "72bfec9f9e1a417110079f24e958df337959cb4f644ffaf5961e1f2cae79a1ae",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_03.txt"
+    },
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-04-in128-out32",
+      "sha256": "b888b0ad20ea1b76fc291f5b7dead951b677018d6897dad93069d1f2d53dfd36",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_04.txt"
+    },
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-05-in128-out32",
+      "sha256": "7b1d624ae760d1aab030e52da8b92cbae9385443ecfda79cee300ef24eb90433",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_05.txt"
+    },
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-06-in128-out32",
+      "sha256": "305a1fcfb64154c7b4bbe8cf2aff3593e28b615c45143f6ebfeadfb16b3be7e6",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_06.txt"
+    },
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-07-in128-out32",
+      "sha256": "628dd008ba338606c415a1a7c52ef42127e0c5ef4480b8e537a6757061dd2db7",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_07.txt"
+    },
+    {
+      "bytes": 485,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-08-in128-out32",
+      "sha256": "f142fdab41c2a45fbeeb1effb2be2fcc65afca77fb1e2118f57d44edad7cf9bf",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_08.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-09-in512-out64",
+      "sha256": "c96e96646b729a7f1a17c60dbc1975e3b9d8115dc6d6a0e3f36ee49534f2df17",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_09.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-10-in512-out64",
+      "sha256": "ca70c7d5a2b1e0214f028d62f21338e95c6c373d8bc30caa3bac6848a53e120e",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_10.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-11-in512-out64",
+      "sha256": "e91a7cd53e339e214594772da69f13bb94f4028efd80d6b217ce2048369081b9",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_11.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-12-in512-out64",
+      "sha256": "d0d2c0b3cf8cedf2b6e75fc8125646af835c89051691ef6a7090c32c303afb7d",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_12.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-13-in512-out64",
+      "sha256": "eb0dd2b1b9f54a657bf6188daec30f2b2cc6665310fd803cb5c73c5070be6801",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_13.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-14-in512-out64",
+      "sha256": "9a60d9c2c98d787a1614b78e9671c3b88663e07aa952c9dab8be484e144a9804",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_14.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-15-in512-out64",
+      "sha256": "7ab5881dfd36a61ce1f1ddd297a72e5ff5b53b25f5087edc3146e562e566cc60",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_15.txt"
+    },
+    {
+      "bytes": 1661,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-16-in512-out64",
+      "sha256": "458bc44f9039abd408718d1b71641b3d71c0026ce4d65ff5bae10d76710890e2",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_16.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-17-in2048-out256",
+      "sha256": "f067780437c7334b6318d585f875d92acefdf9ab79ddf0d13454fd6eec8a96d7",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_17.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-18-in2048-out256",
+      "sha256": "b52d2bc9c4fad12b4397a61cef8c28c0222bf255e63a8d11205d8874f1750948",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_18.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-19-in2048-out256",
+      "sha256": "255af8b08f9ec327479b98d83ad84797b4d13476d811abd520e83f34bffde81c",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_19.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-20-in2048-out256",
+      "sha256": "6e38ed5b9f24cf45b6a3ab17f689071851f8768ec2f60cab8640c0abfe65b169",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_20.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-21-in2048-out256",
+      "sha256": "d884760b02e5875652e835ae345a66ff603a03b25a9438cb9029993b40477ff7",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_21.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-22-in2048-out256",
+      "sha256": "4a0fa115f143f34ed101252ccf793a11e38904c79ff2c4b60c59e7942b39e37f",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_22.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-23-in2048-out256",
+      "sha256": "02f9b33cc5403a04e1b6b900d7b3542bffb10f84a3d5fb3eae8218540f6fb29d",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_23.txt"
+    },
+    {
+      "bytes": 5772,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-24-in2048-out256",
+      "sha256": "7e4af0b1d701be480c1e593c7e3b5083a281aa3ab7ad6e1e791b65469297fe28",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_24.txt"
+    },
+    {
+      "bytes": 22812,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-25-in8192-out32",
+      "sha256": "e5c713dd44049284a4fd46a0c0a7c01dc03ffe9ec22e46059024ecf2bf5aaebd",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_25.txt"
+    },
+    {
+      "bytes": 22812,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-26-in8192-out64",
+      "sha256": "ae383783225e4e99e364ca8c4f291e06f8026f960b32ebf2e644ff71126b29db",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_26.txt"
+    },
+    {
+      "bytes": 22812,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-27-in8192-out256",
+      "sha256": "f8527c06f4cac559b00b4ee76392b7e46235f5d844b91fa7428ff54df81676ff",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_27.txt"
+    },
+    {
+      "bytes": 22812,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-28-in8192-out512",
+      "sha256": "c19da3b394960017de2300612762920218d44a1cc0b7342997868d301dde6fdc",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_28.txt"
+    },
+    {
+      "bytes": 45434,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-29-in16384-out32",
+      "sha256": "9518ba47034ede240b36d938a025bf2f5f3e0363d94ef151d1d913ae468526ff",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_29.txt"
+    },
+    {
+      "bytes": 45434,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-30-in16384-out256",
+      "sha256": "5b5a09c88df69e6611c7240f062c2208a5c5f3462265ef6ad4dc7a79dd67cf64",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_30.txt"
+    },
+    {
+      "bytes": 45434,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-31-in16384-out512",
+      "sha256": "7a24f7e4669e9acd12324bdddb5cabc71c5f9bc8578d1589ecab8757d74351dc",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_31.txt"
+    },
+    {
+      "bytes": 45434,
+      "encoding": "utf-8",
+      "kind": "prompt_file",
+      "request_id": "W3-32-in16384-out1024",
+      "sha256": "71e2acd418fb28f5a3882226136fc6bcf768f5ccaacfe4bb968a02fe24d142a1",
+      "source_path": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/W3_prompts/W3_32.txt"
+    }
+  ]
+}

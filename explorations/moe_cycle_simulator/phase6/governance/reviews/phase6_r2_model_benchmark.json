@@ -1,0 +1,25 @@
+{
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-cycle-simulator-phase6-multi-domain-r2-20260729",
+  "ledger_sha256": "f28c7ba5f6f9722c839d41ebf3285d0bcc2c99215e91cef197637a9486db9cb3",
+  "member_count": 116,
+  "exact_set_verification": {
+    "status": "PASS",
+    "nested_checksum_ledgers": "INCLUDED",
+    "r1_immutable_history_and_reviews": "VERIFIED_INCLUDED",
+    "r2_run_ledger": "PASS",
+    "r2_source_validator": "PASS"
+  },
+  "verdict": "MODIFY",
+  "blockers": [
+    {
+      "id": "MODEL-P6-R2-B1",
+      "summary": "TOKEN_ONLY routing contract is not enforced on RoutingBinding.route_key.",
+      "evidence": "validate_and_compile does not require route_key request_id, token_index and layer_index, routing-event priority/schema, selected ExpertKey.layer equality with route_key.layer_index, or operation-to-route request/token/layer identity.",
+      "required_remediation": "Fail closed on every frozen token-level EventKey field and priority, require every selected expert to belong to the route layer, bind dispatch/compute/return/combine operations to the same request/token/layer identity, add negative regressions, and produce a fresh immutable candidate and sealed run."
+    }
+  ],
+  "claim_boundary": "R1 Model blockers are substantively closed. Evidence remains CPU_SYNTHETIC, FUNCTIONAL_ONLY or ANALYTIC_FIRST_ORDER and RANGE_UNKNOWN. No routing-weight, benchmark-quality, Mixtral, measured-hardware, calibration, DSE or performance inference is supported.",
+  "authorized_next_stage": "Phase 6 CPU-only remediation followed by a fresh immutable sealed run and independent three-role same-hash review only.",
+  "gpu_authority": "NONE"
+}

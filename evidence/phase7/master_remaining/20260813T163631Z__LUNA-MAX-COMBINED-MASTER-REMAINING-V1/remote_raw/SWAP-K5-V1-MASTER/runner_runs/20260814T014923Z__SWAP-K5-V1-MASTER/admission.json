@@ -1,0 +1,14 @@
+{
+  "admission_monotonic_ns": 3766879241707340,
+  "mode": "CLOSED_LOOP_SIMULTANEOUS_BURST",
+  "request_ids": [
+    "swap-k5-00",
+    "swap-k5-01",
+    "swap-k5-02",
+    "swap-k5-03",
+    "swap-k5-04",
+    "swap-k5-05",
+    "swap-k5-06",
+    "swap-k5-07"
+  ]
+}

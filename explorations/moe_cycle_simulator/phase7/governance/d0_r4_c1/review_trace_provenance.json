@@ -1,0 +1,18 @@
+{
+  "schema_version": "phase7-gputw-d0-r4/review-role/v1",
+  "role": "Trace/Provenance",
+  "verdict": "MODIFY",
+  "reviewed_commit": "7fe4a2a657af0ccd0795d7cdd44581ade37f34b8",
+  "reviewed_tree": "062d178bf0ca793ce996c33daee1b65c5bdbb6fc",
+  "candidate_ledger_sha256": "c9c708c35de2d81a4cc5ad13d2f8696811a08e41b354e39d1488dc7c9205b212",
+  "blocking_findings": [
+    "The captured SSH agent listing is later reused through a replaceable external agent-socket pathname.",
+    "A package-local import shadow can execute before direct-entrypoint package exact-set validation."
+  ],
+  "nonblocking": [
+    "Detached review binding, selected-key identity, terminal semantic rederivation and descendant containment passed.",
+    "An unobserved container digest remains non-promotable."
+  ],
+  "gpu_authority": "NONE",
+  "side_effects": false
+}

@@ -1,0 +1,40 @@
+experiment_id: moe_cycle_simulator_phase1_cpu_mock
+stage: S1
+status: prospective_cpu_mock
+goal: Validate runtime event shapes, correlation, multi-clock alignment, observability and V0 replay without GPU or Mixtral.
+scope:
+  - synthetic request/token/kernel/router/allocator/copy events
+  - synthetic two-rank collective and P2P events
+  - independent telemetry clock
+  - exact rational alignment and semantic hashing
+non_goals:
+  - real vLLM or Mistral execution
+  - Mixtral materialization
+  - GPU profiling
+  - Canonical IR freeze
+  - calibration
+inputs:
+  - explorations/moe_cycle_simulator/phase1/fixtures/mock_runtime_trace.json
+  - explorations/moe_cycle_simulator/governance/reviews/phase0_r3_aggregate.json
+dependencies:
+  - phase0 ledger 4a53c3d2fbbab330151679ea2b831b91b404239b88db7edc616f2900d61544bc
+  - exact dependency root and installed-content inventory recorded per run
+validation:
+  - exact alignment conversion
+  - EventIR dependency and tie-key validation
+  - RoutingIR ambiguity validation
+  - file and semantic hash replay
+  - raw input immutability
+  - complete run filesystem closure and special-entry rejection
+  - retained validator/test argv, environment, return code, stdout and stderr
+acceptance:
+  - all required mock shapes represented
+  - per-rank alignment records are distinct
+  - V0 replay has zero findings
+  - gpu_used is false
+  - all 16 Phase 1 tests pass in the recorded environment
+forbidden_actions:
+  - GPU query or execution
+  - model or benchmark download
+  - formal profiling
+  - frozen evidence modification

@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "moe-model-config-v1",
+  "title": "Registered MoE model configuration (provenance-backed)",
+  "description": "Model dimensions used to DERIVE expert weight transfer volume. All numeric dims must be traceable to a published model config.json (see provenance).",
+  "type": "object",
+  "required": [
+    "schema_version", "model_id", "trace_variant", "provenance",
+    "hidden_size", "moe_intermediate_size", "num_experts", "top_k",
+    "num_hidden_layers", "num_moe_layers", "mlp_kind", "weight_precision"
+  ],
+  "properties": {
+    "schema_version": {"const": "moe-model-config-v1"},
+    "model_id": {"type": "string", "description": "canonical HF model id for dims"},
+    "trace_variant": {"type": "string", "description": "variant name as used in the routing dataset"},
+    "provenance": {
+      "type": "object",
+      "required": ["config_source", "access"],
+      "properties": {
+        "config_source": {"type": "string"},
+        "access": {"type": "string"},
+        "note": {"type": "string"}
+      }
+    },
+    "hidden_size": {"type": "integer", "minimum": 1},
+    "moe_intermediate_size": {"type": "integer", "minimum": 1},
+    "num_experts": {"type": "integer", "minimum": 1},
+    "top_k": {"type": "integer", "minimum": 1},
+    "num_hidden_layers": {"type": "integer", "minimum": 1},
+    "num_moe_layers": {"type": "integer", "minimum": 1},
+    "num_shared_experts": {"type": "integer", "minimum": 0},
+    "mlp_kind": {"enum": ["gated_swiglu", "standard_2mat"]},
+    "weight_precision": {
+      "type": "object",
+      "required": ["name", "bytes_per_param"],
+      "properties": {
+        "name": {"type": "string"},
+        "bytes_per_param": {"type": "number", "exclusiveMinimum": 0},
+        "overhead_note": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": true
+}

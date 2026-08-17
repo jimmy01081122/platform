@@ -1,0 +1,11 @@
+{
+  "blockers": [
+    "TP-P2-001: resolved codec profile identity conflicts with the frozen codec contract.",
+    "TP-P2-002: formal-run command, tool, configuration, suite, and return-code provenance is not semantically cross-validated.",
+    "TP-P2-003: ArtifactEnvelope has no pre-parse size or complexity bound."
+  ],
+  "ledger_sha256": "f12a8178e6070d64c14b4c573ab1bbf35b5d8a3425008776bffcd5a15d9d2ed9",
+  "role": "Trace/Provenance",
+  "schema_version": "moe-simulator-role-review-v1",
+  "verdict": "MODIFY"
+}

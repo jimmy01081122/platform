@@ -1,0 +1,18 @@
+{
+  "attempt_id": "SWAP-K2-HELDOUT-87P5-V1-MASTER",
+  "expected_host_blocks": 1792,
+  "expected_rounded_bytes": 3758096384,
+  "fraction": 0.875,
+  "gpu_kv_capacity_blocks_expected": 2308,
+  "gpu_kv_capacity_tokens_expected": 36928,
+  "heldout": true,
+  "host_capacity_bytes": 3758096384,
+  "host_capacity_gib": 3.5,
+  "point_id": "HELDOUT-87.5",
+  "reference_full_block_bytes": 2097152,
+  "reference_working_set_bytes": 4294967296,
+  "requested_kv_offloading_backend": "native",
+  "role": "HELDOUT",
+  "rounding_policy": "FLOOR_TO_COMPLETE_BLOCK",
+  "schema_version": "phase7-swap-k2-contract-v1"
+}

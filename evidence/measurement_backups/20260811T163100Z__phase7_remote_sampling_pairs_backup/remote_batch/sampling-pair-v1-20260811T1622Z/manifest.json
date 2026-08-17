@@ -1,0 +1,103 @@
+{
+  "batch_id": "sampling-pair-v1-20260811T1622Z",
+  "created_at_utc": "2026-08-11T16:24:46.943257+00:00",
+  "execution_plan": [
+    [
+      "SMP1-W0-PAIR-V1-CLEAN",
+      "W0",
+      "CLEAN",
+      "W0_arithmetic_reasoning.txt",
+      256,
+      "clean",
+      "SMP1-W0-PAIR-V1"
+    ],
+    [
+      "SMP1-W0-PAIR-V1-ROUTING",
+      "W0",
+      "ROUTING",
+      "W0_arithmetic_reasoning.txt",
+      256,
+      "instrumented",
+      "SMP1-W0-PAIR-V1"
+    ],
+    [
+      "SMP1-W0-PAIR-V1-TELEMETRY",
+      "W0",
+      "TELEMETRY",
+      "W0_arithmetic_reasoning.txt",
+      256,
+      "instrumented",
+      "SMP1-W0-PAIR-V1"
+    ],
+    [
+      "SMP1-W1-PAIR-V1-CLEAN",
+      "W1",
+      "CLEAN",
+      "W1_long_context_retrieval.txt",
+      256,
+      "clean",
+      "SMP1-W1-PAIR-V1"
+    ],
+    [
+      "SMP1-W1-PAIR-V1-ROUTING",
+      "W1",
+      "ROUTING",
+      "W1_long_context_retrieval.txt",
+      256,
+      "instrumented",
+      "SMP1-W1-PAIR-V1"
+    ],
+    [
+      "SMP1-W1-PAIR-V1-TELEMETRY",
+      "W1",
+      "TELEMETRY",
+      "W1_long_context_retrieval.txt",
+      256,
+      "instrumented",
+      "SMP1-W1-PAIR-V1"
+    ],
+    [
+      "SMP1-W2-PAIR-V1-CLEAN",
+      "W2",
+      "CLEAN",
+      "W2_code_generation.txt",
+      1024,
+      "clean",
+      "SMP1-W2-PAIR-V1"
+    ],
+    [
+      "SMP1-W2-PAIR-V1-ROUTING",
+      "W2",
+      "ROUTING",
+      "W2_code_generation.txt",
+      1024,
+      "instrumented",
+      "SMP1-W2-PAIR-V1"
+    ],
+    [
+      "SMP1-W2-PAIR-V1-TELEMETRY",
+      "W2",
+      "TELEMETRY",
+      "W2_code_generation.txt",
+      1024,
+      "instrumented",
+      "SMP1-W2-PAIR-V1"
+    ]
+  ],
+  "fixture_manifest": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z/manifest.json",
+  "fixture_root": "/vault/flow/moe_simulator_phase7/real_campaign/fixtures/natural-v1-20260811T1530Z",
+  "pair_gate": "same input IDs, SamplingParams, output IDs, output count, finish reason",
+  "runner_path": "/vault/flow/moe_simulator_phase7/real_campaign/code/gpu_campaign_runner_patch_v3.py",
+  "sampling_contract": {
+    "ignore_eos": false,
+    "max_tokens": "per-row cap",
+    "min_tokens": null,
+    "seed": 0,
+    "temperature": 0.0,
+    "top_k": 0,
+    "top_p": 1.0
+  },
+  "sampling_mode": "NATURAL_EOS_CAPPED",
+  "schema_version": "phase7-sampling-pair-batch-v1",
+  "scope": "project-authored natural fixtures; not a formal public benchmark"
+}

@@ -1,0 +1,37 @@
+schema_version: validation-gates-v1
+schema: schemas/validation_gates.schema.json
+status: target_not_yet_demonstrated
+domain_rule: gates apply only inside the calibration pack's declared calibrated_domain
+
+aggregate_mape:
+  component_latency:
+    maximum_percent: 15
+    split: validation
+    required_evidence: [measured, microbenchmark-calibrated]
+  pcie_transfer_latency:
+    maximum_percent: 15
+    split: validation
+    required_evidence: [measured, microbenchmark-calibrated]
+  tpot:
+    maximum_percent: 15
+    split: validation
+    required_evidence: [measured]
+  throughput:
+    maximum_percent: 15
+    split: validation
+    required_evidence: [measured]
+
+individual_point:
+  maximum_relative_error_percent: 20
+  on_exceed: [retain, analyze, restrict-domain, do-not-hide]
+
+non_absolute:
+  p99: [method_ranking, load_trend, saturation_point, queueing_transition, operating_region_boundary]
+  gpu_utilization: [range, trend, relative_ranking]
+
+promotion_requirements:
+  - calibration_and_validation_splits_are_disjoint
+  - holdout_workload_reported
+  - holdout_platform_reported_or_explicitly_pending
+  - raw_measurements_and_per_repetition_results_retained
+  - no_failed_point_removed

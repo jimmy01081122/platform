@@ -1,0 +1,11 @@
+{
+  "blockers": [
+    "ARCH-P2-R2-B1: alignment grading inputs are not bound to the target Platform clock or shortest-component evidence",
+    "ARCH-P2-R2-B2: placement ownership cannot represent an expert composed of multiple tensors",
+    "ARCH-P2-R2-B3: runtime variant and calibration evidence/range identities are not content-bound"
+  ],
+  "ledger_sha256": "5ae4f8d98923087385d7face44adf5b451428b15b6faf0eab44867f5b2d2baa6",
+  "role": "Architecture/System",
+  "schema_version": "moe-simulator-role-review-v1",
+  "verdict": "MODIFY"
+}

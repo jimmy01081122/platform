@@ -1,0 +1,19 @@
+{
+  "schema_version": "phase7-gputw-d0-r3/reviewer-output/v1",
+  "role": "Model/Benchmark",
+  "candidate_id": "moe-simulator-phase7-gputw-d0-r3-0d05c23",
+  "reviewed_commit": "0d05c23d1fb78e852f8a404b5a61c9086863a18e",
+  "reviewed_tree": "433108ece0624443bb1f6c1f5c2b9ab6443a991a",
+  "reviewed_candidate_ledger_sha256": "df2f5ec6726e0b6df09ae27cbcc49f98e2596dcd060b827e04f61991bc4ee245",
+  "candidate_member_count": 22,
+  "verdict": "MODIFY",
+  "blockers": [
+    "MODEL-COST-D0-R3-B1: owner control_plane_start_utc is not compared to approval control_plane_start_utc, allowing already-consumed prepaid time to be hidden"
+  ],
+  "positive_findings": [
+    "D0 prohibits model download, model access, inference, CUDA benchmark and GPU workload.",
+    "The canonical historical M0 contract remains Mixtral at revision eba92302a2861cdc0098cc54bc9f17cb2c47eb61, BF16, vLLM, without quantization or CPU offload.",
+    "No benchmark, capacity or performance conclusion is claimed."
+  ],
+  "side_effects": false
+}

@@ -1,0 +1,27 @@
+{
+  "role": "Architecture/System",
+  "candidate_id": "moe-cycle-simulator-phase3-event-core-r3-20260728",
+  "ledger_sha256": "7bf3b31c84f21ba9647729ba6532b1ac8aa99f0d77c5af605884e09a65ecbe38",
+  "member_count": 96,
+  "verdict": "MODIFY",
+  "blockers": [
+    "ARCH-P3-R3-B1: waiter-drain, successful acquire and release mutate resource state before transition-budget failure, so a ZENO hard-stop can leave blocked/state/waiter inconsistency and a self-checkpoint that cannot restore.",
+    "ARCH-P3-R3-B2: same_time_count is not derived from canonical transition evidence; a correctly rehashed counter mutation is accepted and changes continuation behavior.",
+    "ARCH-P3-R3-B3: FAILED terminal checkpoints are accepted without canonical failure evidence."
+  ],
+  "findings": [
+    "The 96-member candidate, R1 historical snapshot and R4 nested run verify exactly.",
+    "R1 dependency-ready scheduling is closed.",
+    "Complete digest and bounded traversal are implemented, but atomicity and reachable-state validation remain incomplete.",
+    "Frozen maxima need an explicit normative-maximum versus default interpretation."
+  ],
+  "claim_boundary": "CPU replay-validation primitives only; portable deterministic resume and Phase 3 freeze are not proven.",
+  "authorized_next_stage": "Fresh CPU-only Phase 3 correction, run, ledger and same-hash review.",
+  "not_authorized": [
+    "Phase 3 freeze",
+    "Phase 4 promotion",
+    "GPU/model/benchmark/profiling work",
+    "calibration PASS",
+    "modification or reinterpretation of frozen G3/S4 evidence"
+  ]
+}

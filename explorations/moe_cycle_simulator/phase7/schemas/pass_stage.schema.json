@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/moe-simulator/phase7/pass-stage-v1",
+  "type": "array",
+  "minItems": 7,
+  "maxItems": 7,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "pass_id",
+      "scope",
+      "purpose",
+      "execution_role",
+      "gpu_execution",
+      "runtime_pass",
+      "minimum_steady_state_seconds"
+    ],
+    "properties": {
+      "pass_id": {"enum": ["P0", "P1", "P2", "P3", "P4", "P5", "V0"]},
+      "scope": {"enum": ["SAMPLE", "SESSION", "OFFLINE"]},
+      "purpose": {
+        "enum": [
+          "CLEAN_CORRECTNESS_AUTHORITATIVE_TIMING",
+          "OPERATOR_KERNEL_SERVICE_TIMING",
+          "ROUTING_TOPK_TOKEN_EXPERT_MAPPING",
+          "ALLOCATION_RESIDENCY_COPY_ENGINE",
+          "P2P_NVLINK",
+          "STEADY_STATE_TELEMETRY",
+          "IR_CONVERSION_REPLAY_VALIDATION"
+        ]
+      },
+      "execution_role": {"enum": ["RUNTIME_PASS", "OFFLINE_VALIDATION"]},
+      "gpu_execution": {"type": "boolean"},
+      "runtime_pass": {"type": "boolean"},
+      "minimum_steady_state_seconds": {"type": ["integer", "null"], "minimum": 30}
+    }
+  }
+}
+

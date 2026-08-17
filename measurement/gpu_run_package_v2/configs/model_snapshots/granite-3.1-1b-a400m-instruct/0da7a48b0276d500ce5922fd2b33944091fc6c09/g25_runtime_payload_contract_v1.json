@@ -1,0 +1,53 @@
+{
+  "schema_version": "g25-model-runtime-payload-contract-v1",
+  "model_id": "ibm-granite/granite-3.1-1b-a400m-instruct",
+  "model_revision": "0da7a48b0276d500ce5922fd2b33944091fc6c09",
+  "payload_kind": "exact_flat_regular_file_set",
+  "files": [
+    {
+      "path": "added_tokens.json",
+      "bytes": 87,
+      "sha256": "081bdeaf76fc5463cc2e20fbadf17ad9eb569bb5343b120cc64b98840754f96c"
+    },
+    {
+      "path": "config.json",
+      "bytes": 889,
+      "sha256": "f1b64813debfabeb9cc20f1a13ed8248da6774fe54e532d19912d4b3f2ab335d"
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 132,
+      "sha256": "df006c64ad35b18712527cb5130a7a13a4d8a7c5c23653feea59be88e2e2a4ca"
+    },
+    {
+      "path": "merges.txt",
+      "bytes": 441810,
+      "sha256": "303127a244b0078878156c17229f36d11b7a3a3f8e47b7cfdbb304ff46be5030"
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 2669283096,
+      "sha256": "ac02591061f1344027a7e7b11dbb4143f75f166c47dc09b742f5de3ab1dde1d1"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "bytes": 701,
+      "sha256": "596d752bf46f5cace1f6826b52ed7d913347a4eea0ecce8ab2f869471ca40369"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 3475806,
+      "sha256": "ed944c0b3d71e2d651a5ba0f8e7b350faff30031c8e3353de70b12b9c1bf5654"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 8072,
+      "sha256": "ab17e0d532ecf47e9d8451939dd81f25dd98c5fba4b6742584549bbf9c1f06b9"
+    },
+    {
+      "path": "vocab.json",
+      "bytes": 776995,
+      "sha256": "80ab859339a2525fdfbda14bc39df02dffb824aefdaf86426217bbb146d17e01"
+    }
+  ]
+}

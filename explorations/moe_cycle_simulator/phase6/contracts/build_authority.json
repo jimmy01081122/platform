@@ -1,0 +1,42 @@
+{
+  "schema_version": "phase6-build-authority-v1",
+  "frozen_phase5_commit": "5ca381273446f566a7c5ac5399463ffca73a1fdb",
+  "phase5_ledger_sha256": "b6b593a1fe79f1ddb60706c5c4af17470608c08589cd654eb7ea006d71ded834",
+  "phase5_review_ledger_sha256": "fb08d88c0f7ea381492a067ea10ee8286e24e63ca205e706bf0805967f10d93e",
+  "phase5_review_aggregate_sha256": "c4e3140a301721f13d1b33c111ca9dd09388247b06db84e1cdf11433ca703370",
+  "phase5_review": {
+    "aggregate": "phase5_r2_aggregate.json",
+    "verdict": "GO",
+    "phase5_freeze": true,
+    "phase6_authorized_scope": "CPU_SYNTHETIC_MULTI_GPU_NVLINK_AND_COHERENT_UMA_ONLY",
+    "gpu_authority": "NONE"
+  },
+  "scheduler_authority": {
+    "type": "MultiDomainSchedulerV1",
+    "global_scheduler_count": 1,
+    "phase4_scheduler_instances": 0,
+    "admission_semantics": "FAIL_ATOMIC_PREVALIDATE_THEN_COMMIT",
+    "phase3_primitives_reused": [
+      "U128",
+      "Clock",
+      "Bridge",
+      "EventKey",
+      "sha256_bytes"
+    ],
+    "phase4_semantics_reused": [
+      "ceil_div_service_duration",
+      "atomic_sorted_resource_admission",
+      "strictly_positive_completion_progress"
+    ]
+  },
+  "input_binding": {
+    "phase5_ledger_sha256": "exact",
+    "phase5_plan_digest": "exact",
+    "phase5_action_digest": "canonical digest of the exact allowed Phase5 action ID set",
+    "phase5_action_membership": "each allowed ID has a full CompiledAction preimage whose ID is recomputed with the frozen Phase5 moe-phase5-compiled-action-v1 algorithm and bound to phase5_plan_digest",
+    "selected_top_k_expert_ids": "exact",
+    "traffic_payload_profile_sha256": "exact"
+  },
+  "execution_scope": "CPU_SYNTHETIC_ONLY",
+  "gpu_authority": "NONE"
+}

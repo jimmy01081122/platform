@@ -1,0 +1,31 @@
+experiment_id: replace_me
+revision: 1
+status: draft
+question: "State a falsifiable engineering question"
+platform_profile: discrete_edge_workstation
+simulation:
+  fidelity: fast
+  backend: edgeflow
+  calibration_pack: null
+  workload_window: null
+  checkpoint: false
+workload:
+  id: replace_me
+  trace_ref: null
+algorithm:
+  semantic_revision: 1
+  baseline_ids: []
+  proposed_id: null
+stages: []
+parameters:
+  fixed: {}
+  sweep: {}
+metrics:
+  primary: []
+  secondary: []
+repetitions:
+  warmup: 0
+  measured: 1
+provenance:
+  unregistered_parameters_allowed: false
+notes: ""

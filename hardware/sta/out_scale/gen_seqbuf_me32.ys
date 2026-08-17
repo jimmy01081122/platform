@@ -1,0 +1,6 @@
+read_verilog /work/sta/out_scale/flat_seqbuf_me32.v
+synth -top moe_residency_top -flatten
+dfflibmap -liberty /work/syn/lib/nangate45.lib
+abc -liberty /work/syn/lib/nangate45.lib -script /work/sta/out_scale/abc_seqbuf_me32.do
+clean
+write_verilog -noattr /work/sta/out_scale/netlist_seqbuf_me32.v

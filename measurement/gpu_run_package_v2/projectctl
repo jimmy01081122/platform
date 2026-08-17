@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if [[ -z "${BENCHMARK_PYTHON:-}" ]]; then
+  printf '%s\n' \
+    '{"status":"blocked","reason":"BENCHMARK_PYTHON must select the benchmark environment"}' >&2
+  exit 20
+fi
+if ! command -v "$BENCHMARK_PYTHON" >/dev/null 2>&1; then
+  printf '{"status":"blocked","reason":"BENCHMARK_PYTHON unavailable: %s"}\n' \
+    "$BENCHMARK_PYTHON" >&2
+  exit 20
+fi
+if ! "$BENCHMARK_PYTHON" -c 'import yaml, jsonschema' >/dev/null 2>&1; then
+  printf '%s\n' \
+    '{"status":"blocked","reason":"benchmark Python lacks required yaml/jsonschema dependencies"}' >&2
+  exit 20
+fi
+
+exec "$BENCHMARK_PYTHON" "$ROOT/scripts/projectctl.py" "$@"

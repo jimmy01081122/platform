@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgeflow.local/schemas/moe-simulator/result-evidence-v1",
+  "title": "Result fidelity and calibration range",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "fidelity", "range_status"],
+  "properties": {
+    "schema_version": {"const": "result-evidence-v1"},
+    "fidelity": {
+      "enum": [
+        "MEASURED", "CALIBRATED_SURROGATE", "ANALYTIC_FIRST_ORDER",
+        "FUNCTIONAL_ONLY", "UNAVAILABLE"
+      ]
+    },
+    "range_status": {
+      "enum": [
+        "IN_CALIBRATION_ENVELOPE", "INTERPOLATED",
+        "EXTRAPOLATED", "RANGE_UNKNOWN"
+      ]
+    },
+    "envelope_distance": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "unit": {"type": "string", "minLength": 1}
+      }
+    },
+    "nearest_calibration_point": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "calibration_profile_hash": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"fidelity": {"const": "MEASURED"}}},
+      "then": {
+        "properties": {"range_status": {"const": "IN_CALIBRATION_ENVELOPE"}}
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "fidelity": {
+            "enum": ["ANALYTIC_FIRST_ORDER", "FUNCTIONAL_ONLY", "UNAVAILABLE"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "range_status": {"const": "RANGE_UNKNOWN"},
+          "envelope_distance": {"type": "null"},
+          "nearest_calibration_point": {"type": "null"},
+          "calibration_profile_hash": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"fidelity": {"const": "CALIBRATED_SURROGATE"}}},
+      "then": {
+        "required": [
+          "envelope_distance",
+          "nearest_calibration_point",
+          "calibration_profile_hash"
+        ],
+        "properties": {
+          "envelope_distance": {"type": "object"},
+          "nearest_calibration_point": {"type": "string"},
+          "calibration_profile_hash": {"type": "string"}
+        }
+      }
+    }
+  ]
+}
