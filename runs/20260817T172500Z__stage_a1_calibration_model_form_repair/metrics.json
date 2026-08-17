@@ -1,0 +1,16 @@
+{
+  "fit_side_mape_pct": {
+    "component_latency": 20.324222415876793,
+    "moe_replay_throughput": 75.89787057240177,
+    "moe_replay_tpot": 43.17637085033118,
+    "pcie_transfer_latency": 19.821069884295014
+  },
+  "note": "FIT-side residuals only (decision P-005); not a held-out judgment; no PASS/FAIL claim.",
+  "old_model_evidence_of_record_mape_pct": {
+    "component_latency": 304.418,
+    "moe_replay_throughput": 60.658,
+    "moe_replay_tpot": 293.936,
+    "pcie_transfer_latency": 66.879
+  },
+  "schema_version": "stage-a1-metrics-v1"
+}

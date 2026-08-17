@@ -1,0 +1,199 @@
+schema_version: experiment-spec-v1
+experiment_id: cal_model_form_repair_v1
+stage: STAGE_A1
+title: Calibration 模型形式修復（4 項結構性缺陷）事前登記
+created_at_utc: "2026-08-17T17:25:08Z"
+created_by_session: STAGE_A1
+status: pre_registered
+
+# ---------------------------------------------------------------------------
+# 本檔案必須在任何擬合輸出產生之前寫死。驗收時會檢查:
+#   1. 本檔的建立時間早於 calibration/fits/v2/ 內任何檔案的 mtime
+#   2. 下方登記的模型形式與最終程式碼一致（若不一致須補登記並說明理由，
+#      不得默默改掉再宣稱符合原計畫 —— 見 STAGE_A1 guide §8）
+# ---------------------------------------------------------------------------
+
+decision_p005:
+  statement: >
+    evidence/ 中所有既有量測（q0/q1、8/11 各家族、8/13-14 campaigns）在本平台
+    只能作 FIT 與模型開發用。診斷過程曾檢視 validation split 殘差，其獨立性已
+    受污染，因此本階段一律降級為 FIT 側。本階段不產生、也不得宣稱任何 held-out
+    判定；sealed held-out 屬 STAGE_A4。
+  applies_to:
+    - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/rtx-pro-6000-calibration/result.json
+    - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json
+    - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/**
+    - evidence/measurement_backups/20260811T171000Z__phase7_remote_component_backup/**
+
+# ---------------------------------------------------------------------------
+# 四項結構性變更 —— 每項含：現況缺陷、新模型形式、參數化軸、係數個數、
+# 使用的量測家族、預期方向。
+# ---------------------------------------------------------------------------
+
+defects:
+
+  - id: DEFECT_1_CONTENTION_PLACEMENT
+    current_form: >
+      _pcie_latency() 把 copy_engine.stream_latency_factors[streams] 當成
+      「單筆 transfer latency」的乘數：predicted = (intercept + bytes/bw) * factor(streams)。
+    new_form: >
+      單筆 transfer latency 完全不依賴 copy_streams：
+      predicted = max(floor_ms, intercept + bytes/bw)（floor_ms 見缺陷 4）。
+      stream_latency_factors 仍照原公式擬合（同一批 copy_engine 探針），但重新
+      定名為「聚合完成時間 / 佔用比例」，不再乘進單筆 latency 預測式。
+      本階段不新增「多路並發總完成時間」的獨立評估路徑 —— 因為現有 moe_replay
+      評估點的 features.transfers 目前恆為空陣列，沒有任何評分路徑會用到聚合值；
+      因此聚合模型只擬合、不接入 predict()，並記錄為量測缺口（見下）。
+    parameterization: "無新增係數；stream_latency_factors 仍是 {streams: ratio} 的字典（沿用既有擬合程式），但語意重新標注為聚合完成時間比例，且不再乘進 _pcie_latency。"
+    fit_families:
+      - "evidence/.../rtx-pro-6000-calibration/result.json: calibration_role=copy_engine（擬合聚合比例，僅供記錄，不接入 predict）"
+      - "evidence/.../rtx-pro-6000-calibration/result.json: calibration_role=pcie_transfer（單筆 latency 的 intercept/bandwidth，copy_streams 恆為 1，不受影響）"
+      - "evidence/measurement_backups/.../transfer_backup/raw/transfers/*/measurements.jsonl: family=XFER-O3（H2D+D2H 雙向同時記錄，用於交叉檢查「單筆延遲是否真的不受並發影響」）"
+    expected_direction: >
+      修正後，任何 copy_streams > 1 的驗證點，其單筆 pcie_transfer_latency 預測值
+      應與 copy_streams = 1 的同尺寸預測值幾乎相同（差異 < 5%），不再系統性地依
+      stream 數放大 1.74x / 2.76x。
+
+  - id: DEFECT_2_COMPONENT_SHAPE
+    current_form: >
+      gpu_service.operation_ms[op] 是單一常數（4 個 op：dequant, gather_scatter,
+      grouped_gemm, selected_expert），對 operand 大小完全無感。
+    new_form: >
+      gpu_service.operation_ms[op] 改為 {intercept_ms, per_token_ms} 的仿射模型：
+      單次呼叫延遲 = intercept_ms + per_token_ms * tokens_per_launch。
+      tokens_per_launch 在預測時由 features 推導：
+        - 若 features 含 "tokens" 且 total_calls = features.get("cpu_calls") or
+          sum(gpu_operations.values()) or 1 非零，則 tokens_per_launch =
+          tokens / total_calls；
+        - 否則退化為 tokens_per_launch = 1.0（reference shape，等價於舊模型的
+          單一常數行為，向後相容既有 pytest 固定資料）。
+    parameterization: >
+      每個 operation class 兩個係數（intercept_ms, per_token_ms），共 4 op × 2 = 8
+      個新係數，取代舊制的 4 個常數。
+    fit_families:
+      - "evidence/.../rtx-pro-6000-calibration/result.json: calibration_role=gpu_service，
+        expert_tokens 由 case 欄位（正則 expert_tokens=(\\d+)）解析，範圍 8–2816
+        tokens（decode concurrency1 到 prefill concurrency4），4 個 op 各 12 筆。"
+      - "evidence/measurement_backups/.../component_backup/raw/components/*/measurements.jsonl:
+        family=CMP-M（tokens_per_expert_target 1–256，input_bytes 65536–16777216）
+        作為 grouped_gemm 類算子的交叉檢查來源，不作主要擬合輸入（op class 對應
+        不如 calibration_role=gpu_service 明確）。"
+    fit_rule: >
+      每個 op 若 expert_tokens 有 ≥2 個相異值，做線性回歸（沿用既有 _line_fit，
+      拒絕 slope<=0 或 intercept<0）；回歸被拒絕時退回單一 flat mean
+      （per_token_ms=0），並在殘差報告中明確標注該 op 為 "flat_fallback_non_physical_slope"，
+      不得偽裝成已收斂的 shape-aware 模型。若只有 1 個相異值（如最小合成測資），
+      同樣退回 flat mean（per_token_ms=0），不視為缺陷未修復。
+    expected_direction: >
+      grouped_gemm / selected_expert / gather_scatter 預期回歸出正斜率（tokens 越
+      多、延遲越長）。dequant 預期回歸不穩定或斜率非正 —— 因為 dequant 真正的
+      驅動變數是 expert 權重位元組數，不是 token 數；此為已知會記錄為未收斂的
+      項目，需要额外的 weight-bytes 量測維度才能真正修復，不在本階段登記的範圍
+      內勉強湊合。
+
+  - id: DEFECT_3_MOE_REPLAY_BATCHING
+    current_form: >
+      moe_replay_tpot / moe_replay_throughput 透過 _component_latency 加總，
+      operation_ms[op] 為常數、gpu_operations 的呼叫次數在 concurrency 1→4 之間
+      不變（因為批次合併發生在 kernel 內部，不反映在呼叫次數上），所以總時間幾
+      乎不隨 concurrency 改變；同時 contention.per_extra_concurrency（≈1.0046）
+      在 concurrency=4 時使總時間膨脹約 4 倍，恰好抵銷 tokens 也膨脹 4 倍，讓
+      tpot 的預測值呈現假性持平，掩蓋了「完全沒有 batching 項」的事實。
+    new_form: >
+      與 DEFECT_2 使用同一個 tokens_per_launch 仿射模型 —— 這不是額外新增一組
+      獨立係數，而是同一個 operand-shape 回歸自然帶出的 batching 效應：
+      tokens_per_launch = tokens / cpu_calls 隨 concurrency 增加而增加（例如
+      decode: concurrency=1 時 tokens/cpu_calls=1，concurrency=4 時 =4），
+      因此每次 launch 的延遲會隨批次增大而增加，但增幅是 per_token_ms 級的
+      （通常遠小於等比例），使得攤提後的 tpot 隨 concurrency 增加而下降 ——
+      這正是實測觀察到的 batching gain。
+    parameterization: "無新增係數；重用 DEFECT_2 的 8 個係數。"
+    fit_families:
+      - "同 DEFECT_2（gpu_service 家族內 phase=decode 的列，expert_tokens 8→32，
+        concurrency 1→4，直接對應 moe_replay_tpot/throughput 6+6 個評估點的
+        domain.phase=decode, concurrency∈{1,4}）"
+    expected_direction: >
+      修正後，同一組 decode 資料上，concurrency=4 的預測 tpot 應明顯低於
+      concurrency=1（batching gain 方向與量），不再出現「預測值幾乎不變」的假象；
+      仍以 FIT 側殘差描述，不做 4x 精確匹配的強主張。
+
+  - id: DEFECT_4_SMALL_TRANSFER_FLOOR
+    current_form: >
+      pcie 用單一線性模型 intercept_ms + bytes/bandwidth，小尺寸區間系統性低估
+      （intercept 僅 0.0153ms，實測下限約 0.037ms，低估 55–59%）。
+    new_form: >
+      predicted = max(floor_ms, intercept_ms + bytes/bandwidth)。floor_ms 是新增
+      參數，來自小尺寸微基準的 plateau 估計；線性段的 intercept/bandwidth 仍沿用
+      既有 pcie_transfer 探針的擬合（不變動，向後相容既有測試）。floor_ms 對合
+      成測試資料預設為既有 2 點資料中最小 bytes 點的量測值本身，因此對現有
+      pytest 固定資料完全不變（floor 永遠不 bind，見下方驗證）。
+    parameterization: "每個方向（h2d/d2h）新增 1 個係數 floor_ms，共 2 個新係數。"
+    fit_families:
+      - "evidence/measurement_backups/.../transfer_backup/raw/transfers/{transfer-v1,v2}-*/measurements.jsonl:
+        family=XFER-L0/L1/L2，bytes_label 4KiB/64KiB/1MiB/16MiB 尺寸掃描，
+        取 gpu_duration_ns.mean 換算 ms；floor_ms = 4KiB 與 64KiB 兩組（h2d/d2h
+        分開）測得延遲的平均值。"
+    expected_direction: >
+      修正後，4KiB/64KiB 等小尺寸點的低估（原本低估 55–59%）應大幅縮小；
+      大尺寸點（>=1MiB）的預測應與修正前幾乎相同，因為 floor 在該區間不 bind。
+
+# ---------------------------------------------------------------------------
+# 使用與保留的量測家族
+# ---------------------------------------------------------------------------
+
+measurement_family_usage:
+  used_for_fit:
+    - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/rtx-pro-6000-calibration/result.json
+    - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v1-20260811T1730Z-L
+    - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v2-20260811T1740Z-L
+  used_for_fit_side_residual_check_only:
+    - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json
+    note: >
+      這份檔案原始標記為 "validation"，但依 decision_p005 在本平台一律降級為
+      FIT 側殘差檢查，不得引用為 held-out 判定證據。
+  reserved_not_used_this_stage:
+    - evidence/measurement_backups/20260811T171000Z__phase7_remote_component_backup/raw/components/*  # CMP-A 用途在本階段外（掛載點 A1/attention，非本階段四項缺陷範圍）；CMP-M 僅作交叉檢查
+    - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/*/*  # XFER-E*, XFER-O0-O2, XFER-Q* 家族（多物件序列搬移／overlap／queue）超出四項缺陷登記範圍，留給後續量測缺口分析引用
+    note: >
+      保留家族不用於本次擬合係數，但在殘差分析與量測缺口清單中會引用其定性
+      觀察（例如 XFER-O3 的 H2D+D2H 雙向記錄用於交叉檢查缺陷 1 的方向，見上）。
+
+# ---------------------------------------------------------------------------
+# 驗收與誠實記錄承諾
+# ---------------------------------------------------------------------------
+
+addenda:
+  - id: ADDENDUM_1_CONTENTION_DOUBLE_COUNT
+    added_at_utc: "2026-08-17T17:31:56Z"
+    reason: >
+      殘差分析執行後（見 calibration/fits/v2/residual_report.json 第一版），
+      發現 decode phase / concurrency=4 的 component_latency 點系統性地被
+      高估約 5-6 倍。追查發現：既有的 contention.per_extra_concurrency
+      （≈1.0046）是從一個「shape 固定、只有 concurrency 變化」的探針
+      （calibration_role=contention，fixed_expert_tokens=32，concurrency=4）
+      擬合出來的，代表的是「相同工作量下、多個並行 stream 競爭同一資源」的
+      真實競爭效應。但在本次新增的 tokens_per_launch 仿射模型中，
+      concurrency 同時也驅動了 tokens_per_launch 的成長（decode:
+      concurrency 1→4 對應 tokens 1→4 或 8→32），兩者疊加即是對同一個
+      concurrency 效應「算了兩次」。
+    fix: >
+      _component_latency() 新增規則：當 features 提供 "tokens"（即
+      tokens_per_launch 模型已生效）時，不再套用 contention.per_extra_concurrency
+      的乘數；只有在完全無 shape 訊號（tokens_per_launch 退化為 reference
+      shape=1）時才沿用舊制的全域 contention 乘數。此規則不影響既有 pytest
+      固定資料（其唯一非 1 的 concurrency 案例中 features 恆帶 "tokens"，且
+      concurrency=1 時乘數本就是 1，兩種路徑數值相同）。
+    status: "本階段登記變更；非事前遺漏，是殘差分析驅動的模型形式修正，依 guide §8 規則補登記。"
+    caveat: >
+      這不代表 contention 效應本身不存在——只代表「fixed-shape 探針測得的
+      競爭係數」不能直接套用在「shape 隨 concurrency 增長」的評估點上。真正
+      需要的是「扣除 batching 已解釋的部分後，剩餘的純競爭效應」，但目前的
+      量測家族無法把這兩個效應分離（只有一個 contention 探針樣本）。此為
+      未收斂項目，記錄於 measurement_gaps。
+
+commitments:
+  - "本階段結束時不得宣稱任何 calibrated PASS；判定屬 STAGE_A4 sealed held-out。"
+  - "所有殘差數字必須標注為 FIT 側，不得省略此限定詞。"
+  - "任一缺陷若修正後仍不收斂（例如 DEFECT_2 的 dequant），記錄為未收斂並說明原因，不放寬門檻或挑選資料湊數。"
+  - "既有的非物理解拒絕（slope<=0 或 intercept<0）保留，且新增的 gpu_service 回歸同樣受此拒絕規則約束。"
+  - "src/edgeflow/calibrated_backend.py 只替換模型形式函式（_pcie_latency、_component_latency、fit_parameters 內 gpu_service 段落與新增的 _operand_tokens 輔助函式）；load_evidence、evaluate、evaluate_split、split 隔離與 sha256 驗證等既有保護不變動。"

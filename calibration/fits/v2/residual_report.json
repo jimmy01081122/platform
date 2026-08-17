@@ -1,0 +1,1481 @@
+{
+  "decision_p005": "all points below are FIT-side per decision P-005; none are held-out judgments",
+  "parameters_used": {
+    "contention": {
+      "per_extra_concurrency": 1.0046410877379799
+    },
+    "copy_engine": {
+      "stream_latency_factors": {
+        "1": 1.0,
+        "2": 1.7384584273483465,
+        "4": 2.762992620065082
+      }
+    },
+    "cpu_runtime": {
+      "per_call_ms": 4.1776208660000005e-05
+    },
+    "fit_split": "calibration",
+    "gpu_service": {
+      "operation_ms": {
+        "dequant": {
+          "intercept_ms": 0.1476092425306868,
+          "model_form": "flat_fallback_non_physical_slope",
+          "per_token_ms": 0.0
+        },
+        "gather_scatter": {
+          "intercept_ms": 0.012474702773139532,
+          "model_form": "affine_per_token",
+          "per_token_ms": 3.3344147306300585e-05
+        },
+        "grouped_gemm": {
+          "intercept_ms": 0.08453830981750879,
+          "model_form": "affine_per_token",
+          "per_token_ms": 0.000315195420108925
+        },
+        "selected_expert": {
+          "intercept_ms": 0.07508147380290289,
+          "model_form": "affine_per_token",
+          "per_token_ms": 0.0002881197241534118
+        }
+      }
+    },
+    "memory": {
+      "bandwidth_bytes_per_ms": 68396254670.230995,
+      "intercept_ms": 0.005769699879949218
+    },
+    "pcie": {
+      "d2h": {
+        "bandwidth_bytes_per_ms": 28408685.50988128,
+        "floor_ms": 0.027774121212121212,
+        "intercept_ms": 0.014215807554351478
+      },
+      "h2d": {
+        "bandwidth_bytes_per_ms": 28480108.698140044,
+        "floor_ms": 0.028482377142857142,
+        "intercept_ms": 0.015341920668000775
+      }
+    },
+    "queueing": {
+      "intercept_ms": 0.00027215933966720507,
+      "per_queue_entry_ms": 0.006485015066192163
+    },
+    "schema_version": "calibrated-backend-parameters-v1"
+  },
+  "per_metric": {
+    "component_latency": {
+      "errors": [],
+      "fit_side_mape_pct": 20.324222415876793,
+      "n_errored": 0,
+      "n_scored": 48,
+      "note": "FIT-side residual only; old_model value is the immutable evidence-of-record from rtx-q1-validation-report.json, not a held-out comparison.",
+      "old_model_validation_mape_pct_for_reference": 304.418
+    },
+    "moe_replay_throughput": {
+      "errors": [],
+      "fit_side_mape_pct": 75.89787057240177,
+      "n_errored": 0,
+      "n_scored": 6,
+      "note": "FIT-side residual only; old_model value is the immutable evidence-of-record from rtx-q1-validation-report.json, not a held-out comparison.",
+      "old_model_validation_mape_pct_for_reference": 60.658
+    },
+    "moe_replay_tpot": {
+      "errors": [],
+      "fit_side_mape_pct": 43.17637085033118,
+      "n_errored": 0,
+      "n_scored": 6,
+      "note": "FIT-side residual only; old_model value is the immutable evidence-of-record from rtx-q1-validation-report.json, not a held-out comparison.",
+      "old_model_validation_mape_pct_for_reference": 293.936
+    },
+    "pcie_transfer_latency": {
+      "errors": [],
+      "fit_side_mape_pct": 19.821069884295014,
+      "n_errored": 0,
+      "n_scored": 30,
+      "note": "FIT-side residual only; old_model value is the immutable evidence-of-record from rtx-q1-validation-report.json, not a held-out comparison.",
+      "old_model_validation_mape_pct_for_reference": 66.879
+    }
+  },
+  "points": [
+    {
+      "ape_pct": 30.083081597551555,
+      "case": "bytes=65536,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.04073746067998859,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-171adaaf95f408d12dfd9b36",
+      "predicted": 0.028482377142857142,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 25.268584691510227,
+      "case": "bytes=65536,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.03716525519752329,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-983aec7f707dee80370c85f5",
+      "predicted": 0.027774121212121212,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 61.58349625338394,
+      "case": "bytes=65536,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07414099245136546,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-5ce4038537636750a2ef3757",
+      "predicted": 0.028482377142857142,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 60.560759006953504,
+      "case": "bytes=65536,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07042255508167118,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-315daa56c144a76a6ea14953",
+      "predicted": 0.027774121212121212,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 79.28341633881996,
+      "case": "bytes=65536,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.13748587898799702,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-af78cfbe96f5f69516e7b553",
+      "predicted": 0.028482377142857142,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 78.9526179590275,
+      "case": "bytes=65536,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.13195998038166418,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-2e8c832354978c6b32a9869b",
+      "predicted": 0.027774121212121212,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 35.03447191739363,
+      "case": "bytes=1048576,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.03862699422949465,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-f3f2929a1ab713b53cde6136",
+      "predicted": 0.05215975767536021,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 34.38425144970335,
+      "case": "bytes=1048576,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.03804479238912008,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-6c269945542bfabe3701ef0a",
+      "predicted": 0.05112620946771273,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 28.361598386184934,
+      "case": "bytes=1048576,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07280977311099232,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-c001ba2e03d23510cc33aa5c",
+      "predicted": 0.05215975767536021,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 30.766921163325673,
+      "case": "bytes=1048576,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07384650563977233,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-0a603a9a7cdc357cf6e4a607",
+      "predicted": 0.05112620946771273,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 60.76294403798995,
+      "case": "bytes=1048576,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.1329349422287496,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-439be7b36de86393b27fb679",
+      "predicted": 0.05215975767536021,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 60.30305908237978,
+      "case": "bytes=1048576,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.12879130806026273,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-fe08ec89586b3ffc1dd2370c",
+      "predicted": 0.05112620946771273,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 1.2303883281127628,
+      "case": "bytes=22020096,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.7789326020036313,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-a1da91661c9a72e1c2493959",
+      "predicted": 0.7885164978225491,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 1.2024389750475195,
+      "case": "bytes=22020096,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.7799557557397959,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-8f6c6fd9109426f6ec54dbee",
+      "predicted": 0.7893342477349377,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 1.1084046401501928,
+      "case": "bytes=22020096,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.7798723564365576,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-30087b1c96c38c99281a45c2",
+      "predicted": 0.7885164978225491,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 1.17503635822563,
+      "case": "bytes=22020096,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.7801670018088054,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-67390f76cfcac65d3398e360",
+      "predicted": 0.7893342477349377,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.8616709997350364,
+      "case": "bytes=22020096,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.7817801252019912,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-9bb71e0d4838864feadf22c1",
+      "predicted": 0.7885164978225491,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 1.102097418108688,
+      "case": "bytes=22020096,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.7807298442787377,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-f6479a14102b861ffe34ae61",
+      "predicted": 0.7893342477349377,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.3015864284135742,
+      "case": "bytes=44040192,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.5569953881952752,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-77498bbaed46053068ebf779",
+      "predicted": 1.5616910749770974,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.3038001277204762,
+      "case": "bytes=44040192,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.5597142739591614,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-7b684334dfe3d3d5083029e9",
+      "predicted": 1.5644526879155238,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.24484861160291943,
+      "case": "bytes=44040192,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.5578766356641873,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-33222b9f69b134841e75ea55",
+      "predicted": 1.5616910749770974,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.296576956343225,
+      "case": "bytes=44040192,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.5598266016561002,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-72d446feed910b6f45e2e377",
+      "predicted": 1.5644526879155238,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.12238461923454916,
+      "case": "bytes=44040192,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.5597821415422823,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-2ec2ba5c3c8be994fdf4ac34",
+      "predicted": 1.5616910749770974,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.273302129696474,
+      "case": "bytes=44040192,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.5601886590829672,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-e8eab7804e20add73366a4d7",
+      "predicted": 1.5644526879155238,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.15919977767174406,
+      "case": "bytes=88080384,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 3.1129961121757077,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-facf2a27af55e4176ddc0c97",
+      "predicted": 3.108040229286194,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.15276378269325552,
+      "case": "bytes=88080384,streams=1",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 3.119454965681684,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-3efaa56544cb511a48951685",
+      "predicted": 3.114689568276696,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.18858739118277837,
+      "case": "bytes=88080384,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 3.113912675965507,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-912a168ae363fa6cb7249be5",
+      "predicted": 3.108040229286194,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.15519676983680378,
+      "case": "bytes=88080384,streams=2",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 3.11953097959108,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-09141ed8b1393df42caa19bc",
+      "predicted": 3.114689568276696,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.24454501860554428,
+      "case": "bytes=88080384,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 3.1156594191925437,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-7e403e8b0bcd2440f6af5ec1",
+      "predicted": 3.108040229286194,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 0.16406631224517276,
+      "case": "bytes=88080384,streams=4",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 3.1198081224122634,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-89934c70fd3b0ec10642fbfd",
+      "predicted": 3.114689568276696,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 50.0463201974364,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.6209495875740635,
+      "metric": "component_latency",
+      "point_id": "point-55e0286f74cb95a7db7ada9f",
+      "predicted": 0.31018716871208696,
+      "shape_augmented": 816.0
+    },
+    {
+      "ape_pct": 17.773928254755013,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.03369466193675901,
+      "metric": "component_latency",
+      "point_id": "point-dd7b62d19f96546b79b50902",
+      "predicted": 0.039683526975080805,
+      "shape_augmented": 816.0
+    },
+    {
+      "ape_pct": 3.485393843773306,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816,group=128",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.14263775499905335,
+      "metric": "component_latency",
+      "point_id": "point-9a4eae07f8cda8cf91cd4d59",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 816.0
+    },
+    {
+      "ape_pct": 48.17531462027438,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=1,expert_tokens=816",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.6594111862376749,
+      "metric": "component_latency",
+      "point_id": "point-f813e3dd9eeed991a8b90db9",
+      "predicted": 0.3417377726263916,
+      "shape_augmented": 816.0
+    },
+    {
+      "ape_pct": 2.281202573297755,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=4,expert_tokens=3264",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.0392107559462724,
+      "metric": "component_latency",
+      "point_id": "point-858c7182794b8b81979b5fc3",
+      "predicted": 1.015504253439639,
+      "shape_augmented": 3264.0
+    },
+    {
+      "ape_pct": 31.02132563255895,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=4,expert_tokens=3264",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.17586594798082222,
+      "metric": "component_latency",
+      "point_id": "point-deffbd190fbf4f2105f5b709",
+      "predicted": 0.12130999958090463,
+      "shape_augmented": 3264.0
+    },
+    {
+      "ape_pct": 6.5442879321445115,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=4,expert_tokens=3264,group=128",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.15794566138826485,
+      "metric": "component_latency",
+      "point_id": "point-850d7c80199a9ac65ca694f3",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 3264.0
+    },
+    {
+      "ape_pct": 2.0109979071338513,
+      "case": "validation-livecodebench-execution-q1,phase=prefill,concurrency=4,expert_tokens=3264",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 1.136184813881367,
+      "metric": "component_latency",
+      "point_id": "point-8ddb66391b7cb17a5e657302",
+      "predicted": 1.1133361610530401,
+      "shape_augmented": 3264.0
+    },
+    {
+      "ape_pct": 29.28703707367251,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.059856295996660945,
+      "metric": "component_latency",
+      "point_id": "point-b6e2748ddaac7fde28297b73",
+      "predicted": 0.07738643159613019,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 22.590322640276877,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.016459771421576057,
+      "metric": "component_latency",
+      "point_id": "point-b889b18bddf6c495e2a8144a",
+      "predicted": 0.012741455951589938,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 1.6420501182581502,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.14522458210843533,
+      "metric": "component_latency",
+      "point_id": "point-dc40fa19681426131e94c988",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 12.913472829171688,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07710317555292472,
+      "metric": "component_latency",
+      "point_id": "point-a75ef0d1d9f4f73945db7e0a",
+      "predicted": 0.0870598731783802,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 29.645962855726026,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.06502424226632118,
+      "metric": "component_latency",
+      "point_id": "point-071f56fb01f5418796bef3a7",
+      "predicted": 0.08430130497581206,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 23.23778367518461,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.01764112102970044,
+      "metric": "component_latency",
+      "point_id": "point-57df29c0824aba6b00707da9",
+      "predicted": 0.013541715486941152,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 0.18442310577192386,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.14733751810383244,
+      "metric": "component_latency",
+      "point_id": "point-fd9f94315ce61a607053401d",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 29.072275604520133,
+      "case": "validation-livecodebench-execution-q1,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07331130005867861,
+      "metric": "component_latency",
+      "point_id": "point-1531a8ff29a2cfca58565032",
+      "predicted": 0.09462456326099439,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 42.884063060025525,
+      "case": "validation-livecodebench-execution-q1,concurrency=1",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.17088179380997368,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-9b53daf5b0a4a664d8f90d33",
+      "predicted": 0.09760073759440177,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 75.02540100418975,
+      "case": "validation-livecodebench-execution-q1,concurrency=1",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 5853.907004121056,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-9e019ee64210a229df5503d2",
+      "predicted": 10245.824208375228,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 43.70237848390614,
+      "case": "validation-livecodebench-execution-q1,concurrency=4",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.04380797273972455,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-bf0f0a4522adf7db508f4dbd",
+      "predicted": 0.024662846686883705,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 77.3647815480989,
+      "case": "validation-livecodebench-execution-q1,concurrency=4",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 22860.69389377561,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-2b8b4f566b883f646fbd04f4",
+      "predicted": 40546.819785074695,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 42.94180650432481,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=1,expert_tokens=296",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.112188950226721,
+      "metric": "component_latency",
+      "point_id": "point-1da893b417680fd8cc1744cb",
+      "predicted": 0.1603649121523128,
+      "shape_augmented": 296.0
+    },
+    {
+      "ape_pct": 27.926165490265355,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=1,expert_tokens=296",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.017466771000421204,
+      "metric": "component_latency",
+      "point_id": "point-ede193fae969cfb0b1a6500f",
+      "predicted": 0.022344570375804507,
+      "shape_augmented": 296.0
+    },
+    {
+      "ape_pct": 0.5562403172600894,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=1,expert_tokens=296,group=128",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.1467927222268574,
+      "metric": "component_latency",
+      "point_id": "point-f9a2014340d3476682e78f75",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 296.0
+    },
+    {
+      "ape_pct": 49.73600412649333,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=1,expert_tokens=296",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.11876646181870791,
+      "metric": "component_latency",
+      "point_id": "point-0a2a4e8d11caaa5f81c52302",
+      "predicted": 0.1778361541697506,
+      "shape_augmented": 296.0
+    },
+    {
+      "ape_pct": 10.493565783616628,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=4,expert_tokens=1184",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.37668729780667154,
+      "metric": "component_latency",
+      "point_id": "point-d0b7dcd45fd054f9b2702cab",
+      "predicted": 0.4162152272005425,
+      "shape_augmented": 1184.0
+    },
+    {
+      "ape_pct": 8.05633596206323,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=4,expert_tokens=1184",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.04808063564365135,
+      "metric": "component_latency",
+      "point_id": "point-898d9aa279034ee5bea82c68",
+      "predicted": 0.051954173183799426,
+      "shape_augmented": 1184.0
+    },
+    {
+      "ape_pct": 0.8872881519338615,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=4,expert_tokens=1184,group=128",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.14631104199013734,
+      "metric": "component_latency",
+      "point_id": "point-8ac280a1c93f718641eae323",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 1184.0
+    },
+    {
+      "ape_pct": 8.426526014657593,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=prefill,concurrency=4,expert_tokens=1184",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.422156555273751,
+      "metric": "component_latency",
+      "point_id": "point-805bd9bdb4e79d62ee04ddc7",
+      "predicted": 0.457729687226476,
+      "shape_augmented": 1184.0
+    },
+    {
+      "ape_pct": 30.40581739837914,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.059342775606184006,
+      "metric": "component_latency",
+      "point_id": "point-d91be7457137e4ab4673a190",
+      "predicted": 0.07738643159613019,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 28.211787588501924,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.01774867422321994,
+      "metric": "component_latency",
+      "point_id": "point-c30a755696381823007d667d",
+      "predicted": 0.012741455951589938,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 3.2085116649969976,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.15250229650338626,
+      "metric": "component_latency",
+      "point_id": "point-4926c1b6809a372371dcd69a",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 20.441773704925026,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07228378535147743,
+      "metric": "component_latency",
+      "point_id": "point-6efa11b1ed52d86480aaa9ee",
+      "predicted": 0.0870598731783802,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 34.34748856391601,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.06274870180078253,
+      "metric": "component_latency",
+      "point_id": "point-c2defa2e52c110fad90498a1",
+      "predicted": 0.08430130497581206,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 23.148116959991064,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.017620538302088658,
+      "metric": "component_latency",
+      "point_id": "point-e6d0a02ec175306897da01c3",
+      "predicted": 0.013541715486941152,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 2.064856813316168,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.15072142412587713,
+      "metric": "component_latency",
+      "point_id": "point-8cb2c0452b3a0754141829e8",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 31.498041806479293,
+      "case": "validation-mmlu-abstract_algebra-q1,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07195891433900574,
+      "metric": "component_latency",
+      "point_id": "point-175b157976c60ed491e491e8",
+      "predicted": 0.09462456326099439,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 42.731905181207885,
+      "case": "validation-mmlu-abstract_algebra-q1,concurrency=1",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.17042777117560892,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-80fd4e1bab8b40464b8a3605",
+      "predicted": 0.09760073759440177,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 74.6148245879239,
+      "case": "validation-mmlu-abstract_algebra-q1,concurrency=1",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 5867.671449176494,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-504b554396c47b1c0cb01fbf",
+      "predicted": 10245.824208375228,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 41.8941803368705,
+      "case": "validation-mmlu-abstract_algebra-q1,concurrency=4",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.04244471006495978,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-99dad61ee3c6e8d0098a6b53",
+      "predicted": 0.024662846686883705,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 72.09659922599207,
+      "case": "validation-mmlu-abstract_algebra-q1,concurrency=4",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 23560.50030473283,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-ccfa3c6e7b4b5e7f4059ab9d",
+      "predicted": 40546.819785074695,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 64.53502351438837,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=1,expert_tokens=232",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.08625838242523681,
+      "metric": "component_latency",
+      "point_id": "point-6501d47b6e93b1031683b42d",
+      "predicted": 0.14192524980649443,
+      "shape_augmented": 232.0
+    },
+    {
+      "ape_pct": 18.441408550333087,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=1,expert_tokens=232",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.0170637492373392,
+      "metric": "component_latency",
+      "point_id": "point-76b1b2b2e3c8fc5a53299af9",
+      "predicted": 0.020210544948201268,
+      "shape_augmented": 232.0
+    },
+    {
+      "ape_pct": 0.5497884056019021,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=1,expert_tokens=232,group=128",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.14680214137821407,
+      "metric": "component_latency",
+      "point_id": "point-e81ca9a12e6de6a54ace31d2",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 232.0
+    },
+    {
+      "ape_pct": 72.2329108767953,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=1,expert_tokens=232",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.09154095258574717,
+      "metric": "component_latency",
+      "point_id": "point-ea75b0d9d1f3faba808d7066",
+      "predicted": 0.15766364728277937,
+      "shape_augmented": 232.0
+    },
+    {
+      "ape_pct": 8.720887402778386,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=4,expert_tokens=928",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.3149869229346609,
+      "metric": "component_latency",
+      "point_id": "point-be7979bd5be47c9f6b4de0d6",
+      "predicted": 0.342456577817269,
+      "shape_augmented": 928.0
+    },
+    {
+      "ape_pct": 13.975470152570747,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=4,expert_tokens=928",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.03809422449871523,
+      "metric": "component_latency",
+      "point_id": "point-246887f30f571544e0d3f940",
+      "predicted": 0.04341807147338647,
+      "shape_augmented": 928.0
+    },
+    {
+      "ape_pct": 1.9040535001290553,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=4,expert_tokens=928,group=128",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.14485119822098133,
+      "metric": "component_latency",
+      "point_id": "point-ab56d83abbb237ba41bad97b",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 928.0
+    },
+    {
+      "ape_pct": 7.399773887582907,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=prefill,concurrency=4,expert_tokens=928",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.3510618747421617,
+      "metric": "component_latency",
+      "point_id": "point-dc53d3baddbc05ba8c7ad92a",
+      "predicted": 0.3770396596785912,
+      "shape_augmented": 928.0
+    },
+    {
+      "ape_pct": 28.427382393742164,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.06025695622984291,
+      "metric": "component_latency",
+      "point_id": "point-70b17982edb29685c42b8794",
+      "predicted": 0.07738643159613019,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 22.485293990086017,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.016437469233206315,
+      "metric": "component_latency",
+      "point_id": "point-627cd0f566d3904dc78a450e",
+      "predicted": 0.012741455951589938,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 3.751629668064714,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.1533628486608359,
+      "metric": "component_latency",
+      "point_id": "point-c0d57da28302e7070adf8858",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 20.257342604267865,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=1,expert_tokens=8",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07239464243349286,
+      "metric": "component_latency",
+      "point_id": "point-4cfec9b7d24559bf31bf910a",
+      "predicted": 0.0870598731783802,
+      "shape_augmented": 8.0
+    },
+    {
+      "ape_pct": 33.007981586916515,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.06338063623702449,
+      "metric": "component_latency",
+      "point_id": "point-21e4ce6cdbb55638c3821e70",
+      "predicted": 0.08430130497581206,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 21.12617810990073,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.017168833920346634,
+      "metric": "component_latency",
+      "point_id": "point-37020c25ea0a8a21e0d92b9a",
+      "predicted": 0.013541715486941152,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 1.4939089379201542,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.14543655286838306,
+      "metric": "component_latency",
+      "point_id": "point-928ea33e26e634bb88a39ff2",
+      "predicted": 0.1476092425306868,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 24.991216665931486,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,phase=decode,concurrency=4,expert_tokens=32",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.07570497014514296,
+      "metric": "component_latency",
+      "point_id": "point-19ce0a48776df22d7413a95a",
+      "predicted": 0.09462456326099439,
+      "shape_augmented": 32.0
+    },
+    {
+      "ape_pct": 43.42424415190784,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,concurrency=1",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.17251336041618798,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-5117ec7bfb30a11f1bd9ec76",
+      "predicted": 0.09760073759440177,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 76.60996838438633,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,concurrency=1",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 5801.38499661327,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-365918403bf58793393e3458",
+      "predicted": 10245.824208375228,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 44.42145388806921,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,concurrency=4",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 0.04437476042862777,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-c97b4b2ad3b3ea812228ba6a",
+      "predicted": 0.024662846686883705,
+      "shape_augmented": null
+    },
+    {
+      "ape_pct": 79.67564868381972,
+      "case": "validation-mmlu_ZH_CN-high_school_mathematics-q4388,concurrency=4",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "validation"
+      },
+      "error": null,
+      "measured": 22566.67505145679,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-9645f823731116a658f30762",
+      "predicted": 40546.819785074695,
+      "shape_augmented": null
+    }
+  ],
+  "schema_version": "stage-a1-fit-side-residual-report-v1"
+}

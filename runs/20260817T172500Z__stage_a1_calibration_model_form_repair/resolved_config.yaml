@@ -1,0 +1,20 @@
+schema_version: stage-a1-resolved-config-v1
+stage: STAGE_A1
+experiment_id: cal_model_form_repair_v1
+pre_registration: experiments/specs/cal_model_form_repair_v1.yaml
+inputs:
+  calibration_role_evidence: evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/rtx-pro-6000-calibration/result.json
+  fit_side_residual_check_evidence: evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json
+  small_transfer_floor_evidence: evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/*-L/measurements.jsonl
+code_changed:
+  - src/edgeflow/calibrated_backend.py   # model-form functions only, protections unchanged
+  - calibration/refit_v2.py              # new fitting/residual script
+command: [python, calibration/refit_v2.py]
+outputs:
+  parameters: calibration/fits/v2/parameters.json
+  residual_report: calibration/fits/v2/residual_report.json
+  self_check: calibration/fits/v2/self_check.json
+  measurement_gaps: calibration/fits/v2/measurement_gaps.json
+decision_p005: >
+  All evidence consumed here is FIT-side only. No held-out judgment is made
+  or claimed in this run; STAGE_A4 owns sealed held-out scoring.

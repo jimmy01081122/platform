@@ -1,0 +1,8 @@
+{
+  "python": "3.10.12",
+  "gcc": "11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3)",
+  "cmake": "3.22.1",
+  "git_commit": "50d4a0e25360e6d6b9f8164b1f0ac7076aeb3f9e",
+  "platform": "linux",
+  "note": "CPU-only session; no GPU driver/CUDA identity applicable (gpu_required: false for STAGE_A1)"
+}

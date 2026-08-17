@@ -6,6 +6,51 @@
 
 ---
 
+## 2026-08-17 · Stage A1 · Calibration 模型形式修復與重擬合
+
+**Session 目標** 修復四項已知模型形式缺陷、用既有微基準重新擬合，不做 held-out 判定。
+
+**進入檢查** 全數通過：`make verify-evidence` 4423/4423；`make test` 317 Python + 14 CTest、0 失敗；`make doctor` `workspace_contract: pass`；`STAGE_A1` ledger 狀態為 `NOT_STARTED`；5 個必要輸入檔案全部存在。
+
+**事前登記** `experiments/specs/cal_model_form_repair_v1.yaml`（建立於 2026-08-17T17:25:08Z，補一則 addendum 於 2026-08-17T17:31:56Z），皆早於 `calibration/fits/v2/` 的任何輸出。
+
+**四項缺陷處理狀態**
+
+```text
+缺陷1 contention 施加位置   已修正並在大尺寸(88MiB)驗證（streams 1/2/4 預測誤差<0.2%）；
+                            但發現小尺寸(64KiB)區間有相反方向的殘留效應（新缺口，見下）
+缺陷2 component shape       4 個 op 中 3 個（grouped_gemm/gather_scatter/selected_expert）
+                            收斂為仿射回歸；dequant 回歸非物理（斜率不穩定），
+                            退回 flat model 並標注 model_form=flat_fallback_non_physical_slope
+缺陷3 MoE replay batching   與缺陷2 共用同一組 tokens_per_launch 仿射模型；額外發現並修正
+                            一個未登記的雙重計算問題（見 addendum：contention 乘數與
+                            tokens_per_launch 對同一個 concurrency 效應算了兩次）
+缺陷4 小尺寸傳輸 floor      已修正（floor_ms 取自 Aug-11 XFER-L0 4KiB 穩定樣本）
+```
+
+**FIT 側殘差**（`calibration/fits/v2/residual_report.json`，全部為 FIT 側，非 held-out）
+
+```text
+component_latency       304.418% -> 20.324%
+pcie_transfer_latency    66.879% -> 19.821%
+moe_replay_tpot         293.936% -> 43.176%
+moe_replay_throughput    60.658% -> 75.898%（tpot 改善的 reciprocal 轉換，方向仍是改善）
+```
+
+**未收斂／新發現的缺口**（`calibration/fits/v2/measurement_gaps.json`，6 項，全部餵給 `TRACK_GPU` 優先序第 4 項）dequant 需要 weight-bytes 量測維度；聚合 contention 模型未被任何評估點實際使用過；floor_ms 樣本數少；component_latency 評估點原始 schema 缺 shape 特徵（本階段靠 join 補回）；moe_replay 的 `cpu_calls` 與 gpu_service 探針的 `expert_tokens` 之間有約 8 倍正規化落差，換算關係未明；小尺寸 PCIe 傳輸的 stream 交互作用與大尺寸相反，未建模。
+
+**驗證** `make test` 仍為 317 Python + 14 CTest、0 失敗；`make verify-evidence` 仍 4423/4423；舊 `rtx-q1-validation-report.json` 未被修改（`git status --short evidence/` 為空）；非物理解拒絕仍生效（`calibration/fits/v2/self_check.json`：三個刻意構造的非物理案例全部被拒）。
+
+**變更檔案** `src/edgeflow/calibrated_backend.py`（只改模型形式函式：`_pcie_latency`、`_component_latency`、`fit_parameters` 的 gpu_service 段落、新增 `_operand_tokens` 輔助函式；`load_evidence`/`evaluate`/`evaluate_split`/split 隔離/sha256 驗證等既有保護未動）；新增 `calibration/refit_v2.py`、`calibration/fits/v2/{parameters,residual_report,self_check,measurement_gaps}.json`；`experiments/specs/cal_model_form_repair_v1.yaml`；`runs/20260817T172500Z__stage_a1_calibration_model_form_repair/`；`governance/stage_ledger.yaml`（僅 STAGE_A1 列）；本五份 status 文件。
+
+**已知限制** 依授權邊界，`tests/` 不在本階段可修改範圍內，因此非物理解拒絕的回歸驗證是用 `calibration/refit_v2.py` 內嵌的 runtime self-check（寫入 `self_check.json`）完成，不是新增的 pytest。若 owner 希望有正式 pytest 覆蓋，需要額外授權修改 `tests/`。
+
+**仍然禁止的主張** 任何 calibrated PASS（判定屬 A4 sealed held-out）；以本階段 FIT 側殘差作為 held-out 證據；任何 break-even、accelerator、長上下文或高並發主張。
+
+**下一個最高資訊增益的動作** A2（measured raw → 九類 Canonical IR，與 A1 無依賴、可獨立排隊）或啟動 GPU 量測軌以縮小上述 6 項缺口（優先序第 4 項）。
+
+---
+
 ## 2026-08-18 · Stage 0 收尾與 session 指引系統
 
 **Session 目標** 補完 Stage 0 遺留缺口，建立跨 session 的交接契約。

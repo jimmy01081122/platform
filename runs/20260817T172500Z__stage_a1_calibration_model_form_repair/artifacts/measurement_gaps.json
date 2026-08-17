@@ -1,0 +1,41 @@
+{
+  "non_converged_operations": [
+    {
+      "operation": "dequant",
+      "model_form": "flat_fallback_non_physical_slope",
+      "reason": "expert_tokens regression rejected as non-physical or only one shape group observed; likely true driver is expert weight bytes, not token count (dequant is weight-size-bound, not token-count-bound)"
+    }
+  ],
+  "measurement_gaps": [
+    {
+      "id": "GAP-1-DEQUANT-WEIGHT-BYTES",
+      "description": "dequant latency does not correlate with expert_tokens in the available calibration-role probes; its physical driver is expert weight byte size, which is not varied independently of expert_tokens in any evidence family used this stage. A dedicated weight-bytes sweep at fixed token count is needed to fit a true shape-aware dequant model.",
+      "feeds": "TRACK_GPU measurement_priority #4 (component service model operand-shape gaps)"
+    },
+    {
+      "id": "GAP-2-AGGREGATE-CONTENTION-UNVALIDATED",
+      "description": "copy_engine.stream_latency_factors (reinterpreted as aggregate completion time / occupancy ratio) is still fit from the calibration-role copy_engine probes, but no evaluation point in either evidence file has a non-empty features.transfers list, so the aggregate model is never exercised end to end. Its correctness under defect 1's corrected interpretation is untested against real multi-stream aggregate-completion measurements.",
+      "feeds": "TRACK_GPU measurement_priority #4"
+    },
+    {
+      "id": "GAP-3-SMALL-TRANSFER-FLOOR-SAMPLE-SIZE",
+      "description": "floor_ms is fit from 2-3 stable 4KiB samples per direction (XFER-L0, local_pinned) across three attempt directories. This is enough to remove the systematic 55-59% underestimate at small sizes but leaves floor_ms's own uncertainty unquantified (no CI reported here). Additional repeated small-size probes would narrow this.",
+      "feeds": "TRACK_GPU measurement_priority #4"
+    },
+    {
+      "id": "GAP-5-MOE-REPLAY-TOKEN-NORMALIZATION-MISMATCH",
+      "description": "moe_replay_tpot improved from 293.936% (old) to ~43% FIT-side MAPE after the batching fix, but predicted tpot is still systematically ~43% too fast (predicted total_ms is too low). Root cause appears to be a units mismatch, not a sign/direction error: the moe_replay evaluation points derive tokens_per_launch = tokens/cpu_calls (1 at concurrency=1, 4 at concurrency=4), while the gpu_service calibration probes' decode-phase expert_tokens are 8 at concurrency=1 and 32 at concurrency=4 -- an exactly 8x normalization difference between the two measurement campaigns' conventions for 'tokens per launch'. Even after accounting for the 8x count difference (which barely moves the affine prediction since per_token_ms is small relative to intercept), the measured per-call-pair cost implied by moe_replay's total_ms (~0.171 ms per grouped_gemm+gather_scatter pair at concurrency=1) is about 1.87x higher than what the calibration-role decode probes alone predict at matching expert_tokens=8 (~0.092 ms). This suggests moe_replay's 'cpu_calls' does not correspond 1:1 to a single grouped_gemm/gather_scatter launch pair in the calibration-role convention (possibly a different layer/expert grouping). Not resolved this stage; needs either explicit documentation of the cpu_calls<->launch-granularity mapping from the measurement harness, or a dedicated moe_replay-style probe that varies tokens_per_launch directly instead of composing two separately-calibrated probe families.",
+      "feeds": "TRACK_GPU measurement_priority #4"
+    },
+    {
+      "id": "GAP-6-SMALL-TRANSFER-STREAM-INTERACTION-UNMODELED",
+      "description": "defect 1's fix (single-transfer latency independent of copy_streams) is strongly confirmed at the large-transfer scale the original diagnosis used (bytes=88080384: streams 1/2/4 all predict within 0.2% APE of measured, matching the guide's worked example almost exactly). But at bytes=65536 (small transfers), measured single-transfer latency *does* grow with copy_streams (streams=4 measured ~0.137ms vs the flat/floor prediction of ~0.028ms, APE ~79%) -- the opposite of the large-size behavior. This is a genuine, newly observed regime difference (small transfers appear overhead/launch-bound, where concurrent streams compete for launch/queue resources, vs large transfers which are bandwidth-bound and largely insensitive to stream count). This interaction is not modeled by the current fix -- the pre-registered defect 1 model form (stream-independent single-transfer latency) is only validated at large size; a size-dependent stream interaction term would be needed to close this gap and was not in scope for this stage's four registered defects.",
+      "feeds": "TRACK_GPU measurement_priority #4"
+    },
+    {
+      "id": "GAP-4-COMPONENT-LATENCY-SHAPE-FEATURE-MISSING-AT-SOURCE",
+      "description": "Standalone component_latency evaluation points do not carry expert_tokens in their features dict at all (only gpu_operations counts); this script recovers it by joining back to the raw calibration-role record via source_record_id and parsing the case string. Any future evaluation-point generator (A2/A3 IR pipeline) should carry operand-shape features directly in the evaluation point rather than requiring this join.",
+      "feeds": "STAGE_A2 IR evaluation-point schema design"
+    }
+  ]
+}

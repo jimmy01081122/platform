@@ -75,7 +75,7 @@ stages:
 
   - id: STAGE_A1
     title: Calibration 模型形式修復與重擬合
-    status: NOT_STARTED
+    status: COMPLETE
     guide: docs/session_guides/STAGE_A1_CALIBRATION_MODEL_FORM.md
     guide_completeness: EXECUTABLE
     gpu_required: false
@@ -99,6 +99,17 @@ stages:
       - assertion: 舊的 rtx-q1-validation-report.json 仍存在且未被修改
       - assertion: 事前登記檔的建立時間早於任何擬合輸出
       - assertion: 擬合拒絕非物理解 (slope <= 0 或 intercept < 0)
+    last_verified:
+      date: "2026-08-17"
+      actual:
+        verify_evidence: "4423 files OK (unchanged from STAGE_0 baseline)"
+        test: "96 + 36 + 16 + 43 + 126(+48 subtests) Python = 317 passed; ctest 2/2 3/3 4/4 5/5 = 14 passed; 0 failed"
+        doctor: "workspace_contract: pass"
+        old_q1_report_unmodified: "git status --short evidence/ empty; sha256 unchanged (evidence/ not in this session's diff)"
+        pre_registration_created_at: "2026-08-17T17:25:08Z, addendum 2026-08-17T17:31:56Z; both precede calibration/fits/v2/* outputs (created after)"
+        non_physical_rejection_self_check: "calibration/fits/v2/self_check.json: all_non_physical_cases_rejected=true (flat slope, negative slope, negative intercept all raise CalibrationError)"
+        fit_side_residuals_mape_pct: "component_latency 304.418->20.324; pcie_transfer_latency 66.879->19.821; moe_replay_tpot 293.936->43.176; moe_replay_throughput 60.658->75.898 (reciprocal-transform asymmetry of the tpot gain, see runs/20260817T172500Z__stage_a1_calibration_model_form_repair)"
+        non_convergence: "dequant op falls back to flat model (model_form=flat_fallback_non_physical_slope); 6 measurement gaps documented in calibration/fits/v2/measurement_gaps.json feeding TRACK_GPU priority 4"
     claims_unlocked_on_completion:
       - "模型形式缺陷已修正, 且變更經事前登記"
     claims_still_forbidden:

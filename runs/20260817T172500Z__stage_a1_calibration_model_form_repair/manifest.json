@@ -1,0 +1,40 @@
+{
+  "run_id": "20260817T172500Z__stage_a1_calibration_model_form_repair",
+  "experiment_id": "cal_model_form_repair_v1",
+  "stage": "S2",
+  "platform_profile": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition (evidence-of-record; this run is CPU-only fitting/refit, no GPU access)",
+  "created_at": "2026-08-17T17:25:00Z",
+  "git": {
+    "commit": "50d4a0e25360e6d6b9f8164b1f0ac7076aeb3f9e",
+    "branch": "HEAD"
+  },
+  "command": ["python", "calibration/refit_v2.py"],
+  "status": "partial",
+  "status_note": "Model-form fixes implemented and refit; FIT-side residuals substantially improved but do not meet the 15%/20% thresholds (which is not required this stage). Two of four defects converged cleanly (contention placement, small-transfer floor); component/replay shape defect converged for grouped_gemm/gather_scatter/selected_expert but not for dequant (documented non-convergence). See calibration/fits/v2/measurement_gaps.json for unresolved items.",
+  "parameter_sources": [
+    "evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/rtx-pro-6000-calibration/result.json",
+    "evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json",
+    "evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v1-20260811T1730Z-L/measurements.jsonl",
+    "evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v2-20260811T1740Z-L/measurements.jsonl",
+    "evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v4-20260812T0152TPE-L/measurements.jsonl"
+  ],
+  "simulation": {
+    "fidelity": "calibrated",
+    "backend": "src.edgeflow.calibrated_backend",
+    "calibration_pack": null
+  },
+  "parent_runs": [],
+  "pre_registration": "experiments/specs/cal_model_form_repair_v1.yaml",
+  "pre_registration_created_at": "2026-08-17T17:25:08Z",
+  "claims": {
+    "added": [
+      "模型形式缺陷已修正（4項中2項完全收斂、1項部分收斂即3個op收斂/1個op未收斂、1項驗證了核心修正但發現大尺寸/小尺寸的殘留缺口），且變更經事前登記",
+      "在 FIT 側資料上，修正後的模型形式殘差見 metrics.json（component_latency MAPE 304.4%→20.3%; pcie_transfer_latency 66.9%→19.8%; moe_replay_tpot 293.9%→43.2%; moe_replay_throughput 60.7%→75.9%（reciprocal-transform asymmetry of the tpot improvement, not a regression in direction of fix)）"
+    ],
+    "still_forbidden": [
+      "任何 calibrated PASS 主張",
+      "以此 FIT 側殘差作為 held-out 驗證證據",
+      "任何 break-even、accelerator、長上下文或高並發的主張"
+    ]
+  }
+}

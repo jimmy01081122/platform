@@ -1,0 +1,20 @@
+{
+  "all_non_physical_cases_rejected": true,
+  "cases": [
+    {
+      "case": "flat_slope",
+      "rejected": true,
+      "message": "self-check-flat fit is non-physical"
+    },
+    {
+      "case": "negative_slope",
+      "rejected": true,
+      "message": "self-check-negative-slope fit is non-physical"
+    },
+    {
+      "case": "negative_intercept",
+      "rejected": true,
+      "message": "self-check-negative-intercept fit is non-physical"
+    }
+  ]
+}

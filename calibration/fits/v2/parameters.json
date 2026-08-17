@@ -1,0 +1,81 @@
+{
+  "contention": {
+    "per_extra_concurrency": 1.0046410877379799
+  },
+  "copy_engine": {
+    "stream_latency_factors": {
+      "1": 1.0,
+      "2": 1.7384584273483465,
+      "4": 2.762992620065082
+    }
+  },
+  "cpu_runtime": {
+    "per_call_ms": 4.1776208660000005e-05
+  },
+  "fit_split": "calibration",
+  "floor_fit_provenance": {
+    "bytes_label": "4KiB",
+    "family": "XFER-L0",
+    "host_memory": "local_pinned",
+    "samples_excluded_unstable_ci": {
+      "D2H": 0,
+      "H2D": 1
+    },
+    "samples_used": {
+      "D2H": 3,
+      "H2D": 2
+    },
+    "selection_rule": "gpu_duration_ns.ci_rule_stable == true only; cpu_enqueue_ns not used (frequently unstable per guide 4.3)",
+    "sources": [
+      "evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v1-20260811T1730Z-L/measurements.jsonl",
+      "evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v2-20260811T1740Z-L/measurements.jsonl",
+      "evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v4-20260812T0152TPE-L/measurements.jsonl"
+    ]
+  },
+  "gpu_service": {
+    "operation_ms": {
+      "dequant": {
+        "intercept_ms": 0.1476092425306868,
+        "model_form": "flat_fallback_non_physical_slope",
+        "per_token_ms": 0.0
+      },
+      "gather_scatter": {
+        "intercept_ms": 0.012474702773139532,
+        "model_form": "affine_per_token",
+        "per_token_ms": 3.3344147306300585e-05
+      },
+      "grouped_gemm": {
+        "intercept_ms": 0.08453830981750879,
+        "model_form": "affine_per_token",
+        "per_token_ms": 0.000315195420108925
+      },
+      "selected_expert": {
+        "intercept_ms": 0.07508147380290289,
+        "model_form": "affine_per_token",
+        "per_token_ms": 0.0002881197241534118
+      }
+    }
+  },
+  "memory": {
+    "bandwidth_bytes_per_ms": 68396254670.230995,
+    "intercept_ms": 0.005769699879949218
+  },
+  "pcie": {
+    "d2h": {
+      "bandwidth_bytes_per_ms": 28408685.50988128,
+      "floor_ms": 0.027774121212121212,
+      "intercept_ms": 0.014215807554351478
+    },
+    "h2d": {
+      "bandwidth_bytes_per_ms": 28480108.698140044,
+      "floor_ms": 0.028482377142857142,
+      "intercept_ms": 0.015341920668000775
+    }
+  },
+  "pre_registration": "experiments/specs/cal_model_form_repair_v1.yaml",
+  "queueing": {
+    "intercept_ms": 0.00027215933966720507,
+    "per_queue_entry_ms": 0.006485015066192163
+  },
+  "schema_version": "calibrated-backend-parameters-v1"
+}

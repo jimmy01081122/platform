@@ -1,0 +1,17 @@
+.venv/bin/python scripts/projectctl.py doctor
+workspace: /home/a/platform
+python: 3.10.12
+git_commit: 50d4a0e25360e6d6b9f8164b1f0ac7076aeb3f9e
+optional_tools:
+  git: /usr/bin/git
+  docker: /usr/bin/docker
+  podman: not found
+  gem5: not found
+  verilator: /usr/bin/verilator
+  iverilog: /usr/bin/iverilog
+  yosys: /usr/bin/yosys
+  openroad: not found
+  sby: not found
+  spike: not found
+  qemu-system-riscv64: not found
+workspace_contract: pass

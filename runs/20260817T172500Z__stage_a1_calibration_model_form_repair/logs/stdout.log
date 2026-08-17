@@ -1,0 +1,11 @@
++ python calibration/refit_v2.py
+wrote: /home/a/platform/calibration/fits/v2/parameters.json
+wrote: /home/a/platform/calibration/fits/v2/self_check.json
+wrote: /home/a/platform/calibration/fits/v2/residual_report.json
+wrote: /home/a/platform/calibration/fits/v2/measurement_gaps.json
+
+FIT-side MAPE (defect fix, vs old-model evidence-of-record):
+  component_latency: new=20.324222415876793 (n=48, errored=0) old=304.418
+  pcie_transfer_latency: new=19.821069884295014 (n=30, errored=0) old=66.879
+  moe_replay_tpot: new=43.17637085033118 (n=6, errored=0) old=293.936
+  moe_replay_throughput: new=75.89787057240177 (n=6, errored=0) old=60.658

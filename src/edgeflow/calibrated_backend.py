@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import math
+import re
 import statistics
 from collections import defaultdict
 from pathlib import Path
@@ -18,6 +19,29 @@ from typing import Any
 
 class CalibrationError(ValueError):
     """Raised when evidence is incomplete or split isolation is violated."""
+
+
+_EXPERT_TOKENS_RE = re.compile(r"expert_tokens=(\d+)")
+
+
+def _operand_tokens(row: dict[str, Any]) -> float:
+    """Shape axis for gpu_service probes: tokens dispatched per launch.
+
+    STAGE_A1 defect 2/3 fix: the old model averaged gpu_service probes into a
+    single per-operation constant, blind to operand size and to the batching
+    effect where more concurrent tokens are packed into the same number of
+    kernel launches. ``expert_tokens`` is parsed from the probe's ``case``
+    string (e.g. ``...,concurrency=4,expert_tokens=2816``); probes without a
+    parseable value collapse to a single reference group (tokens=1.0), which
+    degrades gracefully to the old flat-constant behavior when shape data is
+    unavailable (e.g. minimal synthetic fixtures).
+    """
+    case = row.get("case")
+    if isinstance(case, str):
+        match = _EXPERT_TOKENS_RE.search(case)
+        if match:
+            return float(match.group(1))
+    return 1.0
 
 
 METRICS = (
@@ -202,15 +226,32 @@ def fit_parameters(calibration_result: dict[str, Any]) -> dict[str, Any]:
         raise CalibrationError("calibration probes missing roles: " + ", ".join(missing))
 
     cpu_ms = statistics.fmean(value for _, value in rows_by_role["cpu_runtime"])
-    gpu_groups: dict[str, list[float]] = defaultdict(list)
+    gpu_groups: dict[str, list[tuple[float, float]]] = defaultdict(list)
     for row, value in rows_by_role["gpu_service"]:
         operation = row.get("operation")
         if not operation:
             raise CalibrationError("gpu_service probe lacks operation")
-        gpu_groups[str(operation)].append(value)
-    gpu_service = {
-        operation: statistics.fmean(values) for operation, values in sorted(gpu_groups.items())
-    }
+        gpu_groups[str(operation)].append((_operand_tokens(row), value))
+    gpu_service: dict[str, dict[str, Any]] = {}
+    for operation, rows in sorted(gpu_groups.items()):
+        distinct_tokens = {tokens for tokens, _ in rows}
+        if len(distinct_tokens) >= 2:
+            try:
+                intercept, slope = _line_fit(rows, f"gpu_service {operation}")
+                model_form = "affine_per_token"
+            except CalibrationError:
+                intercept = statistics.fmean(value for _, value in rows)
+                slope = 0.0
+                model_form = "flat_fallback_non_physical_slope"
+        else:
+            intercept = statistics.fmean(value for _, value in rows)
+            slope = 0.0
+            model_form = "flat_fallback_single_shape_group"
+        gpu_service[operation] = {
+            "intercept_ms": intercept,
+            "per_token_ms": slope,
+            "model_form": model_form,
+        }
 
     pcie: dict[str, dict[str, float]] = {}
     pcie_rows: dict[str, list[tuple[float, float]]] = defaultdict(list)
@@ -286,11 +327,20 @@ def fit_parameters(calibration_result: dict[str, Any]) -> dict[str, Any]:
 
 def _component_latency(features: dict[str, Any], params: dict[str, Any]) -> float:
     total = int(features.get("cpu_calls", 0)) * params["cpu_runtime"]["per_call_ms"]
-    for operation, count in features.get("gpu_operations", {}).items():
+    gpu_operations = features.get("gpu_operations", {})
+    total_tokens = features.get("tokens")
+    total_calls = features.get("cpu_calls") or sum(gpu_operations.values()) or 1
+    tokens_per_launch = (
+        float(total_tokens) / float(total_calls) if total_tokens is not None else 1.0
+    )
+    for operation, count in gpu_operations.items():
         try:
-            total += float(count) * params["gpu_service"]["operation_ms"][operation]
+            op_model = params["gpu_service"]["operation_ms"][operation]
         except KeyError as exc:
             raise CalibrationError(f"operation outside calibrated domain: {operation}") from exc
+        total += float(count) * (
+            op_model["intercept_ms"] + op_model["per_token_ms"] * tokens_per_launch
+        )
     memory_bytes = float(features.get("memory_bytes", 0))
     if memory_bytes:
         memory = params["memory"]
@@ -300,22 +350,40 @@ def _component_latency(features: dict[str, Any], params: dict[str, Any]) -> floa
         queue = params["queueing"]
         total += queue["intercept_ms"] + depth * queue["per_queue_entry_ms"]
     concurrency = int(features.get("concurrency", 1))
+    if total_tokens is not None:
+        # STAGE_A1 residual finding (see cal_model_form_repair_v1.yaml
+        # addendum): contention.per_extra_concurrency was fit from a
+        # fixed-shape probe (same expert_tokens, only stream count varies),
+        # a genuinely different quantity from this point's concurrency,
+        # which here already drives tokens_per_launch above. Applying both
+        # double-counts the same concurrency growth (observed as ~4-6x
+        # overprediction at concurrency=4 in the residual report). Skip the
+        # flat multiplier whenever token-based batching already explains the
+        # shape/concurrency relationship for this point.
+        return total
     return total * (
         1.0 + max(0, concurrency - 1) * params["contention"]["per_extra_concurrency"]
     )
 
 
 def _pcie_latency(features: dict[str, Any], params: dict[str, Any]) -> float:
+    """Single-transfer latency: STAGE_A1 defect 1 + defect 4 model form.
+
+    Defect 1: copy_streams no longer multiplies single-transfer latency.
+    Measured single-transfer latency is invariant to concurrent stream count
+    (root spec §2.3); copy_engine.stream_latency_factors describes aggregate
+    completion time for N concurrently issued transfers, a different quantity
+    that no evaluated metric in this stage consumes (see pre-registration).
+
+    Defect 4: small transfers are floored at the measured plateau instead of
+    following the linear intercept, which systematically underestimated the
+    small-size regime. floor_ms defaults to 0.0 (no-op) when not fit.
+    """
     direction = str(features["direction"])
     model = params["pcie"][direction]
-    streams = str(int(features.get("copy_streams", 1)))
-    try:
-        factor = params["copy_engine"]["stream_latency_factors"][streams]
-    except KeyError as exc:
-        raise CalibrationError(f"copy stream count outside calibrated domain: {streams}") from exc
-    return (
-        model["intercept_ms"] + float(features["bytes"]) / model["bandwidth_bytes_per_ms"]
-    ) * factor
+    linear_ms = model["intercept_ms"] + float(features["bytes"]) / model["bandwidth_bytes_per_ms"]
+    floor_ms = float(model.get("floor_ms", 0.0))
+    return max(floor_ms, linear_ms)
 
 
 def predict(metric: str, features: dict[str, Any], params: dict[str, Any]) -> float:

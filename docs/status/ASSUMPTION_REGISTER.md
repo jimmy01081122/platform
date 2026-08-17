@@ -31,10 +31,10 @@ swept        以範圍掃描處理
 
 | ID | 假設 | 標籤 | 驗證方式 |
 |---|---|---|---|
-| PA-101 | 修正 contention 施加位置後，PCIe MAPE 可降至個位數 | `assumed` | A1 重擬合後由 A4 的 sealed held-out 判定。**目前僅為預期，不得作為結論** |
-| PA-102 | 以 operand shape 參數化可修復 component service model | `assumed` | 同上 |
+| PA-101 | 修正 contention 施加位置後，PCIe MAPE 可降至個位數 | `assumed` | A1 已重擬合：FIT 側 MAPE 66.879%→19.821%（大幅改善但未達個位數，也未達 15% 門檻）。大尺寸單筆延遲驗證極佳（~84MiB 處 streams 1/2/4 誤差 <0.2%），但新發現小尺寸（64KiB）多 stream 下有相反方向的殘留效應（`calibration/fits/v2/measurement_gaps.json` GAP-6）。**FIT 側數字，仍待 A4 sealed held-out 判定**，不得作為結論 |
+| PA-102 | 以 operand shape 參數化可修復 component service model | `assumed` | A1 已重擬合：FIT 側 MAPE 304.418%→20.324%。4 個 op 中 3 個（grouped_gemm/gather_scatter/selected_expert）收斂為 tokens 仿射回歸；dequant 回歸非物理，退回 flat model（真正驅動變數應為 expert 權重位元組數，本階段量測無法分離，見 GAP-1）。**FIT 側數字，仍待 A4 sealed held-out 判定** |
 | PA-103 | C++ 引擎在接上 phase4 service model 後可重現 15 點的 hit/miss/evict | `assumed` | A3 的 SIM0 驗收 |
-| PA-104 | 既有 PCIe 服務模型可用於 2 MiB KV block 的時序 | `assumed` | 2 MiB 落在目前模型最差的小尺寸區間（實測下限 ~0.037 ms vs intercept 0.0153 ms）。須待 A1 修好小尺寸 regime 後再評估 |
+| PA-104 | 既有 PCIe 服務模型可用於 2 MiB KV block 的時序 | `assumed` | A1 已修小尺寸 intercept 低估問題（floor_ms，見 PA-101），但殘差分析顯示 2 MiB 附近（bytes=1048576 校準點）在 streams>1 時仍有 30–60% 的 FIT 側誤差（GAP-6 的中間尺度延伸）。**2 MiB KV block 的時序仍不可視為已由 A1 修復**，須待更多量測或 A4 判定 |
 
 ## 明確標為不可得
 

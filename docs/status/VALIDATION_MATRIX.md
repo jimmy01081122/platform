@@ -38,7 +38,20 @@
 | moe_replay_throughput | 60.658% | **FAIL** | 0 / 6 |
 | **合計** | — | **FAIL** | **17 / 90** |
 
-根因為模型形式錯誤（三項結構性缺陷，見 `calibration/README.md`），非量測品質問題。修復後的重新判定屬 A4 的 sealed held-out，**不得在 A1 內自行宣告通過**。
+根因為模型形式錯誤（四項結構性缺陷，見 `calibration/README.md` 與 `experiments/specs/cal_model_form_repair_v1.yaml`），非量測品質問題。上表數字為 evidence-of-record，**未被本階段修改**。修復後的重新判定屬 A4 的 sealed held-out，**不得在 A1 內自行宣告通過**。
+
+## A1 · FIT 側殘差（非 held-out 判定，僅供對照）
+
+來源 `calibration/fits/v2/residual_report.json`。**下表全部是 FIT 側數字，三值判定不適用（三值判定僅用於 sealed held-out，見規格 §7.3），因此標示為 `NOT_APPLICABLE_FIT_ONLY` 而非 PASS/FAIL。**
+
+| metric | 舊 MAPE（evidence-of-record） | 新 FIT 側 MAPE | 判定 |
+|---|---|---|---|
+| component_latency | 304.418% | 20.324% | `NOT_APPLICABLE_FIT_ONLY` |
+| pcie_transfer_latency | 66.879% | 19.821% | `NOT_APPLICABLE_FIT_ONLY` |
+| moe_replay_tpot | 293.936% | 43.176% | `NOT_APPLICABLE_FIT_ONLY` |
+| moe_replay_throughput | 60.658% | 75.898%（tpot 改善的 reciprocal 轉換，方向仍是改善） | `NOT_APPLICABLE_FIT_ONLY` |
+
+非收斂／新缺口：dequant（GAP-1）、聚合 contention 模型未被評估點驗證（GAP-2）、floor_ms 樣本量少（GAP-3）、component_latency 評估點原始 schema 缺 shape 特徵（GAP-4）、moe_replay `cpu_calls`/`expert_tokens` 正規化落差約 8 倍（GAP-5）、小尺寸 PCIe 傳輸多 stream 交互作用未建模（GAP-6）。完整說明見 `calibration/fits/v2/measurement_gaps.json`。
 
 ## 掛載點的證據覆蓋
 
@@ -55,7 +68,7 @@
 
 | 階段 | 驗收條件 | 判定 |
 |---|---|---|
-| A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | NOT_RUN |
+| A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | **PASS**（A1 自身的驗收條件，非 calibrated PASS——見上方 FIT 側殘差表，門檻判定仍屬 A4） |
 | A2 | 各量測家族通過 IR1；byte 守恆逐點成立；`routing_sha256` 可回溯 | NOT_RUN |
 | A3 | 15 點 hit/miss/evict 與量測完全相等；兩次 replay 位元相同；無 deadlock/Zeno | NOT_RUN |
 | A4 | 封存 split 只開封一次；MAPE ≤15%、APE ≤20%，三值判定 | NOT_RUN |
