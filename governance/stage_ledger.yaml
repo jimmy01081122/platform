@@ -1,0 +1,310 @@
+schema_version: platform-stage-ledger-v1
+updated: "2026-08-18"
+updated_by_session: STAGE_0
+
+# ---------------------------------------------------------------------------
+# 跨 session 的單一狀態真相來源。
+#
+# 每個階段在獨立 session 執行。冷啟動的 session 沒有前一階段的記憶，
+# 因此交接不得依賴敘述性報告 —— 只能依賴本檔 + 實際重跑 verification 指令。
+#
+# 規則:
+#   1. 只有該階段的 session 可以修改自己那一列。
+#   2. 不得修改或刪除其他階段的列。
+#   3. status 改為 COMPLETE 前, verification 每一條都必須實際執行過,
+#      並把實際輸出填入 last_verified.actual。
+#   4. 進入某階段前, 必須實際重跑該階段 preconditions 列出的指令,
+#      不得以「上一個 session 說通過了」代替。
+#
+# status: NOT_STARTED | IN_PROGRESS | COMPLETE | BLOCKED
+# guide_completeness: EXECUTABLE | RULES_ONLY
+# ---------------------------------------------------------------------------
+
+global_invariants:
+  - id: EVIDENCE_IMMUTABLE
+    command: make verify-evidence
+    expect: "evidence integrity: OK (4423 files)"
+    note: 任何階段的進入與完工都必須通過。失敗即代表 evidence 被改動, 立即停止並回報。
+  - id: BASELINE_GREEN
+    command: make test
+    expect: "317 Python passed + 14 CTest passed, 0 failed"
+    note: 各階段完工時不得低於此基線。新增測試會使數字上升, 上升是允許的, 下降不是。
+  - id: WORKSPACE_CONTRACT
+    command: make doctor
+    expect: "workspace_contract: pass"
+
+stages:
+
+  - id: STAGE_0
+    title: 遷移、基線、規格與 session 指引系統
+    status: COMPLETE
+    guide: docs/session_guides/README.md
+    guide_completeness: EXECUTABLE
+    preconditions: []
+    deliverables:
+      - PLATFORM_FLOW_SPECIFICATION.md
+      - governance/lineage.yaml
+      - governance/lineage/{EVIDENCE,CODE}_SHA256SUMS
+      - governance/stage_ledger.yaml
+      - docs/PHASE_NAMING_MAP.md
+      - docs/status/ (5 files)
+      - docs/session_guides/ (10 files)
+      - evidence/ (581 MB, 4423 files, read-only)
+    verification:
+      - command: make verify-evidence
+        expect: "evidence integrity: OK (4423 files)"
+      - command: make test
+        expect: "317 Python passed, 14 CTest passed, 0 failed"
+      - command: make doctor
+        expect: "workspace_contract: pass"
+    last_verified:
+      date: "2026-08-18"
+      actual:
+        verify_evidence: "4423 files OK"
+        test: "96 + 36 + 16 + 43 + 126(+48 subtests) Python = 317 passed; ctest 2/2 3/3 4/4 5/5 = 14 passed; 0 failed"
+        doctor: "workspace_contract: pass"
+    claims_unlocked:
+      - "evidence/ 內容與來源 workspace 逐檔一致 (4423/4423, rsync -acn 差異 0)"
+      - "遷移後基線 317 Python + 14 CTest 全綠"
+      - "evidence/ 所載的原始量測事實可引用, 須附來源路徑"
+    claims_still_forbidden:
+      - "任何 calibrated 主張"
+      - "任何 break-even 或 accelerator 收益主張"
+      - "任何長上下文或高並發的效能主張"
+      - "把 Phase 1-7 測試通過解讀為研究鏈已打通"
+
+  - id: STAGE_A1
+    title: Calibration 模型形式修復與重擬合
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_A1_CALIBRATION_MODEL_FORM.md
+    guide_completeness: EXECUTABLE
+    gpu_required: false
+    preconditions:
+      - stage: STAGE_0
+        required_status: COMPLETE
+      - command: make verify-evidence
+        expect: "evidence integrity: OK (4423 files)"
+      - command: make test
+        expect: "0 failed"
+      - path_must_exist: evidence/gpu_measurements/rtx-pro-6000-v3-20260718/rtx-q1-validation-report.json
+      - path_must_exist: evidence/measurement_backups/20260811T171000Z__phase7_remote_component_backup
+      - path_must_exist: evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup
+    deliverables:
+      - experiments/specs/cal_model_form_repair_v1.yaml   # 事前登記, 必須先於任何擬合
+      - calibration/ 內的模型形式實作
+      - runs/<run_id>/ (含 manifest, metrics, logs, environment)
+    verification:
+      - command: make test
+        expect: "0 failed, 測試數不低於 317"
+      - assertion: 舊的 rtx-q1-validation-report.json 仍存在且未被修改
+      - assertion: 事前登記檔的建立時間早於任何擬合輸出
+      - assertion: 擬合拒絕非物理解 (slope <= 0 或 intercept < 0)
+    claims_unlocked_on_completion:
+      - "模型形式缺陷已修正, 且變更經事前登記"
+    claims_still_forbidden:
+      - "任何 calibrated PASS 主張 —— 判定屬 A4 的 sealed held-out, 不得在 A1 內自行宣告"
+      - "以舊資料的 held-out 分數作為驗證證據 (舊資料一律降級為 FIT, 見決策 P-005)"
+
+  - id: STAGE_A2
+    title: Measured raw 轉九類 Canonical IR
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_A2_MEASURED_TO_IR.md
+    guide_completeness: EXECUTABLE
+    gpu_required: false
+    preconditions:
+      - stage: STAGE_0
+        required_status: COMPLETE
+      - command: make verify-evidence
+        expect: "evidence integrity: OK (4423 files)"
+      - note: 不依賴 A1。A1 與 A2 可並行, 由不同 session 執行。
+    deliverables:
+      - explorations/moe_cycle_simulator/phase7/adapters/ 內的 measured adapters
+      - 各量測家族的 IR bundle
+      - runs/<run_id>/
+    verification:
+      - assertion: 15 個 expert 容量點全部通過 IR1 驗證
+      - assertion: "byte 守恆逐點成立: h2d_bytes == demand_load_count * expert_object_bytes"
+      - assertion: routing_sha256 可回溯到原始 .npy
+      - assertion: mock adapter 仍存在且未被刪除
+      - assertion: 原始量測的 claim boundary 已寫入 IR provenance 欄位
+    claims_unlocked_on_completion:
+      - "真實量測已進入九類 Canonical IR 且通過守恆檢查"
+    claims_still_forbidden:
+      - "IR 已被引擎消費 (屬 A3)"
+      - "任何時序或效能主張"
+
+  - id: STAGE_A3
+    title: IR 轉引擎 loader 與位元精確 replay
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_A3_IR_TO_ENGINE.md
+    guide_completeness: EXECUTABLE
+    gpu_required: false
+    preconditions:
+      - stage: STAGE_A2
+        required_status: COMPLETE
+      - command: make test-cpp
+        expect: "14 CTest passed, 0 failed"
+    deliverables:
+      - IR bundle 到 C++ 引擎的 loader
+      - phase4 service model 實際接上 (目前 Action::kService 不消耗 service_demand)
+      - runs/<run_id>/
+    verification:
+      - assertion: "SIM0 —— 15 點的 hit_count / demand_load_count / immutable_discard_count 與量測完全相等"
+      - assertion: "SIM1 —— 同一 bundle 兩次 replay 結果位元相同"
+      - assertion: 無 deadlock, 無 Zeno, 無資源守恆違反
+    claims_unlocked_on_completion:
+      - "C++ 引擎可被真實量測 IR 驅動, 且 residency counters 位元精確重現"
+    claims_still_forbidden:
+      - "任何時序準確度主張 —— 位元精確指的是 counters, 不是時間"
+      - "任何 calibrated 主張"
+
+  - id: STAGE_A4
+    title: Sealed held-out 校準驗證
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_A4_SEALED_HOLDOUT.md
+    guide_completeness: EXECUTABLE
+    gpu_required: true
+    preconditions:
+      - stage: STAGE_A1
+        required_status: COMPLETE
+      - stage: STAGE_A3
+        required_status: COMPLETE
+      - note: 需要新的 GPU 量測作為 held-out。舊資料一律只能作 FIT (決策 P-005)。
+      - note: 新量測的 split 必須先 hash 封存, 模型凍結後才開封。
+    deliverables:
+      - sealed split manifest (含 SHA-256)
+      - 凍結的模型與參數 (含 hash)
+      - 開封後的評分報告
+      - runs/<run_id>/
+    verification:
+      - assertion: 封存 manifest 的建立時間早於模型凍結
+      - assertion: 開封次數為 1 且可稽核
+      - assertion: 三值判定已套用 (PASS / FAIL / INSUFFICIENT_EVIDENCE)
+      - assertion: 舊的 q1 fail 報告仍存在且未被修改
+    claims_unlocked_on_completion:
+      - "視判定結果而定。PASS 才可宣稱 calibrated, 且須註明適用 envelope"
+    claims_still_forbidden:
+      - "開封後回頭調模型再開第二次"
+      - "資料不足時寫成 PASS 或 FAIL (應為 INSUFFICIENT_EVIDENCE)"
+      - "跨平台套用 calibration 參數"
+
+  - id: STAGE_B1
+    title: KV cache 與 continuous batching 建模
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_B1_KV_BATCHING.md
+    guide_completeness: RULES_ONLY
+    guide_note: 實作細節待 A3/A4 的引擎與校準結果收斂後補。目前只固定目標、約束、驗收與交接格式。
+    gpu_required: false
+    preconditions:
+      - stage: STAGE_A3
+        required_status: COMPLETE
+    deliverables:
+      - paged KV block 作為 residency-managed object
+      - continuous batching / admission 模型
+      - runs/<run_id>/
+    verification:
+      - assertion: 重現 SERV-P0-25 的 TTFT 與 completion latency 分布 (p50/p95/p99)
+      - assertion: KV 與 expert 物件共爭同一條鏈路已建模
+      - assertion: 長上下文行為標記為 PROJECTED
+    claims_still_forbidden:
+      - "KV 時序來自 SWAP-K2/K3 (事件 block_size=0, 資料品質限制不因治理開放而消失)"
+      - "任何長上下文的 MEASURED 主張"
+
+  - id: STAGE_B2
+    title: 參數化候選處理器模型與掛載點
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_B2_ACCELERATOR_MODEL.md
+    guide_completeness: RULES_ONLY
+    guide_note: 實作細節待 A4 校準結果與 B1 的 KV 模型收斂後補。
+    gpu_required: false
+    preconditions:
+      - stage: STAGE_A3
+        required_status: COMPLETE
+    deliverables:
+      - accelerator/ 內的參數化資源模型
+      - 六動詞 ABI 與兩個 backend (FUNCTIONAL_POLICY, CYCLE_RESOLVED_MODEL)
+      - reference mock 元件
+      - 掛載點 A1-A6 定義
+    verification:
+      - assertion: reference mock 跑通 transaction adapter / clock stepping / backpressure / completion / counter
+      - assertion: 未註冊的 backend 仍正確拒絕執行
+      - assertion: accelerator/ 內所有元件標記為 ANALYTICAL 或 PROJECTED
+    claims_still_forbidden:
+      - "任何 accelerator 收益主張 (屬 C1)"
+      - "掛載點 A2 或 A6 的效能結論 (兩者無任何量測)"
+
+  - id: STAGE_C1
+    title: Co-design DSE 與 break-even
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_C1_CODESIGN_DSE.md
+    guide_completeness: RULES_ONLY
+    guide_note: 掃描範圍與輸出格式待 A4 的 calibrated envelope 確定後補。
+    gpu_required: false
+    preconditions:
+      - stage: STAGE_A4
+        required_status: COMPLETE
+      - stage: STAGE_B2
+        required_status: COMPLETE
+    verification:
+      - assertion: baseline 至少含 no-prefetch / LRU / FIFO / static popularity
+      - assertion: 主結論使用 causal predictor, oracle 僅標為上界
+      - assertion: break-even 使用六項分解且附不確定度
+      - assertion: 結論限制在 calibrated envelope 內
+    claims_still_forbidden:
+      - "超出 calibrated envelope 的外推結論未標 PROJECTED"
+      - "以 oracle prefetch 作為主結論"
+
+  - id: STAGE_C2
+    title: HW0 需求與 LM18 RTL handoff 規格包
+    status: NOT_STARTED
+    guide: docs/session_guides/STAGE_C2_HW0_RTL_HANDOFF.md
+    guide_completeness: RULES_ONLY
+    guide_note: 各 HW0 row 的數值待 C1 的 break-even 面確定後填入。
+    gpu_required: false
+    preconditions:
+      - stage: STAGE_C1
+        required_status: COMPLETE
+    verification:
+      - assertion: 每個 HW0 row 具 evidence, 公式, 單位, 選定分位數, 不確定度, 適用 envelope
+      - assertion: 證據不足的 row 標為 UNAVAILABLE_WITH_CONSEQUENCE 而非猜值
+      - assertion: 六個 LM18 產出齊備
+      - assertion: RTL_SCOPE.md 已建立
+    claims_still_forbidden:
+      - "以 cell count 直接宣稱實體面積, 功耗或產品可行性"
+      - "把既有 STA 結果 (pre-layout, wire-load model, ideal clock) 當作 sign-off"
+
+  - id: TRACK_GPU
+    title: GPU 量測軌
+    status: NOT_STARTED
+    guide: docs/session_guides/TRACK_GPU_MEASUREMENT.md
+    guide_completeness: EXECUTABLE
+    gpu_required: true
+    parallel: true
+    parallel_note: 可與任一階段並行, 由獨立 session 執行。
+    preconditions:
+      - stage: STAGE_0
+        required_status: COMPLETE
+      - note: 需要 owner 提供有效的 GPU endpoint。無 endpoint 時只做本機準備工作。
+    measurement_priority:
+      - id: 1
+        target: 掛載點 A2 —— MoE dispatch 資料搬運
+        reason: 主線掛載點中唯一完全無量測者
+      - id: 2
+        target: 掛載點 A6 —— 長上下文 offloaded KV attention
+        reason: 完全無證據, 資訊增益最高, 且是 Hybe 類系統的核心切入點
+      - id: 3
+        target: sealed held-out 驗證集
+        reason: STAGE_A4 的前置
+      - id: 4
+        target: component service model 缺的 operand shape 與 concurrency 掃描點
+        reason: 依 A1 殘差決定
+      - id: 5
+        target: SERV-P0-25 tail-CI 補測
+        reason: 須從 request 0 重跑完整 10K, 新 attempt ID, 不得接續舊進度
+    verification:
+      - assertion: canonical domain 相符, 或已建立獨立 platform profile 與獨立 calibration package
+      - assertion: 未干擾任何既有 serving 或 GPU process
+      - assertion: 每個 attempt 的 raw 完整保存, 含失敗的 attempt
+    claims_still_forbidden:
+      - "跨平台套用 calibration 參數"
+      - "以量測數量代替量測品質"

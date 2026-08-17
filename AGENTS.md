@@ -1,5 +1,12 @@
 # AGENTS.md
 
+> **本平台的適用註記**（承襲自來源 workspace，路徑已對映）
+>
+> - §3.1 的「`data/raw/` 原始資料」在本平台指 **`evidence/`**——581 MB / 4423 檔的不可再生量測證據，設為唯讀，完整性由 `make verify-evidence` 驗證。`data/raw/` 在本平台為空（第三方語料不隨 repo 遷移）。
+> - §5 的五份狀態文件位於 `docs/status/`。
+> - §9 的 HOP 舊資產規則同樣適用於本平台承襲的 `hardware/` 成果：可重用，但須保留來源與 revision、先建立 semantic mapping、以本專案 workload 重跑，且**不得沿用舊效能數字作為新平台結論**。
+> - 權威順序見 `PLATFORM_FLOW_SPECIFICATION.md` §0。本文件的工程契約（§3）在該順序中與根規格同級，不得被下游文件放寬。
+
 ## 1. 任務
 
 你的任務是持續擴充並驗證一套 CPU–GPU edge accelerator exploration flow。目標是建立可執行、可校正、可比較、可重複的工程閉環，而不是證明預先指定的架構一定有效。

@@ -21,11 +21,15 @@ STATUS           = 規格已凍結；實作尚未開始；無任何 calibrated �
 **權威順序**（衝突時由上而下）：
 
 1. owner 在當前 session 的明確指令；
-2. 本文件；
-3. `governance/charter.yaml`、`governance/evidence_levels.yaml`、`governance/capability_registry.yaml`；
-4. 各階段的 `experiments/specs/<id>.yaml` 事前登記內容；
-5. 承襲自舊 repo 的方法論文件（`docs/methodology/`）；
-6. 舊 repo 的 status／ledger 文件——**僅作待驗證證據，不得直接當結論**。
+2. 本文件與 `AGENTS.md` 的工程契約（同級；`AGENTS.md` §3 的八條禁令不得被任何下游文件放寬）；
+3. `governance/stage_ledger.yaml` 的階段狀態與 claim boundary；
+4. `project/charter.yaml`、`project/evidence_levels.yaml`、`project/capability_registry.yaml`；
+5. 各階段的 `docs/session_guides/STAGE_*.md`；
+6. 各階段的 `experiments/specs/<id>.yaml` 事前登記內容；
+7. 承襲自舊 repo 的方法論文件（`docs/methodology/`）；
+8. 舊 repo 的 status／ledger 文件——**僅作待驗證證據，不得直接當結論**。
+
+若 session 指引與本文件衝突，以本文件為準，並回報該指引需要修正。
 
 若出現實質語意衝突，停止受影響的分支並回報；不得自行選擇較容易的一方。檔名、時間戳記、Markdown 排版與非必要 metadata 不得成為 blocker。
 
@@ -404,7 +408,11 @@ Raw 一律唯讀。轉換產物另存，並帶 provenance。轉換前後須重�
 
 ### 10.3 Prefetch 誠實性
 
-主結論必須使用 **causal predictor**（僅用過去資訊）。完美 lookahead oracle 只能標示為上界。舊 repo 已量出 causal predictor 僅保留 oracle 收益的 **0.5–15.4%**。
+主結論必須使用 **causal predictor**（僅用過去資訊）。完美 lookahead oracle 只能標示為上界。
+
+既有量測（`data/canonical/moe_routing_v1/w3_prefetch_predictability.json`，四個生產級 MoE 模型）的 retained median：persistence 在四個模型上皆為 **0.0%**；frequency 為 0.0–2.6%；markov1 為 **−0.5% 至 15.4%**。同一份資料的 oracle stall reduction median 為 90–99.9%。
+
+即最好的 causal predictor 只保留約 15% 的 oracle 收益，最差為負值。用 oracle 當主結論會系統性且大幅高估加速器價值。
 
 ### 10.4 Break-even 分解
 
@@ -463,25 +471,32 @@ RTL-STIMULUS  RTL-ACTIVITY    RTL-HANDOFF
 
 ## 12. 目錄結構與 lineage
 
+實際結構（來源路徑刻意保留，理由見 `governance/lineage.yaml` 的 `structure_deviation`）：
+
 ```text
 platform/
-├── PLATFORM_FLOW_SPECIFICATION.md   本文件
+├── PLATFORM_FLOW_SPECIFICATION.md   本文件（根規格）
 ├── README.md   AGENTS.md   Makefile   pyproject.toml   .gitignore
-├── governance/    charter · evidence_levels · capability_registry · lineage · decisions
-├── ir/            九類 Canonical IR + schemas + contracts
-├── engine/        core · single_gpu · residency · multi_domain（C++ + CMake + tests）
-├── adapters/      measured/（各量測家族）· mock/（保留作 fixture）
-├── accelerator/   參數化資源模型 · 六動詞 ABI · 掛載點 A1–A6 · reference mock
-├── calibration/   模型形式 · fit/held-out · sealed holdout 協定
-├── dse/           co-design DSE
+├── project/       charter · evidence_levels · capability_registry
+├── governance/    lineage.yaml · lineage/（checksum manifests）· stage_ledger.yaml
+├── explorations/moe_cycle_simulator/
+│     phase1–2     九類 Canonical IR
+│     phase3–6     C++ cycle-resolved 引擎（core / single-GPU / residency / multi-domain）
+│     phase7       GPU campaign runner · hooks · adapters · schemas
+├── src/edgeflow/  trace 轉換 · routing 正規化 · residency 模型 · calibrated backend · multifidelity
+├── accelerator/   參數化資源模型 · 六動詞 ABI · 掛載點 A1–A6 · reference mock（待建）
+├── calibration/   模型形式 · fit/held-out · sealed holdout 協定（待建）
+├── dse/           co-design DSE（待建）
 ├── hardware/      rtl · firmware · formal · syn · sta · verification · mem
-├── measurement/   GPU campaign runner · hooks · collectors · contracts
-├── evidence/      不可變量測證據（唯讀，581 MB）
+├── measurement/   GPU collectors · schemas · scheduler · trace capture plan
+├── evidence/      不可變量測證據（唯讀，581 MB / 4423 檔）
 ├── configs/       platform profiles · model dims · fidelity · sampling · calibration
-├── experiments/   specs
-├── runs/          執行輸出
-└── docs/          methodology · status
+├── schemas/  scripts/  experiments/  tests/  data/  runs/
+└── docs/          methodology · tutorials · status · session_guides · PHASE_NAMING_MAP.md
 ```
+
+概念分層（`ir/`、`engine/`）與實際目錄的對照見 `governance/lineage.yaml` 的 `conceptual_mapping`。
+未採用該分層是因為 119 個非證據檔引用 `explorations/moe_cycle_simulator` 字面路徑，其中含 governance JSON——那些雜湊正是專案偵測竄改的機制。
 
 ### 12.1 搬遷範圍
 
@@ -515,6 +530,23 @@ platform/
 | **C2** | HW0 需求 + LM18 handoff | 每個 row 具 evidence、公式、單位、分位數、不確定度、envelope |
 
 每階段結束時：更新狀態文件、產出完整 `runs/<run_id>/`（含 `manifest.json`、`resolved_config.yaml`、`logs/`、`metrics.json`、`artifacts/`、`environment/tool_versions.json`，失敗 run 亦保留），並 **push 到 `platform.git`**。
+
+### 13.1 每階段開新 session
+
+每個階段在**獨立 session** 執行，避免上下文汙染與長對話造成的判斷劣化。因此冷啟動的 session 沒有前一階段的記憶，交接不得依賴敘述性報告。
+
+| 載體 | 用途 |
+|---|---|
+| `governance/stage_ledger.yaml` | 跨 session 的**單一狀態真相來源**：各階段狀態、前置條件、可複驗指令、claim boundary |
+| `docs/session_guides/STAGE_*.md` | 每階段一份作業指引，含可直接貼上的啟動 prompt |
+| `docs/session_guides/README.md` | 索引與通用規則 |
+| `docs/status/` 五份 | `AGENTS.md §5` 要求的狀態文件，每階段結束更新 |
+
+**三條跨 session 硬規則：**
+
+1. **進入檢查是指令，不是敘述。** 每份指引的進入檢查列出具體指令與預期輸出。任一不符即停止並回報，不得「看起來差不多就繼續」。前一個 session 的報告只是參考，`stage_ledger.yaml` 加上實際重跑的指令才是依據。
+2. **只讀本階段指引。** 不讀其他階段的指引，避免提前套用後期階段的假設或把後期的結論當成已成立。
+3. **狀態改為 `COMPLETE` 前，`verification` 每一條都必須實際執行並貼上實際輸出。** 只有該階段的 session 可以改自己那一列，不得改動或刪除其他階段的列。
 
 ---
 

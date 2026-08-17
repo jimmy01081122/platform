@@ -8,6 +8,10 @@
 
 **先讀 [`PLATFORM_FLOW_SPECIFICATION.md`](PLATFORM_FLOW_SPECIFICATION.md)** — 那是本 repo 的根規格，任何實作、量測與結論都必須可回溯到它的某一節。
 
+**要開始執行某個階段** — 從 [`docs/session_guides/README.md`](docs/session_guides/README.md) 找到對應指引，開新 session 貼上其啟動 prompt。
+
+**第一次接手** — 務必先讀 [`docs/PHASE_NAMING_MAP.md`](docs/PHASE_NAMING_MAP.md)。本專案有五套並存的階段命名，不讀極易誤判進度。
+
 ---
 
 ## 目前狀態
@@ -49,7 +53,11 @@ GPU 量測           : 581 MB 已在 evidence/，新量測未開始
 | 路徑 | 內容 |
 |---|---|
 | `PLATFORM_FLOW_SPECIFICATION.md` | 根規格（16 節） |
-| `governance/` | charter、evidence levels、capability registry、**lineage**（來源與 checksum） |
+| `docs/session_guides/` | 9 份階段作業指引 + 索引，每份含可貼上的啟動 prompt |
+| `docs/PHASE_NAMING_MAP.md` | 五套並存命名的對照（S0–S7 / Phase 0–10 / C1–C8 / MR0–MR18 / LM0–LM19） |
+| `docs/status/` | 五份狀態文件（`AGENTS.md` §5 要求） |
+| `project/` | charter、evidence levels、capability registry |
+| `governance/` | **lineage**（來源與 checksum）、**stage_ledger**（跨 session 狀態真相來源） |
 | `evidence/` | **不可變量測證據，581 MB / 4423 檔，唯讀** |
 | `explorations/moe_cycle_simulator/` | phase1–2 = 九類 Canonical IR；phase3–6 = C++ cycle-resolved 引擎；phase7 = GPU campaign runner 與 hooks |
 | `src/edgeflow/` | trace 轉換、routing 正規化、residency 模型、calibrated backend、multifidelity dispatcher |
@@ -59,6 +67,24 @@ GPU 量測           : 581 MB 已在 evidence/，新量測未開始
 | `calibration/` | 模型形式、fit/held-out、sealed holdout 協定（**待建**） |
 | `dse/` | co-design DSE（**待建**） |
 | `configs/` `schemas/` `scripts/` `experiments/` `tests/` `docs/` `data/` `runs/` | 支援檔 |
+
+---
+
+## 每階段開新 session
+
+每個階段在**獨立 session** 執行，避免上下文汙染與長對話造成的判斷劣化。因此冷啟動的 session 沒有前一階段的記憶，交接不靠敘述性報告，靠**可執行的檢查**。
+
+```text
+governance/stage_ledger.yaml      跨 session 的單一狀態真相來源
+docs/session_guides/STAGE_*.md    每階段一份指引，含啟動 prompt
+docs/status/                      五份狀態文件，每階段結束更新
+```
+
+三條硬規則：
+
+1. **進入檢查是指令，不是敘述。** 不符即停止，不得「看起來差不多就繼續」。前一個 session 的報告只是參考，ledger 加上實際重跑的指令才是依據。
+2. **只讀本階段的指引。** 避免提前套用後期階段的假設。
+3. **狀態改 `COMPLETE` 前，`verification` 每一條都必須實際執行並貼上實際輸出。** 只有該階段的 session 可改自己那一列。
 
 ---
 

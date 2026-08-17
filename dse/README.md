@@ -14,7 +14,17 @@
 
 **1. Baseline 必須夠強。** 至少 no-prefetch、LRU、FIFO、static popularity。不得只與明顯過弱的 baseline 比較。
 
-**2. Prefetch 必須用 causal predictor 當主結論。** 完美 lookahead oracle 只能標為上界。既有量測顯示 causal predictor 僅保留 oracle 收益的 **0.5–15.4%**（`scripts/w3_prefetch_predictability.py`）——這個差距大到足以翻轉結論，不能含糊。
+**2. Prefetch 必須用 causal predictor 當主結論。** 完美 lookahead oracle 只能標為上界。
+
+既有量測（`data/canonical/moe_routing_v1/w3_prefetch_predictability.json`，四個生產級 MoE 模型）的 retained median：
+
+| predictor | Qwen3-235B | DeepSeek-R1 | Llama-4-Maverick | Kimi-K2 |
+|---|---|---|---|---|
+| persistence | 0.0% | 0.0% | 0.0% | 0.0% |
+| frequency | 2.6% | 1.4% | 0.0% | 0.8% |
+| markov1 | **15.4%** | 5.3% | **−0.5%** | 7.7% |
+
+oracle 本身的 stall reduction median 為 90–99.9%。最好的 causal predictor 只保留約 15%，最差為負值，persistence 在四個模型上完全無效。用 oracle 當主結論會系統性且大幅高估加速器價值。
 
 **3. Break-even 必須用完整分解，輸出是面不是勝負。**
 

@@ -29,8 +29,11 @@ integrity:
   evidence_manifest_sha256: 4e2c2433551e981bf01ab460f7fcb620fc5136e57946929d4c7cbcb268a3c806
   evidence_file_count: 4423
   code_manifest: governance/lineage/CODE_SHA256SUMS
-  code_manifest_sha256: f4b8ca0fc7822cefde437e9fb6e3c48bf55a9d8ac8503d0d8c6ead060953bd9f
-  code_file_count: 1221
+  code_manifest_sha256: 9771d097ba27699acfa89373846c583b7197b556311eaaeb7383929acf7e39c6
+  code_file_count: 1238
+  code_manifest_note: >
+    Regenerated 2026-08-18 after Stage 0 completion (project/ restored,
+    docs/status/, session guides, stage ledger, phase naming map added).
   verification:
     source_file_count: 4423
     destination_file_count: 4423
