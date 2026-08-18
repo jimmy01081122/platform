@@ -16,7 +16,7 @@ current stage : Stage 0 完成；A1 IN_PROGRESS（模型形式修復＋P0 safety
 | 階段 | 狀態 | 說明 |
 |---|---|---|
 | Stage 0 | **COMPLETE** | 遷移、基線、根規格、session 指引系統 |
-| A1 calibration 模型形式修復 | **IN_PROGRESS** | 4 項缺陷已修正並事前登記；FIT 側殘差大幅改善（見下）。2026-08-18 Reviewer 覆核發現並修正一項 P0 calibration-safety 違約（P-012）；PCIe two-regime 與 replay operator 方向已接受，待 v2 preregistration 重擬合。未做 held-out 判定 |
+| A1 calibration 模型形式修復 | **IN_PROGRESS** | 4 缺陷修正並事前登記；P0 safety 修正（P-012）。v2 候選已 FIT 側評估（P-013）：**A PCIe two-regime ACCEPT（1.04%）、B ProfileKNN INSUFFICIENT（LOOWO 不 generalize，不升格）、C replay BLOCKED_ON_MEASUREMENT**。closure blocked 在 V2-GAP-B/C 量測。未做 held-out；無 calibrated PASS |
 | A2 measured → 九類 IR | NOT_STARTED | |
 | A3 IR → 引擎 loader | NOT_STARTED | |
 | A4 sealed held-out 驗證 | NOT_STARTED | |

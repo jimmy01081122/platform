@@ -1,0 +1,26 @@
+{
+  "candidate_a_pcie": {
+    "aggregate_mape": 1.0377761950618867,
+    "bulk_mape": 0.05789505278564606,
+    "d2h_mape": 1.20072872041761,
+    "h2d_mape": 0.8748236697061633,
+    "max_ape": 4.751982086111322,
+    "small_mape": 2.5075979084762476,
+    "transition_mape": null,
+    "verdict": "ACCEPT"
+  },
+  "candidate_b_component": {
+    "reason": "gate not met for ['selected_expert', 'grouped_gemm', 'gather_scatter'] under leave-one-workload-out (prefill per-op >= 15%); ProfileKNN stays provisional/diagnostic (NOT promoted to the component model); open V2-GAP-B (denser prefill shape sweep).",
+    "verdict": "INSUFFICIENT_EVIDENCE"
+  },
+  "candidate_c_replay": {
+    "verdict": "BLOCKED_ON_MEASUREMENT / INSUFFICIENT_EVIDENCE"
+  },
+  "classification": "FIT_SIDE / DIAGNOSTIC (decision P-005); no held-out, no calibrated PASS",
+  "code_commit": "528ae01526898075ac4cc292e5fbe54d2ef93354",
+  "dequant": "PROXY_ONLY",
+  "models_v3_sha256": "00c8d76b1ff998038dbae6dfcc614b2f5ac223beb296334abe6344891b78af88",
+  "refit_v3_sha256": "332919c79299d8b552a8b905ff8aca2b1c66d827bae181ce220350be841817f9",
+  "run_id": "20260819T160456Z__stage_a1_cal_model_form_v2_fitside_eval",
+  "schema_version": "stage-a1-v3-fit-side-summary-v1"
+}

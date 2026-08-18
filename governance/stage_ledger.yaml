@@ -96,6 +96,13 @@ stages:
       graph 且 routing/sort 項 BLOCKED_ON_MEASUREMENT、dequant PROXY_ONLY)。**尚未**
       實作或 refit 任何新模型 (owner 指示: prereg 完成前不得動手)；且列有 3 個
       owner_review_points 待裁決。
+      [2026-08-19 更新] owner 已核可三個 review points（見 v2 spec OWNER_RESOLUTION
+      addendum），v2 implementation + FIT-side evaluation 已完成：A ACCEPT、
+      B INSUFFICIENT_EVIDENCE（KNN 不 generalize，不升格）、C BLOCKED_ON_MEASUREMENT。
+      A1 closure 現在明確 blocked 在兩個 targeted FIT-side 量測缺口上（V2-GAP-B 更密
+      prefill shape sweep、V2-GAP-C sort/permute microbenchmark；兩者不得與 A4 sealed
+      held-out 混用）。PCIe two-regime 可先整合。A1 續留 IN_PROGRESS。詳見 last_verified
+      的 v3_fitside_evaluation 與 DECISION_LOG P-013。
     guide: docs/session_guides/STAGE_A1_CALIBRATION_MODEL_FORM.md
     guide_completeness: EXECUTABLE
     gpu_required: false
@@ -154,6 +161,26 @@ stages:
           aggregate 10.9% is inflated by 18/18 decode exact-token lookups) and fixed
           tau_route as DIAGNOSTIC_ONLY (2 effective structural points). These re-fits are
           NOT done here; they belong to cal_model_form_repair_v2 preregistration.
+        v3_fitside_evaluation: >
+          [2026-08-19] cal_model_form_repair_v2 implemented + evaluated FIT-side
+          (calibration/models_v3.py, calibration/refit_v3.py; outputs calibration/fits/v3/;
+          run 20260819T160456Z__stage_a1_cal_model_form_v2_fitside_eval, manifest
+          code_commit=528ae01...). All FIT-side/diagnostic (P-005); no calibrated PASS.
+          CANDIDATE_A PCIe two-regime = ACCEPT: aggregate 1.038%, small 2.508%, bulk 0.058%,
+          h2d 0.875%, d2h 1.201%, max APE 4.752% (vs v1 19.821% / old stream-factor 66.879%);
+          physical constraints hard-fail enforced; production single-object S=1 -> 12.449ms
+          (matches measured ~12.45ms H2D), S>1 -> UNSUPPORTED. CANDIDATE_B ProfileKNN =
+          INSUFFICIENT_EVIDENCE: under leave-one-workload-out, prefill per-op selected_expert
+          41.2% / grouped_gemm 39.4% / gather_scatter 17.6% (all >=15%), and KNN is WORSE than
+          global_affine on selected_expert & grouped_gemm -> the same-workload diagnostic win
+          (q0->q1 aggregate 10.9%) does NOT generalize; KNN NOT promoted; opens V2-GAP-B (denser
+          prefill shape sweep). CANDIDATE_C replay = BLOCKED_ON_MEASUREMENT: window_replay()
+          times 2 argsorts (argsort_route, argsort_inverse) that no existing probe identifies;
+          fixed tau (2 structural configs) kept DIAGNOSTIC_ONLY; throughput derived 1000/TPOT;
+          opens V2-GAP-C (sort/permute microbenchmark). DEQUANT PROXY_ONLY. v3 self_check.json
+          all_ok=true (two-regime hard-fail, production S>1 UNSUPPORTED, KNN state machine,
+          replay missing terms). Baseline after: 331 Python (tests/ 96->110, +14 v3 regression
+          tests) + 14 CTest, 0 failed; evidence 4423/4423 unchanged.
     claims_unlocked_on_completion:
       - "模型形式缺陷已修正, 且變更經事前登記"
     claims_still_forbidden:

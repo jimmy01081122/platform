@@ -1,0 +1,38 @@
+{
+  "classification": "FIT_SIDE / DIAGNOSTIC (decision P-005)",
+  "command": [
+    "python",
+    "calibration/refit_v3.py",
+    "--code-commit",
+    "528ae01526898075ac4cc292e5fbe54d2ef93354",
+    "--run-id",
+    "20260819T160456Z__stage_a1_cal_model_form_v2_fitside_eval"
+  ],
+  "created_at": "2026-08-18T16:04:56Z",
+  "experiment_id": "cal_model_form_repair_v2",
+  "git": {
+    "code_commit": "528ae01526898075ac4cc292e5fbe54d2ef93354",
+    "models_v3_sha256": "00c8d76b1ff998038dbae6dfcc614b2f5ac223beb296334abe6344891b78af88",
+    "provenance_note": "artifacts were produced by the scripts at code_commit; this run directory is committed in the immediately following commit (artifact commit). The two scripts' SHA-256 below let you verify the exact generating code independent of git.",
+    "refit_v3_sha256": "332919c79299d8b552a8b905ff8aca2b1c66d827bae181ce220350be841817f9"
+  },
+  "parent_runs": [
+    "20260817T172500Z__stage_a1_calibration_model_form_repair"
+  ],
+  "platform_profile": "NVIDIA RTX PRO 6000 (evidence-of-record); this run is CPU-only FIT-side evaluation, no GPU",
+  "run_id": "20260819T160456Z__stage_a1_cal_model_form_v2_fitside_eval",
+  "simulation": {
+    "backend": "calibration.models_v3",
+    "calibration_pack": null,
+    "fidelity": "calibrated"
+  },
+  "stage": "S2",
+  "status": "partial",
+  "status_note": "Candidate A ACCEPT (FIT-side); Candidate B INSUFFICIENT_EVIDENCE (ProfileKNN not promoted); Candidate C BLOCKED_ON_MEASUREMENT. FIT-side/diagnostic only; no calibrated PASS.",
+  "verdicts": {
+    "candidate_a_pcie": "ACCEPT",
+    "candidate_b_component": "INSUFFICIENT_EVIDENCE",
+    "candidate_c_replay": "BLOCKED_ON_MEASUREMENT / INSUFFICIENT_EVIDENCE",
+    "dequant": "PROXY_ONLY"
+  }
+}

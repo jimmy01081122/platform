@@ -1,0 +1,9 @@
+stage: "STAGE_A1"
+experiment_id: "cal_model_form_repair_v2"
+pre_registration: "experiments/specs/cal_model_form_repair_v2.yaml"
+inputs:
+  pcie_and_component_and_replay: "evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/rtx-pro-6000-calibration/result.json"
+  residual_check: "evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json"
+  v2_a1_predicted_tpot: "calibration/fits/v2/residual_report.json"
+outputs_dir: "calibration/fits/v3/"
+decision_p005: "all evidence FIT-side; no held-out; no calibrated PASS"

@@ -137,3 +137,31 @@
 **未做（明確留給後續）** `tests/` 目前不在 A1 授權範圍，故 production-path 覆蓋以 `calibration/refit_v2.py` 內的 runtime self-check 完成；若要正式 pytest 覆蓋需 owner 額外授權。
 
 **Follow-up（2026-08-18，同 P0 主題的第二個出口）** 同一契約漏洞還有第二個出口：single-shape fallback。`fit_parameters()` 對名單外 op 若只有 <2 個 distinct shape 值，原本退回 `flat_fallback_single_shape_group` 常數——與 non-physical fallback 同一類違約。現移除該 production fallback：名單外 op 若 distinct shape axis < 2，一律 raise `CalibrationError`（真正無 shape 依賴的 op 必須顯式加入 `SHAPE_INSENSITIVE_OPERATIONS`，不得靜默降級）。self-check 新增 `fit_parameters_single_shape_non_excluded`（必須 raise），保留 negative-slope／negative-intercept raise 與 dequant exclusion no-raise control。**owner 授權**下最小更新 `tests/test_calibrated_backend.py` 的合成 fixture（原用單一 shape 的 selected_expert 探針，現改兩個 distinct shape 點；第一點 `expert_tokens=1` 對齊 component 評估點的 `tokens_per_launch=1.0`，使既有 MAPE 斷言完全不變）。驗證：`make test` 317 Python + 14 CTest、0 失敗；`self_check.json` 六個 case 全綠（含新 single-shape）；`make verify-evidence` 4423/4423；evidence 未動；真實校準資料上三個仿射 op 皆多 shape，無 spurious raise，四項 FIT 側 MAPE 數字不變。A1 維持 IN_PROGRESS；cal_model_form_repair_v2 preregistration 完成前不得實作或 refit PCIe／KNN／replay 新模型。
+
+## P-013 · cal_model_form_repair_v2 實作 + FIT 側評估結果（A ACCEPT / B INSUFFICIENT / C BLOCKED）
+
+**日期** 2026-08-19
+**決定** owner 核可三個 review points 後，實作三候選並在既有 evidence 上做 FIT 側評估（`calibration/models_v3.py`、`calibration/refit_v3.py`；輸出 `calibration/fits/v3/`；run `20260819T160456Z__stage_a1_cal_model_form_v2_fitside_eval`，manifest `code_commit=528ae01…`）。全部 FIT 側 / diagnostic（P-005），無 calibrated PASS。裁決依 prereg 事前判準，且**評分順序：correctness → subgroup gates → generalization → MAPE → aggregate**，低 aggregate 不得蓋過 subgroup gate。
+
+**Candidate A — PCIe two-regime：ACCEPT（FIT 側）**
+- 自 raw 擬合並評估 30 點：aggregate **1.038%**、small **2.508%**、bulk **0.058%**、h2d 0.875%、d2h 1.201%、max APE 4.752%。三方對照：v1 stored 19.821%、old q0 stream-factor 66.879%（後者 bulk 竟 84%，因把 bulk 乘上 stream factor——證實舊 per-transfer 乘數語意錯誤）。
+- 物理約束 hard-fail（無 clamp）已實作並測試：A<0 / BW≤0 / alpha<0 / beta<0 一律 raise。
+- production stream 語意（OWNER_RESOLUTION）：單一 object S=1 → 336 MiB expert 預測 **12.449 ms**（與實測 ~12.45 ms H2D 相符）；S>1 → **UNSUPPORTED**。multi-object concurrency 不借用 S。
+
+**Candidate B — component ProfileKNN：INSUFFICIENT_EVIDENCE（不升格）**
+- 嚴格照 prereg：k=3、log-token、operation/phase hard partition。跑了 LOOWO、LOSRO、k-sensitivity、distance-sensitivity、bootstrap。
+- **關鍵 generalization 結論**：leave-one-workload-out 下，prefill per-op MAPE = selected_expert **41.2%**、grouped_gemm **39.4%**、gather_scatter **17.6%**（三者皆 ≥15%），且 KNN 在 selected_expert / grouped_gemm 上**比 global_affine 還差**（affine 33.1% / 33.8%）。換言之：同 workload 的 q0→q1 診斷優勢（aggregate 10.9%）**無法 generalize 到未見 workload**——這正是「shape locality vs lookup-table overfit」問題的答案：是 overfit。
+- 依 owner 指示（gate 未達 → INSUFFICIENT_EVIDENCE，不調 k / 不挑 workload / 不改 threshold）判 INSUFFICIENT；ProfileKNN **不升格為正式 component 模型**。generalization_warning 明載「meets prereg reject_if；因 3-workload LOOWO 過稀，記 INSUFFICIENT 而非 REJECT，實務效果相同」。decode 的低 MAPE（0.96–4.34%）為 exact-token lookup（LOOWO 36 個 decode 點全 exact），已單獨揭露，不得用來補 gate。dequant 不進 component aggregate。
+- 開 **V2-GAP-B**（更密 prefill shape sweep）。
+
+**Candidate C — replay：BLOCKED_ON_MEASUREMENT / INSUFFICIENT_EVIDENCE**
+- 顯式 operator graph 已對齊 `window_replay()`（2×argsort + 3×GEMM + gather + scatter）。登記 metadata 只記 grouped_gemm+gather_scatter，系統性遺漏 **argsort_route、argsort_inverse**。
+- 既有 evidence 無法識別這兩個 sort 項 → replay **不能 FIT-closed**。固定 tau（僅 2 個結構配置）維持 **DIAGNOSTIC_ONLY**（tau=0.0738，tpot 43.18%→1.25%，但那是 2 點擬 1 參，不算）。throughput 一律派生 1000/TPOT。
+- 開 **V2-GAP-C**（sort/permute microbenchmark）。
+
+**Candidate D — dequant：PROXY_ONLY**（不變）。
+
+**後果**
+- **A1 續留 IN_PROGRESS。** closure 明確 blocked 在 V2-GAP-B 與 V2-GAP-C 兩個 targeted FIT-side 量測上。依 OWNER_RESOLUTION，這類 targeted FIT-side 量測日後可開，但**資料不得與 A4 sealed held-out 混用**。PCIe two-regime 已 ACCEPT，可先整合（本輪未動 `calibrated_backend.py`，以保 v2 可重現）。
+- **run manifest provenance 修正**：採兩段 commit——先 commit 生成程式（`528ae01`，H1），再於乾淨 H1 tree 執行產生 artifacts，manifest 記 `code_commit=H1` 並附兩支腳本的 SHA-256，artifacts 於下一個 commit（H2）加入。徹底解決先前「manifest 指向不含生成程式的 parent commit」的問題。
+- 基線：331 Python（tests/ 96→110，+14 v3 production-path regression tests）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。

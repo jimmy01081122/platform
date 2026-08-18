@@ -1,0 +1,105 @@
+{
+  "acceptance": {
+    "reason": "T_sort(argsort_route) and T_inverse_sort(argsort_inverse) cannot be identified from existing calibration probes; replay cannot be FIT-closed. Explicit graph is recorded; fixed tau kept diagnostic only. Opens V2-GAP-C (sort/permute microbenchmark).",
+    "verdict": "BLOCKED_ON_MEASUREMENT / INSUFFICIENT_EVIDENCE"
+  },
+  "declared_metadata_ops": [
+    "grouped_gemm",
+    "gather_scatter"
+  ],
+  "explicit_graph": [
+    {
+      "kind": "sort",
+      "measured": false,
+      "op": "argsort_route"
+    },
+    {
+      "folded_into": "gather_scatter",
+      "kind": "index_select",
+      "measured": true,
+      "op": "gather"
+    },
+    {
+      "folded_into": "grouped_gemm",
+      "kind": "gemm",
+      "measured": true,
+      "op": "gemm_gate"
+    },
+    {
+      "folded_into": "grouped_gemm",
+      "kind": "gemm",
+      "measured": true,
+      "op": "gemm_up"
+    },
+    {
+      "folded_into": "grouped_gemm",
+      "kind": "elementwise",
+      "measured": true,
+      "op": "act_silu_mul"
+    },
+    {
+      "folded_into": "grouped_gemm",
+      "kind": "gemm",
+      "measured": true,
+      "op": "gemm_down"
+    },
+    {
+      "kind": "sort",
+      "measured": false,
+      "op": "argsort_inverse"
+    },
+    {
+      "folded_into": "gather_scatter",
+      "kind": "index_select",
+      "measured": true,
+      "op": "scatter"
+    }
+  ],
+  "measured_terms": [
+    "gather",
+    "gemm_gate",
+    "gemm_up",
+    "act_silu_mul",
+    "gemm_down",
+    "scatter"
+  ],
+  "metadata_mismatch": {
+    "actually_timed_missing_from_declared": [
+      "argsort_route",
+      "argsort_inverse",
+      "gemm_up",
+      "gemm_down",
+      "act_silu_mul"
+    ],
+    "declared": [
+      "grouped_gemm",
+      "gather_scatter"
+    ],
+    "note": "declared metadata records only grouped_gemm+gather_scatter; the 2 argsorts (sort + inverse permutation) and the 3-GEMM/silu structure are omitted"
+  },
+  "missing_terms_BLOCKED_ON_MEASUREMENT": [
+    "argsort_route",
+    "argsort_inverse"
+  ],
+  "tau_route_diagnostic": {
+    "a1_tpot_mape_pct": 43.17637085033118,
+    "n_distinct_structural_configs": 2,
+    "n_points": 6,
+    "status": "DIAGNOSTIC_ONLY",
+    "structural_configs_tokens_routes": [
+      [
+        64,
+        64
+      ],
+      [
+        256,
+        64
+      ]
+    ],
+    "tau_augmented_throughput_mape_pct_derived": 1.268227748603539,
+    "tau_augmented_tpot_mape_pct": 1.2538901985347986,
+    "tau_route_ms": 0.07378209832524879,
+    "warning": "fit on only 2 distinct structural configs; a 1-parameter additive term will always fit; NOT a calibrated model"
+  },
+  "throughput_policy": "derived as 1000/TPOT, never fit independently"
+}

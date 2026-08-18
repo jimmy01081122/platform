@@ -1,0 +1,7 @@
+{
+  "python": "3.10.12",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "code_commit": "528ae01526898075ac4cc292e5fbe54d2ef93354",
+  "note": "CPU-only FIT-side evaluation; no GPU/CUDA (gpu_required: false)",
+  "git_head_at_run": "528ae01526898075ac4cc292e5fbe54d2ef93354"
+}

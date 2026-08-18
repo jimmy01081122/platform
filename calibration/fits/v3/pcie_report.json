@@ -1,0 +1,73 @@
+{
+  "acceptance": {
+    "aggregate_mape": 1.0377761950618867,
+    "bar": "aggregate < 5% AND small_le_1MiB < 10% AND physical constraints",
+    "small_mape": 2.5075979084762476,
+    "verdict": "ACCEPT"
+  },
+  "mape_by_bucket": {
+    "old_stream_factor_q0": {
+      "aggregate": 66.87867723065833,
+      "bulk_ge_22MiB": 84.10690175587321,
+      "d2h": 66.82094903314403,
+      "h2d": 66.93640542817262,
+      "small_le_1MiB": 41.03634044283601,
+      "transition_1MiB_22MiB": null
+    },
+    "stored_a1_v1": {
+      "aggregate": 19.821069884295014,
+      "bulk_ge_22MiB": 0.5159385913681303,
+      "d2h": 19.67076481218782,
+      "h2d": 19.971374956402205,
+      "small_le_1MiB": 48.77876682368534,
+      "transition_1MiB_22MiB": null
+    },
+    "two_regime_v3": {
+      "aggregate": 1.0377761950618867,
+      "bulk_ge_22MiB": 0.05789505278564606,
+      "d2h": 1.20072872041761,
+      "h2d": 0.8748236697061633,
+      "small_le_1MiB": 2.5075979084762476,
+      "transition_1MiB_22MiB": null
+    }
+  },
+  "max_ape_pct_v3": 4.751982086111322,
+  "params": {
+    "bulk": {
+      "d2h": {
+        "bandwidth_bytes_per_ms": 28235499.50195805,
+        "intercept_ms": 2.057357629681178e-05
+      },
+      "h2d": {
+        "bandwidth_bytes_per_ms": 28303854.15826755,
+        "intercept_ms": 0.0009735316798187288
+      }
+    },
+    "overhead": {
+      "d2h": {
+        "alpha_ms": 0.03875866727023384,
+        "beta_ms_per_extra_stream": 0.03205092689250701,
+        "empirical_floor_by_stream": {
+          "1": 0.0384773050252763,
+          "2": 0.07123163753017712,
+          "4": 0.1347707668252761
+        }
+      },
+      "h2d": {
+        "alpha_ms": 0.03965423851615841,
+        "beta_ms_per_extra_stream": 0.03251394450271122,
+        "empirical_floor_by_stream": {
+          "1": 0.0396024110121283,
+          "2": 0.07224592427491477,
+          "4": 0.13717015827227702
+        }
+      }
+    }
+  },
+  "physical_constraints": "all satisfied (fit did not hard-fail): BW>0, A>=0, alpha>=0, beta>=0",
+  "production_S_semantics": {
+    "rule": "single-object production uses S=1; S>1 -> UNSUPPORTED (S is intra-object partition, not multi-object concurrency)",
+    "single_object_S1_h2d_336MiB_ms": 12.448802510373413,
+    "single_object_S2_h2d_336MiB": "UNSUPPORTED"
+  }
+}

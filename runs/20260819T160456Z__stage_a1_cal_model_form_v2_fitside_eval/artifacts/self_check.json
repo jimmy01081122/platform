@@ -1,0 +1,38 @@
+{
+  "all_ok": true,
+  "cases": [
+    {
+      "case": "pcie_negative_bandwidth_hardfail",
+      "ok": true,
+      "message": "PCIe h2d: non-physical bulk bandwidth (BW<=0)"
+    },
+    {
+      "case": "pcie_production_S1_is_number",
+      "ok": true
+    },
+    {
+      "case": "pcie_production_S2_is_UNSUPPORTED",
+      "ok": true
+    },
+    {
+      "case": "knn_unsupported_missing_op",
+      "ok": true
+    },
+    {
+      "case": "knn_extrapolated_outside_envelope",
+      "ok": true
+    },
+    {
+      "case": "knn_interpolated_inside_envelope",
+      "ok": true
+    },
+    {
+      "case": "replay_missing_terms_nonempty",
+      "ok": true,
+      "missing": [
+        "argsort_route",
+        "argsort_inverse"
+      ]
+    }
+  ]
+}

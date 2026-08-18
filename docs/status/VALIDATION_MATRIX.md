@@ -63,6 +63,19 @@
 - **routing 守恆**：Σn_e＝num_tokens×top_k，672 步 0 違反（CONFIRMED）。
 - **dequant**：raw 標記 `synthetic_symmetric_int4_proxy_not_checkpoint_awq`，維持 `DEQUANT_PROXY_ONLY`。
 
+## A1 · cal_model_form_repair_v2 候選 FIT 側裁決（2026-08-19；全部 FIT 側 / diagnostic）
+
+來源 `calibration/fits/v3/`，run `20260819T160456Z__stage_a1_cal_model_form_v2_fitside_eval`（manifest code_commit `528ae01…`）。裁決依 prereg 事前判準，評分順序 correctness → subgroup gates → generalization → MAPE → aggregate。**皆非 held-out、非 calibrated PASS。**
+
+| 候選 | 裁決 | 關鍵數字（FIT 側） |
+|---|---|---|
+| A PCIe two-regime | **ACCEPT** | aggregate 1.038% / small 2.508% / bulk 0.058% / h2d 0.875% / d2h 1.201% / maxAPE 4.752%（vs v1 19.821%、old stream-factor 66.879%）；物理約束 hard-fail；單 object S=1→12.449ms（合實測），S>1→UNSUPPORTED |
+| B ProfileKNN | **INSUFFICIENT_EVIDENCE** | LOOWO prefill per-op：selected_expert 41.2% / grouped_gemm 39.4% / gather_scatter 17.6%（皆≥15%），且 KNN 在前兩者比 global_affine（33.1/33.8%）**還差**→不 generalize；不升格；開 V2-GAP-B。decode 低 MAPE 全為 exact-token lookup（已單獨揭露） |
+| C replay operator | **BLOCKED_ON_MEASUREMENT** | 顯式 graph 對齊 `window_replay()`；缺 argsort_route/argsort_inverse 量測→不能 FIT-closed；固定 tau（2 結構配置）DIAGNOSTIC_ONLY；throughput 派生；開 V2-GAP-C |
+| D dequant | **PROXY_ONLY** | `synthetic_symmetric_int4_proxy_not_checkpoint_awq`，不進 component aggregate |
+
+**要點**：Candidate B 的同 workload 診斷優勢（q0→q1 aggregate 10.9%）在 leave-one-workload-out 下完全消失並反轉——這是「shape locality vs lookup-table overfit」的答案：overfit。**低 aggregate 未蓋過 subgroup gate。** A1 closure 明確 blocked 在 V2-GAP-B 與 V2-GAP-C 兩個 targeted FIT-side 量測（不得與 A4 sealed held-out 混用）。詳見 DECISION_LOG P-013。
+
 ## 第三方 routing 語料（2026-08-18 稽核）
 
 完整稽核見 `EXTERNAL_CORPUS_AUDIT_20260818.md`。
@@ -109,7 +122,7 @@ def gather_scatter(x=activations, idx=order, inv=inverse):
 
 | 階段 | 驗收條件 | 判定 |
 |---|---|---|
-| A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | **IN_PROGRESS**（事前登記✓、舊 fail 報告未改✓；「拒絕非物理解」先前為**假 PASS**——production path 其實 fallback 常數，2026-08-18 已修正 P-012 並以 production-path self-check 驗證。仍待 v2 preregistration 重擬合 reviewer 接受的候選；非 calibrated PASS） |
+| A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | **IN_PROGRESS**（事前登記✓、舊 fail 報告未改✓、拒絕非物理解✓ P-012；v2 候選已 FIT 側評估 P-013：A ACCEPT、B INSUFFICIENT、C BLOCKED。closure blocked 在 V2-GAP-B/C 兩個 targeted FIT-side 量測；非 calibrated PASS） |
 | A2 | 各量測家族通過 IR1；byte 守恆逐點成立；`routing_sha256` 可回溯 | NOT_RUN |
 | A3 | 15 點 hit/miss/evict 與量測完全相等；兩次 replay 位元相同；無 deadlock/Zeno | NOT_RUN |
 | A4 | 封存 split 只開封一次；MAPE ≤15%、APE ≤20%，三值判定 | NOT_RUN |

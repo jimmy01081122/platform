@@ -1,0 +1,228 @@
+{
+  "acceptance": {
+    "reason": "gate not met for ['selected_expert', 'grouped_gemm', 'gather_scatter'] under leave-one-workload-out (prefill per-op >= 15%); ProfileKNN stays provisional/diagnostic (NOT promoted to the component model); open V2-GAP-B (denser prefill shape sweep).",
+    "threshold_pct": 15.0,
+    "verdict": "INSUFFICIENT_EVIDENCE"
+  },
+  "bootstrap_prefill_nonexact": {
+    "gather_scatter": {
+      "median": 18.01523604909868,
+      "n_resamples": 493,
+      "p05": 10.33292042147403,
+      "p95": 58.12651314919014
+    },
+    "grouped_gemm": {
+      "median": 34.049720597286985,
+      "n_resamples": 493,
+      "p05": 20.836031849966126,
+      "p95": 153.88193131622756
+    },
+    "selected_expert": {
+      "median": 36.3231601782488,
+      "n_resamples": 498,
+      "p05": 22.683947804206735,
+      "p95": 155.93615566479113
+    }
+  },
+  "comparators": {
+    "global_affine_loowo_prefill_per_op": {
+      "gather_scatter": 24.668871641548943,
+      "grouped_gemm": 33.75774455565136,
+      "selected_expert": 33.06233538556518
+    },
+    "global_affine_xfit_aggregate": 26.369173430636533,
+    "knn_worse_than_affine_ops": [
+      "selected_expert",
+      "grouped_gemm"
+    ],
+    "nearest_profile_loowo_prefill_per_op": {
+      "gather_scatter": 16.449136006396184,
+      "grouped_gemm": 42.816760740883105,
+      "selected_expert": 44.80289353513476
+    }
+  },
+  "dequant_excluded": "dequant is PROXY_ONLY and excluded from component success aggregate (candidate D)",
+  "diagnostic_q0_to_q1_crossfit": {
+    "exact_lookup_counts": {
+      "decode": 18,
+      "prefill": 0
+    },
+    "global_affine_aggregate_mape": 26.369173430636533,
+    "note": "aggregate is diagnostic only; decode is dominated by exact-token lookups and must not be used to satisfy the interpolation gate",
+    "profile_knn_aggregate_mape": 10.903250692449097,
+    "state_counts": {
+      "EXTRAPOLATED": 3,
+      "INTERPOLATED": 33,
+      "UNSUPPORTED": 0
+    }
+  },
+  "distance_sensitivity_prefill_nonexact": {
+    "log_token": {
+      "gather_scatter": {
+        "mape": 17.621213924299933,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 39.43812857638148,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 41.239233547299825,
+        "n": 12
+      }
+    },
+    "raw_token": {
+      "gather_scatter": {
+        "mape": 18.067829958161852,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 39.26312897841603,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 41.18695998598301,
+        "n": 12
+      }
+    }
+  },
+  "generalization_warning": "Under leave-one-workload-out, ProfileKNN is WORSE than global_affine on ['selected_expert', 'grouped_gemm'] (KNN selected_expert=41.2%, grouped_gemm=39.4% vs affine selected_expert=33.1%, grouped_gemm=33.8%). The local-interpolation advantage seen in the same-workload q0->q1 cross-fit does NOT generalize to an unseen workload. This meets the prereg reject_if condition; reported as INSUFFICIENT (per owner instruction) rather than REJECT because 3-workload LOOWO is too sparse to firmly reject the model class. Practical effect is identical: KNN is not promoted; the honest next step is a denser prefill shape sweep (V2-GAP-B).",
+  "k_sensitivity_prefill_nonexact": {
+    "1": {
+      "gather_scatter": {
+        "mape": 16.449136006396184,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 42.816760740883105,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 44.80289353513475,
+        "n": 12
+      }
+    },
+    "2": {
+      "gather_scatter": {
+        "mape": 16.337279078699066,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 40.46513883713241,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 42.35200828026927,
+        "n": 12
+      }
+    },
+    "3": {
+      "gather_scatter": {
+        "mape": 17.621213924299933,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 39.43812857638148,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 41.239233547299825,
+        "n": 12
+      }
+    },
+    "4": {
+      "gather_scatter": {
+        "mape": 20.623339563024796,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 40.353005957565614,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 41.62439699573161,
+        "n": 12
+      }
+    }
+  },
+  "losro_extrapolation_stress": {
+    "gather_scatter": {
+      "mape": 41.67358609227697,
+      "n": 6,
+      "note": "train<=median tokens, test>median (extrapolation stress, NOT an interpolation gate)"
+    },
+    "grouped_gemm": {
+      "mape": 31.49472899549355,
+      "n": 6,
+      "note": "train<=median tokens, test>median (extrapolation stress, NOT an interpolation gate)"
+    },
+    "selected_expert": {
+      "mape": 33.92786282521484,
+      "n": 6,
+      "note": "train<=median tokens, test>median (extrapolation stress, NOT an interpolation gate)"
+    }
+  },
+  "primary_gates_loowo": {
+    "decode_per_op_all": {
+      "gather_scatter": {
+        "mape": 4.336173908630383,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 2.6216343015314023,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 0.9646835780500295,
+        "n": 12
+      }
+    },
+    "exact_lookup_counts": {
+      "decode": 36,
+      "prefill": 0
+    },
+    "gate1_prefill_all_lt15": {
+      "gather_scatter": false,
+      "grouped_gemm": false,
+      "selected_expert": false
+    },
+    "gate2_evaluable": {
+      "gather_scatter": true,
+      "grouped_gemm": true,
+      "selected_expert": true
+    },
+    "gate2_nonexact_prefill_lt15": {
+      "gather_scatter": false,
+      "grouped_gemm": false,
+      "selected_expert": false
+    },
+    "prefill_per_op_all": {
+      "gather_scatter": {
+        "mape": 17.621213924299933,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 39.43812857638148,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 41.239233547299825,
+        "n": 12
+      }
+    },
+    "prefill_per_op_non_exact": {
+      "gather_scatter": {
+        "mape": 17.621213924299933,
+        "n": 12
+      },
+      "grouped_gemm": {
+        "mape": 39.43812857638148,
+        "n": 12
+      },
+      "selected_expert": {
+        "mape": 41.239233547299825,
+        "n": 12
+      }
+    }
+  }
+}

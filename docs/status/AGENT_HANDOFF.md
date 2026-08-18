@@ -6,6 +6,39 @@
 
 ---
 
+## 2026-08-19 · Stage A1 · cal_model_form_repair_v2 implementation + FIT-side evaluation
+
+**Session 目標** owner 核可 3 個 review points 後，實作三候選並在既有 evidence 上 FIT 側評估。評分順序嚴格為 correctness → subgroup gates → generalization → MAPE → aggregate（低 aggregate 不得蓋 subgroup gate）。不開 GPU。
+
+**結果（全部 FIT 側 / diagnostic，無 calibrated PASS）**
+```text
+A PCIe two-regime   ACCEPT。aggregate 1.038% / small 2.508% / bulk 0.058% / h2d 0.875% /
+                    d2h 1.201% / maxAPE 4.752%（vs v1 19.821% / old stream-factor 66.879%）。
+                    物理約束 hard-fail（無 clamp）。production 單 object S=1 → 12.449ms
+                    （合實測 ~12.45ms），S>1 → UNSUPPORTED。
+B ProfileKNN        INSUFFICIENT_EVIDENCE。LOOWO prefill per-op：selected_expert 41.2% /
+                    grouped_gemm 39.4% / gather_scatter 17.6%（皆 ≥15%），且 KNN 在
+                    selected_expert & grouped_gemm 上比 global_affine 還差（33.1/33.8%）。
+                    同 workload 診斷優勢（q0→q1 aggregate 10.9%）無法 generalize → overfit。
+                    不升格；開 V2-GAP-B。decode 低 MAPE 全是 exact-token lookup，已單獨揭露。
+C replay            BLOCKED_ON_MEASUREMENT。顯式 graph 對齊 window_replay()（2×argsort+3×GEMM
+                    +gather+scatter）；缺 argsort_route/argsort_inverse 量測 → 不能 FIT-closed。
+                    固定 tau（2 結構配置）DIAGNOSTIC_ONLY；throughput 派生。開 V2-GAP-C。
+D dequant           PROXY_ONLY。
+```
+
+**新增檔案** `calibration/models_v3.py`、`calibration/refit_v3.py`、`tests/test_models_v3.py`（14 production-path 測試）、`calibration/fits/v3/{summary,pcie_report,component_report,replay_report,self_check}.json`、`runs/20260819T160456Z__stage_a1_cal_model_form_v2_fitside_eval/`。未動 `calibrated_backend.py`（保 v2 可重現）、未動 evidence。
+
+**Provenance 修正** 兩段 commit：H1=`528ae01`（只含生成程式 models_v3/refit_v3/tests）；於乾淨 H1 tree 執行 → manifest `code_commit=H1` + 兩腳本 SHA-256；artifacts 於 H2 加入。解決先前 manifest 指向 parent commit 的問題。
+
+**驗證** `make test` 331 Python（tests/ 96→110）+ 14 CTest、0 失敗；`make verify-evidence` 4423/4423；`make doctor` pass；v3 `self_check.json` all_ok=true。
+
+**A1 狀態** IN_PROGRESS。closure 明確 blocked 在 V2-GAP-B（更密 prefill shape sweep）與 V2-GAP-C（sort/permute microbench）。依 OWNER_RESOLUTION，這類 targeted FIT-side 量測可開，但**不得與 A4 sealed held-out 混用**。
+
+**GPU_REQUIRED_FOR_NEXT_A1_STEP** YES（B、C 的 closure 需要）；但 PCIe two-regime 可先在既有 evidence 上整合。**新增決策** P-013。
+
+---
+
 ## 2026-08-18 · Stage A1 · cal_model_form_repair_v2 preregistration（文件，無實作）
 
 **Session 目標** 依 reviewer 覆核結論，撰寫第二輪模型形式演化的事前登記；**只出文件，不實作、不 refit**（owner 指示：prereg 完成前不得動手）。
