@@ -211,12 +211,26 @@ addenda:
       3. calibration/refit_v2.py 的 self-check 擴充覆蓋 production path
          (fit_parameters)，新增 fit_parameters_non_physical_non_excluded（必須 raise）
          與 control fit_parameters_excluded_operation_is_flat_not_error（dequant 不 raise）。
+    followup_2026_08_18_single_shape_hardening: >
+      P0 follow-up：同一契約漏洞的第二個出口是「single-shape fallback」。原
+      fit_parameters() 對名單外 op 若只有 <2 個 distinct shape 值，會退回
+      flat_fallback_single_shape_group 常數——與 non-physical fallback 同一類違約。
+      現移除該 production fallback：名單外 op 若 distinct shape axis < 2，
+      fit_parameters() 一律 raise CalibrationError（若某 op 真的無 shape 依賴，
+      必須顯式加入 SHAPE_INSENSITIVE_OPERATIONS 作為 labeled 決策，不得於擬合時
+      靜默降級）。self-check 新增 fit_parameters_single_shape_non_excluded（必須
+      raise）；保留 negative-slope raise、negative-intercept raise、dequant
+      exclusion no-raise control。tests/test_calibrated_backend.py 的合成 fixture
+      因原用單一 shape 的 selected_expert 探針而需更新（owner 授權）：改為兩個
+      distinct shape 點，且第一點 expert_tokens=1 對齊 component 評估點的
+      tokens_per_launch=1.0，使既有 MAPE 斷言完全不變、baseline 維持 317 全綠。
     correction_to_defect_2_fit_rule: >
       DEFECT_2 的 fit_rule「回歸被拒絕時退回 flat mean」自本 addendum 起僅適用於
       SHAPE_INSENSITIVE_OPERATIONS 名單內的 op（且那不是「被拒絕後退回」，是事前
-      不做仿射）。名單外 op 一律 hard-fail，不得退回常數。
-    numerical_impact: "無。dequant 仍是 flat mean、per_token=0；其餘三個 op 本就物理。calibration/fits/v2 四項 FIT 側 MAPE 數字完全不變，只有 dequant 的 model_form 標籤改變。"
-    status: "本階段登記變更；依 guide §8 規則，改碼前補登記。對應 DECISION_LOG P-012。"
+      不做仿射）。名單外 op 一律 hard-fail（非物理 raise，且 single-shape 亦
+      raise），不得退回常數。
+    numerical_impact: "無。dequant 仍是 flat mean、per_token=0；其餘三個 op 在真實校準資料上皆有多個 shape 且物理。calibration/fits/v2 四項 FIT 側 MAPE 數字完全不變，只有 dequant 的 model_form 標籤改變。"
+    status: "本階段登記變更；依 guide §8 規則，改碼前補登記。對應 DECISION_LOG P-012（含 single-shape follow-up）。"
 
 commitments:
   - "本階段結束時不得宣稱任何 calibrated PASS；判定屬 STAGE_A4 sealed held-out。"

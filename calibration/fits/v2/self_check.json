@@ -23,6 +23,11 @@
       "message": "gpu_service selected_expert fit is non-physical"
     },
     {
+      "case": "fit_parameters_single_shape_non_excluded",
+      "rejected": true,
+      "message": "gpu_service selected_expert has fewer than two distinct shape-axis values; cannot identify an affine fit and no fallback constant is permitted for non-excluded operations (add it to SHAPE_INSENSITIVE_OPERATIONS to model it as a labeled flat proxy)"
+    },
+    {
       "case": "fit_parameters_excluded_operation_is_flat_not_error",
       "rejected": false,
       "expected_no_raise": true,

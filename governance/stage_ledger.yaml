@@ -121,10 +121,14 @@ stages:
         pre_registration_created_at: "2026-08-17T17:25:08Z, addendum 2026-08-17T17:31:56Z; both precede calibration/fits/v2/* outputs"
         non_physical_rejection_self_check: >
           calibration/fits/v2/self_check.json: all_non_physical_cases_rejected=true AND
-          production_path_covered=true. Now exercises the PRODUCTION entry point
-          fit_parameters() (case fit_parameters_non_physical_non_excluded -> raises),
-          not only the _line_fit() primitive; plus a control that the excluded
-          dequant op yields model_form=flat_by_registered_exclusion without raising.
+          production_path_covered=true. Exercises the PRODUCTION entry point
+          fit_parameters(), not only the _line_fit() primitive: non-physical
+          non-excluded op raises; single-shape (<2 distinct shape values)
+          non-excluded op raises (P0 follow-up removed flat_fallback_single_shape_group);
+          plus a control that the excluded dequant op yields
+          model_form=flat_by_registered_exclusion without raising. Backed by
+          tests/test_calibrated_backend.py (7 passed; fixture updated under owner
+          authorization to give selected_expert two distinct shape points).
         fit_side_residuals_mape_pct: >
           component_latency 304.418->20.324; pcie_transfer_latency 66.879->19.821;
           moe_replay_tpot 293.936->43.176; moe_replay_throughput 60.658->75.898.

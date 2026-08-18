@@ -21,7 +21,16 @@ def _calibration_rows() -> list[dict]:
 
     return [
         row("cal-cpu", "cpu_runtime", 0.1),
-        row("cal-gpu", "gpu_service", 1.0, operation="selected_expert"),
+        # Two distinct shape points for the (non-excluded) selected_expert op:
+        # the production fit now requires >= 2 distinct shape-axis values and no
+        # longer silently falls back to a flat constant for single-shape input
+        # (see calibrated_backend.SHAPE_INSENSITIVE_OPERATIONS / P-012 follow-up).
+        # expert_tokens=1 is the component evaluation point's effective
+        # tokens_per_launch, so predicted selected_expert cost there stays exactly
+        # 1.0 ms and the downstream MAPE assertions are unchanged; the second
+        # point only supplies a small physical positive slope.
+        row("cal-gpu", "gpu_service", 1.0, operation="selected_expert", case="fixture,expert_tokens=1"),
+        row("cal-gpu-2", "gpu_service", 1.001, operation="selected_expert", case="fixture,expert_tokens=2"),
         row("cal-h2d-100", "pcie_transfer", 0.3, direction="h2d", bytes=100),
         row("cal-h2d-200", "pcie_transfer", 0.4, direction="h2d", bytes=200),
         row("cal-d2h-100", "pcie_transfer", 0.375, direction="d2h", bytes=100),

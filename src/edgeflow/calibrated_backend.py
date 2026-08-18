@@ -255,20 +255,26 @@ def fit_parameters(calibration_result: dict[str, Any]) -> dict[str, Any]:
             intercept = statistics.fmean(value for _, value in rows)
             slope = 0.0
             model_form = "flat_by_registered_exclusion"
-        elif len(distinct_tokens) >= 2:
-            # Non-excluded operation with real shape variation: fit affine and
-            # let a non-physical fit (slope <= 0 or intercept < 0) raise. There
-            # is intentionally no fallback constant here — swallowing the error
-            # would violate the calibration contract (root spec §8.3).
+        else:
+            # Non-excluded operations MUST have at least two distinct shape-axis
+            # values to identify an affine model. There is intentionally no
+            # single-shape fallback constant: silently collapsing an
+            # unidentifiable fit to a mean is the same class of contract
+            # violation as swallowing a non-physical fit (root spec §8.3). If a
+            # non-excluded operation truly has no shape dependence, it must be
+            # added to SHAPE_INSENSITIVE_OPERATIONS as a deliberate, labeled
+            # decision — not degrade silently at fit time.
+            if len(distinct_tokens) < 2:
+                raise CalibrationError(
+                    f"gpu_service {operation} has fewer than two distinct shape-axis "
+                    "values; cannot identify an affine fit and no fallback constant is "
+                    "permitted for non-excluded operations (add it to "
+                    "SHAPE_INSENSITIVE_OPERATIONS to model it as a labeled flat proxy)"
+                )
+            # Real shape variation: fit affine and let a non-physical fit
+            # (slope <= 0 or intercept < 0) raise. No fallback constant.
             intercept, slope = _line_fit(rows, f"gpu_service {operation}")
             model_form = "affine_per_token"
-        else:
-            # Only one distinct shape group observed (e.g. a minimal synthetic
-            # fixture): a slope is not identifiable, so use the flat mean. This
-            # is a degeneracy of the input, not a non-physical fit.
-            intercept = statistics.fmean(value for _, value in rows)
-            slope = 0.0
-            model_form = "flat_fallback_single_shape_group"
         gpu_service[operation] = {
             "intercept_ms": intercept,
             "per_token_ms": slope,

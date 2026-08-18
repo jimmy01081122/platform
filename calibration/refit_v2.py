@@ -214,6 +214,21 @@ def self_check_non_physical_rejection() -> dict[str, Any]:
             {"case": "fit_parameters_non_physical_non_excluded", "rejected": True, "message": str(exc)}
         )
 
+    # A non-excluded operation with only ONE distinct shape-axis value cannot
+    # identify an affine fit. The production path must raise, not silently fall
+    # back to a flat constant (P-012 follow-up: removed flat_fallback_single_
+    # shape_group). Two rows at the same expert_tokens = a single shape group.
+    single_shape = _minimal_calibration_result(
+        [gs("sc-gs-e", 1.0, "selected_expert", 100), gs("sc-gs-f", 1.0, "selected_expert", 100)]
+    )
+    try:
+        fit_parameters(single_shape)
+        checks.append({"case": "fit_parameters_single_shape_non_excluded", "rejected": False})
+    except CalibrationError as exc:
+        checks.append(
+            {"case": "fit_parameters_single_shape_non_excluded", "rejected": True, "message": str(exc)}
+        )
+
     # Control: the SAME non-physical latencies, but for an excluded operation
     # (dequant), must NOT raise — it is a labeled flat-by-exclusion model, not a
     # failed affine fit. This confirms the exclusion is by-name, not by-catch.

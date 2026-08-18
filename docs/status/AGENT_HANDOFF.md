@@ -6,6 +6,30 @@
 
 ---
 
+## 2026-08-18 · Stage A1 P0 follow-up：移除 single-shape fallback
+
+**Session 目標** 在 7a76a8f 之上做最小 P0 follow-up：堵住 non-physical fallback 的第二個出口。
+
+**改動**
+```text
+calibrated_backend.py  名單外 gpu_service op 若 distinct shape axis < 2，fit_parameters()
+                       一律 raise CalibrationError；移除 flat_fallback_single_shape_group
+                       production fallback。dequant 的 flat_by_registered_exclusion 不變。
+refit_v2.py            self-check 新增 fit_parameters_single_shape_non_excluded（必須 raise）；
+                       保留 negative-slope／negative-intercept raise 與 dequant no-raise control。
+tests/（owner 授權）    合成 fixture 原用單一 shape 的 selected_expert 探針會觸發新 raise；
+                       改為兩個 distinct shape 點，第一點 expert_tokens=1 對齊 component 評估點
+                       tokens_per_launch=1.0，使既有 MAPE 斷言完全不變。
+```
+
+**驗證** `make test` 317 Python + 14 CTest、0 失敗；`self_check.json` 六 case 全綠；`make verify-evidence` 4423/4423；evidence 未動；真實校準資料三個仿射 op 皆多 shape，無 spurious raise，四項 FIT 側 MAPE 不變。
+
+**未做** cal_model_form_repair_v2 refit（PCIe／KNN／replay）——**prereg 完成前不得實作或 refit**。A1 維持 IN_PROGRESS。決策更新於 P-012 follow-up、ADDENDUM_2。
+
+**下一步** author `cal_model_form_repair_v2` preregistration。
+
+---
+
 ## 2026-08-18 · Stage A1 Principal Reviewer 覆核 + P0 calibration-safety 修正
 
 **Session 目標** 對 A1 model-form evolution 做獨立覆核（不調參、不辯護），用 raw evidence 重現各項主張，判斷哪些演算法可進下一輪 preregistered implementation；並修正發現的 blocker。
