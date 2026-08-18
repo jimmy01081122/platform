@@ -1,0 +1,41 @@
+{
+  "dropped_or_degraded": [
+    {
+      "a3_impact": "engine must read the .npy for the ordered demand sequence (object id = layer*8+expert, token-major).",
+      "field": "routing per-token top-k (scores)",
+      "reason": "no gate scores in the .npy; TOKEN-scope routing not constructible. Emitted as AGGREGATE per-layer demand."
+    },
+    {
+      "a3_impact": "SIM0 LRU replay must reconstruct the 10176-long demand order from the routing .npy.",
+      "field": "per-token ordered demand sequence",
+      "reason": "AGGREGATE RoutingIR loses ordering; measured transfer_events record misses only, not hits."
+    },
+    {
+      "a3_impact": "none for counters; documented for completeness.",
+      "field": "host_snapshot_setup_d2h_bytes / setup H2D",
+      "reason": "setup transfer is excluded from the demand path; not a demand-driven residency event."
+    },
+    {
+      "a3_impact": "start timestamps available in raw if needed.",
+      "field": "transfer_events[].decision_monotonic_ns / h2d_start_*",
+      "reason": "one TRANSFER_COMPLETE EventIR per load carries completion time + service_demand; start time folded into service_demand (complete - duration)."
+    },
+    {
+      "a3_impact": "LRU eviction identity recoverable from replay.",
+      "field": "logical_evicted_object_id per transfer",
+      "reason": "eviction identity not represented in EventIR payload (no eviction-target field in schema)."
+    },
+    {
+      "a3_impact": "none for the expert-capacity experiment.",
+      "field": "non-expert model weights (attention/router tensors)",
+      "reason": "not part of the residency sweep; ModelIR lists them as operators but not as residency-managed tensors."
+    },
+    {
+      "a3_impact": "cross-check only.",
+      "field": "total_h2d_cuda_elapsed_ms (per-point aggregate)",
+      "reason": "per-event cuda_elapsed_ms is carried on each EventIR service_demand; the aggregate is derivable."
+    }
+  ],
+  "family": "OFF-E-PR3 expert capacity scan",
+  "schema_version": "stage-a2-dropped-fields-v1"
+}

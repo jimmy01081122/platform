@@ -4,7 +4,7 @@
 updated       : 2026-08-19
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
-current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，未做 held-out 判定）；TRACK_GPU_PREP PREP-1 完成（純 CPU，無 GPU 主張）
+current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，未做 held-out 判定）；A2 COMPLETE（OFF-E-PR3 15 點 → 九類 IR，MEASURED，過 IR1）；TRACK_GPU_PREP PREP-1 完成（純 CPU，無 GPU 主張）
 ```
 
 ## 一句話狀態
@@ -17,7 +17,7 @@ current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，未做 held-ou
 |---|---|---|
 | Stage 0 | **COMPLETE** | 遷移、基線、根規格、session 指引系統 |
 | A1 calibration 模型形式修復 | **IN_PROGRESS** | 4 缺陷修正並事前登記；P0 safety 修正（P-012）。v2 候選已 FIT 側評估（P-013）：**A PCIe two-regime ACCEPT（1.04%）、B ProfileKNN INSUFFICIENT（LOOWO 不 generalize，不升格）、C replay BLOCKED_ON_MEASUREMENT**。closure blocked 在 V2-GAP-B/C 量測。未做 held-out；無 calibrated PASS |
-| A2 measured → 九類 IR | NOT_STARTED | |
+| A2 measured → 九類 IR | **COMPLETE** | OFF-E-PR3 expert 容量掃描 15 點 → 單一九類 Canonical IR bundle（MEASURED，33203 records）過 IR1 且 round-trip 再驗證。byte 守恆 15/15；routing_sha256 可回溯；claim boundary 綁定每筆 provenance。RoutingIR 為 AGGREGATE（量測無 gate scores）。mock adapter 未動。**無時序/效能/calibrated 主張；IR 尚未被引擎消費（A3）**。run `20260819T000000Z__stage_a2_off_e_pr3_measured_ir` |
 | A3 IR → 引擎 loader | NOT_STARTED | |
 | A4 sealed held-out 驗證 | NOT_STARTED | |
 | B1 KV + continuous batching | NOT_STARTED | 指引為 RULES_ONLY |
@@ -42,7 +42,7 @@ workspace    make doctor -> workspace_contract: pass
 
 ## 研究鏈的三個斷點（全部未修）
 
-1. **量測 → IR**：唯一 adapter 是 `explorations/moe_cycle_simulator/phase7/adapters/vllm_mock_adapter.py`，檔案自述為 mock。已 grep 確認無 code path 從真實 `.npy` routing array 進到 `EventIR`/`RoutingIR`。→ A2
+1. **量測 → IR**：**OFF-E-PR3 家族已接通（A2 COMPLETE，2026-08-19）**。`off_e_pr3_measured_adapter.py` 把 15 點真實量測（含真實 `.npy` routing、transfer events、counters、token ids）映成九類 IR 並過 IR1。mock adapter 保留作 fixture。**其餘量測家族（SWAP-K2 / SERV-P0-25 / controlled matrix / component / transfer）尚未接**——adapter 架構可延伸，屬 A2 後續或另開 session。IR→引擎（斷點 2）仍未接，故此 bundle 尚未被任何引擎消費。→ A2 家族其餘 / A3
 2. **IR → 引擎**：不存在 IR bundle → C++ 引擎的 loader。目前已發表的 DSE 數字出自 `src/edgeflow/residency.py`（265 行解析模型），**不是** C++ 引擎。→ A3
 3. **校準**：舊 q1 report（保留為證據，未修改）四項 MAPE gate 全數失敗（component 304.418%、TPOT 293.936%、PCIe 66.879%、throughput 60.658%；90 點中 17 通過）。根因是模型形式錯誤，非量測品質。A1 已修正四項模型形式缺陷並在 FIT 側重新擬合：component_latency 304.418%→20.324%、pcie_transfer_latency 66.879%→19.821%、moe_replay_tpot 293.936%→43.176%、moe_replay_throughput 60.658%→**75.898%（就 throughput 自身 MAPE 定義是變差，非改善**——TPOT 擬合改善，但 throughput＝1000/TPOT 的 MAPE 因 reciprocal 轉換不對稱而上升；正確做法是把 throughput 當派生量而非獨立擬合目標；細節見 `calibration/fits/v2/residual_report.json`）。**這些數字全部是 FIT 側，不是 held-out 判定** —— sealed held-out 仍待 A4。2026-08-18 Principal Reviewer 覆核：修正一項 P0 calibration-safety 違約（`fit_parameters()` 對非物理擬合曾靜默 fallback，見 P-012）；PCIe two-regime（自 raw 重現 1.04%）與 replay 的 routing/permutation operator 方向已接受進 v2 preregistration，ProfileKNN 需更多測試（prefill 內插 18.2%＞15%）。
 

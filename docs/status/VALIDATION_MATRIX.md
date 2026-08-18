@@ -22,9 +22,27 @@
 
 | 斷點 | 判定 | 說明 | 負責階段 |
 |---|---|---|---|
-| 量測 → 九類 IR | **FAIL** | 唯一 adapter 為 mock；已 grep 確認無真實 `.npy` → `EventIR`/`RoutingIR` 路徑 | A2 |
-| IR → C++ 引擎 | **FAIL** | 無 loader；現有 DSE 數字出自 `src/edgeflow/residency.py` 而非引擎 | A3 |
+| 量測 → 九類 IR | **PASS**（OFF-E-PR3 家族） | A2：`off_e_pr3_measured_adapter.py` 把 15 點真實量測映成九類 IR，`validate_records(MEASURED)` 33203 筆全過、round-trip 再驗證。其餘家族 `NOT_RUN` | A2 |
+| IR → C++ 引擎 | **FAIL** | 無 loader；現有 DSE 數字出自 `src/edgeflow/residency.py` 而非引擎。A2 已產出可餵給 A3 的 bundle | A3 |
 | 量測校準 | **FAIL** | 四項 MAPE gate 全失敗（見下） | A1 → A4 |
+
+## Stage A2 · measured raw → 九類 Canonical IR（OFF-E-PR3 expert 容量掃描，15 點）
+
+驗收來源：`runs/20260819T000000Z__stage_a2_off_e_pr3_measured_ir/`。**這些是「量測已誠實進入 IR 且守恆」的判定，不是任何時序/效能/calibrated 判定。**
+
+| 驗收項 | 判定 | 證據 |
+|---|---|---|
+| 15 點全部產出 IR bundle 並過 IR1 | **PASS** | 單一九類 bundle 33203 records；`validate_records(bundle_evidence_class=MEASURED)` 全過；`read_bundle` round-trip 再驗證 |
+| byte 守恆逐點成立 | **PASS** | 15/15 `h2d_bytes == demand_load_count × 352,321,536`（`conservation_report.json` all_ok=true） |
+| routing_sha256 可回溯到原始 `.npy` | **PASS** | 15 點 `sha256(.npy) == routing_sha256 == 0a9225ec…`；單一共用 routing trace |
+| 無 synthetic 替代真實量測（IR0） | **PASS** | 數值皆讀自 evidence/；缺測欄位入 dropped-fields 而非填造值；少數無量測宣稱的必填 scalar 已於 ASSUMPTION_REGISTER 登記 |
+| claim boundary 已傳遞且可查詢 | **PASS** | `claim_boundary.json` 的 sha256 進每筆 `provenance.source_content_ids`（測試 `test_claim_boundary_bound_to_every_record`） |
+| mock adapter 仍在 | **PASS** | `vllm_mock_adapter.py` sha256 未變（pin 於測試） |
+| 證據未被動 | **PASS** | `make verify-evidence` → 4423/4423 |
+| 基線未退步 | **PASS** | `make test` → 352 Python + 14 CTest、0 failed（HEAD 8924d8e 基線 344，+8 A2 tests） |
+| 丟棄欄位已記錄 | **PASS** | `artifacts/dropped_fields.json`（A3 輸入） |
+
+**尚未做（不在 A2 範圍）**：其餘量測家族的轉換 `NOT_RUN`；per-token TOKEN-scope routing `NOT_APPLICABLE`（量測無 gate scores，記於 claim boundary）；引擎消費與位元精確 replay 屬 A3。
 
 ## 校準 gate（門檻：MAPE ≤ 15%、single-point APE ≤ 20%）
 

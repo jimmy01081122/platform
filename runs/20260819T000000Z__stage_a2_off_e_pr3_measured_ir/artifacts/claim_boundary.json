@@ -1,0 +1,33 @@
+{
+  "family": "OFF-E-PR3 expert capacity scan (15 points)",
+  "forbidden_claims": [
+    "IR has been consumed by the engine (Stage A3).",
+    "Any timing, performance, calibrated, break-even, or accelerator claim.",
+    "Any held-out validation claim (all evidence is FIT-side per spec 7).",
+    "IR passing validation means the research chain is closed."
+  ],
+  "measured_limitations": [
+    {
+      "id": "OFF-E-PR3-SINGLE-OBJECT-PROXY",
+      "text": "Each logical miss issues one measured 352,321,536-byte H2D of the SAME representative layer-0 expert-0 object. Bytes and time are measured; per-object movement diversity is NOT measured."
+    },
+    {
+      "id": "ROUTING-NO-SCORES",
+      "text": "The routing .npy records selected expert ids only (vllm.CompletionOutput.routed_experts, uint8). It carries no gate scores/logits/probabilities. TOKEN-scope routing is not constructible; RoutingIR is emitted as AGGREGATE scope. Any predictor needing confidence values is impossible from this trace."
+    },
+    {
+      "id": "AGGREGATE-ROUTING-ORDER-DROPPED",
+      "text": "AGGREGATE RoutingIR preserves per-layer per-expert demand counts but NOT the per-token ordered demand sequence. The ordered demand needed for bit-exact LRU replay (Stage A3 SIM0) is recoverable only from the routing .npy under the frozen traversal convention (token-major, layer-major, top-k order; object id = layer*8 + expert)."
+    },
+    {
+      "id": "PLACEMENT-TERMINAL-SNAPSHOT",
+      "text": "PlacementIR is the terminal residency snapshot (terminal_resident_object_ids). Intermediate residency states during the LRU replay are not snapshotted; they are derivable from the EventIR transfer sequence in Stage A3."
+    },
+    {
+      "id": "CLOCK-ALIGNMENT-AGGREGATE-ONLY",
+      "text": "Event timing derives from a single host monotonic-ns clock. The ns->fs mapping is an exact unit conversion (scale 1e6), but ns quantisation is carried as a +/-0.5 ns (500000 fs) 95% CI; alignment grade is AGGREGATE_ONLY, not CYCLE_GRADE."
+    }
+  ],
+  "propagated_via": "sha256 of this document is included in provenance.source_content_ids of every record in the bundle",
+  "schema_version": "stage-a2-claim-boundary-v1"
+}

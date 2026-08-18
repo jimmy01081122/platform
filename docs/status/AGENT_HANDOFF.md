@@ -6,6 +6,44 @@
 
 ---
 
+## 2026-08-19 · STAGE_A2 · measured raw → 九類 Canonical IR（純 CPU）
+
+**Session 目標** 把真實 GPU 量測第一次接進九類 Canonical IR。做的是 OFF-E-PR3 expert 容量掃描（15 點）——欄位最全、counters 決定性、有可驗證 byte 守恆式。**不含**讓引擎消費（A3）。
+
+**進入檢查** 全通過：`make verify-evidence` 4423 OK；`make test` 0 failed；`make doctor` pass；`STAGE_A2` NOT_STARTED；15 個 CAP 點、`canonical_ir.py`、mock adapter、phase2 43 tests 皆在。
+
+**產出**
+```text
+ADAPTER   explorations/moe_cycle_simulator/phase7/adapters/off_e_pr3_measured_adapter.py
+          measured adapter；與 vllm_mock_adapter.py（未動，作 fixture）並存
+          純 Python .npy(uint8) reader（venv 無 numpy）；object id = layer*8+expert
+TEST      explorations/moe_cycle_simulator/phase7/tests/test_off_e_pr3_measured_adapter.py
+          8 tests（IR1、九類齊、byte 守恆、routing 可回溯、AGGREGATE 無 scores、
+          claim boundary 綁定每筆、mock sha256 pin）
+RUN       runs/20260819T000000Z__stage_a2_off_e_pr3_measured_ir/
+          bundle/（Arrow+Zstd 九分區，MEASURED，33203 records）
+          artifacts/{claim_boundary,conservation_report,dropped_fields,summary}.json + manifest.json
+```
+
+**IR1 結果** `validate_records(bundle_evidence_class=MEASURED)` 對 33203 筆全通過；`write_bundle`→`read_bundle` round-trip 再驗證通過。記錄數：ModelIR 1 · PlatformIR 15 · WorkloadIR 15 · RoutingIR 32 · PlacementIR 15 · ClockAlignmentIR 1 · EventIR 33094 · CalibrationIR 15 · ResultIR 15。
+
+**守恆與可回溯** 15 點全部 `h2d_bytes == demand_load_count × 352,321,536`（`conservation_report.json` all_ok=true）；另 `hit+demand==10176`、`len(transfer_events)==demand_load_count`、`len(terminal_resident)==capacity_objects`。`sha256(routing .npy) == routing_sha256 == 0a9225ec…`，15 點共用單一 routing trace。
+
+**三個關鍵決定（詳見 DECISION_LOG P-015）**
+- **RoutingIR = AGGREGATE scope**：量測 .npy 只有 selected expert ids（`vllm.CompletionOutput.routed_experts`, uint8），**無 gate scores**，TOKEN-scope 無法誠實建構。per-token 排序落入 dropped-fields（A3 從 .npy 依 token-major/layer-major 重建）。
+- **每點各一 PlatformIR**（device residency budget = 該點 capacity_bytes）：既忠實（掃的就是 on-device residency 預算），又讓 15 個 PlacementIR 落在 15 個不同 (model, platform) 群組，避免 cross-IR 把它們當成一條不存在的 migration 鏈。
+- **claim boundary 綁定**：provenance 無自由文字欄，故 `claim_boundary.json` 的 sha256 進每筆 `source_content_ids`；下游可查、不可洗掉。
+
+**MEASURED/no-claim 邊界** CalibrationIR fidelity=UNAVAILABLE、無 profile hash、measured==predicted、formal_pass=False；training/held_out 只是 schema 需要的參照，**不宣稱任何 held-out 驗證**（§7）。無任何時序/效能/calibrated 主張；IR **尚未**被引擎消費（A3）。
+
+**DROPPED_FIELDS（A3 輸入，見 `artifacts/dropped_fields.json`）** routing per-token scores（無）→ AGGREGATE；per-token 排序 demand（AGGREGATE 丟排序，misses-only 事件）→ A3 從 .npy 重建；setup H2D（排除於 demand path）；transfer 的 h2d_start/decision_ns（折進 service_demand）；logical_evicted_object_id（EventIR 無 eviction-target 欄）；非 expert 權重張量（不在殘留掃描內）。
+
+**基線** 352 Python（tests/ 123 · simulator 36 · phase1 16 · phase2 43 · phase7 134，+48 subtests）+ 14 CTest、0 failed；HEAD 8924d8e（PREP-1）時基線 344，本 session +8 phase7 A2 tests。evidence 4423/4423 未動；mock adapter sha256 未變（32f1c0a7…）；doctor pass。
+
+**NEXT** A3（IR→C++ 引擎 loader + 位元精確 replay；SIM0 用本 bundle 的 hit/demand/discard）。可續做其餘家族（SWAP-K2 → SERV-P0-25 → controlled matrix → component/transfer），adapter 架構已可延伸；本 session 只做 A2 驗收所要求的 OFF-E-PR3。**OWNER 決策**：無（未觸及需停下詢問的條件）。
+
+---
+
 ## 2026-08-19 · TRACK_GPU_PREP · PREP-1（純 CPU 前置準備）
 
 **Session 目標** 把 GPU 量測從「到時候再想」變成「貼上就跑」。純 CPU，不碰 GPU/SSH/serving。STAGE_A2 為 NOT_STARTED → 只做 PREP-1，PREP-2 留給 A2 完成後。

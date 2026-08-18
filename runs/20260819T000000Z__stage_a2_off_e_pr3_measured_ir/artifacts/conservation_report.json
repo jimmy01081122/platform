@@ -1,0 +1,290 @@
+{
+  "all_ok": true,
+  "points": [
+    {
+      "capacity_objects": 64,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 7295,
+      "h2d_bytes": 2570185605120,
+      "hit_count": 2881,
+      "immutable_discard_count": 7231,
+      "label": "025",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 96,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 6620,
+      "h2d_bytes": 2332368568320,
+      "hit_count": 3556,
+      "immutable_discard_count": 6524,
+      "label": "0375",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 128,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 4852,
+      "h2d_bytes": 1709464092672,
+      "hit_count": 5324,
+      "immutable_discard_count": 4724,
+      "label": "050",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 160,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 3485,
+      "h2d_bytes": 1227840552960,
+      "hit_count": 6691,
+      "immutable_discard_count": 3325,
+      "label": "0625",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 192,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 2329,
+      "h2d_bytes": 820556857344,
+      "hit_count": 7847,
+      "immutable_discard_count": 2137,
+      "label": "075",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 204,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 1850,
+      "h2d_bytes": 651794841600,
+      "hit_count": 8326,
+      "immutable_discard_count": 1646,
+      "label": "080",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 211,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 1549,
+      "h2d_bytes": 545746059264,
+      "hit_count": 8627,
+      "immutable_discard_count": 1338,
+      "label": "0825",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 217,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 1324,
+      "h2d_bytes": 466473713664,
+      "hit_count": 8852,
+      "immutable_discard_count": 1107,
+      "label": "085",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 224,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 1124,
+      "h2d_bytes": 396009406464,
+      "hit_count": 9052,
+      "immutable_discard_count": 900,
+      "label": "0875",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 230,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 889,
+      "h2d_bytes": 313213845504,
+      "hit_count": 9287,
+      "immutable_discard_count": 659,
+      "label": "090",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 236,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 665,
+      "h2d_bytes": 234293821440,
+      "hit_count": 9511,
+      "immutable_discard_count": 429,
+      "label": "0925",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 243,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 462,
+      "h2d_bytes": 162772549632,
+      "hit_count": 9714,
+      "immutable_discard_count": 219,
+      "label": "095",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 248,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 361,
+      "h2d_bytes": 127188074496,
+      "hit_count": 9815,
+      "immutable_discard_count": 113,
+      "label": "097",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 253,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 259,
+      "h2d_bytes": 91251277824,
+      "hit_count": 9917,
+      "immutable_discard_count": 6,
+      "label": "099",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    },
+    {
+      "capacity_objects": 256,
+      "checks": {
+        "h2d_bytes == demand_load_count * expert_object_bytes": true,
+        "hit_count + demand_load_count == logical_demand_count": true,
+        "len(terminal_resident_object_ids) == capacity_objects": true,
+        "len(transfer_events) == demand_load_count": true,
+        "routing_sha256 traces to routing .npy bytes": true
+      },
+      "demand_load_count": 0,
+      "h2d_bytes": 0,
+      "hit_count": 10176,
+      "immutable_discard_count": 0,
+      "label": "100",
+      "loaded_still_resident_eq_capacity_when_loading": true,
+      "npy_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6",
+      "ok": true,
+      "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+    }
+  ]
+}

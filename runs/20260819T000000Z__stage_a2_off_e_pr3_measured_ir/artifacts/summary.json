@@ -1,0 +1,22 @@
+{
+  "claim_boundary_sha256": "30e9a587893da094e0563b9cb2e6a146138e8140da4a3d35dc0083316f7ecc74",
+  "conservation_all_ok": true,
+  "evidence_class": "MEASURED",
+  "family": "OFF-E-PR3",
+  "generated_at": "2026-08-18T20:16:31Z",
+  "kind_counts": {
+    "CalibrationIR": 15,
+    "ClockAlignmentIR": 1,
+    "EventIR": 33094,
+    "ModelIR": 1,
+    "PlacementIR": 15,
+    "PlatformIR": 15,
+    "ResultIR": 15,
+    "RoutingIR": 32,
+    "WorkloadIR": 15
+  },
+  "partial": false,
+  "points": 15,
+  "record_count": 33203,
+  "runtime_variant_id": "639d264bbf486153b8279aa62dc873363968404698ac17cf287d55da8ad91d06"
+}

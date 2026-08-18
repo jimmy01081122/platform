@@ -1,0 +1,41 @@
+{
+  "classification": "MEASURED -> Canonical IR (Stage A2, CPU-only)",
+  "command": [
+    "python",
+    "explorations/moe_cycle_simulator/phase7/adapters/off_e_pr3_measured_adapter.py",
+    "--run-dir",
+    "runs/20260819T000000Z__stage_a2_off_e_pr3_measured_ir"
+  ],
+  "created_at": "2026-08-18T20:16:31Z",
+  "experiment_id": "off_e_pr3_measured_to_ir",
+  "git": {
+    "adapter_sha256": "5c8ece85ccd1d357ccd66f2aed8e243c8ed070097eebefc1a315c35300e1e6ce",
+    "code_commit": "8924d8ebad6610bd34de60a726e0d2ebe3542cc6",
+    "provenance_note": "artifacts produced by the adapter at code_commit; this run directory is committed in the following (artifact) commit."
+  },
+  "platform_profile": "NVIDIA RTX PRO 6000 Blackwell (evidence-of-record)",
+  "run_id": "20260819T000000Z__stage_a2_off_e_pr3_measured_ir",
+  "stage": "A2",
+  "summary": {
+    "claim_boundary_sha256": "30e9a587893da094e0563b9cb2e6a146138e8140da4a3d35dc0083316f7ecc74",
+    "conservation_all_ok": true,
+    "evidence_class": "MEASURED",
+    "family": "OFF-E-PR3",
+    "generated_at": "2026-08-18T20:16:31Z",
+    "kind_counts": {
+      "CalibrationIR": 15,
+      "ClockAlignmentIR": 1,
+      "EventIR": 33094,
+      "ModelIR": 1,
+      "PlacementIR": 15,
+      "PlatformIR": 15,
+      "ResultIR": 15,
+      "RoutingIR": 32,
+      "WorkloadIR": 15
+    },
+    "partial": false,
+    "points": 15,
+    "record_count": 33203,
+    "runtime_variant_id": "639d264bbf486153b8279aa62dc873363968404698ac17cf287d55da8ad91d06"
+  }
+}

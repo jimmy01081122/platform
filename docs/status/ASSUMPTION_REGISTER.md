@@ -28,6 +28,11 @@ swept        以範圍掃描處理
 | PA-007 | q0/q1 量測本身可信（n=5、95% CI 寬約 0.0002 ms、跨 split 重現到小數第四位） | `measured` | `evidence/gpu_measurements/rtx-pro-6000-v3-20260718/`。後果：MAPE 失敗歸因於模型形式而非量測 |
 | PA-008 | 每個 decode step 的 routing width = 8（`selected_experts` flatten numel），故 gpu_service `expert_tokens` = 8 ×（decode token 位置數） | `measured` | `measurement/gpu_run_package_v2/workloads/windows.json` decode step `selected_experts` shape `[1,8]`。後果：GAP-5 的 8× 正規化差完全由此解釋（P-014、`calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md`） |
 | PA-009 | GPU 量測 contract 的 `time_estimate`（25/60/0/15/160 min）為估算，非實測 | `derived` | 由 PA-001/PA-003、SERV-P0-25 arrival rate 等推得（`experiments/specs/gpu_measurement_contract_v1.yaml`）。**不得當作實測耗時**；量測時須驗證，尤以 target_2（長 prefill+offload）與 target_5（arrival-bound ~2.65h）不確定度最高 |
+| PA-010 | A2 PlatformIR 的 PCIe 有效頻寬 28,298,591,668 B/s（`bandwidth_bytes_per_second`） | `derived` | 由 15 點最快單物件 H2D（min `cuda_elapsed_ms`=12.4501）與 352,321,536 B 推得（`off_e_pr3_measured_adapter.py`）。與 PA-001 一致 |
+| PA-011 | A2 ModelIR `total_parameter_count`/`active_parameter_count` = 46,702,792,704 / 12,879,302,656 | `vendor_spec` | Mixtral-8x7B model-card 名目值，非本平台量測；IR 僅用於 `active ≤ total` 關係，不驅動任何 A2 主張 |
+| PA-012 | A2 PlatformIR `service_rate_units_per_second`（gpu0=2,805,000,000；cpu0=1,000,000,000） | gpu0 `measured`（nvidia-smi clocks.gr 2805 MHz）／cpu0 `assumed` | schema 必填且須 >0。**不是校準輸入、不驅動任何 A2 時序主張**（A2 無時序主張）。cpu0 為 nominal 佔位；真值待 B/C 需要時再定，屆時進掃描或標 UNAVAILABLE_WITH_CONSEQUENCE |
+| PA-013 | A2 PlatformIR PCIe `latency_fs = 0`（每筆傳輸 PCIe 起始延遲未單獨量測） | `assumed`（UNAVAILABLE_WITH_CONSEQUENCE） | 量測只給 per-object 總時間與有效頻寬，未分離固定延遲。填 0 為占位；**任何需要 PCIe 固定延遲的下游結論須先量測或標 PROJECTED**，不得沿用此 0 |
+| PA-014 | A2 ClockAlignmentIR：monotonic ns→fs 為精確單位換算（scale 1e6），量化不確定度以 ±0.5 ns（±500,000 fs）95% CI 表示，grade=AGGREGATE_ONLY | `derived` | 單一 host monotonic 時鐘，非跨時鐘漂移；ns 量化即不確定度來源。**不宣稱 CYCLE_GRADE 對齊** |
 
 ## 待驗證（進入 A1–A4 前尚未成立）
 

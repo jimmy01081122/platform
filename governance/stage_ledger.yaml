@@ -189,7 +189,24 @@ stages:
 
   - id: STAGE_A2
     title: Measured raw 轉九類 Canonical IR
-    status: NOT_STARTED
+    status: COMPLETE
+    status_note: >
+      [2026-08-19] OFF-E-PR3 expert capacity scan (15 points) converted from
+      read-only GPU policy-replay evidence into a single nine-kind Canonical IR
+      bundle (MEASURED evidence_class) that passes phase2 IR1 (schema +
+      cross-IR + conservation) and round-trips through read_bundle. Adapter:
+      explorations/moe_cycle_simulator/phase7/adapters/off_e_pr3_measured_adapter.py
+      (measured; retained alongside the untouched vllm_mock_adapter.py fixture).
+      Run: runs/20260819T000000Z__stage_a2_off_e_pr3_measured_ir/ (bundle +
+      claim_boundary.json + conservation_report.json + dropped_fields.json +
+      manifest.json). Bundle: 33203 records (ModelIR 1, PlatformIR 15,
+      WorkloadIR 15, RoutingIR 32, PlacementIR 15, ClockAlignmentIR 1, EventIR
+      33094, CalibrationIR 15, ResultIR 15). Routing is AGGREGATE scope: the
+      measured .npy carries selected expert ids only (no gate scores), so
+      TOKEN-scope is not constructible -- recorded in the claim boundary and
+      dropped-fields report. No timing/performance/calibrated claim; no
+      held-out claim (CalibrationIR fidelity=UNAVAILABLE). A3 (engine
+      consumption) NOT done here.
     guide: docs/session_guides/STAGE_A2_MEASURED_TO_IR.md
     guide_completeness: EXECUTABLE
     gpu_required: false
@@ -209,6 +226,17 @@ stages:
       - assertion: routing_sha256 可回溯到原始 .npy
       - assertion: mock adapter 仍存在且未被刪除
       - assertion: 原始量測的 claim boundary 已寫入 IR provenance 欄位
+    last_verified:
+      date: "2026-08-19"
+      run_id: 20260819T000000Z__stage_a2_off_e_pr3_measured_ir
+      actual:
+        verify_evidence: "evidence integrity: OK (4423 files) (unchanged; adapter only reads evidence/)"
+        test: "123 + 36 + 16 + 43 + 134(+48 subtests) Python = 352 passed; ctest 2/2 3/3 4/4 5/5 = 14 passed; 0 failed. Baseline at HEAD 8924d8e (PREP-1 commit) was 344 (tests/ includes +13 tests/test_gpu_prep.py from the parallel PREP-1 session); this session adds +8 phase7 A2 adapter tests (126->134) -> 352."
+        ir1: "validate_records(bundle_evidence_class=MEASURED) passes for all 33203 records; write_bundle + read_bundle round-trip re-validates"
+        byte_conservation: "all 15 points: h2d_bytes == demand_load_count * expert_object_bytes (conservation_report.json all_ok=true); also hit+demand==10176, len(transfer_events)==demand_load_count, len(terminal_resident)==capacity_objects"
+        routing_traceable: "sha256(routing .npy) == capacity_replay.routing_sha256 == 0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6 for all 15 points; single shared routing trace"
+        claim_boundary_propagated: "sha256 of artifacts/claim_boundary.json is in provenance.source_content_ids of every record (OFF-E-PR3 single-object proxy; routing no-scores; AGGREGATE order-dropped; terminal-snapshot placement; alignment AGGREGATE_ONLY)"
+        mock_adapter_intact: "vllm_mock_adapter.py sha256 32f1c0a7268dd021e3d01f3a49666950240b797a4b650229892521052efd5a6c (unchanged; pinned in test_off_e_pr3_measured_adapter.py)"
     claims_unlocked_on_completion:
       - "真實量測已進入九類 Canonical IR 且通過守恆檢查"
     claims_still_forbidden:

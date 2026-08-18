@@ -183,3 +183,24 @@
 - sealed held-out split（102 cells）已在**任何新量測之前**封存，符合 §7.2 的不洩漏要求；STAGE_A4 開封評分一次。
 - 基線：**344 Python**（tests/ 123，+13 `tests/test_gpu_prep.py`）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。
 - **未跑任何 GPU**：無 GPU 效能 / calibrated / break-even / accelerator / 長上下文主張。CPU smoke test 僅證明 argv/序列化/錯誤處理正確，不證明量測可行性。
+
+---
+
+## P-015 · STAGE_A2：OFF-E-PR3 measured → 九類 IR 的三個結構決定
+
+**日期** 2026-08-19
+**決定** 把 OFF-E-PR3 expert 容量掃描（15 點）轉成單一九類 Canonical IR bundle（MEASURED），過 phase2 IR1。三個結構決定：
+
+1. **RoutingIR 用 AGGREGATE scope，不用 TOKEN scope。** 量測 routing `.npy` 是 uint8、只含 selected expert ids（`vllm.CompletionOutput.routed_experts`），**無 gate scores/logits**。schema 的 TOKEN scope 要求 canonical_scores（長度=experts）並由分數重導 k_boundary/ambiguity——無分數則無法誠實建構。故發 32 筆 per-layer AGGREGATE（`aggregate_expert_demand`，每層 sum=159×2=318）。byte-exact routing 仍以 `routing_sha256` 於 provenance 可回溯。per-token 排序 demand 落入 dropped-fields，A3 依凍結 traversal（token-major/layer-major/top-k、object id=layer×8+expert）從 `.npy` 重建。
+
+2. **每個容量點各發一筆 PlatformIR**，device residency-budget domain 的 capacity = 該點 `capacity_bytes`。理由有二：(a) 忠實——這個實驗掃的就是 on-device residency 預算；(b) 讓 15 個 PlacementIR 落在 15 個不同的 (model_record_id, platform_record_id) 群組，避免 cross-IR 的 placement 版本鏈檢查把它們當成一條**不存在的** migration lineage（該檢查對同群組要求 version 遞增 + predecessor + migration events）。物理 VRAM（nvidia-smi 97887 MiB）另存為 `device_vram_physical` domain，不與預算混。
+
+3. **claim boundary 以 content-id 綁定，不放自由文字。** provenance schema `additionalProperties:false`、無文字欄。故把限制寫進 `artifacts/claim_boundary.json`，其 sha256 進**每一筆**記錄的 `provenance.source_content_ids`——下游可查、不可洗掉，且密碼學上綁定。限制含：OFF-E-PR3 單一物件搬移代理、routing 無 scores、AGGREGATE 丟排序、placement 為 terminal snapshot、alignment 為 AGGREGATE_ONLY（ns 量化 ±0.5ns）。
+
+**理由** 三者都是「忠實 + 讓 fail-closed 契約通過」的最小侵入解，皆不動 `canonical_ir.py`（2051 行、43 tests，預設正確）。CalibrationIR fidelity=UNAVAILABLE、無 profile hash、measured==predicted、formal_pass=False——**不宣稱任何 held-out 驗證**（§7 舊資料一律 FIT 側）；training/held_out 僅為 schema 需要的參照。
+
+**後果**
+- STAGE_A2 → `COMPLETE`（僅 OFF-E-PR3 家族）。解鎖 A3（IR→引擎 loader，SIM0 用本 bundle 的 hit/demand/discard counters）與 PREP-2（探針欄位可依本 bundle 的 IR 評估點定案）。
+- 其餘量測家族（SWAP-K2/SERV-P0-25/controlled matrix/component/transfer）**未轉**；adapter 架構可延伸。
+- 基線 352 Python（+8 phase7 A2 tests）+ 14 CTest、0 failed；evidence 4423/4423 未動；mock adapter sha256 未變。
+- **仍禁止**：IR 已被引擎消費、任何時序/效能/calibrated/break-even/accelerator 主張、把 IR 過驗證說成研究鏈打通。
