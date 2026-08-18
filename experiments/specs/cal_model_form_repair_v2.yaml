@@ -1,0 +1,378 @@
+schema_version: experiment-spec-v1
+experiment_id: cal_model_form_repair_v2
+stage: STAGE_A1
+title: >
+  Calibration 模型形式演化第二輪事前登記（PCIe two-regime、component local
+  predictor、MoE replay 顯式 operator graph）
+created_at_utc: "2026-08-18T15:35:15Z"
+created_by_session: STAGE_A1
+status: pre_registered
+supersedes_note: >
+  本檔延續 cal_model_form_repair_v1.yaml（四項缺陷修復 + P0 safety 修正，見其
+  addenda 與 DECISION_LOG P-012）。v1 已把四項結構缺陷修到 FIT 側殘差大幅改善，
+  但 2026-08-18 Principal Reviewer 覆核指出三個方向需要「換模型形式」而非調參：
+  PCIe 應改 two-regime、component 的全域仿射不足需 local predictor、MoE replay
+  漏了 routing/permutation operator。本檔在**看到任何 v2 refit 分數之前**寫死這
+  三者的模型形式、參數化、擬合協定與接受判準，用途是讓「改模型形式」與「照答案
+  調參」可被區分。
+
+# ---------------------------------------------------------------------------
+# 硬規則（先於任何 v2 擬合輸出）
+# ---------------------------------------------------------------------------
+#   1. 本檔的建立時間 (created_at_utc) 必須早於 calibration/fits/v3/ 內任何檔案
+#      的 mtime。驗收時檢查。
+#   2. 本檔登記的模型形式若在資料上明顯不成立，改採未登記形式**必須先補
+#      addendum 並說明理由**（沿用 guide §8），不得默默改掉再宣稱符合原計畫。
+#   3. 本輪一律 FIT 側（決策 P-005）。不得產生任何 held-out 判定、不得宣稱任何
+#      calibrated PASS。真正的 generalization 留給 STAGE_A4 sealed held-out。
+#   4. 本檔完成前不得實作或 refit 任何 PCIe/KNN/replay 新模型（owner 指示）。
+# ---------------------------------------------------------------------------
+
+decision_p005_reaffirmed:
+  statement: >
+    evidence/ 內所有既有量測（q0/q1、8/11 各家族、8/13-14 campaigns）只能作 FIT
+    與模型開發。診斷過程已檢視 validation split 殘差，獨立性受污染，全部降級為
+    FIT 側。本輪產出的殘差一律標注「FIT 側 / diagnostic cross-fit」，不是驗證。
+  allowed_conclusions:
+    - "model-form candidate improved (FIT 側)"
+    - "diagnostic cross-fit passed / failed"
+    - "provisional model accepted for A4 preregistration"
+  forbidden_conclusions:
+    - "calibrated PASS"
+    - "held-out validated"
+    - "production accuracy proven"
+
+reviewer_provenance:
+  reproduced_from_raw: >
+    以下診斷數字由 Principal Reviewer 在 platform venv 對 evidence/**/result.json 與
+    measurement/gpu_run_package_v2/scripts/benchmark.py 原始碼獨立重現（非採信外部
+    harness 轉錄），記錄於 DECISION_LOG P-012 與 2026-08-18 AGENT_HANDOFF。它們是
+    「已污染的 FIT 側診斷」，僅用來決定模型形式與接受判準，不作驗證。
+
+# ===========================================================================
+# CANDIDATE A — PCIe two-regime transfer model
+# reviewer verdict: ACCEPT into preregistration
+# ===========================================================================
+
+candidate_a_pcie_two_regime:
+  problem:
+    current_v1_form: "T = max(floor_ms, intercept + bytes/bandwidth)；floor 與 stream 數無關。"
+    defect: >
+      v1 修好了「小尺寸被線性 intercept 低估」，但仍未建模 stream 數對小尺寸延遲的
+      影響。實測語意（benchmark.py:316-334，h2d/d2h）證實：一筆固定 B bytes 被切成
+      S 塊、發在 S 條 CUDA stream 上、wait_stream 等全部完成。因此 (a) bulk regime
+      是頻寬受限、對 S 幾乎不敏感（同樣的總 bytes）；(b) small regime 是 launch/sync
+      overhead 受限、隨 S 增加而上升（S 筆小 copy + S 次 wait）。單一 floor 無法同時
+      表示這兩件事。
+  model_form: |
+    對每個方向 d ∈ {h2d, d2h}：
+      T_d(B, S) = max( O_d(S), A_d + B / BW_d )
+      其中 O_d(S) = alpha_d + beta_d * (S - 1)
+    B = 該筆傳輸的總 bytes；S = copy stream 數；A_d = bulk intercept；BW_d = bulk 頻寬。
+  parameterization:
+    per_direction:
+      bulk: "{ intercept_ms A_d, bandwidth_bytes_per_ms BW_d }"
+      overhead: "{ alpha_ms alpha_d, beta_ms_per_extra_stream beta_d }"
+    total_coefficients: "2 directions × 4 = 8"
+  physical_constraints:
+    - "BW_d > 0 且 A_d >= 0（bulk 線性擬合非物理即 raise，沿用 _line_fit 契約）"
+    - "alpha_d >= 0 且 beta_d >= 0（overhead 不得為負；擬合出負值即 clamp 到 0 並在殘差報告標注，或若整體斜率為負則視為模型不成立並補 addendum）"
+  fit_protocol:
+    bulk: >
+      只用 S=1 且 bytes >= bulk_min_bytes (22020096 = 21 MiB) 的 calibration 點做
+      線性回歸得 A_d, BW_d。
+    overhead: >
+      用 bytes <= overhead_max_bytes (1048576 = 1 MiB) 的 calibration 點，對每個 S
+      取延遲中位數 O_d^hat(S)，再對 (S-1) 做最小平方線性回歸得 alpha_d, beta_d。
+    fit_source: "calibration split（rtx-pro-6000-calibration/result.json）的 pcie_transfer(S=1) 與 copy_engine(S∈{2,4}) 記錄。"
+  production_stream_semantics:
+    # 這是 reviewer 標記的關鍵 open item：microbenchmark 的 S 是「把固定 buffer
+    # 切 S 塊」的人造參數；用來預測真實搬運時 S 對應什麼必須先講清楚，否則
+    # overhead 項在 microbenchmark 之外無法使用。
+    default_rule: >
+      對單一 residency-managed object 的單筆搬運（expert 物件 336 MiB、KV block
+      2 MiB），production 預測一律用 S=1，即 O_d(1)=alpha_d（純 launch/sync floor）。
+      這是本平台目前唯一有證據支撐的 production 用法。
+    multi_stream_aggregate: >
+      「同時發多筆搬運、看聚合完成時間」是**另一個量**，本輪沒有任何 evaluation
+      point 會用到，且 microbenchmark 的 chunk-split 語意不能直接外推成 N 筆獨立
+      搬移的聚合。因此 S>1 的 production 預測標記為 UNSUPPORTED，直到有「多筆
+      獨立搬移的聚合完成時間」實測（GPU 軌）。predict() 對 S>1 的 production 查詢
+      應回報 UNSUPPORTED，不得靜默套 microbenchmark 的 O_d(S)。
+  evaluation:
+    splits: "FIT 側：以 calibration 擬合、cross-device-validation 為殘差檢查（P-005 降級）。"
+    report_must_include:
+      - "aggregate MAPE（30 點）"
+      - "small-transfer MAPE（bytes <= 1 MiB）"
+      - "transition MAPE（1 MiB < bytes < 22 MiB，若有點）"
+      - "bulk MAPE（bytes >= 22 MiB）"
+      - "max APE"
+      - "per-direction（h2d / d2h）分開"
+      - "與 v1 stored-A1 model 及舊 q0 stream-factor model 三方對照"
+  expected_direction:
+    - "small-regime MAPE 由 v1 的約 48.8% 降到個位數（診斷值約 2.5%）。"
+    - "bulk regime 幾乎不變（約 0.1%）。"
+    - "任一 S 的單筆 bulk 預測彼此相差 < 1%（stream 對 bulk 不敏感）。"
+  acceptance_criteria:
+    # 事前寫死接受判準（FIT 側；非 held-out）
+    accept_as_form_iff:
+      - "aggregate FIT 側 MAPE < 5% 且 small-regime < 10%（v1 為約 20% / 48.8%）；"
+      - "且物理約束全部滿足（BW>0, A>=0, alpha>=0, beta>=0）；"
+      - "且 production_stream_semantics 的 default_rule 與 UNSUPPORTED 行為已實作。"
+    if_not_met: "退回 v1 max(floor, linear) 形式並補 addendum 說明；不得放寬判準硬收。"
+
+# ===========================================================================
+# CANDIDATE B — component local/profile predictor
+# reviewer verdict: MORE_TESTS（不是直接 ACCEPT）
+# ===========================================================================
+
+candidate_b_component_local_predictor:
+  problem:
+    current_v1_form: "每個 operation 一條全域仿射 latency = intercept + per_token × expert_tokens。"
+    defect: >
+      raw kernel latency 對 shape 非平滑（tile/wave/kernel regime cliff），全域仿射
+      在 prefill 內插區間不足。診斷：非 dequant aggregate 全域仿射約 37.1%，
+      ProfileKNN(k=3) 約 10.9%。**但 reviewer 已證明** aggregate 10.9% 被 18/18 個
+      decode「精確 token lookup」（val decode tokens {8,32} 與 train 完全重合）灌水；
+      真正的 prefill 內插為 18.2%（per-op：selected_expert 22.4%、grouped_gemm 20.9%、
+      gather_scatter 11.2%），**兩個 op 在真內插區間 > 15%**。因此 KNN 不能以 aggregate
+      數字直接 ACCEPT，必須先通過下列測試。
+  model_form: |
+    phase-partitioned, per-operation 的 log-token 空間 local interpolator。
+    對查詢點 p（operation, phase, expert_tokens=t）：
+      鄰居集合 = {訓練點 q : q.operation==p.operation 且 q.phase==p.phase}
+      距離 = |log2(max(1,q.tokens)) - log2(max(1,t))|
+      取最近 k 個，反距離加權平均其 latency（距離 0 則直接回該點）。
+  preregistered_hyperparameters:
+    k: 3
+    distance_metric: "absolute difference in log2(expert_tokens)"
+    token_space: "log2（非 raw token）"
+    phase_partition: "hard boundary（prefill / decode 不互相借點）"
+    operation_partition: "hard（每個 operation 各自 profile）"
+    concurrency_in_distance: >
+      不納入。理由：concurrency 對 batch 的放大已由 expert_tokens 表達；診斷顯示
+      RF+concurrency 反而變差（aggregate 41.8%，selected_expert 60.5%）。
+    tie_handling: "距離相同時以 expert_tokens 升冪、再以 record_id 字典序穩定排序取前 k。"
+    weighting: "反距離 1/(d + 1e-9)^power，power=1。"
+    minimum_neighbors: 2
+    interpolation_envelope: >
+      每個 (operation, phase) 記錄訓練點的 [min_token, max_token]。查詢落在此區間
+      內 → INTERPOLATED。
+    extrapolation_policy: >
+      查詢 token 超出 [min_token, max_token] → 仍以最近 k 鄰居預測，但標記為
+      EXTRAPOLATED（不 clamp 數值，但呼叫端須看得到此旗標）。
+    unsupported_policy: >
+      查詢的 (operation, phase) 無任何訓練點，或鄰居數 < minimum_neighbors →
+      回報 UNSUPPORTED，不得 silent fallback 到別的 phase 或別的 operation。
+  comparators_required:
+    - "global_affine（v1 形式，per-op）"
+    - "nearest_profile（k=1）"
+    - "ProfileKNN（本候選）"
+    - "（診斷對照）random forest：已被 reviewer REJECTED，僅列表比較，不作候選。"
+  required_tests_before_accept:
+    # reviewer §7 的 KNN 專項審查，全部事前登記
+    - id: LOOWO
+      name: leave-one-workload-out
+      desc: >
+        每次留一個 workload（livecode / abstract / zh …）的全部點作評估、其餘作訓練，
+        輪流。回報 prefill-only、per-operation 的 LOOWO MAPE。這是判斷「真 shape
+        locality」還是「lookup-table overfit」的主測試。
+    - id: LOSRO
+      name: leave-one-shape-region-out
+      desc: "留一個 token 區段（如最大的 prefill bucket）作評估，測外插行為。"
+    - id: K_SENSITIVITY
+      desc: "k ∈ {1,2,3,4} 掃描，回報各自 prefill-only per-op MAPE，確認 k=3 非 knife-edge。"
+    - id: DISTANCE_SENSITIVITY
+      desc: "log-token vs raw-token 距離對照，確認 log 空間確有改善。"
+    - id: DECODE_LOOKUP_DISCLOSURE
+      desc: >
+        decode 與 prefill 必須分開報。明確標示 decode 點有多少是 exact-token
+        lookup（診斷為 18/18），並說明 decode 的低 MAPE 主要來自「近常數」而非內插。
+    - id: BOOTSTRAP
+      desc: "對訓練點 bootstrap 重抽，回報 prefill per-op MAPE 的區間，量化資料稀疏造成的不確定度。"
+  evaluation:
+    splits: "FIT 側 cross-fit（curated q0 -> q1，非 dequant）。dequant 不進 component 準確度統計（見 candidate D）。"
+    must_report_separately:
+      - "prefill-only per-operation MAPE（selected_expert / grouped_gemm / gather_scatter）"
+      - "decode-only per-operation MAPE + exact-lookup 佔比"
+      - "aggregate（僅供對照，且必須同時附上 prefill-only 數字，不得單獨引用 aggregate）"
+      - "INTERPOLATED / EXTRAPOLATED / UNSUPPORTED 各類點數"
+  acceptance_criteria:
+    # 事前寫死的三值決策規則（FIT 側）
+    accept_as_form_iff: >
+      prefill-only LOOWO per-operation MAPE 對 selected_expert、grouped_gemm、
+      gather_scatter 三者皆 < 15%，且 k-sensitivity 顯示 k=3 附近平穩（非 knife-edge），
+      且 decode 的貢獻已如實揭露（不得用 decode lookup 灌 aggregate）。
+    insufficient_if: >
+      prefill-only LOOWO 任一 op >= 15%（目前診斷 selected_expert 22.4%、grouped_gemm
+      20.9% 即屬此類）→ 判 INSUFFICIENT：ProfileKNN 只作 provisional/diagnostic form，
+      **不升格為正式 component 模型**，並登記一條量測缺口「prefill shape sweep 過稀，
+      需要更密的 expert_tokens 掃描點（GPU 軌）」。這是預期中很可能發生的結果，事前
+      承認，不得為了達標而放寬門檻或挑 workload。
+    reject_if: "任一 op 的 LOOWO 比 global_affine 還差，或 nearest_profile(k=1) 全面優於 KNN（代表非 locality、純記憶）。"
+
+# ===========================================================================
+# CANDIDATE C — MoE replay 顯式 operator graph
+# reviewer verdict: ACCEPT 顯式 operator；固定 tau_route = DIAGNOSTIC_ONLY
+# ===========================================================================
+
+candidate_c_replay_operator_graph:
+  problem:
+    declared_metadata: >
+      benchmark.py:579-582 的 window_replay 只登記 gpu_operations =
+      {grouped_gemm: N, gather_scatter: N}。
+    actually_timed: >
+      benchmark.py:534-542 的 timed 迴圈每個 window 實際做：
+        idx = argsort(route)                         # 路由排序 (sort)
+        grouped = x[:count].index_select(0, idx)     # dispatch/gather 排列
+        y = silu(grouped @ gate) * (grouped @ up)    # 兩個 GEMM + silu + 逐元素乘
+        out = (y @ down).index_select(0, argsort(idx)) # 第三個 GEMM + 逆排列(第二次 argsort) + scatter
+      即：2 次 argsort（排序 + 逆排列）、3 個 GEMM（gate/up/down）、silu、mul、
+      gather、scatter。登記 metadata 系統性遺漏兩次 argsort（routing/permutation work）
+      並把 3 個 GEMM 折成一個 grouped_gemm 標籤。這是 v1 composition 低估 TPOT 的主因。
+  model_form: |
+    T_window(n) =
+        T_sort(n)              # argsort(route)
+      + T_gather(n)            # index_select 排列
+      + T_gate_gemm(n)
+      + T_up_gemm(n)
+      + T_act(n)              # silu + elementwise mul
+      + T_down_gemm(n)
+      + T_inverse_sort(n)     # 第二次 argsort（逆排列）
+      + T_scatter(n)          # index_select 回排
+    T_replay = Σ_over_windows T_window(n_window)；TPOT = T_replay / total_tokens。
+    n = 該 window 的 route 長度（= num_tokens × top_k 展開後）。
+  parameterization_and_evidence_status:
+    calibrated_terms:
+      - "GEMM/gather 類：可暫用 candidate B 的 grouped_gemm / gather_scatter operator（但註明 3-GEMM 被折成一項是近似）。"
+    NEW_terms_requiring_measurement:
+      - term: "T_sort(n) + T_inverse_sort(n)（兩次 argsort）"
+        status: BLOCKED_ON_MEASUREMENT
+        reason: >
+          現有 calibration 探針沒有獨立量測 argsort/permute。無法從既有 evidence 擬合
+          T_sort(n)。需要一支專屬 microbenchmark 量 argsort(n) 與 index_select(n) 隨
+          n 的關係（GPU 軌）。在有此量測之前，routing/sort 項無法 calibrate。
+  fixed_tau_route_policy:
+    status: DIAGNOSTIC_ONLY
+    statement: >
+      v1 的固定 tau_route（單一常數，加 tau*routes/tokens）在既有 6 個 replay 點上把
+      TPOT MAPE 由約 43% 降到約 1.6%，但那 6 點只有 2 個相異結構配置（routes=64 固定、
+      tokens∈{64,256}），等於用 2 點擬 1 參數。固定 tau 只能作為「確有遺漏項」的診斷，
+      **不得升格為正式 calibrated 模型**，不得進入任何 calibrated 主張。
+  throughput_policy:
+    statement: >
+      moe_replay_throughput 一律以 throughput = 1000 / TPOT 派生，**不得**當作獨立擬合
+      目標。（v1 曾把 throughput 當獨立指標，導致 60.658%→75.898% 的「變差」被誤讀。）
+      派生後 throughput 誠實繼承 TPOT 的改善。
+  metadata_defect_handoff:
+    statement: >
+      window_replay 的 gpu_operations metadata 少記兩次 argsort、且把 3 GEMM 折成一項，
+      這是**量測 schema 的缺陷**（measurement/ 範圍，非 A1 可改）。登記為交接項：A2 的
+      IR evaluation-point schema 與未來的 replay 探針應攜帶完整 operator 集合（含 sort/
+      permute 與分開的 gate/up/down），否則下游只能靠 join/近似補回。
+  acceptance_criteria:
+    accept_as_form_iff: >
+      顯式 operator graph 已寫下且與 source 對齊；throughput 改為派生；固定 tau 標為
+      DIAGNOSTIC_ONLY。
+    closure_blocked_note: >
+      **本候選無法在既有 evidence 上做 FIT 側 closure**：T_sort/T_inverse_sort 缺量測。
+      因此 v2 refit 對 replay 只到「顯式 graph + 診斷 tau」為止，routing/sort 項標
+      BLOCKED_ON_MEASUREMENT，餵給 GPU 軌。誠實記錄，不得用固定 tau 假裝已閉合。
+
+# ===========================================================================
+# CANDIDATE D — dequant（維持不變）
+# reviewer verdict: PROXY_ONLY
+# ===========================================================================
+
+candidate_d_dequant:
+  status: DEQUANT_PROXY_ONLY
+  evidence: >
+    raw 標記 synthetic_symmetric_int4_proxy_not_checkpoint_awq；evidence_limit:
+    "A-020b real AWQ layout compatibility remains open"。latency 近常數
+    (0.1425–0.1518 ms)，任何常數都能擬到約 2.4%——那不是準確度，只是「常數擬常數」。
+  rule: >
+    維持 SHAPE_INSENSITIVE_OPERATIONS 名單內、model_form=flat_by_registered_exclusion。
+    不得升格為真實 expert-weight dequant，不得進入 component 準確度主張。真實 AWQ/
+    checkpoint-layout 量測到位前凍結（GPU 軌）。
+
+# ===========================================================================
+# 校準安全契約（重申，已由 P-012 於程式落實）
+# ===========================================================================
+
+calibration_safety_contract:
+  statement: >
+    非名單 gpu_service operation 的非物理擬合（slope<=0 或 intercept<0）或 single-shape
+    (<2 distinct shape axis) 一律 raise CalibrationError，無 fallback 常數。名單
+    SHAPE_INSENSITIVE_OPERATIONS 內的 op 為 labeled flat proxy（目前僅 dequant）。
+    self-check 覆蓋 production path（fit_parameters），見 calibration/fits/v2/self_check.json。
+  reference: "DECISION_LOG P-012（含 single-shape follow-up）、cal_model_form_repair_v1.yaml ADDENDUM_2。"
+
+# ===========================================================================
+# 量測家族使用
+# ===========================================================================
+
+measurement_family_usage:
+  used_for_fit:
+    paths:
+      - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/rtx-pro-6000-calibration/result.json
+      - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v1-20260811T1730Z-L
+      - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v2-20260811T1740Z-L
+  used_for_fit_side_residual_check_only:
+    paths:
+      - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json
+    note: "原標 validation，依 P-005 一律降級為 FIT 側殘差檢查，不得作 held-out。"
+  routing_features_source:
+    paths:
+      - measurement/gpu_run_package_v2/workloads/windows.json
+    note: >
+      DeepSeek-R1-AWQ（256 experts, top_k=8）。Σn_e = num_tokens × top_k 於 672 步
+      0 違反（已重現）。注意：此 routing 語料的模型與 gpu_service/replay 探針所用的
+      Mixtral-8x7B 不同，跨模型使用須標注。
+  reserved_not_used_this_stage:
+    paths:
+      - evidence/measurement_backups/20260811T171000Z__phase7_remote_component_backup/raw/components/*
+      - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/*/*
+
+# ===========================================================================
+# 本輪產生的量測缺口（餵給 GPU 軌 / TRACK_GPU_PREP）
+# ===========================================================================
+
+measurement_gaps_opened:
+  gaps:
+    - id: V2-GAP-A-MULTISTREAM-AGGREGATE
+      for: candidate_a_pcie_two_regime
+      desc: "多筆獨立搬移的聚合完成時間，用以驗證/擴展 S>1 的 production 語意（目前 UNSUPPORTED）。"
+    - id: V2-GAP-B-PREFILL-SHAPE-SWEEP
+      for: candidate_b_component_local_predictor
+      desc: "更密的 prefill expert_tokens 掃描點，讓 ProfileKNN 的 prefill 內插能落到門檻內（目前 18.2%）。"
+    - id: V2-GAP-C-SORT-PERMUTE-MICROBENCH
+      for: candidate_c_replay_operator_graph
+      desc: "獨立量 T_sort(n) 與 T_index_select(n)，以 calibrate routing/permutation 項（目前 BLOCKED）。"
+    - id: V2-GAP-D-REAL-AWQ-DEQUANT
+      for: candidate_d_dequant
+      desc: "真實 AWQ/checkpoint-layout dequant 量測，解除 PROXY_ONLY。"
+  note: "以上與 v1 measurement_gaps.json 的 6 項合流，供 GPU 軌量測優先序參考。"
+
+# ===========================================================================
+# 執行計畫（本檔核可後才進行；本檔完成前一律不得動手）
+# ===========================================================================
+
+execution_plan_after_approval:
+  - "實作三候選的模型形式於 calibration/（不重寫 harness 保護；PCIe/replay 若需改 predict() 只換模型形式函式）。"
+  - "輸出寫到新目錄 calibration/fits/v3/（不覆寫 v2；v2 保留為稽核）。"
+  - "產出 runs/<run_id>/（manifest 綁最終 commit hash，非 parent）。"
+  - "所有殘差標 FIT 側；按各 candidate 的 acceptance_criteria 做三值裁決（accept / insufficient / reject），不放寬門檻。"
+  - "更新 ledger STAGE_A1 last_verified 與 status（視結果；calibrated PASS 仍禁止）。"
+
+owner_review_points:
+  - "candidate_a 的 production_stream_semantics default_rule（單筆搬運用 S=1、S>1 標 UNSUPPORTED）是否符合 owner 對後續 B1/C1 的預期？"
+  - "candidate_b 的接受門檻（prefill-only LOOWO per-op < 15%）與 INSUFFICIENT 分流是否採用？"
+  - "candidate_c 在缺 sort/permute 量測下只到『顯式 graph + 診斷 tau』，routing/sort 項留待 GPU 軌——是否接受此範圍界定？"
+
+commitments:
+  - "本輪一律 FIT 側；不得宣稱任何 calibrated PASS（判定屬 STAGE_A4 sealed held-out）。"
+  - "moe_replay_throughput 一律派生（1000/TPOT），不得獨立擬合。"
+  - "固定 tau_route 僅 DIAGNOSTIC_ONLY；dequant 僅 PROXY_ONLY。"
+  - "任一 candidate 若未達已登記門檻，記為 INSUFFICIENT 並開量測缺口，不放寬門檻、不挑資料。"
+  - "登記的模型形式在資料上不成立而需改採未登記形式時，先補 addendum 再改。"
+  - "A1 維持 IN_PROGRESS 直到 v2 refit 完成並更新 ledger；本檔完成不等於 A1 完成。"

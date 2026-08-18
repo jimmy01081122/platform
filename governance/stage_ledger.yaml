@@ -88,6 +88,14 @@ stages:
       的其餘結論 (PCIe two-regime、component predictor 的 prefill-only 門檻、
       MoE replay 的 routing/permutation operator) 後再重擬合。本輪不宣稱任何
       calibrated PASS。
+      [2026-08-18 更新] v2 preregistration 已撰寫:
+      experiments/specs/cal_model_form_repair_v2.yaml (created_at 2026-08-18T15:35:15Z,
+      早於任何 v3 fit 輸出——目前 calibration/fits/ 僅有 v2)。內含四候選的模型形式、
+      參數化、擬合協定與**事前寫死的三值接受判準** (PCIe ACCEPT bar、component
+      ProfileKNN 的 prefill-only LOOWO<15% 否則判 INSUFFICIENT、replay 顯式 operator
+      graph 且 routing/sort 項 BLOCKED_ON_MEASUREMENT、dequant PROXY_ONLY)。**尚未**
+      實作或 refit 任何新模型 (owner 指示: prereg 完成前不得動手)；且列有 3 個
+      owner_review_points 待裁決。
     guide: docs/session_guides/STAGE_A1_CALIBRATION_MODEL_FORM.md
     guide_completeness: EXECUTABLE
     gpu_required: false

@@ -6,6 +6,36 @@
 
 ---
 
+## 2026-08-18 · Stage A1 · cal_model_form_repair_v2 preregistration（文件，無實作）
+
+**Session 目標** 依 reviewer 覆核結論，撰寫第二輪模型形式演化的事前登記；**只出文件，不實作、不 refit**（owner 指示：prereg 完成前不得動手）。
+
+**產出** `experiments/specs/cal_model_form_repair_v2.yaml`（created_at 2026-08-18T15:35:15Z，早於任何 v3 fit 輸出；目前 `calibration/fits/` 僅 v2）。四候選，各含模型形式／參數化／擬合協定／**事前寫死的三值接受判準**：
+
+```text
+A PCIe two-regime  T=max(alpha_d+beta_d(S-1), A_d+B/BW_d)。ACCEPT bar: aggregate<5% 且
+                   small<10% 且物理約束滿足。關鍵 open item 已登記: production 端 S 語意
+                   —— 單筆搬運用 S=1；S>1 標 UNSUPPORTED 直到有多筆聚合量測(V2-GAP-A)。
+B component KNN    phase-partitioned per-op log-token local interpolator。登記全部超參
+                   (k=3, log 距離, envelope, INTERPOLATED/EXTRAPOLATED/UNSUPPORTED) 與必測
+                   (LOOWO/LOSRO/k-sens/distance-sens/decode-lookup 揭露/bootstrap)。
+                   ACCEPT 僅當 prefill-only LOOWO per-op<15%；否則判 INSUFFICIENT 並開
+                   prefill shape sweep 缺口(V2-GAP-B)。事前承認很可能 INSUFFICIENT。
+C replay operator  顯式 graph 對齊 window_replay() (2×argsort+3×GEMM+gather+scatter)。
+                   固定 tau_route = DIAGNOSTIC_ONLY；throughput=1000/TPOT 派生。
+                   routing/sort 項 BLOCKED_ON_MEASUREMENT (缺 T_sort/T_permute 量測, V2-GAP-C)。
+                   → replay 無法在既有 evidence 上 FIT 閉合，誠實記錄。
+D dequant          維持 DEQUANT_PROXY_ONLY (V2-GAP-D 解除)。
+```
+
+**待 owner 裁決（3 點，見 spec owner_review_points）** (1) PCIe production S 語意的 default_rule；(2) component 的 <15% LOOWO 門檻與 INSUFFICIENT 分流；(3) replay 只到「顯式 graph+診斷 tau」、routing/sort 留 GPU 軌的範圍界定。
+
+**未做** 任何實作 / refit / v3 輸出。A1 維持 IN_PROGRESS。
+
+**下一步** owner 核可 prereg（或調整 3 個 review points）後，才實作三候選並輸出 `calibration/fits/v3/`（不覆寫 v2），run manifest 綁最終 commit hash。GPU 窗口仍不需開——先 FIT 側 closure。
+
+---
+
 ## 2026-08-18 · Stage A1 P0 follow-up：移除 single-shape fallback
 
 **Session 目標** 在 7a76a8f 之上做最小 P0 follow-up：堵住 non-physical fallback 的第二個出口。
