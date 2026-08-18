@@ -6,6 +6,57 @@
 
 ---
 
+## 2026-08-19 · ORCHESTRATOR · 排程與驗收（第一次統籌覆核）
+
+```text
+SESSION: ORCHESTRATOR
+REVIEW_DATE: 2026-08-19
+BASELINE:
+  make verify-evidence : evidence integrity: OK (4423 files)
+  make test            : 352 Python (tests 123 · simulator 36 · phase1 16 · phase2 43 · phase7 134(+48 subtests))
+                         + 14 CTest (phase3 2/2 · phase4 3/3 · phase5 4/4 · phase6 5/5); 0 failed
+  make doctor          : workspace_contract: pass (openroad/sby/spike/qemu not found = 預期, 非硬需求)
+WORKING_TREE: 空 (git status --porcelain 無輸出); HEAD 8c01fc2 (Stage A2)。無未完交付訊號。
+STAGE_INVENTORY:
+  STAGE_0        : COMPLETE      | 已獨立驗證(三項基線指令) | CONFIRMED
+  STAGE_A1       : IN_PROGRESS   | 不需完工驗收           | closure blocked 在 GPU 量測 V2-GAP-B/C
+  STAGE_A2       : COMPLETE      | 已獨立重跑 verification | CONFIRMED
+  STAGE_A3       : NOT_STARTED   | 前置(A2+test-cpp)已滿足 | 可開 (本次 dispatch)
+  STAGE_A4       : NOT_STARTED   | blocked (A1+A3+GPU)    | —
+  STAGE_B1       : NOT_STARTED   | blocked (A3); RULES_ONLY| —
+  STAGE_B2       : NOT_STARTED   | blocked (A3); RULES_ONLY| —
+  STAGE_C1       : NOT_STARTED   | blocked (A4+B2)        | —
+  STAGE_C2       : NOT_STARTED   | blocked (C1)           | —
+  TRACK_GPU_PREP : IN_PROGRESS   | PREP-1 已驗(前次); PREP-2 現解鎖 | 可開 PREP-2 (本次 dispatch)
+  TRACK_GPU      : NOT_STARTED   | blocked (PREP COMPLETE + GPU endpoint) | —
+VERIFIED_THIS_SESSION:
+  STAGE_0  : make verify-evidence / make test / make doctor 全數重跑通過 (見 BASELINE)。
+  STAGE_A2 : pytest test_off_e_pr3_measured_adapter.py → 8 passed，逐條覆蓋五條 assertion
+             (15 點過 IR1、byte 守恆、routing_sha256 可回溯、mock adapter sha256=32f1c0a7… 未改、
+             claim boundary 綁定每筆)。另確認 run 產物存在且非空 (bundle 九分區 + 四 artifacts + manifest)。
+             = CONFIRMED (實際重跑該階段 verification，非僅產物存在性)。
+DISCREPANCIES:
+  DISC-1 (LOW): CURRENT_STATUS「已驗證的基線」歷史區塊原寫 317 Python (2026-08-17 快照)，
+                現行實測 352。屬文件陳舊非階段狀態衝突; 本次已於 CURRENT_STATUS 標明現行數字。
+                未改 ledger stages: 任何一列。
+NEXT_DISPATCH:
+  1) STAGE_A3 (docs/session_guides/STAGE_A3_IR_TO_ENGINE.md) — 關鍵路徑、無 GPU、解鎖 B1/B2、A4 前置之一。最高槓桿。
+  2) TRACK_GPU_PREP PREP-2 (docs/session_guides/TRACK_GPU_PREP.md) — A2 schema 就緒後定案探針欄位、移除 PENDING_A2。
+  兩者無檔案衝突 (A3 動 C++ loader / phase4 service model; PREP-2 動 measurement/probes 欄位)，可並行。
+CRITICAL_PATH: A2(DONE) → A3 → B2 → C1 → C2; C1 需 A4, A4 需 A1 closure + A3 + GPU endpoint。
+               CPU 可推進至 A3 → B1/B2; 之後全部瓶頸收斂到單一 GPU endpoint。
+OWNER_DECISIONS_PENDING:
+  OD-1: GPU endpoint 供給。目前無可用 endpoint; A1 closure / A4 / TRACK_GPU 全部 gated 在它上，
+        亦即 C1/C2 (calibrated / break-even) 的唯一路徑。窗口計畫已備。需 owner 確認是否/何時可得。
+CLAIMS_ADDED: 僅驗收結果 (STAGE_0 / STAGE_A2 = CONFIRMED) 與排程決定 (A3 + PREP-2)。
+CLAIMS_STILL_FORBIDDEN: calibrated / break-even / accelerator / 長上下文 / 跨階段合成結論
+                        —— 本 session 什麼都沒量、沒跑階段工作、未合成任何跨階段結論。
+```
+
+**本 session 未越界**：`git diff --stat` 僅含 `docs/status/{CURRENT_STATUS,AGENT_HANDOFF}.md` 與 `governance/stage_ledger.yaml` 的 `orchestrator:` 區塊。未動任何原始碼、evidence、或 ledger 的 stages: 區塊。
+
+---
+
 ## 2026-08-19 · STAGE_A2 · measured raw → 九類 Canonical IR（純 CPU）
 
 **Session 目標** 把真實 GPU 量測第一次接進九類 Canonical IR。做的是 OFF-E-PR3 expert 容量掃描（15 點）——欄位最全、counters 決定性、有可驗證 byte 守恆式。**不含**讓引擎消費（A3）。

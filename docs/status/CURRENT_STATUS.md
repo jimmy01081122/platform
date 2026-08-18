@@ -1,10 +1,11 @@
 # CURRENT_STATUS
 
 ```text
-updated       : 2026-08-19
+updated       : 2026-08-19（統籌 session 排程與驗收）
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
-current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，未做 held-out 判定）；A2 COMPLETE（OFF-E-PR3 15 點 → 九類 IR，MEASURED，過 IR1）；TRACK_GPU_PREP PREP-1 完成（純 CPU，無 GPU 主張）
+current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE（統籌已獨立重跑 verification 確認）；TRACK_GPU_PREP PREP-1 完成、PREP-2 現已解鎖（A2 schema 就緒）
+next dispatch : A3（IR→引擎 loader，關鍵路徑、無 GPU）＋ PREP-2（並行，封頂 GPU 就緒度）
 ```
 
 ## 一句話狀態
@@ -30,15 +31,17 @@ current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，未做 held-ou
 
 權威狀態記錄為 `governance/stage_ledger.yaml`；本文件是人類可讀摘要，衝突時以 ledger 為準。
 
-## 已驗證的基線（2026-08-17 實測）
+## 已驗證的基線（2026-08-19 統籌 session 實測）
 
 ```text
 證據完整性   4423 / 4423 檔 SHA-256 通過（make verify-evidence）
-Python 測試  317 通過、0 失敗
-             tests 96 · simulator/tests 36 · phase1 16 · phase2 43 · phase7 126(+48 subtests)
+Python 測試  352 通過、0 失敗
+             tests 123 · simulator/tests 36 · phase1 16 · phase2 43 · phase7 134(+48 subtests)
 C++ CTest    14 通過、0 失敗（phase3 2/2 · phase4 3/3 · phase5 4/4 · phase6 5/5）
 workspace    make doctor -> workspace_contract: pass
 ```
+
+> 歷史基線（2026-08-17 遷移時）為 317 Python；上升至 352 來自 A1 v3（+14）、PREP-1（+13）、A2（+8）新增測試，皆為允許的上升。
 
 ## 研究鏈的三個斷點（全部未修）
 
@@ -102,15 +105,17 @@ cell 達標  1/11 -> 21/21   （專案自訂門檻 k* = 14）
 - A1 殘差分析發現的新缺口（見 `calibration/fits/v2/measurement_gaps.json`）：dequant 延遲的真正驅動變數是 expert 權重位元組數而非 token 數，本階段量測無法把兩者分離；小尺寸 PCIe 傳輸在多 stream 下仍有未建模的延遲成長（大尺寸區間已驗證修復，小尺寸區間相反方向的殘留效應是新發現，不在本階段四項缺陷登記範圍內）；moe_replay 的 `cpu_calls`/`expert_tokens` 兩種量測慣例之間有約 8 倍的正規化落差，尚未釐清換算關係。
 - SWAP-K2 的 KV 事件 `block_size=0`，位元組帳目由 runtime shape/dtype 推導；治理已開放 KV 效能主張，但此資料品質限制不因此消失。
 
-## 下一步
+## 下一步（2026-08-19 統籌 session 排定）
 
-**現在可以同時開兩個 session，兩者無相依、都不需要 GPU：**
+A2 完成後，**現在可以同時開兩個 session，兩者無相依、無檔案衝突、都不需要 GPU：**
 
 | session | 指引 | 為什麼 |
 |---|---|---|
-| **A2** measured → 九類 IR | `docs/session_guides/STAGE_A2_MEASURED_TO_IR.md` | 解鎖最多下游（A3/A4/B1/B2/PREP-2 共五項）。且 A2 定義 IR 評估點 schema，是新量測輸出欄位的唯一依據——GAP-4 正是缺這個而產生的 |
-| **GPU 前置準備軌** | `docs/session_guides/TRACK_GPU_PREP.md` | GPU endpoint 是有時限資源，其他都不是。只要 endpoint 可能出現，本軌就該已在跑 |
+| **A3** IR → 引擎 loader | `docs/session_guides/STAGE_A3_IR_TO_ENGINE.md` | 前置（A2 COMPLETE + make test-cpp 14 CTest）已滿足。在關鍵路徑上，解鎖下游最多（B1/B2 前置皆為 A3，且為 A4 前置之一）。目前最高槓桿 |
+| **PREP-2** GPU 前置軌第二階段 | `docs/session_guides/TRACK_GPU_PREP.md` | 之前 blocked on A2 schema，現已解鎖。依 A2 IR 評估點 schema 定案探針輸出欄位、移除 PENDING_A2，封頂 GPU 就緒度。GPU endpoint 是唯一有時限資源 |
 
-**關鍵路徑** `A2 → A3 → B2 → C1 → C2`，且 C1 需要 A4、A4 需要 GPU endpoint——**GPU 在關鍵路徑上，不是支線**。
+**關鍵路徑** `A2(DONE) → A3 → B2 → C1 → C2`，且 C1 需要 A4、A4 需要 A1 closure + A3 + **GPU endpoint**。CPU 端可推進至 A3 → B1/B2；之後全部瓶頸收斂到單一 GPU endpoint（A1 closure / A4 / TRACK_GPU）——**GPU endpoint 是當前唯一的關鍵路徑瓶頸**。
 
-排程與跨 session 驗收可另開統籌 session（`docs/session_guides/SESSION_ORCHESTRATOR.md`），它不執行階段工作，只排程、獨立重跑 verification、整理需要 owner 裁決的事。
+**待 owner 確認**：目前無可用 GPU endpoint。A1 closure、A4、TRACK_GPU 全部 gated 在它上；窗口計畫已備（`experiments/specs/gpu_measurement_window_plan_v1.md`）。需 owner 確認 endpoint 是否/何時可得。
+
+權威狀態與本次驗收記錄見 `governance/stage_ledger.yaml` 的 `orchestrator:` 區塊。
