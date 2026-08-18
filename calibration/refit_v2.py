@@ -33,6 +33,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 from edgeflow.calibrated_backend import (  # noqa: E402
     CalibrationError,
     METRICS,
+    SHAPE_INSENSITIVE_OPERATIONS,
     _line_fit,
     fit_parameters,
     predict,
@@ -125,42 +126,135 @@ def apply_defect4(params: dict[str, Any], floor_fit: dict[str, Any]) -> dict[str
 
 
 # ---------------------------------------------------------------------------
-# Step 3: self-check that non-physical fits are still rejected (guide
-# acceptance criterion: "既有的 slope<=0/intercept<0 拒絕邏輯保留". A pytest
-# addition would live under tests/, which is outside this stage's authorized
-# edit scope (see experiments/specs/cal_model_form_repair_v1.yaml); this
-# runtime check is the auditable substitute and its result is written to
-# calibration/fits/v2/self_check.json.)
+# Step 3: self-check that non-physical fits are rejected. Two layers:
+#   (a) the low-level _line_fit() primitive rejects flat/negative-slope/
+#       negative-intercept fits; and
+#   (b) the PRODUCTION entry point fit_parameters() actually propagates that
+#       rejection for a non-excluded gpu_service operation instead of silently
+#       falling back to a constant.
+# Layer (b) was added after a Principal-Reviewer finding (2026-08-18): the
+# earlier self-check only exercised _line_fit(), so it could not prove the
+# production path rejected non-physical fits — and in fact it did not, because
+# fit_parameters() caught the CalibrationError and substituted a flat constant.
+# That fallback has been removed from calibrated_backend.py; this check guards
+# against its regression. A pytest under tests/ would be the ideal home but is
+# outside this stage's authorized edit scope; this runtime check is the
+# auditable substitute, written to calibration/fits/v2/self_check.json.
 # ---------------------------------------------------------------------------
+
+
+def _minimal_calibration_result(gpu_service_rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Smallest raw_benchmarks payload that satisfies fit_parameters()'s
+    required-role checks, with a caller-supplied gpu_service probe set."""
+
+    def row(rid: str, role: str, val: float, **fields: Any) -> dict[str, Any]:
+        return {"record_id": rid, "calibration_role": role, "repeats_ms": [val, val], **fields}
+
+    rows = [
+        row("sc-cpu", "cpu_runtime", 0.1),
+        row("sc-h2d-1", "pcie_transfer", 0.3, direction="h2d", bytes=100, copy_streams=1),
+        row("sc-h2d-2", "pcie_transfer", 0.4, direction="h2d", bytes=200, copy_streams=1),
+        row("sc-d2h-1", "pcie_transfer", 0.35, direction="d2h", bytes=100, copy_streams=1),
+        row("sc-d2h-2", "pcie_transfer", 0.5, direction="d2h", bytes=200, copy_streams=1),
+        row("sc-ce", "copy_engine", 0.24, direction="h2d", bytes=100, copy_streams=2),
+        row("sc-mem-1", "memory", 0.1, bytes=100),
+        row("sc-mem-2", "memory", 0.2, bytes=300),
+        row("sc-q-1", "queueing", 0.05, queue_depth=1),
+        row("sc-q-2", "queueing", 0.11, queue_depth=3),
+        row("sc-ct", "contention", 1.1, concurrency=2, base_service_ms=1.0),
+    ]
+    rows.extend(gpu_service_rows)
+    return {"raw_benchmarks": rows}
 
 
 def self_check_non_physical_rejection() -> dict[str, Any]:
     checks = []
 
-    # slope <= 0 (flat line, no bandwidth signal)
+    # --- Layer (a): the _line_fit primitive itself ---
     try:
         _line_fit([(1.0, 5.0), (2.0, 5.0)], "self-check-flat")
-        checks.append({"case": "flat_slope", "rejected": False})
+        checks.append({"case": "line_fit_flat_slope", "rejected": False})
     except CalibrationError as exc:
-        checks.append({"case": "flat_slope", "rejected": True, "message": str(exc)})
+        checks.append({"case": "line_fit_flat_slope", "rejected": True, "message": str(exc)})
 
-    # negative slope
     try:
         _line_fit([(1.0, 5.0), (2.0, 1.0)], "self-check-negative-slope")
-        checks.append({"case": "negative_slope", "rejected": False})
+        checks.append({"case": "line_fit_negative_slope", "rejected": False})
     except CalibrationError as exc:
-        checks.append({"case": "negative_slope", "rejected": True, "message": str(exc)})
+        checks.append({"case": "line_fit_negative_slope", "rejected": True, "message": str(exc)})
 
-    # negative intercept (steep positive slope through points that imply
-    # intercept < 0 when extrapolated to x=0)
     try:
         _line_fit([(10.0, 1.0), (20.0, 21.0)], "self-check-negative-intercept")
-        checks.append({"case": "negative_intercept", "rejected": False})
+        checks.append({"case": "line_fit_negative_intercept", "rejected": False})
     except CalibrationError as exc:
-        checks.append({"case": "negative_intercept", "rejected": True, "message": str(exc)})
+        checks.append(
+            {"case": "line_fit_negative_intercept", "rejected": True, "message": str(exc)}
+        )
 
-    all_rejected = all(c["rejected"] for c in checks)
-    return {"all_non_physical_cases_rejected": all_rejected, "cases": checks}
+    # --- Layer (b): the production fit_parameters() path ---
+    def gs(rid: str, val: float, operation: str, expert_tokens: int) -> dict[str, Any]:
+        return {
+            "record_id": rid,
+            "calibration_role": "gpu_service",
+            "repeats_ms": [val, val],
+            "operation": operation,
+            "case": f"self-check,expert_tokens={expert_tokens}",
+        }
+
+    # A non-excluded operation whose latency DECREASES with more tokens
+    # (negative slope) must make the whole production fit raise.
+    non_physical = _minimal_calibration_result(
+        [gs("sc-gs-a", 1.0, "selected_expert", 100), gs("sc-gs-b", 0.1, "selected_expert", 200)]
+    )
+    try:
+        fit_parameters(non_physical)
+        checks.append({"case": "fit_parameters_non_physical_non_excluded", "rejected": False})
+    except CalibrationError as exc:
+        checks.append(
+            {"case": "fit_parameters_non_physical_non_excluded", "rejected": True, "message": str(exc)}
+        )
+
+    # Control: the SAME non-physical latencies, but for an excluded operation
+    # (dequant), must NOT raise — it is a labeled flat-by-exclusion model, not a
+    # failed affine fit. This confirms the exclusion is by-name, not by-catch.
+    excluded_operation = next(iter(SHAPE_INSENSITIVE_OPERATIONS))
+    excluded = _minimal_calibration_result(
+        [
+            gs("sc-gs-c", 1.0, excluded_operation, 100),
+            gs("sc-gs-d", 0.1, excluded_operation, 200),
+        ]
+    )
+    try:
+        params = fit_parameters(excluded)
+        form = params["gpu_service"]["operation_ms"][excluded_operation]["model_form"]
+        checks.append(
+            {
+                "case": "fit_parameters_excluded_operation_is_flat_not_error",
+                "rejected": False,
+                "expected_no_raise": True,
+                "model_form": form,
+                "ok": form == "flat_by_registered_exclusion",
+            }
+        )
+    except CalibrationError as exc:
+        checks.append(
+            {
+                "case": "fit_parameters_excluded_operation_is_flat_not_error",
+                "rejected": True,
+                "expected_no_raise": True,
+                "ok": False,
+                "message": str(exc),
+            }
+        )
+
+    rejection_cases = [c for c in checks if c["case"] != "fit_parameters_excluded_operation_is_flat_not_error"]
+    control = next(c for c in checks if c["case"] == "fit_parameters_excluded_operation_is_flat_not_error")
+    all_rejected = all(c["rejected"] for c in rejection_cases) and control.get("ok", False)
+    return {
+        "all_non_physical_cases_rejected": all_rejected,
+        "production_path_covered": True,
+        "cases": checks,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -262,20 +356,25 @@ def score_residuals() -> dict[str, Any]:
 def build_notes(params: dict[str, Any]) -> dict[str, Any]:
     non_converged = []
     for operation, model in params["gpu_service"]["operation_ms"].items():
-        if model["model_form"] != "affine_per_token":
-            non_converged.append(
-                {
-                    "operation": operation,
-                    "model_form": model["model_form"],
-                    "reason": (
-                        "expert_tokens regression rejected as non-physical or only one "
-                        "shape group observed; likely true driver is expert weight bytes, "
-                        "not token count (dequant is weight-size-bound, not token-count-bound)"
-                        if operation == "dequant"
-                        else "insufficient distinct shape groups in calibration-role evidence"
-                    ),
-                }
+        if model["model_form"] == "affine_per_token":
+            continue
+        if model["model_form"] == "flat_by_registered_exclusion":
+            reason = (
+                "deliberately excluded from the affine-in-tokens attempt (a-priori "
+                "shape-insensitive). dequant's benchmark is an explicit synthetic proxy "
+                "(synthetic_symmetric_int4_proxy_not_checkpoint_awq); its true driver is "
+                "expert weight byte size, not token count. Modeled as a flat labeled "
+                "PROXY_ONLY constant, NOT a caught non-physical fit. See GAP-1."
             )
+        else:
+            reason = "insufficient distinct shape groups in calibration-role evidence"
+        non_converged.append(
+            {
+                "operation": operation,
+                "model_form": model["model_form"],
+                "reason": reason,
+            }
+        )
 
     measurement_gaps = [
         {

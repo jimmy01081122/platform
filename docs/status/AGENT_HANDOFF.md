@@ -6,6 +6,50 @@
 
 ---
 
+## 2026-08-18 · Stage A1 Principal Reviewer 覆核 + P0 calibration-safety 修正
+
+**Session 目標** 對 A1 model-form evolution 做獨立覆核（不調參、不辯護），用 raw evidence 重現各項主張，判斷哪些演算法可進下一輪 preregistered implementation；並修正發現的 blocker。
+
+**覆核方法** 全部在 platform venv 對 `evidence/**/result.json` 與 `measurement/gpu_run_package_v2/scripts/benchmark.py` 原始碼重現，不採信 harness 轉錄數字。（外部參考 harness 在 `/home/a/a1_algorithm_evolution_test_harness/`，其 pytest 需 sklearn，本環境無法重跑，但每一項 load-bearing 數字均已獨立重現。）
+
+**發現並修正的 P0 blocker（本 session 已改碼）**
+```text
+fit_parameters() 對非物理 gpu_service 擬合 catch CalibrationError → 靜默 fallback 常數，
+違反 root spec §8.3「拒絕非物理解、無 fallback 常數」。self_check 只測 _line_fit()，
+測不到 production path。執行證明：修正前負斜率輸入回傳 flat_fallback_non_physical_slope
+不 raise；修正後正確 raise。
+修法：改事前名單 SHAPE_INSENSITIVE_OPERATIONS={dequant}；名單外 op 一律 raise。
+self-check 擴充覆蓋 fit_parameters() production path。詳見 P-012。
+```
+
+**其餘覆核結論（全部 FIT 側 / diagnostic，非 held-out）**
+```text
+PCIe two-regime        ACCEPT。自 raw 重現 30 點 1.04% MAPE（小尺寸 48.8→2.5%、bulk 0.5→0.06%）。
+                       benchmark.py:316-334 證實 copy_streams＝固定總位元組切 S 塊、S streams、
+                       wait-all → 舊 q0 per-transfer 乘數語意錯、現行 A1 對小尺寸也不對。two-regime
+                       是物理正確形式。待定：production 端 stream 語意。
+ProfileKNN             MORE_TESTS。aggregate 10.9% 被 18/18 decode 精確 token lookup 灌水；
+                       真正 prefill 內插 18.2%（>15%；per-op 22.4/20.9/11.2%）。
+MoE replay operator    window_replay() 實測含 2×argsort＋3×GEMM＋gather＋scatter，登記 metadata
+                       只記 grouped_gemm＋gather_scatter → 系統性遺漏 routing/sort。固定 tau_route
+                       僅 2 結構點 → DIAGNOSTIC_ONLY；正式版改顯式 operator。
+routing 守恆           Σn_e＝num_tokens×top_k，672 步 0 違反（CONFIRMED）。
+dequant                raw 標 synthetic_symmetric_int4_proxy_not_checkpoint_awq → 維持 PROXY_ONLY。
+throughput 措辭         60.658%→75.898% 是「變差」，先前寫「方向仍是改善」是誤導，已改正。
+```
+
+**治理更正** STAGE_A1 由 COMPLETE 退回 **IN_PROGRESS**；VALIDATION_MATRIX「拒絕非物理解 = PASS」是假 PASS，已改正。
+
+**變更檔案** `src/edgeflow/calibrated_backend.py`（加 SHAPE_INSENSITIVE_OPERATIONS、移除 fallback）；`calibration/refit_v2.py`（self-check 覆蓋 production path、build_notes 更新）；重生 `calibration/fits/v2/{parameters,self_check,residual_report,measurement_gaps}.json`（四項 MAPE 數字不變，dequant 改標 flat_by_registered_exclusion）；`governance/stage_ledger.yaml`（僅 STAGE_A1）；`docs/status/{CURRENT_STATUS,VALIDATION_MATRIX,DECISION_LOG,AGENT_HANDOFF}.md`。
+
+**驗證** `make test` 317 Python + 14 CTest、0 失敗；`make verify-evidence` 4423/4423；`tests/test_calibrated_backend.py` 既有 7 項全過；`self_check.json` production_path_covered=true。evidence 未動。**新增決策** P-012。
+
+**下一個最高資訊增益的動作** 撰寫 `cal_model_form_repair_v2` preregistration（PCIe two-regime 的 production stream 語意、component predictor 的 prefill-only 分階段門檻＋leave-one-workload-out、MoE replay 顯式 routing/permutation operator），再重擬合。**先完成 FIT 側 scientific closure，再碰新的 sealed held-out；GPU 窗口暫不需開。**
+
+**仍然禁止的主張** 任何 calibrated PASS；以 FIT 側殘差作 held-out 證據；break-even／accelerator／長上下文。
+
+---
+
 ## 2026-08-18 · GPU 量測軌拆段 + 統籌 session
 
 **Session 目標** 回應 owner 兩點：(1) GPU 軌執行前先把量測目標與程式準備好，避免 GPU 閒置——需要先跑哪些 stage；(2) 另開一個統籌 session 集中排程與驗收，避免長上下文影響判斷。

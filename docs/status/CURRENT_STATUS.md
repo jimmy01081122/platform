@@ -4,7 +4,7 @@
 updated       : 2026-08-18
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
-current stage : Stage 0 完成；A1 完成（模型形式修復，FIT 側殘差，未做 held-out 判定）
+current stage : Stage 0 完成；A1 IN_PROGRESS（模型形式修復＋P0 safety 修正，FIT 側殘差，未做 held-out 判定）
 ```
 
 ## 一句話狀態
@@ -16,7 +16,7 @@ current stage : Stage 0 完成；A1 完成（模型形式修復，FIT 側殘差�
 | 階段 | 狀態 | 說明 |
 |---|---|---|
 | Stage 0 | **COMPLETE** | 遷移、基線、根規格、session 指引系統 |
-| A1 calibration 模型形式修復 | **COMPLETE** | 4 項缺陷已修正並事前登記；FIT 側殘差大幅改善（見下）；未做 held-out 判定 |
+| A1 calibration 模型形式修復 | **IN_PROGRESS** | 4 項缺陷已修正並事前登記；FIT 側殘差大幅改善（見下）。2026-08-18 Reviewer 覆核發現並修正一項 P0 calibration-safety 違約（P-012）；PCIe two-regime 與 replay operator 方向已接受，待 v2 preregistration 重擬合。未做 held-out 判定 |
 | A2 measured → 九類 IR | NOT_STARTED | |
 | A3 IR → 引擎 loader | NOT_STARTED | |
 | A4 sealed held-out 驗證 | NOT_STARTED | |
@@ -44,7 +44,7 @@ workspace    make doctor -> workspace_contract: pass
 
 1. **量測 → IR**：唯一 adapter 是 `explorations/moe_cycle_simulator/phase7/adapters/vllm_mock_adapter.py`，檔案自述為 mock。已 grep 確認無 code path 從真實 `.npy` routing array 進到 `EventIR`/`RoutingIR`。→ A2
 2. **IR → 引擎**：不存在 IR bundle → C++ 引擎的 loader。目前已發表的 DSE 數字出自 `src/edgeflow/residency.py`（265 行解析模型），**不是** C++ 引擎。→ A3
-3. **校準**：舊 q1 report（保留為證據，未修改）四項 MAPE gate 全數失敗（component 304.418%、TPOT 293.936%、PCIe 66.879%、throughput 60.658%；90 點中 17 通過）。根因是模型形式錯誤，非量測品質。A1 已修正四項模型形式缺陷並在 FIT 側重新擬合：component_latency 304.418%→20.324%、pcie_transfer_latency 66.879%→19.821%、moe_replay_tpot 293.936%→43.176%、moe_replay_throughput 60.658%→75.898%（tpot 改善經 reciprocal 轉換後在 throughput 上呈現放大的 MAPE%，方向仍是改善，非退步；細節見 `calibration/fits/v2/residual_report.json`）。**這些數字全部是 FIT 側，不是 held-out 判定** —— sealed held-out 仍待 A4。
+3. **校準**：舊 q1 report（保留為證據，未修改）四項 MAPE gate 全數失敗（component 304.418%、TPOT 293.936%、PCIe 66.879%、throughput 60.658%；90 點中 17 通過）。根因是模型形式錯誤，非量測品質。A1 已修正四項模型形式缺陷並在 FIT 側重新擬合：component_latency 304.418%→20.324%、pcie_transfer_latency 66.879%→19.821%、moe_replay_tpot 293.936%→43.176%、moe_replay_throughput 60.658%→**75.898%（就 throughput 自身 MAPE 定義是變差，非改善**——TPOT 擬合改善，但 throughput＝1000/TPOT 的 MAPE 因 reciprocal 轉換不對稱而上升；正確做法是把 throughput 當派生量而非獨立擬合目標；細節見 `calibration/fits/v2/residual_report.json`）。**這些數字全部是 FIT 側，不是 held-out 判定** —— sealed held-out 仍待 A4。2026-08-18 Principal Reviewer 覆核：修正一項 P0 calibration-safety 違約（`fit_parameters()` 對非物理擬合曾靜默 fallback，見 P-012）；PCIe two-regime（自 raw 重現 1.04%）與 replay 的 routing/permutation operator 方向已接受進 v2 preregistration，ProfileKNN 需更多測試（prefill 內插 18.2%＞15%）。
 
 ## 可用證據
 

@@ -111,3 +111,27 @@
 - ledger 新增 `TRACK_GPU_PREP` 列、`orchestrator:` 區塊、規則 5；`TRACK_GPU` 新增前置與 readiness 註記。
 - README、CURRENT_STATUS、VALIDATION_MATRIX、TRACK_GPU_MEASUREMENT 同步更新。
 - 現在可立即並行的兩個 session：A2 與 GPU 前置準備軌。
+
+## P-012 · 修正 calibration harness 的非物理解 fallback（P0 safety）；A1 退回 IN_PROGRESS
+
+**日期** 2026-08-18
+**決定**
+1. `src/edgeflow/calibrated_backend.py` 的 `fit_parameters()` 移除 gpu_service 迴圈裡 `try/except CalibrationError` 的 fallback 分支。改為事前名單 `SHAPE_INSENSITIVE_OPERATIONS = frozenset({"dequant"})`：名單內的 op 直接以 flat mean 建模並標 `model_form="flat_by_registered_exclusion"`（labeled PROXY_ONLY）；名單外的 op 若擬合非物理（slope ≤ 0 或 intercept < 0）一律讓 `CalibrationError` 往外拋，**不再 fallback 為常數**。
+2. `calibration/refit_v2.py` 的 self-check 擴充到覆蓋 **production path**：新增 `fit_parameters_non_physical_non_excluded`（非名單 op 的負斜率輸入必須使 `fit_parameters()` raise）與 control `fit_parameters_excluded_operation_is_flat_not_error`（dequant 走 flat 不 raise）。`self_check.json` 新增 `production_path_covered: true`。
+3. `governance/stage_ledger.yaml` 的 STAGE_A1 由 `COMPLETE` 退回 `IN_PROGRESS`；`VALIDATION_MATRIX.md` 把「拒絕非物理解 = PASS」改為 IN_PROGRESS 並註明先前是假 PASS。
+
+**理由** 2026-08-18 Principal Reviewer 獨立覆核（用 raw evidence 重現）發現一項 P0 級 calibration-safety 違約：root spec §8.3 與 `calibration/README.md` 明文承諾 harness「拒絕非物理擬合、無 fallback 常數」，但 `fit_parameters()` 對 gpu_service 的仿射回歸包了 `try/except`，`_line_fit` 判定非物理後被 catch 並改回 flat 常數（dequant 即踩到此路徑）。原 `self_check.json` 只直接呼叫 `_line_fit()`，沒有測 `fit_parameters()` 這層 wrapper，因此無法證明——事實上也沒有證明——production path 會拒絕非物理解。以執行驗證：修正前，一組負斜率的 gpu_service 輸入使 `fit_parameters()` 回傳 `model_form=flat_fallback_non_physical_slope` 而**不 raise**；修正後同一輸入正確 raise `CalibrationError`。
+
+**後果**
+- 名單機制與 catch-fallback 的差別在於**意圖可稽核**：dequant 是事前宣告的 shape-insensitive proxy（raw 標記 `synthetic_symmetric_int4_proxy_not_checkpoint_awq`），不是一個「試過仿射、失敗、退回常數」的 op。數值上 dequant 結果不變（仍是 flat mean、per_token=0），只是 `model_form` 改標為 `flat_by_registered_exclusion`。其餘三個 op（grouped_gemm/gather_scatter/selected_expert）本來就物理，不受影響；`calibration/fits/v2/*` 的四項 FIT 側 MAPE 數字完全不變。
+- `make test` 仍 317 Python + 14 CTest、0 失敗；`tests/test_calibrated_backend.py` 既有 7 項仍全過；evidence 未動（4423/4423）。
+- **A1 暫留 IN_PROGRESS**：本輪只修 P0 safety 與治理措辭，尚未做 reviewer 接受的 v2 重擬合（PCIe two-regime、component predictor 的 prefill-only 門檻、MoE replay 的顯式 routing/permutation operator）。這些屬 `cal_model_form_repair_v2` preregistration，須先登記再重擬合。本輪不宣稱任何 calibrated PASS。
+
+**Reviewer 覆核的其餘結論（全部 FIT 側 / diagnostic，非 held-out；記錄供 v2 preregistration）**
+- **PCIe two-regime** `T=max(alpha_d+beta_d·(S-1), A_d+B/BW_d)`：ACCEPT。自 raw 獨立重現 30 點 1.04% MAPE（小尺寸 48.8%→2.5%）。`benchmark.py:316-334` 證實 `copy_streams`＝固定總位元組切 S 塊、S streams、wait-all，故舊 q0 的 per-transfer 乘數語意錯誤、現行 A1 對小尺寸也不對。待定：production 端 stream 語意。
+- **ProfileKNN**：MORE_TESTS。aggregate 10.9% 被 18/18 decode 精確 token lookup 灌水；prefill 內插為 18.2%（＞15%）。
+- **MoE replay operator graph**：`window_replay()` 實測含 2 次 argsort＋3 GEMM＋gather＋scatter，登記 metadata 只記 grouped_gemm＋gather_scatter，系統性遺漏 routing/sort 項。固定 `tau_route` 僅 2 結構點 → DIAGNOSTIC_ONLY；正式版改顯式 operator。
+- **routing 守恆** Σn_e＝num_tokens×top_k：672 步 0 違反（CONFIRMED）。
+- **dequant**：維持 `DEQUANT_PROXY_ONLY`，不得升格為真實 AWQ dequant。
+
+**未做（明確留給後續）** `tests/` 目前不在 A1 授權範圍，故 production-path 覆蓋以 `calibration/refit_v2.py` 內的 runtime self-check 完成；若要正式 pytest 覆蓋需 owner 額外授權。

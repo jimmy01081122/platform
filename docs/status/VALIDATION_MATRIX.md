@@ -49,9 +49,19 @@
 | component_latency | 304.418% | 20.324% | `NOT_APPLICABLE_FIT_ONLY` |
 | pcie_transfer_latency | 66.879% | 19.821% | `NOT_APPLICABLE_FIT_ONLY` |
 | moe_replay_tpot | 293.936% | 43.176% | `NOT_APPLICABLE_FIT_ONLY` |
-| moe_replay_throughput | 60.658% | 75.898%（tpot 改善的 reciprocal 轉換，方向仍是改善） | `NOT_APPLICABLE_FIT_ONLY` |
+| moe_replay_throughput | 60.658% | 75.898%（**變差**，見下方修正） | `NOT_APPLICABLE_FIT_ONLY` |
 
-非收斂／新缺口：dequant（GAP-1）、聚合 contention 模型未被評估點驗證（GAP-2）、floor_ms 樣本量少（GAP-3）、component_latency 評估點原始 schema 缺 shape 特徵（GAP-4）、moe_replay `cpu_calls`/`expert_tokens` 正規化落差約 8 倍（GAP-5）、小尺寸 PCIe 傳輸多 stream 交互作用未建模（GAP-6）。完整說明見 `calibration/fits/v2/measurement_gaps.json`。
+**throughput 措辭修正（2026-08-18，Principal Reviewer）**：先前把 `moe_replay_throughput` 的 60.658%→75.898% 說成「方向仍是改善」是誤導。就 throughput（=1000/tpot）本身的 MAPE 定義，它**變差了**。正確敘述應拆成兩句：TPOT 的擬合明顯改善（293.936%→43.176%）；但 throughput 這個指標本身的 MAPE 因 reciprocal 轉換對百分比誤差不對稱而上升（TPOT 被低估時，1/TPOT 會被等比放大地高估）。這不是模型退步，但也不能說成 throughput 改善。正確做法是把 throughput 當作 1000/TPOT **派生量**，讓它誠實地繼承 TPOT 的改善，而不是當作獨立擬合目標。
+
+非收斂／新缺口：dequant（GAP-1，2026-08-18 起改標為 a-priori 名單排除 `flat_by_registered_exclusion`／`DEQUANT_PROXY_ONLY`，非「catch 後 fallback」）、聚合 contention 模型未被評估點驗證（GAP-2）、floor_ms 樣本量少（GAP-3）、component_latency 評估點原始 schema 缺 shape 特徵（GAP-4）、moe_replay `cpu_calls`/`expert_tokens` 正規化落差約 8 倍（GAP-5）、小尺寸 PCIe 傳輸多 stream 交互作用未建模（GAP-6）。完整說明見 `calibration/fits/v2/measurement_gaps.json`。
+
+**Principal Reviewer 覆核結論（2026-08-18，全部 FIT 側 / diagnostic，非 held-out）**：
+- **P0 calibration-safety 違約（已修正）**：`fit_parameters()` 先前對非物理 gpu_service 擬合 catch 後 fallback 為常數，違反 root spec §8.3。已改為事前名單 `SHAPE_INSENSITIVE_OPERATIONS`；非名單 op 一律 raise。self-check 已覆蓋 production path。見 P-012。
+- **PCIe two-regime**：ACCEPT（進 v2 preregistration）。獨立自 raw 重現 30 點 1.04% MAPE（小尺寸 48.8%→2.5%、bulk 0.5%→0.06%），且 `benchmark.py:316-334` 證實 `copy_streams`＝固定總位元組切成 S 塊、S streams、wait-all，two-regime 是物理正確形式。待定：production 端 stream 語意。
+- **ProfileKNN**：MORE_TESTS。aggregate 10.9% 被 18/18 個 decode 精確 token lookup 灌水；真正的 prefill 內插為 18.2%（>15%；per-op selected_expert 22.4%、grouped_gemm 20.9%、gather_scatter 11.2%）。
+- **MoE replay operator graph**：`window_replay()` 實測含 2 次 argsort（排序＋逆排列）＋3 個 GEMM＋gather＋scatter，但登記 metadata 只記 `grouped_gemm`＋`gather_scatter`——系統性遺漏 routing/sort 項。固定 `tau_route` 僅 2 個結構點，DIAGNOSTIC_ONLY；正式版應改為顯式 sort/permute operator。
+- **routing 守恆**：Σn_e＝num_tokens×top_k，672 步 0 違反（CONFIRMED）。
+- **dequant**：raw 標記 `synthetic_symmetric_int4_proxy_not_checkpoint_awq`，維持 `DEQUANT_PROXY_ONLY`。
 
 ## 第三方 routing 語料（2026-08-18 稽核）
 
@@ -99,7 +109,7 @@ def gather_scatter(x=activations, idx=order, inv=inverse):
 
 | 階段 | 驗收條件 | 判定 |
 |---|---|---|
-| A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | **PASS**（A1 自身的驗收條件，非 calibrated PASS——見上方 FIT 側殘差表，門檻判定仍屬 A4） |
+| A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | **IN_PROGRESS**（事前登記✓、舊 fail 報告未改✓；「拒絕非物理解」先前為**假 PASS**——production path 其實 fallback 常數，2026-08-18 已修正 P-012 並以 production-path self-check 驗證。仍待 v2 preregistration 重擬合 reviewer 接受的候選；非 calibrated PASS） |
 | A2 | 各量測家族通過 IR1；byte 守恆逐點成立；`routing_sha256` 可回溯 | NOT_RUN |
 | A3 | 15 點 hit/miss/evict 與量測完全相等；兩次 replay 位元相同；無 deadlock/Zeno | NOT_RUN |
 | A4 | 封存 split 只開封一次；MAPE ≤15%、APE ≤20%，三值判定 | NOT_RUN |

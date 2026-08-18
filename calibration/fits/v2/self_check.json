@@ -1,20 +1,33 @@
 {
   "all_non_physical_cases_rejected": true,
+  "production_path_covered": true,
   "cases": [
     {
-      "case": "flat_slope",
+      "case": "line_fit_flat_slope",
       "rejected": true,
       "message": "self-check-flat fit is non-physical"
     },
     {
-      "case": "negative_slope",
+      "case": "line_fit_negative_slope",
       "rejected": true,
       "message": "self-check-negative-slope fit is non-physical"
     },
     {
-      "case": "negative_intercept",
+      "case": "line_fit_negative_intercept",
       "rejected": true,
       "message": "self-check-negative-intercept fit is non-physical"
+    },
+    {
+      "case": "fit_parameters_non_physical_non_excluded",
+      "rejected": true,
+      "message": "gpu_service selected_expert fit is non-physical"
+    },
+    {
+      "case": "fit_parameters_excluded_operation_is_flat_not_error",
+      "rejected": false,
+      "expected_no_raise": true,
+      "model_form": "flat_by_registered_exclusion",
+      "ok": true
     }
   ]
 }

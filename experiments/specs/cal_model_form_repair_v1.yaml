@@ -147,13 +147,15 @@ measurement_family_usage:
     - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v1-20260811T1730Z-L
     - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/transfer-v2-20260811T1740Z-L
   used_for_fit_side_residual_check_only:
-    - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json
+    paths:
+      - evidence/gpu_measurements/rtx-pro-6000-v3-20260718/results/cross-device-validation/result.json
     note: >
       這份檔案原始標記為 "validation"，但依 decision_p005 在本平台一律降級為
       FIT 側殘差檢查，不得引用為 held-out 判定證據。
   reserved_not_used_this_stage:
-    - evidence/measurement_backups/20260811T171000Z__phase7_remote_component_backup/raw/components/*  # CMP-A 用途在本階段外（掛載點 A1/attention，非本階段四項缺陷範圍）；CMP-M 僅作交叉檢查
-    - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/*/*  # XFER-E*, XFER-O0-O2, XFER-Q* 家族（多物件序列搬移／overlap／queue）超出四項缺陷登記範圍，留給後續量測缺口分析引用
+    paths:
+      - evidence/measurement_backups/20260811T171000Z__phase7_remote_component_backup/raw/components/*  # CMP-A 用途在本階段外（掛載點 A1/attention，非本階段四項缺陷範圍）；CMP-M 僅作交叉檢查
+      - evidence/measurement_backups/20260811T171000Z__phase7_remote_transfer_backup/raw/transfers/*/*  # XFER-E*, XFER-O0-O2, XFER-Q* 家族（多物件序列搬移／overlap／queue）超出四項缺陷登記範圍，留給後續量測缺口分析引用
     note: >
       保留家族不用於本次擬合係數，但在殘差分析與量測缺口清單中會引用其定性
       觀察（例如 XFER-O3 的 H2D+D2H 雙向記錄用於交叉檢查缺陷 1 的方向，見上）。
@@ -190,6 +192,31 @@ addenda:
       需要的是「扣除 batching 已解釋的部分後，剩餘的純競爭效應」，但目前的
       量測家族無法把這兩個效應分離（只有一個 contention 探針樣本）。此為
       未收斂項目，記錄於 measurement_gaps。
+
+  - id: ADDENDUM_2_NONPHYSICAL_REJECTION_HARDENING
+    added_at_utc: "2026-08-18T00:00:00Z"
+    reason: >
+      2026-08-18 Principal Reviewer 獨立覆核發現 P0 calibration-safety 違約：
+      fit_parameters() 對 gpu_service 仿射回歸包了 try/except，_line_fit 判定
+      非物理後被 catch 並改回 flat 常數（dequant 踩到此路徑）。這違反 root spec
+      §8.3 與 calibration/README.md 承諾的「拒絕非物理擬合、無 fallback 常數」。
+      原 DEFECT_2 的 fit_rule 描述含糊地寫「回歸被拒絕時退回 flat mean」，該措辭
+      是此漏洞的來源。
+    fix: >
+      1. 新增模組層級名單 SHAPE_INSENSITIVE_OPERATIONS = frozenset({"dequant"})。
+         名單內 op 事前排除於仿射嘗試之外，直接 flat mean，model_form=
+         "flat_by_registered_exclusion"（labeled PROXY_ONLY）。
+      2. 名單外 op 若 _line_fit 判定非物理（slope<=0 或 intercept<0），CalibrationError
+         一律往外拋，不再 catch、不再 fallback 常數。
+      3. calibration/refit_v2.py 的 self-check 擴充覆蓋 production path
+         (fit_parameters)，新增 fit_parameters_non_physical_non_excluded（必須 raise）
+         與 control fit_parameters_excluded_operation_is_flat_not_error（dequant 不 raise）。
+    correction_to_defect_2_fit_rule: >
+      DEFECT_2 的 fit_rule「回歸被拒絕時退回 flat mean」自本 addendum 起僅適用於
+      SHAPE_INSENSITIVE_OPERATIONS 名單內的 op（且那不是「被拒絕後退回」，是事前
+      不做仿射）。名單外 op 一律 hard-fail，不得退回常數。
+    numerical_impact: "無。dequant 仍是 flat mean、per_token=0；其餘三個 op 本就物理。calibration/fits/v2 四項 FIT 側 MAPE 數字完全不變，只有 dequant 的 model_form 標籤改變。"
+    status: "本階段登記變更；依 guide §8 規則，改碼前補登記。對應 DECISION_LOG P-012。"
 
 commitments:
   - "本階段結束時不得宣稱任何 calibrated PASS；判定屬 STAGE_A4 sealed held-out。"

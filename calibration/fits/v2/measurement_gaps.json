@@ -2,8 +2,8 @@
   "non_converged_operations": [
     {
       "operation": "dequant",
-      "model_form": "flat_fallback_non_physical_slope",
-      "reason": "expert_tokens regression rejected as non-physical or only one shape group observed; likely true driver is expert weight bytes, not token count (dequant is weight-size-bound, not token-count-bound)"
+      "model_form": "flat_by_registered_exclusion",
+      "reason": "deliberately excluded from the affine-in-tokens attempt (a-priori shape-insensitive). dequant's benchmark is an explicit synthetic proxy (synthetic_symmetric_int4_proxy_not_checkpoint_awq); its true driver is expert weight byte size, not token count. Modeled as a flat labeled PROXY_ONLY constant, NOT a caught non-physical fit. See GAP-1."
     }
   ],
   "measurement_gaps": [

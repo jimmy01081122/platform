@@ -23,6 +23,20 @@ class CalibrationError(ValueError):
 
 _EXPERT_TOKENS_RE = re.compile(r"expert_tokens=(\d+)")
 
+# Operations known a priori to be shape-insensitive to token count: their
+# physical cost driver is something other than tokens dispatched, so an affine
+# token regression is not the right model form for them. dequant's benchmark is
+# an explicit synthetic proxy (``synthetic_symmetric_int4_proxy_not_checkpoint_awq``)
+# whose latency is fixed-shape; its true driver is expert weight byte size, not
+# token count (see calibration/fits/*/measurement_gaps.json GAP-1). Excluding
+# such operations from the affine attempt UP FRONT is a deliberate, labeled
+# modeling choice. It is NOT the same as catching a CalibrationError after the
+# fact: any operation NOT on this list that produces a non-physical fit must be
+# rejected, never silently converted to a fallback constant (calibration
+# contract, root spec §8.3). See experiments/specs/cal_model_form_repair_v1.yaml
+# addenda.
+SHAPE_INSENSITIVE_OPERATIONS = frozenset({"dequant"})
+
 
 def _operand_tokens(row: dict[str, Any]) -> float:
     """Shape axis for gpu_service probes: tokens dispatched per launch.
@@ -235,15 +249,23 @@ def fit_parameters(calibration_result: dict[str, Any]) -> dict[str, Any]:
     gpu_service: dict[str, dict[str, Any]] = {}
     for operation, rows in sorted(gpu_groups.items()):
         distinct_tokens = {tokens for tokens, _ in rows}
-        if len(distinct_tokens) >= 2:
-            try:
-                intercept, slope = _line_fit(rows, f"gpu_service {operation}")
-                model_form = "affine_per_token"
-            except CalibrationError:
-                intercept = statistics.fmean(value for _, value in rows)
-                slope = 0.0
-                model_form = "flat_fallback_non_physical_slope"
+        if operation in SHAPE_INSENSITIVE_OPERATIONS:
+            # Deliberate, labeled exclusion from the affine attempt. Not a caught
+            # failure — this operation is never fit as affine-in-tokens.
+            intercept = statistics.fmean(value for _, value in rows)
+            slope = 0.0
+            model_form = "flat_by_registered_exclusion"
+        elif len(distinct_tokens) >= 2:
+            # Non-excluded operation with real shape variation: fit affine and
+            # let a non-physical fit (slope <= 0 or intercept < 0) raise. There
+            # is intentionally no fallback constant here — swallowing the error
+            # would violate the calibration contract (root spec §8.3).
+            intercept, slope = _line_fit(rows, f"gpu_service {operation}")
+            model_form = "affine_per_token"
         else:
+            # Only one distinct shape group observed (e.g. a minimal synthetic
+            # fixture): a slope is not identifiable, so use the flat mean. This
+            # is a degeneracy of the input, not a non-physical fit.
             intercept = statistics.fmean(value for _, value in rows)
             slope = 0.0
             model_form = "flat_fallback_single_shape_group"

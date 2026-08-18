@@ -19,7 +19,7 @@
       "operation_ms": {
         "dequant": {
           "intercept_ms": 0.1476092425306868,
-          "model_form": "flat_fallback_non_physical_slope",
+          "model_form": "flat_by_registered_exclusion",
           "per_token_ms": 0.0
         },
         "gather_scatter": {

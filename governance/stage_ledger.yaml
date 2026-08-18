@@ -76,7 +76,18 @@ stages:
 
   - id: STAGE_A1
     title: Calibration 模型形式修復與重擬合
-    status: COMPLETE
+    status: IN_PROGRESS
+    status_note: >
+      前一輪 (commit 116666c) 曾標為 COMPLETE, 但 2026-08-18 Principal Reviewer
+      獨立覆核發現一項 P0 calibration-safety 違約: fit_parameters() 對非物理
+      gpu_service 擬合 catch CalibrationError 後靜默 fallback 為常數, 違反 root
+      spec §8.3「拒絕非物理解、無 fallback 常數」。已修正 (見 P-012): 改為事前
+      名單 SHAPE_INSENSITIVE_OPERATIONS (dequant), 非名單 op 的非物理擬合一律
+      raise; self-check 已擴充到覆蓋 production path (fit_parameters, 非只
+      _line_fit)。狀態暫留 IN_PROGRESS: 尚待 v2 preregistration 涵蓋 reviewer
+      的其餘結論 (PCIe two-regime、component predictor 的 prefill-only 門檻、
+      MoE replay 的 routing/permutation operator) 後再重擬合。本輪不宣稱任何
+      calibrated PASS。
     guide: docs/session_guides/STAGE_A1_CALIBRATION_MODEL_FORM.md
     guide_completeness: EXECUTABLE
     gpu_required: false
@@ -101,16 +112,36 @@ stages:
       - assertion: 事前登記檔的建立時間早於任何擬合輸出
       - assertion: 擬合拒絕非物理解 (slope <= 0 或 intercept < 0)
     last_verified:
-      date: "2026-08-17"
+      date: "2026-08-18"
       actual:
         verify_evidence: "4423 files OK (unchanged from STAGE_0 baseline)"
         test: "96 + 36 + 16 + 43 + 126(+48 subtests) Python = 317 passed; ctest 2/2 3/3 4/4 5/5 = 14 passed; 0 failed"
         doctor: "workspace_contract: pass"
         old_q1_report_unmodified: "git status --short evidence/ empty; sha256 unchanged (evidence/ not in this session's diff)"
-        pre_registration_created_at: "2026-08-17T17:25:08Z, addendum 2026-08-17T17:31:56Z; both precede calibration/fits/v2/* outputs (created after)"
-        non_physical_rejection_self_check: "calibration/fits/v2/self_check.json: all_non_physical_cases_rejected=true (flat slope, negative slope, negative intercept all raise CalibrationError)"
-        fit_side_residuals_mape_pct: "component_latency 304.418->20.324; pcie_transfer_latency 66.879->19.821; moe_replay_tpot 293.936->43.176; moe_replay_throughput 60.658->75.898 (reciprocal-transform asymmetry of the tpot gain, see runs/20260817T172500Z__stage_a1_calibration_model_form_repair)"
-        non_convergence: "dequant op falls back to flat model (model_form=flat_fallback_non_physical_slope); 6 measurement gaps documented in calibration/fits/v2/measurement_gaps.json feeding TRACK_GPU priority 4"
+        pre_registration_created_at: "2026-08-17T17:25:08Z, addendum 2026-08-17T17:31:56Z; both precede calibration/fits/v2/* outputs"
+        non_physical_rejection_self_check: >
+          calibration/fits/v2/self_check.json: all_non_physical_cases_rejected=true AND
+          production_path_covered=true. Now exercises the PRODUCTION entry point
+          fit_parameters() (case fit_parameters_non_physical_non_excluded -> raises),
+          not only the _line_fit() primitive; plus a control that the excluded
+          dequant op yields model_form=flat_by_registered_exclusion without raising.
+        fit_side_residuals_mape_pct: >
+          component_latency 304.418->20.324; pcie_transfer_latency 66.879->19.821;
+          moe_replay_tpot 293.936->43.176; moe_replay_throughput 60.658->75.898.
+          NOTE: throughput MAPE (=1000/tpot) WORSENED (60.658->75.898) due to the
+          reciprocal transform's asymmetry; the tpot fit improved but throughput's
+          own metric did not. FIT-side only (P-005); no held-out judgment.
+        non_convergence: >
+          dequant modeled as flat_by_registered_exclusion (labeled PROXY_ONLY, a-priori
+          shape-insensitive, NOT a caught non-physical fit). 6 measurement gaps in
+          calibration/fits/v2/measurement_gaps.json feed TRACK_GPU priority 4.
+        reviewer_open_items: >
+          Principal Reviewer (2026-08-18) accepted PCIe two-regime (1.04% reproduced from
+          raw) and the routing/permutation-operator direction for v2 preregistration;
+          flagged ProfileKNN as MORE_TESTS (prefill-only interpolation 18.2% > 15%; the
+          aggregate 10.9% is inflated by 18/18 decode exact-token lookups) and fixed
+          tau_route as DIAGNOSTIC_ONLY (2 effective structural points). These re-fits are
+          NOT done here; they belong to cal_model_form_repair_v2 preregistration.
     claims_unlocked_on_completion:
       - "模型形式缺陷已修正, 且變更經事前登記"
     claims_still_forbidden:
