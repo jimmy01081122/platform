@@ -50,15 +50,20 @@ make verify-evidence          # 預期：evidence integrity: OK (4423 files)
 make test                     # 預期：0 failed
 make doctor                   # 預期：workspace_contract: pass
 
-grep -A5 'id: TRACK_GPU' governance/stage_ledger.yaml
+grep -A5 'id: TRACK_GPU$' governance/stage_ledger.yaml
 # 確認 measurement_priority 與目前要做的項目一致
+
+# 量測 contract 是否已凍結（TRACK_GPU_PREP 的產出）
+test -f experiments/specs/gpu_measurement_contract_v1.yaml && echo CONTRACT_OK
 ```
+
+**`CONTRACT_OK` 沒印出來**：只能執行優先序第 4、5 項（已由 A1 完整規格化）。第 1、2、3 項必須先跑 `TRACK_GPU_PREP`。
 
 ### 2.2 無 GPU endpoint 時
 
 回報 `BLOCKED_ON_GPU_ENDPOINT`，**不執行任何 SSH、server、GPU、vLLM 或 serving 指令**。
 
-此時仍可做的本機工作：凍結量測 contract、準備 exact argv、寫 parser 與 validator、跑 CPU fixture smoke、規劃 namespace。這些準備讓量測窗口不浪費。
+本機準備工作屬 `TRACK_GPU_PREP`（獨立 session，純 CPU）。**不要在本 session 內做**——那會讓本 session 累積大量與執行無關的設計上下文，違背每階段獨立 session 的目的。回報後結束。
 
 ### 2.3 取得 endpoint 後——read-only preflight（規格 §9.2）
 
@@ -120,13 +125,20 @@ TP/PP/EP    1 / 1 / 1
 
 權威清單在 `governance/stage_ledger.yaml` 的 `TRACK_GPU.measurement_priority`。摘要：
 
-| 序 | 目標 | 為什麼 |
-|---|---|---|
-| 1 | **掛載點 A2——MoE dispatch 資料搬運**（token permutation、gather/scatter） | 四個主線掛載點中**唯一完全沒有量測**者。沒有它，A2 的 break-even 不可計算 |
-| 2 | **掛載點 A6——長上下文 offloaded KV attention** | 完全無證據，資訊增益最高，且是 Hybe 類 GPU+專用單元系統的核心切入點 |
-| 3 | **sealed held-out 驗證集** | Stage A4 的前置。split 必須先 hash 封存 |
-| 4 | component service model 缺的 operand shape 與 concurrency 掃描點 | 依 A1 的殘差分析決定，見 A1 交接記錄的 `MEASUREMENT_GAPS` |
-| 5 | SERV-P0-25 tail-CI 補測 | 須從 request 0 重跑完整 10K，新 attempt ID，**不得接續任何既有部分進度** |
+| 序 | 目標 | 為什麼 | 就緒度 |
+|---|---|---|---|
+| 1 | **掛載點 A2——MoE dispatch 資料搬運** | 系統層搬運與控制結構完全沒有量測。沒有它，A2 的 break-even 不可計算 | 需 PREP 的 in-serving 儀測 |
+| 2 | **掛載點 A6——長上下文 offloaded KV attention** | 完全無證據，資訊增益最高，且是 Hybe 類 GPU+專用單元系統的核心切入點 | **最大缺口**，runner 全部要新寫 |
+| 3 | **sealed held-out 驗證集** | Stage A4 的前置。split 必須先 hash 封存 | 封存屬 PREP 步驟 5 |
+| 4 | component service model 缺的 operand shape 與 concurrency 掃描點 | 依 A1 的殘差分析決定，見 `calibration/fits/v2/measurement_gaps.json` | **今日即可執行** |
+| 5 | SERV-P0-25 tail-CI 補測 | 須從 request 0 重跑完整 10K，新 attempt ID，**不得接續任何既有部分進度** | **今日即可執行** |
+
+**優先序（資訊增益）與就緒度幾乎相反。** 第 4、5 項已由 A1 完整規格化，今天就能跑；第 1、2 項要寫最多程式。因此：
+
+- 正常情況下，`TRACK_GPU_PREP` 先完成，本軌拿到凍結的 contract 直接執行；
+- 若 endpoint 早於 PREP 完成而出現，**先跑第 4、5 項**，不要為了「按順序」而閒置，也不要在窗口內臨時設計第 1、2 項的探針。
+
+**關於第 1 項的一個修正**：`evidence/` 內有 56 筆 `gather_scatter` 記錄，但那是 `benchmark.py:463` 的**同裝置合成 proxy**（`x.index_select(0,idx).index_select(0,inv)` 作用在 `torch.randn` 上），只給 execute 項，不含 `T_prepare`/`T_queue`/`T_sync`/`T_move`。所以要補的是 in-serving 儀測，不是重寫 kernel benchmark。
 
 **為什麼長上下文是關鍵**：Mixtral 每 token 的 KV 是 128 KiB（實測：block 2,097,152 B / 16 tokens）。1M context 需約 128 GiB，**超過 96 GB VRAM**，因此長上下文必然強制 KV offload——這正是候選處理器可能發揮作用的區間，而目前完全沒有量測。
 
@@ -166,11 +178,15 @@ evidence/gpu_measurements/      q0 fitted parameters 與 q1 validation report
 
 ## 6. 工作步驟
 
-### 步驟 1 — 凍結量測 contract
+### 步驟 1 — 確認量測 contract 已凍結
 
-在 dispatch 之前寫下：目標、自變量、樣本數、重複次數、停止條件、失敗條件、預期產出欄位、exact argv。
+在 dispatch 之前必須有：目標、自變量、樣本數、重複次數、停止條件、失敗條件、預期產出欄位、exact argv、時間估計。
 
-這一步在**沒有 endpoint 時也能做**，而且應該先做完。
+**這一步不屬於本軌。** 它是 `TRACK_GPU_PREP`（純 CPU，無前置）的產出，位於 `experiments/specs/gpu_measurement_contract_v1.yaml`。
+
+本軌開始時檢查該檔存在且涵蓋要跑的項目。**不存在就停下**，回報需要先跑 `TRACK_GPU_PREP`——不要在 GPU 窗口內臨時設計量測，那正是窗口被浪費的主要方式。
+
+例外見 §4.2：優先序第 4、5 項已由 A1 完整規格化，可在 contract 尚未完成時先執行。
 
 ### 步驟 2 — Preflight（見 §2.3）
 

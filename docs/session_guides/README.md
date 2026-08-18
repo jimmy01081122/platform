@@ -30,9 +30,13 @@
 | **B2** 參數化候選處理器 | [`STAGE_B2_ACCELERATOR_MODEL.md`](STAGE_B2_ACCELERATOR_MODEL.md) | 否 | 規則為主 | A3 |
 | **C1** co-design DSE + break-even | [`STAGE_C1_CODESIGN_DSE.md`](STAGE_C1_CODESIGN_DSE.md) | 否 | 規則為主 | A4 + B2 |
 | **C2** HW0 需求 + LM18 handoff | [`STAGE_C2_HW0_RTL_HANDOFF.md`](STAGE_C2_HW0_RTL_HANDOFF.md) | 否 | 規則為主 | C1 |
-| **GPU 軌** 實機量測 | [`TRACK_GPU_MEASUREMENT.md`](TRACK_GPU_MEASUREMENT.md) | **是** | 可執行 | Stage 0，可並行 |
+| **GPU 前置軌** 量測準備 | [`TRACK_GPU_PREP.md`](TRACK_GPU_PREP.md) | 否 | 可執行 | Stage 0，可並行 |
+| **GPU 軌** 實機量測 | [`TRACK_GPU_MEASUREMENT.md`](TRACK_GPU_MEASUREMENT.md) | **是** | 可執行 | GPU 前置軌 |
+| **統籌** 排程與驗收 | [`SESSION_ORCHESTRATOR.md`](SESSION_ORCHESTRATOR.md) | 否 | 可執行 | 隨時 |
 
-**A1 與 A2 沒有相依關係，可由兩個 session 並行執行。** B1 與 B2 同理。
+**A1 與 A2 沒有相依關係，可由兩個 session 並行執行。** B1 與 B2 同理。**A2 與 GPU 前置軌同理**——兩者都無前置、都不需要 GPU，是目前可以立刻開的兩個 session。
+
+**GPU 軌拆成兩半是刻意的。** GPU endpoint 是有時限的資源，其他都不是。前置軌（純 CPU）把 contract 凍結、探針寫好、parser 測過，量測軌拿到 endpoint 後就只剩執行。這樣拆的另一個理由是量測軌的 session 可以維持很短的上下文——它繼承凍結的 contract，不需要重新推導任何設計。
 
 **深度說明**：「可執行」代表指引含具體檔案路徑、已驗證的數字與逐步做法，可直接動手。「規則為主」代表目標、約束、驗收與交接格式已固定，但實作細節依賴尚未存在的前階段結果，標為待補——這比硬寫出日後要大改的細節誠實。
 
@@ -47,6 +51,8 @@
 **2. 只讀本階段的指引。**
 
 不要讀其他階段的指引。理由是避免提前套用後期階段的假設，或把後期尚未成立的結論當成已成立。需要背景時讀根規格 `PLATFORM_FLOW_SPECIFICATION.md`，那是唯一的權威來源。
+
+> **唯一的例外是統籌 session**，它必須看得到全局才能排程。但它只讀各份的第 1 節（目標）、第 2 節（進入檢查）、第 7 節（claim boundary），不讀第 4、5 節的執行細節——讀了只會讓統籌 session 變長，而對排程毫無幫助。作為交換，它不得執行任何階段工作，也不得修改 ledger 的 `stages:` 區塊。
 
 **3. 狀態改為 `COMPLETE` 前，`verification` 每一條都必須實際執行並貼上實際輸出。**
 

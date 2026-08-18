@@ -6,6 +6,43 @@
 
 ---
 
+## 2026-08-18 · GPU 量測軌拆段 + 統籌 session
+
+**Session 目標** 回應 owner 兩點：(1) GPU 軌執行前先把量測目標與程式準備好，避免 GPU 閒置——需要先跑哪些 stage；(2) 另開一個統籌 session 集中排程與驗收，避免長上下文影響判斷。
+
+**答 (1)：GPU 前不需要跑任何既有 stage，需要的是一條新的純 CPU 前置軌。** 盤點五項量測的就緒度發現它與資訊增益順序**幾乎相反**——優先序 1（A2 dispatch）、2（A6 長上下文）要寫最多程式，4、5 今天就能跑。因此新增 `TRACK_GPU_PREP`（純 CPU）：凍結 contract、寫長上下文 runner 與 dispatch 儀測、CPU smoke test、封存 sealed split、追 GAP-5。`TRACK_GPU` 改以「contract 已凍結」為前置（優先序 4/5 例外）。
+
+**答 (2)：** 新增 `SESSION_ORCHESTRATOR.md` + ledger 頂層 `orchestrator:` 區塊。統籌 session 讀取權限與其他 session 相反（可讀全部指引但只讀第 1/2/7 節），換來不得執行工作、不得改 `stages:` 的約束。
+
+**盤點時修正兩項事實**
+```text
+A2 掛載點  非「無任何量測」：evidence 有 56 筆 gather_scatter，但是 benchmark.py:463
+           的同裝置合成 proxy（index_select 來回作用於 torch.randn），只給 execute 項。
+           準確敘述：execute 側有合成 kernel proxy，系統層搬運與控制結構未量測。
+GAP-5      可能不需 GPU：measurement_gaps.json 第一條解法是純讀 harness 程式碼，
+           線索在 benchmark.py:440-441。前置軌須先試這條再排量測。
+A6 缺口     全倉庫 grep max_model_len/cpu_offload_gb/swap_space/kv_offload 零命中，
+           runner/config/parser 全部要新寫，是最大準備缺口。
+```
+
+**新增／修改**
+```text
+新增 docs/session_guides/TRACK_GPU_PREP.md
+     docs/session_guides/SESSION_ORCHESTRATOR.md
+修改 governance/stage_ledger.yaml（新增 TRACK_GPU_PREP 列、orchestrator: 區塊、規則 5；
+       TRACK_GPU 加前置與 readiness）
+     docs/session_guides/{README,TRACK_GPU_MEASUREMENT}.md
+     docs/status/{CURRENT_STATUS,VALIDATION_MATRIX,DECISION_LOG,AGENT_HANDOFF}.md
+```
+
+**驗證** `make test` 317 Python + 14 CTest、0 失敗；`make verify-evidence` 4423/4423；`make doctor` pass；ledger YAML 可解析（11 stages + orchestrator）。未動任何原始碼或 evidence。
+
+**新增決策** P-011。
+
+**可立即並行的兩個 session** A2（解鎖最多下游，定義 IR 評估點 schema）與 GPU 前置準備軌（endpoint 是唯一有時限資源）。
+
+---
+
 ## 2026-08-18 · 第三方 routing 語料稽核與補抓
 
 **Session 目標** 確認 `core12345/MoE_expert_selection_trace` 的可使用性與完整性；owner 懷疑先前有不完整或錯誤使用。

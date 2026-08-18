@@ -15,6 +15,7 @@ updated_by_session: STAGE_0
 #      並把實際輸出填入 last_verified.actual。
 #   4. 進入某階段前, 必須實際重跑該階段 preconditions 列出的指令,
 #      不得以「上一個 session 說通過了」代替。
+#   5. 統籌 session 只寫檔尾的 orchestrator: 區塊, 同樣不得改 stages: 的任何一列。
 #
 # status: NOT_STARTED | IN_PROGRESS | COMPLETE | BLOCKED
 # guide_completeness: EXECUTABLE | RULES_ONLY
@@ -284,6 +285,52 @@ stages:
       - "以 cell count 直接宣稱實體面積, 功耗或產品可行性"
       - "把既有 STA 結果 (pre-layout, wire-load model, ideal clock) 當作 sign-off"
 
+  - id: TRACK_GPU_PREP
+    title: GPU 量測前置準備軌 (純 CPU)
+    status: NOT_STARTED
+    guide: docs/session_guides/TRACK_GPU_PREP.md
+    guide_completeness: EXECUTABLE
+    gpu_required: false
+    parallel: true
+    parallel_note: 無前置, 可立即開始, 可與 STAGE_A2 並行。
+    purpose: 讓 GPU 窗口開啟時只剩執行, 不需要做任何設計決定。
+    phases:
+      - id: PREP-1
+        depends_on: none
+        scope: 量測 contract 骨架、長上下文 runner、in-serving dispatch 儀測、GAP-5 程式碼追查、sealed split 封存、parser 與 fixture
+      - id: PREP-2
+        depends_on: STAGE_A2
+        scope: 依 A2 的 IR 評估點 schema 定案探針輸出欄位
+        rationale: 量測 schema 先於消費 schema 凍結正是 GAP-4 的成因, 不得自行猜欄位
+    preconditions:
+      - stage: STAGE_0
+        required_status: COMPLETE
+      - command: make verify-evidence
+        expect: "evidence integrity: OK (4423 files)"
+      - path: calibration/fits/v2/measurement_gaps.json
+        note: A1 產出的 6 項缺口, 是量測優先序第 4 項的完整規格
+    deliverables:
+      - experiments/specs/gpu_measurement_contract_v1.yaml
+      - measurement/probes/
+      - measurement/parsers/
+      - tests/fixtures/gpu_prep/
+      - calibration/sealed/<id>_manifest.json
+      - GAP-5 結論文件
+      - 窗口計畫 (各優先序總時數與可行組合)
+    verification:
+      - assertion: 五項量測各有完整 contract, time_estimate 全部有值
+      - assertion: 長上下文 runner 與 dispatch 儀測皆在 CPU 上完整跑通並通過自己的 validator
+      - assertion: 每個 parser 至少一個正常 fixture 與一個失敗 fixture, 失敗案例確實報錯
+      - assertion: sealed manifest 含 split 定義與逐筆 SHA-256, 封存時間已記錄
+      - command: make test
+        expect: "0 failed (通過數應上升, 下降或失敗即不通過)"
+    claims_unlocked_on_completion:
+      - "量測 contract 已凍結"
+      - "探針程式在 CPU fixture 上的行為正確性"
+    claims_still_forbidden:
+      - "任何 GPU 效能主張 (本軌未跑過 GPU)"
+      - "把 CPU smoke test 通過說成量測可行性已驗證"
+
   - id: TRACK_GPU
     title: GPU 量測軌
     status: NOT_STARTED
@@ -295,23 +342,48 @@ stages:
     preconditions:
       - stage: STAGE_0
         required_status: COMPLETE
+      - stage: TRACK_GPU_PREP
+        required_status: COMPLETE
+        rationale: >-
+          GPU 窗口是有時限資源。未凍結 contract 就開窗, 浪費的不只是窗口,
+          還會產生無法使用的資料 —— GAP-4 即為前例。
+        exception: >-
+          若 endpoint 早於 PREP 完成而出現, 可先執行量測優先序 4 與 5
+          (皆已由 A1 完整規格化, 不需新探針), 但 1 與 2 仍須等 PREP 完成。
       - note: 需要 owner 提供有效的 GPU endpoint。無 endpoint 時只做本機準備工作。
     measurement_priority:
       - id: 1
         target: 掛載點 A2 —— MoE dispatch 資料搬運
-        reason: 主線掛載點中唯一完全無量測者
+        reason: >-
+          系統層搬運與控制結構完全無量測。既有的 gather_scatter 探針
+          (benchmark.py:463, evidence 內 56 筆) 是同裝置合成 proxy,
+          只給 execute 項, 不含 T_prepare/T_queue/T_sync/T_move。
+        readiness: 需 PREP 寫 in-serving 儀測
       - id: 2
         target: 掛載點 A6 —— 長上下文 offloaded KV attention
-        reason: 完全無證據, 資訊增益最高, 且是 Hybe 類系統的核心切入點
+        reason: >-
+          完全無證據, 資訊增益最高, 且是 Hybe 類系統的核心切入點。
+          第三方語料最長 query 約 721 tokens, 無法提供此區間 ——
+          本軌是唯一來源 (見 P-010)。
+        readiness: >-
+          最大缺口。全倉庫 grep max_model_len / cpu_offload_gb / swap_space /
+          kv_offload 零命中, runner 與 parser 全部要新寫。
       - id: 3
         target: sealed held-out 驗證集
         reason: STAGE_A4 的前置
+        readiness: >-
+          split 必須在量測之前封存 —— 已產生並看過的資料無法誠實封存。
+          設計與封存屬 PREP 步驟 5 (即 A4 步驟 1–2)。
       - id: 4
         target: component service model 缺的 operand shape 與 concurrency 掃描點
-        reason: 依 A1 殘差決定
+        reason: 依 A1 殘差決定, 規格見 calibration/fits/v2/measurement_gaps.json
+        readiness: >-
+          今日即可執行, 6 項缺口皆已寫明要掃什麼。
+          GAP-5 可能由讀 harness 程式碼解決而不需 GPU, PREP 須先試。
       - id: 5
         target: SERV-P0-25 tail-CI 補測
         reason: 須從 request 0 重跑完整 10K, 新 attempt ID, 不得接續舊進度
+        readiness: 今日即可執行, 只缺 run plan 與時間估計
     verification:
       - assertion: canonical domain 相符, 或已建立獨立 platform profile 與獨立 calibration package
       - assertion: 未干擾任何既有 serving 或 GPU process
@@ -319,3 +391,35 @@ stages:
     claims_still_forbidden:
       - "跨平台套用 calibration 參數"
       - "以量測數量代替量測品質"
+
+# ---------------------------------------------------------------------------
+# 統籌 session 專用區塊。
+#
+# 統籌 session 負責排程與驗收, 不執行任何階段工作。
+# 它只能寫本區塊, 不得修改上方 stages: 的任何一列 ——
+# 否則規則 1 (只有該階段的 session 能改自己那一列) 形同虛設,
+# ledger 也就不再是「該階段自己驗證過」的紀錄。
+#
+# 發現某一列狀態不對: 記入 discrepancies, 重開該階段的 session 修正。
+#
+# 指引: docs/session_guides/SESSION_ORCHESTRATOR.md
+# ---------------------------------------------------------------------------
+orchestrator:
+  last_review: null
+  verified_stages: []
+  discrepancies: []
+  next_dispatch:
+    - guide: docs/session_guides/STAGE_A2_MEASURED_TO_IR.md
+      reason: >-
+        解鎖最多下游 (A3 / A4 / B1 / B2 / PREP-2 共五項), 且無前置、不需 GPU。
+        另 A2 定義 IR 評估點 schema, 是新量測輸出欄位的唯一依據。
+      parallel_with: [TRACK_GPU_PREP]
+    - guide: docs/session_guides/TRACK_GPU_PREP.md
+      reason: >-
+        GPU endpoint 是有時限資源, 其他都不是。只要 endpoint 可能出現,
+        本軌就該已在跑, 而不是等 endpoint 到了才開始寫探針。
+      parallel_with: [STAGE_A2]
+  owner_decisions_pending: []
+  critical_path: >-
+    A2 -> A3 -> B2 -> C1 -> C2, 且 C1 需要 A4, A4 需要 GPU endpoint。
+    因此 GPU 在關鍵路徑上, 不是支線。

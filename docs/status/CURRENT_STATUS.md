@@ -24,7 +24,9 @@ current stage : Stage 0 完成；A1 完成（模型形式修復，FIT 側殘差�
 | B2 參數化候選處理器 | NOT_STARTED | 指引為 RULES_ONLY |
 | C1 co-design DSE | NOT_STARTED | 指引為 RULES_ONLY |
 | C2 HW0 + LM18 handoff | NOT_STARTED | 指引為 RULES_ONLY |
-| GPU 量測軌 | NOT_STARTED | 可與 A/B/C 並行 |
+| GPU 前置準備軌 | NOT_STARTED | **純 CPU、無前置，可立即開** |
+| GPU 量測軌 | NOT_STARTED | 需前置軌完成（優先序 4/5 例外，見下） |
+| 統籌 session | — | 排程與驗收，隨時可開 |
 
 權威狀態記錄為 `governance/stage_ledger.yaml`；本文件是人類可讀摘要，衝突時以 ledger 為準。
 
@@ -72,9 +74,29 @@ cell 達標  1/11 -> 21/21   （專案自訂門檻 k* = 14）
 1. **`w3_*` 分析尚未用新語料重跑**——`data/canonical/moe_routing_v1/` 下 13 份結果仍是 60 檔、多數 cell n=3 的產物。引用時一律標註 `n=3 per cell, below own k*=14, pending C1 re-run`。這是 C1 的第一件事。
 2. **長上下文無解**——全資料集單一 query 最長約 721 tokens，距 1M context 三個數量級，且**無法靠補抓解決**。長上下文 routing 證據只能自行量測，這使 GPU 軌的長上下文量測成為唯一來源。
 
+## GPU 量測就緒度（2026-08-18 盤點）
+
+五項量測的**資訊增益順序與就緒順序幾乎相反**：
+
+```text
+序 目標                        就緒度
+1  A2 dispatch 資料搬運        需新寫 in-serving 儀測
+2  A6 長上下文 KV attention    最大缺口：runner/config/parser 全部要新寫
+3  sealed held-out             split 須在量測前封存（已產生的資料無法誠實封存）
+4  component service 缺口      今日即可執行（A1 已完整規格化 6 項）
+5  SERV-P0-25 tail-CI          今日即可執行（只缺 run plan 與時間估計）
+```
+
+因此 GPU 軌拆為 `TRACK_GPU_PREP`（純 CPU，凍結 contract、寫探針、測 parser、封存 split）與 `TRACK_GPU`（拿到 endpoint 後純執行）。詳見 P-011。
+
+**兩項盤點時發現的事實修正**：
+
+1. **A2 掛載點不是「無任何量測」**——`evidence/` 有 56 筆 `gather_scatter`，但那是 `benchmark.py:463` 的同裝置合成 proxy（`index_select` 來回作用於 `torch.randn`），只給 execute 項。準確敘述：execute 側有合成 kernel proxy，系統層搬運與控制結構完全沒有量測。
+2. **GAP-5 可能不需要 GPU**——`measurement_gaps.json` 給了兩條解法，第一條「documentation of the cpu_calls↔launch-granularity mapping」是純讀程式碼的工作。線索在 `benchmark.py:440-441`（`route = base_route.repeat(concurrency)`，`expert_tokens = route.numel()`）對上 moe_replay 側的 `tokens / cpu_calls`。前置軌須先試這條再排量測。
+
 ## 已知缺口
 
-- **掛載點 A2（MoE dispatch 資料搬運）與 A6（offloaded KV 上的 attention）完全沒有量測。** 兩者都在 GPU 軌的最高優先序；A6 因語料缺乏長上下文而升級為唯一可行來源。
+- **掛載點 A2（系統層 dispatch 搬運）與 A6（offloaded KV 上的 attention）沒有量測。** 兩者都在 GPU 軌的最高優先序；A6 因語料缺乏長上下文而升級為唯一可行來源，且全倉庫 grep `max_model_len`/`cpu_offload_gb`/`swap_space`/`kv_offload` **零命中**——runner 全部要新寫。
 - 長上下文與高並發區間沒有量測；目前所有 expert residency 結論都限於單請求、eager、159 tokens、`max_num_seqs=1`。
 - `accelerator/`、`dse/` 目前只有 README 骨架，無實作。`calibration/` 現有 `refit_v2.py` 與 `fits/v2/` 輸出（A1 產出），仍缺 A4 的 sealed held-out 實作。
 - A1 殘差分析發現的新缺口（見 `calibration/fits/v2/measurement_gaps.json`）：dequant 延遲的真正驅動變數是 expert 權重位元組數而非 token 數，本階段量測無法把兩者分離；小尺寸 PCIe 傳輸在多 stream 下仍有未建模的延遲成長（大尺寸區間已驗證修復，小尺寸區間相反方向的殘留效應是新發現，不在本階段四項缺陷登記範圍內）；moe_replay 的 `cpu_calls`/`expert_tokens` 兩種量測慣例之間有約 8 倍的正規化落差，尚未釐清換算關係。
@@ -82,4 +104,13 @@ cell 達標  1/11 -> 21/21   （專案自訂門檻 k* = 14）
 
 ## 下一步
 
-開新 session 執行 A2（measured raw → 九類 Canonical IR，可與 A1 並行但 A1 已完成故可直接排隊），指引為 `docs/session_guides/STAGE_A2_MEASURED_TO_IR.md`。A1 殘差分析中列出的量測缺口（dequant weight-bytes、小尺寸 PCIe stream 交互作用、moe_replay token 正規化）建議餵給 `TRACK_GPU` 的量測優先序第 4 項。
+**現在可以同時開兩個 session，兩者無相依、都不需要 GPU：**
+
+| session | 指引 | 為什麼 |
+|---|---|---|
+| **A2** measured → 九類 IR | `docs/session_guides/STAGE_A2_MEASURED_TO_IR.md` | 解鎖最多下游（A3/A4/B1/B2/PREP-2 共五項）。且 A2 定義 IR 評估點 schema，是新量測輸出欄位的唯一依據——GAP-4 正是缺這個而產生的 |
+| **GPU 前置準備軌** | `docs/session_guides/TRACK_GPU_PREP.md` | GPU endpoint 是有時限資源，其他都不是。只要 endpoint 可能出現，本軌就該已在跑 |
+
+**關鍵路徑** `A2 → A3 → B2 → C1 → C2`，且 C1 需要 A4、A4 需要 GPU endpoint——**GPU 在關鍵路徑上，不是支線**。
+
+排程與跨 session 驗收可另開統籌 session（`docs/session_guides/SESSION_ORCHESTRATOR.md`），它不執行階段工作，只排程、獨立重跑 verification、整理需要 owner 裁決的事。

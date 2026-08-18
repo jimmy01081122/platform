@@ -74,11 +74,26 @@
 | 掛載點 | 功能 | 優先序 | 證據狀態 |
 |---|---|---|---|
 | A1 | routing / gating 決策計算 | 主 | 有 routing trace（`[159,32,2]`）與 CTRL-PX0-*-routing |
-| A2 | MoE dispatch 資料搬運 | 主 | **NOT_RUN** — 無任何量測 |
+| A2 | MoE dispatch 資料搬運 | 主 | **PARTIAL** — 見下方修正 |
 | A3 | transfer 排程 / DMA descriptor | 主 | 有 transfer 微基準 v1–v4 與 `transfer_events` |
 | A4 | expert 解壓縮 / 壓縮搬運 | 主 | 有 `expert_decompressor.sv` 合成結果與 `w3_compression_dse` |
 | A5 | KV block 管理 / offload | 次 | 有 SWAP-K1/K2/K5，但事件 `block_size=0`（`LIMITED`） |
-| A6 | offloaded KV 上的 attention | 次 | **NOT_RUN** — 無任何量測 |
+| A6 | offloaded KV 上的 attention | 次 | **NOT_RUN** — 無任何量測（全倉庫 grep `max_model_len`/`cpu_offload_gb`/`swap_space`/`kv_offload` 零命中） |
+
+**A2 掛載點的修正（2026-08-18，GPU 前置準備盤點時發現）**
+
+本表先前記為「無任何量測」，不精確。實際上 `evidence/` 有 56 筆 `gather_scatter` 記錄。但那個探針（`measurement/gpu_run_package_v2/scripts/benchmark.py:463`）是
+
+```python
+def gather_scatter(x=activations, idx=order, inv=inverse):
+    return x.index_select(0, idx).index_select(0, inv)
+```
+
+——作用在 `torch.randn` 合成張量上的**同裝置** gather 後反向 gather，是 shape-faithful 的獨立 kernel 計時，**沒有任何跨裝置搬運**。
+
+因此準確的敘述是：**execute 側有合成 kernel proxy；系統層的 dispatch 搬運與控制結構（`T_prepare`/`T_queue`/`T_sync`/`T_move`）完全沒有量測。**
+
+這個修正改變量測計畫——要補的是 in-serving 儀測，不是從零寫一個 gather/scatter kernel benchmark。
 
 ## 後續階段（全部尚未執行）
 
