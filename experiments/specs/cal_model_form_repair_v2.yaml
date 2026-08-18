@@ -75,8 +75,9 @@ candidate_a_pcie_two_regime:
       overhead: "{ alpha_ms alpha_d, beta_ms_per_extra_stream beta_d }"
     total_coefficients: "2 directions × 4 = 8"
   physical_constraints:
+    # 依 OWNER_RESOLUTION 2026-08-18 收緊：移除 clamp 選項，一律 hard-fail。
     - "BW_d > 0 且 A_d >= 0（bulk 線性擬合非物理即 raise，沿用 _line_fit 契約）"
-    - "alpha_d >= 0 且 beta_d >= 0（overhead 不得為負；擬合出負值即 clamp 到 0 並在殘差報告標注，或若整體斜率為負則視為模型不成立並補 addendum）"
+    - "alpha_d >= 0 且 beta_d >= 0。**A_d < 0 / BW_d <= 0 / alpha_d < 0 / beta_d < 0 一律 hard-fail (raise CalibrationError)，不 clamp、不靜默降級。** 日後若要 constrained fit（例如非負最小平方），須先補 addendum 再實作。"
   fit_protocol:
     bulk: >
       只用 S=1 且 bytes >= bulk_min_bytes (22020096 = 21 MiB) 的 calibration 點做
@@ -376,3 +377,77 @@ commitments:
   - "任一 candidate 若未達已登記門檻，記為 INSUFFICIENT 並開量測缺口，不放寬門檻、不挑資料。"
   - "登記的模型形式在資料上不成立而需改採未登記形式時，先補 addendum 再改。"
   - "A1 維持 IN_PROGRESS 直到 v2 refit 完成並更新 ledger；本檔完成不等於 A1 完成。"
+
+# ===========================================================================
+# OWNER_RESOLUTION addendum
+# ===========================================================================
+# 本 addendum 記錄 owner 對三個 owner_review_points 的裁決。
+# 硬規則：implementation / refit 只能在本 addendum commit 完成之後開始。
+# 本 addendum commit 本身不得包含任何 implementation / refit / v3 輸出。
+owner_resolution:
+  id: OWNER_RESOLUTION_2026_08_18
+  resolved_at_utc: "2026-08-18T15:47:13Z"
+  resolved_by: owner
+  gate: >
+    implementation / refit 不得在本 addendum commit 完成前開始。本 commit 僅含
+    本 addendum 與其連帶的 spec 收緊（candidate_a physical_constraints 移除 clamp），
+    不含任何 implementation / refit / calibration/fits/v3 輸出。
+  A1_status: IN_PROGRESS
+  no_calibrated_pass: true
+
+  candidate_a_pcie_two_regime:
+    decision: APPROVED
+    clarifications:
+      - "S = intra-object stream partition count（單一 object 內把 buffer 切成 S 塊、發在 S 條 stream）。"
+      - "multi-object copy concurrency 是**不同的量**，屬 simulator resource contention，不得用 S 表示。"
+      - "expert / KV 單一 object 的 production latency 一律用 S=1。"
+      - "S>1 的 intra-object production prediction = UNSUPPORTED（predict() 對 S>1 production 查詢回報 UNSUPPORTED）。"
+      - "B1 / C1 仍可掃 multi-object copy concurrency，但那走 simulator resource-contention 模型，**不得借用 S 這個軸**。"
+    tightening:
+      - "移除 alpha/beta 的 negative-coefficient clamp 選項。"
+      - "A_d < 0 / BW_d <= 0 / alpha_d < 0 / beta_d < 0 一律 hard-fail（raise CalibrationError），不 clamp、不靜默降級。"
+      - "日後若要 constrained fit（如非負最小平方），須先補 addendum 再實作。"
+    supersedes: "candidate_a_pcie_two_regime.physical_constraints 的 clamp 措辭（已於本 commit 同步收緊）。"
+
+  candidate_b_component_local_predictor:
+    decision: APPROVED_WITH_STRENGTHENING
+    retained:
+      - "原 prefill-only LOOWO per-op MAPE < 15% 門檻保留。"
+    added_genuine_non_exact_interpolation_gate:
+      rule: >
+        在 prefill-only LOOWO 之上，**排除 distance==0（exact-shape）的預測點**後，
+        selected_expert / grouped_gemm / gather_scatter 各自的 MAPE 必須 < 15%。
+        這確保通過門檻的是真正的內插，而非命中訓練點的 lookup。
+      insufficient_evidence_clause: >
+        若排除 exact-shape 後，non-exact 子集不足以評估（樣本過少）→ 判
+        INSUFFICIENT_EVIDENCE，開 V2-GAP-B（prefill shape sweep）。**不得**用
+        aggregate 或 decode 點回填補足這個子集。
+      losro_role: >
+        LOSRO（leave-one-shape-region-out）必須報告，但只作 extrapolation stress
+        metric，**不得與 interpolation gate 混合**、不得用來湊 interpolation 門檻。
+    consequence: >
+      candidate_b 的接受判準自本 addendum 起為「原 LOOWO<15% AND non-exact
+      interpolation gate<15%（三 op 各自）」；任一不滿足或 non-exact 子集不足 →
+      ProfileKNN 僅 provisional/diagnostic，不升格為正式 component 模型。
+
+  candidate_c_replay_operator_graph:
+    decision: APPROVED
+    directives:
+      - "顯式 operator graph 可實作（對齊 window_replay(): 2×argsort + 3×GEMM + gather + scatter）。"
+      - "固定 tau_route 維持 DIAGNOSTIC_ONLY。"
+      - "缺 T_sort / T_inverse_sort 量測時，replay 必須標 BLOCKED_ON_MEASUREMENT / INSUFFICIENT，不得假裝 FIT-closed。"
+      - "現在不開 GPU；先完成既有 evidence 可做的 implementation / evaluation。"
+    conditional_future_measurement:
+      allowed: >
+        若之後 A1 closure 確實需要 sort/permute（V2-GAP-C）或 prefill shape sweep
+        （V2-GAP-B），可開 targeted FIT-side GPU measurement。
+      hard_constraint: >
+        此類 targeted FIT-side 量測資料**不得與 STAGE_A4 sealed held-out 混用**
+        （沿用 P-005 的乾淨度契約：FIT 用途的新量測仍是 FIT 側，A4 的 held-out
+        必須是另行封存、未被模型開發碰過的資料）。
+
+  overall:
+    - "A1 remains IN_PROGRESS。"
+    - "No calibrated PASS。"
+    - "本 addendum commit 不含 implementation / refit。"
+    - "本 addendum commit 完成後，方可依 execution_plan_after_approval 實作三候選並輸出 calibration/fits/v3/（不覆寫 v2），run manifest 綁最終 commit hash。"
