@@ -1,0 +1,37 @@
+{
+  "assignment_sha256": "a52a40204ad0bcf9128f46455e4fa90c9d47f1103a2c53219302067fcbd2fad0",
+  "cell_counts": {
+    "fit": 1,
+    "holdout": 1,
+    "validation": 0
+  },
+  "cell_total": 2,
+  "cells": [
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "7d63fe2f0b2f1eaa7f552f6eb32fdb244a7314645d6dbdf4f212c304d45b70a2",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=4096|copy_streams=4|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 4096,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "sha256": "8a2148665ccef67ed382048990ef1e1ede6df733eb57cb211bda10d3982f3c62",
+      "split": "holdout"
+    }
+  ],
+  "id": "fixture",
+  "schema_version": "sealed-holdout-manifest-v1",
+  "sealed_at": "2026-08-19T00:00:00+00:00",
+  "seed": "fixture-seed-v1"
+}

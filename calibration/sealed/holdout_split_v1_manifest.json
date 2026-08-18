@@ -1,0 +1,1135 @@
+{
+  "assignment_sha256": "b73da79cd040dca29f258910d6245de4a9e647137dc4005722ebd8b9b88a5f4b",
+  "cell_counts": {
+    "fit": 64,
+    "holdout": 20,
+    "validation": 18
+  },
+  "cell_total": 102,
+  "cells": [
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "4d55f0d3a3f59f00b31def66fa0fe9674abad99cb4363d2af0e1ced0f210a0d3",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "ba44fb75298c323630812d86c407bc09198104cd04e1a5519efb1076d1c8b771",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "82d7e998c0e833960a7679ae3b534c05cc1ce9402e88cf87affb05bb0f83cbf4",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "299c367c6a7fea43023420fecc819618e608b9038a9d53bd8cac97f3f8a3c528",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "0026303661c15b51db18c5028838acb9b68dcebc4ebe4c2dc758442065076276",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "b576bef3d3341406b6118f542c7508a3e4209c31cbeea822c27e497c7d148717",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "9795df1793727899f5816716e55e54cd16c690b0244a0e4a83eef689755c4a43",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=1024|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 1024,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "c19be8d41f65e510a16929868b61b48aef0b4db302ca2589944e15eda61cd796",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "9591921cc980966b6a75d5747d5a202388dc06141f3f806656d002da50a3de69",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "2e82cc02c52850c894ad86068b158ee8b85994ea165190314227181ab754d3e4",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "3c1998d5b776c2aa365b723955029848425609f5f6fcef8d48cc69c6a9c7b884",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "6d70df1bcb87e6d4bfd73c59b90645ac83e06b6d7f93501c21d6abfa5f661454",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "9ebcba2ea49b825520812d7eeeca7c5226aeac515336210cca399a798d02ddea",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "6df10f6c818f42af6bdf0f3520a07203e870e4c536d907167c143bc68a223447",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "4e3f8131450b20c1b675c42c1da0e194b7e6cd7c55bdc24660484595a00b0d5d",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=128|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 128,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "055419b2a4cfe718bd655e7484b0b6e66936305a642e11edb94d7677917252ef",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "e6dc94b594a452d052eab8a46bc271aaecbced40071b3219a095a8bf84216100",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "ebd98ad689b26822a95c4daee7c6a45e9945e6d847e6f3cac529852ce7b6e0a8",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "1d79610ff12d0ff9379ac184d5158ccf6641e4b36e9083e58ffdac0f1d780895",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "f2045de1a722b7029da931d7ef70338046b30d0508c4249fe1089fbe4ed27291",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "d9cde8583098c5fde0fd5e7b39a8521af4eb9c44fafc3393b35189150c80fdfe",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "c5ddf6397d3e07f069f006775da4eb3feca2ed24ef9b6ac207c1ff743843705c",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "758e701c2c88ed438754ee12171786d2a6009ed4c8980019277d942d595841ca",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=16|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 16,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "ca08c626d41080e818984c80979c127ef4be25c705981b645b14282e34da832a",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "ff82dbcffe2809400c76f088f367bd4c5e86418c2949ee64aea503b3886a9e94",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "480c93e31636505452bfa4425f85e14433ef6337451d6dfd51e41a5957e419f9",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "7e45490d2aeb98f59fe63a08a553404ddd02eb9de8a82334ec39296de27d2de7",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "7ce45b69028bf38adaf7ed545017e0705375eb538c7eb5af537201ee30817441",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "8a7f28db606ff9c6f06a56e34ed4cbc68a69105e418a9f502e9e5607b498b2c3",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "805b85616cd7b7ca9b9f1c098ae9cb5d2b561831468cf777e020d17affd3206e",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "5ee37b3285baf2c02e26a3d8b3686baf3a9bcd7e47706fab4989cced7663daac",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=256|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 256,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "a6ba30bd04d9a8e6a0173b4d933390b5acb9b6e7b3f55136e842de8bc79bb36a",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "f47808537cf992b6789084fea6ecf1202a5b6a2bf898a1a04c991a8524fd8962",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "57c3e3a67b331a242894e9866baaf5c3384b2720208fa231e62fce15993a48e6",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "9e77ef2aa5a9a33d2f122a371154117fd979bb99f6449136e01eec5f94003942",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "dbe66b9104eb6f8f665f7d99730f188384355bbf270e7e88b579976be89b8ba9",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "bff355e0bc84b33f018997cd0b2ad89c8087cec78b45d0f91b116ac8ee824e3f",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "4c65fd6645b70351dcdde193803c64b7627d182ba82738dd3a2209c4cbbd1447",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "885b6a31450e6085e2a3f0cde28d773e2ce7b89a172b17b3723ae45708c12ab0",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=32|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 32,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "9527a61b73b68d8bc6df8e5bae069700e47e90e8d290543c8cd181970d275cf2",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "3b4b83a6309ca637125aef121cf42b00ecdb861dbf3971941579fbcfafa9a7fa",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "eecc120e630bd13b318c9e0ed8a71e205f6b6b0cfd28ed7e240268863788a268",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "1ae81d29dfefdd05b76734326d1bc92ffbb3be427933dbb9ae0f430905bed189",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "6f87dadcb4b06af92353844dd60a459c9d91387de4c0e9b836b8143e8d124136",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "cc5c3607cd9d0d5ac69189f4473e9581421eb97808175d0dd513b44b6afa3bd5",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "d19c935ee4ee4307406432a251fc9cc349e66a61563845ec0cd696a2a3370aa3",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "1103e8db1e931fdac39e78df6472c2e52b9153f08443893ae8cb55f80c68d9c2",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=512|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 512,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "03a7eb6c5678eb09ee7913d55e03fbc22ae97734a57788c3dacd0fa3b30396c9",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "30b7b814573258af42b79cc236c6647f562ff3eceba42bd91ad2478486ac8da0",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "1c2bb7d0846d4d6f234bb88388364c2150082361408756cf3a75da33c3fe68ea",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "71366be2e49895290c4f9d16ddbe3d23db56f77113033a221b4452459df8fba9",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "5fdb4efdf30ec9aad013be4eb4a6fab45748700285d41491eb44fedd794d2bb6",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "7b07b228f20f1c96b5c3a785d87da3efd284c1c2009db2d385cf76a5d1b1786a",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "4b3b0c9984f35bc7eabc805807bd4d91682cc4c440c1cb01951a6571df0d6474",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "5c085a4ea074d54cd999e549673e451062b140e21761d1e4d502cf3dd792866b",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=64|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 64,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "df9d589865b3d91ccb013b47471ed654f1b080708f9a236be6f12c4f75f778c3",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=dequant|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "dequant",
+        "phase": "decode"
+      },
+      "sha256": "daa43bdbf45c097a0e1cf46fa4f1caaf46f558567ca7c95dd12e3e712f882459",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=dequant|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "dequant",
+        "phase": "prefill"
+      },
+      "sha256": "807246571e326e60a5e5a34a12f4e805288e01ace0c81014650b2f097ebf6f10",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=gather_scatter|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "gather_scatter",
+        "phase": "decode"
+      },
+      "sha256": "cad6574b4ddccac98b879fd1847d23e786a3397d4f069f5661c3242e1c7dd1c9",
+      "split": "validation"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=gather_scatter|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "gather_scatter",
+        "phase": "prefill"
+      },
+      "sha256": "3e5efbc21b7c7cd965c9b110d121912ce487b09f9c1f7b72dee9dbe493075847",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=grouped_gemm|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "grouped_gemm",
+        "phase": "decode"
+      },
+      "sha256": "00b9c1971cc1b37067417b898686a77ba84ebbe9bcd0efc46d73de81523b5530",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=grouped_gemm|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "grouped_gemm",
+        "phase": "prefill"
+      },
+      "sha256": "0b952c4b8cb9a4fdb99d0fb2d1b4e935aeb78f14da308829d145938cdc1086c1",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=selected_expert|phase=decode",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "selected_expert",
+        "phase": "decode"
+      },
+      "sha256": "62a8ba170b77db1724092b582a6b1e303b92847951e7dcc7b47ccb3767ea0e44",
+      "split": "fit"
+    },
+    {
+      "cell_id": "component_latency|expert_tokens=8|op=selected_expert|phase=prefill",
+      "metric": "component_latency",
+      "params": {
+        "expert_tokens": 8,
+        "op": "selected_expert",
+        "phase": "prefill"
+      },
+      "sha256": "f844b184d6e1645f8830ca4e58d2f76ee2284893ea500e57f99030b31652a2de",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "moe_replay_throughput|concurrency=1",
+      "metric": "moe_replay_throughput",
+      "params": {
+        "concurrency": 1
+      },
+      "sha256": "78bf9199fbfc40fdab6ac3e9c0d795b0d47c6bfc08a3ed81994a3311b70658ca",
+      "split": "fit"
+    },
+    {
+      "cell_id": "moe_replay_throughput|concurrency=2",
+      "metric": "moe_replay_throughput",
+      "params": {
+        "concurrency": 2
+      },
+      "sha256": "bfff9276af0f4fda3d957adebee1c7661408700d528c6f825ba13551ef73740e",
+      "split": "validation"
+    },
+    {
+      "cell_id": "moe_replay_throughput|concurrency=4",
+      "metric": "moe_replay_throughput",
+      "params": {
+        "concurrency": 4
+      },
+      "sha256": "dc6a3ddb64a26d984e20ecb0810047248c3320a572ab64e699e1706cb3f8be6c",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "moe_replay_throughput|concurrency=8",
+      "metric": "moe_replay_throughput",
+      "params": {
+        "concurrency": 8
+      },
+      "sha256": "af33c5fa36d3b827dd74ceb7d0427474e578c4d1fc799ae546343e7c9729779d",
+      "split": "validation"
+    },
+    {
+      "cell_id": "moe_replay_tpot|concurrency=1",
+      "metric": "moe_replay_tpot",
+      "params": {
+        "concurrency": 1
+      },
+      "sha256": "e0f78a37389ff1703719b5c82768abb7808e4d626e81a64efd2cb22b3672ff8c",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "moe_replay_tpot|concurrency=2",
+      "metric": "moe_replay_tpot",
+      "params": {
+        "concurrency": 2
+      },
+      "sha256": "811b0f7080952ed6c5f2a045f1b2208f120a2913062fc9fdd0cc9ee604ee31ad",
+      "split": "fit"
+    },
+    {
+      "cell_id": "moe_replay_tpot|concurrency=4",
+      "metric": "moe_replay_tpot",
+      "params": {
+        "concurrency": 4
+      },
+      "sha256": "b5589f348e5d9c2d9fa124d68eb642716e306f36c1d4cf41d8e4d704258dc1fd",
+      "split": "validation"
+    },
+    {
+      "cell_id": "moe_replay_tpot|concurrency=8",
+      "metric": "moe_replay_tpot",
+      "params": {
+        "concurrency": 8
+      },
+      "sha256": "6ee6eafb8557747063c89fcb57316c1fc0aadfc1763cccd7a4f84008e588b50d",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=1048576|copy_streams=1|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 1048576,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "sha256": "c9e7bccc88ee128f9db595a8163343049d2d7411b4f5f806988b97082ea330bd",
+      "split": "validation"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=1048576|copy_streams=1|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 1048576,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "sha256": "fa44ed492ae29da53d199f326e1122fb8821716be5c888b0835995e0adcb35ed",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=1048576|copy_streams=2|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 1048576,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "sha256": "420ffe1da157c3918229297e5671c77dc60e8f41852f5d2b8c05626b2a65b8ad",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=1048576|copy_streams=2|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 1048576,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "sha256": "30886e3240d7d6a61f2769fec259ef1256fe36ea6630ad67f0121bda5243924b",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=1048576|copy_streams=4|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 1048576,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "sha256": "a2139586650330f7d922c325c5c585a9fd6d5799bb2349ef21f5c0eadad7eddc",
+      "split": "validation"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=1048576|copy_streams=4|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 1048576,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "sha256": "5f5b394f3fad9666b72e10abeed80035d8c8f962ae65fd55e3e955d9e7806c10",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=16777216|copy_streams=1|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 16777216,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "sha256": "0d52ed7f6913091a8f906e593afdd79ecb7ba6a8c3b88b76a6f1cd146cbad5a6",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=16777216|copy_streams=1|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 16777216,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "sha256": "368936eca6bffea490d3ab00b06554e893fea4740c9efd01f94c7cefbe87fe23",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=16777216|copy_streams=2|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 16777216,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "sha256": "de77fe08a608f5d8576d52049f0f470f09b48ed524b6de254f0214eccdc0511a",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=16777216|copy_streams=2|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 16777216,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "sha256": "0e7d7eb5c4d1226b43fefed035da65cef8dcd4d875085d42d105de1cf799832a",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=16777216|copy_streams=4|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 16777216,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "sha256": "0f72e460353e5f25c223d4cafe53dfad172b8f15476a9d1e7dfe94f025e8d2bb",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=16777216|copy_streams=4|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 16777216,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "sha256": "736e586be9dd754e8159993d9e12cb20a478420a12044ac15dc25c531353d7cc",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=4096|copy_streams=1|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 4096,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "sha256": "cdc0036a5437ae0f33547452c19669c44ad9c6cf74c7fc5549b9bad6bb8b680f",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=4096|copy_streams=1|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 4096,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "sha256": "44a57e949b6c0a28ae7f82bbc3f7acdec1311abbc6e557b3587fd7c9379866d5",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=4096|copy_streams=2|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 4096,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "sha256": "4824feb1d6fdd902a3d714d80625aee9ba5222a21579e50bf0bd645c2e63d5d9",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=4096|copy_streams=2|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 4096,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "sha256": "ee05591acde4372582ee5332340a1bccdcd69292777d2a19a10dc36e48d39853",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=4096|copy_streams=4|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 4096,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "sha256": "8f2a232e50d96a759c0c986321aa2025ad3e5015ac77c66e2503a8d524867dd0",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=4096|copy_streams=4|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 4096,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "sha256": "1bd1d3b6a0e543472912023e35c883435058d4b6910d698f56ee37e984a53082",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=65536|copy_streams=1|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 65536,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "sha256": "e476aadce05c6c59a44730cbf40c65c9e383a385adcf42d85638709838715bea",
+      "split": "holdout"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=65536|copy_streams=1|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 65536,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "sha256": "aae605a990d89116a2d84898d04819af4fbaa3ab7ebdf08de07ecacb2e9c59e9",
+      "split": "validation"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=65536|copy_streams=2|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 65536,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "sha256": "7c75978cce6339a938abe0a73170edb207a5d383866fcf7deb2d9223dba36f08",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=65536|copy_streams=2|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 65536,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "sha256": "46ae3a31bcf114cdcaac831857463774886444b39808daf1a66ddae6f91cbb20",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=65536|copy_streams=4|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 65536,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "sha256": "b847da76080c78b45e27642821b7a7009e2963533b390e8dff53cf9169c59fa7",
+      "split": "validation"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=65536|copy_streams=4|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 65536,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "sha256": "03ef67cfff4fdf2b5b66b98ce3658f6314049b9a55410f5e7fbe8c1a117d8979",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=88080384|copy_streams=1|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 88080384,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "sha256": "6eb3ffcd3df59edadc062301b04212ef55d877f209569f66957576edaacb6bb1",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=88080384|copy_streams=1|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 88080384,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "sha256": "630bb966da0ae7ab5d24d4afce4effbe9ee5cbec2e8a0863d201011a5a462df6",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=88080384|copy_streams=2|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 88080384,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "sha256": "52bcea4c476b17f8ac6e3e7381d992604a31be45c37d4f84b382c24e2cd03368",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=88080384|copy_streams=2|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 88080384,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "sha256": "1a27d4411737de4688001101c3ddc381795ca682243292cc00721dafd5df3fd5",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=88080384|copy_streams=4|direction=d2h",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 88080384,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "sha256": "151f8a6eece9a1f6ffb5318ab16d883c0d9422d1b622d2667d4b630478b1381a",
+      "split": "fit"
+    },
+    {
+      "cell_id": "pcie_transfer_latency|bytes=88080384|copy_streams=4|direction=h2d",
+      "metric": "pcie_transfer_latency",
+      "params": {
+        "bytes": 88080384,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "sha256": "de5283f53f1a1415f1c620afd70911752493ddf580604c413b9aa91824683bb2",
+      "split": "holdout"
+    }
+  ],
+  "id": "a4_holdout_split_v1",
+  "outputs_note": "Measured values do not exist yet. This manifest seals the condition-cell -> split ASSIGNMENT. TRACK_GPU measures these cells; STAGE_A4 unseals the holdout cells and scores exactly once. The seal is the assignment, not the numbers -- which is what prevents leakage.",
+  "outputs_status": "PENDING_MEASUREMENT",
+  "purpose": "STAGE_A4 sealed held-out split, committed before GPU data exists",
+  "schema_version": "sealed-holdout-manifest-v1",
+  "sealed_at": "2026-08-18T20:02:27.915430+00:00",
+  "seed": "platform-a4-sealed-holdout-v1",
+  "split_ratio": {
+    "fit": 0.6,
+    "holdout": 0.2,
+    "validation": 0.2
+  },
+  "targets_defects": {
+    "defect_1_contention": "pcie multi-stream, small+large bytes",
+    "defect_2_component_shape": "expert_tokens sweep per component op",
+    "defect_3_replay_batching": "window_replay concurrency sweep",
+    "defect_4_small_transfer_floor": "small-size pcie points"
+  }
+}

@@ -26,6 +26,8 @@ swept        以範圍掃描處理
 | PA-005 | 15 點容量掃描的 LRU counters 完全決定性 | `measured` | `logical_policy: DETERMINISTIC_LRU_EMPTY_INITIAL_CACHE`，每點 `logical_demand_count = 10176`。後果：A3 的 SIM0 可用位元精確作為驗收 |
 | PA-006 | 控制決策率為 111–3073 decisions/s | `derived` | 由 OFF-E-PR3 各點的 demand 數與 wall time 推得。**僅適用於單請求、eager、159 tokens、`max_num_seqs=1`**，不得外推 |
 | PA-007 | q0/q1 量測本身可信（n=5、95% CI 寬約 0.0002 ms、跨 split 重現到小數第四位） | `measured` | `evidence/gpu_measurements/rtx-pro-6000-v3-20260718/`。後果：MAPE 失敗歸因於模型形式而非量測 |
+| PA-008 | 每個 decode step 的 routing width = 8（`selected_experts` flatten numel），故 gpu_service `expert_tokens` = 8 ×（decode token 位置數） | `measured` | `measurement/gpu_run_package_v2/workloads/windows.json` decode step `selected_experts` shape `[1,8]`。後果：GAP-5 的 8× 正規化差完全由此解釋（P-014、`calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md`） |
+| PA-009 | GPU 量測 contract 的 `time_estimate`（25/60/0/15/160 min）為估算，非實測 | `derived` | 由 PA-001/PA-003、SERV-P0-25 arrival rate 等推得（`experiments/specs/gpu_measurement_contract_v1.yaml`）。**不得當作實測耗時**；量測時須驗證，尤以 target_2（長 prefill+offload）與 target_5（arrival-bound ~2.65h）不確定度最高 |
 
 ## 待驗證（進入 A1–A4 前尚未成立）
 

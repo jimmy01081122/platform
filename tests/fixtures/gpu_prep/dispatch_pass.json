@@ -1,0 +1,37 @@
+{
+  "schema_version": "gpu-dispatch-inserving-result-v1",
+  "target": "A2_moe_dispatch_data_movement",
+  "backend": "hand_written_fixture",
+  "evidence": "cpu_smoke_test_not_measurement",
+  "groups": [
+    {
+      "concurrency": 2,
+      "steps_instrumented": 2,
+      "per_step": [
+        {
+          "step_index": 0,
+          "concurrency": 2,
+          "expert_tokens": 16,
+          "dispatch_bytes": 262144,
+          "move_granularity_bytes": 131072,
+          "dispatch_period_ns": 20000000,
+          "control_decisions": 32
+        },
+        {
+          "step_index": 1,
+          "concurrency": 2,
+          "expert_tokens": 16,
+          "dispatch_bytes": 262144,
+          "move_granularity_bytes": 131072,
+          "dispatch_period_ns": 20000000,
+          "control_decisions": 32
+        }
+      ],
+      "total_dispatch_bytes": 524288,
+      "total_control_decisions": 64,
+      "mean_dispatch_bytes": 262144.0
+    }
+  ],
+  "break_even_decomposition_fields": "PENDING_A2",
+  "ir_evaluation_point_fields": "PENDING_A2"
+}

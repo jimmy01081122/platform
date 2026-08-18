@@ -6,6 +6,44 @@
 
 ---
 
+## 2026-08-19 · TRACK_GPU_PREP · PREP-1（純 CPU 前置準備）
+
+**Session 目標** 把 GPU 量測從「到時候再想」變成「貼上就跑」。純 CPU，不碰 GPU/SSH/serving。STAGE_A2 為 NOT_STARTED → 只做 PREP-1，PREP-2 留給 A2 完成後。
+
+**進入檢查** 全通過：`make verify-evidence` 4423 OK；`make test` 0 failed；`make doctor` pass；`STAGE_A2` NOT_STARTED；`measurement_gaps.json` 存在。
+
+**產出（全部設計 / CPU 行為，無任何 GPU 主張）**
+```text
+CONTRACT       experiments/specs/gpu_measurement_contract_v1.yaml (FROZEN_PREP1)
+               五項各一節; time_estimate 全有值 (25/60/0/15/160 min)
+PROBES         measurement/probes/long_context_kv_probe.py    (priority 2, 從零寫)
+               measurement/probes/inserving_dispatch_probe.py (priority 1)
+               measurement/probes/mock_backend.py             (CPU mock; gpu backend 註冊但拒絕執行)
+               兩支皆 CPU smoke 通過並過自己的 validator; evidence=cpu_smoke_test_not_measurement
+PARSERS        measurement/parsers/{common,longctx_kv_parser,dispatch_parser,
+               sealed_manifest_validator,component_eval_parser,serving_tail_parser}.py
+               每個 parser 對壞形狀 raise (非靜默略過; 對治 hf_sample_download WARN 前例)
+FIXTURES       tests/fixtures/gpu_prep/ 每 parser 1 正常 + >=1 失敗; 失敗確實 raise
+SEALED SPLIT   calibration/sealed/holdout_split_v1_manifest.json
+               102 cells (fit64/val18/holdout20); 逐 cell SHA-256 + assignment hash;
+               封存於任何新量測之前 (§7.2 不洩漏); STAGE_A4 開封一次
+GAP-5          calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md
+               RESOLVED_BY_CODE: cpu_calls=decode-step launches; expert_tokens=8×decode positions
+               (routing_width=8 trace 事實); 殘差 1.87x = window_replay 兩個未量測 argsort = V2-GAP-C(需GPU)
+WINDOW PLAN    experiments/specs/gpu_measurement_window_plan_v1.md
+               target5 arrival-bound ~2.65h 主導; 1+2+4 ≈100min 可入單一 2h 獨占窗口
+```
+
+**PENDING_A2（硬規則 5）** 探針中依賴 A2 IR 評估點 schema 的輸出欄位一律標 `PENDING_A2`，**未自行猜測**：dispatch 探針的 `break_even_decomposition_fields` 與兩支探針的 `ir_evaluation_point_fields`。PREP-2 待 A2 完成後定案，驗收方式為「新探針輸出能不經 join 直接生成 IR 評估點」。
+
+**基線** 344 Python（tests/ 123，+13 `tests/test_gpu_prep.py`）+ 14 CTest、0 failed；evidence 4423/4423 未動；doctor pass。
+
+**NEXT** TRACK_GPU 的 priority 4/5 已完全規格化可跑；priority 1/2 的探針已備但輸出欄位待 PREP-2。GAP-5 的 GPU 需求已消除（僅殘 V2-GAP-C）。PREP-2 需先跑 STAGE_A2。
+
+**OWNER_DECISION_NEEDED** 無（所有設計均在授權邊界內；長上下文掃描未觸及需 owner 裁決的 VRAM 上限或窗口取捨）。
+
+---
+
 ## 2026-08-19 · Stage A1 · cal_model_form_repair_v2 implementation + FIT-side evaluation
 
 **Session 目標** owner 核可 3 個 review points 後，實作三候選並在既有 evidence 上 FIT 側評估。評分順序嚴格為 correctness → subgroup gates → generalization → MAPE → aggregate（低 aggregate 不得蓋 subgroup gate）。不開 GPU。

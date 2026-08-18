@@ -1,0 +1,238 @@
+schema_version: gpu-measurement-contract-v1
+id: gpu_measurement_contract_v1
+created_by_track: TRACK_GPU_PREP
+created_at: "2026-08-19"
+status: FROZEN_PREP1
+# ---------------------------------------------------------------------------
+# Frozen measurement contract for the five GPU measurement priorities.
+#
+# Purpose (TRACK_GPU_PREP §1): when the GPU window opens, no design decision
+# remains -- only execution. The test: hand this to someone with zero project
+# context; can they run the measurement? If not, it is not done.
+#
+# CLAIM BOUNDARY: every time_estimate below is an ESTIMATE derived from frozen
+# facts, NOT a measured duration (TRACK_GPU_PREP §7). It exists to size the
+# window and order the work, and MUST be validated against the wall clock during
+# measurement. exact_argv lines that invoke a GPU/serving backend are for
+# TRACK_GPU; they are NOT run in this pure-CPU track.
+#
+# output_fields marked PENDING_A2 depend on STAGE_A2's IR evaluation-point
+# schema and are intentionally not fixed here (hard rule 5). Guessing them is
+# exactly how GAP-4 was created. PREP-2 fills them after A2 completes.
+# ---------------------------------------------------------------------------
+
+frozen_platform_facts:
+  gpu: "NVIDIA RTX PRO 6000 Workstation Edition 96 GB"
+  model: "mistralai/Mixtral-8x7B-Instruct-v0.1"
+  revision: eba92302a2861cdc0098cc54bc9f17cb2c47eb61
+  runtime: "vLLM 0.23.0"
+  kv_bytes_per_token: 131072          # 128 KiB (SWAP-K2: 2,097,152 B block / 16 tokens)
+  kv_block_bytes: 2097152
+  kv_block_tokens: 16
+  expert_object_bytes: 352321536      # 336 MiB (OFF-E-PR3)
+  vram_bytes_nominal: 96000000000
+  h2d_per_object_ms_measured: [12.454, 12.499]   # OFF-E-PR3, 14 non-zero points
+  serving_anchor_rate_rps: 1.0472460793856333    # SERV-P0-25 Poisson open-loop
+
+targets:
+
+  - id: target_1
+    priority: 1
+    target: "A2 -- MoE dispatch data movement (in-serving)"
+    rationale: >
+      The only primary mount point with no independent measurement. The existing
+      gather_scatter probe (benchmark.py:463) is a same-device synthetic proxy
+      giving only the execute term; it omits T_prepare/T_queue/T_sync/T_move.
+      What is missing is the system-level movement + control structure of
+      dispatch inside a live serving loop.
+    probe: measurement/probes/inserving_dispatch_probe.py
+    parser: measurement/parsers/dispatch_parser.py
+    independent_vars:
+      concurrency: [1, 2, 4, 8]
+      # range chosen to span the serving anchor (concurrency 8, SERV-P0-25) down
+      # to the single-request residency regime the existing evidence lives in.
+      decode_steps_per_point: 128
+      # 128 steps >> one MoE layer's dispatch, enough to estimate per-dispatch
+      # bytes and frequency without a full generation.
+    sample_size: "128 instrumented decode steps per concurrency point"
+    repeats: "3 serving windows per concurrency; report per-step distribution"
+    stop_condition: "all concurrency points have >=128 clean instrumented steps"
+    failure_condition: >
+      serving process not owned by this session (STOP, do not interfere);
+      instrumentation perturbs serving latency > 5% vs uninstrumented control
+      (record and flag; do not silently keep). Retry a transient failure once.
+    output_fields:
+      measured_directly:
+        - dispatch_bytes            # per dispatch, gather-in + scatter-out
+        - move_granularity_bytes
+        - dispatch_period_ns        # frequency
+        - control_decisions         # routing/permutation decisions per dispatch
+        - expert_tokens
+      pending_a2: PENDING_A2        # T_prepare/T_queue/T_sync/T_move break-even
+                                    # decomposition + IR evaluation-point projection
+    exact_argv:
+      cpu_smoke_test: "python3 measurement/probes/inserving_dispatch_probe.py --backend mock_dispatch --concurrency 1,2,4,8 --steps 128 --out runs/<run_id>/dispatch_smoke.json"
+      gpu_run: "python3 measurement/probes/inserving_dispatch_probe.py --backend <inserving_gpu_backend> --concurrency 1,2,4,8 --steps 128 --out runs/<run_id>/dispatch.json   # TRACK_GPU only"
+    time_estimate:
+      basis: "model load ~90s (amortized once) + ~2 min serving window per concurrency point x 4 x 3 repeats, warmup included"
+      estimate_minutes: 25
+      note: ESTIMATE_NOT_MEASURED
+
+  - id: target_2
+    priority: 2
+    target: "A6 -- long-context offloaded-KV attention"
+    rationale: >
+      No evidence at all; highest information gain. Whole-repo grep of
+      max_model_len/cpu_offload_gb/swap_space/kv_offload is zero hits, so the
+      runner+parser are written from scratch. The sweep must cross the point
+      where KV stops fitting in VRAM and is forced to offload.
+    probe: measurement/probes/long_context_kv_probe.py
+    parser: measurement/parsers/longctx_kv_parser.py
+    independent_vars:
+      seq_lens: [4096, 16384, 65536, 131072, 262144, 524288, 1048576]
+      offload_boundary_derivation: >
+        KV = 131072 B/token. Pure-KV bound alone: 1,048,576 tokens x 128 KiB =
+        128 GiB > 96 GB VRAM, so offload is forced at the top of the sweep
+        regardless of weight residency. The true knee = (VRAM free for KV) /
+        128 KiB; the free budget depends on weight residency, which is NOT
+        measured here, so the sweep spans well below and above every plausible
+        knee and the runner records actual free VRAM to let measurement locate
+        it. Validate the estimate at measurement time; do not assume it.
+    sample_size: "one prefill + fixed decode window per seq_len"
+    repeats: "3 per seq_len (TTFT and per-token latency distribution)"
+    stop_condition: "sweep_crossed_offload_boundary == true AND every non-OOM seq_len has 3 repeats"
+    failure_condition: >
+      OOM: record the failure and STOP the sweep. Do NOT shorten the sequence,
+      enable a different offload path, or relax a threshold to make it run --
+      that is an owner decision (TRACK_GPU_PREP §8). An OOM before the boundary
+      is crossed is itself a reportable result, not a probe bug.
+    output_fields:
+      measured_directly:
+        - ttft_ns
+        - decode_per_token_ns
+        - kv_resident_bytes
+        - kv_offloaded_bytes
+        - kv_offloaded_blocks
+        - offload_engaged
+        - kv_move_ns
+        - kv_move_bytes
+      pending_a2: PENDING_A2        # IR evaluation-point projection
+    exact_argv:
+      cpu_smoke_test: "python3 measurement/probes/long_context_kv_probe.py --backend mock_longctx --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --kv-budget-bytes 8000000000 --out runs/<run_id>/longctx_smoke.json"
+      gpu_run: "python3 measurement/probes/long_context_kv_probe.py --backend <longctx_gpu_backend> --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --out runs/<run_id>/longctx.json   # TRACK_GPU only"
+    time_estimate:
+      basis: "model load ~90s + prefill cost grows with seq_len; 1M-token prefill with offload dominates (multiple minutes/repeat). 7 lengths x 3 repeats, offloaded points slowest."
+      estimate_minutes: 60
+      uncertainty: "HIGH -- long-prefill + offload wall-clock is the least constrained estimate; validate early and re-plan"
+      note: ESTIMATE_NOT_MEASURED
+
+  - id: target_3
+    priority: 3
+    target: "sealed held-out validation split (STAGE_A4 steps 1-2)"
+    rationale: >
+      A4 prerequisite. The split must be sealed BEFORE measurement -- data already
+      generated and seen cannot be honestly sealed (root spec §7.2).
+    deliverable: calibration/sealed/holdout_split_v1_manifest.json
+    validator: measurement/parsers/sealed_manifest_validator.py
+    independent_vars:
+      note: >
+        The split assigns measurement condition-cells (PCIe multi-stream small+
+        large, component operand-shape, replay concurrency) to fit/validation/
+        holdout, targeting the four STAGE_A1 defects. See the manifest.
+    sample_size: "102 condition-cells (fit=64, validation=18, holdout=20)"
+    repeats: "n/a -- this is a design+seal step, not a measurement"
+    stop_condition: "manifest written, per-cell SHA-256 + assignment hash recorded, validator passes"
+    failure_condition: "assignment or per-cell hash mismatch on re-audit => seal is void, re-seal"
+    output_fields:
+      measured_directly:
+        - "sealed cell->split assignment (committed pre-measurement)"
+      pending_measurement: "measured values of held-out cells -- filled by TRACK_GPU, scored once by STAGE_A4"
+    exact_argv:
+      seal: "python3 calibration/sealed/build_holdout_split_v1.py"
+      audit: "python3 measurement/parsers/sealed_manifest_validator.py calibration/sealed/holdout_split_v1_manifest.json"
+    time_estimate:
+      basis: "sealing is pure-CPU and already done; GPU cost = measuring the held-out cells, folded into target_4 + PCIe sweep"
+      estimate_minutes: 0
+      note: SEALED_IN_PREP1
+
+  - id: target_4
+    priority: 4
+    target: "component service model gaps (operand shape + concurrency)"
+    rationale: >
+      Per A1 residual analysis. Full spec: calibration/fits/v2/measurement_gaps.json
+      (6 gaps). GAP-5 is resolved by code reading this track (see
+      calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md) and does NOT need GPU.
+    parser: measurement/parsers/component_eval_parser.py
+    gaps:
+      GAP-1: "dequant weight-bytes sweep at fixed token count (needs GPU)"
+      GAP-2: "aggregate multi-stream contention end-to-end (needs GPU, transfers list populated)"
+      GAP-3: "more repeated small-size (4KiB) transfer samples for floor CI (needs GPU)"
+      GAP-5: "RESOLVED_BY_CODE -- launch-granularity mapping documented; residual 1.87x is a distinct unmeasured argsort operator = V2-GAP-C"
+      GAP-6: "size-dependent stream interaction: small-transfer latency grows with streams (needs GPU)"
+      GAP-4: "component eval points must carry expert_tokens directly (schema fix, verified by parser --enforce-gap4)"
+      V2-GAP-B: "denser prefill operand-shape sweep (KNN did not generalize; needs GPU)"
+      V2-GAP-C: "sort/permute microbenchmark for the two window_replay argsorts (needs GPU)"
+    independent_vars:
+      component_expert_tokens: [8, 16, 32, 64, 128, 256, 512, 1024]
+      component_ops: [selected_expert, grouped_gemm, gather_scatter, dequant]
+      phases: [prefill, decode]
+      pcie_bytes: [4096, 65536, 1048576, 16777216, 88080384]
+      pcie_streams: [1, 2, 4]
+      pcie_directions: [h2d, d2h]
+    sample_size: "n=5 per cell (matches existing q0 convention; 95% CI ~0.0002 ms)"
+    repeats: "5 inner, reported with Student-t CI"
+    stop_condition: "all cells measured with n=5; V2-GAP-C sort/permute probe measured"
+    failure_condition: "non-physical fit (slope<=0 or intercept<0) => reject, do not fall back to a constant (root spec §8.3)"
+    output_fields:
+      measured_directly:
+        - "expert_tokens (carried directly per GAP-4 fix)"
+        - measured_latency_ms
+        - gpu_operations
+        - copy_streams
+        - direction
+        - bytes
+      pending_a2: PENDING_A2        # IR evaluation-point projection for A2/A3
+    exact_argv:
+      note: "uses existing measurement/gpu_run_package_v2 benchmark.py; new argv per gap listed in TRACK_GPU. GAP-5 needs no GPU."
+      gap4_parser_check: "python3 measurement/parsers/component_eval_parser.py <eval_points.json> --enforce-gap4"
+    time_estimate:
+      basis: "component microbenchmarks are ms-scale x n=5; model/tensor setup ~90s; PCIe sweep 30 cells; component sweep 64 cells; sort/permute probe small"
+      estimate_minutes: 15
+      note: ESTIMATE_NOT_MEASURED
+
+  - id: target_5
+    priority: 5
+    target: "SERV-P0-25 tail-CI supplement"
+    rationale: >
+      Rerun the full 10K from request 0 with a NEW attempt ID; must NOT resume
+      any existing partial progress (root spec §9.1 priority 5).
+    parser: measurement/parsers/serving_tail_parser.py
+    independent_vars:
+      requests: 10000
+      arrival: "Poisson open-loop, rate 1.0472460793856333 rps, seed 20260812"
+      concurrency: 8
+      shape: "128-in / 32-out"
+    sample_size: "10000 requests, single full run"
+    repeats: "1 (a full 10K run); tail CI comes from the 10K sample, not repeats"
+    stop_condition: "10000/10000 requests completed from index 0 with a fresh attempt_id"
+    failure_condition: >
+      resumed_partial_progress == true => INVALID, discard and restart from 0.
+      Non-monotone percentiles => instrumentation error, investigate.
+    output_fields:
+      measured_directly:
+        - "completion_latency p50/p95/p99/max"
+        - attempt_id
+        - start_request_index
+        - resumed_partial_progress
+        - "per-request TTFT + monotonic ns timestamps + input/output SHA-256"
+    exact_argv:
+      note: "uses existing serving runner; NEW attempt ID, start_request_index=0"
+      parser_check: "python3 measurement/parsers/serving_tail_parser.py <serving_result.json>"
+    time_estimate:
+      basis: >
+        Poisson open-loop at 1.0472 rps is ARRIVAL-BOUND: 10000 / 1.0472 ~= 9550 s
+        ~= 2.65 h wall-clock regardless of concurrency. This dominates the window
+        budget and cannot be shortened without changing the arrival process
+        (which would change what is measured).
+      estimate_minutes: 160
+      note: ESTIMATE_NOT_MEASURED

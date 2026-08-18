@@ -1,0 +1,14 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "split": "validation",
+  "evaluation_points": [
+    {
+      "point_id": "point-bad",
+      "source_record_id": "validation-grouped_gemm-bad",
+      "metric": "component_latency",
+      "measured": "not-a-number",
+      "features": {"gpu_operations": {"grouped_gemm": 1}, "expert_tokens": 256}
+    }
+  ]
+}

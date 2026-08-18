@@ -1,0 +1,29 @@
+{
+  "schema_version": "gpu-longctx-kv-result-v1",
+  "target": "A6_long_context_offloaded_kv_attention",
+  "backend": "hand_written_fixture",
+  "evidence": "cpu_smoke_test_not_measurement",
+  "records": [
+    {
+      "seq_len": 4096,
+      "kv_total_bytes": 536870912,
+      "kv_resident_bytes": 536870912,
+      "kv_offloaded_bytes": 0,
+      "offload_engaged": false,
+      "ttft_ns": 253440000,
+      "decode_per_token_ns": 20000000
+    },
+    {
+      "seq_len": 1048576,
+      "kv_total_bytes": 137438953472,
+      "kv_resident_bytes": 8000000000,
+      "kv_offloaded_bytes": 129438953472,
+      "offload_engaged": true,
+      "ttft_ns": 42033664000,
+      "decode_per_token_ns": 35437000
+    }
+  ],
+  "sweep_crossed_offload_boundary": true,
+  "offload_knee_seq_len": 1048576,
+  "ir_evaluation_point_fields": "PENDING_A2"
+}

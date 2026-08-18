@@ -357,7 +357,26 @@ stages:
 
   - id: TRACK_GPU_PREP
     title: GPU 量測前置準備軌 (純 CPU)
-    status: NOT_STARTED
+    status: IN_PROGRESS
+    status_note: >
+      [2026-08-19] PREP-1 完成; PREP-2 blocked on STAGE_A2 (NOT_STARTED)。
+      進入檢查全通過 (verify-evidence 4423 OK / make test 0 failed / doctor pass)。
+      PREP-1 產出: (1) 凍結量測 contract experiments/specs/gpu_measurement_contract_v1.yaml
+      五項各一節, time_estimate 全部有值; (2) 兩支新探針
+      measurement/probes/{long_context_kv_probe.py, inserving_dispatch_probe.py}
+      + mock_backend, 皆在 CPU 上完整跑通並通過自己的 validator (evidence 標記
+      cpu_smoke_test_not_measurement); (3) parser+validator
+      measurement/parsers/{longctx_kv,dispatch,sealed_manifest_validator,
+      component_eval,serving_tail}, 每個有正常+失敗 fixture 且失敗確實 raise;
+      (4) sealed split 已封存 calibration/sealed/holdout_split_v1_manifest.json
+      (102 cells, fit64/val18/holdout20, 逐 cell SHA-256 + assignment hash,
+      determinism + tamper audit 有測試); (5) GAP-5 由讀程式碼解決
+      calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md (mapping RESOLVED_BY_CODE,
+      殘差 1.87x = V2-GAP-C 需 GPU); (6) 窗口計畫
+      experiments/specs/gpu_measurement_window_plan_v1.md。
+      PREP-2 需 A2 的 IR 評估點 schema 才能定案探針輸出欄位 (硬規則 5): 探針目前
+      將依賴 schema 的欄位標為 PENDING_A2, 未自行猜測 (GAP-4 前例)。
+      未跑任何 GPU; 無任何 GPU 效能 / calibrated 主張。
     guide: docs/session_guides/TRACK_GPU_PREP.md
     guide_completeness: EXECUTABLE
     gpu_required: false
@@ -394,12 +413,28 @@ stages:
       - assertion: sealed manifest 含 split 定義與逐筆 SHA-256, 封存時間已記錄
       - command: make test
         expect: "0 failed (通過數應上升, 下降或失敗即不通過)"
+    last_verified:
+      date: "2026-08-19"
+      phase: "PREP-1 (PREP-2 pending STAGE_A2)"
+      actual:
+        verify_evidence: "evidence integrity: OK (4423 files)"
+        test: "123 + 36 + 16 + 43 + 126(+48 subtests) Python = 344 passed (was 331; +13 tests/test_gpu_prep.py); ctest 2/3/4/5 = 14 passed; 0 failed"
+        doctor: "workspace_contract: pass"
+        contract: "experiments/specs/gpu_measurement_contract_v1.yaml FROZEN_PREP1; 5 targets, all time_estimate present (25/60/0/15/160 min)"
+        long_context_runner: "measurement/probes/long_context_kv_probe.py; CPU smoke passed (7 records, crossed_offload=True, knee=65536); validator --require-offload passes"
+        dispatch_probe: "measurement/probes/inserving_dispatch_probe.py; CPU smoke passed (4 groups); validator passes"
+        gap5: "RESOLVED_BY_CODE (calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md): cpu_calls=decode-step launches, expert_tokens=8x(decode positions) [routing_width=8, trace fact]; residual 1.87x = untimed window_replay argsorts = V2-GAP-C (needs GPU)"
+        sealed_manifest: "calibration/sealed/holdout_split_v1_manifest.json; 102 cells fit64/val18/holdout20; assignment_sha256 + per-cell SHA-256; determinism + tamper audit tested"
+        parsers: "5 parsers each with 1 pass + >=1 fail fixture under tests/fixtures/gpu_prep/; all failure fixtures raise ValidationError"
+        pending_a2_fields: "probe output_fields depending on A2 IR eval-point schema marked PENDING_A2 (dispatch: break_even_decomposition + ir_eval_point; longctx: ir_eval_point). NOT guessed (hard rule 5)."
     claims_unlocked_on_completion:
-      - "量測 contract 已凍結"
-      - "探針程式在 CPU fixture 上的行為正確性"
+      - "量測 contract 已凍結 (PREP-1)"
+      - "探針程式在 CPU fixture 上的行為正確性 (argv/序列化/錯誤處理)"
+      - "GAP-5 的 harness launch-granularity 語意 (由讀程式碼解出, 附推導與行號)"
     claims_still_forbidden:
       - "任何 GPU 效能主張 (本軌未跑過 GPU)"
       - "把 CPU smoke test 通過說成量測可行性已驗證"
+      - "定案任何依賴 A2 IR schema 的探針輸出欄位 (PREP-2, 需 A2)"
 
   - id: TRACK_GPU
     title: GPU 量測軌

@@ -165,3 +165,21 @@
 - **A1 續留 IN_PROGRESS。** closure 明確 blocked 在 V2-GAP-B 與 V2-GAP-C 兩個 targeted FIT-side 量測上。依 OWNER_RESOLUTION，這類 targeted FIT-side 量測日後可開，但**資料不得與 A4 sealed held-out 混用**。PCIe two-regime 已 ACCEPT，可先整合（本輪未動 `calibrated_backend.py`，以保 v2 可重現）。
 - **run manifest provenance 修正**：採兩段 commit——先 commit 生成程式（`528ae01`，H1），再於乾淨 H1 tree 執行產生 artifacts，manifest 記 `code_commit=H1` 並附兩支腳本的 SHA-256，artifacts 於下一個 commit（H2）加入。徹底解決先前「manifest 指向不含生成程式的 parent commit」的問題。
 - 基線：331 Python（tests/ 96→110，+14 v3 production-path regression tests）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。
+
+---
+
+## P-014 · TRACK_GPU_PREP PREP-1 完成；探針依賴欄位標 PENDING_A2 不猜
+
+**日期** 2026-08-19
+**決定** 執行 GPU 量測前置準備軌 PREP-1（純 CPU）。凍結五項量測 contract、從零寫兩支探針（長上下文 KV、in-serving dispatch）並在 CPU mock backend 上 smoke test、寫 5 個 parser/validator 各附正常+失敗 fixture、設計並封存 A4 sealed held-out split、由讀程式碼解決 GAP-5、產出窗口計畫。**凡輸出欄位依賴 A2 的 IR 評估點 schema 者，一律標 `PENDING_A2`，不自行猜測**——GAP-4 正是量測 schema 先於消費 schema 凍結所致（TRACK_GPU_PREP 硬規則 5）。
+
+**GAP-5 結論（RESOLVED_BY_CODE）** `cpu_calls` = window_replay 的 decode-step launch 數；`expert_tokens` = 8 ×（decode token 位置數），routing_width=8 為 trace 事實（`workloads/windows.json` decode step `selected_experts` [1,8]）。8× 正規化差由「兩套 campaign 分母不同」完全解釋（benchmark.py:520-590 vs 436-441）。**殘差 1.87× 不屬 mapping 問題**：`window_replay` 在計時區內做兩次 argsort（benchmark.py:538,541），standalone 探針把 order/inverse 預算在計時外（445-446），故是**未量測的 sort/permute operator = V2-GAP-C**，需 GPU。詳見 `calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md`。
+
+**理由** GPU 窗口是有時限資源；未凍結 contract 就開窗會產生無法使用的資料（GAP-4 前例）。CPU-first 讓窗口內只剩執行。PENDING_A2 切分避免對 GAP-4 原樣再犯。
+
+**後果**
+- TRACK_GPU_PREP 狀態 → `IN_PROGRESS`（PREP-1 完成；PREP-2 blocked on STAGE_A2）。
+- TRACK_GPU 的 priority 4 缺口清單中 GAP-5 由 GPU 需求降為「已由程式碼解決」，僅殘餘 V2-GAP-C 需 GPU。
+- sealed held-out split（102 cells）已在**任何新量測之前**封存，符合 §7.2 的不洩漏要求；STAGE_A4 開封評分一次。
+- 基線：**344 Python**（tests/ 123，+13 `tests/test_gpu_prep.py`）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。
+- **未跑任何 GPU**：無 GPU 效能 / calibrated / break-even / accelerator / 長上下文主張。CPU smoke test 僅證明 argv/序列化/錯誤處理正確，不證明量測可行性。

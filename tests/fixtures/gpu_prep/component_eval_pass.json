@@ -1,0 +1,33 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "split": "validation",
+  "evaluation_points": [
+    {
+      "point_id": "point-aaa",
+      "source_record_id": "validation-grouped_gemm-xyz",
+      "metric": "component_latency",
+      "measured": 0.2431867,
+      "features": {
+        "gpu_operations": {"grouped_gemm": 1},
+        "expert_tokens": 256,
+        "concurrency": 1,
+        "phase": "prefill"
+      }
+    },
+    {
+      "point_id": "point-bbb",
+      "source_record_id": "validation-h2d-xyz",
+      "metric": "pcie_transfer_latency",
+      "measured": 3.113,
+      "features": {"direction": "h2d", "bytes": 88080384, "copy_streams": 2}
+    },
+    {
+      "point_id": "point-ccc",
+      "source_record_id": "validation-window_replay-xyz",
+      "metric": "moe_replay_tpot",
+      "measured": 0.2727,
+      "features": {"tokens": 4, "cpu_calls": 4, "gpu_operations": {"grouped_gemm": 4, "gather_scatter": 4}}
+    }
+  ]
+}

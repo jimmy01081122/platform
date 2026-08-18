@@ -118,6 +118,22 @@ def gather_scatter(x=activations, idx=order, inv=inverse):
 
 這個修正改變量測計畫——要補的是 in-serving 儀測，不是從零寫一個 gather/scatter kernel benchmark。
 
+## TRACK_GPU_PREP · PREP-1 CPU 驗證（2026-08-19；純 CPU，非 GPU 量測）
+
+**這一節驗證的是「探針/parser 的 CPU 行為正確性」，不是任何 GPU 量測可行性或效能。** 每個 mock-backend 輸出標 `evidence=cpu_smoke_test_not_measurement`。
+
+| 產出 | 驗證項 | 判定 |
+|---|---|---|
+| long_context_kv_probe.py | mock backend CPU 跑通；掃描跨越 offload 邊界；validator `--require-offload` 通過 | **PASS（CPU）** |
+| inserving_dispatch_probe.py | mock backend CPU 跑通；byte 會計守恆（dispatch=2×granularity）；validator 通過 | **PASS（CPU）** |
+| 兩探針 gpu backend | 純 CPU 軌拒絕執行（未註冊/不可用 backend 直接 raise，不靜默降級） | **PASS** |
+| 5 個 parser | 每個對壞形狀 fixture **raise**（非靜默略過）；正常 fixture 通過 | **PASS（13 tests）** |
+| sealed manifest | 逐 cell SHA-256 + assignment hash 可重算；determinism；tamper 被抓 | **PASS** |
+| GAP-5 | launch-granularity mapping 由讀程式碼解出（附行號推導） | **RESOLVED_BY_CODE** |
+| PENDING_A2 欄位 | 依賴 A2 IR schema 的欄位標 PENDING_A2，未猜測 | **符合硬規則 5** |
+
+基線：344 Python（+13）+ 14 CTest、0 failed；evidence 4423/4423 未動。
+
 ## 後續階段（全部尚未執行）
 
 | 階段 | 驗收條件 | 判定 |

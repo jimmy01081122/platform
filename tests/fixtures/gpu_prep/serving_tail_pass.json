@@ -1,0 +1,14 @@
+{
+  "schema_version": "serving-tail-ci-result-v1",
+  "attempt_id": "SERV-P0-25-tailci-20260819T000000Z",
+  "start_request_index": 0,
+  "resumed_partial_progress": false,
+  "planned_requests": 10000,
+  "completed_requests": 10000,
+  "completion_latency": {
+    "p50_ms": 868.2,
+    "p95_ms": 1431.3,
+    "p99_ms": 1585.9,
+    "max_ms": 1743.9
+  }
+}
