@@ -2,7 +2,7 @@ schema_version: gpu-measurement-contract-v1
 id: gpu_measurement_contract_v1
 created_by_track: TRACK_GPU_PREP
 created_at: "2026-08-19"
-status: FROZEN_PREP1
+status: FROZEN_PREP2   # PREP-1 froze the contract; PREP-2 filled all IR eval-point fields against STAGE_A2's CalibrationIR schema
 # ---------------------------------------------------------------------------
 # Frozen measurement contract for the five GPU measurement priorities.
 #
@@ -16,9 +16,11 @@ status: FROZEN_PREP1
 # measurement. exact_argv lines that invoke a GPU/serving backend are for
 # TRACK_GPU; they are NOT run in this pure-CPU track.
 #
-# output_fields marked PENDING_A2 depend on STAGE_A2's IR evaluation-point
-# schema and are intentionally not fixed here (hard rule 5). Guessing them is
-# exactly how GAP-4 was created. PREP-2 fills them after A2 completes.
+# output_fields that depend on STAGE_A2's IR evaluation-point schema were held
+# PENDING_A2 in PREP-1 (hard rule 5 -- guessing them is how GAP-4 was created).
+# STAGE_A2 is now COMPLETE, so PREP-2 has FILLED them against A2's actual
+# CalibrationIR schema: each measured point carries its operand shape directly in
+# evaluation_coordinate, so the IR pipeline builds the point with NO join to raw.
 # ---------------------------------------------------------------------------
 
 frozen_platform_facts:
@@ -68,8 +70,17 @@ targets:
         - dispatch_period_ns        # frequency
         - control_decisions         # routing/permutation decisions per dispatch
         - expert_tokens
-      pending_a2: PENDING_A2        # T_prepare/T_queue/T_sync/T_move break-even
-                                    # decomposition + IR evaluation-point projection
+      # FILLED in PREP-2 against STAGE_A2's CalibrationIR schema:
+      break_even_decomposition:     # root spec 10.4, per dispatch
+        - T_prepare_ns
+        - T_queue_ns
+        - T_sync_ns
+        - T_move_ns
+      ir_evaluation_point:
+        schema: CalibrationIR       # explorations/.../canonical_ir.schema.json $defs.calibration
+        evaluation_coordinate: [expert_tokens, concurrency]   # operand shape carried DIRECTLY (no join; closes GAP-4)
+        metrics: [dispatch_bytes, dispatch_control_decisions, dispatch_T_prepare, dispatch_T_queue, dispatch_T_sync, dispatch_T_move]
+        generator: measurement/probes/ir_evaluation_point.py::dispatch_result_to_points
     exact_argv:
       cpu_smoke_test: "python3 measurement/probes/inserving_dispatch_probe.py --backend mock_dispatch --concurrency 1,2,4,8 --steps 128 --out runs/<run_id>/dispatch_smoke.json"
       gpu_run: "python3 measurement/probes/inserving_dispatch_probe.py --backend <inserving_gpu_backend> --concurrency 1,2,4,8 --steps 128 --out runs/<run_id>/dispatch.json   # TRACK_GPU only"
@@ -116,7 +127,12 @@ targets:
         - offload_engaged
         - kv_move_ns
         - kv_move_bytes
-      pending_a2: PENDING_A2        # IR evaluation-point projection
+      # FILLED in PREP-2 against STAGE_A2's CalibrationIR schema:
+      ir_evaluation_point:
+        schema: CalibrationIR
+        evaluation_coordinate: [seq_len]      # operand shape carried DIRECTLY (no join)
+        metrics: [longctx_ttft, longctx_decode_per_token, longctx_kv_move, longctx_kv_offloaded_bytes]
+        generator: measurement/probes/ir_evaluation_point.py::longctx_result_to_points
     exact_argv:
       cpu_smoke_test: "python3 measurement/probes/long_context_kv_probe.py --backend mock_longctx --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --kv-budget-bytes 8000000000 --out runs/<run_id>/longctx_smoke.json"
       gpu_run: "python3 measurement/probes/long_context_kv_probe.py --backend <longctx_gpu_backend> --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --out runs/<run_id>/longctx.json   # TRACK_GPU only"
@@ -191,7 +207,14 @@ targets:
         - copy_streams
         - direction
         - bytes
-      pending_a2: PENDING_A2        # IR evaluation-point projection for A2/A3
+      # FILLED in PREP-2: component/pcie eval points map to CalibrationIR with the
+      # operand shape carried DIRECTLY in evaluation_coordinate (the GAP-4 fix,
+      # enforced by component_eval_parser.py --enforce-gap4):
+      ir_evaluation_point:
+        schema: CalibrationIR
+        component_coordinate: [expert_tokens, phase, concurrency]
+        pcie_coordinate: [bytes, copy_streams, direction]
+        note: "component_eval_parser --enforce-gap4 fails any component point lacking expert_tokens"
     exact_argv:
       note: "uses existing measurement/gpu_run_package_v2 benchmark.py; new argv per gap listed in TRACK_GPU. GAP-5 needs no GPU."
       gap4_parser_check: "python3 measurement/parsers/component_eval_parser.py <eval_points.json> --enforce-gap4"

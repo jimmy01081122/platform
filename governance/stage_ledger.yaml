@@ -385,9 +385,24 @@ stages:
 
   - id: TRACK_GPU_PREP
     title: GPU 量測前置準備軌 (純 CPU)
-    status: IN_PROGRESS
+    status: COMPLETE
     status_note: >
-      [2026-08-19] PREP-1 完成; PREP-2 blocked on STAGE_A2 (NOT_STARTED)。
+      [2026-08-19 更新] STAGE_A2 已 COMPLETE, PREP-2 已完成: 兩支探針中依賴 A2 IR
+      評估點 schema 的欄位全部填實。逐項對照 A2 產出的 CalibrationIR schema
+      (explorations/moe_cycle_simulator/phase2/schemas/canonical_ir.schema.json
+      $defs.calibration): 每個量測點把 operand shape 直接放進 evaluation_coordinate
+      (longctx=[seq_len]; dispatch=[expert_tokens,concurrency]) + 對應
+      calibration_envelope, 並帶 metric/unit/measured_value。dispatch 探針新增
+      break-even 分解欄位 T_prepare/T_queue/T_sync/T_move (root spec 10.4)。
+      新增 measurement/probes/ir_evaluation_point.py (probe result -> CalibrationIR
+      point, 只用探針自身輸出, 不 join 回 raw) 與 measurement/parsers/ir_point_validator.py
+      (對真實 A2 schema 用 jsonschema 驗證)。驗收 (guide 步驟 7): 探針輸出的 IR 點
+      在 jsonschema 下對 A2 CalibrationIR schema 全部通過, 且 operand shape 直接攜帶
+      → GAP-4 那一類「需 join 回 raw 解析 case 字串」的缺陷不會重演。contract
+      output_fields 的 PENDING_A2 全部填實 (status FROZEN_PREP2)。基線 358 Python
+      (+6 PREP-2 tests) + 14 CTest, 0 failed; evidence 4423/4423 未動。未跑任何 GPU。
+      --- 以下為 PREP-1 原記錄 ---
+      [2026-08-19] PREP-1 完成。
       進入檢查全通過 (verify-evidence 4423 OK / make test 0 failed / doctor pass)。
       PREP-1 產出: (1) 凍結量測 contract experiments/specs/gpu_measurement_contract_v1.yaml
       五項各一節, time_estimate 全部有值; (2) 兩支新探針
@@ -443,26 +458,36 @@ stages:
         expect: "0 failed (通過數應上升, 下降或失敗即不通過)"
     last_verified:
       date: "2026-08-19"
-      phase: "PREP-1 (PREP-2 pending STAGE_A2)"
+      phase: "PREP-1 + PREP-2 (both complete; STAGE_A2 COMPLETE)"
       actual:
         verify_evidence: "evidence integrity: OK (4423 files)"
-        test: "123 + 36 + 16 + 43 + 126(+48 subtests) Python = 344 passed (was 331; +13 tests/test_gpu_prep.py); ctest 2/3/4/5 = 14 passed; 0 failed"
+        test: "129 + 36 + 16 + 43 + 134(+48 subtests) Python = 358 passed (tests/test_gpu_prep.py 19 tests; +6 for PREP-2); ctest 2/3/4/5 = 14 passed; 0 failed"
         doctor: "workspace_contract: pass"
+        prep2_ir_evaluation_points: >
+          Probe output fields depending on A2 IR eval-point schema FILLED against
+          A2's CalibrationIR ($defs.calibration). Operand shape carried directly in
+          evaluation_coordinate (longctx=[seq_len]; dispatch=[expert_tokens,concurrency])
+          + matching calibration_envelope; dispatch adds break-even T_prepare/T_queue/
+          T_sync/T_move. measurement/probes/ir_evaluation_point.py builds points from
+          the probe result ALONE (no join to raw); test_ir_points_validate_against_real_a2_schema
+          validates every generated point against A2's actual schema via jsonschema.
+          Acceptance (guide step 7) met: IR points generable without join -> GAP-4 class closed.
         contract: "experiments/specs/gpu_measurement_contract_v1.yaml FROZEN_PREP1; 5 targets, all time_estimate present (25/60/0/15/160 min)"
         long_context_runner: "measurement/probes/long_context_kv_probe.py; CPU smoke passed (7 records, crossed_offload=True, knee=65536); validator --require-offload passes"
         dispatch_probe: "measurement/probes/inserving_dispatch_probe.py; CPU smoke passed (4 groups); validator passes"
         gap5: "RESOLVED_BY_CODE (calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md): cpu_calls=decode-step launches, expert_tokens=8x(decode positions) [routing_width=8, trace fact]; residual 1.87x = untimed window_replay argsorts = V2-GAP-C (needs GPU)"
         sealed_manifest: "calibration/sealed/holdout_split_v1_manifest.json; 102 cells fit64/val18/holdout20; assignment_sha256 + per-cell SHA-256; determinism + tamper audit tested"
         parsers: "5 parsers each with 1 pass + >=1 fail fixture under tests/fixtures/gpu_prep/; all failure fixtures raise ValidationError"
-        pending_a2_fields: "probe output_fields depending on A2 IR eval-point schema marked PENDING_A2 (dispatch: break_even_decomposition + ir_eval_point; longctx: ir_eval_point). NOT guessed (hard rule 5)."
+        pending_a2_fields: "NONE remaining -- all PENDING_A2 fields FILLED in PREP-2 (A2 COMPLETE). See prep2_ir_evaluation_points."
     claims_unlocked_on_completion:
-      - "量測 contract 已凍結 (PREP-1)"
+      - "量測 contract 已凍結並完成 (PREP-1 + PREP-2)"
       - "探針程式在 CPU fixture 上的行為正確性 (argv/序列化/錯誤處理)"
       - "GAP-5 的 harness launch-granularity 語意 (由讀程式碼解出, 附推導與行號)"
+      - "探針輸出可不經 join 生成對 A2 CalibrationIR schema 有效的 IR 評估點 (PREP-2; GAP-4 類缺陷不重演)"
     claims_still_forbidden:
       - "任何 GPU 效能主張 (本軌未跑過 GPU)"
       - "把 CPU smoke test 通過說成量測可行性已驗證"
-      - "定案任何依賴 A2 IR schema 的探針輸出欄位 (PREP-2, 需 A2)"
+      - "把 mock backend 產生的 IR 評估點值當作真實量測 (stamped cpu_smoke_test_not_measurement)"
 
   - id: TRACK_GPU
     title: GPU 量測軌

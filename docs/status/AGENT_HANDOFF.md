@@ -6,6 +6,39 @@
 
 ---
 
+## 2026-08-19 · TRACK_GPU_PREP · PREP-2（依 A2 CalibrationIR schema 填實探針輸出欄位）
+
+**Session 目標** STAGE_A2 完成後，把 PREP-1 標為 `PENDING_A2` 的探針輸出欄位定案。純 CPU。
+
+**進入檢查** 重跑：`STAGE_A2` = **COMPLETE**（ledger + `git log` 確認 commit 8c01fc2；orchestrator a96ff61 已 dispatch PREP-2）；verify-evidence 4423 OK；doctor pass。
+
+**做了什麼**
+```text
+IR 評估點 schema  A2 產出的 CalibrationIR ($defs.calibration): operand shape 放
+                  evaluation_coordinate (array of {name,value} exact-decimal),
+                  配對 calibration_envelope (dimensions 名稱集合須 == coordinate)
+探針填實          longctx: coordinate=[seq_len]; metrics=ttft/decode_per_token/kv_move/kv_offloaded_bytes
+                  dispatch: coordinate=[expert_tokens,concurrency]; 新增 break-even
+                  T_prepare/T_queue/T_sync/T_move; metrics=bytes/control_decisions/T_*
+新檔              measurement/probes/ir_evaluation_point.py   (probe result -> CalibrationIR point, 無 join)
+                  measurement/parsers/ir_point_validator.py   (對真實 A2 schema jsonschema 驗證)
+                  tests/fixtures/gpu_prep/ir_points_{pass,fail_coordinate}.json
+驗收 (步驟 7)     test_ir_points_validate_against_real_a2_schema: 探針輸出的每個 IR 點
+                  對 A2 CalibrationIR schema jsonschema 全過, 且 operand shape 直接攜帶
+                  → 不需 join 回 raw → GAP-4 類缺陷不重演
+contract         PENDING_A2 全部填實 (status FROZEN_PREP1 -> FROZEN_PREP2)
+```
+
+**claim boundary** operand shape 直接攜帶（GAP-4 主題）；workload/model/platform record-id 是 IR 組裝期綁定（非 shape），CPU smoke 用 placeholder。mock backend 的 IR 點**值**是合成，stamped `cpu_smoke_test_not_measurement`，不得當實測。
+
+**基線** 358 Python（tests/ 129，PREP-2 +6）+ 14 CTest、0 failed；evidence 4423/4423 未動；doctor pass。
+
+**狀態** TRACK_GPU_PREP → **COMPLETE**（PREP-1 + PREP-2）。TRACK_GPU 可直接執行五項；priority 1/2 探針輸出欄位已定案且對 A2 schema 有效。**未跑任何 GPU。**
+
+**OWNER_DECISION_NEEDED** 無。
+
+---
+
 ## 2026-08-19 · ORCHESTRATOR · 排程與驗收（第一次統籌覆核）
 
 ```text

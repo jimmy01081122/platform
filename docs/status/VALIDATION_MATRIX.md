@@ -148,9 +148,18 @@ def gather_scatter(x=activations, idx=order, inv=inverse):
 | 5 個 parser | 每個對壞形狀 fixture **raise**（非靜默略過）；正常 fixture 通過 | **PASS（13 tests）** |
 | sealed manifest | 逐 cell SHA-256 + assignment hash 可重算；determinism；tamper 被抓 | **PASS** |
 | GAP-5 | launch-granularity mapping 由讀程式碼解出（附行號推導） | **RESOLVED_BY_CODE** |
-| PENDING_A2 欄位 | 依賴 A2 IR schema 的欄位標 PENDING_A2，未猜測 | **符合硬規則 5** |
+| PENDING_A2 欄位（PREP-1） | 依賴 A2 IR schema 的欄位標 PENDING_A2，未猜測 | **符合硬規則 5** |
 
-基線：344 Python（+13）+ 14 CTest、0 failed；evidence 4423/4423 未動。
+**PREP-2（2026-08-19，A2 完成後）** —— 依 A2 CalibrationIR schema 填實：
+
+| 產出 | 驗證項 | 判定 |
+|---|---|---|
+| ir_evaluation_point.py | 探針輸出的每個 IR 點對 A2 真實 CalibrationIR schema jsonschema 驗證通過 | **PASS** |
+| no-join 屬性 | operand shape 直接進 evaluation_coordinate（longctx=[seq_len]；dispatch=[expert_tokens,concurrency]），點由探針自身輸出建成，不 join 回 raw | **PASS（GAP-4 類缺陷不重演）** |
+| break-even 分解 | dispatch 探針輸出 T_prepare/T_queue/T_sync/T_move（root spec §10.4） | **PASS（欄位齊備；值為 CPU 合成）** |
+| ir_point_validator | coordinate/envelope 名稱集合不符、值越界、缺 shape 一律 raise | **PASS** |
+
+基線：358 Python（PREP-1 +13、PREP-2 +6）+ 14 CTest、0 failed；evidence 4423/4423 未動。
 
 ## 後續階段（全部尚未執行）
 

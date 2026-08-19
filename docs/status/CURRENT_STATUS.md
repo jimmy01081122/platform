@@ -25,7 +25,7 @@ next dispatch : A3（IR→引擎 loader，關鍵路徑、無 GPU）＋ PREP-2（
 | B2 參數化候選處理器 | NOT_STARTED | 指引為 RULES_ONLY |
 | C1 co-design DSE | NOT_STARTED | 指引為 RULES_ONLY |
 | C2 HW0 + LM18 handoff | NOT_STARTED | 指引為 RULES_ONLY |
-| GPU 前置準備軌 | **IN_PROGRESS** | **PREP-1 完成**（P-014）：contract 凍結、兩探針 CPU smoke 通過、5 parser+fixture、sealed split 封存、GAP-5 由程式碼解、窗口計畫。PREP-2 blocked on A2；依賴 A2 schema 的探針欄位標 PENDING_A2 |
+| GPU 前置準備軌 | **COMPLETE** | PREP-1（P-014）＋ **PREP-2 完成**（P-016）：A2 完成後，依 A2 CalibrationIR schema 把探針依賴欄位全部填實，operand shape 直接進 evaluation_coordinate，探針輸出可**不經 join** 生成對 A2 schema 有效的 IR 評估點（GAP-4 類缺陷不重演）。無 GPU 主張 |
 | GPU 量測軌 | NOT_STARTED | 需前置軌完成（優先序 4/5 例外，見下）；contract 已凍結，priority 1/2 探針已備 |
 | 統籌 session | — | 排程與驗收，隨時可開 |
 

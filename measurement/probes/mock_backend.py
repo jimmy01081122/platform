@@ -119,6 +119,7 @@ class MockDispatchBackend:
     routing_width: int = 8        # numel(flatten(decode selected_experts)); trace fact
     dtype_bytes: int = 2          # bf16 activations
     step_period_ns: int = 20_000_000  # synthetic decode step period
+    kv_ish_bandwidth_bytes_per_ns: float = 28.0  # ~28 GB/s, only for synthetic T_move
     name: str = "mock_dispatch"
 
     def measure_step(self, step_index: int, concurrency: int) -> dict[str, Any]:
@@ -131,6 +132,14 @@ class MockDispatchBackend:
         dispatch_bytes = 2 * bytes_per_move
         # one routing/permutation control decision per expert-token, per direction
         control_decisions = 2 * expert_tokens
+        # break-even decomposition (root spec 10.4): T_prepare/T_queue/T_sync/
+        # T_move per dispatch. Synthetic, deterministic values -- the real GPU
+        # backend fills these from in-serving instrumentation; here they exist so
+        # the IR evaluation-point plumbing (PREP-2) is exercised on CPU.
+        t_move_ns = int(dispatch_bytes / self.kv_ish_bandwidth_bytes_per_ns)
+        t_prepare_ns = 200 * control_decisions
+        t_queue_ns = 1000
+        t_sync_ns = 3000
         return {
             "step_index": step_index,
             "concurrency": concurrency,
@@ -139,6 +148,10 @@ class MockDispatchBackend:
             "move_granularity_bytes": bytes_per_move,
             "dispatch_period_ns": self.step_period_ns,
             "control_decisions": control_decisions,
+            "T_prepare_ns": t_prepare_ns,
+            "T_queue_ns": t_queue_ns,
+            "T_sync_ns": t_sync_ns,
+            "T_move_ns": t_move_ns,
         }
 
 

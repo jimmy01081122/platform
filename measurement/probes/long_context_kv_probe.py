@@ -35,20 +35,24 @@ from pathlib import Path
 from typing import Any
 
 try:  # allow running both as a module and as a script
-    from measurement.probes import SCHEMA_LONGCTX_KV, PENDING_A2_SENTINEL
+    from measurement.probes import SCHEMA_LONGCTX_KV
     from measurement.probes.mock_backend import (
         BackendError,
         MockLongContextBackend,
         resolve_backend,
     )
+    from measurement.probes.ir_evaluation_point import longctx_result_to_points
 except ImportError:  # pragma: no cover - script-relative fallback
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from measurement.probes import SCHEMA_LONGCTX_KV, PENDING_A2_SENTINEL
+    from measurement.probes import SCHEMA_LONGCTX_KV
     from measurement.probes.mock_backend import (
         BackendError,
         MockLongContextBackend,
         resolve_backend,
     )
+    from measurement.probes.ir_evaluation_point import longctx_result_to_points
+
+import hashlib
 
 
 # Default sequence-length sweep: geometric, spanning from clearly-resident to
@@ -137,6 +141,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     crossed_offload = any(
         r.get("offload_engaged") for r in records if not r.get("oom")
     )
+    argv = _reconstruct_argv(args)
+    runtime_variant_hash = hashlib.sha256(
+        ("longctx|" + backend.name + "|" + ",".join(map(str, seq_lens))).encode()
+    ).hexdigest()
     result = {
         "schema_version": SCHEMA_LONGCTX_KV,
         "target": "A6_long_context_offloaded_kv_attention",
@@ -144,15 +152,19 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "evidence": (
             "cpu_smoke_test_not_measurement" if is_mock else "measured"
         ),
-        "argv": sys.argv[1:] if args is None else _reconstruct_argv(args),
+        "argv": argv,
+        "runtime_variant_hash": runtime_variant_hash,
         "seq_lens_requested": seq_lens,
         "records": records,
         "sweep_crossed_offload_boundary": crossed_offload,
         "offload_knee_seq_len": offload_knee_seq_len,
-        # Fields whose exact shape must match A2's IR evaluation-point schema.
-        # Hard rule 5: do NOT guess them. Filled in PREP-2 after STAGE_A2.
-        "ir_evaluation_point_fields": PENDING_A2_SENTINEL,
     }
+    # PREP-2: IR evaluation-point fields are now FIXED against STAGE_A2's
+    # CalibrationIR schema. Each point is built from THIS result alone (no join
+    # back to raw), directly carrying the operand-shape coordinate [seq_len].
+    result["ir_evaluation_point_schema"] = "CalibrationIR"
+    result["ir_evaluation_point_fields"] = "FILLED_PREP2"
+    result["ir_evaluation_points"] = longctx_result_to_points(result)
     return result
 
 

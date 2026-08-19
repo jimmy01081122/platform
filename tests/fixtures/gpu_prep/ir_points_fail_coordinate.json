@@ -1,0 +1,63 @@
+{
+  "evidence": "cpu_smoke_test_not_measurement",
+  "ir_evaluation_point_fields": "FILLED_PREP2",
+  "ir_evaluation_point_schema": "CalibrationIR",
+  "ir_evaluation_points": [
+    {
+      "bootstrap_ci_95": {
+        "lower": "262144",
+        "upper": "262144"
+      },
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": "0",
+      "calibration_envelope": {
+        "dimensions": [
+          {
+            "lower": "8",
+            "name": "expert_tokens",
+            "upper": "64"
+          },
+          {
+            "lower": "1",
+            "name": "WRONG",
+            "upper": "8"
+          }
+        ]
+      },
+      "calibration_profile_hash": null,
+      "evaluation_coordinate": [
+        {
+          "name": "expert_tokens",
+          "value": "16"
+        },
+        {
+          "name": "concurrency",
+          "value": "2"
+        }
+      ],
+      "evidence_class": "MEASURED",
+      "fidelity": "MEASURED",
+      "held_out_workload_record_ids": [
+        "workload-prep2-holdout-placeholder"
+      ],
+      "measured_value": "262144",
+      "measurement_noise_floor": "0",
+      "metric": "dispatch_bytes",
+      "model_record_id": "model-mixtral-8x7b-eba92302",
+      "platform_record_id": "platform-rtx-pro-6000-96gb-v1",
+      "predicted_value": "262144",
+      "range_status": "IN_CALIBRATION_ENVELOPE",
+      "repetitions": 3,
+      "resampling_strata": [
+        "a2-in-serving-dispatch"
+      ],
+      "runtime_variant_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sample_count": 3,
+      "training_workload_record_ids": [
+        "workload-prep2-fit-placeholder"
+      ],
+      "unit": "byte"
+    }
+  ],
+  "schema_version": "gpu-dispatch-inserving-result-v1"
+}

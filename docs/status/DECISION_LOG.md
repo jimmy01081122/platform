@@ -204,3 +204,25 @@
 - 其餘量測家族（SWAP-K2/SERV-P0-25/controlled matrix/component/transfer）**未轉**；adapter 架構可延伸。
 - 基線 352 Python（+8 phase7 A2 tests）+ 14 CTest、0 failed；evidence 4423/4423 未動；mock adapter sha256 未變。
 - **仍禁止**：IR 已被引擎消費、任何時序/效能/calibrated/break-even/accelerator 主張、把 IR 過驗證說成研究鏈打通。
+
+---
+
+## P-016 · TRACK_GPU_PREP PREP-2 完成：探針依 A2 CalibrationIR schema 填實 IR 評估點欄位
+
+**日期** 2026-08-19
+**前置** STAGE_A2 COMPLETE（P-015；measured raw → 九類 Canonical IR）。
+**決定** 執行 PREP-2：把 PREP-1 標為 `PENDING_A2` 的探針輸出欄位，逐項對照 A2 產出的 **CalibrationIR** 評估點 schema（`explorations/moe_cycle_simulator/phase2/schemas/canonical_ir.schema.json` `$defs.calibration`）填實。
+
+**做法**
+- 每個量測點把 operand shape **直接**放進 `evaluation_coordinate`（longctx=`[seq_len]`；dispatch=`[expert_tokens, concurrency]`），配對 `calibration_envelope`（dimensions 名稱集合須與 coordinate 相等，值為 exact-decimal 字串），並帶 `metric/unit/measured_value/evidence_class/fidelity/range_status` 等必填欄。
+- dispatch 探針新增 break-even 分解欄位 `T_prepare/T_queue/T_sync/T_move`（root spec §10.4），由 mock backend 產生合成值（stamped `cpu_smoke_test_not_measurement`），使 GPU 端可直接填實測值。
+- 新增 `measurement/probes/ir_evaluation_point.py`（`{longctx,dispatch}_result_to_points`：**只用探針自身輸出**建點，不 join 回 raw）與 `measurement/parsers/ir_point_validator.py`（用 jsonschema 對 A2 真實 schema 驗證）。
+
+**驗收（guide 步驟 7）** `test_ir_points_validate_against_real_a2_schema`：探針輸出的每個 IR 點在 jsonschema 下對 A2 CalibrationIR schema 全部通過，且 operand shape 直接攜帶 → **不需要 join 回 raw 解析 case 字串**。這正是 GAP-4 的反面：GAP-4 因 component 評估點沒帶 `expert_tokens` 而被迫 join，本軌的新探針不會重犯。`component_eval_parser --enforce-gap4` 亦對既有 component 評估點強制此規則。
+
+**claim boundary** 工作區分是：operand shape 直接攜帶（GAP-4 的主題）；workload/model/platform 的 record-id 是 IR 組裝期綁定（非 shape，非「join 回 raw 解析」），由 A2/A3 pipeline 填，CPU smoke 用 placeholder rid。mock backend 產生的 IR 點**值**是合成的，不得當實測。
+
+**後果**
+- TRACK_GPU_PREP 狀態 → `COMPLETE`（PREP-1 + PREP-2）。contract `status: FROZEN_PREP2`，五項 `output_fields` 無 `PENDING_A2` 殘留。
+- TRACK_GPU 現在可直接執行：priority 1/2 探針的輸出欄位已定案且對 A2 schema 有效。
+- 基線：**358 Python**（tests/ 129，PREP-2 +6 tests）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。**未跑任何 GPU**。

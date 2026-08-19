@@ -16,12 +16,15 @@ from pathlib import Path
 import pytest
 
 from measurement.probes import long_context_kv_probe, inserving_dispatch_probe
-from measurement.probes import PENDING_A2_SENTINEL
 from measurement.probes.mock_backend import BackendError
 from measurement.parsers import ValidationError
 from measurement.parsers import (
     longctx_kv_parser, dispatch_parser, sealed_manifest_validator,
-    component_eval_parser, serving_tail_parser,
+    component_eval_parser, serving_tail_parser, ir_point_validator,
+)
+from measurement.probes.ir_evaluation_point import (
+    longctx_result_to_points, dispatch_result_to_points, IREvaluationPointError,
+    build_calibration_point,
 )
 from calibration.sealed import build_holdout_split_v1
 
@@ -43,8 +46,8 @@ def test_longctx_probe_cpu_smoke(tmp_path):
     result = json.loads(out.read_text())
     assert result["evidence"] == "cpu_smoke_test_not_measurement"
     assert result["sweep_crossed_offload_boundary"] is True
-    # output field that depends on A2 schema must be a PENDING_A2 marker
-    assert result["ir_evaluation_point_fields"] == PENDING_A2_SENTINEL
+    # PREP-2: IR eval-point fields are filled against A2's schema (was PENDING_A2)
+    assert result["ir_evaluation_point_fields"] == "FILLED_PREP2"
     longctx_kv_parser.validate(result)  # self-consistent
 
 
@@ -79,8 +82,10 @@ def test_dispatch_probe_cpu_smoke(tmp_path):
     assert rc == 0
     result = json.loads(out.read_text())
     assert result["evidence"] == "cpu_smoke_test_not_measurement"
-    assert result["break_even_decomposition_fields"] == PENDING_A2_SENTINEL
-    assert result["ir_evaluation_point_fields"] == PENDING_A2_SENTINEL
+    # PREP-2: break-even decomposition + IR eval-point fields are now filled
+    assert result["break_even_decomposition_fields"] == [
+        "T_prepare_ns", "T_queue_ns", "T_sync_ns", "T_move_ns"]
+    assert result["ir_evaluation_point_fields"] == "FILLED_PREP2"
     dispatch_parser.validate(result)
 
 
@@ -174,3 +179,102 @@ def test_sealed_manifest_fixture_tamper_is_caught():
     tampered = json.loads((FIXTURES / "sealed_manifest_fail_tamper.json").read_text())
     with pytest.raises(ValidationError, match="altered after sealing|assignment"):
         sealed_manifest_validator.validate(tampered)
+
+
+# --------------------------------------------------------------------------- #
+# PREP-2: probe output -> CalibrationIR evaluation points (no join)
+# --------------------------------------------------------------------------- #
+
+CANON_SCHEMA = (REPO / "explorations/moe_cycle_simulator/phase2/schemas"
+                / "canonical_ir.schema.json")
+
+
+def _calibration_subschema():
+    schema = json.loads(CANON_SCHEMA.read_text())
+    cal = dict(schema["$defs"]["calibration"])
+    cal["$defs"] = schema["$defs"]
+    return cal
+
+
+def test_longctx_probe_emits_filled_ir_points(tmp_path):
+    out = tmp_path / "lc.json"
+    long_context_kv_probe.main([
+        "--backend", "mock_longctx", "--out", str(out),
+        "--seq-lens", "4096,65536,1048576",
+    ])
+    result = json.loads(out.read_text())
+    # PENDING_A2 is gone; fields are filled against A2's schema
+    assert result["ir_evaluation_point_fields"] == "FILLED_PREP2"
+    assert result["ir_evaluation_point_schema"] == "CalibrationIR"
+    ir_point_validator.validate_probe_result(result)
+    # every point carries seq_len directly in the coordinate (no join to raw)
+    for pt in result["ir_evaluation_points"]:
+        names = {c["name"] for c in pt["evaluation_coordinate"]}
+        assert "seq_len" in names
+
+
+def test_dispatch_probe_emits_filled_ir_points_with_breakeven(tmp_path):
+    out = tmp_path / "d.json"
+    inserving_dispatch_probe.main([
+        "--backend", "mock_dispatch", "--out", str(out),
+        "--concurrency", "1,4", "--steps", "4",
+    ])
+    result = json.loads(out.read_text())
+    assert result["ir_evaluation_point_fields"] == "FILLED_PREP2"
+    # break-even decomposition is now concrete field names, not PENDING_A2
+    assert result["break_even_decomposition_fields"] == [
+        "T_prepare_ns", "T_queue_ns", "T_sync_ns", "T_move_ns"]
+    ir_point_validator.validate_probe_result(result)
+    # operand shape (expert_tokens) carried directly -- the GAP-4 fix
+    metrics = {pt["metric"] for pt in result["ir_evaluation_points"]}
+    assert {"dispatch_bytes", "dispatch_T_move", "dispatch_T_prepare"} <= metrics
+    for pt in result["ir_evaluation_points"]:
+        names = {c["name"] for c in pt["evaluation_coordinate"]}
+        assert "expert_tokens" in names and "concurrency" in names
+
+
+def test_ir_points_validate_against_real_a2_schema(tmp_path):
+    """The strongest PREP-2 check: points validate against STAGE_A2's actual
+    CalibrationIR schema, built from the probe result alone (no join)."""
+    jsonschema = pytest.importorskip("jsonschema")
+    cal = _calibration_subschema()
+    out = tmp_path / "d.json"
+    inserving_dispatch_probe.main([
+        "--backend", "mock_dispatch", "--out", str(out),
+        "--concurrency", "1,2,4", "--steps", "3",
+    ])
+    result = json.loads(out.read_text())
+    points = dispatch_result_to_points(result)  # built from result only
+    assert points
+    for pt in points:
+        jsonschema.validate(pt, cal)
+
+
+def test_ir_point_builder_rejects_shape_envelope_mismatch():
+    with pytest.raises(IREvaluationPointError, match="coordinate names"):
+        build_calibration_point(
+            metric="x", unit="ns", measured_value="1",
+            coordinate=[{"name": "expert_tokens", "value": "8"}],
+            envelope_dimensions=[{"name": "WRONG", "lower": "1", "upper": "10"}],
+            runtime_variant_hash="a" * 64, repetitions=3, sample_count=3,
+            resampling_strata=["x"],
+        )
+
+
+def test_ir_point_builder_rejects_coordinate_outside_envelope():
+    with pytest.raises(IREvaluationPointError, match="outside envelope"):
+        build_calibration_point(
+            metric="x", unit="ns", measured_value="1",
+            coordinate=[{"name": "seq_len", "value": "999999"}],
+            envelope_dimensions=[{"name": "seq_len", "lower": "1", "upper": "10"}],
+            runtime_variant_hash="a" * 64, repetitions=3, sample_count=3,
+            resampling_strata=["x"],
+        )
+
+
+def test_ir_point_validator_fixtures():
+    ok = json.loads((FIXTURES / "ir_points_pass.json").read_text())
+    ir_point_validator.validate_probe_result(ok)
+    bad = json.loads((FIXTURES / "ir_points_fail_coordinate.json").read_text())
+    with pytest.raises(ValidationError, match="coordinate names|envelope"):
+        ir_point_validator.validate_probe_result(bad)

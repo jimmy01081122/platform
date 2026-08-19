@@ -27,20 +27,24 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from measurement.probes import SCHEMA_DISPATCH_INSERVING, PENDING_A2_SENTINEL
+    from measurement.probes import SCHEMA_DISPATCH_INSERVING
     from measurement.probes.mock_backend import (
         BackendError,
         MockDispatchBackend,
         resolve_backend,
     )
+    from measurement.probes.ir_evaluation_point import dispatch_result_to_points
 except ImportError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from measurement.probes import SCHEMA_DISPATCH_INSERVING, PENDING_A2_SENTINEL
+    from measurement.probes import SCHEMA_DISPATCH_INSERVING
     from measurement.probes.mock_backend import (
         BackendError,
         MockDispatchBackend,
         resolve_backend,
     )
+    from measurement.probes.ir_evaluation_point import dispatch_result_to_points
+
+import hashlib
 
 
 DEFAULT_CONCURRENCY = (1, 2, 4, 8)
@@ -105,6 +109,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "mean_dispatch_bytes": total_bytes / len(steps),
         })
 
+    runtime_variant_hash = hashlib.sha256(
+        ("dispatch|" + backend.name + "|" + ",".join(str(c) for c in concurrency_values)
+         + f"|steps={args.steps}").encode()
+    ).hexdigest()
     result = {
         "schema_version": SCHEMA_DISPATCH_INSERVING,
         "target": "A2_moe_dispatch_data_movement",
@@ -113,17 +121,23 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "cpu_smoke_test_not_measurement" if is_mock else "measured"
         ),
         "argv": _reconstruct_argv(args),
+        "runtime_variant_hash": runtime_variant_hash,
         "note": (
             "system-level dispatch movement + control structure; complements the "
             "same-device execute-only gather_scatter proxy at benchmark.py:463"
         ),
         "groups": groups,
-        # T_prepare / T_queue / T_sync / T_move break-even decomposition and the
-        # IR evaluation-point projection depend on A2's schema. Hard rule 5:
-        # not guessed here; filled in PREP-2.
-        "break_even_decomposition_fields": PENDING_A2_SENTINEL,
-        "ir_evaluation_point_fields": PENDING_A2_SENTINEL,
     }
+    # PREP-2: the break-even decomposition (T_prepare/T_queue/T_sync/T_move,
+    # root spec 10.4) is now emitted per step by the backend, and the IR
+    # evaluation-point fields are FIXED against STAGE_A2's CalibrationIR schema.
+    # Each point carries the operand-shape coordinate [expert_tokens, concurrency]
+    # DIRECTLY, so the IR pipeline needs no join to raw (closes the GAP-4 class).
+    result["break_even_decomposition_fields"] = [
+        "T_prepare_ns", "T_queue_ns", "T_sync_ns", "T_move_ns"]
+    result["ir_evaluation_point_schema"] = "CalibrationIR"
+    result["ir_evaluation_point_fields"] = "FILLED_PREP2"
+    result["ir_evaluation_points"] = dispatch_result_to_points(result)
     return result
 
 
