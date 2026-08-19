@@ -641,6 +641,19 @@ orchestrator:
         可回溯、mock adapter 未改 sha256=32f1c0a7…、claim boundary 綁定每筆)。
         另確認 run 產物存在且非空 (bundle 九分區 + artifacts 四 json + manifest)。
       result: CONFIRMED
+    - stage: STAGE_A3
+      verified_on: "2026-08-19"
+      method: >-
+        實際重跑該階段三條 verification (SIM0/SIM1/health), 全 15 點 (STAGE_A3_FULL=1):
+        pytest test_stage_a3_loader.py 8 passed —— SIM0 15/15 hit/demand/discard counters
+        與 terminal residency 位元精確等於量測; SIM1 15/15 determinism byte-identical;
+        health 15/15 Phase 4 QUIESCENT 無 deadlock/Zeno/資源守恆違反; 退化 cap=100 control
+        (0 demand H2D) 成立。另核對: phase3 原始碼 diff 空 (完全未動, 先前 M engine.cpp
+        為施工中途, commit 前已還原); phase5/CMakeLists.txt 純加性 (新增
+        moe_sim_phase5_ir_loader executable, 未碰既有 moe_sim_phase5_tests/add_test,
+        CTest 維持 4); 無 evidence/engine_profile/checksums/r5 治理檔被動; make test 365 Py
+        + 14 CTest 0 failed; verify-evidence 4423/4423; doctor pass。
+      result: CONFIRMED
   discrepancies:
     - id: DISC-1
       severity: LOW
@@ -650,21 +663,27 @@ orchestrator:
         352 Python + 14 CTest, 0 failed。屬文件陳舊, 不改 stages: 任何一列。已在本次
         CURRENT_STATUS 更新中標明現行數字。
   next_dispatch:
-    - guide: docs/session_guides/STAGE_A3_IR_TO_ENGINE.md
+    - guide: docs/session_guides/STAGE_B2_ACCELERATOR_MODEL.md
       reason: >-
-        A2 於 2026-08-19 COMPLETE (本 session 已獨立重跑其 verification 確認),
-        A3 前置 (STAGE_A2 COMPLETE + make test-cpp 14 CTest) 已全部滿足。A3 在關鍵路徑
-        A2->A3->B2->C1->C2 上, 無 GPU 需求, 且解鎖下游最多 (B1 / B2 兩者前置皆為 A3,
-        並為 A4 的前置之一)。是目前最高槓桿的可開項。
-      parallel_with: [TRACK_GPU_PREP_PREP2]
-    - guide: docs/session_guides/TRACK_GPU_PREP.md
-      phase: PREP-2
+        A3 於 2026-08-19 COMPLETE (本 session 已獨立重跑 SIM0/SIM1/health 全 15 點確認),
+        B2 前置 (STAGE_A3 COMPLETE) 已滿足。B2 在關鍵路徑 A2->A3->B2->C1->C2 上, 無 GPU
+        需求。注意: 指引為 RULES_ONLY, guide_note 稱實作細節待 A4 校準結果與 B1 收斂後補;
+        故 B2 本輪可做的是規格/掛載點/ABI 骨架與 reference mock (標 ANALYTICAL/PROJECTED),
+        不得有任何 accelerator 收益主張 (屬 C1)。
+      parallel_with: [STAGE_B1]
+    - guide: docs/session_guides/STAGE_B1_KV_BATCHING.md
       reason: >-
-        PREP-2 之前 blocked on STAGE_A2 (提供 IR 評估點 schema), 現已解除。PREP-2 依
-        A2 schema 定案探針輸出欄位、移除 PREP-1 遺留的 PENDING_A2 標記, 封頂 GPU 就緒度。
-        GPU endpoint 是唯一有時限資源, 故此軌應在 endpoint 可能出現前即完成。與 A3 無檔案
-        衝突 (A3 動 C++ 引擎 loader / phase4 service model; PREP-2 動 measurement/probes 欄位)。
-      parallel_with: [STAGE_A3]
+        B1 前置 (STAGE_A3 COMPLETE) 已滿足, 無 GPU 需求, 與 B2 無相依可並行。指引為
+        RULES_ONLY (實作細節待 A3/A4 收斂後補), 本輪可固定目標/約束/驗收骨架。硬約束:
+        KV 時序不得引用 SWAP-K2/K3 (block_size=0 資料品質限制); 長上下文一律標 PROJECTED,
+        無 MEASURED 長上下文主張 (該量測是 TRACK_GPU priority 2 的唯一來源)。
+      parallel_with: [STAGE_B2]
+    - guide: docs/session_guides/STAGE_A4_SEALED_HOLDOUT.md
+      status: BLOCKED
+      reason: >-
+        A4 前置為 STAGE_A1 COMPLETE + STAGE_A3 COMPLETE + 新 GPU held-out 量測。A3 現已
+        COMPLETE, 但 A1 仍 IN_PROGRESS (closure blocked 在 V2-GAP-B/C GPU 量測), 且 A4 的
+        held-out 需 GPU endpoint。故 A4 仍 gated, 不可開 —— 待 A1 closure + TRACK_GPU 完成。
   owner_decisions_pending:
     - id: OD-1
       topic: GPU endpoint 供給
@@ -679,7 +698,19 @@ orchestrator:
         原始阻擋不變: A1 closure (V2-GAP-B/C)、STAGE_A4 sealed held-out、TRACK_GPU 仍 gated
         在 endpoint 上; 實際 dispatch 由獨立 TRACK_GPU session 執行, 統籌不執行量測。
         仍待 owner: 開機後 nvidia-smi 對版結果 (domain 是否相符) 與租機時數確認。
+    - id: OD-2
+      topic: P-017 phase3 Action::kService 是否字面修改為消耗 service_demand
+      status: RESOLVED
+      detail: >-
+        [2026-08-19] A3 session 完工時升級: guide §6 列 phase4 service model 實際接上,
+        但直接改 phase3 kService 會推翻 r5 凍結治理 (engine_profile.json ACCOUNTING_ONLY /
+        completion FORBIDDEN / checksums 釘死), 屬根規格 §0/§8 須 owner 的結構性契約變更。
+        A3 未改 phase3, 服務時間走 phase4 (契約正確層, PHASE3_RESULT.md 自述); ledger 三條
+        verification 不含此項且全過。
+        OWNER 裁決 (2026-08-19): **維持 phase4 路由, 不改 phase3**。phase3 kService 續留
+        ACCOUNTING_ONLY; 不重開 r5 review、不動 engine_profile.json/checksums。A3 現況即最終
+        設計, STAGE_A3 維持 COMPLETE。若日後 B1/B2/C1 實際需要 phase3 kService 語意再重啟本項。
   critical_path: >-
-    A2(DONE) -> A3 -> B2 -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
-    CPU 端可推進至 A3 -> B1/B2; 之後全部瓶頸收斂到單一 GPU endpoint (A1 closure / A4 / TRACK_GPU)。
-    因此 GPU endpoint 是當前唯一的關鍵路徑瓶頸。
+    A2(DONE) -> A3(DONE) -> B2 -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
+    A3 已 COMPLETE, 解鎖 B1/B2 (CPU 可推進)。之後全部瓶頸收斂到單一 GPU endpoint
+    (A1 closure / A4 / TRACK_GPU)。因此 GPU endpoint 仍是當前唯一的關鍵路徑瓶頸。

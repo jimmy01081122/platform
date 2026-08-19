@@ -6,6 +6,51 @@
 
 ---
 
+## 2026-08-19 · ORCHESTRATOR · A3 驗收 + P-017 裁決 + gputw runbook
+
+```text
+SESSION: ORCHESTRATOR (第二次覆核)
+REVIEW_DATE: 2026-08-19
+TRIGGER: A3 session 回報 COMPLETE 並升級 P-017 (phase3 kService 結構性契約變更)。
+VERIFIED_THIS_SESSION:
+  STAGE_A3 = CONFIRMED (不採信敘述, 獨立重跑):
+    - SIM0/SIM1/health 全 15 點 (STAGE_A3_FULL=1): pytest test_stage_a3_loader.py 8 passed。
+      SIM0 15/15 counters(hit/load/discard)+terminal residency 位元精確等於量測;
+      SIM1 15/15 byte-identical determinism; health 15/15 Phase 4 QUIESCENT 無 deadlock/Zeno;
+      退化 cap=100 control (0 demand H2D) 成立。
+    - 越界檢查: phase3 原始碼 diff 空 (完全未動; 先前工作區 M engine.cpp 為施工中途, commit
+      前已還原, 非 discrepancy)。phase5/CMakeLists.txt 純加性 (新增 moe_sim_phase5_ir_loader
+      executable target, 未碰既有 moe_sim_phase5_tests/add_test, CTest 維持 4)。
+      無 evidence/engine_profile/checksums/r5 治理檔被 A3 commit 觸及。
+    - 基線: make test 365 Py (129+36+16+43+141, 1 skipped=被 gate 的全15點測試, 已另跑通過)
+      + 14 CTest, 0 failed; verify-evidence 4423/4423; doctor pass。
+OWNER_DECISION_RESOLVED:
+  OD-2 / P-017: owner 裁決 **維持 phase4 路由, 不改 phase3**。phase3 kService 續留
+  ACCOUNTING_ONLY; 不重開 r5 review、不動 engine_profile.json/checksums。A3 現況即最終設計,
+  STAGE_A3 維持 COMPLETE。日後 B1/B2/C1 若實需 phase3 kService 語意再重啟。
+DISCREPANCIES:
+  - CURRENT_STATUS 表格殘留一列「A3 NOT_STARTED」(A3 session 新增 COMPLETE 列但漏刪舊列),
+    與 ledger/COMPLETE 列矛盾 -> 本 session 已移除該殘列。屬文件陳舊, 未改 stages:。
+NEXT_DISPATCH:
+  1) STAGE_B2 (RULES_ONLY): 前置 A3 已滿足, 關鍵路徑, 無 GPU。本輪限規格/掛載點/ABI 骨架 +
+     reference mock (標 ANALYTICAL/PROJECTED), 無 accelerator 收益主張 (屬 C1)。
+  2) STAGE_B1 (RULES_ONLY): 前置 A3 已滿足, 與 B2 可並行。KV 時序禁引 SWAP-K2/K3
+     (block_size=0); 長上下文一律 PROJECTED。
+  A4 仍 BLOCKED (A1 closure + GPU endpoint 未滿足)。
+CRITICAL_PATH: A2(DONE) -> A3(DONE) -> B2 -> C1 -> C2; C1 需 A4; A4 需 A1 closure + A3 + GPU
+  endpoint。瓶頸仍收斂到單一 GPU endpoint。
+OD-1 (GPU endpoint via gputw.ai): RESOLVING —— runbook 已建
+  docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md; 仍待開機後 nvidia-smi 對版 + 租機時數。
+CLAIMS_ADDED: 僅驗收結果 (STAGE_A3=CONFIRMED) 與排程決定 (B1/B2 dispatch) 與 P-017 裁決記錄。
+CLAIMS_STILL_FORBIDDEN: 時序準確度 / calibrated / break-even / accelerator / 長上下文 /
+  跨階段合成結論 —— 本 session 未量測、未執行階段工作、未合成跨階段結論。
+```
+
+**未越界**：本 session 的 `git diff` 僅含 `docs/status/{CURRENT_STATUS,AGENT_HANDOFF}.md` 與
+ledger `orchestrator:` 區塊。未動 A3 已 commit 的任何檔案、未改 stages: 任何一列、未碰原始碼/evidence。
+
+---
+
 ## 2026-08-19 · STAGE_A3 · IR→引擎 loader 與位元精確 replay
 
 ```text
