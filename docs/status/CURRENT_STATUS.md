@@ -5,7 +5,7 @@ updated       : 2026-08-19（A3 session：IR→引擎 loader 與位元精確 rep
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
 current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE；A3 COMPLETE（15 點 residency counters 位元精確、SIM1 決定性、引擎全 QUIESCENT）；TRACK_GPU_PREP PREP-1 完成、PREP-2 解鎖
-next dispatch : B1（KV+continuous batching）/ B2（參數化候選處理器）—— 兩者前置皆為 A3，可並行；A4 仍 gated 在 A1 closure + GPU endpoint。P-017 已裁決（owner：維持 phase4 路由，不改 phase3，A3 維持 COMPLETE）。統籌已獨立重跑 A3 SIM0/SIM1/health 全 15 點確認 CONFIRMED
+next dispatch : B2（參數化候選處理器，RULES_ONLY 骨架，前置 A3 已滿足）。B1 由 owner 裁決 HELD 等 A4（OD-3：B1 的 SERV-P0-25 絕對延遲 gate 傳遞依賴 A4/GPU，現無計算時序來源；不硬擬合）。A4 仍 gated 在 A1 closure + GPU endpoint。P-017 已裁決（維持 phase4 路由）。A3 經統籌獨立重跑 SIM0/SIM1/health 全 15 點 CONFIRMED
 ```
 
 ## 一句話狀態

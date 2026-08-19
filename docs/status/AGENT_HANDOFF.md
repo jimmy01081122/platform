@@ -6,6 +6,40 @@
 
 ---
 
+## 2026-08-19 · ORCHESTRATOR · B1 排程升級裁決（OD-3）
+
+```text
+SESSION: ORCHESTRATOR (第三次覆核 / 純排程裁決)
+REVIEW_DATE: 2026-08-19
+TRIGGER: B1 executor 依指引 §8 停下升級 —— 發現 B1 的 COMPLETE gate 傳遞依賴 A4/GPU。
+FINDING (排程層確認, 未重讀 B1 工作產物, 未合成跨階段結論):
+  B1 precondition = A3 (已滿足)，但 B1 verification 第一條「重現 SERV-P0-25 TTFT/completion
+  latency 分布」需要已校準的計算時序模型。A3 只接上 byte/頻寬搬運服務時間 (phase4)，不含
+  prefill/decode 計算; SERV-P0-25 p50 868ms 由生成計算主導。計算時序來源全缺:
+    - A4 = NOT_STARTED (gated A1 closure + GPU endpoint)
+    - A1 component predictor = INSUFFICIENT_EVIDENCE (未升格)
+    - TRACK_GPU P5 (新 serving 量測) = 未跑 (gated GPU endpoint)
+    - phase3 生成 completion latency = OD-2 已否決
+  對 target 硬擬合 = 循環, 統籌與 B1 皆不放寬此 gate (§7)。ledger §4.1 相依圖未畫出此傳遞
+  依賴 —— 屬排程發現, 已記入 OD-3 finding。
+OWNER_DECISION_RESOLVED:
+  OD-3: owner 裁決 **先不開 B1, 等 A4**。B1 完全 hold 到 A1 closure + GPU endpoint -> A4
+  打通後一次做到 COMPLETE。B1 可做的骨架 (residency-managed object 抽象 / KV-expert 共爭
+  H2D / paged block+eviction / continuous batching 事件機制) 暫不動手。KV-vs-expert 仲裁
+  規則記為 C1 DSE 掃描軸 (不由 B1 寫死)。STAGE_B1 維持 NOT_STARTED。
+NEXT_DISPATCH: 只 B2 (RULES_ONLY 骨架, 前置 A3 已滿足, 無 GPU, 不得有 accelerator 收益主張)。
+  A4 / B1 / TRACK_GPU 全部 gated 在 GPU endpoint。
+CRITICAL_PATH: A2(DONE)->A3(DONE)->B2->C1->C2; C1 需 A4; A4/B1 gate/A1 closure/TRACK_GPU
+  全收斂到單一 GPU endpoint。當前唯一可推進到 COMPLETE 的 CPU 工作 = B2 骨架。
+CLAIMS_ADDED: 僅排程裁決 (OD-3) 與 B1 HELD 記錄。無任何 calibrated/timing/break-even 主張;
+  未執行 B1 或任何階段工作; 未重讀 B1 工作產物; 未合成跨階段結論。
+```
+
+**未越界**：本輪 `git diff` 僅含 `docs/status/{CURRENT_STATUS,AGENT_HANDOFF}.md` 與 ledger
+`orchestrator:` 區塊。未改 stages: 任何一列 (含 STAGE_B1，維持 NOT_STARTED)、未碰原始碼/evidence。
+
+---
+
 ## 2026-08-19 · ORCHESTRATOR · A3 驗收 + P-017 裁決 + gputw runbook
 
 ```text

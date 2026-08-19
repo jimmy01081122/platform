@@ -670,14 +670,15 @@ orchestrator:
         需求。注意: 指引為 RULES_ONLY, guide_note 稱實作細節待 A4 校準結果與 B1 收斂後補;
         故 B2 本輪可做的是規格/掛載點/ABI 骨架與 reference mock (標 ANALYTICAL/PROJECTED),
         不得有任何 accelerator 收益主張 (屬 C1)。
-      parallel_with: [STAGE_B1]
+      parallel_with: []
     - guide: docs/session_guides/STAGE_B1_KV_BATCHING.md
+      status: HELD
       reason: >-
-        B1 前置 (STAGE_A3 COMPLETE) 已滿足, 無 GPU 需求, 與 B2 無相依可並行。指引為
-        RULES_ONLY (實作細節待 A3/A4 收斂後補), 本輪可固定目標/約束/驗收骨架。硬約束:
-        KV 時序不得引用 SWAP-K2/K3 (block_size=0 資料品質限制); 長上下文一律標 PROJECTED,
-        無 MEASURED 長上下文主張 (該量測是 TRACK_GPU priority 2 的唯一來源)。
-      parallel_with: [STAGE_B2]
+        [2026-08-19] B1 executor 依 §8 停下升級 (見 OD-3): B1 precondition (A3) 已滿足, 但
+        B1 verification 第一條「重現 SERV-P0-25 的 TTFT/completion latency 分布」傳遞依賴一個
+        已校準的計算時序模型 —— 需 A4 (NOT_STARTED, gated) 或 TRACK_GPU P5 新量測 (未跑), 兩者
+        皆卡 GPU endpoint; A1 component predictor 為 INSUFFICIENT_EVIDENCE; phase3 生成 completion
+        latency 已由 OD-2 否決。對 target 硬擬合=循環, 禁止。OWNER 裁決: **先不開 B1, 等 A4**。
     - guide: docs/session_guides/STAGE_A4_SEALED_HOLDOUT.md
       status: BLOCKED
       reason: >-
@@ -710,7 +711,26 @@ orchestrator:
         OWNER 裁決 (2026-08-19): **維持 phase4 路由, 不改 phase3**。phase3 kService 續留
         ACCOUNTING_ONLY; 不重開 r5 review、不動 engine_profile.json/checksums。A3 現況即最終
         設計, STAGE_A3 維持 COMPLETE。若日後 B1/B2/C1 實際需要 phase3 kService 語意再重啟本項。
+    - id: OD-3
+      topic: B1 走向 (COMPLETE gate 傳遞依賴 A4/GPU, 現無法打通)
+      status: RESOLVED
+      finding: >-
+        B1 executor (2026-08-19) 依 §8 停下升級一項排程發現: guide §4.1 相依圖只把 B1
+        precondition 畫為 A3, 但 B1 的 acceptance gate (ledger STAGE_B1 verification 第一條:
+        重現 SERV-P0-25 TTFT/completion latency 分布) 需要一個已校準的計算時序模型。A3 只接上
+        byte/頻寬的搬運服務時間 (phase4, per-object H2D), 不含 prefill/decode 計算時間; SERV-P0-25
+        錨點 p50 868ms 由生成計算主導。可用的計算時序來源全部缺: A4 NOT_STARTED (gated A1+GPU)、
+        A1 component predictor INSUFFICIENT_EVIDENCE、TRACK_GPU P5 未跑 (gated GPU)、phase3 生成
+        completion latency OD-2 已否決。對 target 硬擬合=循環, B1 與統籌皆不放寬此 gate (§7)。
+      detail: >-
+        OWNER 裁決 (2026-08-19): **先不開 B1, 等 A4**。B1 完全 hold 到 A1 closure + GPU endpoint
+        -> A4 打通後再一次做到 COMPLETE。資源集中在 B2 (同樣 A3 解鎖, RULES_ONLY 骨架) 與解 GPU
+        endpoint。B1 的可做部分 (residency-managed object 抽象 / KV-expert 共爭 H2D / paged
+        block+eviction / continuous batching 事件機制) 依 owner 裁決暫不動手。KV-vs-expert 仲裁
+        規則 (FIFO/優先權) 未寫死, 記為 C1 DSE 掃描軸。STAGE_B1 維持 NOT_STARTED。
+        [排程影響] 相依圖修正: B1 acceptance 傳遞依賴 A4, 應視為 B1 gated on A4, 非僅 A3。
   critical_path: >-
     A2(DONE) -> A3(DONE) -> B2 -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
-    A3 已 COMPLETE, 解鎖 B1/B2 (CPU 可推進)。之後全部瓶頸收斂到單一 GPU endpoint
-    (A1 closure / A4 / TRACK_GPU)。因此 GPU endpoint 仍是當前唯一的關鍵路徑瓶頸。
+    A3 已 COMPLETE 解鎖 B2 (CPU 可推進); B1 雖 precondition (A3) 已滿足, 但 acceptance gate 傳遞
+    依賴 A4 -> owner 裁決 hold B1 等 A4 (OD-3)。因此當前唯一可實質推進到 COMPLETE 的 CPU 工作是
+    B2 骨架; 其餘全部瓶頸 (A1 closure / A4 / B1 gate / TRACK_GPU) 收斂到單一 GPU endpoint。
