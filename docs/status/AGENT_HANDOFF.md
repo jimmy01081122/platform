@@ -6,6 +6,45 @@
 
 ---
 
+## 2026-08-20 · ORCHESTRATOR · B2 驗收 CONFIRMED + 版本狀態確認 + push
+
+```text
+SESSION: ORCHESTRATOR (第四次覆核)
+REVIEW_DATE: 2026-08-20
+TRIGGER: B2 session 回報 COMPLETE (commit 7bccee0, 分支 stage-b2-accelerator-model,
+  自 6eb508a 建立, 27 檔 +2677/-43, 未 push); owner 要求確認版本狀態並 push。
+VERIFIED_THIS_SESSION:
+  STAGE_B2 = CONFIRMED (獨立重跑三條 verification):
+    - pytest tests/test_accelerator.py 34 passed: reference mock 五路徑+reset /
+      未註冊·reserved backend 全拒 (含不可構造) / fidelity 僅 ANALYTICAL·PROJECTED,
+      MEASURED_SURROGATE 構造期即拒, A2·A6 強制 unmeasured 且禁效能結論。
+    - 邊界: ledger 僅 STAGE_B2 一列 NOT_STARTED->COMPLETE; orchestrator 區塊(OD-3)完整;
+      commit 7bccee0 之 27 檔均不含 evidence/multifidelity; src/edgeflow/multifidelity.py
+      防偽 diff 空。基線 make test 399 Py + 14 CTest 0 failed; verify-evidence 4423/4423;
+      doctor pass。claim boundary 守住 (無 accelerator 收益/break-even; A2/A6 無效能結論)。
+VERSION_STATE_CHECK (owner 要求):
+  - 歷史線性 (非分叉): ...->A3->orch(A3驗)->orch(OD-3 6eb508a)->B2(7bccee0=HEAD)。
+    分支僅標籤; origin 有 stage-a3-ir-to-engine@6eb508a; stage-b2-accelerator-model 未 push。
+  - 工作區乾淨; HEAD 綠 (見上)。B2 commit 未夾帶 evidence/multifidelity (name-only 確認)。
+DISCREPANCIES:
+  - DISC-2 (LOW): B2 提交的 CURRENT_STATUS 標頭把 B1 列為可開, 與 OD-3 (B1 HELD 等 A4) 矛盾。
+    本 session 已更正標頭為「B1 HELD + TRACK_GPU 為下一動作」。屬文件不一致, 未改 stages:。
+  - (觀察, 非 DISC) B2 未在 AGENT_HANDOFF 加交接記錄; 本 orchestrator 記錄已涵蓋其完工敘述。
+NEXT_DISPATCH: TRACK_GPU (以 gputw.ai 開始 GPU 量測, OD-1; runbook = 
+  GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md; 前置 TRACK_GPU_PREP COMPLETE)。B1 HELD; C1/A4 gated。
+CRITICAL_PATH: A2(DONE)->A3(DONE)->B2(DONE)->C1->C2; CPU 端可推進到 COMPLETE 的階段工作已用盡;
+  瓶頸全部收斂到單一 GPU endpoint。
+PUSH_DECISION: 建議 push (見本 commit 後的說明) —— 狀態綠且自洽, 且 GPU 機器需 clone 完整版本。
+CLAIMS_ADDED: 僅驗收結果 (STAGE_B2=CONFIRMED)、版本狀態確認、DISC-2 更正、排程更新。
+CLAIMS_STILL_FORBIDDEN: calibrated / timing / break-even / accelerator / 長上下文 / 跨階段合成。
+```
+
+**未越界**：本輪 `git diff` (在 B2 已 commit 的乾淨 tree 上) 僅含 `docs/status/{CURRENT_STATUS,
+AGENT_HANDOFF}.md` 與 ledger `orchestrator:` 區塊。未改 stages: 任何一列、未碰 B2 已提交檔案、
+未碰原始碼/evidence。
+
+---
+
 ## 2026-08-19 · ORCHESTRATOR · B1 排程升級裁決（OD-3）
 
 ```text

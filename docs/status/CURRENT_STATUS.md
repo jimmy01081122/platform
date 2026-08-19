@@ -5,7 +5,7 @@ updated       : 2026-08-20（B2 session：參數化候選處理器 + 六動詞 A
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
 current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE；A3 COMPLETE；B2 COMPLETE（可掃描元件、六動詞 ABI、reference mock 五路徑、A1-A6 定義，全 ANALYTICAL/PROJECTED）；TRACK_GPU_PREP 完成
-next dispatch : B1（KV + continuous batching，RULES_ONLY，前置 A3 已滿足；長上下文標 PROJECTED、KV 時序不得引用 SWAP-K2/K3）。C1 前置為 A4+B2；B2 已 COMPLETE，惟 C1 仍等 A4。A4 仍 gated 在 A1 closure + GPU endpoint。P-017 已裁決（維持 phase4 路由）
+next dispatch : TRACK_GPU（以 gputw.ai 開始 GPU 量測，OD-1；runbook 見 docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md）。B2 COMPLETE 且經統籌獨立 CONFIRMED。B1 由 owner 裁決 HELD 等 A4（OD-3，非可開）；C1 gated 在 A4；A4 gated 在 A1 closure + GPU endpoint。CPU 端可推進到 COMPLETE 的階段工作已用盡，瓶頸全部收斂到單一 GPU endpoint
 ```
 
 ## 一句話狀態

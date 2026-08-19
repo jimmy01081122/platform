@@ -696,7 +696,7 @@ stages:
 # 指引: docs/session_guides/SESSION_ORCHESTRATOR.md
 # ---------------------------------------------------------------------------
 orchestrator:
-  last_review: "2026-08-19"
+  last_review: "2026-08-20"
   verified_stages:
     - stage: STAGE_0
       verified_on: "2026-08-19"
@@ -726,6 +726,22 @@ orchestrator:
         CTest 維持 4); 無 evidence/engine_profile/checksums/r5 治理檔被動; make test 365 Py
         + 14 CTest 0 failed; verify-evidence 4423/4423; doctor pass。
       result: CONFIRMED
+    - stage: STAGE_B2
+      verified_on: "2026-08-20"
+      method: >-
+        實際重跑該階段三條 verification (非僅產物存在性): pytest tests/test_accelerator.py
+        34 passed —— (1) reference mock 五路徑 transaction_adapter/clock_stepping(整數-fs
+        有理時脈無漂移)/backpressure/completion(submit 序退休)/counter +reset 全過;
+        (2) 未註冊/reserved backend 全拒 (RTL_TRACE_REPLAY/VERILATOR_COSIM/
+        RTL_CALIBRATED_SURROGATE 宣告 reserved 不註冊 -> 拒; 完全未知名稱 -> 拒; reserved
+        連構造都不行); (3) fidelity 僅 ANALYTICAL/PROJECTED, MEASURED_SURROGATE 構造期即拒,
+        零元件標 MEASURED_SURROGATE, A2/A6 強制 unmeasured 且禁效能結論。邊界: ledger 僅
+        STAGE_B2 一列 NOT_STARTED->COMPLETE (其餘列與 orchestrator 區塊未動); 無 evidence/src
+        改動; 既有 src/edgeflow/multifidelity.py 防偽 diff 空; commit 7bccee0 共 27 檔均不含
+        evidence/multifidelity。基線 make test 399 Py + 14 CTest 0 failed; verify-evidence
+        4423/4423; doctor pass。claim boundary 守住 (無 accelerator 收益/break-even; A2/A6 無
+        效能結論)。
+      result: CONFIRMED
   discrepancies:
     - id: DISC-1
       severity: LOW
@@ -734,14 +750,22 @@ orchestrator:
         317 Python。該區塊有明確日期標記且為歷史快照, 非階段狀態衝突; 現行實測為
         352 Python + 14 CTest, 0 failed。屬文件陳舊, 不改 stages: 任何一列。已在本次
         CURRENT_STATUS 更新中標明現行數字。
+    - id: DISC-2
+      severity: LOW
+      note: >-
+        [2026-08-20] B2 session 提交的 docs/status/CURRENT_STATUS.md (commit 7bccee0) 標頭
+        next dispatch 把 B1 列為可開, 與 ledger OD-3 (owner 裁決 B1 HELD 等 A4) 矛盾 —— B2
+        寫此行時未帶到 OD-3。屬文件不一致, 非階段狀態衝突, 不改 stages: 任何一列。本 session
+        已於 CURRENT_STATUS 標頭更正為 B1 HELD + TRACK_GPU 為下一動作。
   next_dispatch:
-    - guide: docs/session_guides/STAGE_B2_ACCELERATOR_MODEL.md
+    - guide: docs/session_guides/TRACK_GPU_MEASUREMENT.md
       reason: >-
-        A3 於 2026-08-19 COMPLETE (本 session 已獨立重跑 SIM0/SIM1/health 全 15 點確認),
-        B2 前置 (STAGE_A3 COMPLETE) 已滿足。B2 在關鍵路徑 A2->A3->B2->C1->C2 上, 無 GPU
-        需求。注意: 指引為 RULES_ONLY, guide_note 稱實作細節待 A4 校準結果與 B1 收斂後補;
-        故 B2 本輪可做的是規格/掛載點/ABI 骨架與 reference mock (標 ANALYTICAL/PROJECTED),
-        不得有任何 accelerator 收益主張 (屬 C1)。
+        [2026-08-20] B2 已 COMPLETE (本 session 獨立 CONFIRMED)。CPU 端可推進到 COMPLETE 的
+        階段工作已用盡 —— B1 HELD 等 A4 (OD-3), C1 gated 在 A4。剩下全部瓶頸 (A1 closure /
+        A4 / B1 gate / TRACK_GPU) 收斂到單一 GPU endpoint。owner 即將以 gputw.ai 開始 GPU
+        量測 (OD-1)。因此下一個動作是 TRACK_GPU (獨立 session 執行, 統籌不執行量測), 依
+        docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md runbook。前置 TRACK_GPU_PREP 已
+        COMPLETE、contract 凍結、五探針備妥、sealed split 封存。
       parallel_with: []
     - guide: docs/session_guides/STAGE_B1_KV_BATCHING.md
       status: HELD
@@ -802,7 +826,7 @@ orchestrator:
         規則 (FIFO/優先權) 未寫死, 記為 C1 DSE 掃描軸。STAGE_B1 維持 NOT_STARTED。
         [排程影響] 相依圖修正: B1 acceptance 傳遞依賴 A4, 應視為 B1 gated on A4, 非僅 A3。
   critical_path: >-
-    A2(DONE) -> A3(DONE) -> B2 -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
-    A3 已 COMPLETE 解鎖 B2 (CPU 可推進); B1 雖 precondition (A3) 已滿足, 但 acceptance gate 傳遞
-    依賴 A4 -> owner 裁決 hold B1 等 A4 (OD-3)。因此當前唯一可實質推進到 COMPLETE 的 CPU 工作是
-    B2 骨架; 其餘全部瓶頸 (A1 closure / A4 / B1 gate / TRACK_GPU) 收斂到單一 GPU endpoint。
+    A2(DONE) -> A3(DONE) -> B2(DONE) -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
+    A2/A3/B2 皆 COMPLETE 且經統籌獨立 CONFIRMED。CPU 端可推進到 COMPLETE 的階段工作已用盡:
+    B1 HELD 等 A4 (OD-3), C1 gated 在 A4。因此剩下全部瓶頸 (A1 closure / A4 / B1 gate / TRACK_GPU)
+    收斂到單一 GPU endpoint —— 下一個高槓桿動作是以 gputw.ai 開始 GPU 量測 (OD-1)。
