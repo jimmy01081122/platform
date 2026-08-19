@@ -758,6 +758,18 @@ orchestrator:
         寫此行時未帶到 OD-3。屬文件不一致, 非階段狀態衝突, 不改 stages: 任何一列。本 session
         已於 CURRENT_STATUS 標頭更正為 B1 HELD + TRACK_GPU 為下一動作。
   next_dispatch:
+    - guide: docs/session_guides/TRACK_GPU_PREP.md
+      phase: PREP-3
+      reason: >-
+        [2026-08-20 統籌裁決 OD-4] 為本次 GPU 窗口新增 target: V2-GAP-A 多物件並發搬運掃描
+        (PCIe two-regime S>1 語意, 目前 S>1=UNSUPPORTED, 是 co-design/C1 break-even 的真缺口,
+        舊矩陣稽核唯一揪出)。PREP-3 = 純 CPU 小 PREP: 寫 probe + parser + contract 段落 (含
+        CPU smoke + pass/fail fixture), 與 PREP-1/2 同紀律, 凍結後 V2-GAP-A 才可 dispatch。
+        endpoint 尚未開 (OD-1 RESOLVING) -> 現在有跑道做, 不壓縮窗口。HARD GUARDRAIL: 若
+        endpoint 早於 PREP-3 凍結出現, 照既有凍結目標 P4/P1/P2/P5 跑, V2-GAP-A 延到區塊 B 尾
+        段或第二窗, 絕不在窗口內臨時設計 (GAP-4 成因)。V2-GAP-A 屬 FIT-side, 不得與 sealed
+        held-out 混用。
+      parallel_with: []
     - guide: docs/session_guides/TRACK_GPU_MEASUREMENT.md
       reason: >-
         [2026-08-20] B2 已 COMPLETE (本 session 獨立 CONFIRMED)。CPU 端可推進到 COMPLETE 的
@@ -765,7 +777,8 @@ orchestrator:
         A4 / B1 gate / TRACK_GPU) 收斂到單一 GPU endpoint。owner 即將以 gputw.ai 開始 GPU
         量測 (OD-1)。因此下一個動作是 TRACK_GPU (獨立 session 執行, 統籌不執行量測), 依
         docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md runbook。前置 TRACK_GPU_PREP 已
-        COMPLETE、contract 凍結、五探針備妥、sealed split 封存。
+        COMPLETE (PREP-1/2)、contract 凍結、五探針備妥、sealed split 封存; PREP-3 (V2-GAP-A)
+        若在窗口前凍結則併入區塊 A, 否則延後 (見上)。
       parallel_with: []
     - guide: docs/session_guides/STAGE_B1_KV_BATCHING.md
       status: HELD
@@ -825,6 +838,24 @@ orchestrator:
         block+eviction / continuous batching 事件機制) 依 owner 裁決暫不動手。KV-vs-expert 仲裁
         規則 (FIFO/優先權) 未寫死, 記為 C1 DSE 掃描軸。STAGE_B1 維持 NOT_STARTED。
         [排程影響] 相依圖修正: B1 acceptance 傳遞依賴 A4, 應視為 B1 gated on A4, 非僅 A3。
+    - id: OD-4
+      topic: 是否為本次 GPU 窗口新增 target V2-GAP-A (多物件並發搬運掃描)
+      status: RESOLVED_BY_ORCHESTRATOR
+      note: advisor 提出; owner 於 2026-08-20 將決策交統籌 (「進行決策」)。owner 可否決。
+      detail: >-
+        V2-GAP-A = PCIe two-regime S>1 多物件並發搬運量測。目前 A1 PCIe 模型 S=1 ACCEPT、
+        S>1 UNSUPPORTED, 缺此量測; 是 co-design/C1 concurrent-transfer break-even 的真缺口,
+        舊矩陣稽核唯一揪出。成本便宜 (P4 同類 transfer 微基準, ms 級 x n=5, +10~15min, 可入
+        區塊 A margin)。代價: 目前不在凍結 contract, 需一次小 PREP (probe+parser+contract 段落)
+        才可 dispatch。
+        統籌裁決: **加入本窗, 但走正規 PREP-3 先凍結**。理由: (1) 邊際窗口成本極小 vs 另開第二
+        GPU 窗 (再一次開機/模型載入/計費; endpoint 是唯一有時限資源); (2) endpoint 尚未開
+        (OD-1 RESOLVING), 現在有 CPU 跑道做 PREP-3, 不壓縮窗口、不違反「窗口內不設計」紀律;
+        (3) 資訊增益高、直接解 C1 的 S>1 缺口。
+        HARD GUARDRAIL: PREP-3 須與 PREP-1/2 同紀律 (CPU smoke + pass/fail fixture + 凍結
+        contract 段落), 且**在窗口開前凍結**; 若 endpoint 早於 PREP-3 凍結出現, 照既有凍結目標
+        跑, V2-GAP-A 延到區塊 B 尾段或第二窗, 絕不在窗口內臨時設計。V2-GAP-A 屬 FIT-side,
+        不得與 sealed held-out 混用。已排入 next_dispatch (PREP-3) 並更新 runbook v1.2。
   critical_path: >-
     A2(DONE) -> A3(DONE) -> B2(DONE) -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
     A2/A3/B2 皆 COMPLETE 且經統籌獨立 CONFIRMED。CPU 端可推進到 COMPLETE 的階段工作已用盡:

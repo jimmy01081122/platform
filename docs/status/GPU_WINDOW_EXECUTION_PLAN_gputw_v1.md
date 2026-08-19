@@ -3,7 +3,7 @@
 ```text
 authored_by : SESSION_ORCHESTRATOR
 authored_on : 2026-08-19
-revised     : 2026-08-20（v1.1：納入官方 /vault 持久儲存 —— 權重下載一次、raw 防遺失，見 §2.1）
+revised     : 2026-08-20（v1.1：/vault 持久儲存見 §2.1；v1.2：OD-4 新增條件性 target V2-GAP-A 於區塊 A，須 PREP-3 先凍結，見 §3）
 kind        : 排程 runbook（設計/排程文件，非量測執行）
 authority   : 統籌 session 授權可寫 docs/status/；本文件不修改 stages:、原始碼、evidence
 executed_by : 獨立 TRACK_GPU session（docs/session_guides/TRACK_GPU_MEASUREMENT.md）
@@ -94,17 +94,23 @@ evidence 不同 domain、不能合併。寧可 `pip install vllm==0.23.0`。
 依 `experiments/specs/gpu_measurement_window_plan_v1.md`。**分兩個獨立區塊，不得重疊**
 （P5 的 serving 負載會擾動 1/2/4 的時序）：
 
-### 區塊 A — exclusive 微基準（單一 ~2h 窗口，實跑 ~100min），順序 P4 → P1 → P2
+### 區塊 A — exclusive 微基準（單一 ~2h 窗口，實跑 ~100–115min），順序 P4 → **V2-GAP-A** → P1 → P2
 
 | 序 | 目標 | Est. | 探針 / argv（contract） |
 |---|---|---|---|
 | P4 | component/PCIe 缺口 + V2-GAP-C sort/permute | 15min | `measurement/gpu_run_package_v2` benchmark.py（新 argv per gap，見 TRACK_GPU）；GAP-5 已由程式碼解、不需 GPU |
+| **V2-GAP-A** | **多物件並發搬運掃描（PCIe two-regime S>1）** | **+10~15min** | **條件性：僅在 PREP-3 已凍結時執行**（probe+parser+contract 段落，OD-4）。P4 同類 transfer 微基準、共用 setup。FIT-side，不得混 held-out |
 | P1 | A2 in-serving dispatch 搬運 | 25min | `python3 measurement/probes/inserving_dispatch_probe.py --backend <gpu> --concurrency 1,2,4,8 --steps 128 --out runs/<run_id>/dispatch.json` |
 | P2 | A6 長上下文 / KV offload | 60min（**HIGH 不確定**） | `python3 measurement/probes/long_context_kv_probe.py --backend <gpu> --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --out runs/<run_id>/longctx.json` |
 
+- **V2-GAP-A 條件（OD-4 硬護欄）**：只有 **PREP-3 在窗口開前完成凍結** 才納入本窗，排在 P4 之後。
+  **若 endpoint 早於 PREP-3 凍結出現 → 跳過 V2-GAP-A，照 P4/P1/P2 跑，延到區塊 B 尾段或第二窗；
+  絕不在窗口內臨時設計**（GAP-4 成因）。V2-GAP-A 補上 A1 PCIe 模型的 S>1（目前 UNSUPPORTED），
+  直接餵 C1 concurrent-transfer break-even。
 - **P2 中途驗估**：先跑 2–3 個 seq_len，若 1M 點將爆窗口就即時 re-plan（窗口計畫明載）。
 - **P4 順帶量到 sealed held-out cells**（target_3 assignment）＋ PCIe sweep 的 held-out 點。
-- 2h 窗口留 ~20min 給 preflight / guard canary / 每 attempt raw 保存。
+- 2h 窗口留 ~20min 給 preflight / guard canary / 每 attempt raw 保存；加 V2-GAP-A 後實跑 ~115min，
+  若 P2 爆估，V2-GAP-A 讓位到區塊 B。
 
 ### 區塊 B — P5 tail-CI（另一個 ~3h 窗口）
 - SERV-P0-25 從 request 0 重跑完整 10K，**新 attempt ID，不接續任何既有部分進度**。

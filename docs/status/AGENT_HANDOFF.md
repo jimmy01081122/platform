@@ -6,6 +6,35 @@
 
 ---
 
+## 2026-08-20 · ORCHESTRATOR · OD-4 排程裁決：V2-GAP-A 加入本窗（走 PREP-3）
+
+```text
+SESSION: ORCHESTRATOR (排程裁決)
+TRIGGER: advisor 建議為本次 GPU 窗口新增 target V2-GAP-A (多物件並發搬運掃描);
+  owner 將決策交統籌 (「進行決策」)。
+DECISION (OD-4, RESOLVED_BY_ORCHESTRATOR, owner 可否決):
+  加入 V2-GAP-A, 但走正規 PREP-3 (純 CPU: probe+parser+contract 段落, 與 PREP-1/2 同紀律),
+  在窗口開前凍結後才 dispatch。
+RATIONALE (純排程層, 未重推量測內容):
+  (1) V2-GAP-A 補 A1 PCIe two-regime 的 S>1 (目前 UNSUPPORTED), 是 C1 concurrent-transfer
+      break-even 的真缺口, 舊矩陣稽核唯一揪出 -> 高資訊增益、解下游。
+  (2) 邊際窗口成本極小 (+10~15min, P4 同類) vs 另開第二 GPU 窗 (再一次開機/模型載入/計費;
+      endpoint 是唯一有時限資源)。
+  (3) endpoint 尚未開 (OD-1 RESOLVING) -> 現在有 CPU 跑道做 PREP-3, 不壓縮窗口、不違反
+      「窗口內不設計」紀律。
+HARD GUARDRAIL: PREP-3 須在窗口開前凍結; 若 endpoint 早於 PREP-3 凍結出現, 照既有凍結目標
+  P4/P1/P2/P5 跑, V2-GAP-A 延到區塊 B 尾段或第二窗, 絕不在窗口內臨時設計 (GAP-4 成因)。
+  V2-GAP-A 屬 FIT-side, 不得與 sealed held-out 混用。
+NEXT_DISPATCH (更新後): PREP-3 (V2-GAP-A, CPU, 現在做) -> TRACK_GPU (窗口); B1 HELD; A4 BLOCKED。
+DOCS: ledger OD-4 + next_dispatch(PREP-3); runbook v1.2 (§3 區塊 A 加條件性 V2-GAP-A)。
+CLAIMS_ADDED: 僅排程裁決; 無量測/calibrated/break-even 主張; 未執行 PREP 或量測。
+```
+
+**未越界**：本輪 `git diff` 僅含 `docs/status/{AGENT_HANDOFF,GPU_WINDOW_EXECUTION_PLAN_gputw_v1}.md`
+與 ledger `orchestrator:` 區塊。未改 stages: 任何一列、未碰原始碼/evidence/探針。
+
+---
+
 ## 2026-08-20 · ORCHESTRATOR · B2 驗收 CONFIRMED + 版本狀態確認 + push
 
 ```text
