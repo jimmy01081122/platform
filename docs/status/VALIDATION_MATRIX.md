@@ -23,7 +23,7 @@
 | 斷點 | 判定 | 說明 | 負責階段 |
 |---|---|---|---|
 | 量測 → 九類 IR | **PASS**（OFF-E-PR3 家族） | A2：`off_e_pr3_measured_adapter.py` 把 15 點真實量測映成九類 IR，`validate_records(MEASURED)` 33203 筆全過、round-trip 再驗證。其餘家族 `NOT_RUN` | A2 |
-| IR → C++ 引擎 | **FAIL** | 無 loader；現有 DSE 數字出自 `src/edgeflow/residency.py` 而非引擎。A2 已產出可餵給 A3 的 bundle | A3 |
+| IR → C++ 引擎 | **PASS**（residency counters） | A3：A2 bundle 經 loader 驅動 phase5 RoutingResidencyModel→phase4，15 點 hit/load/discard 與量測 `capacity_replay.json` 位元精確相等、兩次 replay 位元相同、15/15 QUIESCENT。run `20260819T134458Z__stage_a3_ir_to_engine_replay`。**PASS 僅指 residency 語意，非時序準確度** | A3 |
 | 量測校準 | **FAIL** | 四項 MAPE gate 全失敗（見下） | A1 → A4 |
 
 ## Stage A2 · measured raw → 九類 Canonical IR（OFF-E-PR3 expert 容量掃描，15 點）
@@ -167,7 +167,7 @@ def gather_scatter(x=activations, idx=order, inv=inverse):
 |---|---|---|
 | A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | **IN_PROGRESS**（事前登記✓、舊 fail 報告未改✓、拒絕非物理解✓ P-012；v2 候選已 FIT 側評估 P-013：A ACCEPT、B INSUFFICIENT、C BLOCKED。closure blocked 在 V2-GAP-B/C 兩個 targeted FIT-side 量測；非 calibrated PASS） |
 | A2 | 各量測家族通過 IR1；byte 守恆逐點成立；`routing_sha256` 可回溯 | NOT_RUN |
-| A3 | 15 點 hit/miss/evict 與量測完全相等；兩次 replay 位元相同；無 deadlock/Zeno | NOT_RUN |
+| A3 | 15 點 hit/miss/evict 與量測完全相等；兩次 replay 位元相同；無 deadlock/Zeno | **PASS**（SIM0 15/15 位元精確、SIM1 15/15 決定性、15/15 QUIESCENT；service model 經 phase4 接上，per-object H2D=12450143814087 fs 對回 PlatformIR 校準值；phase3 kService 字面修改因 r5 凍結契約留 owner 裁決 P-017） |
 | A4 | 封存 split 只開封一次；MAPE ≤15%、APE ≤20%，三值判定 | NOT_RUN |
 | B1 | 重現 SERV-P0-25 的 TTFT 與 completion latency 分布（p50/p95/p99） | NOT_RUN |
 | B2 | reference mock 跑通六動詞路徑；未註冊 backend 仍正確拒絕 | NOT_RUN |

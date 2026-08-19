@@ -1,0 +1,22 @@
+{
+  "all_quiescent": true,
+  "note": "no deadlock, no Zeno, no resource-conservation violation; Phase 4 terminal_status QUIESCENT for every point.",
+  "schema_version": "stage-a3-health-v1",
+  "terminal_status": {
+    "025": "QUIESCENT",
+    "0375": "QUIESCENT",
+    "050": "QUIESCENT",
+    "0625": "QUIESCENT",
+    "075": "QUIESCENT",
+    "080": "QUIESCENT",
+    "0825": "QUIESCENT",
+    "085": "QUIESCENT",
+    "0875": "QUIESCENT",
+    "090": "QUIESCENT",
+    "0925": "QUIESCENT",
+    "095": "QUIESCENT",
+    "097": "QUIESCENT",
+    "099": "QUIESCENT",
+    "100": "QUIESCENT"
+  }
+}

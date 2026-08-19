@@ -245,7 +245,47 @@ stages:
 
   - id: STAGE_A3
     title: IR 轉引擎 loader 與位元精確 replay
-    status: NOT_STARTED
+    status: COMPLETE
+    status_note: >
+      [2026-08-19] A2 的九類 Canonical IR bundle 已被 C++ cycle-resolved 引擎驅動,
+      15 個 OFF-E-PR3 expert 容量點的 residency counters 位元精確重現。Loader:
+      Python 端 explorations/moe_cycle_simulator/phase7/loaders/ir_to_engine.py 從
+      A2 bundle 讀結構 (catalog / 每點 device_residency_budget capacity / routing
+      provenance sha), 依 A2 dropped_fields 指示從凍結 routing .npy 重建 10176 長度
+      有序 demand 序列 (object_id = layer*8 + expert, token-major flatten;
+      sha256 對回 RoutingIR provenance), 產出 plan spec; C++ 端新增 loader
+      executable moe_sim_phase5_ir_loader (phase5/tools/ir_replay_loader.cpp,
+      link 既有 phase5) 建 PolicyPlan 驅動既有 phase5 RoutingResidencyModel ->
+      phase4 SingleGpuModel, 回傳 counters/digests/timeline。引擎演算法完全未改;
+      loader 只建輸入、讀輸出。
+      SIM0: 15/15 hit_count / demand_load_count / immutable_discard_count 與量測
+      capacity_replay.json 完全相等 (逐點見 last_verified.sim0); terminal residency
+      物件集亦逐點相符。SIM1: 每點兩次 replay 的 semantic/plan/residency digest 位元
+      相同。引擎健康: 15/15 phase4 terminal_status QUIESCENT, 無 deadlock / Zeno /
+      資源守恆違反。
+      Counter 對映: demand_load_count<-metrics.loads, immutable_discard_count<-
+      metrics.clean_evictions, hit_count<-routing_demands-loads。退化 control (cap=100,
+      capacity_objects=256=catalog): device budget 覆蓋整個 catalog -> base_resident=
+      全 catalog (all-resident control, 0 demand H2D), 忠實對應量測
+      "No demand H2D: actual all-resident control"; 其餘 14 點空初始快取
+      (DETERMINISTIC_LRU_EMPTY_INITIAL_CACHE)。cap=099 的 259 loads 含 256 cold loads,
+      證明 cap=100 的 0 loads 為真預載而非容差掩蓋。見決策 P-017。
+      SERVICE MODEL: 服務時間模型經 phase4 接上 —— 每個 demand H2D load 是 phase4 H2D
+      Operation (work = object bytes), phase4 service_duration 以量測 PCIe 頻寬
+      28298591668 B/s 轉為服務時長, 單 H2D lane 串行。驗證: 每物件 H2D =
+      90823799123064345/7295 = 12450143814087 fs, 與 A2 PlatformIR 校準
+      h2d_expert_object_service_min duration_fs 完全相符。counters 與時序無關 (純順序
+      LRU), 故 SERVICE MODEL 不影響 SIM0。
+      OWNER_DECISION (見 P-017 / AGENT_HANDOFF): guide §6 另列「Action::kService 實際
+      消耗 service_demand」——該項屬 phase3 core。phase3 的 r5 凍結契約
+      (phase3/governance/reviews/phase3_r5_model_benchmark.json + checksums.sha256 +
+      contracts/engine_profile.json) 明定 service_demand=ACCOUNTING_ONLY /
+      completion_generation=FORBIDDEN / "does not derive completion latency"。直接改
+      phase3 kService 消耗 service_demand 會推翻該治理決定, 屬結構性契約變更 (根規格
+      §0 語意衝突須停止回報、§8 phase3-6 結構性改動須 owner)。故本階段不改 phase3,
+      服務時間走 phase4 (契約正確層, 亦即 PHASE3_RESULT.md 自述服務時間屬 Phase 4)。
+      phase3 kService 是否要字面修改 (需重開 r5 review + 更新 checksums) 留給 owner。
+      本 ledger 對 A3 的三條 verification (SIM0/SIM1/health) 全部滿足。
     guide: docs/session_guides/STAGE_A3_IR_TO_ENGINE.md
     guide_completeness: EXECUTABLE
     gpu_required: false
@@ -262,11 +302,32 @@ stages:
       - assertion: "SIM0 —— 15 點的 hit_count / demand_load_count / immutable_discard_count 與量測完全相等"
       - assertion: "SIM1 —— 同一 bundle 兩次 replay 結果位元相同"
       - assertion: 無 deadlock, 無 Zeno, 無資源守恆違反
+    last_verified:
+      date: "2026-08-19"
+      run_id: 20260819T134458Z__stage_a3_ir_to_engine_replay
+      actual:
+        verify_evidence: "evidence integrity: OK (4423 files) (unchanged; loader only reads evidence/)"
+        test: "129 + 36 + 16 + 43 + 141(+1 skipped, +48 subtests) Python = 365 passed; ctest 2/2 3/3 4/4 5/5 = 14 passed; 0 failed. Immediate baseline was 358 (PREP-2, P-016, which added +6 to tests/ -> 129); this session adds +7 phase7 tests/test_stage_a3_loader.py (134->141) -> 365. Runs green under make (PYTHONDONTWRITEBYTECODE=1); the tests/ suite's import-shadow tests fail only if run standalone with .pyc writing enabled (pre-existing, unrelated to A3)."
+        test_cpp: "phase3 2/2 · phase4 3/3 · phase5 4/4 · phase6 5/5 = 14 passed, 0 failed (phase5 kept at 4 tests; loader is an executable target, not a CTest)"
+        sim0: >
+          15/15 bit-exact (hit,load,discard): 025=(2881,7295,7231) 0375=(3556,6620,6524)
+          050=(5324,4852,4724) 0625=(6691,3485,3325) 075=(7847,2329,2137)
+          080=(8326,1850,1646) 0825=(8627,1549,1338) 085=(8852,1324,1107)
+          0875=(9052,1124,900) 090=(9287,889,659) 0925=(9511,665,429) 095=(9714,462,219)
+          097=(9815,361,113) 099=(9917,259,6) 100=(10176,0,0). terminal residency object
+          set matches measured terminal_resident_object_ids at every point.
+        sim1: "15/15 deterministic: two replays per point produce byte-identical semantic/plan/terminal-residency digests"
+        engine_health: "15/15 phase4 terminal_status=QUIESCENT; no deadlock, no Zeno, no resource-conservation violation"
+        service_model: "wired via phase4 (phase5 H2D Operation work=object_bytes -> phase4 service_duration @ 28298591668 B/s); per-object H2D = 12450143814087 fs == A2 PlatformIR calibrated H2D duration_fs"
+        routing_provenance: "sha256(routing .npy) == RoutingIR provenance content id 0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6 for all 15 points"
     claims_unlocked_on_completion:
       - "C++ 引擎可被真實量測 IR 驅動, 且 residency counters 位元精確重現"
+      - "15 個 expert 容量點的 residency counters 位元精確重現"
+      - "同一 bundle 的 replay 具決定性"
     claims_still_forbidden:
       - "任何時序準確度主張 —— 位元精確指的是 counters, 不是時間"
       - "任何 calibrated 主張"
+      - "把 SIM0 通過說成模擬器效能預測能力已驗證 (SIM0 只證 residency 語意)"
 
   - id: STAGE_A4
     title: Sealed held-out 校準驗證

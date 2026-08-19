@@ -1,0 +1,112 @@
+{
+  "acceptance": "same plan replayed twice is byte-identical",
+  "all_deterministic": true,
+  "points": [
+    {
+      "determinism_ok": true,
+      "label": "025",
+      "plan_digest": "b777c7a96074ef59c0d77bfd2cc40d6e14945e4bca3c2e6e37351abd6b20def6",
+      "semantic_digest": "e532940a820a3e6457f9697efdbae4a240acb04a2ee420053e641129b4b6d466",
+      "terminal_residency_digest": "7e9e54c81c0c3531d2cc2a6aebd0f0e3245f8b807c58e324c9ea7de9591cf0ec"
+    },
+    {
+      "determinism_ok": true,
+      "label": "0375",
+      "plan_digest": "79410308a5f56843d8713ed978ef6207bec428fa1b59b5b7e0119c31c3475707",
+      "semantic_digest": "b4a09ada9bb52fecf8ea00e855da682fa7fa58ffe38e4bfc58a1b8dabd354959",
+      "terminal_residency_digest": "6a87bfbca1e2646ee41edec67bb7cbda9b4b5f226d523d20a9c7d0a8dcfdde51"
+    },
+    {
+      "determinism_ok": true,
+      "label": "050",
+      "plan_digest": "02ed46174b760ad5cdb3bbe5545d4aa9207fe2ddbaef020654e5eff4e3c6dda3",
+      "semantic_digest": "a469339cc46124c0c0ce9ab09d0cabcc96c322eb288ddc1ef2a634b1af025aea",
+      "terminal_residency_digest": "7809c3a620e97693e1d1b6f339f463655bf183ddcc91d634a0b2c8b553dbab92"
+    },
+    {
+      "determinism_ok": true,
+      "label": "0625",
+      "plan_digest": "49fff27fa034eeddd05c18f7982eff29ea70e7f151c4d1b76c391e0ecd500f44",
+      "semantic_digest": "5966ac40a5446d78b026d27a21575d55fed9c3ed514b40292cea7c84f4f76be9",
+      "terminal_residency_digest": "138075f8a62b6b63ee410bcaaea05e8d5bb0ad9f18a678115eda11316d38af9c"
+    },
+    {
+      "determinism_ok": true,
+      "label": "075",
+      "plan_digest": "e497e95d133776989e6d92aa040659edbb5cff32a89219ed931d7d2fbd0b4104",
+      "semantic_digest": "6c7524155e0c0d63c3e7f7ca0a74dab19fabc64199bd2aeb89aba0249738a92d",
+      "terminal_residency_digest": "e0e19f6dcae41a6cea4c34c10d241e5e40fbedc61e2c85beb17b937a12a79627"
+    },
+    {
+      "determinism_ok": true,
+      "label": "080",
+      "plan_digest": "4cffa4cf187f45670e3ed510d3dca096cc0f2735510ff9318c8684c27121a16e",
+      "semantic_digest": "a52c4ca711e82ca344f43a09e5c90bbc153f074f2787a98804f0e2799ae4862b",
+      "terminal_residency_digest": "de375e4d7e4fcfe6675277f217603c6bd33ce78f99a6601b91baab7dfeed677f"
+    },
+    {
+      "determinism_ok": true,
+      "label": "0825",
+      "plan_digest": "2d1cb7c4c2bb62331790eacc3b809d1f3c893963e169834a97a5362bea73acf1",
+      "semantic_digest": "60de2bba6be499bc0ba7c64479d3b49bcf8c48fe8a03e79a52a9bd70cd59ba81",
+      "terminal_residency_digest": "287dca6999c21cc70ce09ecf307f89353c6c8eb41a4bdda0d6856f7420f9c632"
+    },
+    {
+      "determinism_ok": true,
+      "label": "085",
+      "plan_digest": "956d72c898f4bde8fc885c5a2388071d7fc2327728d014b3ca098f567ddc660a",
+      "semantic_digest": "20efc3287e4045166de096b0aa7b19a65e76829944372901bd895b3380aac432",
+      "terminal_residency_digest": "6335c3e7aa5d39d10cb8bdabca484e88443e4fd8df4362a4addabf32af4aabbc"
+    },
+    {
+      "determinism_ok": true,
+      "label": "0875",
+      "plan_digest": "9c59d812ff246b8e1cb36ea93606142956c2c5747b20e2d56c8d627bd8d0aee4",
+      "semantic_digest": "494326da9974e8cef9c7a919a90cce8d675ef59cec33ba49c8407c52b8d9d724",
+      "terminal_residency_digest": "49b74cb10c145b3f4db7c6611bd0927a70365b5c4197ff4b199bcd174efe279a"
+    },
+    {
+      "determinism_ok": true,
+      "label": "090",
+      "plan_digest": "cd7758df60e993c4ce4e31f1af90b4f1000682ba3c5f1a3e57c4e9341e2a3d7a",
+      "semantic_digest": "042ecdb7a7a416cfc223b052b6a4927df38b48e2334e47c013d55145c50d12bf",
+      "terminal_residency_digest": "f0228e7e7e1049b0900571798e267e5c615786b9ba48a1d0043bdaac35372ff4"
+    },
+    {
+      "determinism_ok": true,
+      "label": "0925",
+      "plan_digest": "6cfcdddfa9328ff6dfd6c758a5e25a3137e8114e246327c330d4555b948c8e89",
+      "semantic_digest": "8eb65cb900f4580a9bb30be9e9ff3c649b1a88e03257cacbb3a04f8054530b08",
+      "terminal_residency_digest": "bcdeb5b0e0c7435188beb6320a80e720ffca077b2d17e335ffc7204a3cfdf0fa"
+    },
+    {
+      "determinism_ok": true,
+      "label": "095",
+      "plan_digest": "9bbb7af54555b66cb8ffbccb81f173d7c0698ec760aca3a5276858819cb4294d",
+      "semantic_digest": "b4bee938cdffd78d6ce4436734e2795f76a2a54bbbb90ffacc3ca11883460145",
+      "terminal_residency_digest": "b0d23b9b1bc88108166b44c6caebbaa1a7d5dfd304ce12c50601f073272927d3"
+    },
+    {
+      "determinism_ok": true,
+      "label": "097",
+      "plan_digest": "6c6204746cda010bbf12aa43db96c3081c979d70737db9ff39ca077362c79c6b",
+      "semantic_digest": "2bef663d26c467fcfd9fd7a7068c48f9cb0162b70b479f0e761ce18f8c0ebf02",
+      "terminal_residency_digest": "d5a3ded85a652d51da7fde2c23762900ee70520835622bc4d204bedacb800230"
+    },
+    {
+      "determinism_ok": true,
+      "label": "099",
+      "plan_digest": "538b7a29423ecf9a51c174031f92c9223b687bbc909e09afbccc243f968d1d30",
+      "semantic_digest": "a731df28ffb0c9c93eaf54d22652f2dbcf916649108efb4b3c5d5a85f8c7b202",
+      "terminal_residency_digest": "c7bbed6b39f287e3276a87532e485ce67b1fbc1f8247f69dd32c8ad4a1ca0988"
+    },
+    {
+      "determinism_ok": true,
+      "label": "100",
+      "plan_digest": "6d837b3d8b412022eb0ab0aef18cb4c25e97a53e3cb0eb15987ee0e690fc74f3",
+      "semantic_digest": "44831c80427287d6ad5b5b9a95cf42e16932589fd9bc8d6c7bb5e2fdeb4843c8",
+      "terminal_residency_digest": "4c3454e83fe55e9c147819e7916236ea99fa424f5bb4092de14b3d00848cef7c"
+    }
+  ],
+  "schema_version": "stage-a3-sim1-v1"
+}

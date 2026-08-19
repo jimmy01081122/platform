@@ -34,6 +34,7 @@ swept        以範圍掃描處理
 | PA-012 | A2 PlatformIR `service_rate_units_per_second`（gpu0=2,805,000,000；cpu0=1,000,000,000） | gpu0 `measured`（nvidia-smi clocks.gr 2805 MHz）／cpu0 `assumed` | schema 必填且須 >0。**不是校準輸入、不驅動任何 A2 時序主張**（A2 無時序主張）。cpu0 為 nominal 佔位；真值待 B/C 需要時再定，屆時進掃描或標 UNAVAILABLE_WITH_CONSEQUENCE |
 | PA-013 | A2 PlatformIR PCIe `latency_fs = 0`（每筆傳輸 PCIe 起始延遲未單獨量測） | `assumed`（UNAVAILABLE_WITH_CONSEQUENCE） | 量測只給 per-object 總時間與有效頻寬，未分離固定延遲。填 0 為占位；**任何需要 PCIe 固定延遲的下游結論須先量測或標 PROJECTED**，不得沿用此 0 |
 | PA-014 | A2 ClockAlignmentIR：monotonic ns→fs 為精確單位換算（scale 1e6），量化不確定度以 ±0.5 ns（±500,000 fs）95% CI 表示，grade=AGGREGATE_ONLY | `derived` | 單一 host monotonic 時鐘，非跨時鐘漂移；ns 量化即不確定度來源。**不宣稱 CYCLE_GRADE 對齊** |
+| PA-015 | A3 對 cap=100 退化 control 使用 base_resident=全 catalog（all-resident 初始），其餘 14 點空初始快取 | `derived` | 判定規則由 IR 導出：`device_residency_budget capacity_bytes ≥ catalog 總 bytes` → 全常駐。忠實對應量測 `physical_transfer_semantics: "No demand H2D: actual all-resident control"`（demand_load=0）。**非容差掩蓋**：cap=099 的 259 loads 已含 256 cold loads，證明 cap=100 的 0 loads 是真預載（P-017） |
 
 ## 待驗證（進入 A1–A4 前尚未成立）
 
@@ -41,7 +42,7 @@ swept        以範圍掃描處理
 |---|---|---|---|
 | PA-101 | 修正 contention 施加位置後，PCIe MAPE 可降至個位數 | `assumed` | A1 已重擬合：FIT 側 MAPE 66.879%→19.821%（大幅改善但未達個位數，也未達 15% 門檻）。大尺寸單筆延遲驗證極佳（~84MiB 處 streams 1/2/4 誤差 <0.2%），但新發現小尺寸（64KiB）多 stream 下有相反方向的殘留效應（`calibration/fits/v2/measurement_gaps.json` GAP-6）。**FIT 側數字，仍待 A4 sealed held-out 判定**，不得作為結論 |
 | PA-102 | 以 operand shape 參數化可修復 component service model | `assumed` | A1 已重擬合：FIT 側 MAPE 304.418%→20.324%。4 個 op 中 3 個（grouped_gemm/gather_scatter/selected_expert）收斂為 tokens 仿射回歸；dequant 回歸非物理，退回 flat model（真正驅動變數應為 expert 權重位元組數，本階段量測無法分離，見 GAP-1）。**FIT 側數字，仍待 A4 sealed held-out 判定** |
-| PA-103 | C++ 引擎在接上 phase4 service model 後可重現 15 點的 hit/miss/evict | `assumed` | A3 的 SIM0 驗收 |
+| PA-103 | C++ 引擎在接上 phase4 service model 後可重現 15 點的 hit/miss/evict | `measured`（A3 已驗證） | **A3 SIM0 已通過**：15/15 hit/load/discard 經 phase5→phase4 引擎位元精確重現、SIM1 決定性、15/15 QUIESCENT（run `20260819T134458Z__stage_a3_ir_to_engine_replay`，P-017）。服務時間走 phase4（per-object H2D=12450143814087 fs 對回校準值）。**僅 residency 語意，非時序準確度** |
 | PA-104 | 既有 PCIe 服務模型可用於 2 MiB KV block 的時序 | `assumed` | A1 已修小尺寸 intercept 低估問題（floor_ms，見 PA-101），但殘差分析顯示 2 MiB 附近（bytes=1048576 校準點）在 streams>1 時仍有 30–60% 的 FIT 側誤差（GAP-6 的中間尺度延伸）。**2 MiB KV block 的時序仍不可視為已由 A1 修復**，須待更多量測或 A4 判定 |
 
 ## 第三方 routing 語料（`core12345/MoE_expert_selection_trace`）

@@ -226,3 +226,27 @@
 - TRACK_GPU_PREP 狀態 → `COMPLETE`（PREP-1 + PREP-2）。contract `status: FROZEN_PREP2`，五項 `output_fields` 無 `PENDING_A2` 殘留。
 - TRACK_GPU 現在可直接執行：priority 1/2 探針的輸出欄位已定案且對 A2 schema 有效。
 - 基線：**358 Python**（tests/ 129，PREP-2 +6 tests）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。**未跑任何 GPU**。
+
+---
+
+## P-017 · A3：residency 位元精確走 phase5 引擎；服務時間走 phase4；phase3 kService 字面修改留 owner
+
+**日期** 2026-08-19
+**前置** STAGE_A2 COMPLETE（九類 IR bundle）。STAGE_A3 目標：IR→引擎 loader，15 點 residency counters 位元精確重現。
+
+**決定 1（demand 順序來源）** A2 的 RoutingIR 是 AGGREGATE scope（量測 .npy 無 gate scores，per-token 有序序列被 drop，記於 A2 `dropped_fields.json`）。依 A2 交接指示，A3 從凍結 routing `.npy` 重建 10176 長度有序 demand 序列：C-order flatten，`object_id = layer*8 + expert`，`layer = (i // top_k) % layers`（token-major）。每點 `sha256(.npy)` 對回 RoutingIR provenance 才使用（唯讀 evidence，未改）。
+
+**決定 2（引擎路徑）** 用既有 phase5 `RoutingResidencyModel`（`EvictionPolicy::kLru`、CLEAN_IMMUTABLE、byte 計價 catalog）作 residency 引擎，它驅動 phase4 `SingleGpuModel` 產生時序。新增 loader 模組（不改引擎演算法）：C++ executable `moe_sim_phase5_ir_loader`（`phase5/tools/ir_replay_loader.cpp`，link 既有 phase5）建 `PolicyPlan` 並回傳 counters/digests/timeline；Python `phase7/loaders/ir_to_engine.py` 從 A2 bundle 讀結構、產 plan spec、比對量測。counter 對映：`demand_load_count←metrics.loads`、`immutable_discard_count←metrics.clean_evictions`、`hit_count←routing_demands − loads`。
+
+**決定 3（cap=100 退化 control）** 量測全容量點（capacity_objects=256=catalog）是 "actual all-resident control"，`demand_load_count=0`。判定規則（可從 IR 導出）：當 `device_residency_budget capacity_bytes ≥ catalog 總 bytes` → `base_resident = 全 catalog`（all-resident 初始），否則空初始快取（`DETERMINISTIC_LRU_EMPTY_INITIAL_CACHE`）。**這不是容差掩蓋**：cap=099（capacity 253）的 259 loads 已含全部 256 個 cold loads，證明 cap=100 的 0 loads 是真預載而非統計歸零。忠實對應量測 `physical_transfer_semantics: "No demand H2D: actual all-resident control"`。
+
+**決定 4（服務時間走 phase4，非改 phase3）** guide §6 列「Action::kService 實際消耗 service_demand」。該項屬 phase3 core。phase3 有 **r5 凍結治理**：`phase3/governance/reviews/phase3_r5_model_benchmark.json` 明載「REPLAY_VALIDATE preserves and hashes service_demand but **does not derive completion latency**」，`contracts/engine_profile.json` 標 `service_demand: ACCOUNTING_ONLY` / `completion_generation: FORBIDDEN`，且 `governance/checksums.sha256` 釘住該檔。**直接改 phase3 kService 以 service_demand 推進完成時間會推翻此治理決定，屬結構性契約變更**（根規格 §0：語意衝突須停止回報、不得自選較易一方；§8：phase3–6 結構性改動須 owner）。
+故本階段**不改 phase3**，服務時間經 **phase4** 接上（PHASE3_RESULT.md 自述服務時間屬 Phase 4）：每個 demand H2D load 是 phase4 H2D Operation（work=object bytes），phase4 `service_duration` 以量測 PCIe 頻寬 28298591668 B/s 轉換、單 H2D lane 串行。驗證：每物件 H2D = 90823799123064345/7295 = **12450143814087 fs**，與 A2 PlatformIR 校準 `h2d_expert_object_service_min duration_fs` 完全相符。counters 與時序無關（純順序 LRU），故此不影響 SIM0。
+
+**OWNER 待裁決** phase3 `Action::kService` 是否要字面修改為消耗 service_demand。若要，需重開 r5 review、更新 `engine_profile.json`（`ACCOUNTING_ONLY`→consumed）與 `phase3/governance/checksums.sha256`，屬跨 review 的治理動作。本 A3 的三條 ledger verification（SIM0/SIM1/health）不含此項且全部滿足。
+
+**後果**
+- STAGE_A3 → `COMPLETE`。SIM0 15/15 位元精確、SIM1 15/15 決定性、15/15 QUIESCENT。
+- 新增：`phase5/tools/ir_replay_loader.cpp`、`phase5/CMakeLists.txt`（+executable target，phase5 CTest 維持 4）、`phase7/loaders/`、`phase7/tests/test_stage_a3_loader.py`（+7 tests）。引擎原始碼（phase3–6）未改。
+- run `runs/20260819T134458Z__stage_a3_ir_to_engine_replay/`（含 sim0/sim1/health/timing artifacts、每點 engine_result、environment）。
+- 基線：**365 Python**（358 PREP-2 基線 + 7 A3；tests/ 129 含 PREP-2 的 +6）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。**未跑任何 GPU；無任何時序準確度 / calibrated / break-even / accelerator 主張**。

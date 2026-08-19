@@ -1,0 +1,263 @@
+{
+  "engine_all_quiescent": true,
+  "per_point": [
+    {
+      "all_resident_control": false,
+      "capacity_objects": 64,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 7295,
+        "hit_count": 2881,
+        "immutable_discard_count": 7231
+      },
+      "expected": {
+        "demand_load_count": 7295,
+        "hit_count": 2881,
+        "immutable_discard_count": 7231
+      },
+      "label": "025",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 96,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 6620,
+        "hit_count": 3556,
+        "immutable_discard_count": 6524
+      },
+      "expected": {
+        "demand_load_count": 6620,
+        "hit_count": 3556,
+        "immutable_discard_count": 6524
+      },
+      "label": "0375",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 128,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 4852,
+        "hit_count": 5324,
+        "immutable_discard_count": 4724
+      },
+      "expected": {
+        "demand_load_count": 4852,
+        "hit_count": 5324,
+        "immutable_discard_count": 4724
+      },
+      "label": "050",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 160,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 3485,
+        "hit_count": 6691,
+        "immutable_discard_count": 3325
+      },
+      "expected": {
+        "demand_load_count": 3485,
+        "hit_count": 6691,
+        "immutable_discard_count": 3325
+      },
+      "label": "0625",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 192,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 2329,
+        "hit_count": 7847,
+        "immutable_discard_count": 2137
+      },
+      "expected": {
+        "demand_load_count": 2329,
+        "hit_count": 7847,
+        "immutable_discard_count": 2137
+      },
+      "label": "075",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 204,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 1850,
+        "hit_count": 8326,
+        "immutable_discard_count": 1646
+      },
+      "expected": {
+        "demand_load_count": 1850,
+        "hit_count": 8326,
+        "immutable_discard_count": 1646
+      },
+      "label": "080",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 211,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 1549,
+        "hit_count": 8627,
+        "immutable_discard_count": 1338
+      },
+      "expected": {
+        "demand_load_count": 1549,
+        "hit_count": 8627,
+        "immutable_discard_count": 1338
+      },
+      "label": "0825",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 217,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 1324,
+        "hit_count": 8852,
+        "immutable_discard_count": 1107
+      },
+      "expected": {
+        "demand_load_count": 1324,
+        "hit_count": 8852,
+        "immutable_discard_count": 1107
+      },
+      "label": "085",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 224,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 1124,
+        "hit_count": 9052,
+        "immutable_discard_count": 900
+      },
+      "expected": {
+        "demand_load_count": 1124,
+        "hit_count": 9052,
+        "immutable_discard_count": 900
+      },
+      "label": "0875",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 230,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 889,
+        "hit_count": 9287,
+        "immutable_discard_count": 659
+      },
+      "expected": {
+        "demand_load_count": 889,
+        "hit_count": 9287,
+        "immutable_discard_count": 659
+      },
+      "label": "090",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 236,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 665,
+        "hit_count": 9511,
+        "immutable_discard_count": 429
+      },
+      "expected": {
+        "demand_load_count": 665,
+        "hit_count": 9511,
+        "immutable_discard_count": 429
+      },
+      "label": "0925",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 243,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 462,
+        "hit_count": 9714,
+        "immutable_discard_count": 219
+      },
+      "expected": {
+        "demand_load_count": 462,
+        "hit_count": 9714,
+        "immutable_discard_count": 219
+      },
+      "label": "095",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 248,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 361,
+        "hit_count": 9815,
+        "immutable_discard_count": 113
+      },
+      "expected": {
+        "demand_load_count": 361,
+        "hit_count": 9815,
+        "immutable_discard_count": 113
+      },
+      "label": "097",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": false,
+      "capacity_objects": 253,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 259,
+        "hit_count": 9917,
+        "immutable_discard_count": 6
+      },
+      "expected": {
+        "demand_load_count": 259,
+        "hit_count": 9917,
+        "immutable_discard_count": 6
+      },
+      "label": "099",
+      "terminal_resident_match": true
+    },
+    {
+      "all_resident_control": true,
+      "capacity_objects": 256,
+      "counters_match": true,
+      "engine": {
+        "demand_load_count": 0,
+        "hit_count": 10176,
+        "immutable_discard_count": 0
+      },
+      "expected": {
+        "demand_load_count": 0,
+        "hit_count": 10176,
+        "immutable_discard_count": 0
+      },
+      "label": "100",
+      "terminal_resident_match": true
+    }
+  ],
+  "points": 15,
+  "sim0_all_bit_exact": true,
+  "sim1_all_deterministic": true
+}

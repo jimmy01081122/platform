@@ -1,0 +1,30 @@
+{
+  "classification": "IR bundle -> C++ cycle-resolved engine (Stage A3, CPU-only)",
+  "command": [
+    "python",
+    "-m",
+    "explorations.moe_cycle_simulator.phase7.loaders.ir_to_engine",
+    "--run-dir",
+    "/home/a/platform/runs/20260819T134458Z__stage_a3_ir_to_engine_replay"
+  ],
+  "created_at": "2026-08-19T13:44:58Z",
+  "experiment_id": "off_e_pr3_ir_to_engine_replay",
+  "git": {
+    "code_commit": "1374f6d09f082a19317f204bdb67f873a2c0f71e"
+  },
+  "inputs": {
+    "a2_bundle_envelope": "/home/a/platform/runs/20260819T000000Z__stage_a2_off_e_pr3_measured_ir/bundle/artifact-envelope.json",
+    "engine": "phase5 RoutingResidencyModel -> phase4 SingleGpuModel",
+    "phase5_build_authority_sha256": "30a5987d2682db7da485e0aff7fdc676df6b9c06d65bb96114df7fba407fb68c",
+    "routing_sha256": "0a9225ec4b302ea237bc21fe532fa1efb790905bbc5832e2ea5dab72b20e50d6"
+  },
+  "platform_profile": "NVIDIA RTX PRO 6000 Blackwell (evidence-of-record)",
+  "run_id": "20260819T134458Z__stage_a3_ir_to_engine_replay",
+  "stage": "A3",
+  "summary": {
+    "engine_all_quiescent": true,
+    "points": 15,
+    "sim0_all_bit_exact": true,
+    "sim1_all_deterministic": true
+  }
+}

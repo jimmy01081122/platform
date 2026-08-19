@@ -1,0 +1,296 @@
+{
+  "assignments": 10176,
+  "class_metrics": {
+    "COMPUTE": {
+      "busy_lane_fs": "10176",
+      "operation_count": 10176,
+      "queue_delay_fs": "0"
+    },
+    "H2D": {
+      "busy_lane_fs": "90823799123064345",
+      "operation_count": 7295,
+      "queue_delay_fs": "0"
+    },
+    "MEMORY": {
+      "busy_lane_fs": "17407",
+      "operation_count": 17407,
+      "queue_delay_fs": "0"
+    }
+  },
+  "clean_evictions": 7231,
+  "ignored_hints": 0,
+  "loads": 7295,
+  "makespan_fs": "90823799123091928",
+  "peak_resident_bytes": "22548578304",
+  "phase4_semantic_digest": "ebf73a26d9693a01c7872942866fe75ff700ddb603b76844a0f3d6e1157b9d05",
+  "plan_digest": "b777c7a96074ef59c0d77bfd2cc40d6e14945e4bca3c2e6e37351abd6b20def6",
+  "prefetch_loads": 0,
+  "replay_action_lookups": 69756,
+  "routing_demands": 10176,
+  "semantic_digest": "e532940a820a3e6457f9697efdbae4a240acb04a2ee420053e641129b4b6d466",
+  "terminal_residency_digest": "7e9e54c81c0c3531d2cc2a6aebd0f0e3245f8b807c58e324c9ea7de9591cf0ec",
+  "terminal_resident": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      8,
+      7
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      9,
+      5
+    ],
+    [
+      10,
+      1
+    ],
+    [
+      10,
+      6
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      11,
+      6
+    ],
+    [
+      12,
+      1
+    ],
+    [
+      12,
+      5
+    ],
+    [
+      13,
+      1
+    ],
+    [
+      13,
+      2
+    ],
+    [
+      14,
+      0
+    ],
+    [
+      14,
+      2
+    ],
+    [
+      15,
+      3
+    ],
+    [
+      15,
+      7
+    ],
+    [
+      16,
+      0
+    ],
+    [
+      16,
+      2
+    ],
+    [
+      17,
+      0
+    ],
+    [
+      17,
+      2
+    ],
+    [
+      18,
+      2
+    ],
+    [
+      18,
+      6
+    ],
+    [
+      19,
+      0
+    ],
+    [
+      19,
+      5
+    ],
+    [
+      20,
+      3
+    ],
+    [
+      20,
+      7
+    ],
+    [
+      21,
+      1
+    ],
+    [
+      21,
+      3
+    ],
+    [
+      22,
+      3
+    ],
+    [
+      22,
+      4
+    ],
+    [
+      23,
+      5
+    ],
+    [
+      23,
+      6
+    ],
+    [
+      24,
+      1
+    ],
+    [
+      24,
+      7
+    ],
+    [
+      25,
+      3
+    ],
+    [
+      25,
+      4
+    ],
+    [
+      26,
+      2
+    ],
+    [
+      26,
+      6
+    ],
+    [
+      27,
+      0
+    ],
+    [
+      27,
+      2
+    ],
+    [
+      28,
+      0
+    ],
+    [
+      28,
+      4
+    ],
+    [
+      29,
+      1
+    ],
+    [
+      29,
+      2
+    ],
+    [
+      30,
+      2
+    ],
+    [
+      30,
+      6
+    ],
+    [
+      31,
+      0
+    ],
+    [
+      31,
+      4
+    ]
+  ],
+  "terminal_resident_bytes": "22548578304",
+  "terminal_resident_count": 64,
+  "terminal_status": "QUIESCENT",
+  "trace_size": 69756,
+  "useful_prefetches": 0,
+  "wasted_prefetches": 0
+}

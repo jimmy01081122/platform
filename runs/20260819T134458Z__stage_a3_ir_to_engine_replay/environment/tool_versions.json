@@ -1,0 +1,7 @@
+{
+  "cmake": "cmake version 3.22.1",
+  "compiler": "c++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "loader_binary": "/home/a/platform/build/phase5/moe_sim_phase5_ir_loader",
+  "loader_binary_sha256": "a4913b5e4d2d29277816956ccba4d37c8a8fee774b885389aa56261a62ca47cd",
+  "python": "3.10.12"
+}

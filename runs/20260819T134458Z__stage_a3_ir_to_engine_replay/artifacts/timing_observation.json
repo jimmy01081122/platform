@@ -1,0 +1,113 @@
+{
+  "claim": "OBSERVATION ONLY -- no timing-accuracy claim (deferred to A4). The residency counters are timing-independent (order-only LRU).",
+  "measured_per_object_h2d_ms_range": "12.454-12.499 (sigma ~0.1%)",
+  "points": [
+    {
+      "engine_makespan_fs": "90823799123091928",
+      "h2d_busy_lane_fs": "90823799123064345",
+      "h2d_operation_count": 7295,
+      "label": "025",
+      "loads": 7295
+    },
+    {
+      "engine_makespan_fs": "82419952048647296",
+      "h2d_busy_lane_fs": "82419952048620420",
+      "h2d_operation_count": 6620,
+      "label": "0375",
+      "loads": 6620
+    },
+    {
+      "engine_makespan_fs": "60408097785509408",
+      "h2d_busy_lane_fs": "60408097785484332",
+      "h2d_operation_count": 4852,
+      "label": "050",
+      "loads": 4852
+    },
+    {
+      "engine_makespan_fs": "43388751191782312",
+      "h2d_busy_lane_fs": "43388751191758635",
+      "h2d_operation_count": 3485,
+      "label": "0625",
+      "loads": 3485
+    },
+    {
+      "engine_makespan_fs": "28996384942807528",
+      "h2d_busy_lane_fs": "28996384942785039",
+      "h2d_operation_count": 2329,
+      "label": "075",
+      "loads": 2329
+    },
+    {
+      "engine_makespan_fs": "23032766055905348",
+      "h2d_busy_lane_fs": "23032766055883350",
+      "h2d_operation_count": 1850,
+      "label": "080",
+      "loads": 1850
+    },
+    {
+      "engine_makespan_fs": "19285272767893749",
+      "h2d_busy_lane_fs": "19285272767872059",
+      "h2d_operation_count": 1549,
+      "label": "0825",
+      "loads": 1549
+    },
+    {
+      "engine_makespan_fs": "16483990409745543",
+      "h2d_busy_lane_fs": "16483990409724084",
+      "h2d_operation_count": 1324,
+      "label": "085",
+      "loads": 1324
+    },
+    {
+      "engine_makespan_fs": "13993961646947136",
+      "h2d_busy_lane_fs": "13993961646925884",
+      "h2d_operation_count": 1124,
+      "label": "0875",
+      "loads": 1124
+    },
+    {
+      "engine_makespan_fs": "11068177850659010",
+      "h2d_busy_lane_fs": "11068177850637999",
+      "h2d_operation_count": 889,
+      "label": "090",
+      "loads": 889
+    },
+    {
+      "engine_makespan_fs": "8279345636324796",
+      "h2d_busy_lane_fs": "8279345636304015",
+      "h2d_operation_count": 665,
+      "label": "0925",
+      "loads": 665
+    },
+    {
+      "engine_makespan_fs": "5751966442084413",
+      "h2d_busy_lane_fs": "5751966442063842",
+      "h2d_operation_count": 462,
+      "label": "095",
+      "loads": 462
+    },
+    {
+      "engine_makespan_fs": "4494501916871216",
+      "h2d_busy_lane_fs": "4494501916850751",
+      "h2d_operation_count": 361,
+      "label": "097",
+      "loads": 361
+    },
+    {
+      "engine_makespan_fs": "3224587247844027",
+      "h2d_busy_lane_fs": "3224587247823669",
+      "h2d_operation_count": 259,
+      "label": "099",
+      "loads": 259
+    },
+    {
+      "engine_makespan_fs": "20352",
+      "h2d_busy_lane_fs": null,
+      "h2d_operation_count": null,
+      "label": "100",
+      "loads": 0
+    }
+  ],
+  "schema_version": "stage-a3-timing-observation-v1",
+  "service_model_wiring": "Service time is consumed through the Phase 4 service model: each demand H2D load is a Phase 4 H2D Operation with work = object bytes, and Phase 4 service_duration converts it via the measured PCIe bandwidth (28298591668 B/s), serialising on one H2D lane. Phase 3 Action::kService is left ACCOUNTING_ONLY per its r5-frozen contract (see OWNER_DECISION in the handoff)."
+}

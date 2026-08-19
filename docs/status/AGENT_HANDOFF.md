@@ -6,6 +6,70 @@
 
 ---
 
+## 2026-08-19 · STAGE_A3 · IR→引擎 loader 與位元精確 replay
+
+```text
+STAGE: A3
+STATUS: COMPLETE
+SIM0_RESULT: 15/15 位元精確。engine (hit,load,discard) 與量測 capacity_replay.json 完全相等：
+  025=(2881,7295,7231) 0375=(3556,6620,6524) 050=(5324,4852,4724) 0625=(6691,3485,3325)
+  075=(7847,2329,2137) 080=(8326,1850,1646) 0825=(8627,1549,1338) 085=(8852,1324,1107)
+  0875=(9052,1124,900) 090=(9287,889,659) 0925=(9511,665,429) 095=(9714,462,219)
+  097=(9815,361,113) 099=(9917,259,6) 100=(10176,0,0)。terminal residency 物件集亦逐點相符。無不符者。
+SIM1_RESULT: 15/15 決定性。每點兩次 replay 的 semantic/plan/terminal-residency digest 位元相同。
+ENGINE_HEALTH: 15/15 phase4 terminal_status=QUIESCENT；無 deadlock、無 Zeno、無資源守恆違反。
+SERVICE_MODEL_WIRED: 經 phase4 接上（非改 phase3）。每個 demand H2D load = phase4 H2D Operation
+  (work=object bytes)，phase4 service_duration @ 量測 PCIe 頻寬 28298591668 B/s、單 H2D lane 串行。
+  驗證：每物件 H2D = 90823799123064345/7295 = 12450143814087 fs == A2 PlatformIR 校準
+  h2d_expert_object_service_min duration_fs。counters 與時序無關（純順序 LRU），不影響 SIM0。
+TIMING_OBSERVED: 僅記錄不調整。makespan H2D-dominated（單 lane 串行）：cap=025=90823799123091928 fs
+  (≈90.82s)…cap=100=20352 fs。makespan 與量測 latency_fs 不可直接比較（量測含完整生成，且時序準確度
+  屬 A4）。artifacts/timing_observation.json。
+CPP_BASELINE: make test-cpp → phase3 2/2 · phase4 3/3 · phase5 4/4 · phase6 5/5 = 14 passed, 0 failed。
+  引擎原始碼 phase3–6 未改；loader 是 phase5 的 executable target（非 CTest），phase5 CTest 維持 4。
+BASELINE: make test → 129+36+16+43+141(+1 skipped,+48 subtests)=365 Python passed + 14 CTest, 0 failed。
+  即時基線 358（PREP-2, P-016）+7 A3 phase7 tests = 365。
+EVIDENCE_UNCHANGED: make verify-evidence → evidence integrity: OK (4423 files)。loader 只讀 evidence/。
+FILES_CHANGED:
+  + explorations/moe_cycle_simulator/phase5/tools/ir_replay_loader.cpp   (C++ loader, link phase5)
+  M explorations/moe_cycle_simulator/phase5/CMakeLists.txt               (+executable target only)
+  + explorations/moe_cycle_simulator/phase7/loaders/ir_to_engine.py      (Python orchestrator + CLI)
+  + explorations/moe_cycle_simulator/phase7/loaders/__init__.py
+  + explorations/moe_cycle_simulator/phase7/tests/test_stage_a3_loader.py (+7 tests, 1 gated skip)
+  + runs/20260819T134458Z__stage_a3_ir_to_engine_replay/                 (full 15-point run artifacts)
+  M governance/stage_ledger.yaml (STAGE_A3 列)、docs/status/ 五份
+CLAIMS_ADDED:
+  - C++ cycle-resolved 引擎可被真實量測 IR 驅動
+  - 15 個 expert 容量點的 residency counters 位元精確重現
+  - 同一 bundle 的 replay 具決定性
+CLAIMS_STILL_FORBIDDEN: 時序準確度 / calibrated / break-even / accelerator；
+  不得把 SIM0 通過說成模擬器效能預測能力已驗證（SIM0 只證 residency 語意）。
+NEXT: B1（KV+continuous batching）/ B2（參數化候選處理器）——前置皆為 A3。A4 仍 gated 在 A1 closure + GPU endpoint。
+OWNER_DECISION_NEEDED:
+  guide §6 另列「Action::kService 實際消耗 service_demand」——屬 phase3 core。phase3 有 r5 凍結治理
+  (phase3/governance/reviews/phase3_r5_model_benchmark.json：「does not derive completion latency」；
+  contracts/engine_profile.json：service_demand=ACCOUNTING_ONLY / completion_generation=FORBIDDEN；
+  governance/checksums.sha256 釘住)。直接改 phase3 kService 消耗 service_demand 會推翻此治理決定，
+  屬結構性契約變更（根規格 §0 語意衝突須停止回報、§8 phase3-6 結構性改動須 owner）。本階段因此不改
+  phase3，服務時間走 phase4（契約正確層）。**問題**：是否要字面修改 phase3 Action::kService？若要，需重開
+  r5 review、更新 engine_profile.json 與 phase3/governance/checksums.sha256（跨 review 治理動作）。
+  本 ledger 對 A3 的三條 verification（SIM0/SIM1/health）不含此項且全部滿足，故 A3 標 COMPLETE。詳 P-017。
+```
+
+**復驗指令**
+```bash
+make verify-evidence   # OK (4423 files)
+make test-cpp          # 14 CTest, 0 failed
+make test              # 365 Python + 14 CTest, 0 failed
+# 全 15 點位元精確 + SIM1（重跑 run，~2 分鐘）：
+.venv/bin/python explorations/moe_cycle_simulator/phase7/loaders/ir_to_engine.py --run-dir /tmp/a3_reverify
+# 或 pytest（參考子集，~1 分鐘）：
+.venv/bin/python -m pytest explorations/moe_cycle_simulator/phase7/tests/test_stage_a3_loader.py -q
+# 完整 15 點 pytest：STAGE_A3_FULL=1 .venv/bin/python -m pytest .../test_stage_a3_loader.py -q
+```
+
+---
+
 ## 2026-08-19 · TRACK_GPU_PREP · PREP-2（依 A2 CalibrationIR schema 填實探針輸出欄位）
 
 **Session 目標** STAGE_A2 完成後，把 PREP-1 標為 `PENDING_A2` 的探針輸出欄位定案。純 CPU。
