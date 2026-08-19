@@ -607,13 +607,17 @@ orchestrator:
   owner_decisions_pending:
     - id: OD-1
       topic: GPU endpoint 供給
+      status: RESOLVING
       detail: >-
-        目前無可用 GPU endpoint。CPU 可推進的關鍵路徑到 A3 -> B1/B2 為止; 但 A1 closure
-        (需 V2-GAP-B/C targeted FIT-side 量測)、STAGE_A4 sealed held-out、TRACK_GPU 全部
-        gated 在 GPU endpoint 上。三者是 C1/C2 (calibrated / break-even) 的唯一路徑。
-        需 owner 確認 endpoint 是否/何時可得, 以便排定 TRACK_GPU 窗口 (窗口計畫已備:
-        experiments/specs/gpu_measurement_window_plan_v1.md)。非選項式裁決, 屬 owner
-        掌控的資源閘。
+        [2026-08-19 更新] owner 將以 gputw.ai 開機供給 endpoint。gputw 目錄有 canonical
+        domain 同型卡 (RTX PRO 6000 WS 96GB, Blackwell, NT$34/hr)。owner 已裁決兩點:
+        (1) 量測範圍 = 全量程 (exclusive 區塊 P1+P2+P4 ~100min + P5 tail-CI 另排 2.65h);
+        (2) domain 不符即中止回報等換機 (TRACK_GPU 指引 §9 預設, 保證新資料可與既有 evidence
+        合併)。執行 runbook (環境/映像檔/機規/窗口/開機流程/成本) 見
+        docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md。
+        原始阻擋不變: A1 closure (V2-GAP-B/C)、STAGE_A4 sealed held-out、TRACK_GPU 仍 gated
+        在 endpoint 上; 實際 dispatch 由獨立 TRACK_GPU session 執行, 統籌不執行量測。
+        仍待 owner: 開機後 nvidia-smi 對版結果 (domain 是否相符) 與租機時數確認。
   critical_path: >-
     A2(DONE) -> A3 -> B2 -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
     CPU 端可推進至 A3 -> B1/B2; 之後全部瓶頸收斂到單一 GPU endpoint (A1 closure / A4 / TRACK_GPU)。
