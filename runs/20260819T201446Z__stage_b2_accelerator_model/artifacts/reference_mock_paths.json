@@ -1,0 +1,32 @@
+{
+  "all_five_paths_ok": true,
+  "backpressure": {
+    "backpressure_events": 1,
+    "can_accept_when_full": false,
+    "ok": true,
+    "submit_raised": true
+  },
+  "clock_stepping": {
+    "cycle_period_fs": 2000000,
+    "cycles_advanced": 5,
+    "ok": true,
+    "time_fs": 10000000
+  },
+  "completion": {
+    "completed_ids": [
+      0,
+      1
+    ],
+    "empty_before_latency": true,
+    "ok": true
+  },
+  "counter": {
+    "accepted": 3,
+    "completed": 3,
+    "ok": true,
+    "submitted": 3
+  },
+  "transaction_adapter": {
+    "accepted": true
+  }
+}

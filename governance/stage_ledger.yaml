@@ -383,10 +383,36 @@ stages:
 
   - id: STAGE_B2
     title: 參數化候選處理器模型與掛載點
-    status: NOT_STARTED
+    status: COMPLETE
+    status_note: >
+      [2026-08-20] 候選 support processor 建成模擬器裡可掃描的第一等公民元件。
+      純 CPU。產出 accelerator/ 套件 (root path import): fidelity.py (只允許
+      ANALYTICAL/PROJECTED, 建構時拒絕 MEASURED_SURROGATE 及一切實機/週期精確標記),
+      resource_model.py (九個可掃描參數 §6.1, 時間 fs 整數 + 時脈有理數無漂移 §4,
+      ResourceSweep 笛卡爾積 + max_points guardrail), abi.py (六動詞 ABI §6.3 +
+      BackendRegistry 防偽: 未註冊 backend 直接拒絕不靜默替換), backends/
+      (FUNCTIONAL_POLICY + CYCLE_RESOLVED_MODEL + REFERENCE_MOCK 共用 queue/pipeline
+      core; 三個 RTL/cosim backend 只保留介面、宣告 reserved 但不註冊 -> dispatch 即拒絕),
+      attachment_points.py (掛載點 A1-A6, 每點三件事 work-unit/accelerator-cost/
+      transfer-cost + 量測狀態)。config configs/accelerator/resource_model_default.yaml
+      (九參數預設掃描, 錨定 §11.2 STA, 預設積 69120 點)。測試 tests/test_accelerator.py
+      34 passed 覆蓋全部驗收 assertion。交付 run:
+      runs/20260819T201446Z__stage_b2_accelerator_model/ (manifest + metrics +
+      environment + artifacts 五份 json)。
+      掛載點粒度 (guide §7, C1 敏感度軸): A1=per_layer, A2=per_layer(PROJECTED),
+      A3/A4/A5=per_block, A6=per_block(PROJECTED)。同步語意: 非同步 + completion
+      queue + 顯式 backpressure (即六動詞 ABI)。
+      RANGE OF THIS STAGE: 建成的是可掃描元件 + ABI + reference mock + A1-A6 定義
+      (成本模型「形式」)。成本模型「校準後的值」屬 A4 的 calibrated envelope;
+      A5/A6 的 KV 細節屬 B1; accelerator 收益/break-even 屬 C1 —— 皆未在此宣稱。
+      A2 與 A6 無量測, 標 measured=False + PROJECTED + 禁止效能結論 (AttachmentPoint
+      建構時強制 A2/A6 不得 measured=True)。FIDELITY AUDIT: accelerator/ 內零元件標
+      MEASURED_SURROGATE。GUARD: 既有 src/edgeflow/multifidelity.py 防偽邏輯未動
+      (git diff 空), test_multifidelity.py 4 passed; accelerator 側 registry 另有
+      獨立防偽並有測試覆蓋。evidence/ 未動。
     guide: docs/session_guides/STAGE_B2_ACCELERATOR_MODEL.md
-    guide_completeness: RULES_ONLY
-    guide_note: 實作細節待 A4 校準結果與 B1 的 KV 模型收斂後補。
+    guide_completeness: EXECUTABLE
+    guide_note: 實作細節已於 2026-08-20 決定並補回 guide §7 (粒度/成本形式/同步語意/掃描範圍)。
     gpu_required: false
     preconditions:
       - stage: STAGE_A3
@@ -400,9 +426,55 @@ stages:
       - assertion: reference mock 跑通 transaction adapter / clock stepping / backpressure / completion / counter
       - assertion: 未註冊的 backend 仍正確拒絕執行
       - assertion: accelerator/ 內所有元件標記為 ANALYTICAL 或 PROJECTED
+    last_verified:
+      date: "2026-08-20"
+      run_id: 20260819T201446Z__stage_b2_accelerator_model
+      actual:
+        verify_evidence: "evidence integrity: OK (4423 files) (unchanged; accelerator/ adds no evidence)"
+        test: >
+          163 + 36 + 16 + 43 + 141(+1 skipped, +48 subtests) Python = 399 passed;
+          ctest 2/2 3/3 4/4 5/5 = 14 passed; 0 failed. Immediate baseline (A3 HEAD)
+          was 365 Python + 14 CTest; this session adds +34 tests/test_accelerator.py
+          (129->163) -> 399. 0 failed.
+        doctor: "workspace_contract: pass"
+        reference_mock_five_paths: >
+          all five ABI paths OK (artifacts/reference_mock_paths.json all_five_paths_ok=true):
+          transaction_adapter (submit adapts work-unit -> accepted counter),
+          clock_stepping (advance(5) -> time_fs == 5*cycle_period_fs, integer-fs rational clock),
+          backpressure (queue full -> can_accept False + submit raises Backpressure + counter),
+          completion (advance retires in submit order, empty before pipeline latency elapsed),
+          counter (snapshot is a stable copy of cumulative counts).
+        guard_unregistered_rejected: >
+          artifacts/abi_registry.json all_reserved_refused=true: RTL_TRACE_REPLAY,
+          VERILATOR_COSIM, RTL_CALIBRATED_SURROGATE declared reserved (NOT registered)
+          -> BackendNotRegistered; wholly-unknown name also refused ("cannot be silently
+          substituted"); reserved backend cannot even be constructed. Existing
+          src/edgeflow/multifidelity.py guard untouched (git diff empty), its guard test
+          test_unregistered_backend_is_not_silently_substituted still passes.
+        fidelity_audit: >
+          artifacts/fidelity_audit.json no_measured_surrogate=true; labels_used=[ANALYTICAL,
+          PROJECTED] only. fidelity.require_accelerator_fidelity rejects MEASURED_SURROGATE
+          (and CYCLE_ACCURATE/CYCLE_RESOLVED/EVENT_DRIVEN/STATISTICAL) at construction;
+          AcceleratorBackend and Provenance both pass their label through the gate.
+        attachment_points: >
+          A1-A4 (primary) each define work-unit+baseline / accelerator-cost / transfer-cost;
+          A5-A6 secondary. unmeasured=[A2,A6] (measured=False, PROJECTED, performance_conclusion_allowed=False;
+          AttachmentPoint __post_init__ forbids measured=True for A2/A6). Baselines cite evidence
+          paths (routing .npy, transfer microbench v1-v4, expert_decompressor.sv 307-811 MHz,
+          SWAP-K1/2/5); candidate-processor costs are ANALYTICAL models, no benefit claim.
+        scannable: >
+          nine parameters scannable from configs/accelerator/resource_model_default.yaml;
+          ResourceSweep.from_config product 69120 points under max_points guardrail; clock is
+          exact Fraction -> cycle_period_fs integer (floor, matches engine edge_time).
+    claims_unlocked_on_completion:
+      - "候選處理器已建成可掃描的模擬器元件, 六動詞 ABI 與兩個 backend (FUNCTIONAL_POLICY / CYCLE_RESOLVED_MODEL) 可用, 掛載點 A1-A4 已定義"
+      - "reference mock 跑通六動詞五條路徑 (transaction adapter / clock stepping / backpressure / completion / counter)"
+      - "未註冊 backend 的拒絕行為 (含 accelerator 側 registry) 有測試覆蓋"
     claims_still_forbidden:
-      - "任何 accelerator 收益主張 (屬 C1)"
+      - "任何 accelerator 收益或 break-even 主張 (屬 C1)"
       - "掛載點 A2 或 A6 的效能結論 (兩者無任何量測)"
+      - "把 ANALYTICAL 的成本模型當成量測結果引用"
+      - "把 reference mock 跑通說成硬體可行性已驗證"
 
   - id: STAGE_C1
     title: Co-design DSE 與 break-even

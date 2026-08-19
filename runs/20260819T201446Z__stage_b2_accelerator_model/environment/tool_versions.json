@@ -1,0 +1,5 @@
+{
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "3.10.12",
+  "pyyaml": "6.0.3"
+}

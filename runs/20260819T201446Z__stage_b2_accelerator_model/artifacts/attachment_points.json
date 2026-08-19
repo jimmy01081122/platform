@@ -1,0 +1,298 @@
+{
+  "points": {
+    "A1": {
+      "accelerator_cost": {
+        "expression": "cycles = pipeline_latency + ceil(num_experts / operations_per_cycle); top-k via argmin microarch (root spec \u00a711.2 anchor)",
+        "form": "fixed_per_decision + linear_in_experts",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "hardware/ STA argmin: comb 66.50 MHz/5641 um^2 vs registered 236.24 MHz/5627 um^2 (root spec \u00a711.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "evidence_refs": [
+        "routing .npy [159,32,2]",
+        "CTRL-PX0-*-routing",
+        "OFF-E-PR*"
+      ],
+      "function": "routing / gating decision compute, top-k selection",
+      "measured": true,
+      "notes": "Granularity per_layer chosen; per_token is an alternative C1 sensitivity axis.",
+      "performance_conclusion_allowed": true,
+      "point_id": "A1",
+      "priority": "primary",
+      "transfer_cost": {
+        "expression": "move-in: gate logits / routing metadata bytes / bandwidth; move-out: top-k index bytes / bandwidth. Small metadata, likely latency-bound (see small-transfer floor, root spec \u00a78.1).",
+        "form": "linear_in_bytes",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "runs transfer microbench v1-v4 small-transfer floor ~0.037 ms (root spec \u00a72.3/\u00a78.1)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "work_unit": {
+        "baseline_cost_model": "baseline gating is a GPU kernel; routing decisions per (token,layer) = 159*32; top-k=2. Baseline cost tracked via CTRL-PX0-*-routing and OFF-E-PR* replay; the routing .npy is the frozen decision trace.",
+        "baseline_owner": "GPU kernel",
+        "description": "one routing/gating decision producing top-k expert ids per token per layer; measured routing tensor shape [159 tokens, 32 layers, k=2] (root spec \u00a72.2).",
+        "granularity": "per_layer",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "evidence routing .npy (routing_sha256 0a9225ec...e50d6, root spec \u00a74.2/A2)",
+            "runs CTRL-PX0-*-routing (root spec \u00a72.1)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      }
+    },
+    "A2": {
+      "accelerator_cost": {
+        "expression": "cycles ~ pipeline_latency + ceil(permuted_tokens / operations_per_cycle); UNVALIDATED -- no measurement to anchor the constant.",
+        "form": "linear_in_tokens (PROJECTED)",
+        "provenance": {
+          "claim_limit": "NO on-device measurement exists for this attachment point (root spec \u00a76.2, guide \u00a74.4). PROJECTED model only; NO performance conclusion may be drawn until the GPU track supplies data.",
+          "evidence_refs": [],
+          "fidelity": "PROJECTED",
+          "measured": false
+        }
+      },
+      "evidence_refs": [
+        "NONE -- GPU track measurement priority 1 (root spec \u00a79.1)"
+      ],
+      "function": "MoE dispatch data movement (token permutation, gather/scatter)",
+      "measured": false,
+      "notes": "NO measurement (guide \u00a74.4). GPU track priority 1. No performance conclusion permitted here.",
+      "performance_conclusion_allowed": false,
+      "point_id": "A2",
+      "priority": "primary",
+      "transfer_cost": {
+        "expression": "move-in: permutation indices + token activations; move-out: scattered results. Bytes known from shapes but timing UNMEASURED.",
+        "form": "linear_in_bytes (PROJECTED)",
+        "provenance": {
+          "claim_limit": "NO on-device measurement exists for this attachment point (root spec \u00a76.2, guide \u00a74.4). PROJECTED model only; NO performance conclusion may be drawn until the GPU track supplies data.",
+          "evidence_refs": [],
+          "fidelity": "PROJECTED",
+          "measured": false
+        }
+      },
+      "work_unit": {
+        "baseline_cost_model": "PROJECTED only. The existing gather_scatter probe (benchmark.py:463, 56 records) is a same-device SYNTHETIC proxy giving only the execute term -- no T_prepare/T_queue/T_sync/T_move. No independent measurement.",
+        "baseline_owner": "GPU kernel",
+        "description": "token permutation + gather/scatter to group tokens by selected expert before grouped-GEMM, and scatter results back.",
+        "granularity": "per_layer",
+        "provenance": {
+          "claim_limit": "NO on-device measurement exists for this attachment point (root spec \u00a76.2, guide \u00a74.4). PROJECTED model only; NO performance conclusion may be drawn until the GPU track supplies data.",
+          "evidence_refs": [],
+          "fidelity": "PROJECTED",
+          "measured": false
+        }
+      }
+    },
+    "A3": {
+      "accelerator_cost": {
+        "expression": "descriptor issue cost = pipeline_latency cycles; throughput bounded by issue_width and queue_depth; move itself accounted in transfer_cost.",
+        "form": "fixed_descriptor_issue + queue_occupancy",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "hardware/ STA seqbuf residency engine ME sweep (root spec \u00a711.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "evidence_refs": [
+        "transfer microbench v1-v4",
+        "OFF-E-PR3 H2D constants"
+      ],
+      "function": "transfer scheduling / DMA descriptor / prefetch issue",
+      "measured": true,
+      "notes": "Granularity per_block (one DMA descriptor / object); per_batch is a C1 axis.",
+      "performance_conclusion_allowed": true,
+      "point_id": "A3",
+      "priority": "primary",
+      "transfer_cost": {
+        "expression": "N concurrent streams share copy-engine bandwidth: per-transfer latency constant, total completion time grows -- the corrected model (root spec \u00a78.1). move bytes / memory_bandwidth.",
+        "form": "aggregate_bandwidth (shared copy engine)",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "transfer microbench v1-v4; corrected contention model (root spec \u00a72.3/\u00a78.1)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "work_unit": {
+        "baseline_cost_model": "baseline: CPU builds descriptors, copy engine moves. Per-object H2D measured 12.454-12.499 ms at 28.19-28.29 GB/s (root spec \u00a72.2); copy-engine contention is an aggregate-bandwidth/occupancy effect, NOT a per-transfer latency multiplier (root spec \u00a72.3/\u00a78.1).",
+        "baseline_owner": "CPU + copy engine",
+        "description": "issue a transfer/prefetch: build a DMA descriptor and enqueue it; one work unit = one descriptor / one expert-object move (352,321,536 B).",
+        "granularity": "per_block",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "runs transfer microbench v1-v4 (root spec \u00a72.1)",
+            "OFF-E-PR3 per-object H2D 12.454-12.499 ms @ ~28.29 GB/s (root spec \u00a72.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      }
+    },
+    "A4": {
+      "accelerator_cost": {
+        "expression": "decompress cycles = ceil(object_bytes / (operations_per_cycle * bytes_per_op)); clock/area bounded by expert_decompressor.sv STA.",
+        "form": "linear_in_bytes @ decompress_throughput",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "expert_decompressor.sv STA 307-811 MHz (root spec \u00a711.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "evidence_refs": [
+        "expert_decompressor.sv 307-811 MHz",
+        "OFF-E-PR3 object bytes"
+      ],
+      "function": "expert decompression / compressed movement",
+      "measured": true,
+      "notes": "compression_ratio and decompress cost are C1 sweep axes (root spec \u00a710.1).",
+      "performance_conclusion_allowed": true,
+      "point_id": "A4",
+      "priority": "primary",
+      "transfer_cost": {
+        "expression": "move-in compressed bytes = object_bytes / compression_ratio, / memory_bandwidth; compression_ratio is a C1 sweep axis (root spec \u00a710.1).",
+        "form": "linear_in_compressed_bytes",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "OFF-E-PR3 object bytes 352,321,536 (root spec \u00a72.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "work_unit": {
+        "baseline_cost_model": "baseline moves uncompressed (per-object H2D 12.454-12.499 ms). A decompressor trades link bytes for on-chip decompress throughput; the expert_decompressor.sv STA gives the achievable clock/area envelope.",
+        "baseline_owner": "baseline has none (new capability)",
+        "description": "decompress one expert object on the way in (or move it compressed): unit = one 352,321,536 B expert object; baseline has no decompressor.",
+        "granularity": "per_block",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "hardware/ expert_decompressor.sv: NB4/L8 811.08 MHz/4902 um^2; NB8/L16 307.31 MHz/23815 um^2 (root spec \u00a72.2/\u00a711.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      }
+    },
+    "A5": {
+      "accelerator_cost": {
+        "expression": "block table / victim-select cost = pipeline_latency cycles; victim select bounded by banked-LRU STA (root spec \u00a711.2).",
+        "form": "fixed_per_block_mgmt",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "hardware/ banked LRU victim N=128/B=16 200.33 MHz/8918 um^2 (root spec \u00a711.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "evidence_refs": [
+        "SWAP-K1/K2/K5",
+        "block_size=0 limitation"
+      ],
+      "function": "KV block management / offload",
+      "measured": true,
+      "notes": "Secondary line. KV timing must NOT be claimed from SWAP-K2/K3 (block_size=0); long-context is PROJECTED (B1 constraint).",
+      "performance_conclusion_allowed": true,
+      "point_id": "A5",
+      "priority": "secondary",
+      "transfer_cost": {
+        "expression": "KV block move bytes / memory_bandwidth; KV blocks and expert objects CONTEND on the same link/copy engine (root spec \u00a74.1) -- coupling is a C1 concern.",
+        "form": "linear_in_bytes (shared link with experts)",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "SWAP-K2 block bytes 2,097,152; shared-link coupling (root spec \u00a74.1)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      },
+      "work_unit": {
+        "baseline_cost_model": "baseline: vLLM CPU pool manages paged KV. Structure measured (SWAP-K1/K2/K5): 128 KiB/token, 2 MiB/block. LIMITATION: event block_size=0; byte accounting is derived from runtime shape/dtype, not the event (root spec \u00a72.2, guide claim boundary).",
+        "baseline_owner": "vLLM CPU pool",
+        "description": "manage/offload one KV block: block = 16 tokens, 2,097,152 B (root spec \u00a72.2); unit shares the residency-managed-object abstraction with expert objects (root spec \u00a74.1).",
+        "granularity": "per_block",
+        "provenance": {
+          "claim_limit": "ANALYTICAL candidate-processor cost model; sizing input for C1 DSE only. MUST NOT be read as a speedup/benefit or break-even claim (guide \u00a76, root spec \u00a714.8).",
+          "evidence_refs": [
+            "SWAP-K1/K2/K5 (root spec \u00a72.1/\u00a72.2); block_size=0 limitation (root spec \u00a72.2)"
+          ],
+          "fidelity": "ANALYTICAL",
+          "measured": false
+        }
+      }
+    },
+    "A6": {
+      "accelerator_cost": {
+        "expression": "UNVALIDATED -- no measurement to anchor any constant.",
+        "form": "PROJECTED",
+        "provenance": {
+          "claim_limit": "NO on-device measurement exists for this attachment point (root spec \u00a76.2, guide \u00a74.4). PROJECTED model only; NO performance conclusion may be drawn until the GPU track supplies data.",
+          "evidence_refs": [],
+          "fidelity": "PROJECTED",
+          "measured": false
+        }
+      },
+      "evidence_refs": [
+        "NONE -- GPU track measurement priority 2 (root spec \u00a79.1)"
+      ],
+      "function": "attention over offloaded KV",
+      "measured": false,
+      "notes": "NO measurement (guide \u00a74.4). Highest information gain (root spec \u00a79.1). No performance conclusion permitted here.",
+      "performance_conclusion_allowed": false,
+      "point_id": "A6",
+      "priority": "secondary",
+      "transfer_cost": {
+        "expression": "move-in offloaded KV blocks per attention step; bytes derivable from shape but timing UNMEASURED.",
+        "form": "PROJECTED",
+        "provenance": {
+          "claim_limit": "NO on-device measurement exists for this attachment point (root spec \u00a76.2, guide \u00a74.4). PROJECTED model only; NO performance conclusion may be drawn until the GPU track supplies data.",
+          "evidence_refs": [],
+          "fidelity": "PROJECTED",
+          "measured": false
+        }
+      },
+      "work_unit": {
+        "baseline_cost_model": "PROJECTED only. No measurement anywhere (root spec \u00a76.2, \u00a79.1). Third-party corpus max query ~721 tokens cannot cover this regime (GPU track priority 2 is the only source).",
+        "baseline_owner": "GPU",
+        "description": "run attention against KV blocks that live off-device (offloaded). Long-context regime forced when KV exceeds VRAM (1M ctx -> 128 GiB > 96 GB, root spec \u00a72.2).",
+        "granularity": "per_block",
+        "provenance": {
+          "claim_limit": "NO on-device measurement exists for this attachment point (root spec \u00a76.2, guide \u00a74.4). PROJECTED model only; NO performance conclusion may be drawn until the GPU track supplies data.",
+          "evidence_refs": [],
+          "fidelity": "PROJECTED",
+          "measured": false
+        }
+      }
+    }
+  },
+  "primary_defined_A1_A4": true,
+  "unmeasured": [
+    "A2",
+    "A6"
+  ]
+}

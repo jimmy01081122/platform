@@ -250,3 +250,30 @@
 - 新增：`phase5/tools/ir_replay_loader.cpp`、`phase5/CMakeLists.txt`（+executable target，phase5 CTest 維持 4）、`phase7/loaders/`、`phase7/tests/test_stage_a3_loader.py`（+7 tests）。引擎原始碼（phase3–6）未改。
 - run `runs/20260819T134458Z__stage_a3_ir_to_engine_replay/`（含 sim0/sim1/health/timing artifacts、每點 engine_result、environment）。
 - 基線：**365 Python**（358 PREP-2 基線 + 7 A3；tests/ 129 含 PREP-2 的 +6）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。**未跑任何 GPU；無任何時序準確度 / calibrated / break-even / accelerator 主張**。
+
+---
+
+## P-018 · B2：候選處理器建成可掃描元件 + 六動詞 ABI + 掛載點 A1-A6（全 ANALYTICAL/PROJECTED）
+
+**日期** 2026-08-20
+**前置** STAGE_A3 COMPLETE。STAGE_B2 目標（RULES_ONLY）：把候選 support processor 建成模擬器裡可掃描的第一等公民元件，並定義六個掛載點。純 CPU。
+
+**決定 1（套件位置與 import）** `accelerator/` 建為 repo-root Python 套件（`PYTHONPATH` 含 root，`import accelerator` 可用），與 `src/edgeflow/` 平行。不改任何引擎（phase3-6）或 A2 IR bundle。
+
+**決定 2（fidelity 硬隔離在建構時強制）** `accelerator/fidelity.py` 只允許 `ANALYTICAL` / `PROJECTED`；`require_accelerator_fidelity()` 對 `MEASURED_SURROGATE`（及 `CYCLE_ACCURATE`/`CYCLE_RESOLVED`/`EVENT_DRIVEN`/`STATISTICAL`）在建構時 raise。`AcceleratorBackend.__init__` 與 `Provenance.__post_init__` 都過此閘。理由：候選處理器無矽、無實機量測，measured-surrogate 標記是跨 fidelity 層謊報（根規格 §3.1/§14.8）。這把 guide §4.4 的硬規則從「靠審查」變成「建構時擋掉」。
+
+**決定 3（九參數 + 時間紀律）** `resource_model.py` 的九個可掃描參數（§6.1）：`pipeline_latency_cycles`、`issue_width`、`local_sram_capacity_bytes`、`memory_bandwidth_bytes_per_s`、`queue_depth`、`operations_per_cycle`、`clock_frequency_hz`、`area_proxy_um2`、`power_proxy_mw`。時脈為**精確有理數（Fraction）**，`cycle_period_fs = floor(den*1e15/num)`，與引擎 `edge_time` 的 floor 慣例一致（§4，無浮點漂移）。`ResourceSweep` 產笛卡爾積並有 `max_points` guardrail（預設 config 積 69120 點 < 100000）。
+
+**決定 4（六動詞 ABI + 防偽 registry）** `abi.py`：`reset`/`can_accept`/`submit`/`advance`/`poll_completions`/`snapshot_counters`（§6.3）。`BackendRegistry` 對未註冊名稱 raise `BackendNotRegistered`、不靜默替換（鏡像 `src/edgeflow/multifidelity.py` 的防偽設計，該檔**未動**）。三個下游 backend（`RTL_TRACE_REPLAY`/`VERILATOR_COSIM`/`RTL_CALIBRATED_SURROGATE`）只保留介面、宣告 reserved 但**不註冊** → dispatch 即拒絕，且其建構子直接 raise（stub 不能偽裝成可用 backend）。
+
+**決定 5（三個 backend 共用同一 datapath 語意）** `backends/_core.py` 一次實作 queue+pipeline（backpressure、issue-width、in-flight 完成排序、counters），`FUNCTIONAL_POLICY` / `CYCLE_RESOLVED_MODEL` / `REFERENCE_MOCK` 只覆寫 `service_cycles`。理由：根規格 §14.4 禁止 simulator/software/firmware/RTL 用不同演算法語意卻宣稱跨層一致。差別是服務時間模型：FUNCTIONAL_POLICY 只計結構延遲（pipeline+ops，**不**計頻寬競爭）；CYCLE_RESOLVED_MODEL 另加 `bytes/memory_bandwidth` 搬運項。兩者皆 ANALYTICAL，非 cycle-accurate、非 measured surrogate。
+
+**決定 6（掛載點三件事 + A2/A6 無量測）** `attachment_points.py` 定義 A1-A6，每點三件事（work-unit+baseline 成本 / 候選處理器成本模型 / 搬運成本）。粒度（C1 敏感度軸）：A1=per_layer、A3/A4/A5/A6=per_block、A2=per_layer。baseline 引用實機量測路徑（routing .npy [159,32,2]、transfer 微基準 v1-v4、expert_decompressor.sv 307-811 MHz、SWAP-K1/2/5），候選處理器成本一律 ANALYTICAL 模型、無收益主張。**A2 與 A6 無量測**：`measured=False` + `PROJECTED` + `performance_conclusion_allowed()=False`；`AttachmentPoint.__post_init__` 強制 A2/A6 不得 `measured=True`。搬運成本（第三件事、常是 break-even 決定因素）逐點寫明；A3 用 §8.1 修正後的**聚合頻寬**模型（N stream 共享、單筆延遲不變）。
+
+**範圍界線** 本階段建成的是「可掃描元件 + ABI + reference mock + A1-A6 定義（成本模型形式）」。成本模型的**校準值**屬 A4 calibrated envelope；A5/A6 的 KV 細節屬 B1；accelerator 收益/break-even 屬 C1。皆未在此宣稱。
+
+**後果**
+- STAGE_B2 → `COMPLETE`；guide_completeness `RULES_ONLY`→`EXECUTABLE`（實作決定補回 guide §7）。
+- 新增：`accelerator/`（`__init__`、`fidelity`、`resource_model`、`abi`、`backends/`、`attachment_points`）、`configs/accelerator/resource_model_default.yaml`、`scripts/stage_b2_emit_model.py`、`tests/test_accelerator.py`（+34 tests）。`src/edgeflow/multifidelity.py` 未動（git diff 空），其防偽測試仍過。
+- run `runs/20260819T201446Z__stage_b2_accelerator_model/`（manifest + metrics + environment + artifacts 五份：resource_sweep / abi_registry / reference_mock_paths / attachment_points / fidelity_audit）。
+- 基線：**399 Python**（tests/ 129→163）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。**純 CPU；無 accelerator 收益/break-even 主張；A2/A6 無效能結論；零元件標 MEASURED_SURROGATE**。

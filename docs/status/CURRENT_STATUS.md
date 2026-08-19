@@ -1,11 +1,11 @@
 # CURRENT_STATUS
 
 ```text
-updated       : 2026-08-19（A3 session：IR→引擎 loader 與位元精確 replay 完成）
+updated       : 2026-08-20（B2 session：參數化候選處理器 + 六動詞 ABI + 掛載點 A1-A6 建成）
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
-current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE；A3 COMPLETE（15 點 residency counters 位元精確、SIM1 決定性、引擎全 QUIESCENT）；TRACK_GPU_PREP PREP-1 完成、PREP-2 解鎖
-next dispatch : B2（參數化候選處理器，RULES_ONLY 骨架，前置 A3 已滿足）。B1 由 owner 裁決 HELD 等 A4（OD-3：B1 的 SERV-P0-25 絕對延遲 gate 傳遞依賴 A4/GPU，現無計算時序來源；不硬擬合）。A4 仍 gated 在 A1 closure + GPU endpoint。P-017 已裁決（維持 phase4 路由）。A3 經統籌獨立重跑 SIM0/SIM1/health 全 15 點 CONFIRMED
+current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE；A3 COMPLETE；B2 COMPLETE（可掃描元件、六動詞 ABI、reference mock 五路徑、A1-A6 定義，全 ANALYTICAL/PROJECTED）；TRACK_GPU_PREP 完成
+next dispatch : B1（KV + continuous batching，RULES_ONLY，前置 A3 已滿足；長上下文標 PROJECTED、KV 時序不得引用 SWAP-K2/K3）。C1 前置為 A4+B2；B2 已 COMPLETE，惟 C1 仍等 A4。A4 仍 gated 在 A1 closure + GPU endpoint。P-017 已裁決（維持 phase4 路由）
 ```
 
 ## 一句話狀態
@@ -22,7 +22,7 @@ next dispatch : B2（參數化候選處理器，RULES_ONLY 骨架，前置 A3 �
 | A2 measured → 九類 IR | **COMPLETE** | OFF-E-PR3 expert 容量掃描 15 點 → 單一九類 Canonical IR bundle（MEASURED，33203 records）過 IR1 且 round-trip 再驗證。byte 守恆 15/15；routing_sha256 可回溯；claim boundary 綁定每筆 provenance。RoutingIR 為 AGGREGATE（量測無 gate scores）。mock adapter 未動。**無時序/效能/calibrated 主張；IR 尚未被引擎消費（A3）**。run `20260819T000000Z__stage_a2_off_e_pr3_measured_ir` |
 | A4 sealed held-out 驗證 | NOT_STARTED | gated：需 A1 closure + A3（已 COMPLETE）+ 新 GPU held-out 量測 |
 | B1 KV + continuous batching | NOT_STARTED | 指引為 RULES_ONLY |
-| B2 參數化候選處理器 | NOT_STARTED | 指引為 RULES_ONLY |
+| B2 參數化候選處理器 | **COMPLETE** | accelerator/ 套件：九參數可掃描資源模型 + 六動詞 ABI（防偽 registry）+ FUNCTIONAL_POLICY/CYCLE_RESOLVED_MODEL/REFERENCE_MOCK + 掛載點 A1-A6（三件事）。reference mock 五路徑跑通；未註冊 backend 拒絕；零元件標 MEASURED_SURROGATE；A2/A6 標無量測。run `20260819T201446Z__stage_b2_accelerator_model`。**無收益/break-even 主張（C1）；A2/A6 無效能結論** |
 | C1 co-design DSE | NOT_STARTED | 指引為 RULES_ONLY |
 | C2 HW0 + LM18 handoff | NOT_STARTED | 指引為 RULES_ONLY |
 | GPU 前置準備軌 | **COMPLETE** | PREP-1（P-014）＋ **PREP-2 完成**（P-016）：A2 完成後，依 A2 CalibrationIR schema 把探針依賴欄位全部填實，operand shape 直接進 evaluation_coordinate，探針輸出可**不經 join** 生成對 A2 schema 有效的 IR 評估點（GAP-4 類缺陷不重演）。無 GPU 主張 |
@@ -31,17 +31,17 @@ next dispatch : B2（參數化候選處理器，RULES_ONLY 骨架，前置 A3 �
 
 權威狀態記錄為 `governance/stage_ledger.yaml`；本文件是人類可讀摘要，衝突時以 ledger 為準。
 
-## 已驗證的基線（2026-08-19 統籌 session 實測）
+## 已驗證的基線（2026-08-20 B2 session 實測）
 
 ```text
 證據完整性   4423 / 4423 檔 SHA-256 通過（make verify-evidence）
-Python 測試  352 通過、0 失敗
-             tests 123 · simulator/tests 36 · phase1 16 · phase2 43 · phase7 134(+48 subtests)
+Python 測試  399 通過、1 skipped、0 失敗
+             tests 163 · simulator/tests 36 · phase1 16 · phase2 43 · phase7 141(+48 subtests)
 C++ CTest    14 通過、0 失敗（phase3 2/2 · phase4 3/3 · phase5 4/4 · phase6 5/5）
 workspace    make doctor -> workspace_contract: pass
 ```
 
-> 歷史基線（2026-08-17 遷移時）為 317 Python；上升至 352 來自 A1 v3（+14）、PREP-1（+13）、A2（+8）新增測試，皆為允許的上升。
+> 歷史基線（2026-08-17 遷移時）為 317 Python；A3 後為 365；B2 新增 tests/test_accelerator.py（+34，129→163）→ 399，皆為允許的上升。
 
 ## 研究鏈的三個斷點（全部未修）
 

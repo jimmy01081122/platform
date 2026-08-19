@@ -1,0 +1,27 @@
+{
+  "all_reserved_refused": true,
+  "registered": [
+    "CYCLE_RESOLVED_MODEL",
+    "FUNCTIONAL_POLICY",
+    "REFERENCE_MOCK"
+  ],
+  "reserved_unregistered": [
+    "RTL_CALIBRATED_SURROGATE",
+    "RTL_TRACE_REPLAY",
+    "VERILATOR_COSIM"
+  ],
+  "unregistered_dispatch_refused": {
+    "RTL_CALIBRATED_SURROGATE": "refused: backend 'RTL_CALIBRATED_SURROGATE' is not registered; an unavailable detailed/RT",
+    "RTL_TRACE_REPLAY": "refused: backend 'RTL_TRACE_REPLAY' is not registered; an unavailable detailed/RTL/cosim ",
+    "VERILATOR_COSIM": "refused: backend 'VERILATOR_COSIM' is not registered; an unavailable detailed/RTL/cosim b",
+    "gpu-cycle-missing": "refused: backend 'gpu-cycle-missing' is not registered; an unavailable detailed/RTL/cosim"
+  },
+  "verbs": [
+    "reset",
+    "can_accept",
+    "submit",
+    "advance",
+    "poll_completions",
+    "snapshot_counters"
+  ]
+}

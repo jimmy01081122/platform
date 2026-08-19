@@ -1,0 +1,11 @@
+{
+  "all_reserved_refused": true,
+  "no_measured_surrogate": true,
+  "primary_A1_A4_defined": true,
+  "reference_mock_all_five_paths_ok": true,
+  "resource_sweep_product_size": 69120,
+  "unmeasured_points": [
+    "A2",
+    "A6"
+  ]
+}

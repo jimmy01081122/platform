@@ -1,0 +1,42 @@
+{
+  "all_scannable": true,
+  "axis_sizes": {
+    "area_proxy_um2": 2,
+    "clock_frequency_hz": 4,
+    "issue_width": 3,
+    "local_sram_capacity_bytes": 4,
+    "memory_bandwidth_bytes_per_s": 4,
+    "operations_per_cycle": 3,
+    "pipeline_latency_cycles": 4,
+    "power_proxy_mw": 3,
+    "queue_depth": 5
+  },
+  "config_path": "configs/accelerator/resource_model_default.yaml",
+  "max_points": 100000,
+  "num_params": 9,
+  "param_names": [
+    "pipeline_latency_cycles",
+    "issue_width",
+    "local_sram_capacity_bytes",
+    "memory_bandwidth_bytes_per_s",
+    "queue_depth",
+    "operations_per_cycle",
+    "clock_frequency_hz",
+    "area_proxy_um2",
+    "power_proxy_mw"
+  ],
+  "product_size": 69120,
+  "sample_point": {
+    "area_proxy_um2": 4902.0,
+    "clock_frequency_hz": "500000000/1",
+    "cycle_period_fs": 2000000,
+    "fidelity": "ANALYTICAL",
+    "issue_width": 2,
+    "local_sram_capacity_bytes": 2097152,
+    "memory_bandwidth_bytes_per_s": 28298591668,
+    "operations_per_cycle": 4,
+    "pipeline_latency_cycles": 2,
+    "power_proxy_mw": 50.0,
+    "queue_depth": 4
+  }
+}

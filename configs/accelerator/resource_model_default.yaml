@@ -1,0 +1,55 @@
+# Default candidate-processor resource sweep (root spec §6.1).
+#
+# Nine scannable parameters. Each accepts `values: [...]` or `range: {min,max,step}`.
+# Fidelity: ANALYTICAL. area/power proxies anchor to hardware/ STA DSE (root spec
+# §11.2) and are relative DSE proxies only -- NOT physical area/power/feasibility.
+#
+# Ranges below are illustrative DEFAULT scan spans with their basis noted; C1 owns
+# the final sweep. Product size is guarded by max_points.
+schema_version: accelerator-resource-sweep-v1
+max_points: 100000
+
+parameters:
+  # issue-to-first-result latency in cycles. Basis: descriptor-issue / gating
+  # pipelines are short; sweep 1,2,4,8.
+  pipeline_latency_cycles:
+    values: [1, 2, 4, 8]
+
+  # work units issued per cycle. Basis: 1 (scalar) .. 4 (modest superscalar).
+  issue_width:
+    values: [1, 2, 4]
+
+  # on-chip staging/metadata capacity (bytes). Basis: from one KV block (2 MiB,
+  # root spec §2.2) down to metadata-only. Powers of two.
+  local_sram_capacity_bytes:
+    values: [65536, 262144, 1048576, 2097152]
+
+  # processor<->memory sustained bandwidth (B/s). Basis: anchored around the
+  # measured PCIe ~28.29 GB/s (root spec §2.2); span 0.5x..4x.
+  memory_bandwidth_bytes_per_s:
+    values: [14000000000, 28298591668, 56000000000, 112000000000]
+
+  # inbound transaction queue slots (backpressure). Basis: 2..32.
+  queue_depth:
+    values: [2, 4, 8, 16, 32]
+
+  # datapath ops per cycle (throughput proxy). Basis: 1..16.
+  operations_per_cycle:
+    values: [1, 4, 16]
+
+  # clock domain: exact rational frequency (Hz), "num/den" or integer Hz.
+  # Basis: expert_decompressor.sv STA 307-811 MHz; banked LRU 200 MHz; argmin
+  # 236 MHz (root spec §11.2).
+  clock_frequency_hz:
+    values: ["200000000/1", "307310000/1", "500000000/1", "811080000/1"]
+
+  # ANALYTICAL area proxy (um^2). Basis: hardware/ STA anchors 4902..100994 um^2
+  # (root spec §11.2). NOT physical area. Two default anchors keep the default
+  # product under max_points; C1 widens.
+  area_proxy_um2:
+    values: [4902.0, 23815.0]
+
+  # ANALYTICAL power proxy (mW). Basis: relative proxy for DSE ranking only.
+  # NOT physical power.
+  power_proxy_mw:
+    values: [10.0, 50.0, 100.0]

@@ -1,10 +1,10 @@
 # Stage B2 · 參數化候選處理器模型與掛載點
 
 ```text
-GUIDE_COMPLETENESS = RULES_ONLY
+GUIDE_COMPLETENESS = EXECUTABLE
 ```
 
-**本指引固定目標、約束、驗收與交接格式；實作細節待 A4 的校準結果與 B1 的 KV 模型收斂後補。**
+**本指引固定目標、約束、驗收與交接格式。實作細節已於 2026-08-20（B2 session, P-018）決定並補回 §7；目標/約束/驗收未變。**
 
 ---
 
@@ -153,16 +153,37 @@ reset   can_accept   submit   advance   poll_completions   snapshot_counters
 
 ---
 
-## 7. 待補的實作細節
+## 7. 實作細節（已決定並記錄，2026-08-20）
 
-執行時需自行決定並記錄：
+本節在 B2 執行時做出並已落地。`guide_completeness` 於 ledger 改為 `EXECUTABLE`。
 
-- 各掛載點 work unit 的粒度（每 token？每 layer？每 batch？）——**粒度選擇會顯著影響 break-even，應列為 C1 的敏感度軸**；
-- 成本模型的形式（固定延遲？隨資料量線性？分段？）；
-- 候選處理器與主系統的同步語意（阻塞？非同步 + completion queue？）；
-- 資源參數的預設掃描範圍與其依據。
+### 7.1 各掛載點 work-unit 粒度（列為 C1 敏感度軸）
 
-決定後補回本指引，並在 ledger 把 `guide_completeness` 改為 `EXECUTABLE`。
+| 掛載點 | 粒度 | 依據 |
+|---|---|---|
+| A1 routing/gating | `per_layer` | 量測 routing 張量以 (token,layer) 組織 [159,32,2]；per_token 為替代 C1 軸 |
+| A2 dispatch | `per_layer` | permutation/gather-scatter 以層為單位；**PROJECTED，無量測** |
+| A3 transfer/DMA | `per_block` | 一個 DMA descriptor / 一個 expert 物件（352,321,536 B）；per_batch 為替代 C1 軸 |
+| A4 decompression | `per_block` | 一個 expert 物件解壓；compression_ratio 為 C1 軸 |
+| A5 KV 管理 | `per_block` | 一個 KV block（16 tokens / 2,097,152 B） |
+| A6 offloaded attention | `per_block` | 每 attention step 一個 KV block；**PROJECTED，無量測** |
+
+粒度選擇會翻轉 break-even，全部標記為 C1 的敏感度軸（見各 `AttachmentPoint.notes` 與 §10.1）。
+
+### 7.2 成本模型形式
+
+- **固定 + 線性**：A1（fixed_per_decision + linear_in_experts）、A3（fixed_descriptor_issue + queue_occupancy）。
+- **隨資料量線性**：A4（linear_in_bytes @ decompress_throughput）、A5（fixed_per_block_mgmt + linear transfer）。
+- **搬運成本**：一律 `bytes / memory_bandwidth`；A3 用**聚合頻寬（shared copy engine）**模型——N 條 stream 共享頻寬、單筆延遲不變、總完成時間變長（採 §8.1 修正後的形式，非 per-transfer 乘數）。
+- A2/A6 的成本模型形式標 `PROJECTED`，常數未錨定（無量測）。
+
+### 7.3 同步語意
+
+**非同步 + completion queue + 顯式 backpressure**。六動詞 ABI 即此語意：`submit` 入有界佇列（滿則 `can_accept=False` 且 `submit` 拋 `Backpressure`），`advance` 逐 cycle 推進 pipeline，`poll_completions` 取回已完成交易（帶 tag 對回 submit）。時間為 fs 整數、時脈為有理數（§4）。
+
+### 7.4 資源參數預設掃描範圍
+
+見 [`configs/accelerator/resource_model_default.yaml`](../../configs/accelerator/resource_model_default.yaml)。錨定依據：頻寬錨定量測 PCIe ~28.29 GB/s（§2.2）的 0.5×–4×；時脈/面積 proxy 錨定 §11.2 STA（expert_decompressor 307–811 MHz、banked LRU 200 MHz、argmin 236 MHz、面積 4902–100994 µm²）。預設積 69120 點，受 `max_points` guardrail 保護；C1 擁有最終掃描範圍。area/power proxy 為相對 DSE proxy，**非**實體面積/功耗/可行性。
 
 ---
 
