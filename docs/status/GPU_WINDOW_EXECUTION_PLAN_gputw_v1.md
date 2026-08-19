@@ -3,6 +3,7 @@
 ```text
 authored_by : SESSION_ORCHESTRATOR
 authored_on : 2026-08-19
+revised     : 2026-08-20（v1.1：納入官方 /vault 持久儲存 —— 權重下載一次、raw 防遺失，見 §2.1）
 kind        : 排程 runbook（設計/排程文件，非量測執行）
 authority   : 統籌 session 授權可寫 docs/status/；本文件不修改 stages:、原始碼、evidence
 executed_by : 獨立 TRACK_GPU session（docs/session_guides/TRACK_GPU_MEASUREMENT.md）
@@ -67,9 +68,24 @@ evidence 不同 domain、不能合併。寧可 `pip install vllm==0.23.0`。
 - **系統 RAM ≥ 128 GiB**：P2 到 1M token 時 KV 被強制 offload 到 host（contract §target_2：
   128 GiB > 96 GB VRAM，頂端必然 offload；每 token KV 128 KiB）。RAM 不足會在跨過 offload
   邊界前 OOM——OOM 本身是可回報結果，但過早 OOM 會使 P2 拿不到 knee。
-- **磁碟 ≥ 150 GB**：Mixtral-8x7B BF16 權重 ~90 GB 下載空間。
+- **`/vault` 空間 ≥ 150 GB**：Mixtral-8x7B BF16 權重 ~90 GB **放 /vault，不放本機磁碟**（見 §2.1）。
 - **SSH 直連**：gputw pod ready 後可直連；探針為 argv 驅動，SSH 進去即可跑。
 - **獨占 GPU**：P1/P2/P4 是敏感微基準（root spec §9.3），彼此與 filler 皆不可並跑。
+
+### 2.1 `/vault` 持久儲存（官方提供，跨執行個體保留）
+
+`/vault` 是掛在每台 GPU 執行個體上的網路儲存，**重啟或刪除執行個體都不會消失**。因此：
+
+- **模型權重下載到 `/vault`，只下載一次**。Mixtral-8x7B BF16 ~90 GB；放 /vault 後，之後
+  換機、分兩個窗口、或日後重測都**不必重抓**——這正是「避免重新測量時要重新下載」的關鍵。
+- **HF cache 指向 /vault**：開機後 `export HF_HOME=/vault/hf`（或 `HF_HUB_CACHE=/vault/hf/hub`），
+  讓 `from_pretrained` / vLLM 載入自動落在 /vault；已存在就直接命中、不重抓。
+- **量測 raw 先落 /vault**：每個 attempt 的 raw（含失敗者）先寫到 `/vault/runs/<run_id>/`，
+  **再**拉回 workspace 納入 evidence（§4 步驟9）。這樣即使執行個體在拉回前被刪，raw 也不遺失。
+- **權重 revision 對版**：pin rev `eba92302…`；命中 /vault 既有權重時仍要驗 checksum/revision
+  一致（§4 步驟5），避免用到別的 revision 而悄悄漂移 domain。
+- **⚠️ 餘額警告**：官方規則——帳戶餘額 ≤ NT$0 時 /vault 內容**保留 30 天後刪除**。長期停用前
+  務必儲值或把權重/raw 另備，否則 90 GB 權重會被清掉、下次重測又要重抓。
 
 ---
 
@@ -105,18 +121,22 @@ evidence 不同 domain、不能合併。寧可 `pip install vllm==0.23.0`。
    `make doctor`（pass）；確認 `CONTRACT_OK`。
 2. **開機 + SSH + 對版（§2.3 read-only preflight）**：`nvidia-smi` 記下 GPU SKU / UUID / VRAM /
    driver / CUDA / runtime，寫入 run 的 environment。裝 `vllm==0.23.0` + torch + Python 3.10。
+   **設定 `export HF_HOME=/vault/hf`**（見 §2.1），讓權重載入落在持久 /vault。
 3. **Domain 判定（驗收 #1）**：實測 vs canonical domain。
    **不符 → 依 owner 裁決：停止 dispatch、回報 `BLOCKED_OTHER` 等換機**（§9；本次不走獨立 profile）。
 4. **Session-local guard canary（§6 步驟3）**：新 attempt ID 跑最小 guard 確認 host/runtime。
-5. **拉模型**：Mixtral-8x7B-Instruct-v0.1 rev `eba92302…` BF16，checksum 記錄。
+5. **拉模型到 /vault（只一次）**：先檢查 `/vault/hf` 是否已有 Mixtral-8x7B-Instruct-v0.1
+   rev `eba92302…` BF16；**已存在就跳過下載**，僅驗 checksum/revision 一致。缺才下載到 /vault。
+   權重 identity 與 checksum 寫入 run。之後換機/重測命中 /vault 不再重抓（§2.1）。
 6. **區塊 A 量測**：P4 → P1 → P2（§6 步驟4），每 attempt 保存 exact argv / 環境 / 模型 identity /
    輸入 fixture / 輸出 token IDs+finish reason / 原始時序 / telemetry / stdout+stderr / 失敗分類
    （§6 步驟5，**失敗 attempt 一樣保存**）。
 7. **區塊 B 量測**：P5 於獨立窗口（不與 A 重疊）。
 8. **Non-interference（§5 硬規則）**：發現非本 session 的 GPU/serving process → 不 signal、
    不 attach、不改 config、回報等 owner。**禁 kill/pkill/killall**。
-9. **納入 evidence（§6 步驟6）**：新量測先入獨立 namespace → checksum 驗證 + 本機備份 →
-   納入 `evidence/` → 更新 `governance/lineage/EVIDENCE_SHA256SUMS` → `make seal-evidence` 恢復唯讀。
+9. **納入 evidence（§6 步驟6）**：raw 先寫 `/vault/runs/<run_id>/`（含失敗者，防執行個體被刪前
+   遺失，§2.1）→ 拉回 workspace 獨立 namespace → checksum 驗證 + 本機備份 → 納入 `evidence/` →
+   更新 `governance/lineage/EVIDENCE_SHA256SUMS` → `make seal-evidence` 恢復唯讀。
 
 ---
 
@@ -132,8 +152,9 @@ evidence 不同 domain、不能合併。寧可 `pip install vllm==0.23.0`。
 
 **成本估算**（NT$34/hr）：
 - 區塊 A：2h 窗口 ≈ **NT$68**（實跑 ~100min，留 margin）。
-- 區塊 B：3h 窗口 ≈ **NT$102**（2.65h arrival-bound + 開關機/下載）。
-- 合計 ≈ **NT$170**（建議 A、B 同機連續做以攤提一次模型載入；分兩次開機則權重 ~90 GB 重抓）。
+- 區塊 B：3h 窗口 ≈ **NT$102**（2.65h arrival-bound + 開關機）。
+- 合計 ≈ **NT$170**。**權重放 /vault 後只下載一次**（§2.1）：A、B 即使分兩次開機、或日後重測，
+  都不再重抓 ~90 GB，省下重複的下載時間與計費。第一次下載計一次即可。
 
 **驗收（TRACK_GPU §7）**：domain 相符（或已中止回報）／未干擾他人 process／每 attempt raw 完整含
 失敗者／checksum 前後一致／`EVIDENCE_SHA256SUMS` 更新且 `make verify-evidence` 通過／
