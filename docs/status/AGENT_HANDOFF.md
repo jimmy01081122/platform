@@ -6,6 +6,28 @@
 
 ---
 
+## 2026-08-20 · ORCHESTRATOR · PREP-3 dispatch 失敗（花費上限）
+
+```text
+SESSION: ORCHESTRATOR
+EVENT: PREP-3 (V2-GAP-A) 首次 dispatch 為獨立 session 執行, 因 API 每月花費上限中斷。
+STATE: 未完成、未 commit。HEAD 仍 58aa9cc。工作區留 3 個未提交半成品:
+  measurement/probes/multistream_aggregate_probe.py
+  measurement/probes/aggregate_backend.py
+  measurement/parsers/multistream_aggregate_parser.py
+  —— 未驗證; 無 contract 段落 / fixture / 測試 / ledger 更新。
+BLOCKER: owner 資源閘 —— 需提高花費上限 (claude.ai/settings/usage) 後重新 dispatch。
+統籌處置 (未越界): 不接手完成、不 commit 半成品、不刪他人檔案 (非本 session 建立);
+  僅在 ledger next_dispatch[PREP-3] 記 status=DISPATCHED_ATTEMPT_FAILED + attempt_note。
+OWNER_DECISION_NEEDED:
+  1. 提高花費上限後是否重新 dispatch PREP-3 (重跑前 PREP session 應審視或捨棄半成品)?
+  2. 或直接走 OD-4 fallback: 不等 V2-GAP-A, 照既有凍結目標 P4/P1/P2/P5 跑 GPU 窗口,
+     V2-GAP-A 延到第二窗。
+未動 stages: / 原始碼 / evidence / orchestrator 以外區塊。
+```
+
+---
+
 ## 2026-08-20 · ORCHESTRATOR · OD-4 排程裁決：V2-GAP-A 加入本窗（走 PREP-3）
 
 ```text

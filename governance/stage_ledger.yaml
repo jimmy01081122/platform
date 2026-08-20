@@ -760,13 +760,22 @@ orchestrator:
   next_dispatch:
     - guide: docs/session_guides/TRACK_GPU_PREP.md
       phase: PREP-3
+      status: DISPATCHED_ATTEMPT_FAILED
+      attempt_note: >-
+        [2026-08-20] 首次 dispatch (統籌以獨立 session 執行) 因 API 每月花費上限中斷,
+        未完成、未 commit。工作區留有 3 個未提交半成品 (measurement/probes/
+        {multistream_aggregate_probe,aggregate_backend}.py, measurement/parsers/
+        multistream_aggregate_parser.py) —— 未驗證、無 contract 段落/fixture/測試/ledger 更新。
+        BLOCKER 為 owner 資源閘: 需 owner 提高花費上限 (claude.ai/settings/usage) 後重新 dispatch;
+        重跑前應由該 PREP session 自行審視或捨棄半成品 (統籌不接手寫、不 commit、不刪他人檔案)。
+        若 GPU endpoint 早於 PREP-3 凍結出現, 直接走 OD-4 fallback (見下), V2-GAP-A 延後。
       reason: >-
         [2026-08-20 統籌裁決 OD-4] 為本次 GPU 窗口新增 target: V2-GAP-A 多物件並發搬運掃描
         (PCIe two-regime S>1 語意, 目前 S>1=UNSUPPORTED, 是 co-design/C1 break-even 的真缺口,
         舊矩陣稽核唯一揪出)。PREP-3 = 純 CPU 小 PREP: 寫 probe + parser + contract 段落 (含
         CPU smoke + pass/fail fixture), 與 PREP-1/2 同紀律, 凍結後 V2-GAP-A 才可 dispatch。
-        endpoint 尚未開 (OD-1 RESOLVING) -> 現在有跑道做, 不壓縮窗口。HARD GUARDRAIL: 若
-        endpoint 早於 PREP-3 凍結出現, 照既有凍結目標 P4/P1/P2/P5 跑, V2-GAP-A 延到區塊 B 尾
+        endpoint 尚未開 (OD-1 RESOLVING) -> 現在有跑道做, 不壓縮窗口。HARD GUARDRAIL (OD-4 fallback):
+        若 endpoint 早於 PREP-3 凍結出現, 照既有凍結目標 P4/P1/P2/P5 跑, V2-GAP-A 延到區塊 B 尾
         段或第二窗, 絕不在窗口內臨時設計 (GAP-4 成因)。V2-GAP-A 屬 FIT-side, 不得與 sealed
         held-out 混用。
       parallel_with: []
