@@ -1,0 +1,37 @@
+{
+  "schema_version": "gpu-multistream-aggregate-result-v1",
+  "target": "V2-GAP-A-MULTISTREAM-AGGREGATE",
+  "backend": "mock_aggregate",
+  "evidence": "cpu_smoke_test_not_measurement",
+  "repeats": 5,
+  "concurrency_axis": "num_objects",
+  "ir_evaluation_point_schema": "CalibrationIR",
+  "ir_evaluation_point_fields": "PENDING_S_GT_1_SEMANTICS",
+  "production_stream_semantics_status": "UNSUPPORTED_UNTIL_MEASURED",
+  "cells": [
+    {
+      "num_objects": 1,
+      "object_bytes": 2097152,
+      "direction": "h2d",
+      "copy_streams": 1,
+      "regime": "transition",
+      "aggregate_completion_ms_samples": [0.074898286, 0.074898286, 0.074898286, 0.074898286, 0.074898286],
+      "aggregate_completion_ms_mean": 0.074898286,
+      "per_object_ms": [0.074898286],
+      "max_per_object_ms": 0.074898286,
+      "sum_per_object_ms": 0.074898286
+    },
+    {
+      "num_objects": 4,
+      "object_bytes": 352321536,
+      "direction": "d2h",
+      "copy_streams": 1,
+      "regime": "bulk",
+      "aggregate_completion_ms_samples": [45.0, 45.0, 45.0, 45.0, 45.0],
+      "aggregate_completion_ms_mean": 45.0,
+      "per_object_ms": [13.55, 13.55, 13.55, 13.55],
+      "max_per_object_ms": 13.55,
+      "sum_per_object_ms": 54.2
+    }
+  ]
+}

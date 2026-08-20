@@ -6,6 +6,48 @@
 
 ---
 
+## 2026-08-20 · TRACK_GPU_PREP · PREP-3 完成（V2-GAP-A 純 CPU 前置）
+
+```text
+TRACK: GPU_PREP
+STATUS: COMPLETE
+PHASE: PREP-3 (V2-GAP-A; depends OD-4)  —— 接續稍早因花費上限中斷的 dispatch
+ENTRY_CHECK: verify-evidence OK 4423 · make test-py 0 failed (tests/ 163 baseline) · doctor pass · HEAD 0e185c6
+半成品審視: 稍早留下的 3 檔 (multistream_aggregate_probe.py / aggregate_backend.py /
+  multistream_aggregate_parser.py) 重讀後對得上 V2-GAP-A spec —— 沿用, 僅微調
+  (預設 object_bytes 加 64KiB small-regime 錨點, 讓 two-regime 覆蓋 small/transition/bulk)。
+
+V2_GAP_A_SEMANTICS: 多物件並發搬運 (num_objects 軸) 的 aggregate wait-all 完成時間,
+  用以定義 two-regime 的 S>1 production 語意 (現為 UNSUPPORTED)。軸紀律
+  (OWNER_RESOLUTION 2026-08-18): num_objects != intra-object copy_streams S;
+  每個 cell copy_streams 固定=1, parser 拒絕借用 S 軸的紀錄。
+  界線 (避免與既有 gap 重複): GAP-2/GAP-6 都在 intra-object S 軸; V2-GAP-A 在 num_objects 軸, 互不重疊。
+
+PROBE: measurement/probes/multistream_aggregate_probe.py (+ CPU mock
+  measurement/probes/aggregate_backend.py; mock_aggregate)。CPU smoke: 24 cells
+  (4 num_objects x 3 sizes x 2 dir) evidence=cpu_smoke_test_not_measurement; GPU backend 為 stub, 呼叫即 raise。
+PARSER: measurement/parsers/multistream_aggregate_parser.py —— 壞形狀 raise (非靜默):
+  wrong concurrency_axis / copy_streams!=1 / 非物理 aggregate (< max 或 > sum per_object) /
+  樣本數與均值不一致 / per_object 長度 != num_objects。
+CONTRACT: experiments/specs/gpu_measurement_contract_v1.yaml 新增 target_v2_gap_a
+  (status FROZEN_PREP3, priority 4, depends OD-4, time_estimate=12min ESTIMATE_NOT_MEASURED);
+  欄位齊備 (target/獨變量/樣本數 n=5/重複/停止/失敗/output_fields/exact_argv/time_estimate)。既有 5 target 未動。
+FIXTURES: tests/fixtures/gpu_prep/multistream_aggregate_{pass, fail_nonphysical, fail_stream_axis}.json。
+TESTS: tests/test_gpu_prep_v2gapa.py 12 tests (CPU smoke + parser pass/fail), 全通過。
+PENDING_FIELDS: ir_evaluation_point_fields=PENDING_S_GT_1_SEMANTICS (S>1 -> production coordinate
+  映射未定, 現 UNSUPPORTED; 不自行猜 —— GAP-4 教訓)。production_stream_semantics_status=UNSUPPORTED_UNTIL_MEASURED。
+BASELINE: tests/ 163 -> 175 (+12), 0 failed; evidence 4423/4423 未動; doctor pass。
+AUTHZ: 僅動 measurement/ (新增)、experiments/specs/、tests/fixtures/ + tests/、docs/status/、
+  ledger TRACK_GPU_PREP 那一列 (加 PREP-3 phase + last_verified)。未動 orchestrator: 區塊 / 其他列 /
+  evidence / 既有 probe/parser 行為 / sealed held-out。
+CLAIMS_ADDED: V2-GAP-A 探針/parser/contract 的 CPU 設計與行為正確性 (含軸紀律與物理包絡)。
+CLAIMS_STILL_FORBIDDEN: 任何 GPU 效能 / calibrated / break-even / accelerator 主張; CPU smoke != 量測可行性已驗證。
+NEXT: V2-GAP-A 前置已凍結 (FROZEN_PREP3), 可在 GPU 窗口與既有 P4 同窗 dispatch。
+OWNER_DECISION_NEEDED: 無。
+```
+
+---
+
 ## 2026-08-20 · ORCHESTRATOR · PREP-3 dispatch 失敗（花費上限）
 
 ```text

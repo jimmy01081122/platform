@@ -520,6 +520,24 @@ stages:
     title: GPU 量測前置準備軌 (純 CPU)
     status: COMPLETE
     status_note: >
+      [2026-08-20 PREP-3 / OD-4] 為 V2-GAP-A (多物件並發搬運掃描 / two-regime S>1
+      production 語意) 新增純 CPU 前置。產出 (只新增, 不改既有 probe/parser):
+      probe measurement/probes/multistream_aggregate_probe.py + CPU mock backend
+      measurement/probes/aggregate_backend.py (mock_aggregate; GPU backend 為 stub,
+      呼叫即 raise); parser measurement/parsers/multistream_aggregate_parser.py
+      (壞形狀 raise 非靜默略過: 強制 num_objects 軸、copy_streams==1 軸紀律、
+      物理包絡 max(per_object)<=aggregate<=sum(per_object)、樣本數/均值一致);
+      contract 新增 target_v2_gap_a (FROZEN_PREP3, time_estimate=12min, depends OD-4,
+      獨變量 num_objects[1,2,4,8] x object_bytes[64KiB,2MiB,336MiB] x direction[h2d,d2h],
+      n=5); fixtures tests/fixtures/gpu_prep/multistream_aggregate_{pass, fail_nonphysical,
+      fail_stream_axis}.json; 測試 tests/test_gpu_prep_v2gapa.py (12 tests, CPU smoke +
+      parser pass/fail)。V2-GAP-A 屬 FIT-side, 未碰 sealed held-out。軸紀律 (OWNER_RESOLUTION
+      2026-08-18): num_objects 多物件並發 != intra-object copy_streams S; 不得借用 S 軸。
+      IR 評估點投影標 PENDING (ir_evaluation_point_fields=PENDING_S_GT_1_SEMANTICS):
+      S>1 -> production coordinate 的映射正是本 gap 待解項, 現為 UNSUPPORTED, 不自行猜 (GAP-4 教訓)。
+      基線 tests/ 163 -> 175 (+12), 0 failed; evidence 4423/4423 未動; doctor pass。
+      未跑任何 GPU; 無任何 GPU 效能 / calibrated / break-even 主張; CPU smoke != 量測可行性已驗證。
+      --- 以下為 PREP-2 記錄 ---
       [2026-08-19 更新] STAGE_A2 已 COMPLETE, PREP-2 已完成: 兩支探針中依賴 A2 IR
       評估點 schema 的欄位全部填實。逐項對照 A2 產出的 CalibrationIR schema
       (explorations/moe_cycle_simulator/phase2/schemas/canonical_ir.schema.json
@@ -567,6 +585,17 @@ stages:
         depends_on: STAGE_A2
         scope: 依 A2 的 IR 評估點 schema 定案探針輸出欄位
         rationale: 量測 schema 先於消費 schema 凍結正是 GAP-4 的成因, 不得自行猜欄位
+      - id: PREP-3
+        depends_on: OD-4
+        scope: >-
+          V2-GAP-A (多物件並發搬運掃描 / PCIe two-regime S>1 語意) 的純 CPU 前置:
+          probe (measurement/probes/multistream_aggregate_probe.py + aggregate_backend.py)、
+          parser (measurement/parsers/multistream_aggregate_parser.py, 對壞形狀 raise)、
+          contract 段落 (target_v2_gap_a, FROZEN_PREP3)、CPU smoke + parser pass/fail fixture
+        rationale: >-
+          OD-4 為 two-regime 的 S>1 production 語意 (目前 UNSUPPORTED) 補上量測前置。
+          num_objects 軸 (多物件並發) 與 intra-object copy_streams S 軸不同 (OWNER_RESOLUTION
+          2026-08-18), 不得借用 S 軸。IR 評估點投影因 S>1 語意未定而標 PENDING, 不自行猜 (GAP-4 教訓)。
     preconditions:
       - stage: STAGE_0
         required_status: COMPLETE
@@ -590,11 +619,21 @@ stages:
       - command: make test
         expect: "0 failed (通過數應上升, 下降或失敗即不通過)"
     last_verified:
-      date: "2026-08-19"
-      phase: "PREP-1 + PREP-2 (both complete; STAGE_A2 COMPLETE)"
+      date: "2026-08-20"
+      phase: "PREP-1 + PREP-2 + PREP-3 (all complete; PREP-3 adds V2-GAP-A per OD-4)"
       actual:
         verify_evidence: "evidence integrity: OK (4423 files)"
-        test: "129 + 36 + 16 + 43 + 134(+48 subtests) Python = 358 passed (tests/test_gpu_prep.py 19 tests; +6 for PREP-2); ctest 2/3/4/5 = 14 passed; 0 failed"
+        test: "175 + 36 + 16 + 43 + 141(+1 skipped, +48 subtests) Python = 411 passed, 1 skipped; ctest 2/3/4/5 = 14 (build-cpp not rerun this session; test-py green); 0 failed. tests/ 163 -> 175 (+12 tests/test_gpu_prep_v2gapa.py, PREP-3). HEAD 0e185c6."
+        prep3_v2_gap_a: >
+          V2-GAP-A (multi-object concurrent transfer / two-regime S>1 production semantics)
+          pure-CPU prep. probe measurement/probes/multistream_aggregate_probe.py + CPU mock
+          measurement/probes/aggregate_backend.py (mock_aggregate); parser
+          measurement/parsers/multistream_aggregate_parser.py raises on: wrong concurrency_axis,
+          copy_streams!=1 (S-axis borrow), non-physical aggregate (< max or > sum per_object),
+          sample/length mismatch. contract target_v2_gap_a FROZEN_PREP3 (time_estimate 12 min).
+          IR evaluation-point projection left PENDING (PENDING_S_GT_1_SEMANTICS) -- S>1 production
+          mapping is the item this gap opens, UNSUPPORTED until GPU measurement; NOT guessed (GAP-4).
+          Additive only: no existing probe/parser modified. FIT-side; sealed held-out untouched.
         doctor: "workspace_contract: pass"
         prep2_ir_evaluation_points: >
           Probe output fields depending on A2 IR eval-point schema FILLED against
@@ -617,6 +656,7 @@ stages:
       - "探針程式在 CPU fixture 上的行為正確性 (argv/序列化/錯誤處理)"
       - "GAP-5 的 harness launch-granularity 語意 (由讀程式碼解出, 附推導與行號)"
       - "探針輸出可不經 join 生成對 A2 CalibrationIR schema 有效的 IR 評估點 (PREP-2; GAP-4 類缺陷不重演)"
+      - "V2-GAP-A 多物件並發搬運探針/parser/contract 在 CPU 上的設計與行為正確性 (PREP-3; 軸紀律 num_objects != S、物理包絡強制、IR 點正確標 PENDING 不猜)"
     claims_still_forbidden:
       - "任何 GPU 效能主張 (本軌未跑過 GPU)"
       - "把 CPU smoke test 通過說成量測可行性已驗證"

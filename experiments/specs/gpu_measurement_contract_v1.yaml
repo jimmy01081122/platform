@@ -2,7 +2,9 @@ schema_version: gpu-measurement-contract-v1
 id: gpu_measurement_contract_v1
 created_by_track: TRACK_GPU_PREP
 created_at: "2026-08-19"
-status: FROZEN_PREP2   # PREP-1 froze the contract; PREP-2 filled all IR eval-point fields against STAGE_A2's CalibrationIR schema
+status: FROZEN_PREP2   # PREP-1 froze the 5 base targets; PREP-2 filled all IR eval-point fields against STAGE_A2's CalibrationIR schema
+# PREP-3 (OD-4) appended one target below, V2-GAP-A, marked status: FROZEN_PREP3.
+# It is additive: none of the five base targets above are modified.
 # ---------------------------------------------------------------------------
 # Frozen measurement contract for the five GPU measurement priorities.
 #
@@ -258,4 +260,98 @@ targets:
         budget and cannot be shortened without changing the arrival process
         (which would change what is measured).
       estimate_minutes: 160
+      note: ESTIMATE_NOT_MEASURED
+
+  # =========================================================================
+  # PREP-3 (OD-4) APPENDED TARGET -- V2-GAP-A. Additive; the five targets above
+  # are unchanged. Frozen for the same GPU window per statuts OD-4.
+  # =========================================================================
+  - id: target_v2_gap_a
+    status: FROZEN_PREP3
+    priority: 4                          # same information-gain tier as target_4 (component/PCIe gaps)
+    depends_on_decision: OD-4
+    target: "V2-GAP-A -- multi-object concurrent transfer (aggregate completion; defines two-regime S>1 production semantics)"
+    source_spec: "experiments/specs/cal_model_form_repair_v2.yaml measurement_gaps_opened.V2-GAP-A-MULTISTREAM-AGGREGATE (+ OWNER_RESOLUTION_2026_08_18 candidate_a clarifications)"
+    rationale: >
+      The two-regime PCIe model (candidate_a) predicts a single residency-managed
+      object with copy_streams S=1; the intra-object S>1 case is production-
+      UNSUPPORTED because predict() must not extrapolate the microbenchmark's
+      chunk-split O_d(S) to real transfers (OWNER_RESOLUTION 2026-08-18). Defining
+      the S>1 production semantics requires the ONE quantity no evidence family
+      currently carries: the aggregate (wait-all) completion time of N INDEPENDENT
+      objects moved concurrently. That is multi-object copy concurrency -- a
+      DIFFERENT axis (num_objects), which per the owner resolution must NOT be
+      expressed with S. This target sweeps num_objects with copy_streams fixed at 1.
+    boundary_vs_existing_gaps: >
+      Distinct from the intra-object S / copy_streams axis that GAP-2 and GAP-6
+      live on: GAP-2 = the aggregate-contention interpretation of the existing
+      copy_engine(S) probe is untested because no eval point has a non-empty
+      transfers list; GAP-6 = single-transfer latency growing with copy_streams S
+      at small size. Both are intra-object-S questions. V2-GAP-A is the multi-
+      object (num_objects) axis and touches neither; it is also distinct from
+      GAP-1 (dequant weight-bytes) and GAP-3 (small-transfer floor sample size).
+    probe: measurement/probes/multistream_aggregate_probe.py
+    parser: measurement/parsers/multistream_aggregate_parser.py
+    cpu_backend: measurement/probes/aggregate_backend.py   # mock_aggregate; pure-CPU smoke only
+    independent_vars:
+      num_objects: [1, 2, 4, 8]
+      # multi-object copy concurrency N (NOT copy_streams S). Range spans the
+      # single-object production case (N=1) up to the serving anchor concurrency
+      # (8, SERV-P0-25), so the aggregate curve covers the residency regime the
+      # existing evidence lives in.
+      object_bytes: [65536, 2097152, 352321536]
+      # 64 KiB small-regime anchor + the two real production residency objects
+      # (KV block 2 MiB, expert 336 MiB). Spans small / transition / bulk so the
+      # measurement can locate the two-regime knees at multi-object concurrency.
+      direction: [h2d, d2h]
+      copy_streams_fixed: 1
+      # HARD: each object is a single S=1 transfer. The parser rejects any cell
+      # with copy_streams != 1 -- the S axis must not be borrowed for this axis.
+    sample_size: "n=5 per cell (matches the q0 convention; same as target_4)"
+    repeats: "5 inner repeats per cell, reported with Student-t CI"
+    stop_condition: "every (num_objects x object_bytes x direction) cell has n=5 clean aggregate samples"
+    failure_condition: >
+      Non-physical aggregate -- aggregate_completion_ms < max(per_object_ms), or
+      > sum(per_object_ms) -- => reject the cell (parser raises); it cannot finish
+      before its slowest constituent nor exceed running them serially. A cell
+      recorded with copy_streams != 1 is an AXIS error (multi-object concurrency
+      mis-encoded as intra-object S) => reject, do not silently accept. Retry a
+      transient failure once.
+    output_fields:
+      measured_directly:
+        - num_objects
+        - object_bytes
+        - direction
+        - copy_streams            # always 1 (axis guard)
+        - regime                  # small / transition / bulk (from object_bytes)
+        - aggregate_completion_ms_samples   # n=5
+        - aggregate_completion_ms_mean
+        - per_object_ms
+        - max_per_object_ms
+        - sum_per_object_ms
+      ir_evaluation_point:
+        schema: CalibrationIR
+        status: PENDING
+        pending_field: ir_evaluation_point_fields
+        pending_sentinel: PENDING_S_GT_1_SEMANTICS
+        reason: >
+          Left PENDING, NOT guessed (the GAP-4 lesson). The S>1 aggregate ->
+          production-coordinate mapping is exactly the item this gap opens and is
+          production-UNSUPPORTED today, so the projection into a CalibrationIR
+          evaluation_coordinate is not determinable from existing data. TRACK_GPU
+          fills it only after the measurement resolves the S>1 semantics; until
+          then the probe emits ir_evaluation_point_fields=PENDING_S_GT_1_SEMANTICS
+          and production_stream_semantics_status=UNSUPPORTED_UNTIL_MEASURED.
+    exact_argv:
+      cpu_smoke_test: "python3 measurement/probes/multistream_aggregate_probe.py --backend mock_aggregate --num-objects 1,2,4,8 --object-bytes 65536,2097152,352321536 --direction h2d,d2h --repeats 5 --out runs/<run_id>/v2gapa_smoke.json"
+      parser_check: "python3 measurement/parsers/multistream_aggregate_parser.py runs/<run_id>/v2gapa_smoke.json"
+      gpu_run: "python3 measurement/probes/multistream_aggregate_probe.py --backend <pcie_multiobject_gpu_backend> --num-objects 1,2,4,8 --object-bytes 65536,2097152,352321536 --direction h2d,d2h --repeats 5 --out runs/<run_id>/v2gapa.json   # TRACK_GPU only"
+    time_estimate:
+      basis: >
+        Same class as target_4: PCIe transfer microbenchmark, ms-scale x n=5.
+        24 cells (4 num_objects x 3 sizes x 2 directions) x 5 repeats; tensor/
+        pinned-buffer setup ~small; folded into the same window as target_4's
+        PCIe sweep. Slightly larger than target_4's PCIe portion alone because it
+        adds the multi-object dimension.
+      estimate_minutes: 12
       note: ESTIMATE_NOT_MEASURED

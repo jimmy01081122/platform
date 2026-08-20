@@ -1,0 +1,25 @@
+{
+  "schema_version": "gpu-multistream-aggregate-result-v1",
+  "target": "V2-GAP-A-MULTISTREAM-AGGREGATE",
+  "backend": "mock_aggregate",
+  "evidence": "cpu_smoke_test_not_measurement",
+  "repeats": 3,
+  "concurrency_axis": "num_objects",
+  "ir_evaluation_point_schema": "CalibrationIR",
+  "ir_evaluation_point_fields": "PENDING_S_GT_1_SEMANTICS",
+  "production_stream_semantics_status": "UNSUPPORTED_UNTIL_MEASURED",
+  "cells": [
+    {
+      "num_objects": 4,
+      "object_bytes": 352321536,
+      "direction": "h2d",
+      "copy_streams": 1,
+      "regime": "bulk",
+      "aggregate_completion_ms_samples": [10.0, 10.0, 10.0],
+      "aggregate_completion_ms_mean": 10.0,
+      "per_object_ms": [12.6, 12.6, 12.6, 12.6],
+      "max_per_object_ms": 12.6,
+      "sum_per_object_ms": 50.4
+    }
+  ]
+}
