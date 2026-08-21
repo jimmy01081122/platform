@@ -3,7 +3,7 @@
 ```text
 authored_by : SESSION_ORCHESTRATOR
 authored_on : 2026-08-19
-revised     : 2026-08-20（v1.1：/vault 持久儲存見 §2.1；v1.2：OD-4 新增條件性 target V2-GAP-A 於區塊 A，須 PREP-3 先凍結，見 §3）
+revised     : 2026-08-20（v1.1：/vault 持久儲存見 §2.1；v1.2：OD-4 條件性 target V2-GAP-A 於區塊 A，見 §3；v1.3：PREP-3 已凍結 V2-GAP-A（統籌 CONFIRMED）＋ HF 下載兩個已知問題與 token HARD STOP，見 §2.2）
 kind        : 排程 runbook（設計/排程文件，非量測執行）
 authority   : 統籌 session 授權可寫 docs/status/；本文件不修改 stages:、原始碼、evidence
 executed_by : 獨立 TRACK_GPU session（docs/session_guides/TRACK_GPU_MEASUREMENT.md）
@@ -69,6 +69,7 @@ evidence 不同 domain、不能合併。寧可 `pip install vllm==0.23.0`。
   128 GiB > 96 GB VRAM，頂端必然 offload；每 token KV 128 KiB）。RAM 不足會在跨過 offload
   邊界前 OOM——OOM 本身是可回報結果，但過早 OOM 會使 P2 拿不到 knee。
 - **`/vault` 空間 ≥ 150 GB**：Mixtral-8x7B BF16 權重 ~90 GB **放 /vault，不放本機磁碟**（見 §2.1）。
+- **HF token 先備妥**：權重下載前需向 owner 取得（匿名限流），屬 HARD STOP（見 §2.2）。
 - **SSH 直連**：gputw pod ready 後可直連；探針為 argv 驅動，SSH 進去即可跑。
 - **獨占 GPU**：P1/P2/P4 是敏感微基準（root spec §9.3），彼此與 filler 皆不可並跑。
 
@@ -86,6 +87,32 @@ evidence 不同 domain、不能合併。寧可 `pip install vllm==0.23.0`。
   一致（§4 步驟5），避免用到別的 revision 而悄悄漂移 domain。
 - **⚠️ 餘額警告**：官方規則——帳戶餘額 ≤ NT$0 時 /vault 內容**保留 30 天後刪除**。長期停用前
   務必儲值或把權重/raw 另備，否則 90 GB 權重會被清掉、下次重測又要重抓。
+
+### 2.2 Hugging Face 下載的兩個已知問題（owner 實務經驗，必讀）
+
+權重來源是 **Hugging Face Hub**（`huggingface.co`，模型 ID `mistralai/Mixtral-8x7B-Instruct-v0.1`；
+`HF_HOME`/`HF_HUB_CACHE` 即 `huggingface_hub` 的原生快取變數）。以下兩點在窗口內踩到會直接
+燒掉計費時間：
+
+1. **🛑 匿名下載會被限流——開始下載前必須停下來跟 owner 要 HF token。**
+   無 `HF_TOKEN` 的匿名請求會遭 rate limit，90 GB 會拖到不可接受或中途失敗。
+   **這是一個 HARD STOP**：TRACK_GPU session 在執行任何權重下載前，先向 owner 索取 token
+   （`export HF_TOKEN=<token>` 或 `huggingface-cli login`），**拿到才開始下載**。
+   不要用匿名硬拉、也不要自行找鏡像繞過。
+   > token 屬機密：只放進執行個體的環境變數，**不得**寫進 run manifest、log、commit 或
+   > 任何 evidence 產物。
+
+2. **只拉 sharded safetensors，不要連 `.st` 一起下載。**
+   該 repo 同時存在 sharded 權重與額外的 `.st` 檔；全抓會多下載一份等量資料、浪費頻寬與
+   /vault 空間。下載時以 allow/ignore pattern 限定，例如：
+   ```bash
+   huggingface-cli download mistralai/Mixtral-8x7B-Instruct-v0.1 \
+     --revision eba92302a2861cdc0098cc54bc9f17cb2c47eb61 \
+     --local-dir /vault/hf/mixtral-8x7b-instruct-v0.1 \
+     --exclude "*.st"
+   ```
+   （或 `snapshot_download(..., ignore_patterns=["*.st"])`。）下載後確認取得的是
+   `model-0000X-of-0001Y.safetensors` 分片 + `model.safetensors.index.json`。
 
 ---
 
@@ -132,8 +159,11 @@ evidence 不同 domain、不能合併。寧可 `pip install vllm==0.23.0`。
    **不符 → 依 owner 裁決：停止 dispatch、回報 `BLOCKED_OTHER` 等換機**（§9；本次不走獨立 profile）。
 4. **Session-local guard canary（§6 步驟3）**：新 attempt ID 跑最小 guard 確認 host/runtime。
 5. **拉模型到 /vault（只一次）**：先檢查 `/vault/hf` 是否已有 Mixtral-8x7B-Instruct-v0.1
-   rev `eba92302…` BF16；**已存在就跳過下載**，僅驗 checksum/revision 一致。缺才下載到 /vault。
-   權重 identity 與 checksum 寫入 run。之後換機/重測命中 /vault 不再重抓（§2.1）。
+   rev `eba92302…` BF16；**已存在就跳過下載**，僅驗 checksum/revision 一致。
+   缺才下載——**下載前 HARD STOP：先向 owner 索取 HF token**（匿名會限流，§2.2 第 1 點），
+   且**下載時排除 `.st`、只拉 sharded safetensors**（§2.2 第 2 點）。
+   權重 identity 與 checksum 寫入 run（**token 不得寫入任何產物**）。
+   之後換機/重測命中 /vault 不再重抓（§2.1）。
 6. **區塊 A 量測**：P4 → P1 → P2（§6 步驟4），每 attempt 保存 exact argv / 環境 / 模型 identity /
    輸入 fixture / 輸出 token IDs+finish reason / 原始時序 / telemetry / stdout+stderr / 失敗分類
    （§6 步驟5，**失敗 attempt 一樣保存**）。
