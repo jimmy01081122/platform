@@ -6,6 +6,39 @@
 
 ---
 
+## 2026-08-20 · ORCHESTRATOR · PREP-3 驗收 CONFIRMED + 全專案提交/推送
+
+```text
+SESSION: ORCHESTRATOR
+TRIGGER: owner 提高花費上限後 resume PREP-3 subagent，已完工並 commit (ccaabaf,未 push)；
+  owner 要求「對目前專案做一次提交與 push」。
+VERIFIED_THIS_SESSION:
+  TRACK_GPU_PREP/PREP-3 = CONFIRMED (獨立重跑, 非採信敘述):
+    - pytest tests/test_gpu_prep_v2gapa.py 12 passed: probe CPU smoke(24 cells)、
+      copy_streams 強制=1、envelope 檢查、GPU backend 正確拒絕、regime 分類對齊
+      prereg 邊界、parser pass fixture 接受、5 種失敗 fixture 全部 raise。
+    - 邊界: 0e185c6..ccaabaf 之 ledger diff 4 hunk (520-663) 全落在 TRACK_GPU_PREP
+      列邊界 (519-665) 內, 無其他 id: 列增刪, orchestrator: 區塊零 hunk; commit 10 檔
+      不含 evidence/src/sealed held-out。contract target_v2_gap_a 確認 FROZEN_PREP3;
+      PENDING 欄位誠實標記 (PENDING_S_GT_1_SEMANTICS / UNSUPPORTED_UNTIL_MEASURED)。
+    - 基線: make test 411 Py (175+36+16+43+141,1 skipped) + 14 CTest 0 failed
+      (與宣稱 163->175 一致); verify-evidence 4423/4423; doctor pass。
+LEDGER_UPDATE: verified_stages 加 TRACK_GPU_PREP/PREP-3; next_dispatch 移除已解決的
+  PREP-3 失敗記錄, TRACK_GPU 項更新為「前置全備 (PREP-1/2/3)」; critical_path 同步。
+NEXT_DISPATCH: TRACK_GPU (以 gputw.ai 開始量測); 前置 TRACK_GPU_PREP 全數 COMPLETE。
+CLAIMS_ADDED: 僅驗收結果 (TRACK_GPU_PREP/PREP-3=CONFIRMED) 與排程更新。
+CLAIMS_STILL_FORBIDDEN: GPU 效能 / calibrated / break-even / accelerator / 長上下文 /
+  跨階段合成結論 —— 本 session 未跑 GPU、未執行階段工作。
+COMMIT_AND_PUSH: 本輪連同上游未推送的 PREP-3 commit (ccaabaf) 一併 push 到
+  origin/stage-b2-accelerator-model。
+```
+
+**未越界**：本輪 `git diff`（在 PREP-3 已 commit 的乾淨 tree 上）僅含 `docs/status/
+{CURRENT_STATUS,AGENT_HANDOFF}.md` 與 ledger `orchestrator:` 區塊。未改 stages: 任何一列、
+未碰 PREP-3 已提交檔案、未碰原始碼/evidence。
+
+---
+
 ## 2026-08-20 · TRACK_GPU_PREP · PREP-3 完成（V2-GAP-A 純 CPU 前置）
 
 ```text

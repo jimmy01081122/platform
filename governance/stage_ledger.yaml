@@ -782,6 +782,21 @@ orchestrator:
         4423/4423; doctor pass。claim boundary 守住 (無 accelerator 收益/break-even; A2/A6 無
         效能結論)。
       result: CONFIRMED
+    - stage: TRACK_GPU_PREP
+      phase: PREP-3
+      verified_on: "2026-08-20"
+      method: >-
+        實際重跑 (非僅產物存在性): pytest tests/test_gpu_prep_v2gapa.py 12 passed —— probe CPU
+        smoke (24 cells)、copy_streams 強制=1、envelope 檢查、GPU backend 正確拒絕、regime
+        分類對齊 prereg 邊界、parser pass fixture 接受、parser 對非物理 aggregate/stream 軸誤用
+        /軸標籤錯誤/樣本數不符/長度不符五種失敗全部 raise。邊界: 對照 0e185c6..ccaabaf 之 ledger
+        diff, 4 個 hunk (520-663) 全落在 TRACK_GPU_PREP 列邊界 (519-665) 內, 無其他 id: STAGE_/
+        TRACK_ 列增刪, orchestrator: 區塊 (760+) 零 hunk; commit 10 檔均不含 evidence/src/sealed
+        held-out。contract 段落 target_v2_gap_a 確認標 FROZEN_PREP3; PENDING 欄位誠實標記
+        (PENDING_S_GT_1_SEMANTICS / UNSUPPORTED_UNTIL_MEASURED, 未猜值)。基線 make test 411 Py
+        (175+36+16+43+141,1 skipped) + 14 CTest 0 failed (與宣稱 163->175 一致); verify-evidence
+        4423/4423; doctor pass。
+      result: CONFIRMED
   discrepancies:
     - id: DISC-1
       severity: LOW
@@ -798,36 +813,16 @@ orchestrator:
         寫此行時未帶到 OD-3。屬文件不一致, 非階段狀態衝突, 不改 stages: 任何一列。本 session
         已於 CURRENT_STATUS 標頭更正為 B1 HELD + TRACK_GPU 為下一動作。
   next_dispatch:
-    - guide: docs/session_guides/TRACK_GPU_PREP.md
-      phase: PREP-3
-      status: DISPATCHED_ATTEMPT_FAILED
-      attempt_note: >-
-        [2026-08-20] 首次 dispatch (統籌以獨立 session 執行) 因 API 每月花費上限中斷,
-        未完成、未 commit。工作區留有 3 個未提交半成品 (measurement/probes/
-        {multistream_aggregate_probe,aggregate_backend}.py, measurement/parsers/
-        multistream_aggregate_parser.py) —— 未驗證、無 contract 段落/fixture/測試/ledger 更新。
-        BLOCKER 為 owner 資源閘: 需 owner 提高花費上限 (claude.ai/settings/usage) 後重新 dispatch;
-        重跑前應由該 PREP session 自行審視或捨棄半成品 (統籌不接手寫、不 commit、不刪他人檔案)。
-        若 GPU endpoint 早於 PREP-3 凍結出現, 直接走 OD-4 fallback (見下), V2-GAP-A 延後。
-      reason: >-
-        [2026-08-20 統籌裁決 OD-4] 為本次 GPU 窗口新增 target: V2-GAP-A 多物件並發搬運掃描
-        (PCIe two-regime S>1 語意, 目前 S>1=UNSUPPORTED, 是 co-design/C1 break-even 的真缺口,
-        舊矩陣稽核唯一揪出)。PREP-3 = 純 CPU 小 PREP: 寫 probe + parser + contract 段落 (含
-        CPU smoke + pass/fail fixture), 與 PREP-1/2 同紀律, 凍結後 V2-GAP-A 才可 dispatch。
-        endpoint 尚未開 (OD-1 RESOLVING) -> 現在有跑道做, 不壓縮窗口。HARD GUARDRAIL (OD-4 fallback):
-        若 endpoint 早於 PREP-3 凍結出現, 照既有凍結目標 P4/P1/P2/P5 跑, V2-GAP-A 延到區塊 B 尾
-        段或第二窗, 絕不在窗口內臨時設計 (GAP-4 成因)。V2-GAP-A 屬 FIT-side, 不得與 sealed
-        held-out 混用。
-      parallel_with: []
     - guide: docs/session_guides/TRACK_GPU_MEASUREMENT.md
       reason: >-
-        [2026-08-20] B2 已 COMPLETE (本 session 獨立 CONFIRMED)。CPU 端可推進到 COMPLETE 的
-        階段工作已用盡 —— B1 HELD 等 A4 (OD-3), C1 gated 在 A4。剩下全部瓶頸 (A1 closure /
-        A4 / B1 gate / TRACK_GPU) 收斂到單一 GPU endpoint。owner 即將以 gputw.ai 開始 GPU
-        量測 (OD-1)。因此下一個動作是 TRACK_GPU (獨立 session 執行, 統籌不執行量測), 依
-        docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md runbook。前置 TRACK_GPU_PREP 已
-        COMPLETE (PREP-1/2)、contract 凍結、五探針備妥、sealed split 封存; PREP-3 (V2-GAP-A)
-        若在窗口前凍結則併入區塊 A, 否則延後 (見上)。
+        [2026-08-20 更新] PREP-3 (V2-GAP-A) 已 COMPLETE 並經統籌獨立 CONFIRMED (commit ccaabaf,
+        未 push): contract target_v2_gap_a 標 FROZEN_PREP3, 12/12 測試過, 邊界乾淨。B2 已
+        COMPLETE (獨立 CONFIRMED)。CPU 端可推進到 COMPLETE 的階段工作已用盡 —— B1 HELD 等 A4
+        (OD-3), C1 gated 在 A4。剩下全部瓶頸 (A1 closure / A4 / B1 gate / TRACK_GPU) 收斂到單一
+        GPU endpoint。owner 即將以 gputw.ai 開始 GPU 量測 (OD-1)。因此下一個動作是 TRACK_GPU
+        (獨立 session 執行, 統籌不執行量測), 依 docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md
+        runbook (v1.2, 區塊 A 含 P4 -> V2-GAP-A -> P1 -> P2)。前置 TRACK_GPU_PREP 全數
+        COMPLETE (PREP-1/2/3)、五+1 探針備妥、sealed split 封存、模型下載走 /vault (§2.1)。
       parallel_with: []
     - guide: docs/session_guides/STAGE_B1_KV_BATCHING.md
       status: HELD
@@ -907,6 +902,7 @@ orchestrator:
         不得與 sealed held-out 混用。已排入 next_dispatch (PREP-3) 並更新 runbook v1.2。
   critical_path: >-
     A2(DONE) -> A3(DONE) -> B2(DONE) -> C1 -> C2, 且 C1 需要 A4, A4 需要 A1 closure + A3 + GPU endpoint。
-    A2/A3/B2 皆 COMPLETE 且經統籌獨立 CONFIRMED。CPU 端可推進到 COMPLETE 的階段工作已用盡:
-    B1 HELD 等 A4 (OD-3), C1 gated 在 A4。因此剩下全部瓶頸 (A1 closure / A4 / B1 gate / TRACK_GPU)
-    收斂到單一 GPU endpoint —— 下一個高槓桿動作是以 gputw.ai 開始 GPU 量測 (OD-1)。
+    A2/A3/B2 皆 COMPLETE 且經統籌獨立 CONFIRMED; TRACK_GPU_PREP 全數 COMPLETE (PREP-1/2/3,
+    含 V2-GAP-A, 經統籌獨立 CONFIRMED)。CPU 端可推進到 COMPLETE 的階段工作已用盡: B1 HELD
+    等 A4 (OD-3), C1 gated 在 A4。因此剩下全部瓶頸 (A1 closure / A4 / B1 gate / TRACK_GPU)
+    收斂到單一 GPU endpoint —— 下一個高槓桿動作是以 gputw.ai 開始 GPU 量測 (OD-1), 前置已全備。

@@ -1,11 +1,11 @@
 # CURRENT_STATUS
 
 ```text
-updated       : 2026-08-20（B2 session：參數化候選處理器 + 六動詞 ABI + 掛載點 A1-A6 建成）
+updated       : 2026-08-20（統籌：PREP-3/V2-GAP-A 驗收 CONFIRMED，TRACK_GPU_PREP 全數完成）
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
-current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE；A3 COMPLETE；B2 COMPLETE（可掃描元件、六動詞 ABI、reference mock 五路徑、A1-A6 定義，全 ANALYTICAL/PROJECTED）；TRACK_GPU_PREP 完成
-next dispatch : TRACK_GPU（以 gputw.ai 開始 GPU 量測，OD-1；runbook 見 docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md）。B2 COMPLETE 且經統籌獨立 CONFIRMED。B1 由 owner 裁決 HELD 等 A4（OD-3，非可開）；C1 gated 在 A4；A4 gated 在 A1 closure + GPU endpoint。CPU 端可推進到 COMPLETE 的階段工作已用盡，瓶頸全部收斂到單一 GPU endpoint
+current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE；A3 COMPLETE；B2 COMPLETE（可掃描元件、六動詞 ABI、reference mock 五路徑、A1-A6 定義，全 ANALYTICAL/PROJECTED）；TRACK_GPU_PREP 全數完成（PREP-1/2/3，含 V2-GAP-A 前置，經統籌獨立 CONFIRMED）
+next dispatch : TRACK_GPU（以 gputw.ai 開始 GPU 量測，OD-1；runbook 見 docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md v1.2，區塊 A 含 P4→V2-GAP-A→P1→P2）。前置已全備：contract 凍結（含 V2-GAP-A target_v2_gap_a=FROZEN_PREP3）、六探針、sealed split 封存、模型下載走 /vault。B1 由 owner 裁決 HELD 等 A4（OD-3）；C1/A4 gated 在 GPU endpoint。CPU 端可推進到 COMPLETE 的階段工作已用盡，瓶頸全部收斂到單一 GPU endpoint
 ```
 
 ## 一句話狀態
