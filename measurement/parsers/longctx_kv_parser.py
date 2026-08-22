@@ -48,6 +48,11 @@ def validate(result: Any) -> dict[str, Any]:
     for i, rec in enumerate(records):
         w = f"records[{i}]"
         require_mapping(rec, w)
+        if rec.get("measurement_failed"):
+            require_type(rec.get("stopped_sweep"), bool, f"{w}.stopped_sweep")
+            if i != len(records) - 1:
+                raise ValidationError(f"{w}: terminal measurement failure is not last")
+            continue
         if rec.get("oom"):
             # An OOM record is terminal and need not carry byte accounting, but
             # it must be honestly flagged, never silently dropped.

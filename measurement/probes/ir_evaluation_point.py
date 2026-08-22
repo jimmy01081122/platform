@@ -149,7 +149,10 @@ def _envelope_dim(name: str, values: list[int]) -> dict[str, str]:
 def longctx_result_to_points(result: dict[str, Any]) -> list[dict[str, Any]]:
     """A6 long-context: coordinate = [seq_len]; one point per (metric, seq_len)."""
     rvh = result["runtime_variant_hash"]
-    records = [r for r in result["records"] if not r.get("oom")]
+    records = [
+        r for r in result["records"]
+        if not r.get("oom") and not r.get("measurement_failed")
+    ]
     if not records:
         return []
     seq_lens = [int(r["seq_len"]) for r in records]

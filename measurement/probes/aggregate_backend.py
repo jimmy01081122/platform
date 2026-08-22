@@ -1,7 +1,7 @@
-"""Deterministic CPU mock backend for the V2-GAP-A multi-object aggregate probe.
+"""Backends for the V2-GAP-A multi-object aggregate probe.
 
-Purpose: let the multi-object concurrent-transfer probe walk its *entire* code
-path on a pure-CPU host. The mock returns deterministic, clearly-synthetic
+The CPU mock lets the multi-object concurrent-transfer probe walk its *entire*
+code path on a pure-CPU host. It returns deterministic, clearly-synthetic
 aggregate-completion timings so the probe's serialization and the downstream
 parser can be exercised end to end with no GPU, no torch, no PCIe.
 
@@ -20,14 +20,16 @@ AXIS DISCIPLINE (OWNER_RESOLUTION 2026-08-18, cal_model_form_repair_v2.yaml):
     ``copy_streams == 1`` for every object and MUST NOT borrow the S axis to
     express multi-object concurrency. The parser rejects any record that does.
 
-The real GPU backend (a live PCIe multi-object transfer campaign) is
-intentionally NOT implemented here: TRACK_GPU_PREP is pure CPU. The GPU backend
-is a registered-but-unimplemented stub that raises if invoked.
+The real GPU backend is implemented for TRACK_GPU as a live PCIe multi-object
+transfer campaign.  It imports torch lazily so the TRACK_GPU_PREP CPU tests stay
+GPU-independent and refuse loudly when CUDA is unavailable.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+import gc
+import statistics
 from typing import Any
 
 try:
@@ -129,26 +131,163 @@ class MockAggregateBackend:
         }
 
 
-class GpuAggregateBackendStub:
-    """Registered-but-unimplemented real GPU backend (anti-spoofing).
+@dataclass
+class TorchAggregateBackend:
+    """Live CUDA backend for V2-GAP-A multi-object PCIe measurements.
 
-    Mirrors PLATFORM_FLOW_SPECIFICATION §6.3: an unavailable backend must refuse
-    loudly, never silently degrade. In TRACK_GPU_PREP invoking it is a hard
-    error -- this track is pure CPU.
+    Each object is one independent, whole-buffer transfer on its own CUDA
+    stream.  This is the frozen ``num_objects`` axis; no object is split and the
+    reported ``copy_streams`` value is therefore always one.  A common CUDA
+    event is the issue epoch for every stream.  Per-object completion latency is
+    measured from that epoch, and aggregate wait-all completion is the latest
+    object completion.  This definition directly enforces the preregistered
+    physical envelope without adding host launch/synchronization overhead to
+    only one side of the comparison.
     """
 
-    name = "gpu"
+    name: str = "gpu"
+    warmup_repeats: int = 2
+    _torch: Any = field(default=None, repr=False)
 
-    def __getattr__(self, _name: str):  # pragma: no cover - defensive
-        raise BackendError(
-            "GPU multi-object transfer backend is not runnable in TRACK_GPU_PREP "
-            "(pure CPU). Real V2-GAP-A measurement belongs to TRACK_GPU."
-        )
+    def __post_init__(self) -> None:
+        if self._torch is None:
+            try:
+                import torch
+            except ImportError as exc:  # pragma: no cover - depends on host
+                raise BackendError("torch is required for GPU measurements") from exc
+            self._torch = torch
+        if not self._torch.cuda.is_available():
+            raise BackendError(
+                "CUDA unavailable; refusing to substitute a CPU/mock backend"
+            )
+
+    def _measure_once(
+        self,
+        host_buffers: list[Any],
+        device_buffers: list[Any],
+        streams: list[Any],
+        direction: str,
+    ) -> tuple[list[float], float]:
+        torch = self._torch
+        common_start = torch.cuda.Event(enable_timing=True)
+        completion_events = [
+            torch.cuda.Event(enable_timing=True) for _ in streams
+        ]
+        coordinator = torch.cuda.current_stream()
+        common_start.record(coordinator)
+
+        for index, stream in enumerate(streams):
+            with torch.cuda.stream(stream):
+                stream.wait_event(common_start)
+                if direction == "h2d":
+                    device_buffers[index].copy_(
+                        host_buffers[index], non_blocking=True
+                    )
+                else:
+                    host_buffers[index].copy_(
+                        device_buffers[index], non_blocking=True
+                    )
+                completion_events[index].record(stream)
+
+        for event in completion_events:
+            coordinator.wait_event(event)
+        # Record a distinct wait-all event instead of deriving aggregate
+        # completion with max(per-object).  The two values should agree within
+        # event-timer precision, but the former directly measures the frozen
+        # aggregate synchronization semantic and remains valid if the
+        # coordinator path later acquires measured work of its own.
+        aggregate_completion = torch.cuda.Event(enable_timing=True)
+        aggregate_completion.record(coordinator)
+        torch.cuda.synchronize()
+        per_object_ms = [
+            float(common_start.elapsed_time(event))
+            for event in completion_events
+        ]
+        aggregate_ms = float(common_start.elapsed_time(aggregate_completion))
+        return per_object_ms, aggregate_ms
+
+    def measure_cell(
+        self, num_objects: int, object_bytes: int, direction: str, repeats: int
+    ) -> dict[str, Any]:
+        if num_objects <= 0:
+            raise BackendError(f"num_objects must be positive, got {num_objects}")
+        if object_bytes <= 0:
+            raise BackendError(f"object_bytes must be positive, got {object_bytes}")
+        if direction not in ("h2d", "d2h"):
+            raise BackendError(f"direction must be h2d/d2h, got {direction!r}")
+        if repeats <= 0:
+            raise BackendError(f"repeats must be positive, got {repeats}")
+
+        torch = self._torch
+        try:
+            host_buffers = [
+                torch.empty(object_bytes, dtype=torch.uint8, pin_memory=True)
+                for _ in range(num_objects)
+            ]
+            device_buffers = [
+                torch.empty(object_bytes, dtype=torch.uint8, device="cuda")
+                for _ in range(num_objects)
+            ]
+            streams = [torch.cuda.Stream() for _ in range(num_objects)]
+            torch.cuda.synchronize()
+
+            for _ in range(self.warmup_repeats):
+                self._measure_once(
+                    host_buffers, device_buffers, streams, direction
+                )
+
+            repeat_measurements = [
+                self._measure_once(
+                    host_buffers, device_buffers, streams, direction
+                )
+                for _ in range(repeats)
+            ]
+            per_repeat = [measurement[0] for measurement in repeat_measurements]
+            aggregate_samples = [
+                measurement[1] for measurement in repeat_measurements
+            ]
+            per_object = [
+                statistics.fmean(values[index] for values in per_repeat)
+                for index in range(num_objects)
+            ]
+        except RuntimeError as exc:
+            raise BackendError(
+                f"CUDA transfer measurement failed for N={num_objects}, "
+                f"bytes={object_bytes}, direction={direction}: {exc}"
+            ) from exc
+        finally:
+            # Cell-local allocation bounds peak memory and prevents the 24-cell
+            # sweep from accumulating pinned or device buffers.
+            if "host_buffers" in locals():
+                del host_buffers
+            if "device_buffers" in locals():
+                del device_buffers
+            if "streams" in locals():
+                del streams
+            gc.collect()
+            torch.cuda.empty_cache()
+
+        aggregate_samples = [round(value, 9) for value in aggregate_samples]
+        per_object = [round(value, 9) for value in per_object]
+        return {
+            "num_objects": num_objects,
+            "object_bytes": object_bytes,
+            "direction": direction,
+            "copy_streams": 1,
+            "regime": regime_of(object_bytes),
+            "aggregate_completion_ms_samples": aggregate_samples,
+            "aggregate_completion_ms_mean": round(
+                statistics.fmean(aggregate_samples), 9
+            ),
+            "per_object_ms": per_object,
+            "max_per_object_ms": round(max(per_object), 9),
+            "sum_per_object_ms": round(sum(per_object), 9),
+        }
 
 
 _REGISTRY = {
     "mock_aggregate": MockAggregateBackend,
-    "gpu": GpuAggregateBackendStub,
+    "gpu": TorchAggregateBackend,
 }
 
 

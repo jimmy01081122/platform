@@ -14,7 +14,9 @@ accompany it. Those quantities are physical and schema-independent, so they are
 emitted directly. The projection of these into A2's IR evaluation points is
 schema-dependent and therefore left PENDING_A2 (hard rule 5).
 
-CPU smoke test: ``--backend mock_dispatch``. Result stamped
+CPU smoke test: ``--backend mock_dispatch``. Live TRACK_GPU backend:
+``--backend vllm_dispatch`` with an explicit worker-capable runtime adapter.
+Result stamped
 ``evidence = "cpu_smoke_test_not_measurement"``.
 """
 
@@ -34,6 +36,10 @@ try:
         resolve_backend,
     )
     from measurement.probes.ir_evaluation_point import dispatch_result_to_points
+    from measurement.probes.vllm_backend import (
+        DispatchRuntimeConfig,
+        VllmDispatchBackend,
+    )
 except ImportError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from measurement.probes import SCHEMA_DISPATCH_INSERVING
@@ -43,6 +49,10 @@ except ImportError:  # pragma: no cover
         resolve_backend,
     )
     from measurement.probes.ir_evaluation_point import dispatch_result_to_points
+    from measurement.probes.vllm_backend import (
+        DispatchRuntimeConfig,
+        VllmDispatchBackend,
+    )
 
 import hashlib
 
@@ -58,6 +68,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                    help="comma-separated concurrency values")
     p.add_argument("--steps", type=int, default=32,
                    help="decode steps to instrument per concurrency (>=1)")
+    p.add_argument("--repeats", type=int, default=3,
+                   help="independent serving windows per concurrency (>=1)")
+    p.add_argument("--model-path",
+                   help="vllm_dispatch only: absolute pinned model path")
+    p.add_argument("--runtime-adapter-module",
+                   help="vllm_dispatch only: worker-capable adapter module")
     p.add_argument("--out", required=True, help="output JSON path")
     p.add_argument("--pretty", action="store_true")
     return p.parse_args(argv)
@@ -78,10 +94,23 @@ def _concurrency(spec: str) -> list[int]:
     return out
 
 
-def _build_backend(name: str):
+def _build_backend(
+    name: str,
+    model_path: str | None = None,
+    runtime_adapter_module: str | None = None,
+):
     cls = resolve_backend(name)
     if cls is MockDispatchBackend:
         return cls()
+    if cls is VllmDispatchBackend:
+        if not model_path:
+            raise BackendError("vllm_dispatch requires --model-path")
+        if not runtime_adapter_module:
+            raise BackendError("vllm_dispatch requires --runtime-adapter-module")
+        return cls(
+            config=DispatchRuntimeConfig(model_path=model_path),
+            runtime_adapter_module=runtime_adapter_module,
+        )
     raise BackendError(
         f"backend {name!r} is not runnable in TRACK_GPU_PREP; use mock_dispatch "
         "for the CPU smoke test. Real in-serving dispatch belongs to TRACK_GPU."
@@ -91,27 +120,58 @@ def _build_backend(name: str):
 def run(args: argparse.Namespace) -> dict[str, Any]:
     if args.steps < 1:
         raise SystemExit("--steps must be >= 1")
+    if args.repeats < 1:
+        raise SystemExit("--repeats must be >= 1")
     concurrency_values = _concurrency(args.concurrency)
-    backend = _build_backend(args.backend)
+    backend = _build_backend(
+        args.backend, args.model_path, args.runtime_adapter_module
+    )
     is_mock = isinstance(backend, MockDispatchBackend)
 
     groups: list[dict[str, Any]] = []
-    for concurrency in concurrency_values:
-        steps = [backend.measure_step(i, concurrency) for i in range(args.steps)]
-        total_bytes = sum(s["dispatch_bytes"] for s in steps)
-        total_decisions = sum(s["control_decisions"] for s in steps)
-        groups.append({
-            "concurrency": concurrency,
-            "steps_instrumented": len(steps),
-            "per_step": steps,
-            "total_dispatch_bytes": total_bytes,
-            "total_control_decisions": total_decisions,
-            "mean_dispatch_bytes": total_bytes / len(steps),
-        })
+    try:
+        for concurrency in concurrency_values:
+            steps: list[dict[str, Any]] = []
+            for repeat_index in range(args.repeats):
+                measure_window = getattr(backend, "measure_window", None)
+                if callable(measure_window):
+                    window = measure_window(
+                        concurrency, args.steps, repeat_index
+                    )
+                else:
+                    window = [
+                        {
+                            **backend.measure_step(i, concurrency),
+                            "repeat_index": repeat_index,
+                        }
+                        for i in range(args.steps)
+                    ]
+                steps.extend(window)
+            total_bytes = sum(s["dispatch_bytes"] for s in steps)
+            total_decisions = sum(s["control_decisions"] for s in steps)
+            groups.append({
+                "concurrency": concurrency,
+                "serving_windows": args.repeats,
+                "steps_per_window": args.steps,
+                "steps_instrumented": len(steps),
+                "per_step": steps,
+                "total_dispatch_bytes": total_bytes,
+                "total_control_decisions": total_decisions,
+                "mean_dispatch_bytes": total_bytes / len(steps),
+            })
+    finally:
+        closer = getattr(backend, "close", None)
+        if callable(closer):
+            closer()
 
     runtime_variant_hash = hashlib.sha256(
-        ("dispatch|" + backend.name + "|" + ",".join(str(c) for c in concurrency_values)
-         + f"|steps={args.steps}").encode()
+        json.dumps({
+            "backend": backend.name,
+            "concurrency": concurrency_values,
+            "steps": args.steps,
+            "repeats": args.repeats,
+            "runtime_config": getattr(backend, "runtime_config", None),
+        }, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
     result = {
         "schema_version": SCHEMA_DISPATCH_INSERVING,
@@ -122,6 +182,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         ),
         "argv": _reconstruct_argv(args),
         "runtime_variant_hash": runtime_variant_hash,
+        "runtime_identity": getattr(backend, "runtime_identity", None),
         "note": (
             "system-level dispatch movement + control structure; complements the "
             "same-device execute-only gather_scatter proxy at benchmark.py:463"
@@ -142,8 +203,14 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
 
 
 def _reconstruct_argv(args: argparse.Namespace) -> list[str]:
-    return ["--backend", args.backend, "--concurrency", args.concurrency,
-            "--steps", str(args.steps), "--out", args.out]
+    argv = ["--backend", args.backend, "--concurrency", args.concurrency,
+            "--steps", str(args.steps), "--repeats", str(args.repeats),
+            "--out", args.out]
+    if args.model_path:
+        argv += ["--model-path", args.model_path]
+    if args.runtime_adapter_module:
+        argv += ["--runtime-adapter-module", args.runtime_adapter_module]
+    return argv
 
 
 def main(argv: list[str] | None = None) -> int:

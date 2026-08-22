@@ -21,8 +21,9 @@ Boundary vs existing gaps (avoid duplication, measurement_gaps.json):
   * V2-GAP-A is the *multi-object* axis (num_objects), which neither touches.
 
 CPU smoke test: ``--backend mock_aggregate``. Result stamped
-``evidence = "cpu_smoke_test_not_measurement"``. This probe never dispatches to a
-GPU/PCIe/SSH/serving path; the real backend is a stub that raises here.
+``evidence = "cpu_smoke_test_not_measurement"``. TRACK_GPU dispatches the same
+frozen axes through ``--backend gpu``; that backend refuses loudly if CUDA is
+unavailable and never substitutes mock data.
 
 CLAIM BOUNDARY (TRACK_GPU_PREP §7): a passing CPU smoke test proves argv parsing,
 serialization and error handling are correct. It proves NOTHING about GPU
@@ -41,13 +42,13 @@ from typing import Any
 
 try:
     from measurement.probes.aggregate_backend import (
-        MockAggregateBackend, resolve_backend,
+        MockAggregateBackend, TorchAggregateBackend, resolve_backend,
     )
     from measurement.probes.mock_backend import BackendError
 except ImportError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from measurement.probes.aggregate_backend import (
-        MockAggregateBackend, resolve_backend,
+        MockAggregateBackend, TorchAggregateBackend, resolve_backend,
     )
     from measurement.probes.mock_backend import BackendError
 
@@ -115,10 +116,9 @@ def _build_backend(name: str):
     cls = resolve_backend(name)
     if cls is MockAggregateBackend:
         return cls()
-    raise BackendError(
-        f"backend {name!r} is not runnable in TRACK_GPU_PREP; use mock_aggregate "
-        "for the CPU smoke test. Real multi-object PCIe transfers belong to TRACK_GPU."
-    )
+    if cls is TorchAggregateBackend:
+        return cls()
+    raise BackendError(f"registered backend {name!r} has no constructor")
 
 
 def run(args: argparse.Namespace) -> dict[str, Any]:

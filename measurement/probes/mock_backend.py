@@ -11,10 +11,10 @@ It is NOT a performance model. Numbers are derived from simple closed forms
 something structurally valid to serialize. Any result produced through this
 backend is stamped ``evidence = "cpu_smoke_test_not_measurement"`` upstream.
 
-The real GPU backend (vLLM / serving) is intentionally NOT implemented in this
-track: TRACK_GPU_PREP is pure CPU and must never dispatch to a GPU, SSH, server
-or serving process. The probes select the backend by name; the GPU backend is a
-registered-but-unimplemented stub that raises if invoked here.
+The real serving backends live in :mod:`measurement.probes.vllm_backend` and
+are imported lazily by the registry.  Their vLLM import remains lazy too, so
+TRACK_GPU_PREP can test all registry/configuration behavior without torch,
+vLLM, CUDA, SSH, or a serving process.
 """
 
 from __future__ import annotations
@@ -178,14 +178,22 @@ _REGISTRY = {
     "gpu": GpuBackendStub,
 }
 
+_VLLM_BACKENDS = ("vllm_dispatch", "vllm_longctx_offload_on")
+
 
 def registered_backends() -> tuple[str, ...]:
-    return tuple(_REGISTRY)
+    return tuple(_REGISTRY) + _VLLM_BACKENDS
 
 
 def resolve_backend(name: str):
+    if name in _VLLM_BACKENDS:
+        # Lazy import is important: CPU smoke tests must not require vLLM or
+        # torch merely to enumerate/resolve a backend class.
+        from measurement.probes.vllm_backend import resolve_backend as resolve_vllm
+
+        return resolve_vllm(name)
     if name not in _REGISTRY:
         raise BackendError(
-            f"unregistered backend {name!r}; registered: {sorted(_REGISTRY)}"
+            f"unregistered backend {name!r}; registered: {sorted(registered_backends())}"
         )
     return _REGISTRY[name]
