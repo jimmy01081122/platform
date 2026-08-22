@@ -410,3 +410,27 @@
 **殘留認知邊界(寫入筆記,非本次修正可解)** 這類「CUDA event 自身記錄延遲污染量測值」的 bug,本質上**只有實機才能證偽**——本地 mock/fake-clock 測試不論修正前後都無法區分,P-022 原始 bug 當初也是在真實 GPU attempt 才被 strict parser 抓到。四軸就緒不等於已驗證正確;雙向並發軸的第一個 GPU attempt 完成前,`joint_over_max_ratio`/`joint_over_sum_ratio` 的判讀應保持謹慎。
 
 **claim boundary** 以上為 fail-closed 工程修正與 CPU-only 驗證,非 GPU 效能資料;四軸皆待下一個 GPU 窗口實測。
+
+---
+
+## P-025 · 監管接手 target_1 guard / target_2 repeat-OOM-IR:查證結果為「已完成」,非未完工
+
+**日期** 2026-08-22
+**前置** owner 指示監管接手實作 session 回報「仍在收尾」的兩項:target_1 instrumentation guard、target_2 repeat/OOM/IR 欄位一致性。commit `4547178` push 後開始查證。
+
+**查證方法** 未假設「還沒做完」就動手重寫,先逐檔讀原始碼 + 對照 `tests/` 覆蓋 + 跑整套測試,確認缺口實際位置,避免對已完成、已測試的程式碼做多餘甚至有風險的重寫。
+
+**結論:兩項在讀取當下皆已完成,並非進行中**
+- **target_1 guard**:`inserving_dispatch_probe._validate_instrumentation_guard()` 與 `dispatch_parser._validate_instrumentation_guard()` 雙邊獨立實作,逐欄硬性核對(`method` 固定字串、`sample_count>=3`、`relative_overhead` 與 `(instrumented-control)/control` 重算一致、`threshold` 凍結在 0.05、超過即 raise、`status==PASS`)。
+- **target_2 repeat/OOM/IR**:`long_context_kv_probe._terminal_record()`(OOM/失敗即停,保留已完成的部分 repeats,不因後段失敗丟棄前段有效量測)、`_aggregate_repeats()`(`kv_total_bytes`/`kv_blocks_total` 為 seq_len 之確定函數,跨 repeat 不一致即 raise;其餘欄位算術平均並保留 `*_repeats` 陣列;`worker_hook_observed` 跨 repeat 取 AND)均已到位,`tests/test_gpu_prep.py` 有 9 支對應測試(OOM 精確停在哪個 repeat、means 是否正確餵入 IR、parser 對 formal grid/worker-source 的強制)。
+- 全庫掃描 `TODO|FIXME|NotImplementedError|尚未|待實作` 於這 6 個相關檔案**零命中**;`make test-py` 全綠(557 passed / 1 skipped / 0 failed);近期無檔案編輯痕跡(非編輯中的殘留狀態)。
+**判斷:不重寫、不新增測試——對已完成且已測試的程式碼做非必要修改本身就是風險。**
+
+**查證中發現一件需要 owner 決定的事,非程式缺陷**
+`vllm_runtime_adapter._StrictSession.measure()`(target_2)與 `.measure_window()`(target_1)**對任何呼叫一律無條件 `_refuse()`**——即使 `_target2_worker_audit()` 的 `refused_fields` 只列了 4 個欄位(`kv_resident_bytes`/`kv_offloaded_bytes`/`kv_offloaded_blocks`/`offload_engaged`),`ttft_ns`/`decode_per_token_ns`/`kv_move_ns`/`kv_move_bytes` 理論上可能仍可測,但目前**完全沒有嘗試**,連 P-020 定案的 **16 GiB mechanism canary**(其 claim boundary 本來就只需證明「機制會觸發」,不需要 byte-precise resident/offloaded 帳目)也會在同一個無條件 refuse 擋下,從未真正發起一次 prefill。
+
+這不是 bug——目前的保守設計完全正確地避免了「片段量測」在沒有 owner 授權下悄悄改變 output contract(呼應 target_1 `implementation_status` 明寫的「No measured PASS is possible until owner authorizes lower-level instrumentation or changes the output contract」)。但**是否要為 16 GiB canary 開一條窄範圍的例外路徑**(只證明 trigger,例如比對 prefill 前後 VRAM headroom 或 vLLM 自身 log 是否出現 offload 相關字樣,明確不觸碰 4 個被拒欄位、且以獨立旗標鎖定只在 canary domain 生效,不可能被誤用成正式 sweep)是一個**新的範圍問題,不在本次「接手」授權內**,留待 owner 裁決,未擅自實作。
+
+**對 GPU 執行順序的影響** target_1、target_2(含 16 GiB canary、140 GiB 正式)在目前程式碼下,**預期結果就是 `measurement_refused_not_measurement`**——但這本身是有價值的證據:目前的拒絕推論(`FlashInferExperts.apply` 融合單一 kernel、`OffloadingConnectorStats` 只給累積量且會被 drain-reset)只驗證過原始碼靜態分析,**從未在實機 worker process 上驗證過**。應排進 GPU 序列中較早、較便宜的位置——預期在 worker capability audit 階段就 fail closed,不會消耗顯著 GPU 時間,若結果與預期不符(例如 audit 本身噴出非預期例外)才是需要立即停下重新判斷的訊號。
+
+**claim boundary** 以上為原始碼查證與測試覆蓋確認,非 GPU 效能資料;target_1/target_2 的「已完成」僅指其 fail-closed 拒絕機制完整且正確,不代表這兩項已產出任何 measured 數據。
