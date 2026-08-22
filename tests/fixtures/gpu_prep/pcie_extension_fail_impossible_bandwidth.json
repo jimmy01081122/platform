@@ -1,0 +1,33 @@
+{
+  "schema_version": "gpu-pcie-extension-result-v1",
+  "target": "PCIE-EXTENSION-BIDIRECTIONAL-CROSSOVER-SMALLCELL-LINKCAP",
+  "backend": "mock_pcie_extension",
+  "evidence": "cpu_smoke_test_not_measurement",
+  "repeats": 3,
+  "axis": "stream_split",
+  "ir_evaluation_point_schema": "CalibrationIR",
+  "ir_evaluation_point_fields": "PENDING_PCIE_EXTENSION_SEMANTICS",
+  "production_stream_semantics_status": "UNSUPPORTED_UNTIL_MEASURED",
+  "bidirectional_cells": [],
+  "stream_split_cells": [
+    {
+      "object_bytes": 13631488,
+      "copy_streams": 4,
+      "direction": "d2h",
+      "gap_label": "crossover_densification",
+      "chunk_bytes": 3407872,
+      "latency_ms_samples": [0.00001, 0.00001, 0.00001],
+      "latency_ms_mean": 0.00001,
+      "point_id": "streamsplit-test-impossible-bandwidth"
+    }
+  ],
+  "pcie_link_environment": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=pcie.link.gen.current,pcie.link.gen.max,pcie.link.width.current,pcie.link.width.max",
+      "--format=csv,noheader"
+    ],
+    "status": "unavailable",
+    "reason": "FileNotFoundError: [Errno 2] No such file or directory: 'nvidia-smi'"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "evidence": "measured",
+  "split": "calibration",
+  "device": {
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "capability": [12, 0]
+  },
+  "runtime": {"python": "3.10.12", "torch": "2.11.0+cu130", "cuda_runtime": "13.0"},
+  "raw_benchmarks": [
+    {
+      "record_id": "calibration-fixture-gemm-bad-0001",
+      "operation": "grouped_gemm",
+      "case": "calibration-fixture-q0,phase=prefill,concurrency=1",
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "statistics": {"n": 5, "mean": 0.3312, "unit": "ms"}
+    }
+  ]
+}

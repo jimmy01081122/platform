@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/track_gpu/measurement/parsers/component_eval_parser.py", line 90, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/track_gpu/measurement/parsers/component_eval_parser.py", line 82, in main
+    root = validate(load_json(args.path), enforce_gap4=args.enforce_gap4)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/track_gpu/measurement/parsers/component_eval_parser.py", line 43, in validate
+    points = require_list(require_key(root, "evaluation_points", "result"), "evaluation_points")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/track_gpu/measurement/parsers/common.py", line 49, in require_key
+    raise ValidationError(f"{where}: missing required key {key!r}")
+measurement.parsers.common.ValidationError: result: missing required key 'evaluation_points'

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Long-context / offloaded-KV attention probe (TRACK_GPU_PREP priority 2).
 
-This is the largest preparation gap: a whole-repo grep for ``max_model_len``,
-``cpu_offload_gb``, ``swap_space`` and ``kv_offload`` returns zero hits, so the
-runner, its config surface and its parser all had to be written from scratch.
+This began as the largest preparation gap: the repository had no long-context
+offload runner or config surface. P-020 subsequently source-audited vLLM 0.23's
+native KV connector and froze 16-GiB canary / 140-GiB formal variants; the probe
+still refuses live output unless worker-observed residency and transfer fields
+are available.
 
 What it measures (on a real GPU, later, via TRACK_GPU): across a sequence-length
 sweep that MUST cross the point where the KV cache stops fitting in VRAM and is
@@ -69,6 +71,124 @@ import hashlib
 # clearly-offloaded regardless of the (unmeasured) weight-residency budget.
 DEFAULT_SEQ_LENS = (4096, 16384, 65536, 131072, 262144, 524288, 1048576)
 
+# Every value below is observed independently in each repeat.  The record-level
+# value is the arithmetic mean of the corresponding ``*_repeats`` array; it is
+# therefore the one and only primary value consumed by the IR adapter.
+PRIMARY_MEAN_FIELDS = (
+    "kv_resident_bytes",
+    "kv_offloaded_bytes",
+    "kv_offloaded_blocks",
+    "ttft_ns",
+    "decode_per_token_ns",
+    "kv_move_ns",
+    "kv_move_bytes",
+)
+
+
+def _arithmetic_mean(values: list[int]) -> float:
+    """Return the unrounded arithmetic mean used by the output contract."""
+    return sum(values) / len(values)
+
+
+def _terminal_record(
+    *,
+    seq_len: int,
+    repeat_index: int,
+    repeats_expected: int,
+    completed: list[dict[str, Any]],
+    outcome: dict[str, Any] | None = None,
+    error: str | None = None,
+) -> dict[str, Any]:
+    """Build an auditable terminal record without discarding valid repeats."""
+    terminal = dict(outcome or {})
+    oom = bool(terminal.get("oom"))
+    if outcome is None:
+        text = error or "backend measurement failed"
+        oom = "oom" in text.lower() or "out of memory" in text.lower()
+    terminal.update({
+        "seq_len": seq_len,
+        "oom": oom,
+        "measurement_failed": not oom,
+        "error": terminal.get("error") or error or (
+            "backend returned a terminal OOM result" if oom
+            else "backend returned a terminal measurement failure"
+        ),
+        "failure_classification": terminal.get("failure_classification") or (
+            "CUDA_OR_ENGINE_OOM" if oom else "BACKEND_MEASUREMENT_FAILURE"
+        ),
+        "stopped_sweep": True,
+        "repeat_index": repeat_index,
+        "repeats_expected": repeats_expected,
+        "valid_repeats_completed": len(completed),
+        # Partial successful repeats are still raw evidence and must not vanish
+        # merely because a later repeat OOMed or lost instrumentation.
+        "completed_repeat_measurements": [
+            {**dict(row), "repeat_index": completed_index}
+            for completed_index, row in enumerate(completed)
+        ],
+    })
+    return terminal
+
+
+def _aggregate_repeats(
+    seq_len: int, repeats: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Keep every repeat and expose arithmetic means as primary values."""
+    if not repeats:
+        raise BackendError("cannot aggregate an empty long-context repeat set")
+    for repeat_index, row in enumerate(repeats):
+        if row.get("seq_len") != seq_len:
+            raise BackendError(
+                f"repeat {repeat_index} returned seq_len={row.get('seq_len')!r}; "
+                f"expected {seq_len}"
+            )
+        if row.get("oom") or row.get("measurement_failed"):
+            raise BackendError("terminal repeat reached successful aggregation")
+
+    # Total bytes and total blocks are exact functions of seq_len, not noisy
+    # measurements.  A disagreement across repeats is a backend contract error.
+    for field in ("kv_total_bytes", "kv_blocks_total"):
+        values = [row.get(field) for row in repeats]
+        if any(value != values[0] for value in values[1:]):
+            raise BackendError(f"{field} changed across repeats: {values!r}")
+
+    record = dict(repeats[0])
+    record.update({
+        "seq_len": seq_len,
+        "oom": False,
+        "measurement_failed": False,
+        "repeats": len(repeats),
+        "primary_statistic": "arithmetic_mean",
+        "primary_statistic_fields": list(PRIMARY_MEAN_FIELDS),
+        "repeat_measurements": [
+            {**dict(row), "repeat_index": repeat_index}
+            for repeat_index, row in enumerate(repeats)
+        ],
+    })
+    for field in PRIMARY_MEAN_FIELDS:
+        values = [row[field] for row in repeats]
+        record[f"{field}_repeats"] = values
+        record[field] = _arithmetic_mean(values)
+
+    engaged_repeats = [bool(row["offload_engaged"]) for row in repeats]
+    record["offload_engaged_repeats"] = engaged_repeats
+    record["offload_engaged"] = any(engaged_repeats)
+
+    sources = [row.get("measurement_source") for row in repeats]
+    if any(source is not None for source in sources):
+        if not all(isinstance(source, dict) for source in sources):
+            raise BackendError("measurement_source is missing from one or more repeats")
+        source = dict(sources[0])
+        source["worker_hook_observed_repeats"] = [
+            item.get("worker_hook_observed") is True for item in sources
+        ]
+        source["worker_hook_observed"] = all(
+            source["worker_hook_observed_repeats"]
+        )
+        source["primary_statistic"] = "arithmetic_mean"
+        record["measurement_source"] = source
+    return record
+
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__)
@@ -80,15 +200,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                    help="mock only: VRAM bytes available for KV before offload")
     p.add_argument("--out", required=True, help="output JSON path")
     p.add_argument("--repeats", type=int, default=3,
-                   help="repeats per sequence length (>=1)")
+                   help="repeats per sequence length (frozen at 3)")
     p.add_argument("--model-path",
                    help="vllm_longctx_offload_on only: absolute pinned model path")
     p.add_argument("--runtime-adapter-module",
                    help="vllm_longctx_offload_on only: worker-capable adapter module")
     p.add_argument("--kv-offloading-size-gb", type=float,
-                   help="vllm_longctx_offload_on only: owner-recorded value > 0")
+                   help="vllm_longctx_offload_on only: P-020 value 16 or 140 GiB")
     p.add_argument("--kv-offloading-backend",
-                   help="vllm_longctx_offload_on only: explicit vLLM backend name")
+                   help="vllm_longctx_offload_on only: P-020 requires native")
     p.add_argument("--max-num-batched-tokens", type=int,
                    help="vllm_longctx_offload_on only: owner-recorded value > 0")
     p.add_argument(
@@ -177,8 +297,10 @@ def _build_backend(
 
 def run(args: argparse.Namespace) -> dict[str, Any]:
     seq_lens = _seq_lens(args.seq_lens)
-    if args.repeats < 1:
-        raise SystemExit("--repeats must be >= 1")
+    if args.repeats != 3:
+        raise BackendError(
+            "target_2 repeat count is frozen at 3; refusing to start runtime"
+        )
     backend = _build_backend(
         args.backend,
         args.kv_budget_bytes,
@@ -197,35 +319,37 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     offload_knee_seq_len: int | None = None
     try:
         for seq_len in seq_lens:
-            try:
-                repeats = [backend.measure(seq_len) for _ in range(args.repeats)]
-            except BackendError as exc:
-                # Preserve the failure and stop. Only explicitly OOM-shaped
-                # errors are classified as OOM; instrumentation refusal is a
-                # separate terminal measurement failure.
-                is_oom_error = "oom" in str(exc).lower() or "out of memory" in str(exc).lower()
-                records.append({
-                    "seq_len": seq_len,
-                    "oom": is_oom_error,
-                    "measurement_failed": not is_oom_error,
-                    "error": str(exc),
-                    "failure_classification": (
-                        "CUDA_OR_ENGINE_OOM" if is_oom_error
-                        else "BACKEND_MEASUREMENT_FAILURE"
-                    ),
-                    "stopped_sweep": True,
-                })
+            completed: list[dict[str, Any]] = []
+            terminal: dict[str, Any] | None = None
+            for repeat_index in range(args.repeats):
+                try:
+                    outcome = backend.measure(seq_len)
+                except BackendError as exc:
+                    terminal = _terminal_record(
+                        seq_len=seq_len,
+                        repeat_index=repeat_index,
+                        repeats_expected=args.repeats,
+                        completed=completed,
+                        error=str(exc),
+                    )
+                    break
+                if outcome.get("oom") or outcome.get("measurement_failed"):
+                    terminal = _terminal_record(
+                        seq_len=seq_len,
+                        repeat_index=repeat_index,
+                        repeats_expected=args.repeats,
+                        completed=completed,
+                        outcome=outcome,
+                    )
+                    break
+                completed.append(outcome)
+
+            if terminal is not None:
+                records.append(terminal)
                 break
-            base = repeats[0]
-            if base.get("oom"):
-                records.append({**base, "stopped_sweep": True})
-                break
-            rec = dict(base)
-            rec["repeats"] = args.repeats
-            rec["ttft_ns_repeats"] = [r["ttft_ns"] for r in repeats]
-            rec["decode_per_token_ns_repeats"] = [r["decode_per_token_ns"] for r in repeats]
+            rec = _aggregate_repeats(seq_len, completed)
             records.append(rec)
-            if offload_knee_seq_len is None and base.get("offload_engaged"):
+            if offload_knee_seq_len is None and rec.get("offload_engaged"):
                 offload_knee_seq_len = seq_len
     finally:
         closer = getattr(backend, "close", None)
@@ -258,6 +382,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         ),
         "runtime_identity": getattr(backend, "runtime_identity", None),
         "seq_lens_requested": seq_lens,
+        "repeats": args.repeats,
+        "primary_statistic": "arithmetic_mean",
+        "primary_statistic_fields": list(PRIMARY_MEAN_FIELDS),
         "records": records,
         "sweep_crossed_offload_boundary": crossed_offload,
         "offload_knee_seq_len": offload_knee_seq_len,

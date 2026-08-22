@@ -76,9 +76,9 @@ class DispatchRuntimeConfig:
 class LongContextRuntimeConfig:
     """Owner-frozen target_2 offload-on variant.
 
-    The amount and vLLM offload backend are intentionally required inputs.  The
-    owner selected an offload-on variant but did not select those two values;
-    choosing either here would silently create a new measurement domain.
+    P-020 fixes the vLLM backend to ``native`` and permits exactly two capacities:
+    16 GiB for the mechanism canary and 140 GiB for the formal sweep.  The two
+    capacities are distinct run domains and must never be merged.
     """
 
     model_path: str
@@ -111,13 +111,14 @@ class LongContextRuntimeConfig:
         }
         _validate_frozen_config(asdict(self), expected, "target_2")
         _validate_model_path(self.model_path)
-        if self.kv_offloading_size_gb <= 0:
+        if self.kv_offloading_size_gb not in (16.0, 140.0):
             raise BackendError(
-                "target_2 is the offload-on variant: kv_offloading_size_gb must be > 0"
+                "target_2 P-020 permits kv_offloading_size_gb=16 for the "
+                "mechanism canary or 140 for the formal sweep"
             )
-        if not self.kv_offloading_backend.strip():
+        if self.kv_offloading_backend != "native":
             raise BackendError(
-                "target_2 requires an explicit kv_offloading_backend; refusing to guess"
+                "target_2 P-020 requires kv_offloading_backend='native'"
             )
         if self.max_num_batched_tokens <= 0:
             raise BackendError(
@@ -222,6 +223,31 @@ def _runtime_identity(session: Any, expected_config: Mapping[str, Any]) -> dict[
             "vLLM startup log is missing required backend markers: "
             + ", ".join(missing)
         )
+    normalized = {name: str(markers[name]).lower() for name in BACKEND_MARKERS}
+    marker_conflicts = []
+    if "flash_attn" not in normalized["attention_backend"]:
+        marker_conflicts.append("attention_backend must identify FLASH_ATTN")
+    fused = normalized["fused_moe_backend"]
+    if "flashinfer" not in fused or "cutlass" not in fused:
+        marker_conflicts.append(
+            "fused_moe_backend must identify FlashInfer CUTLASS"
+        )
+    if "flashinfer" not in normalized["kernel_backend"]:
+        marker_conflicts.append("kernel_backend must identify FlashInfer")
+    if marker_conflicts:
+        raise BackendError(
+            "vLLM startup backend marker conflicts with the frozen domain: "
+            + "; ".join(marker_conflicts)
+        )
+    if "kv_offloading_backend" in expected_config:
+        environment = _mapping(
+            identity.get("environment"), "runtime_identity.environment"
+        )
+        if environment.get("VLLM_USE_SIMPLE_KV_OFFLOAD", "__missing__") is not None:
+            raise BackendError(
+                "target_2 requires runtime identity to record "
+                "VLLM_USE_SIMPLE_KV_OFFLOAD as unset (null)"
+            )
     return identity
 
 

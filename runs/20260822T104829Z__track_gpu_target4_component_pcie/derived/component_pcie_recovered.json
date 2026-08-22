@@ -1,0 +1,5085 @@
+{
+  "checksums_sha256": "17b0456f7ac5d42ddfcd997f47e618e5b40abff24d3adf07c3721062c2a8a934",
+  "command": [
+    "/usr/bin/python3",
+    "/workspace/track_gpu/gpu_run_package_v2/scripts/benchmark.py",
+    "--experiment",
+    "rtx-pro-6000-calibration",
+    "--output",
+    "/workspace/runs/20260822T104829Z__track_gpu_target4_component_pcie/component_pcie.json"
+  ],
+  "device": {
+    "capability": [
+      12,
+      0
+    ],
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "total_memory_bytes": 101971722240
+  },
+  "evaluation_point_recovery": {
+    "claim_boundary": "component points recovered by parsing the case string; this join is what GAP-4 exists to eliminate and MUST NOT be the standard for new measurements -- new probes must carry expert_tokens directly",
+    "points_legacy_join_recovered": 48,
+    "points_total": 90,
+    "reason": "frozen gpu_run_package_v2 build_evaluation_points() returns [] for the calibration split and omits expert_tokens from component features (measurement_gaps.json GAP-4)",
+    "source_path": "runs/20260822T104829Z__track_gpu_target4_component_pcie/component_pcie.json",
+    "source_sha256": "70e32b8bdb86eb57e602e6eebf5ff7c89d68f14455340f21fcc5f971b3f0afcb",
+    "tool": "measurement/parsers/legacy_component_point_recovery.py"
+  },
+  "evaluation_points": [
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 65536,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "measured": 0.011884195484712685,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-363d110741d05a2046373aa5",
+      "source_record_id": "calibration-c8911669acdca6637554dbd9"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 65536,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "measured": 0.011720779502015565,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-755ab878d6bd4864175c631d",
+      "source_record_id": "calibration-dae451f82faadce827ee76e6"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 65536,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "measured": 0.021818057229286626,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-c5e7d92cd0e26f9a54493549",
+      "source_record_id": "calibration-2bbd7860507d005793548eab"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 65536,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "measured": 0.021477754643471226,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-d9b1d4487131ae57493b1e1d",
+      "source_record_id": "calibration-994564918dc0bf869899e1e2"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 65536,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "measured": 0.043367646305075044,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-86507ac3fc0a9c4bb007ed55",
+      "source_record_id": "calibration-107bab2db3d44307695db0ad"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 65536,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "measured": 0.040917219095738956,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-66b5f0a5c458b82b2a68c508",
+      "source_record_id": "calibration-fd99e83b5fddd3b7629ef00c"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 1048576,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "measured": 0.019481229270598602,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-45bd3e69ad91bd8bf1188ea3",
+      "source_record_id": "calibration-7ff9716e6b3ed32ed8249b90"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 1048576,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "measured": 0.018708381458197677,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-6f208d13e2bae1df97b0e8ea",
+      "source_record_id": "calibration-3055ab8889cfa15bb16ae822"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 1048576,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "measured": 0.021812952414425286,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-c670252fd00568ed04b53a38",
+      "source_record_id": "calibration-e30d48345fd0c6c16d3145a7"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 1048576,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "measured": 0.02171436039912406,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-b4fbeb83235f98a519dc464d",
+      "source_record_id": "calibration-22aa3a3775baa1bcdf06eb29"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 1048576,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "measured": 0.04090451185666581,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-35e2d7e2076b5d06a941e50b",
+      "source_record_id": "calibration-d8230abcc835969e0d861d09"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 1048576,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "measured": 0.04063554153697877,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-69560c65cc5b29aa26d48a55",
+      "source_record_id": "calibration-8fa6f718ff4af2e1386abbec"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 22020096,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "measured": 0.394429353412829,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-322693227007f9e0fd60e813",
+      "source_record_id": "calibration-98fca37d55fb1b5932a8d8d2"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 22020096,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "measured": 0.3841765945349732,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-39ecc6368432446de8259d50",
+      "source_record_id": "calibration-f1943431c29fea1691ba1a20"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 22020096,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "measured": 0.39445734756431927,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-5ef2e49c8abc2beded169f69",
+      "source_record_id": "calibration-97a442cf2bec35c84e5cfdd5"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 22020096,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "measured": 0.3849559581236891,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-902cb6c9705690ab74f6a5fc",
+      "source_record_id": "calibration-62b4da9bb249393efb57ba2d"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 22020096,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "measured": 0.3912311272080896,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-c5b207de9a911204d78f3f8c",
+      "source_record_id": "calibration-5693687ce1695de14534fe2e"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 22020096,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "measured": 0.38599014190195263,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-0fc5119c2e55ca55275ae240",
+      "source_record_id": "calibration-f66da1567871e145cc90aaf8"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 44040192,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "measured": 0.792663087922383,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-69a12468b81c8dba4b7efaea",
+      "source_record_id": "calibration-c6acf1e81d620c47442996eb"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 44040192,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "measured": 0.7679953922538847,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-f1e6c55e1598991701971015",
+      "source_record_id": "calibration-b08f47ebb5c08af2778406d3"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 44040192,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "measured": 0.788876433468248,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-77cb24a5832cbf4e65cb8ba2",
+      "source_record_id": "calibration-10faefde3733cf2286fe2777"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 44040192,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "measured": 0.7685109026555164,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-7dec3859dee9269e5ec3d926",
+      "source_record_id": "calibration-1b01f4983c04ce7fe3869c15"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 44040192,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "measured": 0.7877030237709604,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-0dfe2373448c96e9a0fd2b85",
+      "source_record_id": "calibration-ae3cc601518a197d31968c56"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 44040192,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "measured": 0.769499217364805,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-43f0d5de6ae8a7fef03a77af",
+      "source_record_id": "calibration-d331a5f83229044473dda302"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 88080384,
+        "copy_streams": 1,
+        "direction": "h2d"
+      },
+      "measured": 1.5783186809644223,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-6708810d067b928d347d1913",
+      "source_record_id": "calibration-3a195945efb460378b8d642f"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 88080384,
+        "copy_streams": 1,
+        "direction": "d2h"
+      },
+      "measured": 1.535478262414135,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-3ff6ba9f3c99be212b294348",
+      "source_record_id": "calibration-8ba19d6de8fda35fe720a6bd"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 88080384,
+        "copy_streams": 2,
+        "direction": "h2d"
+      },
+      "measured": 1.5772129241650858,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-db2e7a9b7988833a27ebf5df",
+      "source_record_id": "calibration-8773b178b6231dba8cf81867"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 88080384,
+        "copy_streams": 2,
+        "direction": "d2h"
+      },
+      "measured": 1.5360679224917764,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-c3d4b48e500b6c439b25cd9c",
+      "source_record_id": "calibration-8297ec1e6ef00f7456cb55ff"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 88080384,
+        "copy_streams": 4,
+        "direction": "h2d"
+      },
+      "measured": 1.5716906738281249,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-c6c09f8532e7dbf1a52f6c8f",
+      "source_record_id": "calibration-6d80670973a86ee25940100c"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "bytes": 88080384,
+        "copy_streams": 4,
+        "direction": "d2h"
+      },
+      "measured": 1.5373344953670058,
+      "metric": "pcie_transfer_latency",
+      "point_id": "point-8e599dced59f0a1fe8d64bf7",
+      "source_record_id": "calibration-e393939f6377b72164466dba"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 704,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.19772925930702961,
+      "metric": "component_latency",
+      "point_id": "point-15d06c01ba3b5f753a56555d",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-161826f2cedf662594d09f9e"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 704,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.012282208438194431,
+      "metric": "component_latency",
+      "point_id": "point-07dbcd48add85de49ce922ba",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-222a4e646dcb95b467fc242e"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 704,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.06961333513488317,
+      "metric": "component_latency",
+      "point_id": "point-3d0b1afc9e59e1d76b89cec9",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-2dae91fc376dd1ceff460d35"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 704,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.20805117302883325,
+      "metric": "component_latency",
+      "point_id": "point-0f251c8fa9ea40d922e7e498",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-a762b6ab4ee2a9a047c5cfae"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 2816,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.6823537170611592,
+      "metric": "component_latency",
+      "point_id": "point-30ca959e51ecd3071cdd92be",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-ad6d83d0837fa217c8af1482"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 2816,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.028667091172567473,
+      "metric": "component_latency",
+      "point_id": "point-644a957c088da60c4a36ad64",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-dbb25cda0b2e3b14e175fa5b"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 2816,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.17063518148092233,
+      "metric": "component_latency",
+      "point_id": "point-3e97dd064d6e9cfb92d7d0bd",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-809c21dc92b33087b50da387"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 2816,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.7061970048161396,
+      "metric": "component_latency",
+      "point_id": "point-563f120e59111fcd1fe22ff8",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-3c692313db18ae4769a159b3"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.05734696324096132,
+      "metric": "component_latency",
+      "point_id": "point-a11f7509f7fab8fe50833ca4",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-27bdf2e9df0ff7ddf8e19e2e"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.008196218332623701,
+      "metric": "component_latency",
+      "point_id": "point-d8b49a640411018ce9a087b1",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-02395a393191499aca706025"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.0482470437644375,
+      "metric": "component_latency",
+      "point_id": "point-6039a8b2c2b69e94fdc0e0e1",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-aaf9cb9c0170bac3be240874"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.061447200399564264,
+      "metric": "component_latency",
+      "point_id": "point-a1128d043908b1e2f9e2e690",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-93d1b9d0a9392d995f9f4133"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04524244685666332,
+      "metric": "component_latency",
+      "point_id": "point-f519f95f9937ab2f5fc27a7c",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-618270ad1f4f785eb6532a9b"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.008949943765247655,
+      "metric": "component_latency",
+      "point_id": "point-7df6488b3702d6985269ef72",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-ac528081bc49f3e6844ceec9"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04842932577846,
+      "metric": "component_latency",
+      "point_id": "point-9770dc6297ffaa6ea04b6e65",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-a0ce7a67c78c2272fa5c6acc"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04899354161244795,
+      "metric": "component_latency",
+      "point_id": "point-355377f2b48285ab304957c3",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-0d6ddf1e4130b9e006de24c9"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 3670016,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 32,
+        "transfers": []
+      },
+      "measured": 0.09021489232085472,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-c12a1951bfd4328ea0f0e8ea",
+      "source_record_id": "calibration-2c56ce3ca1408791ae85a69b"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 3670016,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 32,
+        "transfers": []
+      },
+      "measured": 11084.645720000553,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-3ad86925234c626d2b904107",
+      "source_record_id": "calibration-2c56ce3ca1408791ae85a69b"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 14680064,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 128,
+        "transfers": []
+      },
+      "measured": 0.018524098738528894,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-66d7599d00144ed15f2404f7",
+      "source_record_id": "calibration-29bcc716f8543851e3ee0424"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 14680064,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 128,
+        "transfers": []
+      },
+      "measured": 53983.75319083749,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-128b0d5bd55d3f8fb2fc1575",
+      "source_record_id": "calibration-29bcc716f8543851e3ee0424"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 208,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.08854429907832585,
+      "metric": "component_latency",
+      "point_id": "point-4cfcc1ea166c487d7b730e36",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-02738a81adc6f293fe9dae11"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 208,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.008832929269801008,
+      "metric": "component_latency",
+      "point_id": "point-f4abbda6d60a221538d2bb12",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-3499e57a229ce5188510f94f"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 208,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04841656215734649,
+      "metric": "component_latency",
+      "point_id": "point-df1c1ea0245154919382f7c4",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-dacf62de4c18a03b2018cee1"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 208,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.09286214845989822,
+      "metric": "component_latency",
+      "point_id": "point-509291566415cffcf4260773",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-3e9accf3b828bb5bbf3bde03"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 832,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.2346996735456281,
+      "metric": "component_latency",
+      "point_id": "point-f907104aba7d8419406caa1b",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-0684748dbbcf39b23ab2ccb2"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 832,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.012282520985043038,
+      "metric": "component_latency",
+      "point_id": "point-2e7255fb43e084867500d867",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-055ac527fd593cc88cdf904c"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 832,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.07301257776716287,
+      "metric": "component_latency",
+      "point_id": "point-512f817c8d56d7310dc05995",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-a8fcf1f5cf2fc22917d4377c"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 832,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.2500122352810009,
+      "metric": "component_latency",
+      "point_id": "point-ed46608112ccd79b0d414b41",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-dff2b1087fbe73c97962f541"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.05734599022668048,
+      "metric": "component_latency",
+      "point_id": "point-2e5c28be1f0b81a1cfb4ca5f",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-47e45d8002ecafd60256903a"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.008196131444986255,
+      "metric": "component_latency",
+      "point_id": "point-9885334246dd371fb4d95459",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-afdc6c8ade3d1f0002166373"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04758761661323309,
+      "metric": "component_latency",
+      "point_id": "point-1e4ef54803bc48780a0608d9",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-8b07f93be80bd0cb1d97cc31"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.061441606119927106,
+      "metric": "component_latency",
+      "point_id": "point-e9d1807949b75f13b90a783d",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-61871add80f2408e9eb6066f"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.045086783711372,
+      "metric": "component_latency",
+      "point_id": "point-79a4c6f889050a425b2a0e28",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-222e515777574a89d05fc2cb"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.008970096560605146,
+      "metric": "component_latency",
+      "point_id": "point-e0bb961fa9bea49369191a71",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-3e9c3445ec98426c526fbd39"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04752799216128535,
+      "metric": "component_latency",
+      "point_id": "point-3d808b683c6935cbd381abb0",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-413780089d2ce3a777b00c01"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04913191399270791,
+      "metric": "component_latency",
+      "point_id": "point-2d5070bb723af9f6912df890",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-40528f4c99aa244a18af3b9a"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 3670016,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 32,
+        "transfers": []
+      },
+      "measured": 0.09019825810971467,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-e5320b2a5698ced183603c5c",
+      "source_record_id": "calibration-069756adcd4ee4b76d9aefee"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 3670016,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 32,
+        "transfers": []
+      },
+      "measured": 11086.689560552984,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-0bdbc9e26f6b7494e8120fb1",
+      "source_record_id": "calibration-069756adcd4ee4b76d9aefee"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 14680064,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 128,
+        "transfers": []
+      },
+      "measured": 0.018587223499088697,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-a8192d0ee4e0e038fcbcc3d1",
+      "source_record_id": "calibration-ab61112b7f9a6758b7f3d069"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 14680064,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 128,
+        "transfers": []
+      },
+      "measured": 53800.39761709436,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-2e17131fd2b6c6d4f734e3a7",
+      "source_record_id": "calibration-ab61112b7f9a6758b7f3d069"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 272,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.11455474583840863,
+      "metric": "component_latency",
+      "point_id": "point-0f4b530e27617d4fa5b0b7b9",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-b412f84083513553c687301a"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 272,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.00846062457547098,
+      "metric": "component_latency",
+      "point_id": "point-f7377d71f6e912c9f5664433",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-02c6ad913813343f585161fe"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 272,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04673676284644202,
+      "metric": "component_latency",
+      "point_id": "point-f2b6dac890fe4e657842635b",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-9b6f3acdb9ad313f1f0d8168"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 272,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.11864974468471359,
+      "metric": "component_latency",
+      "point_id": "point-7914c061bcbe4d6708077ea1",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-e1d0edca7d115efcefc2c01c"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 1088,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.30138996509890165,
+      "metric": "component_latency",
+      "point_id": "point-a39a904f087e93ca7f6a3a0f",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-5885d0d8a8ee085bec86d1ca"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 1088,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.012300768765536221,
+      "metric": "component_latency",
+      "point_id": "point-622d57f507bac3b3d26c1199",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-0741b36e03d4a3fcd466c9b1"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 1088,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.07796843503806257,
+      "metric": "component_latency",
+      "point_id": "point-043f6bedcc548d10ee3d095b",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-895666b5b29e6b68d47025a0"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "prefill",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 1088,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.32023663772768296,
+      "metric": "component_latency",
+      "point_id": "point-73543dc515c293315a1be5b8",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-30d8a2d9e47aa5035192e66c"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.057346002924466566,
+      "metric": "component_latency",
+      "point_id": "point-c7589cb134e389e1b8a9e7e4",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-b224af2ad2f3b4a664a812a4"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.00819612795929309,
+      "metric": "component_latency",
+      "point_id": "point-5a575ddfc498972e92c0a174",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-210c43d835b463347c693811"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.047839191964905714,
+      "metric": "component_latency",
+      "point_id": "point-b6f6d365943e42f2e925412b",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-4cc5a6d9d7f1113513054984"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 0,
+        "expert_tokens": 8,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.06144092309845249,
+      "metric": "component_latency",
+      "point_id": "point-0ebc61faca21551b7da75321",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-37e5fc9ab4953fae8a0727ad"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "selected_expert": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.0451684263527042,
+      "metric": "component_latency",
+      "point_id": "point-541378a833ca5949df4f53d1",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-99a10e953ec1fc93069efdb3"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "gather_scatter": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.008478231120485158,
+      "metric": "component_latency",
+      "point_id": "point-3896961bf5ef596b986dec19",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-17063ebc2139832efd1d8550"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "dequant": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04623623486631405,
+      "metric": "component_latency",
+      "point_id": "point-8c5ef8cda2edfefd6424e992",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-608a1d6a9235a6a107bc85ed"
+    },
+    {
+      "derivation": "legacy_join_recovered",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 0,
+        "expert_tokens": 32,
+        "gpu_operations": {
+          "grouped_gemm": 1
+        },
+        "memory_bytes": 0,
+        "queue_depth": 0
+      },
+      "measured": 0.04751144094284005,
+      "metric": "component_latency",
+      "point_id": "point-8205273899e91fcf008668b2",
+      "recovered_from": "case_string",
+      "source_record_id": "calibration-75a8fcafc7d522670216e379"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 3670016,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 32,
+        "transfers": []
+      },
+      "measured": 0.09017694998478544,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-5d9e7c9862cad2796d99f08c",
+      "source_record_id": "calibration-2d8e75b96895c574999576e2"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 1,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 1,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 3670016,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 32,
+        "transfers": []
+      },
+      "measured": 11089.309429035877,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-0f20ec425ffb13a1867a163b",
+      "source_record_id": "calibration-2d8e75b96895c574999576e2"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 14680064,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 128,
+        "transfers": []
+      },
+      "measured": 0.018584212938185806,
+      "metric": "moe_replay_tpot",
+      "point_id": "point-c3c8921a15ed3115bcce74f2",
+      "source_record_id": "calibration-9dfbf6fa7b2897487c601756"
+    },
+    {
+      "derivation": "direct",
+      "domain": {
+        "concurrency": 4,
+        "phase": "decode",
+        "platform": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "split": "calibration"
+      },
+      "features": {
+        "concurrency": 4,
+        "cpu_calls": 32,
+        "gpu_operations": {
+          "gather_scatter": 32,
+          "grouped_gemm": 32
+        },
+        "memory_bytes": 14680064,
+        "phase": "decode",
+        "queue_depth": 1,
+        "tokens": 128,
+        "transfers": []
+      },
+      "measured": 53809.12565684279,
+      "metric": "moe_replay_throughput",
+      "point_id": "point-ba695e5a43af5a4530828a6d",
+      "source_record_id": "calibration-9dfbf6fa7b2897487c601756"
+    }
+  ],
+  "evidence": "measured",
+  "experiment": {
+    "split": "calibration",
+    "target_gpu_regex": "RTX PRO 6000",
+    "trust": "hardware-calibration"
+  },
+  "metric_scope": "MoE-replay; not full-model TPOT/throughput",
+  "package_id": "edgehetero-benchmark-driven-m0-20260718",
+  "package_manifest_sha256": "2d54fb8ff4083bb9f201d4cef29d16360bdc136b9dc327f8f34dad8667bee77b",
+  "package_revision": "benchmark-driven-pipeline-smoke-v1.22-g25-s4-r5-application-review-candidate",
+  "raw_benchmarks": [
+    {
+      "calibration_role": "cpu_runtime",
+      "case": "python_function_call",
+      "implementation": "perf_counter_ns_python_function_call",
+      "inner_iterations": 10000000,
+      "minimum_inner_seconds": 1.0,
+      "operation": "cpu_runtime",
+      "outer_repeats": 5,
+      "record_id": "calibration-685a48c1c4caf18feaf02083",
+      "repeats_ms": [
+        1.2916059200000001e-05,
+        1.2928587099999998e-05,
+        1.2965793e-05,
+        1.29226862e-05,
+        1.29279461e-05
+      ],
+      "statistics": {
+        "ci95": [
+          1.2908088059838388e-05,
+          1.2956340580161613e-05
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 1.293221432e-05,
+        "n": 5,
+        "stdev": 1.9433702364629014e-08,
+        "unit": "ms",
+        "variance": 3.776687875969874e-16
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 65536,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=65536,streams=1",
+      "copy_streams": 1,
+      "direction": "h2d",
+      "inner_iterations": 70702,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-c8911669acdca6637554dbd9",
+      "repeats_ms": [
+        0.011856134782697095,
+        0.01186276990208463,
+        0.011867741493621556,
+        0.011948303031009555,
+        0.01188602821415059
+      ],
+      "statistics": {
+        "ci95": [
+          0.01183761850291013,
+          0.01193077246651524
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.011884195484712685,
+        "n": 5,
+        "stdev": 3.751775846443967e-05,
+        "unit": "ms",
+        "variance": 1.4075822001960345e-09
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 65536,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=65536,streams=1",
+      "copy_streams": 1,
+      "direction": "d2h",
+      "inner_iterations": 58963,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-dae451f82faadce827ee76e6",
+      "repeats_ms": [
+        0.01174643904897192,
+        0.01173708859925928,
+        0.011708929595214902,
+        0.011695222227220354,
+        0.011716218039411369
+      ],
+      "statistics": {
+        "ci95": [
+          0.011694895623911454,
+          0.011746663380119676
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.011720779502015565,
+        "n": 5,
+        "stdev": 2.0849463603065283e-05,
+        "unit": "ms",
+        "variance": 4.3470013253554403e-10
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 65536,
+      "calibration_role": "copy_engine",
+      "case": "bytes=65536,streams=2",
+      "copy_streams": 2,
+      "direction": "h2d",
+      "inner_iterations": 37426,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-2bbd7860507d005793548eab",
+      "repeats_ms": [
+        0.021939664714411437,
+        0.02177860144017528,
+        0.02178407611071264,
+        0.02177557137229967,
+        0.0218123725088341
+      ],
+      "statistics": {
+        "ci95": [
+          0.021731739206098468,
+          0.021904375252474784
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.021818057229286626,
+        "n": 5,
+        "stdev": 6.952916697843237e-05,
+        "unit": "ms",
+        "variance": 4.834305060714731e-09
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 65536,
+      "calibration_role": "copy_engine",
+      "case": "bytes=65536,streams=2",
+      "copy_streams": 2,
+      "direction": "d2h",
+      "inner_iterations": 38203,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-994564918dc0bf869899e1e2",
+      "repeats_ms": [
+        0.02146385473858401,
+        0.021563904593041614,
+        0.021451476119349267,
+        0.021459866995474832,
+        0.02144967077090641
+      ],
+      "statistics": {
+        "ci95": [
+          0.02141752678569525,
+          0.0215379825012472
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.021477754643471226,
+        "n": 5,
+        "stdev": 4.851353895038531e-05,
+        "unit": "ms",
+        "variance": 2.353563461490553e-09
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 65536,
+      "calibration_role": "copy_engine",
+      "case": "bytes=65536,streams=4",
+      "copy_streams": 4,
+      "direction": "h2d",
+      "inner_iterations": 21187,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-107bab2db3d44307695db0ad",
+      "repeats_ms": [
+        0.043442561075371984,
+        0.043298403797139756,
+        0.04360825220893856,
+        0.043253483742794814,
+        0.043235530701130113
+      ],
+      "statistics": {
+        "ci95": [
+          0.04317254902100672,
+          0.04356274358914337
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.043367646305075044,
+        "n": 5,
+        "stdev": 0.0001571508607357217,
+        "unit": "ms",
+        "variance": 2.46963930299782e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 65536,
+      "calibration_role": "copy_engine",
+      "case": "bytes=65536,streams=4",
+      "copy_streams": 4,
+      "direction": "d2h",
+      "inner_iterations": 21478,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-fd99e83b5fddd3b7629ef00c",
+      "repeats_ms": [
+        0.04091040343698348,
+        0.04088794791017989,
+        0.04111689368554451,
+        0.04080442028434619,
+        0.04086643016164069
+      ],
+      "statistics": {
+        "ci95": [
+          0.04077022696641868,
+          0.04106421122505923
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.040917219095738956,
+        "n": 5,
+        "stdev": 0.00011840215897607118,
+        "unit": "ms",
+        "variance": 1.4019071250194833e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 1048576,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=1048576,streams=1",
+      "copy_streams": 1,
+      "direction": "h2d",
+      "inner_iterations": 26848,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-7ff9716e6b3ed32ed8249b90",
+      "repeats_ms": [
+        0.019499466160625326,
+        0.019490836487907618,
+        0.019468648499044387,
+        0.019475123026942185,
+        0.01947207217847349
+      ],
+      "statistics": {
+        "ci95": [
+          0.019464755901574846,
+          0.019497702639622357
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.019481229270598602,
+        "n": 5,
+        "stdev": 1.3269298615112785e-05,
+        "unit": "ms",
+        "variance": 1.7607428573703406e-10
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 1048576,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=1048576,streams=1",
+      "copy_streams": 1,
+      "direction": "d2h",
+      "inner_iterations": 28027,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-3055ab8889cfa15bb16ae822",
+      "repeats_ms": [
+        0.01870513141833656,
+        0.018727346412053557,
+        0.018705556075112838,
+        0.018698744144875924,
+        0.018705129240609502
+      ],
+      "statistics": {
+        "ci95": [
+          0.018694758257632053,
+          0.0187220046587633
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.018708381458197677,
+        "n": 5,
+        "stdev": 1.0973487945191811e-05,
+        "unit": "ms",
+        "variance": 1.2041743768327e-10
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 1048576,
+      "calibration_role": "copy_engine",
+      "case": "bytes=1048576,streams=2",
+      "copy_streams": 2,
+      "direction": "h2d",
+      "inner_iterations": 26574,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-e30d48345fd0c6c16d3145a7",
+      "repeats_ms": [
+        0.02182830468323714,
+        0.021847820590614887,
+        0.02181070660364101,
+        0.02178715521912278,
+        0.0217907749755106
+      ],
+      "statistics": {
+        "ci95": [
+          0.021781216896274026,
+          0.021844687932576545
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.021812952414425286,
+        "n": 5,
+        "stdev": 2.556295961361571e-05,
+        "unit": "ms",
+        "variance": 6.534649042073478e-10
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 1048576,
+      "calibration_role": "copy_engine",
+      "case": "bytes=1048576,streams=2",
+      "copy_streams": 2,
+      "direction": "d2h",
+      "inner_iterations": 28027,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-22aa3a3775baa1bcdf06eb29",
+      "repeats_ms": [
+        0.021724854865815775,
+        0.021698807072476987,
+        0.021731971677840786,
+        0.02171007898772835,
+        0.021706089391758394
+      ],
+      "statistics": {
+        "ci95": [
+          0.021697372991696714,
+          0.021731347806551404
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.02171436039912406,
+        "n": 5,
+        "stdev": 1.3683356545037554e-05,
+        "unit": "ms",
+        "variance": 1.872342463386221e-10
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 1048576,
+      "calibration_role": "copy_engine",
+      "case": "bytes=1048576,streams=4",
+      "copy_streams": 4,
+      "direction": "h2d",
+      "inner_iterations": 18127,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-d8230abcc835969e0d861d09",
+      "repeats_ms": [
+        0.04086961807770349,
+        0.04093532674842776,
+        0.040920797775116195,
+        0.040937845328274124,
+        0.04085897135380751
+      ],
+      "statistics": {
+        "ci95": [
+          0.040857988290377026,
+          0.0409510354229546
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04090451185666581,
+        "n": 5,
+        "stdev": 3.7474732268533754e-05,
+        "unit": "ms",
+        "variance": 1.4043555585982851e-09
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 1048576,
+      "calibration_role": "copy_engine",
+      "case": "bytes=1048576,streams=4",
+      "copy_streams": 4,
+      "direction": "d2h",
+      "inner_iterations": 18514,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-8fa6f718ff4af2e1386abbec",
+      "repeats_ms": [
+        0.040503304192941826,
+        0.040545370121090794,
+        0.040711550317496216,
+        0.04071454042696574,
+        0.04070294262639928
+      ],
+      "statistics": {
+        "ci95": [
+          0.04050805894591419,
+          0.040763024128043356
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04063554153697877,
+        "n": 5,
+        "stdev": 0.00010268722606924088,
+        "unit": "ms",
+        "variance": 1.0544666397795384e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 22020096,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=22020096,streams=1",
+      "copy_streams": 1,
+      "direction": "h2d",
+      "inner_iterations": 2280,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-98fca37d55fb1b5932a8d8d2",
+      "repeats_ms": [
+        0.39763478061609103,
+        0.39363063343784266,
+        0.39341682300233005,
+        0.39385873894942436,
+        0.39360579105845667
+      ],
+      "statistics": {
+        "ci95": [
+          0.392196286937258,
+          0.39666241988839995
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.394429353412829,
+        "n": 5,
+        "stdev": 0.0017987350279728164,
+        "unit": "ms",
+        "variance": 3.2354477008563687e-06
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 22020096,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=22020096,streams=1",
+      "copy_streams": 1,
+      "direction": "d2h",
+      "inner_iterations": 2518,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-f1943431c29fea1691ba1a20",
+      "repeats_ms": [
+        0.3842524255051132,
+        0.384124610422148,
+        0.3842542434704503,
+        0.3841245619430724,
+        0.3841271313340821
+      ],
+      "statistics": {
+        "ci95": [
+          0.3840896121285171,
+          0.3842635769414293
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.3841765945349732,
+        "n": 5,
+        "stdev": 7.006432769538919e-05,
+        "unit": "ms",
+        "variance": 4.909010015406881e-09
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 22020096,
+      "calibration_role": "copy_engine",
+      "case": "bytes=22020096,streams=2",
+      "copy_streams": 2,
+      "direction": "h2d",
+      "inner_iterations": 2422,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-97a442cf2bec35c84e5cfdd5",
+      "repeats_ms": [
+        0.3939704422513677,
+        0.39419336421345996,
+        0.3946946992252013,
+        0.3952232253738517,
+        0.39420500675771575
+      ],
+      "statistics": {
+        "ci95": [
+          0.3938324871354143,
+          0.39508220799322424
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.39445734756431927,
+        "n": 5,
+        "stdev": 0.0005033250704182953,
+        "unit": "ms",
+        "variance": 2.533361265115819e-07
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 22020096,
+      "calibration_role": "copy_engine",
+      "case": "bytes=22020096,streams=2",
+      "copy_streams": 2,
+      "direction": "d2h",
+      "inner_iterations": 2503,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-62b4da9bb249393efb57ba2d",
+      "repeats_ms": [
+        0.38534503225036204,
+        0.3849419514941445,
+        0.3847831332869307,
+        0.38478776639907114,
+        0.38492190718793695
+      ],
+      "statistics": {
+        "ci95": [
+          0.38467089981662017,
+          0.38524101643075803
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.3849559581236891,
+        "n": 5,
+        "stdev": 0.00022961446403353968,
+        "unit": "ms",
+        "variance": 5.272280209340968e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 22020096,
+      "calibration_role": "copy_engine",
+      "case": "bytes=22020096,streams=4",
+      "copy_streams": 4,
+      "direction": "h2d",
+      "inner_iterations": 2436,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-5693687ce1695de14534fe2e",
+      "repeats_ms": [
+        0.3911668749278402,
+        0.39128819357585437,
+        0.39097054016413946,
+        0.3912742627273835,
+        0.3914557646452304
+      ],
+      "statistics": {
+        "ci95": [
+          0.39100938302442656,
+          0.39145287139175267
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.3912311272080896,
+        "n": 5,
+        "stdev": 0.0001786149381432958,
+        "unit": "ms",
+        "variance": 3.190329612793339e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 22020096,
+      "calibration_role": "copy_engine",
+      "case": "bytes=22020096,streams=4",
+      "copy_streams": 4,
+      "direction": "d2h",
+      "inner_iterations": 2487,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-f66da1567871e145cc90aaf8",
+      "repeats_ms": [
+        0.3858746880261736,
+        0.38613966453684156,
+        0.38587512977639976,
+        0.3859640442802573,
+        0.386097182890091
+      ],
+      "statistics": {
+        "ci95": [
+          0.38583676537242134,
+          0.3861435184314839
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.38599014190195263,
+        "n": 5,
+        "stdev": 0.00012354479329428297,
+        "unit": "ms",
+        "variance": 1.5263315950127104e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 44040192,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=44040192,streams=1",
+      "copy_streams": 1,
+      "direction": "h2d",
+      "inner_iterations": 1230,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-c6acf1e81d620c47442996eb",
+      "repeats_ms": [
+        0.7922488328887195,
+        0.7934892359787856,
+        0.7929965879858993,
+        0.7926091884209858,
+        0.7919715943375254
+      ],
+      "statistics": {
+        "ci95": [
+          0.7919165506880544,
+          0.7934096251567117
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.792663087922383,
+        "n": 5,
+        "stdev": 0.0006013357362008477,
+        "unit": "ms",
+        "variance": 3.6160466763221554e-07
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 44040192,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=44040192,streams=1",
+      "copy_streams": 1,
+      "direction": "d2h",
+      "inner_iterations": 1271,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-b08f47ebb5c08af2778406d3",
+      "repeats_ms": [
+        0.7679549486593972,
+        0.7680847504118312,
+        0.7677342424610297,
+        0.7681114022699892,
+        0.7680916174671765
+      ],
+      "statistics": {
+        "ci95": [
+          0.7677985726846162,
+          0.7681922118231532
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.7679953922538847,
+        "n": 5,
+        "stdev": 0.00015853816145054342,
+        "unit": "ms",
+        "variance": 2.513434863611857e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 44040192,
+      "calibration_role": "copy_engine",
+      "case": "bytes=44040192,streams=2",
+      "copy_streams": 2,
+      "direction": "h2d",
+      "inner_iterations": 1245,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-10faefde3733cf2286fe2777",
+      "repeats_ms": [
+        0.7884653359531878,
+        0.7894209651104418,
+        0.7891024547408384,
+        0.7885678456011547,
+        0.7888255659356175
+      ],
+      "statistics": {
+        "ci95": [
+          0.7883898744407367,
+          0.7893629924957593
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.788876433468248,
+        "n": 5,
+        "stdev": 0.0003919232927166548,
+        "unit": "ms",
+        "variance": 1.536038673738647e-07
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 44040192,
+      "calibration_role": "copy_engine",
+      "case": "bytes=44040192,streams=2",
+      "copy_streams": 2,
+      "direction": "d2h",
+      "inner_iterations": 1278,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-1b01f4983c04ce7fe3869c15",
+      "repeats_ms": [
+        0.7684757907252543,
+        0.7685787577024648,
+        0.768632581349643,
+        0.7687258056258558,
+        0.7681415778743642
+      ],
+      "statistics": {
+        "ci95": [
+          0.7682310721202142,
+          0.7687907331908185
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.7685109026555164,
+        "n": 5,
+        "stdev": 0.0002254034939177113,
+        "unit": "ms",
+        "variance": 5.080673507031171e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 44040192,
+      "calibration_role": "copy_engine",
+      "case": "bytes=44040192,streams=4",
+      "copy_streams": 4,
+      "direction": "h2d",
+      "inner_iterations": 1230,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-ae3cc601518a197d31968c56",
+      "repeats_ms": [
+        0.786982590590066,
+        0.7884765625,
+        0.7883028356040397,
+        0.7874582678321901,
+        0.7872948623285061
+      ],
+      "statistics": {
+        "ci95": [
+          0.7868928165090973,
+          0.7885132310328234
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.7877030237709604,
+        "n": 5,
+        "stdev": 0.0006526219428638206,
+        "unit": "ms",
+        "variance": 4.2591540030734795e-07
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 44040192,
+      "calibration_role": "copy_engine",
+      "case": "bytes=44040192,streams=4",
+      "copy_streams": 4,
+      "direction": "d2h",
+      "inner_iterations": 1269,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-d331a5f83229044473dda302",
+      "repeats_ms": [
+        0.7692972578525168,
+        0.7693024523338997,
+        0.7698121848681294,
+        0.7695592905800581,
+        0.7695249011894209
+      ],
+      "statistics": {
+        "ci95": [
+          0.7692346067279635,
+          0.7697638280016464
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.769499217364805,
+        "n": 5,
+        "stdev": 0.00021314386583110462,
+        "unit": "ms",
+        "variance": 4.5430307541427926e-08
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 88080384,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=88080384,streams=1",
+      "copy_streams": 1,
+      "direction": "h2d",
+      "inner_iterations": 621,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-3a195945efb460378b8d642f",
+      "repeats_ms": [
+        1.5771850979078603,
+        1.5768658673321758,
+        1.5804032526922303,
+        1.578486591529539,
+        1.5786525953603059
+      ],
+      "statistics": {
+        "ci95": [
+          1.5765761123231243,
+          1.5800612496057203
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 1.5783186809644223,
+        "n": 5,
+        "stdev": 0.0014036390264414444,
+        "unit": "ms",
+        "variance": 1.970202516549486e-06
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 88080384,
+      "calibration_role": "pcie_transfer",
+      "case": "bytes=88080384,streams=1",
+      "copy_streams": 1,
+      "direction": "d2h",
+      "inner_iterations": 646,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-8ba19d6de8fda35fe720a6bd",
+      "repeats_ms": [
+        1.5356345161934017,
+        1.535749594862616,
+        1.5361085307118325,
+        1.5349528309730553,
+        1.5349458393297697
+      ],
+      "statistics": {
+        "ci95": [
+          1.5348407404883782,
+          1.5361157843398918
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 1.535478262414135,
+        "n": 5,
+        "stdev": 0.0005135239060298231,
+        "unit": "ms",
+        "variance": 2.637068020641266e-07
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 88080384,
+      "calibration_role": "copy_engine",
+      "case": "bytes=88080384,streams=2",
+      "copy_streams": 2,
+      "direction": "h2d",
+      "inner_iterations": 626,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-8773b178b6231dba8cf81867",
+      "repeats_ms": [
+        1.5782793428951178,
+        1.5771855850950978,
+        1.579903307052466,
+        1.5767286014252198,
+        1.573967784357528
+      ],
+      "statistics": {
+        "ci95": [
+          1.5744971463751445,
+          1.5799287019550272
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 1.5772129241650858,
+        "n": 5,
+        "stdev": 0.0021875589877856445,
+        "unit": "ms",
+        "variance": 4.785414325041753e-06
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 88080384,
+      "calibration_role": "copy_engine",
+      "case": "bytes=88080384,streams=2",
+      "copy_streams": 2,
+      "direction": "d2h",
+      "inner_iterations": 646,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-8297ec1e6ef00f7456cb55ff",
+      "repeats_ms": [
+        1.5355729141471555,
+        1.5360884061169697,
+        1.5360316226356907,
+        1.536481355365954,
+        1.5361653141931115
+      ],
+      "statistics": {
+        "ci95": [
+          1.5356622167613365,
+          1.5364736282222162
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 1.5360679224917764,
+        "n": 5,
+        "stdev": 0.000326795962580992,
+        "unit": "ms",
+        "variance": 1.0679560115923715e-07
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 88080384,
+      "calibration_role": "copy_engine",
+      "case": "bytes=88080384,streams=4",
+      "copy_streams": 4,
+      "direction": "h2d",
+      "inner_iterations": 630,
+      "minimum_inner_seconds": 1.0,
+      "operation": "h2d_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-6d80670973a86ee25940100c",
+      "repeats_ms": [
+        1.5725031777033731,
+        1.5717240590897819,
+        1.573355247860863,
+        1.5710874527219743,
+        1.5697834317646329
+      ],
+      "statistics": {
+        "ci95": [
+          1.5699982775307713,
+          1.5733830701254785
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 1.5716906738281249,
+        "n": 5,
+        "stdev": 0.0013632252038011025,
+        "unit": "ms",
+        "variance": 1.8583829562785574e-06
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 88080384,
+      "calibration_role": "copy_engine",
+      "case": "bytes=88080384,streams=4",
+      "copy_streams": 4,
+      "direction": "d2h",
+      "inner_iterations": 645,
+      "minimum_inner_seconds": 1.0,
+      "operation": "d2h_pinned",
+      "outer_repeats": 5,
+      "record_id": "calibration-e393939f6377b72164466dba",
+      "repeats_ms": [
+        1.5373788759689921,
+        1.536900246790213,
+        1.5371097535125968,
+        1.5379319775012112,
+        1.5373516230620154
+      ],
+      "statistics": {
+        "ci95": [
+          1.53685434821859,
+          1.5378146425154218
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 1.5373344953670058,
+        "n": 5,
+        "stdev": 0.000386758524157319,
+        "unit": "ms",
+        "variance": 1.4958215600834752e-07
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 1048576,
+      "calibration_role": "memory",
+      "case": "bytes=1048576",
+      "implementation": "cuda_device_to_device_copy",
+      "inner_iterations": 73703,
+      "minimum_inner_seconds": 1.0,
+      "operation": "device_memory",
+      "outer_repeats": 5,
+      "record_id": "calibration-a0461166f83f66939cfebd77",
+      "repeats_ms": [
+        0.002566674980912094,
+        0.00255949888025833,
+        0.0025513207506632405,
+        0.0025464215744509426,
+        0.002547292966974504
+      ],
+      "statistics": {
+        "ci95": [
+          0.002543486924179603,
+          0.0025649967371240414
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.002554241830651822,
+        "n": 5,
+        "stdev": 8.663077076201307e-06,
+        "unit": "ms",
+        "variance": 7.504890442820457e-11
+      },
+      "warmup": 10
+    },
+    {
+      "bytes": 22020096,
+      "calibration_role": "memory",
+      "case": "bytes=22020096",
+      "implementation": "cuda_device_to_device_copy",
+      "inner_iterations": 105933,
+      "minimum_inner_seconds": 1.0,
+      "operation": "device_memory",
+      "outer_repeats": 5,
+      "record_id": "calibration-99978d77c3a13e175e5aed83",
+      "repeats_ms": [
+        0.008191954148457928,
+        0.008191973161986821,
+        0.008192010612877066,
+        0.008191894227033538,
+        0.008191768046341792
+      ],
+      "statistics": {
+        "ci95": [
+          0.00819180233373166,
+          0.008192037744947199
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.00819192003933943,
+        "n": 5,
+        "stdev": 9.481186610474876e-08,
+        "unit": "ms",
+        "variance": 8.989289954264807e-15
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "queueing",
+      "case": "depth=1",
+      "implementation": "fixed_shape_queued_cuda_add",
+      "inner_iterations": 95566,
+      "minimum_inner_seconds": 1.0,
+      "operation": "queue_depth",
+      "outer_repeats": 5,
+      "queue_depth": 1,
+      "record_id": "calibration-de32d275de0477ef2aa31e2b",
+      "repeats_ms": [
+        0.0028247140693955946,
+        0.0028235666983828585,
+        0.0028256660073273966,
+        0.0028336896210390595,
+        0.0028330937417432715
+      ],
+      "statistics": {
+        "ci95": [
+          0.00282212427000893,
+          0.0028341677851463423
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.002828146027577636,
+        "n": 5,
+        "stdev": 4.850525672785042e-06,
+        "unit": "ms",
+        "variance": 2.3527599302346788e-11
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "queueing",
+      "case": "depth=4",
+      "implementation": "fixed_shape_queued_cuda_add",
+      "inner_iterations": 67205,
+      "minimum_inner_seconds": 1.0,
+      "operation": "queue_depth",
+      "outer_repeats": 5,
+      "queue_depth": 4,
+      "record_id": "calibration-87a217addab4a21b7790b038",
+      "repeats_ms": [
+        0.011022716721167974,
+        0.01101675897062858,
+        0.011045104603568372,
+        0.01102142254517428,
+        0.01103714882693345
+      ],
+      "statistics": {
+        "ci95": [
+          0.01101378692645331,
+          0.011043473740535754
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.011028630333494532,
+        "n": 5,
+        "stdev": 1.1956364251395489e-05,
+        "unit": "ms",
+        "variance": 1.42954646112048e-10
+      },
+      "warmup": 10
+    },
+    {
+      "case": "expert_tokens=32,concurrency=1",
+      "concurrency": 1,
+      "fixed_expert_tokens": 32,
+      "implementation": "fixed_shape_dense_expert_gemm_per_stream",
+      "inner_iterations": 18871,
+      "minimum_inner_seconds": 1.0,
+      "operation": "contention_fixed_shape",
+      "outer_repeats": 5,
+      "probe_family": "contention",
+      "record_id": "calibration-b48baa24f7fac05a36c326aa",
+      "repeats_ms": [
+        0.045062015548203924,
+        0.04505711229469987,
+        0.045055883246987775,
+        0.04505836398276456,
+        0.045057707412539415
+      ],
+      "statistics": {
+        "ci95": [
+          0.04505534652198942,
+          0.0450610864720888
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04505821649703911,
+        "n": 5,
+        "stdev": 2.311764879261361e-06,
+        "unit": "ms",
+        "variance": 5.344256856986295e-12
+      },
+      "warmup": 10
+    },
+    {
+      "base_service_ms": 0.04505821649703911,
+      "calibration_role": "contention",
+      "case": "expert_tokens=32,concurrency=4",
+      "concurrency": 4,
+      "fixed_expert_tokens": 32,
+      "implementation": "fixed_shape_dense_expert_gemm_per_stream",
+      "inner_iterations": 6973,
+      "minimum_inner_seconds": 1.0,
+      "operation": "contention_fixed_shape",
+      "outer_repeats": 5,
+      "probe_family": "contention",
+      "record_id": "calibration-4ac85005bac52a1db16c0feb",
+      "repeats_ms": [
+        0.11055774106094489,
+        0.11048465292747472,
+        0.11062315275213323,
+        0.11091308068565807,
+        0.11110146425554371
+      ],
+      "statistics": {
+        "ci95": [
+          0.11041192239237875,
+          0.11106011428032307
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.11073601833635091,
+        "n": 5,
+        "stdev": 0.000261059280242689,
+        "unit": "ms",
+        "variance": 6.815194780083081e-08
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 4770,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-161826f2cedf662594d09f9e",
+      "repeats_ms": [
+        0.19764614145210954,
+        0.19769036315022276,
+        0.19769111809240697,
+        0.19781688634204664,
+        0.19780178749836216
+      ],
+      "statistics": {
+        "ci95": [
+          0.19763549977474829,
+          0.19782301883931094
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.19772925930702961,
+        "n": 5,
+        "stdev": 7.552330249266452e-05,
+        "unit": "ms",
+        "variance": 5.7037692193985056e-09
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "concurrency": 1,
+      "inner_iterations": 48601,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-222a4e646dcb95b467fc242e",
+      "repeats_ms": [
+        0.012282236066709019,
+        0.012282172018788836,
+        0.012282115505918088,
+        0.012282277509480901,
+        0.012282241090075308
+      ],
+      "statistics": {
+        "ci95": [
+          0.012282128551339018,
+          0.012282288325049845
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.012282208438194431,
+        "n": 5,
+        "stdev": 6.434886138831218e-08,
+        "unit": "ms",
+        "variance": 4.140775961972214e-15
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704,group=128",
+      "concurrency": 1,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 11481,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-2dae91fc376dd1ceff460d35",
+      "repeats_ms": [
+        0.0696141867882262,
+        0.06961362858846953,
+        0.06961300659445496,
+        0.06961112998003495,
+        0.06961472372323023
+      ],
+      "statistics": {
+        "ci95": [
+          0.06961161152581188,
+          0.06961505874395446
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.06961333513488317,
+        "n": 5,
+        "stdev": 1.3883670929575798e-06,
+        "unit": "ms",
+        "variance": 1.927563184807481e-12
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "concurrency": 1,
+      "inner_iterations": 4655,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-a762b6ab4ee2a9a047c5cfae",
+      "repeats_ms": [
+        0.20788660756243288,
+        0.20803541271566192,
+        0.20807464304595194,
+        0.20805863360969387,
+        0.20820056821042562
+      ],
+      "statistics": {
+        "ci95": [
+          0.2079120187048772,
+          0.2081903273527893
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.20805117302883325,
+        "n": 5,
+        "stdev": 0.00011208880681872056,
+        "unit": "ms",
+        "variance": 1.2563900614044455e-08
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 1515,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-ad6d83d0837fa217c8af1482",
+      "repeats_ms": [
+        0.6745754934380157,
+        0.6829453672906353,
+        0.6837321769286303,
+        0.6848161451887376,
+        0.6856994024597772
+      ],
+      "statistics": {
+        "ci95": [
+          0.6768014350474754,
+          0.6879059990748431
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.6823537170611592,
+        "n": 5,
+        "stdev": 0.004472363117019627,
+        "unit": "ms",
+        "variance": 2.0002031850477513e-05
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "concurrency": 4,
+      "inner_iterations": 28882,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-dbb25cda0b2e3b14e175fa5b",
+      "repeats_ms": [
+        0.028667111037205265,
+        0.02866801762546201,
+        0.02866630377213749,
+        0.028667140622836023,
+        0.028666882805196577
+      ],
+      "statistics": {
+        "ci95": [
+          0.028666324732265172,
+          0.028667857612869774
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.028667091172567473,
+        "n": 5,
+        "stdev": 6.173676572918293e-07,
+        "unit": "ms",
+        "variance": 3.8114282427000164e-13
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816,group=128",
+      "concurrency": 4,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 5589,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-809c21dc92b33087b50da387",
+      "repeats_ms": [
+        0.1706153431440385,
+        0.17064880382014336,
+        0.17062695172716497,
+        0.17064278657714932,
+        0.1706420221361156
+      ],
+      "statistics": {
+        "ci95": [
+          0.17061816515980902,
+          0.17065219780203564
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.17063518148092233,
+        "n": 5,
+        "stdev": 1.3706646518848066e-05,
+        "unit": "ms",
+        "variance": 1.878721587926498e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "concurrency": 4,
+      "inner_iterations": 1494,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-3c692313db18ae4769a159b3",
+      "repeats_ms": [
+        0.6980757502666918,
+        0.7069341003336261,
+        0.7078169448627845,
+        0.7090742527401271,
+        0.7090839758774682
+      ],
+      "statistics": {
+        "ci95": [
+          0.7004494294322177,
+          0.7119445802000615
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.7061970048161396,
+        "n": 5,
+        "stdev": 0.00462967192516351,
+        "unit": "ms",
+        "variance": 2.1433862134647204e-05
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 15610,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-27bdf2e9df0ff7ddf8e19e2e",
+      "repeats_ms": [
+        0.057346106950172164,
+        0.05734684985085682,
+        0.05734777261170724,
+        0.05734787427180093,
+        0.05734621252026946
+      ],
+      "statistics": {
+        "ci95": [
+          0.05734592553462443,
+          0.057348000947298215
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.05734696324096132,
+        "n": 5,
+        "stdev": 8.358724459578315e-07,
+        "unit": "ms",
+        "variance": 6.986827459115279e-13
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "inner_iterations": 41835,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-02395a393191499aca706025",
+      "repeats_ms": [
+        0.008196098698757022,
+        0.00819616581043833,
+        0.008196239487392808,
+        0.008196318270670865,
+        0.008196269395859478
+      ],
+      "statistics": {
+        "ci95": [
+          0.008196110615536108,
+          0.008196326049711294
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.008196218332623701,
+        "n": 5,
+        "stdev": 8.676611318344268e-08,
+        "unit": "ms",
+        "variance": 7.528358396961986e-15
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "concurrency": 1,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 16829,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-aaf9cb9c0170bac3be240874",
+      "repeats_ms": [
+        0.048383125796151734,
+        0.04827265756724813,
+        0.048151591874052976,
+        0.048212518226768156,
+        0.04821532535796653
+      ],
+      "statistics": {
+        "ci95": [
+          0.04813866679091051,
+          0.0483554207379645
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.0482470437644375,
+        "n": 5,
+        "stdev": 8.729765129757168e-05,
+        "unit": "ms",
+        "variance": 7.620879922072419e-09
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "inner_iterations": 13153,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-93d1b9d0a9392d995f9f4133",
+      "repeats_ms": [
+        0.06144671779816154,
+        0.06144438831831379,
+        0.06144839762227486,
+        0.061447116872398407,
+        0.06144938138667272
+      ],
+      "statistics": {
+        "ci95": [
+          0.061444849984048526,
+          0.06144955081508
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.061447200399564264,
+        "n": 5,
+        "stdev": 1.8932596788763907e-06,
+        "unit": "ms",
+        "variance": 3.584432211659134e-12
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 18917,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-618270ad1f4f785eb6532a9b",
+      "repeats_ms": [
+        0.04526889811309768,
+        0.04525480811323809,
+        0.045266655715593115,
+        0.04525458226025202,
+        0.04516729008113569
+      ],
+      "statistics": {
+        "ci95": [
+          0.04518965047687056,
+          0.04529524323645608
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04524244685666332,
+        "n": 5,
+        "stdev": 4.2527483495141094e-05,
+        "unit": "ms",
+        "variance": 1.8085868524294984e-09
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "inner_iterations": 64969,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-ac528081bc49f3e6844ceec9",
+      "repeats_ms": [
+        0.008962814800075325,
+        0.00896331270881353,
+        0.008936202047743444,
+        0.008940519762009092,
+        0.008946869507596893
+      ],
+      "statistics": {
+        "ci95": [
+          0.00893434509189185,
+          0.00896554243860346
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.008949943765247655,
+        "n": 5,
+        "stdev": 1.2564731261669484e-05,
+        "unit": "ms",
+        "variance": 1.5787247167797442e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "concurrency": 4,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 15961,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-a0ce7a67c78c2272fa5c6acc",
+      "repeats_ms": [
+        0.048441795902169744,
+        0.048509622514938754,
+        0.04844570022486451,
+        0.04836064258558948,
+        0.04838886766473748
+      ],
+      "statistics": {
+        "ci95": [
+          0.04835794037759901,
+          0.04850071117932099
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04842932577846,
+        "n": 5,
+        "stdev": 5.7500939814932266e-05,
+        "unit": "ms",
+        "variance": 3.306358079600463e-09
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "inner_iterations": 17171,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-0d6ddf1e4130b9e006de24c9",
+      "repeats_ms": [
+        0.04900530859056512,
+        0.048993301324953775,
+        0.048995192344878355,
+        0.0489886768570555,
+        0.048985228944787
+      ],
+      "statistics": {
+        "ci95": [
+          0.04898404601404334,
+          0.04900303721085256
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04899354161244795,
+        "n": 5,
+        "stdev": 7.648704437950465e-06,
+        "unit": "ms",
+        "variance": 5.850267957912314e-11
+      },
+      "warmup": 10
+    },
+    {
+      "case": "calibration-livecodebench-execution-q0,concurrency=1",
+      "concurrency": 1,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "gather_scatter": 32,
+        "grouped_gemm": 32
+      },
+      "inner_iterations": 344,
+      "memory_bytes": 3670016,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "minimum_inner_seconds": 1.0,
+      "operation": "window_replay",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "queue_depth": 1,
+      "record_id": "calibration-2c56ce3ca1408791ae85a69b",
+      "repeats_ms_per_token": [
+        0.09016111839649289,
+        0.09020169391188511,
+        0.09022925620855288,
+        0.09025187270585881,
+        0.09023052038148392
+      ],
+      "repeats_tokens_per_second": [
+        11091.255496658727,
+        11086.266306449468,
+        11082.87978888614,
+        11080.102495591582,
+        11082.72451241685
+      ],
+      "statistics": {
+        "ci95": [
+          0.09017151231606216,
+          0.09025827232564729
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.09021489232085472,
+        "n": 5,
+        "stdev": 3.494259350880701e-05,
+        "unit": "ms/token",
+        "variance": 1.2209848411217213e-09
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_statistics": {
+        "ci95": [
+          11079.314430711298,
+          11089.977009289809
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 11084.645720000553,
+        "n": 5,
+        "stdev": 4.29435347928378,
+        "unit": "tokens/s",
+        "variance": 18.441471805036706
+      },
+      "throughput_unit": "tokens/s",
+      "tokens": 32,
+      "transfers": [],
+      "unit": "ms/token",
+      "warmup": 10
+    },
+    {
+      "case": "calibration-livecodebench-execution-q0,concurrency=4",
+      "concurrency": 4,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "gather_scatter": 32,
+        "grouped_gemm": 32
+      },
+      "inner_iterations": 418,
+      "memory_bytes": 14680064,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "minimum_inner_seconds": 1.0,
+      "operation": "window_replay",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "queue_depth": 1,
+      "record_id": "calibration-29bcc716f8543851e3ee0424",
+      "repeats_ms_per_token": [
+        0.018508175343417664,
+        0.018523531096974057,
+        0.018539663707240348,
+        0.018533098640624416,
+        0.01851602490438799
+      ],
+      "repeats_tokens_per_second": [
+        54030.177553707086,
+        53985.38727658447,
+        53938.410954534585,
+        53957.51781129613,
+        54007.27235806518
+      ],
+      "statistics": {
+        "ci95": [
+          0.01850836675177,
+          0.01853983072528779
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.018524098738528894,
+        "n": 5,
+        "stdev": 1.2672115206778272e-05,
+        "unit": "ms/token",
+        "variance": 1.6058250381386112e-10
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_statistics": {
+        "ci95": [
+          53937.9060718249,
+          54029.60030985007
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 53983.75319083749,
+        "n": 5,
+        "stdev": 36.92985399303711,
+        "unit": "tokens/s",
+        "variance": 1363.814115947039
+      },
+      "throughput_unit": "tokens/s",
+      "tokens": 128,
+      "transfers": [],
+      "unit": "ms/token",
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 9024,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-02738a81adc6f293fe9dae11",
+      "repeats_ms": [
+        0.08852394590986536,
+        0.08851131817973251,
+        0.08855180537447016,
+        0.08857948222058884,
+        0.08855494370697238
+      ],
+      "statistics": {
+        "ci95": [
+          0.08851081692054505,
+          0.08857778123610666
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.08854429907832585,
+        "n": 5,
+        "stdev": 2.696987782106031e-05,
+        "unit": "ms",
+        "variance": 7.273743096829207e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "concurrency": 1,
+      "inner_iterations": 51739,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-3499e57a229ce5188510f94f",
+      "repeats_ms": [
+        0.008837669200178722,
+        0.008825440698860808,
+        0.008834780768239988,
+        0.008837500506787976,
+        0.008829255174937546
+      ],
+      "statistics": {
+        "ci95": [
+          0.00882623315551642,
+          0.008839625384085595
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.008832929269801008,
+        "n": 5,
+        "stdev": 5.3937200019621055e-06,
+        "unit": "ms",
+        "variance": 2.90922154595661e-11
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208,group=128",
+      "concurrency": 1,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 14250,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-dacf62de4c18a03b2018cee1",
+      "repeats_ms": [
+        0.04845311215049342,
+        0.04838269257127193,
+        0.04843974438048246,
+        0.048408867016173245,
+        0.048398394668311404
+      ],
+      "statistics": {
+        "ci95": [
+          0.04838031574354231,
+          0.048452808571150675
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04841656215734649,
+        "n": 5,
+        "stdev": 2.919648602548259e-05,
+        "unit": "ms",
+        "variance": 8.524347962362e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "concurrency": 1,
+      "inner_iterations": 8720,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-3e9accf3b828bb5bbf3bde03",
+      "repeats_ms": [
+        0.09282480642336224,
+        0.09286359734491471,
+        0.09285683588150444,
+        0.09289845457864464,
+        0.09286704807106508
+      ],
+      "statistics": {
+        "ci95": [
+          0.09282949715959479,
+          0.09289479976020165
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.09286214845989822,
+        "n": 5,
+        "stdev": 2.630062212976459e-05,
+        "unit": "ms",
+        "variance": 6.917227244126629e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 4010,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-0684748dbbcf39b23ab2ccb2",
+      "repeats_ms": [
+        0.23438426942896665,
+        0.23470749700455892,
+        0.23476722317740803,
+        0.23482247445351465,
+        0.23481690366369234
+      ],
+      "statistics": {
+        "ci95": [
+          0.23447335983310114,
+          0.23492598725815506
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.2346996735456281,
+        "n": 5,
+        "stdev": 0.0001822956936061265,
+        "unit": "ms",
+        "variance": 3.3231719907338744e-08
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "concurrency": 4,
+      "inner_iterations": 41446,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-055ac527fd593cc88cdf904c",
+      "repeats_ms": [
+        0.012282747919308784,
+        0.012282495361057159,
+        0.012282409211449461,
+        0.012282363559520596,
+        0.01228258887387919
+      ],
+      "statistics": {
+        "ci95": [
+          0.012282330630799117,
+          0.01228271133928696
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.012282520985043038,
+        "n": 5,
+        "stdev": 1.5333034193626795e-07,
+        "unit": "ms",
+        "variance": 2.3510193758292847e-14
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832,group=128",
+      "concurrency": 4,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 11735,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-a8fcf1f5cf2fc22917d4377c",
+      "repeats_ms": [
+        0.07303921374860194,
+        0.07300299314117757,
+        0.07299963841806029,
+        0.07301040473876225,
+        0.0730106387892123
+      ],
+      "statistics": {
+        "ci95": [
+          0.07299317306047462,
+          0.07303198247385112
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.07301257776716287,
+        "n": 5,
+        "stdev": 1.5630491080109938e-05,
+        "unit": "ms",
+        "variance": 2.443122514053963e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "concurrency": 4,
+      "inner_iterations": 3889,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-dff2b1087fbe73c97962f541",
+      "repeats_ms": [
+        0.24992108902915275,
+        0.24983988668962137,
+        0.2500510064946805,
+        0.25012326307976024,
+        0.25012593111178966
+      ],
+      "statistics": {
+        "ci95": [
+          0.24985426063893662,
+          0.2501702099230652
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.2500122352810009,
+        "n": 5,
+        "stdev": 0.0001272485729023632,
+        "unit": "ms",
+        "variance": 1.6192199305688037e-08
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 15230,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-47e45d8002ecafd60256903a",
+      "repeats_ms": [
+        0.05734599583726609,
+        0.0573456471794464,
+        0.05734630441947431,
+        0.0573459878221438,
+        0.057346015875071814
+      ],
+      "statistics": {
+        "ci95": [
+          0.057345701006900666,
+          0.05734627944646029
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.05734599022668048,
+        "n": 5,
+        "stdev": 2.329665302940778e-07,
+        "unit": "ms",
+        "variance": 5.4273404237261477e-14
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "inner_iterations": 71840,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-afdc6c8ade3d1f0002166373",
+      "repeats_ms": [
+        0.008196136202737856,
+        0.008196155743503358,
+        0.008196092873214348,
+        0.008196149796313857,
+        0.008196122609161853
+      ],
+      "statistics": {
+        "ci95": [
+          0.008196100311191815,
+          0.008196162578780695
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.008196131444986255,
+        "n": 5,
+        "stdev": 2.5078271169082644e-08,
+        "unit": "ms",
+        "variance": 6.289196848300418e-16
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "concurrency": 1,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 15815,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-8b07f93be80bd0cb1d97cc31",
+      "repeats_ms": [
+        0.04642031413635196,
+        0.046395734123063546,
+        0.0475561739559457,
+        0.04889860391390689,
+        0.04866725693689733
+      ],
+      "statistics": {
+        "ci95": [
+          0.04610974156631904,
+          0.049065491660147134
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04758761661323309,
+        "n": 5,
+        "stdev": 0.0011904283383106973,
+        "unit": "ms",
+        "variance": 1.4171196286531679e-06
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "inner_iterations": 14421,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-61871add80f2408e9eb6066f",
+      "repeats_ms": [
+        0.06144042359287237,
+        0.06144190069359571,
+        0.061442764099176116,
+        0.06144058865570392,
+        0.061442353558287394
+      ],
+      "statistics": {
+        "ci95": [
+          0.061440301110934625,
+          0.061442911128919586
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.061441606119927106,
+        "n": 5,
+        "stdev": 1.0511847328667196e-06,
+        "unit": "ms",
+        "variance": 1.1049893426120765e-12
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 19149,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-222e515777574a89d05fc2cb",
+      "repeats_ms": [
+        0.04507871645039395,
+        0.04506898537660257,
+        0.04508633429066955,
+        0.04509213532385013,
+        0.045107747115343814
+      ],
+      "statistics": {
+        "ci95": [
+          0.045068684622876734,
+          0.04510488279986727
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.045086783711372,
+        "n": 5,
+        "stdev": 1.4578815636242164e-05,
+        "unit": "ms",
+        "variance": 2.1254186535553899e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "inner_iterations": 67205,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-3e9c3445ec98426c526fbd39",
+      "repeats_ms": [
+        0.00896954510540278,
+        0.008967190159191094,
+        0.008961990750374321,
+        0.008977121257079551,
+        0.008974635530977979
+      ],
+      "statistics": {
+        "ci95": [
+          0.008962637328140918,
+          0.008977555793069374
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.008970096560605146,
+        "n": 5,
+        "stdev": 6.0084116894762336e-06,
+        "unit": "ms",
+        "variance": 3.6101011030234646e-11
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "concurrency": 4,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 14603,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-413780089d2ce3a777b00c01",
+      "repeats_ms": [
+        0.048705590748422845,
+        0.04864713860433216,
+        0.04737845331171249,
+        0.04644740699684996,
+        0.04646137114510931
+      ],
+      "statistics": {
+        "ci95": [
+          0.046144589369919796,
+          0.048911394952650906
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04752799216128535,
+        "n": 5,
+        "stdev": 0.0011143309372321128,
+        "unit": "ms",
+        "variance": 1.241733437672599e-06
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "inner_iterations": 14832,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-40528f4c99aa244a18af3b9a",
+      "repeats_ms": [
+        0.04913195514370323,
+        0.049131946913504164,
+        0.04913199217959901,
+        0.04913170823773134,
+        0.049131967489001824
+      ],
+      "statistics": {
+        "ci95": [
+          0.04913176963091613,
+          0.049132058354499686
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04913191399270791,
+        "n": 5,
+        "stdev": 1.1628342210744866e-07,
+        "unit": "ms",
+        "variance": 1.352183425701908e-14
+      },
+      "warmup": 10
+    },
+    {
+      "case": "calibration-mmlu-abstract_algebra-q0,concurrency=1",
+      "concurrency": 1,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "gather_scatter": 32,
+        "grouped_gemm": 32
+      },
+      "inner_iterations": 345,
+      "memory_bytes": 3670016,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "minimum_inner_seconds": 1.0,
+      "operation": "window_replay",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "queue_depth": 1,
+      "record_id": "calibration-069756adcd4ee4b76d9aefee",
+      "repeats_ms_per_token": [
+        0.09016776154006736,
+        0.09019156746242357,
+        0.0901751753212749,
+        0.09021844725677933,
+        0.09023833896802819
+      ],
+      "repeats_tokens_per_second": [
+        11090.438344259388,
+        11087.511040504192,
+        11089.526540283547,
+        11084.207613924063,
+        11081.764263793732
+      ],
+      "statistics": {
+        "ci95": [
+          0.09016142142908283,
+          0.09023509479034651
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.09019825810971467,
+        "n": 5,
+        "stdev": 2.9671945950376584e-05,
+        "unit": "ms/token",
+        "variance": 8.804243764820693e-10
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_statistics": {
+        "ci95": [
+          11082.162242850634,
+          11091.216878255334
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 11086.689560552984,
+        "n": 5,
+        "stdev": 3.646754372547383,
+        "unit": "tokens/s",
+        "variance": 13.29881745369346
+      },
+      "throughput_unit": "tokens/s",
+      "tokens": 32,
+      "transfers": [],
+      "unit": "ms/token",
+      "warmup": 10
+    },
+    {
+      "case": "calibration-mmlu-abstract_algebra-q0,concurrency=4",
+      "concurrency": 4,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "gather_scatter": 32,
+        "grouped_gemm": 32
+      },
+      "inner_iterations": 419,
+      "memory_bytes": 14680064,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "minimum_inner_seconds": 1.0,
+      "operation": "window_replay",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "queue_depth": 1,
+      "record_id": "calibration-ab61112b7f9a6758b7f3d069",
+      "repeats_ms_per_token": [
+        0.018583981689234624,
+        0.018586558203139567,
+        0.018590976059579052,
+        0.01858785101223675,
+        0.018586750531253495
+      ],
+      "repeats_tokens_per_second": [
+        53809.78181760061,
+        53802.322574767175,
+        53789.53728923486,
+        53798.58055359279,
+        53801.765850276344
+      ],
+      "statistics": {
+        "ci95": [
+          0.01858407967869725,
+          0.018590367319480144
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.018587223499088697,
+        "n": 5,
+        "stdev": 2.532347299827935e-06,
+        "unit": "ms/token",
+        "variance": 6.4127828469458336e-12
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_statistics": {
+        "ci95": [
+          53791.298238340816,
+          53809.4969958479
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 53800.39761709436,
+        "n": 5,
+        "stdev": 7.329549512222923,
+        "unit": "tokens/s",
+        "variance": 53.72229605212729
+      },
+      "throughput_unit": "tokens/s",
+      "tokens": 128,
+      "transfers": [],
+      "unit": "ms/token",
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 8261,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-b412f84083513553c687301a",
+      "repeats_ms": [
+        0.11454258165958646,
+        0.11454460606738363,
+        0.1145616140482198,
+        0.1145684852133708,
+        0.11455644220348248
+      ],
+      "statistics": {
+        "ci95": [
+          0.11454101091265213,
+          0.11456848076416513
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.11455474583840863,
+        "n": 5,
+        "stdev": 1.1063482585541143e-05,
+        "unit": "ms",
+        "variance": 1.2240064692057213e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "concurrency": 1,
+      "inner_iterations": 73703,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-02c6ad913813343f585161fe",
+      "repeats_ms": [
+        0.008469371377193348,
+        0.008472018058595394,
+        0.00844600836852172,
+        0.008450924107195857,
+        0.008464800965848574
+      ],
+      "statistics": {
+        "ci95": [
+          0.008446314129544646,
+          0.008474935021397314
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.00846062457547098,
+        "n": 5,
+        "stdev": 1.1527064077672333e-05,
+        "unit": "ms",
+        "variance": 1.3287320625076392e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272,group=128",
+      "concurrency": 1,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 15799,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-9b6f3acdb9ad313f1f0d8168",
+      "repeats_ms": [
+        0.04673880958520911,
+        0.04672675244724745,
+        0.04668128996742278,
+        0.04668935252651473,
+        0.046847609705816036
+      ],
+      "statistics": {
+        "ci95": [
+          0.04665414150734193,
+          0.046819384185542115
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04673676284644202,
+        "n": 5,
+        "stdev": 6.655148797545619e-05,
+        "unit": "ms",
+        "variance": 4.42910055174729e-09
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "concurrency": 1,
+      "inner_iterations": 7402,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-e1d0edca7d115efcefc2c01c",
+      "repeats_ms": [
+        0.11865407536075553,
+        0.11863964527112604,
+        0.11865797560783825,
+        0.11864804770617317,
+        0.11864897947767496
+      ],
+      "statistics": {
+        "ci95": [
+          0.11864114431854456,
+          0.11865834505088263
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.11864974468471359,
+        "n": 5,
+        "stdev": 6.927594879454169e-06,
+        "unit": "ms",
+        "variance": 4.799157081383962e-11
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 3215,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-5885d0d8a8ee085bec86d1ca",
+      "repeats_ms": [
+        0.29990234375,
+        0.3010744275794615,
+        0.30157128982187986,
+        0.30201962769124224,
+        0.3023821366519246
+      ],
+      "statistics": {
+        "ci95": [
+          0.30019172000834093,
+          0.30258821018946236
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.30138996509890165,
+        "n": 5,
+        "stdev": 0.0009651864107345397,
+        "unit": "ms",
+        "variance": 9.315848074666236e-07
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "concurrency": 4,
+      "inner_iterations": 40480,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-0741b36e03d4a3fcd466c9b1",
+      "repeats_ms": [
+        0.012299917620632489,
+        0.012301212054467483,
+        0.012300945930330178,
+        0.012300159620202106,
+        0.012301608602048852
+      ],
+      "statistics": {
+        "ci95": [
+          0.012299884636012344,
+          0.012301652895060099
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.012300768765536221,
+        "n": 5,
+        "stdev": 7.121663243177429e-07,
+        "unit": "ms",
+        "variance": 5.071808734922446e-13
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088,group=128",
+      "concurrency": 4,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 10821,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-895666b5b29e6b68d47025a0",
+      "repeats_ms": [
+        0.0779662837758323,
+        0.07796147248405877,
+        0.07798110120079013,
+        0.07796843842232407,
+        0.07796487930730756
+      ],
+      "statistics": {
+        "ci95": [
+          0.07795909966748917,
+          0.07797777040863597
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.07796843503806257,
+        "n": 5,
+        "stdev": 7.519640921209119e-06,
+        "unit": "ms",
+        "variance": 5.6544999583922733e-11
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "concurrency": 4,
+      "inner_iterations": 3047,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "prefill",
+      "record_id": "calibration-30d8a2d9e47aa5035192e66c",
+      "repeats_ms": [
+        0.319801643554367,
+        0.32032948648260584,
+        0.32019585815069124,
+        0.3204117948045721,
+        0.3204444056461786
+      ],
+      "statistics": {
+        "ci95": [
+          0.3199121001127294,
+          0.3205611753426365
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.32023663772768296,
+        "n": 5,
+        "stdev": 0.0002614150462146018,
+        "unit": "ms",
+        "variance": 6.83378263873824e-08
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 15712,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-b224af2ad2f3b4a664a812a4",
+      "repeats_ms": [
+        0.057346219686286753,
+        0.05734577295493691,
+        0.05734573022411214,
+        0.057346040993746815,
+        0.05734625076325022
+      ],
+      "statistics": {
+        "ci95": [
+          0.057345700665045955,
+          0.057346305183887177
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.057346002924466566,
+        "n": 5,
+        "stdev": 2.4346996085030547e-07,
+        "unit": "ms",
+        "variance": 5.927762183644928e-14
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "inner_iterations": 74053,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-210c43d835b463347c693811",
+      "repeats_ms": [
+        0.008196088562098261,
+        0.008196155323035107,
+        0.008196082792634583,
+        0.008196170983007947,
+        0.008196142135689557
+      ],
+      "statistics": {
+        "ci95": [
+          0.008196078328051542,
+          0.00819617759053464
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.00819612795929309,
+        "n": 5,
+        "stdev": 3.9977964665274425e-08,
+        "unit": "ms",
+        "variance": 1.5982376587779304e-15
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "concurrency": 1,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 16201,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-4cc5a6d9d7f1113513054984",
+      "repeats_ms": [
+        0.049897410002661874,
+        0.04865821662725295,
+        0.04686126040276256,
+        0.04684717044014451,
+        0.04693190235170668
+      ],
+      "statistics": {
+        "ci95": [
+          0.04612001019199086,
+          0.04955837373782057
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.047839191964905714,
+        "n": 5,
+        "stdev": 0.0013848009041484948,
+        "unit": "ms",
+        "variance": 1.917673544130489e-06
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "concurrency": 1,
+      "inner_iterations": 13231,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-37e5fc9ab4953fae8a0727ad",
+      "repeats_ms": [
+        0.06144031509954132,
+        0.06144161597733306,
+        0.06144101166885534,
+        0.061441173125318854,
+        0.06144049962121391
+      ],
+      "statistics": {
+        "ci95": [
+          0.06144027223598027,
+          0.061441573960924714
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.06144092309845249,
+        "n": 5,
+        "stdev": 5.242697161010078e-07,
+        "unit": "ms",
+        "variance": 2.7485873522063125e-13
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm",
+      "inner_iterations": 19338,
+      "minimum_inner_seconds": 1.0,
+      "operation": "selected_expert",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-99a10e953ec1fc93069efdb3",
+      "repeats_ms": [
+        0.0451689887927106,
+        0.04517654480491778,
+        0.045165153974485145,
+        0.045151960937298,
+        0.04517948325410946
+      ],
+      "statistics": {
+        "ci95": [
+          0.04515496491304198,
+          0.04518188779236641
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.0451684263527042,
+        "n": 5,
+        "stdev": 1.084318953880572e-05,
+        "unit": "ms",
+        "variance": 1.175747593744658e-10
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "inner_iterations": 71348,
+      "minimum_inner_seconds": 1.0,
+      "operation": "gather_scatter",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-17063ebc2139832efd1d8550",
+      "repeats_ms": [
+        0.008480908016977526,
+        0.008474354359803796,
+        0.008474534861261002,
+        0.008487057042922541,
+        0.00847430132146092
+      ],
+      "statistics": {
+        "ci95": [
+          0.008471175557064158,
+          0.008485286683906157
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.008478231120485158,
+        "n": 5,
+        "stdev": 5.683256278428085e-06,
+        "unit": "ms",
+        "variance": 3.229940192629225e-11
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "concurrency": 4,
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open",
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "inner_iterations": 16100,
+      "minimum_inner_seconds": 1.0,
+      "operation": "dequant",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-608a1d6a9235a6a107bc85ed",
+      "repeats_ms": [
+        0.04625255134535132,
+        0.04625395780764752,
+        0.04620586892832881,
+        0.04628319402659162,
+        0.04618560222365101
+      ],
+      "statistics": {
+        "ci95": [
+          0.046187078311577666,
+          0.04628539142105043
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04623623486631405,
+        "n": 5,
+        "stdev": 3.959560444173227e-05,
+        "unit": "ms",
+        "variance": 1.5678118911061284e-09
+      },
+      "warmup": 10
+    },
+    {
+      "calibration_role": "gpu_service",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "concurrency": 4,
+      "inner_iterations": 16766,
+      "minimum_inner_seconds": 1.0,
+      "operation": "grouped_gemm",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "record_id": "calibration-75a8fcafc7d522670216e379",
+      "repeats_ms": [
+        0.047467011164242366,
+        0.047533681679067755,
+        0.04752880716670829,
+        0.0475522004575387,
+        0.04747550424664313
+      ],
+      "statistics": {
+        "ci95": [
+          0.04746448210896225,
+          0.04755839977671785
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.04751144094284005,
+        "n": 5,
+        "stdev": 3.782534030795468e-05,
+        "unit": "ms",
+        "variance": 1.4307563694125809e-09
+      },
+      "warmup": 10
+    },
+    {
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,concurrency=1",
+      "concurrency": 1,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "gather_scatter": 32,
+        "grouped_gemm": 32
+      },
+      "inner_iterations": 345,
+      "memory_bytes": 3670016,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "minimum_inner_seconds": 1.0,
+      "operation": "window_replay",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "queue_depth": 1,
+      "record_id": "calibration-2d8e75b96895c574999576e2",
+      "repeats_ms_per_token": [
+        0.09013206371362659,
+        0.0901618846948596,
+        0.09021197332852128,
+        0.0901760433031165,
+        0.09020278488380322
+      ],
+      "repeats_tokens_per_second": [
+        11094.830838193882,
+        11091.161230539507,
+        11085.003055618134,
+        11089.419798988229,
+        11086.132221839634
+      ],
+      "statistics": {
+        "ci95": [
+          0.09013702651545813,
+          0.09021687345411275
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.09017694998478544,
+        "n": 5,
+        "stdev": 3.215835421955798e-05,
+        "unit": "ms/token",
+        "variance": 1.0341597461105626e-09
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_statistics": {
+        "ci95": [
+          11084.39948592751,
+          11094.219372144244
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 11089.309429035877,
+        "n": 5,
+        "stdev": 3.954959133993466,
+        "unit": "tokens/s",
+        "variance": 15.641701751558347
+      },
+      "throughput_unit": "tokens/s",
+      "tokens": 32,
+      "transfers": [],
+      "unit": "ms/token",
+      "warmup": 10
+    },
+    {
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,concurrency=4",
+      "concurrency": 4,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "gather_scatter": 32,
+        "grouped_gemm": 32
+      },
+      "inner_iterations": 419,
+      "memory_bytes": 14680064,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "minimum_inner_seconds": 1.0,
+      "operation": "window_replay",
+      "outer_repeats": 5,
+      "phase": "decode",
+      "queue_depth": 1,
+      "record_id": "calibration-9dfbf6fa7b2897487c601756",
+      "repeats_ms_per_token": [
+        0.018582027681118548,
+        0.018576334086124538,
+        0.01857354703552683,
+        0.018590395661128734,
+        0.018598760227030386
+      ],
+      "repeats_tokens_per_second": [
+        53815.4402286309,
+        53831.93451214591,
+        53840.01225437634,
+        53791.21661681105,
+        53767.02467224974
+      ],
+      "statistics": {
+        "ci95": [
+          0.01857133423055986,
+          0.01859709164581175
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 0.018584212938185806,
+        "n": 5,
+        "stdev": 1.0373798888314131e-05,
+        "unit": "ms/token",
+        "variance": 1.0761570337518752e-10
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_statistics": {
+        "ci95": [
+          53771.843831000406,
+          53846.40748268518
+        ],
+        "ci_method": "two-sided Student-t",
+        "mean": 53809.12565684279,
+        "n": 5,
+        "stdev": 30.03051041386228,
+        "unit": "tokens/s",
+        "variance": 901.8315557170909
+      },
+      "throughput_unit": "tokens/s",
+      "tokens": 128,
+      "transfers": [],
+      "unit": "ms/token",
+      "warmup": 10
+    }
+  ],
+  "raw_profiler_output": null,
+  "runtime": {
+    "cuda_runtime": "13.0",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu130"
+  },
+  "schema_version": "gpu-benchmark-result-v1",
+  "seed": 20260718,
+  "split": "calibration",
+  "status": "measured",
+  "timestamp_utc": "2026-08-22T10:55:54Z"
+}

@@ -1,0 +1,10 @@
+{
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "gpu_vram_mib": 97887,
+  "compute_capability": "12.0",
+  "driver": "580.95.05",
+  "python": "3.10.12",
+  "torch": "2.11.0+cu130",
+  "vllm": "0.23.0",
+  "source": "attempt2/environment/tool_versions.json"
+}

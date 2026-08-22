@@ -1,0 +1,65 @@
+{
+  "captured_at_utc": "2026-08-22T11:21:19Z",
+  "executable": "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+  "hostname": "7445bd195ab1",
+  "nvidia_compute_apps": {
+    "argv": [
+      "nvidia-smi",
+      "--query-compute-apps=pid,process_name,used_gpu_memory",
+      "--format=csv,noheader"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "nvidia_smi": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=name,uuid,memory.total,driver_version,compute_cap",
+      "--format=csv,noheader"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition, GPU-5b8e8466-02c1-74c6-b472-a1a725044a00, 97887 MiB, 580.95.05, 12.0"
+  },
+  "platform": "Linux-5.15.0-163-generic-x86_64-with-glibc2.35",
+  "python": "3.10.12",
+  "python_packages": {
+    "torch": {
+      "argv": [
+        "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+        "-c",
+        "import torch; print(torch.__version__)"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "2.11.0+cu130"
+    },
+    "transformers": {
+      "argv": [
+        "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+        "-c",
+        "import transformers; print(transformers.__version__)"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4.57.6"
+    },
+    "vllm": {
+      "argv": [
+        "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+        "-c",
+        "import vllm; print(vllm.__version__)"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "0.23.0"
+    }
+  },
+  "selected_environment": {
+    "HF_HOME": "/workspace/.hf_home",
+    "HF_TOKEN_PRESENT": true,
+    "VLLM_ARGS": "--max-num-seqs 8 --max-model-len 32000 --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3 --download-dir /workspace/models --host 127.0.0.1 --port 18000",
+    "VLLM_MODEL": "Qwen/Qwen3.5-9B"
+  }
+}

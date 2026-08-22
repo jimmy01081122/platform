@@ -1,0 +1,88 @@
+{
+  "argv": [
+    "/workspace/track_gpu/code/gpu_campaign_runner.py",
+    "--model-path",
+    "/workspace/models/mixtral-8x7b-instruct-v0.1",
+    "--run-root",
+    "/workspace/runs/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-CUDA132ATOMIC-20260822T112230Z-TRACKGPU/artifacts/runner_runs",
+    "--experiment-id",
+    "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-CUDA132ATOMIC-20260822T112230Z-TRACKGPU",
+    "--input-tokens",
+    "128",
+    "--output-tokens",
+    "32",
+    "--sampling-mode",
+    "NATURAL_EOS_CAPPED",
+    "--max-num-seqs",
+    "1",
+    "--max-num-batched-tokens",
+    "1024",
+    "--gpu-memory-utilization",
+    "0.97",
+    "--runtime-class",
+    "CLEAN",
+    "--warmup-count",
+    "1",
+    "--measured-count",
+    "1"
+  ],
+  "captured_at_utc": "2026-08-22T11:22:56Z",
+  "cwd": "/workspace/track_gpu",
+  "env_selected": {
+    "CUDACXX": "/workspace/toolchains/cuda_13_2_86_full/nvidia/cu13/bin/nvcc",
+    "CUDA_HOME": "/workspace/toolchains/cuda_13_2_86_full/nvidia/cu13",
+    "CUDA_PATH": "/workspace/toolchains/cuda_13_2_86_full/nvidia/cu13",
+    "CUDA_VERSION": "13.0.2",
+    "HF_HOME": "/workspace/.hf_home",
+    "NVIDIA_DRIVER_CAPABILITIES": "all",
+    "NVIDIA_REQUIRE_CUDA": "cuda>=13.0 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=575,driver<576 brand=grid,driver>=575,driver<576 brand=tesla,driver>=575,driver<576 brand=nvidia,driver>=575,driver<576 brand=quadro,driver>=575,driver<576 brand=quadrortx,driver>=575,driver<576 brand=nvidiartx,driver>=575,driver<576 brand=vapps,driver>=575,driver<576 brand=vpc,driver>=575,driver<576 brand=vcs,driver>=575,driver<576 brand=vws,driver>=575,driver<576 brand=cloudgaming,driver>=575,driver<576",
+    "NVIDIA_VISIBLE_DEVICES": "void",
+    "TORCH_CUDA_ARCH_LIST": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+    "VLLM_BUILD_COMMIT": "91df0fad4dc98a67c7659d9dbd915245d5c43d96",
+    "VLLM_BUILD_PIPELINE": "019d130e-464e-4ff7-b84b-492992c0c06b",
+    "VLLM_BUILD_URL": "https://buildkite.com/vllm/release-v2/builds/2657",
+    "VLLM_CACHE_ROOT": "/workspace/.vllm_cache",
+    "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+    "VLLM_IMAGE_TAG": "vllm/vllm-openai:v0.23.0",
+    "VLLM_USAGE_SOURCE": "production-docker-image"
+  },
+  "executable": "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+  "nvidia_smi": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=timestamp,index,uuid,name,driver_version,memory.total,memory.used,memory.free,utilization.gpu,utilization.memory,power.draw,clocks.gr,clocks.mem,temperature.gpu",
+      "--format=csv,noheader,nounits"
+    ],
+    "duration_ns": 35781278,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "2026/08/22 11:22:56.924, 0, GPU-5b8e8466-02c1-74c6-b472-a1a725044a00, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 580.95.05, 97887, 1, 97247, 0, 0, 15.91, 180, 405, 28\n"
+  },
+  "packages": {
+    "numpy": "2.2.6",
+    "safetensors": "0.8.0",
+    "torch": "2.11.0+cu130",
+    "transformers": "4.57.6",
+    "vllm": "0.23.0"
+  },
+  "platform": "Linux-5.15.0-163-generic-x86_64-with-glibc2.35",
+  "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+  "torch": {
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "device_count": 1,
+    "device_properties": {
+      "repr": "_CudaDeviceProperties(name='NVIDIA RTX PRO 6000 Blackwell Workstation Edition', major=12, minor=0, total_memory=97247MB, multi_processor_count=188, uuid=5b8e8466-02c1-74c6-b472-a1a725044a00, pci_bus_id=1, pci_device_id=0, pci_domain_id=0, L2_cache_size=128MB)",
+      "type": "_CudaDeviceProperties"
+    },
+    "version": "2.11.0+cu130"
+  },
+  "uname": [
+    "Linux",
+    "7445bd195ab1",
+    "5.15.0-163-generic",
+    "#173-Ubuntu SMP Tue Oct 14 17:51:00 UTC 2025",
+    "x86_64",
+    "x86_64"
+  ]
+}

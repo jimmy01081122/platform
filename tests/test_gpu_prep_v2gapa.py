@@ -47,6 +47,7 @@ def test_aggregate_probe_cpu_smoke(tmp_path):
     result = json.loads(out.read_text())
     assert result["evidence"] == "cpu_smoke_test_not_measurement"
     assert result["concurrency_axis"] == "num_objects"
+    assert result["runtime_identity"]["measurement"] is False
     # V2-GAP-A IR projection is not determinable yet -> PENDING, never guessed
     assert result["ir_evaluation_point_fields"] == "PENDING_S_GT_1_SEMANTICS"
     assert result["production_stream_semantics_status"] == "UNSUPPORTED_UNTIL_MEASURED"
@@ -132,12 +133,14 @@ class _FakeCuda:
         self.active_stream = self.coordinator
         self.next_transfer = 0
         self.synchronize_calls = 0
+        self.event_calls = 0
 
     def is_available(self):
         return True
 
     def Event(self, *, enable_timing):
         assert enable_timing is True
+        self.event_calls += 1
         return _FakeEvent(self)
 
     def Stream(self):
@@ -199,6 +202,9 @@ def test_gpu_backend_measures_independent_streams_and_wait_all(direction):
     assert cell["sum_per_object_ms"] == 3.0
     # One allocation barrier plus one synchronization for each repeat.
     assert fake_torch.cuda.synchronize_calls == 6
+    # One common-start event plus one completion event per object, per repeat;
+    # no extra coordinator event may add non-transfer time to the aggregate.
+    assert fake_torch.cuda.event_calls == 5 * (1 + 2)
 
 
 def test_regime_classification_matches_prereg_boundaries():

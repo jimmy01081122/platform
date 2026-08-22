@@ -163,6 +163,22 @@ def gather_scatter(x=activations, idx=order, inv=inverse):
 
 ## 後續階段（全部尚未執行）
 
+## TRACK_GPU · 2026-08-22 Phase 1
+
+| 項目 | 判定 | 證據／界線 |
+|---|---|---|
+| target_4 raw 本機保存 | **PASS** | 全 `/workspace/runs/` rsync + checksum dry-run；原 raw 未改 |
+| target_4 legacy GAP-4 recovery | **PASS（DERIVED/LEGACY）** | 90 points total（48 component 為 `legacy_join_recovered`）；`component_eval_parser --enforce-gap4` PASS、0 點仍需 join；不得視為 Phase 2 新標準 |
+| FlashInfer HEADERFIX guard | **PASS（MEASURED）** | canonical HEADERFIX-PYINC attempt exit 0；FLASH_ATTN + FlashInfer CUTLASS MoE + kernel config markers 齊全；無 header 修改 |
+| target_1 dispatch | **BLOCKED_ON_OBSERVABILITY** | 舊 attempt2 缺 adapter 而 fail-closed；現 strict adapter/control path 已 CPU 測試，但 live control audit NOT_RUN。Source audit 顯示 FlashInfer fused boundary 無法分離 T_move/T_execute，且 frozen ≤5% perturbation control 必須滿足；adapter 會結構化 refusal，不用 parent timing/mock/fallback |
+| target_2 offload | **BLOCKED_ON_OBSERVABILITY + OWNER_INPUT** | P-020 domain 已在 config boundary 強制；strict adapter/control path 已 CPU 測試，但 native connector 無 per-request residency gauge，故拒絕 measured fields。另待 max_num_batched_tokens、prefix boolean、16-GiB canary medium seq；full sweep不縮 |
+| V2-GAP-A attempt1 | **FAIL（INSTRUMENTATION，完整保存）** | probe rc0；strict parser 拒絕 cells[0]：coordinator completion event 把 event-record delay 算入 aggregate，N=1 產生 0.0147136ms > serialized 0.0109376ms。未放寬 parser |
+| V2-GAP-A attempt2 | **PASS（MEASURED/FIT-SIDE）** | wait-all 修正為共同起點下 latest constituent completion；24 unique cells × n=5，copy_streams 恆 1；strict parser PASS；exact-grid/identity audit PASS。IR projection 仍 `PENDING_S_GT_1_SEMANTICS`，不構成 calibrated/production mapping 主張 |
+| target_4 Phase-2 probes | **PASS（CPU CONTRACT ONLY）** | component/sort-permute/dequant probes + strict parsers 已備；component 依 pinned sealed assignment 隔離 fit41/validation11/holdout12，holdout 需 A4 explicit authorization；GAP-1 仍待 owner 的 weight grid/fixed token。未跑 GPU |
+| target_5 arrival driver | **PASS（CPU CONTRACT ONLY）** | 獨立 driver hash-pin unchanged serving executor，fresh 10K/index0/Poisson seed+rate/C8/128-in/32-out；model/raw/request/arrival/telemetry chain fail-closed，stdout/stderr 串流保存。未跑 GPU，無 tail-CI 結論 |
+| model identity + attempt evidence | **PASS（CPU CONTRACT）/ NOT_RUN（93.4-GB LIVE HASH）** | generator 對 immutable config/index/19 shard table fail-closed；wrapper拒絕 foreign compute app，強制 model/input/raw identity、週期 telemetry、串流 logs。tiny fixture/tests PASS；實機 full content hash待下次 start |
+| 本機回歸 | **PASS** | 424 Python passed, 1 skipped；14 CTest；4423 evidence checksums；doctor pass |
+
 | 階段 | 驗收條件 | 判定 |
 |---|---|---|
 | A1 | 模型形式變更已事前登記；重擬合收斂且拒絕非物理解；舊 fail 報告仍在 | **IN_PROGRESS**（事前登記✓、舊 fail 報告未改✓、拒絕非物理解✓ P-012；v2 候選已 FIT 側評估 P-013：A ACCEPT、B INSUFFICIENT、C BLOCKED。closure blocked 在 V2-GAP-B/C 兩個 targeted FIT-side 量測；非 calibrated PASS） |

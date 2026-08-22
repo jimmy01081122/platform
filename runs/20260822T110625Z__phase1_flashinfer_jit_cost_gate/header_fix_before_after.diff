@@ -1,0 +1,5 @@
+--- /workspace/runs/20260822T110625Z__phase1_flashinfer_jit_cost_gate/header_env.before	2026-08-22 11:08:07.232868568 +0000
++++ /workspace/runs/20260822T110625Z__phase1_flashinfer_jit_cost_gate/header_env.after	2026-08-22 11:08:07.244868532 +0000
+@@ -1 +1 @@
+-CPATH=/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include\nLIBRARY_PATH=/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/lib\nLD_LIBRARY_PATH=/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/lib
++CPATH=/workspace/track_gpu/cuda_compat/nvrtc-13.0.88/include\nLIBRARY_PATH=/workspace/track_gpu/cuda_compat/nvrtc-13.0.88/lib\nLD_LIBRARY_PATH=<unset>

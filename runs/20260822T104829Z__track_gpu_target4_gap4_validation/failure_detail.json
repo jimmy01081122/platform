@@ -1,0 +1,1 @@
+{"failure_classification":"GAP4_MISSING_EVALUATION_POINTS","phase":"post_measurement_parser_validation","exception_type":"ValidationError","message":"result: missing required key evaluation_points","measurement_attempt":"20260822T104829Z__track_gpu_target4_component_pcie","measurement_raw_status":"PASS"}

@@ -38,6 +38,32 @@ frozen_platform_facts:
   h2d_per_object_ms_measured: [12.454, 12.499]   # OFF-E-PR3, 14 non-zero points
   serving_anchor_rate_rps: 1.0472460793856333    # SERV-P0-25 Poisson open-loop
 
+attempt_evidence_contract:
+  wrapper: "python3 measurement/run_gpu_attempt.py --attempt-dir /workspace/runs/<attempt_id> --target <target_id> --model-identity-json /workspace/model_identity/<verified-manifest>.json --input-fixture-json <pre-run-input-fixture.json> -- <exact-probe-argv-with---out-inside-attempt-dir>"
+  pull: "measurement/pull_gpu_attempt.sh <ssh-host> <ssh-port> /workspace/runs/<attempt_id> /home/a/platform/runs/<attempt_id>"
+  applies_to: [target_1, target_2, target_4, target_v2_gap_a]
+  target_5_note: "serv_p0_25_arrival_driver.py creates and checksums its own complete attempt root"
+  required_identity:
+    - exact argv and resolved config
+    - stdout/stderr and terminal failure classification
+    - pre/post GPU identity and compute-process inventory
+    - "CUDA_HOME/CUDA_PATH/CUDACXX/CPATH/LIBRARY_PATH/LD_LIBRARY_PATH"
+    - "actual nvcc path + nvcc --version + CUDA_HOME/include/nvrtc.h existence"
+    - "VLLM_USE_SIMPLE_KV_OFFLOAD recorded explicitly, including null when unset"
+    - model revision and checksum manifest
+    - input fixture, raw timings, and telemetry
+  safety: "failed attempts are immutable evidence; stop is allowed, destroy/recycle is forbidden while workspace_is_volume=false"
+  enforcement: >
+    The wrapper rejects a pre-existing compute app, streams stdout/stderr while
+    the child runs, samples GPU telemetry periodically, validates the pinned
+    model manifest and input fixture, and refuses rc=0 if the declared --out is
+    outside the attempt or lacks runtime identity/raw timings.
+
+model_identity_preflight:
+  generator: "python3 measurement/model_identity_manifest.py --model-path <pinned-model-path> --model-id mistralai/Mixtral-8x7B-Instruct-v0.1 --revision eba92302a2861cdc0098cc54bc9f17cb2c47eb61 --output /workspace/model_identity/<fresh-id>.json"
+  rule: "run once after every start before the first GPU attempt; hashes config, safetensors index, and all 19 shards (93,405,713,504 bytes); no PASS manifest is written on any mismatch"
+  current_status: "generator CPU-tested; full 93.4-GB content pass NOT_RUN because instance 48381628 is stopped"
+
 targets:
 
   - id: target_1
@@ -58,6 +84,21 @@ targets:
       decode_steps_per_point: 128
       # 128 steps >> one MoE layer's dispatch, enough to estimate per-dispatch
       # bytes and frequency without a full generation.
+      engine_domain:
+        max_num_seqs: 8
+        max_model_len: 4096
+        max_num_batched_tokens: 1024
+        gpu_memory_utilization: 0.97
+        enforce_eager: true
+        dtype: bfloat16
+        tensor_parallel_size: 1
+        pipeline_parallel_size: 1
+        enable_prefix_caching: false
+      max_num_batched_tokens_provenance: >
+        Explicit CLI/config value in the existing SERV-P0-25 C8 anchor and the
+        2026-08-22 HEADERFIX canary; it is not a runner default
+        (gpu_campaign_runner defaults 256, serving_burst_runner defaults 512).
+        Owner froze 1024 for target_1.
     sample_size: "128 instrumented decode steps per concurrency point"
     repeats: "3 serving windows per concurrency; report per-step distribution"
     stop_condition: "all concurrency points have >=128 clean instrumented steps"
@@ -85,7 +126,15 @@ targets:
         generator: measurement/probes/ir_evaluation_point.py::dispatch_result_to_points
     exact_argv:
       cpu_smoke_test: "python3 measurement/probes/inserving_dispatch_probe.py --backend mock_dispatch --concurrency 1,2,4,8 --steps 128 --out runs/<run_id>/dispatch_smoke.json"
-      gpu_run: "python3 measurement/probes/inserving_dispatch_probe.py --backend <inserving_gpu_backend> --concurrency 1,2,4,8 --steps 128 --out runs/<run_id>/dispatch.json   # TRACK_GPU only"
+      gpu_run: "python3 measurement/probes/inserving_dispatch_probe.py --backend vllm_dispatch --concurrency 1,2,4,8 --steps 128 --repeats 3 --model-path <pinned-model-path> --runtime-adapter-module measurement.probes.vllm_runtime_adapter --out /workspace/runs/<attempt_id>/artifacts/dispatch.json   # TRACK_GPU only"
+    implementation_status: >
+      ENGINE_CONTROL_READY on CPU/source audit, live control audit NOT_RUN.
+      The strict adapter can create the frozen engine, inject worker_extension_cls,
+      use collective_rpc, resolve config, and preserve startup markers. It refuses
+      measurement because FlashInferExperts.apply exposes one fused CUTLASS MoE
+      boundary, so T_move cannot be isolated from T_execute. The frozen <=5%
+      perturbation control is also mandatory. No measured PASS is possible until
+      owner authorizes lower-level instrumentation or changes the output contract.
     time_estimate:
       basis: "model load ~90s (amortized once) + ~2 min serving window per concurrency point x 4 x 3 repeats, warmup included"
       estimate_minutes: 25
@@ -103,6 +152,40 @@ targets:
     parser: measurement/parsers/longctx_kv_parser.py
     independent_vars:
       seq_lens: [4096, 16384, 65536, 131072, 262144, 524288, 1048576]
+      runtime_variant: "offload-on (independent storage/name; not canonical M0)"
+      kv_offloading_backend: native
+      kv_offloading_size_gb:
+        mechanism_canary: 16
+        formal_sweep: 140
+      VLLM_USE_SIMPLE_KV_OFFLOAD: "UNSET (record as null in runtime identity)"
+      max_num_batched_tokens: 32768
+      max_num_batched_tokens_provenance: >
+        M0 canonical value (explorations/moe_cycle_simulator/phase7/application/
+        m0_execution_contract.json: max_batched_tokens=32768, paired with
+        max_sequences=1). Chosen for target_2 specifically because this target's
+        workload is a single huge-sequence prefill (up to 1,048,576 tokens) whose
+        purpose is to cross the KV offload boundary -- capping the per-step token
+        budget at target_1's 1024 (frozen for a DIFFERENT reason: matching the
+        SERV-P0-25 C8 serving anchor) would force many more chunked-prefill steps
+        than the canonical single-sequence domain uses, changing what TTFT means
+        for this target. 32768 is the minimal deviation from M0 canonical.
+      enable_prefix_caching: false
+      enable_prefix_caching_provenance: >
+        evidence/ scan: 288/288 AsyncEngineArgs dumps with a prefix-caching field
+        record enable_prefix_caching=False, zero exceptions. Also a technical hard
+        requirement, not just a convention match: prefix-caching deduplicates KV
+        blocks across requests, which would violate _validate_longctx_record's
+        exact conservation identity kv_total_bytes == seq_len * 131072 -- the
+        measurement this target exists to take assumes every token's KV is
+        resident-or-offloaded exactly once.
+      mechanism_canary_seq_len: 131072
+      mechanism_canary_seq_len_provenance: >
+        131072 tokens x 131072 B/token = 17,179,869,184 bytes = exactly 16 GiB,
+        matching the mechanism_canary kv_offloading_size_gb=16 capacity exactly
+        (both are 2^17 x 2^17 = 2^34). It is also the sweep's 4th of 7 points
+        (the middle value). Chosen so the cheap canary exercises the offload
+        mechanism at the exact boundary its declared capacity is sized for,
+        rather than trivially under- or over-shooting it.
       offload_boundary_derivation: >
         KV = 131072 B/token. Pure-KV bound alone: 1,048,576 tokens x 128 KiB =
         128 GiB > 96 GB VRAM, so offload is forced at the top of the sweep
@@ -137,7 +220,16 @@ targets:
         generator: measurement/probes/ir_evaluation_point.py::longctx_result_to_points
     exact_argv:
       cpu_smoke_test: "python3 measurement/probes/long_context_kv_probe.py --backend mock_longctx --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --kv-budget-bytes 8000000000 --out runs/<run_id>/longctx_smoke.json"
-      gpu_run: "python3 measurement/probes/long_context_kv_probe.py --backend <longctx_gpu_backend> --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --out runs/<run_id>/longctx.json   # TRACK_GPU only"
+      mechanism_canary: "env -u VLLM_USE_SIMPLE_KV_OFFLOAD python3 measurement/probes/long_context_kv_probe.py --backend vllm_longctx_offload_on --seq-lens 131072 --kv-offloading-size-gb 16 --kv-offloading-backend native --max-num-batched-tokens 32768 --no-enable-prefix-caching --max-model-len 1048576 --model-path <pinned-model-path> --runtime-adapter-module measurement.probes.vllm_runtime_adapter --out /workspace/runs/<attempt_id>/artifacts/longctx_canary.json"
+      gpu_run: "env -u VLLM_USE_SIMPLE_KV_OFFLOAD python3 measurement/probes/long_context_kv_probe.py --backend vllm_longctx_offload_on --seq-lens 4096,16384,65536,131072,262144,524288,1048576 --kv-offloading-size-gb 140 --kv-offloading-backend native --max-num-batched-tokens 32768 --no-enable-prefix-caching --max-model-len 1048576 --model-path <pinned-model-path> --runtime-adapter-module measurement.probes.vllm_runtime_adapter --out /workspace/runs/<attempt_id>/artifacts/longctx.json   # TRACK_GPU only"
+      claim_boundary: "16-GiB canary proves only that the mechanism can trigger; it is not an offload performance validation"
+    implementation_status: >
+      ENGINE_CONTROL_READY on CPU/source audit, live control audit NOT_RUN.
+      Native OffloadingConnectorStats exposes transfer bytes/time but drains and
+      resets its accumulator and exposes no per-request GPU/CPU resident-byte
+      gauge. The strict adapter therefore refuses the frozen direct-residency
+      fields; it does not infer residency. Full sweep and P-020 values remain
+      unchanged. Owner must decide lower-level connector instrumentation.
     time_estimate:
       basis: "model load ~90s + prefill cost grows with seq_len; 1M-token prefill with offload dominates (multiple minutes/repeat). 7 lengths x 3 repeats, offloaded points slowest."
       estimate_minutes: 60
@@ -181,6 +273,14 @@ targets:
       (6 gaps). GAP-5 is resolved by code reading this track (see
       calibration/GAP5_LAUNCH_GRANULARITY_RESOLUTION.md) and does NOT need GPU.
     parser: measurement/parsers/component_eval_parser.py
+    phase2_probes:
+      component_shape: measurement/probes/component_shape_probe.py
+      v2_gap_c_sort_permute: measurement/probes/sort_permute_probe.py
+      gap1_dequant_weight_bytes: measurement/probes/dequant_weight_bytes_probe.py
+    phase2_strict_parsers:
+      component_shape: measurement/parsers/component_shape_parser.py
+      v2_gap_c_sort_permute: measurement/parsers/sort_permute_parser.py
+      gap1_dequant_weight_bytes: measurement/parsers/dequant_weight_bytes_parser.py
     gaps:
       GAP-1: "dequant weight-bytes sweep at fixed token count (needs GPU)"
       GAP-2: "aggregate multi-stream contention end-to-end (needs GPU, transfers list populated)"
@@ -197,7 +297,10 @@ targets:
       pcie_bytes: [4096, 65536, 1048576, 16777216, 88080384]
       pcie_streams: [1, 2, 4]
       pcie_directions: [h2d, d2h]
-    sample_size: "n=5 per cell (matches existing q0 convention; 95% CI ~0.0002 ms)"
+    sample_size: >
+      n=5 per cell. Component cells are isolated by the precommitted sealed
+      assignment: fit=41, validation=11, holdout=12; holdout requires a separate
+      STAGE_A4-authorized attempt and must never be fed to FIT.
     repeats: "5 inner, reported with Student-t CI"
     stop_condition: "all cells measured with n=5; V2-GAP-C sort/permute probe measured"
     failure_condition: "non-physical fit (slope<=0 or intercept<0) => reject, do not fall back to a constant (root spec §8.3)"
@@ -218,8 +321,17 @@ targets:
         pcie_coordinate: [bytes, copy_streams, direction]
         note: "component_eval_parser --enforce-gap4 fails any component point lacking expert_tokens"
     exact_argv:
-      note: "uses existing measurement/gpu_run_package_v2 benchmark.py; new argv per gap listed in TRACK_GPU. GAP-5 needs no GPU."
+      legacy_harness_note: "the checksum-frozen gpu_run_package_v2 output is retained only as legacy evidence; it is not the Phase 2 measurement standard"
+      component_shape_fit: "python3 measurement/probes/component_shape_probe.py --backend gpu --expert-tokens 8,16,32,64,128,256,512,1024 --sealed-manifest calibration/sealed/holdout_split_v1_manifest.json --split fit --repeats 5 --warmup 10 --minimum-inner-seconds 1.0 --out /workspace/runs/<attempt_id>/artifacts/component_shape_fit.json"
+      component_shape_validation: "python3 measurement/probes/component_shape_probe.py --backend gpu --expert-tokens 8,16,32,64,128,256,512,1024 --sealed-manifest calibration/sealed/holdout_split_v1_manifest.json --split validation --repeats 5 --warmup 10 --minimum-inner-seconds 1.0 --out /workspace/runs/<attempt_id>/artifacts/component_shape_validation.json"
+      component_shape_holdout_A4_only: "python3 measurement/probes/component_shape_probe.py --backend gpu --expert-tokens 8,16,32,64,128,256,512,1024 --sealed-manifest calibration/sealed/holdout_split_v1_manifest.json --split holdout --authorize-holdout-measurement --repeats 5 --warmup 10 --minimum-inner-seconds 1.0 --out /workspace/runs/<attempt_id>/artifacts/component_shape_holdout.json"
+      component_shape_check: "python3 measurement/parsers/component_shape_parser.py /workspace/runs/<attempt_id>/artifacts/component_shape_<fit-or-validation-or-holdout>.json"
+      v2_gap_c_sort_permute: "python3 measurement/probes/sort_permute_probe.py --backend gpu --expert-tokens 8,16,32,64,128,256,512,1024 --repeats 5 --warmup 10 --minimum-inner-seconds 1.0 --out runs/<attempt_id>/sort_permute.json"
+      v2_gap_c_check: "python3 measurement/parsers/sort_permute_parser.py runs/<attempt_id>/sort_permute.json"
+      gap1_dequant_weight_bytes: "python3 measurement/probes/dequant_weight_bytes_probe.py --backend gpu --weight-bytes <owner-approved-grid> --fixed-expert-tokens <owner-approved-value> --repeats 5 --warmup 10 --minimum-inner-seconds 1.0 --out runs/<attempt_id>/dequant_weight_bytes.json"
+      gap1_check: "python3 measurement/parsers/dequant_weight_bytes_parser.py runs/<attempt_id>/dequant_weight_bytes.json"
       gap4_parser_check: "python3 measurement/parsers/component_eval_parser.py <eval_points.json> --enforce-gap4"
+      remaining_owner_inputs: "GAP-1 weight_bytes grid and fixed_expert_tokens; probe refuses to guess either"
     time_estimate:
       basis: "component microbenchmarks are ms-scale x n=5; model/tensor setup ~90s; PCIe sweep 30 cells; component sweep 64 cells; sort/permute probe small"
       estimate_minutes: 15
@@ -230,13 +342,23 @@ targets:
     target: "SERV-P0-25 tail-CI supplement"
     rationale: >
       Rerun the full 10K from request 0 with a NEW attempt ID; must NOT resume
-      any existing partial progress (root spec §9.1 priority 5).
+      any existing partial progress (root spec §9.1 priority 5). P-021 fixes the
+      implementation as an independent arrival-driver wrapper around the unchanged
+      historical open-loop executor; gpu_campaign_runner.py itself remains untouched.
+    driver: measurement/probes/serv_p0_25_arrival_driver.py
+    execution_runner: explorations/moe_cycle_simulator/phase7/real_run/serving_burst_runner.py
+    execution_runner_sha256: f948a2920fa17eb7448ddaf3395e53f325db7527c1ca18b5d60bff379d1c144a
+    provenance_runner: explorations/moe_cycle_simulator/phase7/real_run/gpu_campaign_runner.py
+    provenance_runner_sha256_current: 30d3384a61b5afc3cf1dee96f8267c6411ca937d1f35a5b7509fa17336d6419c
+    provenance_runner_sha256_archived: 304a7e2ce72f4d8c24390f292e4bc5e426c2ecac39f8a7824e575355dc8adae8
+    runner_mutation: FORBIDDEN
     parser: measurement/parsers/serving_tail_parser.py
     independent_vars:
       requests: 10000
       arrival: "Poisson open-loop, rate 1.0472460793856333 rps, seed 20260812"
       concurrency: 8
       shape: "128-in / 32-out"
+      max_num_batched_tokens: 1024
     sample_size: "10000 requests, single full run"
     repeats: "1 (a full 10K run); tail CI comes from the 10K sample, not repeats"
     stop_condition: "10000/10000 requests completed from index 0 with a fresh attempt_id"
@@ -251,7 +373,8 @@ targets:
         - resumed_partial_progress
         - "per-request TTFT + monotonic ns timestamps + input/output SHA-256"
     exact_argv:
-      note: "uses existing serving runner; NEW attempt ID, start_request_index=0"
+      gpu_run: "python3 measurement/probes/serv_p0_25_arrival_driver.py --attempt-id SERV-P0-25-TAIL-<UTC>-TRACKGPU --run-root /workspace/runs --model-path <pinned-model-path> --model-identity-json <verified-model-identity.json> --python-executable <vllm-0.23-venv>/bin/python"
+      note: "P-021 path B: driver freezes 10K/rate/seed/C8/128-in/32-out and starts at request 0; serving_burst_runner.py is the hash-pinned open-loop executor; gpu_campaign_runner.py remains untouched and provenance-only"
       parser_check: "python3 measurement/parsers/serving_tail_parser.py <serving_result.json>"
     time_estimate:
       basis: >
@@ -345,7 +468,12 @@ targets:
     exact_argv:
       cpu_smoke_test: "python3 measurement/probes/multistream_aggregate_probe.py --backend mock_aggregate --num-objects 1,2,4,8 --object-bytes 65536,2097152,352321536 --direction h2d,d2h --repeats 5 --out runs/<run_id>/v2gapa_smoke.json"
       parser_check: "python3 measurement/parsers/multistream_aggregate_parser.py runs/<run_id>/v2gapa_smoke.json"
-      gpu_run: "python3 measurement/probes/multistream_aggregate_probe.py --backend <pcie_multiobject_gpu_backend> --num-objects 1,2,4,8 --object-bytes 65536,2097152,352321536 --direction h2d,d2h --repeats 5 --out runs/<run_id>/v2gapa.json   # TRACK_GPU only"
+      gpu_run: "python3 measurement/probes/multistream_aggregate_probe.py --backend gpu --num-objects 1,2,4,8 --object-bytes 65536,2097152,352321536 --direction h2d,d2h --repeats 5 --out /workspace/runs/<attempt_id>/artifacts/v2gapa.json   # TRACK_GPU only"
+    measurement_status: >
+      PASS on 20260822T121400Z__track_gpu_v2gapa_multistream_attempt2: 24
+      unique cells x n=5, copy_streams=1, strict parser and exact-grid audit PASS.
+      Attempt1 parser failure is preserved. FIT-side only; IR/production mapping
+      remains PENDING_S_GT_1_SEMANTICS / UNSUPPORTED_UNTIL_MEASURED.
     time_estimate:
       basis: >
         Same class as target_4: PCIe transfer microbenchmark, ms-scale x n=5.

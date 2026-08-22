@@ -1,0 +1,11 @@
+target: target_v2_gap_a
+backend: gpu
+num_objects: [1, 2, 4, 8]
+object_bytes: [65536, 2097152, 352321536]
+directions: [h2d, d2h]
+repeats: 5
+copy_streams_per_object: 1
+aggregate_completion_semantics: latest_per_object_cuda_event_from_common_start
+split: FIT-side
+ir_evaluation_point_fields: PENDING_S_GT_1_SEMANTICS
+production_stream_semantics_status: UNSUPPORTED_UNTIL_MEASURED

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/track_gpu/measurement/parsers/multistream_aggregate_parser.py", line 151, in <module>
+    raise SystemExit(main())
+  File "/workspace/track_gpu/measurement/parsers/multistream_aggregate_parser.py", line 144, in main
+    root = validate(load_json(args.path))
+  File "/workspace/track_gpu/measurement/parsers/multistream_aggregate_parser.py", line 134, in validate
+    raise ValidationError(
+measurement.parsers.common.ValidationError: cells[0]: non-physical aggregate 0.0147136 ms > serialized sum 0.0109376 ms (aggregate cannot exceed running all objects serially)

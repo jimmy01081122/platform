@@ -1,0 +1,2 @@
+GPU attempt2 exact argv and parser/audit argv are preserved in the three source attempt manifests listed by manifest.json.
+Local postflight commands: ATTEMPT_SHA256SUMS verification for all five source attempts; strict parser output inspection; exact-grid audit output inspection; derived descriptive bandwidth calculation from attempt2/v2gapa.json.

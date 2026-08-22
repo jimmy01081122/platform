@@ -1,0 +1,18 @@
+{
+  "attempt_id": "20260822T104829Z__track_gpu_target4_gap4_validation",
+  "cwd": "/root",
+  "duration_ns": 3705345786,
+  "exact_argv": [
+    "/bin/bash",
+    "-c",
+    "cd /workspace/track_gpu; python3 measurement/parsers/component_eval_parser.py /workspace/runs/20260822T104829Z__track_gpu_target4_component_pcie/component_pcie.json --enforce-gap4"
+  ],
+  "failure_classification": "COMMAND_NONZERO",
+  "finished_at_utc": "2026-08-22T10:57:27Z",
+  "owner_note": "OWNER-specified GAP-4 parser check against formal target_4 result; failure is preserved as result",
+  "returncode": 1,
+  "schema_version": "track-gpu-attempt-v1",
+  "started_at_utc": "2026-08-22T10:57:24Z",
+  "status": "FAIL",
+  "target": "target_4_gap4_validation"
+}

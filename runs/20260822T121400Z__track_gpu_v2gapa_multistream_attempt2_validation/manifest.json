@@ -1,0 +1,18 @@
+{
+  "attempt_id": "20260822T121400Z__track_gpu_v2gapa_multistream_attempt2_validation",
+  "cwd": "/workspace/track_gpu",
+  "duration_ns": 3759975196,
+  "exact_argv": [
+    "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+    "measurement/parsers/multistream_aggregate_parser.py",
+    "/workspace/runs/20260822T121400Z__track_gpu_v2gapa_multistream_attempt2/v2gapa.json"
+  ],
+  "failure_classification": null,
+  "finished_at_utc": "2026-08-22T12:13:27Z",
+  "owner_note": "Strict frozen parser validation for attempt2; no tolerance or parser change; copy_streams=1 and physical aggregate envelope enforced",
+  "returncode": 0,
+  "schema_version": "track-gpu-attempt-v1",
+  "started_at_utc": "2026-08-22T12:13:24Z",
+  "status": "PASS",
+  "target": "target_v2_gap_a_parser"
+}

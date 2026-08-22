@@ -1,0 +1,18 @@
+{
+  "attempt_id": "20260822T120900Z__track_gpu_v2gapa_multistream_validation",
+  "cwd": "/workspace/track_gpu",
+  "duration_ns": 3613853481,
+  "exact_argv": [
+    "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+    "measurement/parsers/multistream_aggregate_parser.py",
+    "/workspace/runs/20260822T120900Z__track_gpu_v2gapa_multistream/v2gapa.json"
+  ],
+  "failure_classification": "COMMAND_NONZERO",
+  "finished_at_utc": "2026-08-22T12:10:07Z",
+  "owner_note": "Parser validation for V2-GAP-A attempt 20260822T120900Z; enforce copy_streams=1, 24 cells x n=5, physical aggregate envelope",
+  "returncode": 1,
+  "schema_version": "track-gpu-attempt-v1",
+  "started_at_utc": "2026-08-22T12:10:04Z",
+  "status": "FAIL",
+  "target": "target_v2_gap_a_parser"
+}

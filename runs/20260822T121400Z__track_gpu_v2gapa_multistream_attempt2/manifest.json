@@ -1,0 +1,29 @@
+{
+  "attempt_id": "20260822T121400Z__track_gpu_v2gapa_multistream_attempt2",
+  "cwd": "/workspace/track_gpu",
+  "duration_ns": 7021039930,
+  "exact_argv": [
+    "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+    "measurement/probes/multistream_aggregate_probe.py",
+    "--backend",
+    "gpu",
+    "--num-objects",
+    "1,2,4,8",
+    "--object-bytes",
+    "65536,2097152,352321536",
+    "--direction",
+    "h2d,d2h",
+    "--repeats",
+    "5",
+    "--out",
+    "/workspace/runs/20260822T121400Z__track_gpu_v2gapa_multistream_attempt2/v2gapa.json"
+  ],
+  "failure_classification": null,
+  "finished_at_utc": "2026-08-22T12:13:11Z",
+  "owner_note": "Attempt2 after fail-closed instrumentation correction; no parser relaxation; aggregate wait-all=latest per-object completion from common CUDA event; backend before=ecaf1382260baa1e4d8eb46f5705275c392298a2ecc197d2b264fd883a940318 after=3c41cbc8ecd464ebcd5bd08d3ef0be34d14234cbc63dd23c16dd8691436c6bcd; probe=17fa86fcac1b4e9742ff5221356afb61eb396ed3e55fe2f10bb76975590844d1; parser=a0b1f08b0a2e7118efab7f5826ae075d43eef067755a980897ef469d994c12e0; frozen 24 cells n=5 copy_streams=1 FIT-side",
+  "returncode": 0,
+  "schema_version": "track-gpu-attempt-v1",
+  "started_at_utc": "2026-08-22T12:13:04Z",
+  "status": "PASS",
+  "target": "target_v2_gap_a"
+}

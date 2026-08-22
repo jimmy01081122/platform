@@ -1,0 +1,1 @@
+["/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python", "measurement/probes/multistream_aggregate_probe.py", "--backend", "gpu", "--num-objects", "1,2,4,8", "--object-bytes", "65536,2097152,352321536", "--direction", "h2d,d2h", "--repeats", "5", "--out", "/workspace/runs/20260822T120900Z__track_gpu_v2gapa_multistream/v2gapa.json"]

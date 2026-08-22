@@ -1,0 +1,3134 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "evidence": "measured",
+  "metric_scope": "MoE-replay; not full-model TPOT/throughput",
+  "split": "calibration",
+  "experiment": {
+    "split": "calibration",
+    "target_gpu_regex": "RTX PRO 6000",
+    "trust": "hardware-calibration"
+  },
+  "seed": 20260718,
+  "command": [
+    "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+    "/workspace/track_gpu/gpu_run_package_v2/scripts/benchmark.py",
+    "--experiment",
+    "rtx-pro-6000-calibration",
+    "--package-root",
+    "/workspace/track_gpu/gpu_run_package_v2",
+    "--output",
+    "/workspace/runs/TARGET4-PARTIAL-EXISTING-HARNESS-20260822T103709Z-TRACKGPU/artifacts/result.json",
+    "--profiler-output",
+    "/workspace/runs/TARGET4-PARTIAL-EXISTING-HARNESS-20260822T103709Z-TRACKGPU/artifacts/profiler.json"
+  ],
+  "package_id": "edgehetero-benchmark-driven-m0-20260718",
+  "package_revision": "benchmark-driven-pipeline-smoke-v1.22-g25-s4-r5-application-review-candidate",
+  "package_manifest_sha256": "2d54fb8ff4083bb9f201d4cef29d16360bdc136b9dc327f8f34dad8667bee77b",
+  "checksums_sha256": "17b0456f7ac5d42ddfcd997f47e618e5b40abff24d3adf07c3721062c2a8a934",
+  "device": {
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "capability": [
+      12,
+      0
+    ],
+    "total_memory_bytes": 101971722240
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "torch": "2.11.0+cu130",
+    "cuda_runtime": "13.0"
+  },
+  "timestamp_utc": "2026-08-22T10:44:09Z",
+  "raw_profiler_output": "profiler.json",
+  "raw_benchmarks": [
+    {
+      "record_id": "calibration-685a48c1c4caf18feaf02083",
+      "operation": "cpu_runtime",
+      "case": "python_function_call",
+      "calibration_role": "cpu_runtime",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 10000000,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        2.1363208700000002e-05,
+        2.14717903e-05,
+        2.13978156e-05,
+        2.1422561500000002e-05,
+        2.36668051e-05
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 2.186443624e-05,
+        "variance": 1.016730374018677e-12,
+        "stdev": 1.0083304884900967e-06,
+        "ci95": [
+          2.0612629289489362e-05,
+          2.311624319051064e-05
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "implementation": "perf_counter_ns_python_function_call"
+    },
+    {
+      "record_id": "calibration-c8911669acdca6637554dbd9",
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 55804,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.01450804045324932,
+        0.01399890373841929,
+        0.013959216230719348,
+        0.01391974637759782,
+        0.013938269985336513
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.014064835357064459,
+        "variance": 6.225068518865307e-08,
+        "stdev": 0.000249500872120025,
+        "ci95": [
+          0.013755088771551606,
+          0.014374581942577312
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 65536,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-dae451f82faadce827ee76e6",
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 48982,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.013900011061142359,
+        0.013916214996707975,
+        0.013889727219230406,
+        0.01390712240075117,
+        0.013906466966261202
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.013903908528818624,
+        "variance": 9.615588069560709e-11,
+        "stdev": 9.805910498041835e-06,
+        "ci95": [
+          0.013891734834719663,
+          0.013916082222917585
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 65536,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-2bbd7860507d005793548eab",
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 24822,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.025669989563976765,
+        0.025575788579530002,
+        0.02537685508319233,
+        0.025457355000415457,
+        0.025380661481624163
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.025492129941747745,
+        "variance": 1.6388905014247695e-08,
+        "stdev": 0.00012801915877808172,
+        "ci95": [
+          0.025333198644334632,
+          0.025651061239160857
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 65536,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-994564918dc0bf869899e1e2",
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 31986,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.024988753929942004,
+        0.025055294195482986,
+        0.024736362319647657,
+        0.024103866288058644,
+        0.02411966986349985
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.024600789319326227,
+        "variance": 2.1346992243387696e-07,
+        "stdev": 0.0004620280537303736,
+        "ci95": [
+          0.024027197688811657,
+          0.025174380949840796
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 65536,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-107bab2db3d44307695db0ad",
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 19842,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04772875085735907,
+        0.047683923454273136,
+        0.04781331478642211,
+        0.04773958781207477,
+        0.04776727849227649
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.047746571080481116,
+        "variance": 2.2936426613125696e-09,
+        "stdev": 4.789198953178464e-05,
+        "ci95": [
+          0.0476871148545175,
+          0.04780602730644473
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 65536,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-fd99e83b5fddd3b7629ef00c",
+      "operation": "d2h_pinned",
+      "case": "bytes=65536,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 18350,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04511609651737057,
+        0.045021413860269074,
+        0.045006449436946525,
+        0.04524882719367337,
+        0.04525882897649864
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.045130323196951636,
+        "variance": 1.4491320765587265e-08,
+        "stdev": 0.00012037990183409881,
+        "ci95": [
+          0.044980875769210595,
+          0.045279770624692676
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 65536,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-7ff9716e6b3ed32ed8249b90",
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 29426,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.01951578068051001,
+        0.019500763534746057,
+        0.019482550060028758,
+        0.01948925177245463,
+        0.01948357056219946
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.01949438332198778,
+        "variance": 1.9545718250291168e-10,
+        "stdev": 1.3980600219694134e-05,
+        "ci95": [
+          0.019477026896959387,
+          0.019511739747016175
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 1048576,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-3055ab8889cfa15bb16ae822",
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 25827,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.018690621704711276,
+        0.01868916831790314,
+        0.018673210603395912,
+        0.018673259049622852,
+        0.018673796684580333
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0186800112720427,
+        "variance": 8.172386732062838e-11,
+        "stdev": 9.040125404032202e-06,
+        "ci95": [
+          0.018668788273290375,
+          0.018691234270795026
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 1048576,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-e30d48345fd0c6c16d3145a7",
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 24169,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.02442487856910583,
+        0.02425856414483041,
+        0.024203933273252928,
+        0.024195084450897845,
+        0.024214345286543454
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.024259361144926096,
+        "variance": 9.156705693897708e-09,
+        "stdev": 9.56906771524672e-05,
+        "ci95": [
+          0.024140564524050435,
+          0.024378157765801756
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 1048576,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-22aa3a3775baa1bcdf06eb29",
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 28882,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.024213326108578657,
+        0.024199327878712304,
+        0.02414590045608532,
+        0.02414019254260872,
+        0.02418115384839065
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.02417598016687513,
+        "variance": 1.0380362605028315e-09,
+        "stdev": 3.221857011884344e-05,
+        "ci95": [
+          0.02413598194161996,
+          0.024215978392130303
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 1048576,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-d8230abcc835969e0d861d09",
+      "operation": "h2d_pinned",
+      "case": "bytes=1048576,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 19717,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0457725008330771,
+        0.04568218787047662,
+        0.04571597281216717,
+        0.04566149405196816,
+        0.045729707811826406
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04571237267590309,
+        "variance": 1.8571550139719796e-09,
+        "stdev": 4.309472141657235e-05,
+        "ci95": [
+          0.045658872090117604,
+          0.04576587326168858
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 1048576,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-8fa6f718ff4af2e1386abbec",
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 20765,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04525223200848784,
+        0.0452969156803064,
+        0.0452507652835676,
+        0.04515170403454581,
+        0.045087318043808694
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04520778701014327,
+        "variance": 7.356120427754919e-09,
+        "stdev": 8.57678286291248e-05,
+        "ci95": [
+          0.04510130925782526,
+          0.045314264762461275
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 1048576,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-98fca37d55fb1b5932a8d8d2",
+      "operation": "h2d_pinned",
+      "case": "bytes=22020096,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2289,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.3987475020649028,
+        0.39655578266642094,
+        0.39622359569544563,
+        0.3961508814660469,
+        0.39642344650195227
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.3968202416789537,
+        "variance": 1.1864367753272445e-06,
+        "stdev": 0.0010892367857023764,
+        "ci95": [
+          0.39546799239693914,
+          0.39817249096096824
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 22020096,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-f1943431c29fea1691ba1a20",
+      "operation": "d2h_pinned",
+      "case": "bytes=22020096,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2506,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.3841039074580382,
+        0.3840614312758754,
+        0.38441541569763815,
+        0.38421971837901536,
+        0.38412943213631034
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.3841859809893755,
+        "variance": 1.9806241319350535e-08,
+        "stdev": 0.0001407346486098947,
+        "ci95": [
+          0.3840112638571272,
+          0.3843606981216238
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 22020096,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-97a442cf2bec35c84e5cfdd5",
+      "operation": "h2d_pinned",
+      "case": "bytes=22020096,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2451,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.3966672563494492,
+        0.39625149014432887,
+        0.39679278806003926,
+        0.3961745674198669,
+        0.3959446210172506
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.396366144598187,
+        "variance": 1.2505562965438373e-07,
+        "stdev": 0.00035363205405390463,
+        "ci95": [
+          0.3959271228010271,
+          0.39680516639534685
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 22020096,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-62b4da9bb249393efb57ba2d",
+      "operation": "d2h_pinned",
+      "case": "bytes=22020096,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2502,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.3847133962751674,
+        0.3847183971572742,
+        0.38488693908154725,
+        0.3848399795788369,
+        0.38471854352455537
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.3847754511234762,
+        "variance": 6.734480104759988e-09,
+        "stdev": 8.206387819717021e-05,
+        "ci95": [
+          0.3846735716957631,
+          0.38487733055118933
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 22020096,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-5693687ce1695de14534fe2e",
+      "operation": "h2d_pinned",
+      "case": "bytes=22020096,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2411,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.3946843568540025,
+        0.3943928006970007,
+        0.3943329300439392,
+        0.3947581002841793,
+        0.39451163065280226
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.3945359637063848,
+        "variance": 3.3418899573190094e-08,
+        "stdev": 0.00018280836844408982,
+        "ci95": [
+          0.3943090135260203,
+          0.3947629138867492
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 22020096,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-f66da1567871e145cc90aaf8",
+      "operation": "d2h_pinned",
+      "case": "bytes=22020096,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2493,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.385806870565709,
+        0.38593951736737864,
+        0.38601027212131467,
+        0.38619832307805607,
+        0.3861344969038307
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.38601789600725783,
+        "variance": 2.4220692191375153e-08,
+        "stdev": 0.00015562998487237334,
+        "ci95": [
+          0.3858246868372536,
+          0.38621110517726204
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 22020096,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-c6acf1e81d620c47442996eb",
+      "operation": "h2d_pinned",
+      "case": "bytes=44040192,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1242,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7931625685638084,
+        0.7914280300171095,
+        0.7898069618212812,
+        0.791106784593272,
+        0.7896614013278734
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7910331492646689,
+        "variance": 2.0202518925596524e-06,
+        "stdev": 0.0014213556530860432,
+        "ci95": [
+          0.7892685860525172,
+          0.7927977124768207
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 44040192,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-b08f47ebb5c08af2778406d3",
+      "operation": "d2h_pinned",
+      "case": "bytes=44040192,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1277,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7679778407491924,
+        0.7678731680849892,
+        0.7675712424138607,
+        0.7675650289680404,
+        0.7680851899746721
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7678144940381509,
+        "variance": 5.620131393866483e-08,
+        "stdev": 0.00023706816306426478,
+        "ci95": [
+          0.7675201822250538,
+          0.7681088058512481
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 44040192,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-10faefde3733cf2286fe2777",
+      "operation": "h2d_pinned",
+      "case": "bytes=44040192,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1238,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7884721648134592,
+        0.7889124757831432,
+        0.7892052276069013,
+        0.7884766019411349,
+        0.7909847130105261
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.789210236631033,
+        "variance": 1.0801057250890892e-06,
+        "stdev": 0.0010392813503037036,
+        "ci95": [
+          0.7879200052706836,
+          0.7905004679913823
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 44040192,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-1b01f4983c04ce7fe3869c15",
+      "operation": "d2h_pinned",
+      "case": "bytes=44040192,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1277,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7684107267399177,
+        0.768309351981573,
+        0.7684019801200324,
+        0.7686365138018794,
+        0.7689951730129209
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7685507491312646,
+        "variance": 7.62198094932036e-08,
+        "stdev": 0.00027607935361631736,
+        "ci95": [
+          0.7682080062927863,
+          0.768893491969743
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 44040192,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-ae3cc601518a197d31968c56",
+      "operation": "h2d_pinned",
+      "case": "bytes=44040192,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1222,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7872545707440415,
+        0.7857768406844569,
+        0.7865506186227752,
+        0.7860017517389526,
+        0.7858103051318279
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7862788173844109,
+        "variance": 3.935550605042723e-07,
+        "stdev": 0.0006273396691619877,
+        "ci95": [
+          0.78549999717898,
+          0.7870576375898417
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 44040192,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-d331a5f83229044473dda302",
+      "operation": "d2h_pinned",
+      "case": "bytes=44040192,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1275,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.7696813246783089,
+        0.7692172181372549,
+        0.7691857670802696,
+        0.7699024873621324,
+        0.7696159811580883
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7695205556832108,
+        "variance": 9.623039346254241e-08,
+        "stdev": 0.00031021024074414825,
+        "ci95": [
+          0.7691354405449543,
+          0.7699056708214672
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 44040192,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-3a195945efb460378b8d642f",
+      "operation": "h2d_pinned",
+      "case": "bytes=88080384,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 627,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5779531865218799,
+        1.5803349204420853,
+        1.5792606238162878,
+        1.5787592010254685,
+        1.581924560157496
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5796464983926435,
+        "variance": 2.366747805195783e-06,
+        "stdev": 0.0015384238054566702,
+        "ci95": [
+          1.5777365991736032,
+          1.5815563976116838
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 88080384,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-8ba19d6de8fda35fe720a6bd",
+      "operation": "d2h_pinned",
+      "case": "bytes=88080384,streams=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 647,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5346766476284777,
+        1.5346953260843315,
+        1.5357341501038446,
+        1.5350453112925038,
+        1.5360446086806898
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5352392087579694,
+        "variance": 3.858788963968493e-07,
+        "stdev": 0.0006211915134617096,
+        "ci95": [
+          1.534468021272293,
+          1.5360103962436458
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 88080384,
+      "copy_streams": 1,
+      "calibration_role": "pcie_transfer"
+    },
+    {
+      "record_id": "calibration-8773b178b6231dba8cf81867",
+      "operation": "h2d_pinned",
+      "case": "bytes=88080384,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 630,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5773834712921626,
+        1.5750108506944445,
+        1.5746063716827876,
+        1.5758337596106151,
+        1.575463092137897
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5756595090835812,
+        "variance": 1.1427111625220428e-06,
+        "stdev": 0.0010689766894193917,
+        "ci95": [
+          1.5743324120008055,
+          1.5769866061663569
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 88080384,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-8297ec1e6ef00f7456cb55ff",
+      "operation": "d2h_pinned",
+      "case": "bytes=88080384,streams=2",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 643,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5354940791152314,
+        1.535889621099825,
+        1.537356742989405,
+        1.5367118396432737,
+        1.5364746283594966
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5363853822414462,
+        "variance": 5.245703449530282e-07,
+        "stdev": 0.0007242722864731387,
+        "ci95": [
+          1.5354862235899738,
+          1.5372845408929185
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 88080384,
+      "copy_streams": 2,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-6d80670973a86ee25940100c",
+      "operation": "h2d_pinned",
+      "case": "bytes=88080384,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 621,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5757372575105677,
+        1.5747539133265398,
+        1.5742733966133253,
+        1.5719443304335246,
+        1.570897297390801
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.5735212390549518,
+        "variance": 4.0919188263203335e-06,
+        "stdev": 0.0020228491852632845,
+        "ci95": [
+          1.5710099427102988,
+          1.5760325353996048
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "h2d",
+      "bytes": 88080384,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-e393939f6377b72164466dba",
+      "operation": "d2h_pinned",
+      "case": "bytes=88080384,streams=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 645,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        1.5371569729590602,
+        1.5375375673752423,
+        1.5374149292938468,
+        1.537437261537064,
+        1.5373461346293604
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 1.537378573158915,
+        "variance": 2.0051040469455132e-08,
+        "stdev": 0.0001416016965627712,
+        "ci95": [
+          1.537202779617031,
+          1.537554366700799
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "direction": "d2h",
+      "bytes": 88080384,
+      "copy_streams": 4,
+      "calibration_role": "copy_engine"
+    },
+    {
+      "record_id": "calibration-a0461166f83f66939cfebd77",
+      "operation": "device_memory",
+      "case": "bytes=1048576",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 101462,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.002535454843546722,
+        0.002557805084970235,
+        0.0026588344444263925,
+        0.00264347820316196,
+        0.002626982914092838
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0026045110980396297,
+        "variance": 2.981165425606965e-09,
+        "stdev": 5.460004968502286e-05,
+        "ci95": [
+          0.002536727050572925,
+          0.0026722951455063343
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "memory",
+      "bytes": 1048576,
+      "implementation": "cuda_device_to_device_copy"
+    },
+    {
+      "record_id": "calibration-99978d77c3a13e175e5aed83",
+      "operation": "device_memory",
+      "case": "bytes=22020096",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 94985,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008191951232225813,
+        0.008191871552704046,
+        0.008192259669084264,
+        0.008192023200826118,
+        0.008192001995792099
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008192021530126468,
+        "variance": 2.1132391687440564e-14,
+        "stdev": 1.4536984449135442e-07,
+        "ci95": [
+          0.008191841058561038,
+          0.008192202001691897
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "memory",
+      "bytes": 22020096,
+      "implementation": "cuda_device_to_device_copy"
+    },
+    {
+      "record_id": "calibration-de32d275de0477ef2aa31e2b",
+      "operation": "queue_depth",
+      "case": "depth=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 84919,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.002934111558756083,
+        0.002937526858084984,
+        0.0029469271518920786,
+        0.0029341297070820797,
+        0.0029349526707757906
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.002937529589318203,
+        "variance": 2.9549207776715666e-11,
+        "stdev": 5.4359183011443125e-06,
+        "ci95": [
+          0.002930781087324606,
+          0.0029442780913118004
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "queueing",
+      "queue_depth": 1,
+      "implementation": "fixed_shape_queued_cuda_add"
+    },
+    {
+      "record_id": "calibration-87a217addab4a21b7790b038",
+      "operation": "queue_depth",
+      "case": "depth=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 57130,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.01161933630501433,
+        0.011652347425143313,
+        0.01165368073295007,
+        0.011660215864243283,
+        0.011644107198289537
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.011645937505128106,
+        "variance": 2.539725153356435e-10,
+        "stdev": 1.5936515156571824e-05,
+        "ci95": [
+          0.011626152880277787,
+          0.011665722129978425
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "queueing",
+      "queue_depth": 4,
+      "implementation": "fixed_shape_queued_cuda_add"
+    },
+    {
+      "record_id": "calibration-b48baa24f7fac05a36c326aa",
+      "operation": "contention_fixed_shape",
+      "case": "expert_tokens=32,concurrency=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 16561,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.045062888655482004,
+        0.04506275229289634,
+        0.04505977811433866,
+        0.045064126975178885,
+        0.045059140527113774
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.045061737313001934,
+        "variance": 4.662003840884012e-12,
+        "stdev": 2.159167395290141e-06,
+        "ci95": [
+          0.0450590567823787,
+          0.04506441784362517
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "probe_family": "contention",
+      "concurrency": 1,
+      "fixed_expert_tokens": 32,
+      "implementation": "fixed_shape_dense_expert_gemm_per_stream"
+    },
+    {
+      "record_id": "calibration-4ac85005bac52a1db16c0feb",
+      "operation": "contention_fixed_shape",
+      "case": "expert_tokens=32,concurrency=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 6440,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.12504333116993402,
+        0.1247269340183424,
+        0.12463478420091711,
+        0.124405817067401,
+        0.12436061882824631
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.12463429705696819,
+        "variance": 7.574840700014555e-08,
+        "stdev": 0.0002752242849025964,
+        "ci95": [
+          0.12429261575632013,
+          0.12497597835761624
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "probe_family": "contention",
+      "concurrency": 4,
+      "fixed_expert_tokens": 32,
+      "implementation": "fixed_shape_dense_expert_gemm_per_stream",
+      "calibration_role": "contention",
+      "base_service_ms": 0.045061737313001934
+    },
+    {
+      "record_id": "calibration-161826f2cedf662594d09f9e",
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 4456,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.19773025101776398,
+        0.19774955050949564,
+        0.1977313878934302,
+        0.19783081657368576,
+        0.19781124313601042
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.1977706498260772,
+        "variance": 2.2216496394103883e-09,
+        "stdev": 4.713437853001128e-05,
+        "ci95": [
+          0.1977121341476113,
+          0.1978291655045431
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-222a4e646dcb95b467fc242e",
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 46642,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.01228226458482966,
+        0.012282320854108823,
+        0.012282261967653885,
+        0.01228227505353276,
+        0.01228210101134372
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.01228224469429377,
+        "variance": 7.015198335957218e-15,
+        "stdev": 8.375678083568647e-08,
+        "ci95": [
+          0.012282140713186783,
+          0.012282348675400756
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-2dae91fc376dd1ceff460d35",
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 11829,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06962142352250032,
+        0.06961594382548979,
+        0.06961523177446582,
+        0.06961577871220888,
+        0.06961175407598645
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06961602638213024,
+        "variance": 1.2020320322452102e-11,
+        "stdev": 3.4670333604469546e-06,
+        "ci95": [
+          0.06961172218176359,
+          0.06962033058249689
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-a762b6ab4ee2a9a047c5cfae",
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 4481,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.20765518157829585,
+        0.20773369232157304,
+        0.20789966272525665,
+        0.20796259118360857,
+        0.20794303160218144
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.2078388318821831,
+        "variance": 1.8664024782312055e-08,
+        "stdev": 0.00013661634156392877,
+        "ci95": [
+          0.20766922748374908,
+          0.20800843628061713
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-ad6d83d0837fa217c8af1482",
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1511,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.671460558766959,
+        0.6806526714251737,
+        0.6814304152361846,
+        0.6825062658990321,
+        0.6826886038840172
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.6797477030422734,
+        "variance": 2.214645378428032e-05,
+        "stdev": 0.004706001889532166,
+        "ci95": [
+          0.6739053666836318,
+          0.685590039400915
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-dbb25cda0b2e3b14e175fa5b",
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 28776,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.02866861334369353,
+        0.028666997108321605,
+        0.028667071344854436,
+        0.028667915520284915,
+        0.028668299429211844
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.028667779349273264,
+        "variance": 5.244358858744078e-13,
+        "stdev": 7.241794569541501e-07,
+        "ci95": [
+          0.028666880305866387,
+          0.02866867839268014
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-809c21dc92b33087b50da387",
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 5618,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.170605603466258,
+        0.17061724990404725,
+        0.17061831459705412,
+        0.17062095460114254,
+        0.17061409928188412
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.1706152443700772,
+        "variance": 3.507836310887166e-11,
+        "stdev": 5.922698971657403e-06,
+        "ci95": [
+          0.17060789154694714,
+          0.17062259719320724
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-3c692313db18ae4769a159b3",
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=prefill,concurrency=4,expert_tokens=2816",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 1496,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.6946660822088068,
+        0.7033352775369736,
+        0.7048224790848513,
+        0.7055134492761949,
+        0.7065673664929395
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.7029809309199532,
+        "variance": 2.2982434900442327e-05,
+        "stdev": 0.00479399988531939,
+        "ci95": [
+          0.6970293481346539,
+          0.7089325137052525
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-27bdf2e9df0ff7ddf8e19e2e",
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 15104,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.05734633995314776,
+        0.057346800626334495,
+        0.05734658645371259,
+        0.05734655816676253,
+        0.057346731929455774
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.057346603425882624,
+        "variance": 3.178887776372303e-14,
+        "stdev": 1.7829435707201455e-07,
+        "ci95": [
+          0.057346382079689125,
+          0.05734682477207612
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-02395a393191499aca706025",
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 45356,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008196267493766328,
+        0.008196284987747968,
+        0.008196265475229987,
+        0.008196262111002748,
+        0.008196273549375358
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008196270723424479,
+        "variance": 8.090124206304703e-17,
+        "stdev": 8.994511774579375e-09,
+        "ci95": [
+          0.008196259557053448,
+          0.00819628188979551
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-aaf9cb9c0170bac3be240874",
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 15855,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04882425231837354,
+        0.048734087359074425,
+        0.04875442086240539,
+        0.04871768428113174,
+        0.048696446125532165
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.048745378189303454,
+        "variance": 2.3979201088486996e-09,
+        "stdev": 4.896856245438189e-05,
+        "ci95": [
+          0.048684585435799885,
+          0.04880617094280702
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-93d1b9d0a9392d995f9f4133",
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 13372,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06144971331186434,
+        0.061444532717911025,
+        0.0614452128135049,
+        0.06144299907952485,
+        0.061447554350683796
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06144600245469778,
+        "variance": 6.995690981811503e-12,
+        "stdev": 2.6449368578118273e-06,
+        "ci95": [
+          0.06144271885831736,
+          0.061449286051078196
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-618270ad1f4f785eb6532a9b",
+      "operation": "selected_expert",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 19219,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04523443762621787,
+        0.04524995127095908,
+        0.04525590901866317,
+        0.04525547711371234,
+        0.0452411734379878
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.045247389693508056,
+        "variance": 8.773620636985228e-11,
+        "stdev": 9.36676071915218e-06,
+        "ci95": [
+          0.04523576118846348,
+          0.04525901819855263
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-ac528081bc49f3e6844ceec9",
+      "operation": "gather_scatter",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 62752,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008945739372599678,
+        0.008906447601707416,
+        0.008910964545639482,
+        0.008942710569110347,
+        0.008903456731209762
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008921863764053337,
+        "variance": 4.2497596153906255e-10,
+        "stdev": 2.0614945101529195e-05,
+        "ci95": [
+          0.008896271032446924,
+          0.008947456495659749
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-a0ce7a67c78c2272fa5c6acc",
+      "operation": "dequant",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 10912,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04903831929405414,
+        0.04892226747753334,
+        0.0488968287045655,
+        0.04893582587367978,
+        0.04887774403144188
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.048934197076254925,
+        "variance": 3.892436504379813e-09,
+        "stdev": 6.238939416583409e-05,
+        "ci95": [
+          0.04885674283070108,
+          0.04901165132180877
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-0d6ddf1e4130b9e006de24c9",
+      "operation": "grouped_gemm",
+      "case": "calibration-livecodebench-execution-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 15720,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.049030123412154104,
+        0.04903728300681855,
+        0.0490160138855757,
+        0.04902421402870547,
+        0.04902159324432451
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04902584551551566,
+        "variance": 6.663027843101514e-11,
+        "stdev": 8.162737189877861e-06,
+        "ci95": [
+          0.04901571176347095,
+          0.04903597926756038
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-2c56ce3ca1408791ae85a69b",
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-livecodebench-execution-q0,concurrency=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 345,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.09013253364010133,
+        0.09013029457866281,
+        0.09015397887299026,
+        0.09024423239887625,
+        0.09026635764301687
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0901854794267295,
+        "variance": 4.208526567399987e-09,
+        "stdev": 6.487315752605223e-05,
+        "ci95": [
+          0.09010494167604194,
+          0.09026601717741706
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        11094.77299276856,
+        11095.048614616835,
+        11092.133841467043,
+        11081.040565340909,
+        11078.324484463801
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 11088.26409973143,
+        "variance": 63.58640816473529,
+        "stdev": 7.974108612549449,
+        "ci95": [
+          11078.364523452363,
+          11098.163676010498
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      },
+      "tokens": 32,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "grouped_gemm": 32,
+        "gather_scatter": 32
+      },
+      "memory_bytes": 3670016,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "queue_depth": 1,
+      "transfers": [],
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-29bcc716f8543851e3ee0424",
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-livecodebench-execution-q0,concurrency=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 419,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.018505837297098163,
+        0.018516617913803792,
+        0.018528949673818802,
+        0.018542149755436936,
+        0.018536679215533636
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.018526046771138265,
+        "variance": 2.1952700318199814e-10,
+        "stdev": 1.4816443675254806e-05,
+        "ci95": [
+          0.01850765267576354,
+          0.018544440866512992
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        54037.00378133156,
+        54005.542732213464,
+        53969.59987499932,
+        53931.179134543425,
+        53947.09528997003
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 53978.08416261156,
+        "variance": 1864.4673841613196,
+        "stdev": 43.17947873887918,
+        "ci95": [
+          53924.47835358193,
+          54031.689971641186
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      },
+      "tokens": 128,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "grouped_gemm": 32,
+        "gather_scatter": 32
+      },
+      "memory_bytes": 14680064,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "queue_depth": 1,
+      "transfers": [],
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-02738a81adc6f293fe9dae11",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 9038,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0886991078359254,
+        0.08872621506287688,
+        0.0887738721880878,
+        0.08877971368069194,
+        0.08877961913630297
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.088751705580777,
+        "variance": 1.367816997227183e-09,
+        "stdev": 3.6984010020915565e-05,
+        "ci95": [
+          0.08870579122895444,
+          0.08879761993259955
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-3499e57a229ce5188510f94f",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 63646,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008907404303442086,
+        0.008921514715550662,
+        0.008909925458358047,
+        0.00889558201443335,
+        0.008901243824484257
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.00890713406325368,
+        "variance": 9.570320539573367e-11,
+        "stdev": 9.78280151059673e-06,
+        "ci95": [
+          0.008894989058152458,
+          0.008919279068354904
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-dacf62de4c18a03b2018cee1",
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 14008,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04931424509655197,
+        0.04926948830578955,
+        0.0491659664413304,
+        0.04934711554335023,
+        0.049098221252197406
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.049239007327843906,
+        "variance": 1.0858222078818191e-08,
+        "stdev": 0.00010420279304710691,
+        "ci95": [
+          0.049109643213510405,
+          0.04936837144217741
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-3e9accf3b828bb5bbf3bde03",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=1,expert_tokens=208",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 9393,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.09280067686708186,
+        0.09286841140011179,
+        0.09286996440792013,
+        0.09284865766062493,
+        0.09286477255336421
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.09285049657782059,
+        "variance": 8.472814846936836e-10,
+        "stdev": 2.9108099984260115e-05,
+        "ci95": [
+          0.09281435989218786,
+          0.09288663326345331
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-0684748dbbcf39b23ab2ccb2",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 4009,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.23428420088005114,
+        0.23434284578448492,
+        0.23454886417669618,
+        0.23458173394530277,
+        0.23462252047151722
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.2344760330516104,
+        "variance": 2.3118511517269385e-08,
+        "stdev": 0.00015204772776095468,
+        "ci95": [
+          0.23428727112822006,
+          0.23466479497500076
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-055ac527fd593cc88cdf904c",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 40850,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.012282590831070226,
+        0.012282624448965346,
+        0.012282910574606029,
+        0.012282803744405981,
+        0.012282713349621327
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.012282728589733782,
+        "variance": 1.7205432135692963e-14,
+        "stdev": 1.3116947867432027e-07,
+        "ci95": [
+          0.012282565747424664,
+          0.0122828914320429
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-a8fcf1f5cf2fc22917d4377c",
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 11213,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.07304768931011996,
+        0.07303881681349216,
+        0.07303730903339037,
+        0.07305134173051091,
+        0.07305693739096082
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07304641885569484,
+        "variance": 6.931706077827956e-11,
+        "stdev": 8.325686805199891e-06,
+        "ci95": [
+          0.07303608280741554,
+          0.07305675490397413
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-dff2b1087fbe73c97962f541",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=prefill,concurrency=4,expert_tokens=832",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 3761,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.24966051730029415,
+        0.24993195415842695,
+        0.2498893382795882,
+        0.2499783350349392,
+        0.250072297692394
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.2499064884931285,
+        "variance": 2.3524768442284106e-08,
+        "stdev": 0.00015337786164334183,
+        "ci95": [
+          0.24971607525515618,
+          0.2500969017311008
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-47e45d8002ecafd60256903a",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 15657,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.05734613324411605,
+        0.05734637103836343,
+        0.057346148837181456,
+        0.05734595782213028,
+        0.05734635154703168
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.057346192497764584,
+        "variance": 2.941582738052892e-14,
+        "stdev": 1.715104293637239e-07,
+        "ci95": [
+          0.057345979573579495,
+          0.05734640542194967
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-afdc6c8ade3d1f0002166373",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 73015,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008196145015685989,
+        0.008196181796441656,
+        0.008196046376386702,
+        0.00819614835939105,
+        0.008196095696036345
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008196123448788348,
+        "variance": 2.8001220466679397e-15,
+        "stdev": 5.291617944133854e-08,
+        "ci95": [
+          0.008196057755206754,
+          0.008196189142369942
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-8b07f93be80bd0cb1d97cc31",
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 15061,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.049048282751705564,
+        0.04903835810542336,
+        0.04906561947559093,
+        0.04898462155593296,
+        0.049018723596955714
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.0490311210971217,
+        "variance": 9.632350338374235e-10,
+        "stdev": 3.103602799711045e-05,
+        "ci95": [
+          0.048992590956452045,
+          0.04906965123779136
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-61871add80f2408e9eb6066f",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 14014,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06144445851302715,
+        0.06144086974688258,
+        0.06144042550641323,
+        0.06144650550342515,
+        0.06144130092145578
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.061442712038240775,
+        "variance": 7.013517028061307e-12,
+        "stdev": 2.6483045572708037e-06,
+        "ci95": [
+          0.06143942426097955,
+          0.061445999815502
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-222e515777574a89d05fc2cb",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 19090,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04509483565205114,
+        0.04509081033713659,
+        0.045101073451414356,
+        0.04509544952056869,
+        0.04508954103608728
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.045094341999451615,
+        "variance": 2.0576157343371535e-11,
+        "stdev": 4.536094944263351e-06,
+        "ci95": [
+          0.04508871059660877,
+          0.045099973402294456
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-3e9c3445ec98426c526fbd39",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 67061,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008967931249161211,
+        0.008969278262048732,
+        0.008943776031570138,
+        0.00855983458186623,
+        0.008537599767783715
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008795683978486004,
+        "variance": 5.099193785678102e-08,
+        "stdev": 0.00022581394522212534,
+        "ci95": [
+          0.00851534388227948,
+          0.009076024074692528
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-413780089d2ce3a777b00c01",
+      "operation": "dequant",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 16649,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.046578549287635516,
+        0.04660983855777749,
+        0.04668173972418576,
+        0.046669887561283714,
+        0.046745187105362934
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04665704044724908,
+        "variance": 4.233454116006091e-09,
+        "stdev": 6.506499916242288e-05,
+        "ci95": [
+          0.04657626453189572,
+          0.04673781636260244
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-40528f4c99aa244a18af3b9a",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu-abstract_algebra-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 14762,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0491321100127227,
+        0.049131874339785005,
+        0.04913182058981676,
+        0.04913187847439795,
+        0.049131696551428496
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.049131875993630184,
+        "variance": 2.251072784060292e-14,
+        "stdev": 1.5003575520722692e-07,
+        "ci95": [
+          0.04913168972950018,
+          0.049132062257760185
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-069756adcd4ee4b76d9aefee",
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu-abstract_algebra-q0,concurrency=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 345,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.09020565972811934,
+        0.09020986695220505,
+        0.09021180747211843,
+        0.09022205739781476,
+        0.09023044973179914
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.09021596825641134,
+        "variance": 1.0189864173378403e-10,
+        "stdev": 1.0094485709226798e-05,
+        "ci95": [
+          0.09020343630630483,
+          0.09022850020651786
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        11085.778908042012,
+        11085.261887480885,
+        11085.02343564137,
+        11083.764090977387,
+        11082.733190097118
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 11084.512302447754,
+        "variance": 1.5381214388715643,
+        "stdev": 1.2402102397866115,
+        "ci95": [
+          11082.972624915456,
+          11086.051979980053
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      },
+      "tokens": 32,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "grouped_gemm": 32,
+        "gather_scatter": 32
+      },
+      "memory_bytes": 3670016,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "queue_depth": 1,
+      "transfers": [],
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-ab61112b7f9a6758b7f3d069",
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu-abstract_algebra-q0,concurrency=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 417,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.01859950904937671,
+        0.01858964183633562,
+        0.018583416652908143,
+        0.018582376073018537,
+        0.018611443700264397
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.01859327746238068,
+        "variance": 1.4953462638878783e-10,
+        "stdev": 1.2228435156993222e-05,
+        "ci95": [
+          0.018578096288848663,
+          0.0186084586359127
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        53764.85999416802,
+        53793.39789351851,
+        53811.41792585858,
+        53814.43126920632,
+        53730.383096814454
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 53782.89803591317,
+        "variance": 1250.291428173062,
+        "stdev": 35.359460235884,
+        "ci95": [
+          53739.00050569382,
+          53826.79556613252
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      },
+      "tokens": 128,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "grouped_gemm": 32,
+        "gather_scatter": 32
+      },
+      "memory_bytes": 14680064,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "queue_depth": 1,
+      "transfers": [],
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-b412f84083513553c687301a",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 7720,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.11453747526969317,
+        0.11455270243432238,
+        0.11454862288242795,
+        0.11459594884684667,
+        0.1145970477959035
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.11456635944583873,
+        "variance": 7.881756896241347e-10,
+        "stdev": 2.807446686268743e-05,
+        "ci95": [
+          0.11453150597948841,
+          0.11460121291218905
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-02c6ad913813343f585161fe",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 65241,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008393483287565527,
+        0.008362208394883969,
+        0.008406077442674085,
+        0.008398189957774348,
+        0.008416876308549743
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008395367078289534,
+        "variance": 4.220936232261747e-10,
+        "stdev": 2.054491721147045e-05,
+        "ci95": [
+          0.008369861283853528,
+          0.008420872872725539
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-9b6f3acdb9ad313f1f0d8168",
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 14529,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04677772771402239,
+        0.046620575524597356,
+        0.046675300900085606,
+        0.046605788288724276,
+        0.046628637088699756
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04666160590322588,
+        "variance": 4.889467167988891e-09,
+        "stdev": 6.992472501189326e-05,
+        "ci95": [
+          0.046574796808607,
+          0.04674841499784475
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-e1d0edca7d115efcefc2c01c",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=1,expert_tokens=272",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 7726,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.11877236797067127,
+        0.11875400844399188,
+        0.11876051801799524,
+        0.11874993206027132,
+        0.11875044555822062
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.11875745441023007,
+        "variance": 8.73461040697966e-11,
+        "stdev": 9.345913763233459e-06,
+        "ci95": [
+          0.1187458517859504,
+          0.11876905703450974
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-5885d0d8a8ee085bec86d1ca",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 3203,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.2991317191646503,
+        0.30003026794948096,
+        0.30045583714852286,
+        0.3011174483333496,
+        0.3014623169745649
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.3004395179141137,
+        "variance": 8.459492478616904e-07,
+        "stdev": 0.0009197549933877447,
+        "ci95": [
+          0.29929767433541393,
+          0.3015813614928135
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-0741b36e03d4a3fcd466c9b1",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 70862,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.012303696804892343,
+        0.012303836339414549,
+        0.0123046287576888,
+        0.0123039793192336,
+        0.012304602056638254
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.01230414865557351,
+        "variance": 1.916139459628017e-13,
+        "stdev": 4.3773730245753756e-07,
+        "ci95": [
+          0.012303605220059093,
+          0.012304692091087926
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-895666b5b29e6b68d47025a0",
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 10935,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.07797354797167924,
+        0.07798213810478109,
+        0.07798179762517146,
+        0.07795748961369742,
+        0.07796844077753487
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.07797268281857281,
+        "variance": 1.0551475326554236e-10,
+        "stdev": 1.0272037444710877e-05,
+        "ci95": [
+          0.07795993044421146,
+          0.07798543519293416
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-30d8a2d9e47aa5035192e66c",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=prefill,concurrency=4,expert_tokens=1088",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 2994,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.31899940832185203,
+        0.3196897742424954,
+        0.3202594968582999,
+        0.3203988951209711,
+        0.3203574507413264
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.31994100505698897,
+        "variance": 3.585621699926831e-07,
+        "stdev": 0.0005988006095460183,
+        "ci95": [
+          0.31919761509352357,
+          0.32068439502045437
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-b224af2ad2f3b4a664a812a4",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 15509,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.05734599841095291,
+        0.05734666744032699,
+        0.05734666350486008,
+        0.05734669892406224,
+        0.05734613221682773
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.057346432099405986,
+        "variance": 1.1453611638447962e-13,
+        "stdev": 3.3843184895112877e-07,
+        "ci95": [
+          0.05734601194813056,
+          0.05734685225068141
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-210c43d835b463347c693811",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 79924,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.00819613089832802,
+        0.008196108752044911,
+        0.008196076678117649,
+        0.00819613089832802,
+        0.00819615304461113
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008196120054285947,
+        "variance": 8.331951703353145e-16,
+        "stdev": 2.8865120306960693e-08,
+        "ci95": [
+          0.008196084219251065,
+          0.008196155889320829
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-4cc5a6d9d7f1113513054984",
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 15704,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.0466206920310908,
+        0.0466325034065266,
+        0.04666024206611373,
+        0.04669824523459389,
+        0.0466556053530848
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04665345761828197,
+        "variance": 8.92308691584985e-10,
+        "stdev": 2.987153647847705e-05,
+        "ci95": [
+          0.046616373153006915,
+          0.046690542083557024
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-37e5fc9ab4953fae8a0727ad",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=1,expert_tokens=8",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 14535,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.06144151979596663,
+        0.0614420152998151,
+        0.06144193131611197,
+        0.061441855730779156,
+        0.06144125944648693
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.06144171631783195,
+        "variance": 1.0060068148907543e-13,
+        "stdev": 3.1717610485198194e-07,
+        "ci95": [
+          0.061441322554817615,
+          0.06144211008084628
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-99a10e953ec1fc93069efdb3",
+      "operation": "selected_expert",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 19149,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.04517792367992454,
+        0.045178491033719126,
+        0.045230910699481694,
+        0.04522124656068855,
+        0.045180419399144536
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04519779827459169,
+        "variance": 6.790122945196767e-10,
+        "stdev": 2.6057864350703737e-05,
+        "ci95": [
+          0.04516544834956014,
+          0.04523014819962323
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4,
+      "implementation": "shape-faithful_dense_expert_gemm"
+    },
+    {
+      "record_id": "calibration-17063ebc2139832efd1d8550",
+      "operation": "gather_scatter",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 59752,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.008476145472739144,
+        0.008468768382458695,
+        0.008460953079532119,
+        0.00846260020748521,
+        0.008475016743196095
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.008468696777082252,
+        "variance": 4.814079464964263e-11,
+        "stdev": 6.938356768691174e-06,
+        "ci95": [
+          0.008460083050405024,
+          0.00847731050375948
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-608a1d6a9235a6a107bc85ed",
+      "operation": "dequant",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32,group=128",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 14058,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.046500101386610385,
+        0.04656441884319649,
+        0.04663435875869167,
+        0.04661487769836348,
+        0.04658704761218034
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04658016085980847,
+        "variance": 2.711857204151658e-09,
+        "stdev": 5.2075495236739305e-05,
+        "ci95": [
+          0.046515510958181225,
+          0.046644810761435715
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4,
+      "implementation": "synthetic_symmetric_int4_proxy_not_checkpoint_awq",
+      "evidence_limit": "A-020b real AWQ layout compatibility remains open"
+    },
+    {
+      "record_id": "calibration-75a8fcafc7d522670216e379",
+      "operation": "grouped_gemm",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,phase=decode,concurrency=4,expert_tokens=32",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 16439,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms": [
+        0.047312864777786436,
+        0.04740437110182911,
+        0.04739753207525739,
+        0.04741840558632482,
+        0.04741453310819545
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.04738954132987864,
+        "variance": 1.905200518046668e-09,
+        "stdev": 4.364860270440129e-05,
+        "ci95": [
+          0.04733535311989278,
+          0.0474437295398645
+        ],
+        "unit": "ms",
+        "ci_method": "two-sided Student-t"
+      },
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4
+    },
+    {
+      "record_id": "calibration-2d8e75b96895c574999576e2",
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,concurrency=1",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 344,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.09013301827186762,
+        0.09013316797655682,
+        0.0901298301164494,
+        0.09013121627097906,
+        0.09015290681705919
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.09013602789058242,
+        "variance": 9.092478986546086e-11,
+        "stdev": 9.535449117134486e-06,
+        "ci95": [
+          0.09012418996480578,
+          0.09014786581635906
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        11094.713337832609,
+        11094.694910314201,
+        11095.105790258138,
+        11094.935155357329,
+        11092.265743901393
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 11094.342987532733,
+        "variance": 1.377120205762359,
+        "stdev": 1.1735076504916186,
+        "ci95": [
+          11092.886118926526,
+          11095.79985613894
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      },
+      "tokens": 32,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "grouped_gemm": 32,
+        "gather_scatter": 32
+      },
+      "memory_bytes": 3670016,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "queue_depth": 1,
+      "transfers": [],
+      "phase": "decode",
+      "concurrency": 1
+    },
+    {
+      "record_id": "calibration-9dfbf6fa7b2897487c601756",
+      "operation": "window_replay",
+      "metric_name": "MoE-replay TPOT",
+      "metric_scope": "not full-model TPOT",
+      "unit": "ms/token",
+      "case": "calibration-mmlu_ZH_CN-high_school_mathematics-q4387,concurrency=4",
+      "warmup": 10,
+      "outer_repeats": 5,
+      "inner_iterations": 418,
+      "minimum_inner_seconds": 1.0,
+      "repeats_ms_per_token": [
+        0.018589352876946116,
+        0.018591983466627496,
+        0.018590354463130093,
+        0.018595619064769107,
+        0.018593996905824216
+      ],
+      "statistics": {
+        "n": 5,
+        "mean": 0.018592261355459404,
+        "variance": 6.6147636745016734e-12,
+        "stdev": 2.5719182869021468e-06,
+        "ci95": [
+          0.01858906840907482,
+          0.018595454301843988
+        ],
+        "unit": "ms/token",
+        "ci_method": "two-sided Student-t"
+      },
+      "throughput_metric_name": "MoE-replay throughput",
+      "throughput_unit": "tokens/s",
+      "repeats_tokens_per_second": [
+        53794.23407687128,
+        53786.622701929264,
+        53791.33582327769,
+        53776.10696997876,
+        53780.798451502866
+      ],
+      "throughput_statistics": {
+        "n": 5,
+        "mean": 53785.81960471197,
+        "variance": 55.356056783762284,
+        "stdev": 7.44016510460368,
+        "ci95": [
+          53776.58290057855,
+          53795.05630884539
+        ],
+        "unit": "tokens/s",
+        "ci_method": "two-sided Student-t"
+      },
+      "tokens": 128,
+      "cpu_calls": 32,
+      "gpu_operations": {
+        "grouped_gemm": 32,
+        "gather_scatter": 32
+      },
+      "memory_bytes": 14680064,
+      "memory_bytes_semantics": "logical_activation_payload",
+      "queue_depth": 1,
+      "transfers": [],
+      "phase": "decode",
+      "concurrency": 4
+    }
+  ]
+}

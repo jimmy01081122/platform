@@ -3,27 +3,123 @@
   "target": "A6_long_context_offloaded_kv_attention",
   "backend": "hand_written_fixture",
   "evidence": "cpu_smoke_test_not_measurement",
+  "seq_lens_requested": [4096, 1048576],
+  "repeats": 3,
+  "primary_statistic": "arithmetic_mean",
+  "primary_statistic_fields": [
+    "kv_resident_bytes", "kv_offloaded_bytes", "kv_offloaded_blocks",
+    "ttft_ns", "decode_per_token_ns", "kv_move_ns", "kv_move_bytes"
+  ],
   "records": [
     {
       "seq_len": 4096,
       "kv_total_bytes": 536870912,
       "kv_resident_bytes": 536870912,
       "kv_offloaded_bytes": 0,
+      "kv_blocks_total": 256,
+      "kv_offloaded_blocks": 0,
+      "kv_move_ns": 0,
+      "kv_move_bytes": 0,
       "offload_engaged": false,
       "ttft_ns": 253440000,
-      "decode_per_token_ns": 20000000
+      "decode_per_token_ns": 20000000,
+      "oom": false,
+      "measurement_failed": false,
+      "repeats": 3,
+      "primary_statistic": "arithmetic_mean",
+      "primary_statistic_fields": [
+        "kv_resident_bytes", "kv_offloaded_bytes", "kv_offloaded_blocks",
+        "ttft_ns", "decode_per_token_ns", "kv_move_ns", "kv_move_bytes"
+      ],
+      "kv_resident_bytes_repeats": [536870912, 536870912, 536870912],
+      "kv_offloaded_bytes_repeats": [0, 0, 0],
+      "kv_offloaded_blocks_repeats": [0, 0, 0],
+      "ttft_ns_repeats": [253440000, 253440000, 253440000],
+      "decode_per_token_ns_repeats": [20000000, 20000000, 20000000],
+      "kv_move_ns_repeats": [0, 0, 0],
+      "kv_move_bytes_repeats": [0, 0, 0],
+      "offload_engaged_repeats": [false, false, false],
+      "repeat_measurements": [
+        {
+          "repeat_index": 0, "seq_len": 4096, "kv_total_bytes": 536870912,
+          "kv_resident_bytes": 536870912, "kv_offloaded_bytes": 0,
+          "kv_blocks_total": 256, "kv_offloaded_blocks": 0,
+          "kv_move_ns": 0, "kv_move_bytes": 0, "offload_engaged": false,
+          "ttft_ns": 253440000, "decode_per_token_ns": 20000000, "oom": false
+        },
+        {
+          "repeat_index": 1, "seq_len": 4096, "kv_total_bytes": 536870912,
+          "kv_resident_bytes": 536870912, "kv_offloaded_bytes": 0,
+          "kv_blocks_total": 256, "kv_offloaded_blocks": 0,
+          "kv_move_ns": 0, "kv_move_bytes": 0, "offload_engaged": false,
+          "ttft_ns": 253440000, "decode_per_token_ns": 20000000, "oom": false
+        },
+        {
+          "repeat_index": 2, "seq_len": 4096, "kv_total_bytes": 536870912,
+          "kv_resident_bytes": 536870912, "kv_offloaded_bytes": 0,
+          "kv_blocks_total": 256, "kv_offloaded_blocks": 0,
+          "kv_move_ns": 0, "kv_move_bytes": 0, "offload_engaged": false,
+          "ttft_ns": 253440000, "decode_per_token_ns": 20000000, "oom": false
+        }
+      ]
     },
     {
       "seq_len": 1048576,
       "kv_total_bytes": 137438953472,
       "kv_resident_bytes": 8000000000,
       "kv_offloaded_bytes": 129438953472,
+      "kv_blocks_total": 65536,
+      "kv_offloaded_blocks": 61722,
+      "kv_move_ns": 35437000,
+      "kv_move_bytes": 129438953472,
       "offload_engaged": true,
       "ttft_ns": 42033664000,
-      "decode_per_token_ns": 35437000
+      "decode_per_token_ns": 35437000,
+      "oom": false,
+      "measurement_failed": false,
+      "repeats": 3,
+      "primary_statistic": "arithmetic_mean",
+      "primary_statistic_fields": [
+        "kv_resident_bytes", "kv_offloaded_bytes", "kv_offloaded_blocks",
+        "ttft_ns", "decode_per_token_ns", "kv_move_ns", "kv_move_bytes"
+      ],
+      "kv_resident_bytes_repeats": [8000000000, 8000000000, 8000000000],
+      "kv_offloaded_bytes_repeats": [129438953472, 129438953472, 129438953472],
+      "kv_offloaded_blocks_repeats": [61722, 61722, 61722],
+      "ttft_ns_repeats": [42033664000, 42033664000, 42033664000],
+      "decode_per_token_ns_repeats": [35437000, 35437000, 35437000],
+      "kv_move_ns_repeats": [35437000, 35437000, 35437000],
+      "kv_move_bytes_repeats": [129438953472, 129438953472, 129438953472],
+      "offload_engaged_repeats": [true, true, true],
+      "repeat_measurements": [
+        {
+          "repeat_index": 0, "seq_len": 1048576, "kv_total_bytes": 137438953472,
+          "kv_resident_bytes": 8000000000, "kv_offloaded_bytes": 129438953472,
+          "kv_blocks_total": 65536, "kv_offloaded_blocks": 61722,
+          "kv_move_ns": 35437000, "kv_move_bytes": 129438953472,
+          "offload_engaged": true, "ttft_ns": 42033664000,
+          "decode_per_token_ns": 35437000, "oom": false
+        },
+        {
+          "repeat_index": 1, "seq_len": 1048576, "kv_total_bytes": 137438953472,
+          "kv_resident_bytes": 8000000000, "kv_offloaded_bytes": 129438953472,
+          "kv_blocks_total": 65536, "kv_offloaded_blocks": 61722,
+          "kv_move_ns": 35437000, "kv_move_bytes": 129438953472,
+          "offload_engaged": true, "ttft_ns": 42033664000,
+          "decode_per_token_ns": 35437000, "oom": false
+        },
+        {
+          "repeat_index": 2, "seq_len": 1048576, "kv_total_bytes": 137438953472,
+          "kv_resident_bytes": 8000000000, "kv_offloaded_bytes": 129438953472,
+          "kv_blocks_total": 65536, "kv_offloaded_blocks": 61722,
+          "kv_move_ns": 35437000, "kv_move_bytes": 129438953472,
+          "offload_engaged": true, "ttft_ns": 42033664000,
+          "decode_per_token_ns": 35437000, "oom": false
+        }
+      ]
     }
   ],
   "sweep_crossed_offload_boundary": true,
   "offload_knee_seq_len": 1048576,
-  "ir_evaluation_point_fields": "PENDING_A2"
+  "ir_evaluation_point_fields": "FILLED_PREP2"
 }

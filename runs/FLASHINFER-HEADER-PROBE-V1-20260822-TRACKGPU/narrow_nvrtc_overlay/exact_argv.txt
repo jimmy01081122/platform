@@ -1,0 +1,1 @@
+env CPATH=/workspace/track_gpu/cuda_compat/nvrtc-13.0.88/include /usr/local/cuda/bin/nvcc -std=c++17 -gencode=arch=compute_120f\,code=sm_120f -c /workspace/track_gpu/header_fix_validation/20260822/header_probe.cu -o /workspace/track_gpu/header_fix_validation/20260822/narrow_nvrtc_overlay/probe.o 

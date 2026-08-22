@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+    "/workspace/track_gpu/code/gpu_campaign_runner.py",
+    "--model-path",
+    "/workspace/models/mixtral-8x7b-instruct-v0.1",
+    "--run-root",
+    "/workspace/runs/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-20260822T102020Z-TRACKGPU/artifacts/runner_runs",
+    "--experiment-id",
+    "MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-20260822T102020Z-TRACKGPU",
+    "--input-tokens",
+    "128",
+    "--output-tokens",
+    "32",
+    "--sampling-mode",
+    "NATURAL_EOS_CAPPED",
+    "--max-num-seqs",
+    "1",
+    "--max-num-batched-tokens",
+    "1024",
+    "--gpu-memory-utilization",
+    "0.97",
+    "--runtime-class",
+    "CLEAN",
+    "--warmup-count",
+    "1",
+    "--measured-count",
+    "1"
+  ],
+  "attempt_dir": "/workspace/runs/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-20260822T102020Z-TRACKGPU",
+  "target": "guard_canary"
+}

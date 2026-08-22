@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "env",
+    "-u",
+    "VLLM_ARGS",
+    "-u",
+    "VLLM_MODEL",
+    "-u",
+    "VLLM_TEST_ENDPOINT",
+    "CUDA_VISIBLE_DEVICES=0",
+    "PYTHONNOUSERSITE=1",
+    "/workspace/venvs/track_gpu_vllm_0_23_py310/bin/python",
+    "/workspace/track_gpu/gpu_run_package_v2/scripts/benchmark.py",
+    "--experiment",
+    "rtx-pro-6000-calibration",
+    "--package-root",
+    "/workspace/track_gpu/gpu_run_package_v2",
+    "--output",
+    "/workspace/runs/TARGET4-PARTIAL-EXISTING-HARNESS-20260822T103709Z-TRACKGPU/artifacts/result.json",
+    "--profiler-output",
+    "/workspace/runs/TARGET4-PARTIAL-EXISTING-HARNESS-20260822T103709Z-TRACKGPU/artifacts/profiler.json"
+  ],
+  "attempt_dir": "/workspace/runs/TARGET4-PARTIAL-EXISTING-HARNESS-20260822T103709Z-TRACKGPU",
+  "target": "target_4"
+}

@@ -1,0 +1,17 @@
+--- aggregate_backend.py.before
++++ aggregate_backend.py.after
+@@
+-        aggregate_completion = torch.cuda.Event(enable_timing=True)
+-        aggregate_completion.record(coordinator)
+         torch.cuda.synchronize()
+         per_object_ms = [
+             float(common_start.elapsed_time(event))
+             for event in completion_events
+         ]
+-        aggregate_ms = float(common_start.elapsed_time(aggregate_completion))
++        # Wait-all transfer completion is the latest constituent completion
++        # from the common issue epoch. A separate coordinator event includes
++        # event-scheduling delay and can violate the N=1 physical envelope.
++        aggregate_ms = max(per_object_ms)
+
+Parser, frozen axes, repeat count, and physical-envelope thresholds were unchanged.

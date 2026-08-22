@@ -16,7 +16,7 @@ from measurement.probes.vllm_backend import (
 )
 
 
-def _identity(config, *, markers=True):
+def _identity(config, *, markers=True, simple_kv_offload=None):
     return {
         "vllm_version": "0.23.0",
         "model_revision": EXPECTED_MODEL_REVISION,
@@ -26,6 +26,7 @@ def _identity(config, *, markers=True):
             "fused_moe_backend": "FLASHINFER_CUTLASS",
             "kernel_backend": "FLASHINFER_JIT",
         } if markers else {}),
+        "environment": {"VLLM_USE_SIMPLE_KV_OFFLOAD": simple_kv_offload},
     }
 
 
@@ -106,7 +107,7 @@ def _longctx_backend(**overrides):
     kwargs = {
         "config": LongContextRuntimeConfig(
             model_path="/workspace/model",
-            kv_offloading_size_gb=64,
+            kv_offloading_size_gb=16,
             kv_offloading_backend="native",
             max_num_batched_tokens=8192,
             enable_prefix_caching=True,
@@ -156,6 +157,21 @@ def test_target1_refuses_wrong_version_or_missing_startup_markers():
             adapter_loader=lambda _name: _adapter(MissingMarkers)
         )
 
+    class FallbackMarkers(DispatchSession):
+        def runtime_identity(self):
+            identity = _identity(self.config)
+            identity["backend_markers"] = {
+                "attention_backend": "TRITON_ATTN",
+                "fused_moe_backend": "TRITON",
+                "kernel_backend": "TRITON",
+            }
+            return identity
+
+    with pytest.raises(BackendError, match="marker conflicts.*frozen domain"):
+        _dispatch_backend(
+            adapter_loader=lambda _name: _adapter(FallbackMarkers)
+        )
+
 
 def test_target1_refuses_unobserved_worker_hook():
     class NoHook(DispatchSession):
@@ -169,27 +185,27 @@ def test_target1_refuses_unobserved_worker_hook():
         backend.measure_window(concurrency=1, steps=1, repeat_index=0)
 
 
-def test_target2_requires_explicit_positive_offload_and_batching_domain():
-    with pytest.raises(BackendError, match="kv_offloading_size_gb must be > 0"):
+def test_target2_enforces_p020_offload_and_batching_domain():
+    with pytest.raises(BackendError, match="permits kv_offloading_size_gb"):
         _longctx_backend(config=LongContextRuntimeConfig(
             model_path="/workspace/model",
-            kv_offloading_size_gb=0,
+            kv_offloading_size_gb=64,
             kv_offloading_backend="native",
             max_num_batched_tokens=8192,
             enable_prefix_caching=True,
         ))
-    with pytest.raises(BackendError, match="explicit kv_offloading_backend"):
+    with pytest.raises(BackendError, match="requires kv_offloading_backend='native'"):
         _longctx_backend(config=LongContextRuntimeConfig(
             model_path="/workspace/model",
-            kv_offloading_size_gb=64,
-            kv_offloading_backend="",
+            kv_offloading_size_gb=16,
+            kv_offloading_backend="lmcache",
             max_num_batched_tokens=8192,
             enable_prefix_caching=True,
         ))
     with pytest.raises(BackendError, match="max_num_batched_tokens"):
         _longctx_backend(config=LongContextRuntimeConfig(
             model_path="/workspace/model",
-            kv_offloading_size_gb=64,
+            kv_offloading_size_gb=16,
             kv_offloading_backend="native",
             max_num_batched_tokens=0,
             enable_prefix_caching=True,
@@ -209,7 +225,7 @@ def test_target2_preserves_full_sweep_and_labels_offload_on_variant():
         _longctx_backend(
             config=LongContextRuntimeConfig(
                 model_path="/workspace/model",
-                kv_offloading_size_gb=64,
+                kv_offloading_size_gb=140,
                 kv_offloading_backend="native",
                 max_num_batched_tokens=8192,
                 enable_prefix_caching=True,
@@ -228,3 +244,12 @@ def test_target2_classifies_oom_as_result():
     assert result["oom"] is True
     assert result["failure_classification"] == "CUDA_OR_ENGINE_OOM"
     assert result["runtime_variant"] == "offload-on"
+
+
+def test_target2_requires_hidden_simple_connector_switch_recorded_unset():
+    class SimpleSwitchSet(LongContextSession):
+        def runtime_identity(self):
+            return _identity(self.config, simple_kv_offload="1")
+
+    with pytest.raises(BackendError, match="record.*unset"):
+        _longctx_backend(adapter_loader=lambda _name: _adapter(SimpleSwitchSet))

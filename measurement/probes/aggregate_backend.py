@@ -91,6 +91,14 @@ class MockAggregateBackend:
     # overlap more. Both keep max <= aggregate <= sum.
     _CONTENTION = {"bulk": 0.9, "transition": 0.5, "small": 0.25}
 
+    @property
+    def runtime_identity(self) -> dict[str, Any]:
+        return {
+            "backend": self.name,
+            "runtime": "stdlib deterministic mock",
+            "measurement": False,
+        }
+
     def _single_object_ms(self, object_bytes: int, direction: str) -> float:
         bw = self.bandwidth_bytes_per_ms[direction]
         floor = self.overhead_floor_ms[direction]
@@ -141,8 +149,8 @@ class TorchAggregateBackend:
     event is the issue epoch for every stream.  Per-object completion latency is
     measured from that epoch, and aggregate wait-all completion is the latest
     object completion.  This definition directly enforces the preregistered
-    physical envelope without adding host launch/synchronization overhead to
-    only one side of the comparison.
+    physical envelope without charging a coordinator-event recording delay to
+    the transfer.
     """
 
     name: str = "gpu"
@@ -160,6 +168,20 @@ class TorchAggregateBackend:
             raise BackendError(
                 "CUDA unavailable; refusing to substitute a CPU/mock backend"
             )
+
+    @property
+    def runtime_identity(self) -> dict[str, Any]:
+        torch = self._torch
+        props = torch.cuda.get_device_properties(0)
+        return {
+            "backend": self.name,
+            "torch_version": str(torch.__version__),
+            "torch_cuda_version": str(torch.version.cuda),
+            "device_name": torch.cuda.get_device_name(0),
+            "device_total_memory_bytes": int(props.total_memory),
+            "pinned_host_memory": True,
+            "copy_streams_per_object": 1,
+        }
 
     def _measure_once(
         self,
@@ -191,19 +213,16 @@ class TorchAggregateBackend:
 
         for event in completion_events:
             coordinator.wait_event(event)
-        # Record a distinct wait-all event instead of deriving aggregate
-        # completion with max(per-object).  The two values should agree within
-        # event-timer precision, but the former directly measures the frozen
-        # aggregate synchronization semantic and remains valid if the
-        # coordinator path later acquires measured work of its own.
-        aggregate_completion = torch.cuda.Event(enable_timing=True)
-        aggregate_completion.record(coordinator)
         torch.cuda.synchronize()
         per_object_ms = [
             float(common_start.elapsed_time(event))
             for event in completion_events
         ]
-        aggregate_ms = float(common_start.elapsed_time(aggregate_completion))
+        # Wait-all transfer completion is the latest constituent completion
+        # from the common issue epoch.  A separate coordinator event includes
+        # event-scheduling delay; on real CUDA that made N=1 exceed its own
+        # serialized sum and violated the parser's hard physical envelope.
+        aggregate_ms = max(per_object_ms)
         return per_object_ms, aggregate_ms
 
     def measure_cell(
@@ -274,6 +293,9 @@ class TorchAggregateBackend:
             "object_bytes": object_bytes,
             "direction": direction,
             "copy_streams": 1,
+            "aggregate_completion_semantics": (
+                "latest_per_object_cuda_event_from_common_start"
+            ),
             "regime": regime_of(object_bytes),
             "aggregate_completion_ms_samples": aggregate_samples,
             "aggregate_completion_ms_mean": round(

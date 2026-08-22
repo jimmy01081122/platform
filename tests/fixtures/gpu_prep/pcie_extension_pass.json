@@ -1,0 +1,89 @@
+{
+  "schema_version": "gpu-pcie-extension-result-v1",
+  "target": "PCIE-EXTENSION-BIDIRECTIONAL-CROSSOVER-SMALLCELL-LINKCAP",
+  "backend": "mock_pcie_extension",
+  "evidence": "cpu_smoke_test_not_measurement",
+  "repeats": 5,
+  "axis": "all",
+  "ir_evaluation_point_schema": "CalibrationIR",
+  "ir_evaluation_point_fields": "PENDING_PCIE_EXTENSION_SEMANTICS",
+  "production_stream_semantics_status": "UNSUPPORTED_UNTIL_MEASURED",
+  "bidirectional_cells": [
+    {
+      "object_bytes": 65536,
+      "h2d_ms_samples": [0.006, 0.006, 0.006, 0.006, 0.006],
+      "h2d_ms_mean": 0.006,
+      "d2h_ms_samples": [0.01, 0.01, 0.01, 0.01, 0.01],
+      "d2h_ms_mean": 0.01,
+      "joint_completion_ms_samples": [0.01, 0.01, 0.01, 0.01, 0.01],
+      "joint_completion_ms_mean": 0.01,
+      "h2d_baseline_ms_samples": [0.006, 0.006, 0.006, 0.006, 0.006],
+      "h2d_baseline_ms_mean": 0.006,
+      "d2h_baseline_ms_samples": [0.007, 0.007, 0.007, 0.007, 0.007],
+      "d2h_baseline_ms_mean": 0.007,
+      "joint_over_max_ratio": 1.428571429,
+      "joint_over_sum_ratio": 0.769230769,
+      "point_id": "bidir-0dce5d7be798285196e2fb0d"
+    },
+    {
+      "object_bytes": 352321536,
+      "h2d_ms_samples": [12.582912, 12.582912, 12.582912, 12.582912, 12.582912],
+      "h2d_ms_mean": 12.582912,
+      "d2h_ms_samples": [19.842284308, 19.842284308, 19.842284308, 19.842284308, 19.842284308],
+      "d2h_ms_mean": 19.842284308,
+      "joint_completion_ms_samples": [19.842284308, 19.842284308, 19.842284308, 19.842284308, 19.842284308],
+      "joint_completion_ms_mean": 19.842284308,
+      "h2d_baseline_ms_samples": [12.582912, 12.582912, 12.582912, 12.582912, 12.582912],
+      "h2d_baseline_ms_mean": 12.582912,
+      "d2h_baseline_ms_samples": [13.550828308, 13.550828308, 13.550828308, 13.550828308, 13.550828308],
+      "d2h_baseline_ms_mean": 13.550828308,
+      "joint_over_max_ratio": 1.464285714,
+      "joint_over_sum_ratio": 0.759259259,
+      "point_id": "bidir-3576f1f2f4a43458a6f007ee"
+    }
+  ],
+  "stream_split_cells": [
+    {
+      "object_bytes": 4096,
+      "copy_streams": 1,
+      "direction": "h2d",
+      "gap_label": "declared_never_measured_4096",
+      "chunk_bytes": 4096,
+      "latency_ms_samples": [0.006, 0.006, 0.006, 0.006, 0.006],
+      "latency_ms_mean": 0.006,
+      "point_id": "streamsplit-09ab5f037c462ca75ba42a9c"
+    },
+    {
+      "object_bytes": 2097152,
+      "copy_streams": 2,
+      "direction": "h2d",
+      "gap_label": "crossover_densification",
+      "chunk_bytes": 1048576,
+      "latency_ms_samples": [0.086133029, 0.086133029, 0.086133029, 0.086133029, 0.086133029],
+      "latency_ms_mean": 0.086133029,
+      "point_id": "streamsplit-5696798a0a92a013bc16b9bd"
+    },
+    {
+      "object_bytes": 13631488,
+      "copy_streams": 4,
+      "direction": "d2h",
+      "gap_label": "crossover_densification",
+      "chunk_bytes": 3407872,
+      "latency_ms_samples": [0.596881723, 0.596881723, 0.596881723, 0.596881723, 0.596881723],
+      "latency_ms_mean": 0.596881723,
+      "point_id": "streamsplit-9b03ec0a75b57624d53e1173"
+    }
+  ],
+  "pcie_link_environment": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=pcie.link.gen.current,pcie.link.gen.max,pcie.link.width.current,pcie.link.width.max",
+      "--format=csv,noheader"
+    ],
+    "status": "ok",
+    "pcie_link_gen_current": "4",
+    "pcie_link_gen_max": "4",
+    "pcie_link_width_current": "8",
+    "pcie_link_width_max": "16"
+  }
+}

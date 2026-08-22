@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "cells": 24,
+  "unique_cells": 24,
+  "samples_per_cell": 5,
+  "samples_total": 120,
+  "copy_streams_all_one": true,
+  "strict_parser_pass": true,
+  "exact_grid_audit_pass": true,
+  "aggregate_payload_bandwidth_gbps": {
+    "65536": {"h2d_min": 6.041, "h2d_max": 6.751, "d2h_min": 6.276, "d2h_max": 7.513},
+    "2097152": {"h2d_min": 32.521, "h2d_max": 50.020, "d2h_min": 50.312, "d2h_max": 55.298},
+    "352321536": {"h2d_min": 55.921, "h2d_max": 56.744, "d2h_min": 57.215, "d2h_max": 57.373}
+  },
+  "bandwidth_note": "total bytes across N divided by aggregate wait-all mean; descriptive only",
+  "attempt1_failure": {
+    "classification": "INSTRUMENTATION_PHYSICAL_ENVELOPE_VIOLATION",
+    "first_rejected_cell": "N=1, bytes=65536, h2d",
+    "aggregate_ms": 0.0147136,
+    "serialized_sum_ms": 0.0109376,
+    "parser_relaxed": false
+  }
+}

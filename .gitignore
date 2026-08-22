@@ -5,6 +5,10 @@
 # Only derived, regenerable, third-party, or licence-restricted content is ignored.
 # ---------------------------------------------------------------------------
 
+# Claude Code session/worktree state (e.g. isolated `Agent(isolation: worktree)`
+# checkouts under .claude/worktrees/): tool-local, not repo content.
+.claude/
+
 # Python / build transients
 __pycache__/
 *.pyc

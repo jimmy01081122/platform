@@ -1,0 +1,4 @@
+# ninja log v7
+2	1056	1787397391091376205	/workspace/runs/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-CUDA132-20260822T111532Z-TRACKGPU/artifacts/flashinfer_cuda132_cache/.cache/flashinfer/0.6.12/120f/cached_ops/fused_moe_120/moe_gemm_moe_gemm_mixed_utils.cuda.o	6c86362f3a1eb6fc
+2	1894	1787397391091376205	/workspace/runs/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-CUDA132-20260822T111532Z-TRACKGPU/artifacts/flashinfer_cuda132_cache/.cache/flashinfer/0.6.12/120f/cached_ops/fused_moe_120/fp8_blockscale_gemm_fp8_blockscale_gemm.cuda.o	b0891674982f88f2
+3	3914	1787397391091376205	/workspace/runs/MECH-G0-KV-G0-OS-SWAP-G0-UM-G0-CANARY-CUDA132-20260822T111532Z-TRACKGPU/artifacts/flashinfer_cuda132_cache/.cache/flashinfer/0.6.12/120f/cached_ops/fused_moe_120/cutlass_backend_deepgemm_jit_setup.cuda.o	4c60311c585d91d3

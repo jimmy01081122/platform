@@ -1,0 +1,39 @@
+{
+  "schema_version": "gpu-pcie-extension-result-v1",
+  "target": "PCIE-EXTENSION-BIDIRECTIONAL-CROSSOVER-SMALLCELL-LINKCAP",
+  "backend": "mock_pcie_extension",
+  "evidence": "cpu_smoke_test_not_measurement",
+  "repeats": 3,
+  "axis": "bidirectional",
+  "ir_evaluation_point_schema": "CalibrationIR",
+  "ir_evaluation_point_fields": "PENDING_PCIE_EXTENSION_SEMANTICS",
+  "production_stream_semantics_status": "UNSUPPORTED_UNTIL_MEASURED",
+  "bidirectional_cells": [
+    {
+      "object_bytes": 65536,
+      "h2d_ms_samples": [0.02, 0.02, 0.02],
+      "h2d_ms_mean": 0.02,
+      "d2h_ms_samples": [0.03, 0.03, 0.03],
+      "d2h_ms_mean": 0.03,
+      "joint_completion_ms_samples": [0.005, 0.005, 0.005],
+      "joint_completion_ms_mean": 0.005,
+      "h2d_baseline_ms_samples": [0.02, 0.02, 0.02],
+      "h2d_baseline_ms_mean": 0.02,
+      "d2h_baseline_ms_samples": [0.03, 0.03, 0.03],
+      "d2h_baseline_ms_mean": 0.03,
+      "joint_over_max_ratio": 0.166666667,
+      "joint_over_sum_ratio": 0.1,
+      "point_id": "bidir-test-nonphysical"
+    }
+  ],
+  "stream_split_cells": [],
+  "pcie_link_environment": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=pcie.link.gen.current,pcie.link.gen.max,pcie.link.width.current,pcie.link.width.max",
+      "--format=csv,noheader"
+    ],
+    "status": "unavailable",
+    "reason": "FileNotFoundError: [Errno 2] No such file or directory: 'nvidia-smi'"
+  }
+}

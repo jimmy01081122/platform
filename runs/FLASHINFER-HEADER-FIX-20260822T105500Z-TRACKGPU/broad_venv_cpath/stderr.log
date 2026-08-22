@@ -1,0 +1,1257 @@
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:100:395: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  100 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIiEEvPT_mi(int *__par0, const size_t __par1, const int __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(int *, const size_t, const int))tensorrt_llm::common::cuda_random_uniform_kernel<int> )), 0U);}namespace tensorrt_llm{
+      |                                                                                                                                                                                                                                                                                                                                                                                                           ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:104:398: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  104 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIbEEvPT_mi(bool *__par0, const size_t __par1, const int __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(bool *, const size_t, const int))tensorrt_llm::common::cuda_random_uniform_kernel<bool> )), 0U);}namespace tensorrt_llm{
+      |                                                                                                                                                                                                                                                                                                                                                                                                              ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:108:398: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  108 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIcEEvPT_mi(char *__par0, const size_t __par1, const int __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(char *, const size_t, const int))tensorrt_llm::common::cuda_random_uniform_kernel<char> )), 0U);}namespace tensorrt_llm{
+      |                                                                                                                                                                                                                                                                                                                                                                                                              ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:112:445: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  112 | __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common19cudaD2Dcpyfp82FloatEPfP13__nv_fp8_e4m3m(float *__par0, struct __nv_fp8_e4m3 *__par1, const size_t __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(float *, struct __nv_fp8_e4m3 *, const size_t))tensorrt_llm::common::cudaD2Dcpyfp82Float)), 0U);}
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:457: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:455: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:457: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:501: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:424: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:5:426: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+    5 | #if !defined(__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__)
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:9:419: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+    9 | #include "tmpxft_000083eb_00000000-3_memoryUtils.fatbin.c"
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:13:410: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   13 | extern __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common19cudaD2Dcpyfp82FloatEPfP13__nv_fp8_e4m3m(float *, struct __nv_fp8_e4m3 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:17:457: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   17 | extern __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common20cudaD2DcpyBfloat2fp8EP13__nv_fp8_e4m3P13__nv_bfloat16m(struct __nv_fp8_e4m3 *, struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:21:457: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   21 | static void __device_stub__ZN12tensorrt_llm6common8cudaCastIfK6__halfEEvPT_PT0_m(float *, const half *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:25:468: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   25 | static void __device_stub__ZN12tensorrt_llm6common8cudaCastI6__halfK13__nv_bfloat16EEvPT_PT0_m(half *, const struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:29:468: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   29 | static void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_fp8_e4m3KfEEvPT_PT0_m(struct __nv_fp8_e4m3 *, const float *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:33:457: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   33 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelI6__halfEEvPT_mi(half *, const size_t, const int);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:37:515: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   37 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIaaEEvPT0_PKT_m(int8_t *, const int8_t *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:41:468: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   41 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIiiEEvPT0_PKT_m(int *, const int *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:45:457: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   45 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat16aEEvPT0_PKT_m(int8_t *, const struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:49:515: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   49 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat1613__nv_fp8_e4m3EEvPT0_PKT_m(struct __nv_fp8_e4m3 *, const struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:53:468: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   53 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIi6__halfEEvPT0_PKT_m(half *, const int *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:57:411: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   57 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIijEEvPT0_PKT_m(uint32_t *, const int *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                           ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:61:422: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   61 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIf13__nv_bfloat16EEvPT0_PKT_m(struct __nv_bfloat16 *, const float *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:65:469: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   65 | static void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIifEEvPT0_PKT_PKfbm(float *, const int32_t *, const float *, bool, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:69:469: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   69 | static void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIi13__nv_bfloat16EEvPT0_PKT_PKfbm(struct __nv_bfloat16 *, const int32_t *, const float *, bool, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:73:430: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   73 | static void __device_stub__ZN12tensorrt_llm6common9transposeI13__nv_bfloat16S2_EEvPT_PT0_mm(struct __nv_bfloat16 *, struct __nv_bfloat16 *, const size_t, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:77:428: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   77 | static void __device_stub__ZN12tensorrt_llm6common13transpose0213IffEEvPT_PT0_mmmm(float *, float *, const size_t, const size_t, const size_t, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:81:481: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   81 | static void __device_stub__ZN12tensorrt_llm6common13multiplyScaleIfEEvPT_fm(float *, float, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:85:481: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   85 | static void __device_stub__ZN12tensorrt_llm6common11divideScaleIfEEvPT_fm(float *, float, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:89:516: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   89 | static void __device_stub__ZN12tensorrt_llm6common8fakeCastIf13__nv_bfloat16EEvPT_m(float *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:93:400: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   93 | static void __device_stub__ZN12tensorrt_llm6common8fakeCastIffEEvPT_m(float *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:97:470: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+   97 | static void __device_stub__ZN12tensorrt_llm6common11check_rangeIiEEvPKT_mS2_S2_Pb(const int *, size_t, int, int, bool *);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:101:431: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  101 | namespace common{
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:105:431: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  105 | namespace common{
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:109:478: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  109 | namespace common{
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:113:478: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  113 | # 642 "/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/flashinfer/data/csrc/nv_internal/cpp/common/memoryUtils.cu"
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:117:481: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  117 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:121:478: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  121 | }
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:125:528: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  125 | void tensorrt_llm::common::cudaD2Dcpyfp82Half( ::half *__cuda_0,struct ::__nv_fp8_e4m3 *__cuda_1,const ::size_t __cuda_2)
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:129:420: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  129 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:133:420: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  133 | # 1 "/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c"
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:137:406: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  137 | # 666 "/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/flashinfer/data/csrc/nv_internal/cpp/common/memoryUtils.cu"
+      |                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:141:417: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  141 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:145:412: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  145 | __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common18cudaD2DcpyHalf2fp8EP13__nv_fp8_e4m3P6__halfm( struct __nv_fp8_e4m3 *__par0,  half *__par1,  const size_t __par2) {  __cudaLaunchPrologue(3); __cudaSetupArgSimple(__par0, 0UL); __cudaSetupArgSimple(__par1, 8UL); __cudaSetupArgSimple(__par2, 16UL); __cudaLaunch(((char *)((void ( *)(struct __nv_fp8_e4m3 *, half *, const size_t))tensorrt_llm::common::cudaD2DcpyHalf2fp8)), 0U); }
+      |                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:149:423: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  149 | {__device_stub__ZN12tensorrt_llm6common18cudaD2DcpyHalf2fp8EP13__nv_fp8_e4m3P6__halfm( __cuda_0,__cuda_1,__cuda_2);
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:153:423: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  153 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:157:419: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  157 | # 690 "/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/flashinfer/data/csrc/nv_internal/cpp/common/memoryUtils.cu"
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:161:419: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  161 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:165:406: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  165 | }
+      |                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:169:417: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  169 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:173:470: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  173 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:177:464: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  177 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:181:470: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  181 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:185:464: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  185 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:189:557: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  189 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:193:557: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  193 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:197:568: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  197 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:201:568: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  201 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:205:615: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  205 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:209:615: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  209 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:213:613: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  213 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:217:559: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  217 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:221:559: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  221 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:225:455: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  225 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:229:714: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  229 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:233:714: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  233 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:237:610: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  237 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:241:639: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  241 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:245:639: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  245 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:249:535: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  249 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:253:377: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  253 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                         ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:257:388: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  257 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:261:435: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  261 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:265:435: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  265 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:269:373: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  269 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                     ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:273:384: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  273 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:277:431: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  277 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:281:431: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  281 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:285:343: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  285 | 
+      |                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:289:389: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  289 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                     ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:293:354: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  293 | 
+      |                                                                                                                                                                                                                                                                                                                                                                  ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:297:328: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  297 | 
+      |                                                                                                                                                                                                                                                                                                                                        ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:301:315: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  301 | 
+      |                                                                                                                                                                                                                                                                                                                           ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:305:343: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  305 | 
+      |                                                                                                                                                                                                                                                                                                                                                       ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:309:354: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  309 | 
+      |                                                                                                                                                                                                                                                                                                                                                                  ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:313:401: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  313 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:317:484: error: macro "__cudaLaunch" passed 2 arguments, but takes just 1
+  317 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+In file included from /tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:8,
+                 from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h:130: note: macro "__cudaLaunch" defined here
+  130 | #define __cudaLaunch(fun) \
+      | 
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIiEEvPT_mi(int*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:100:269: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  100 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIiEEvPT_mi(int *__par0, const size_t __par1, const int __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(int *, const size_t, const int))tensorrt_llm::common::cuda_random_uniform_kernel<int> )), 0U);}namespace tensorrt_llm{
+      |                                                                                                                                                                                                                                                                             ^~~~~~~~~~~~
+      |                                                                                                                                                                                                                                                                             cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIbEEvPT_mi(bool*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:104:270: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  104 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIbEEvPT_mi(bool *__par0, const size_t __par1, const int __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(bool *, const size_t, const int))tensorrt_llm::common::cuda_random_uniform_kernel<bool> )), 0U);}namespace tensorrt_llm{
+      |                                                                                                                                                                                                                                                                              ^~~~~~~~~~~~
+      |                                                                                                                                                                                                                                                                              cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIcEEvPT_mi(char*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:108:270: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  108 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIcEEvPT_mi(char *__par0, const size_t __par1, const int __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(char *, const size_t, const int))tensorrt_llm::common::cuda_random_uniform_kernel<char> )), 0U);}namespace tensorrt_llm{
+      |                                                                                                                                                                                                                                                                              ^~~~~~~~~~~~
+      |                                                                                                                                                                                                                                                                              cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common19cudaD2Dcpyfp82FloatEPfP13__nv_fp8_e4m3m(float*, __nv_fp8_e4m3*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:112:317: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  112 | __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common19cudaD2Dcpyfp82FloatEPfP13__nv_fp8_e4m3m(float *__par0, struct __nv_fp8_e4m3 *__par1, const size_t __par2){__cudaLaunchPrologue(3);__cudaSetupArgSimple(__par0, 0UL);__cudaSetupArgSimple(__par1, 8UL);__cudaSetupArgSimple(__par2, 16UL);__cudaLaunch(((char *)((void ( *)(float *, struct __nv_fp8_e4m3 *, const size_t))tensorrt_llm::common::cudaD2Dcpyfp82Float)), 0U);}
+      |                                                                                                                                                                                                                                                                                                                             ^~~~~~~~~~~~
+      |                                                                                                                                                                                                                                                                                                                             cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common18cudaD2Dcpyfp82HalfEP6__halfP13__nv_fp8_e4m3m(half*, __nv_fp8_e4m3*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:331: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                                                                           cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common19cudaD2DcpyFloat2fp8EP13__nv_fp8_e4m3Pfm(__nv_fp8_e4m3*, float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:327: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                       ^           
+      |                                                                                                                                                                                                                                                                                                                                       cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common18cudaD2DcpyHalf2fp8EP13__nv_fp8_e4m3P6__halfm(__nv_fp8_e4m3*, half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:331: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                                                                           cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common20cudaD2DcpyBfloat2fp8EP13__nv_fp8_e4m3P13__nv_bfloat16m(__nv_fp8_e4m3*, __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:357: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                                                                                                     ^           
+      |                                                                                                                                                                                                                                                                                                                                                                     cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIjEEvPT_mi(uint32_t*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:284: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+    1 | #pragma GCC diagnostic push
+      |                                                                                                                                                                                                                                                                                            ^           
+      |                                                                                                                                                                                                                                                                                            cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelItEEvPT_mi(uint16_t*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:5:284: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+    5 | #if !defined(__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__)
+      |                                                                                                                                                                                                                                                                                            ^           
+      |                                                                                                                                                                                                                                                                                            cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIaEEvPT_mi(int8_t*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:9:282: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+    9 | #include "tmpxft_000083eb_00000000-3_memoryUtils.fatbin.c"
+      |                                                                                                                                                                                                                                                                                          ^           
+      |                                                                                                                                                                                                                                                                                          cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastIfK6__halfEEvPT_PT0_m(float*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:13:275: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   13 | extern __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common19cudaD2Dcpyfp82FloatEPfP13__nv_fp8_e4m3m(float *, struct __nv_fp8_e4m3 *, const size_t);
+      |                                                                                                                                                                                                                                                                                   ^           
+      |                                                                                                                                                                                                                                                                                   cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastIfK13__nv_bfloat16EEvPT_PT0_m(float*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:17:299: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   17 | extern __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common20cudaD2DcpyBfloat2fp8EP13__nv_fp8_e4m3P13__nv_bfloat16m(struct __nv_fp8_e4m3 *, struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                                           cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_bfloat16KfEEvPT_PT0_m(__nv_bfloat16*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:21:299: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   21 | static void __device_stub__ZN12tensorrt_llm6common8cudaCastIfK6__halfEEvPT_PT0_m(float *, const half *, const size_t);
+      |                                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                                           cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_bfloat16K6__halfEEvPT_PT0_m(__nv_bfloat16*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:25:304: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   25 | static void __device_stub__ZN12tensorrt_llm6common8cudaCastI6__halfK13__nv_bfloat16EEvPT_PT0_m(half *, const struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                ^           
+      |                                                                                                                                                                                                                                                                                                                cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI6__halfK13__nv_bfloat16EEvPT_PT0_m(half*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:29:304: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   29 | static void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_fp8_e4m3KfEEvPT_PT0_m(struct __nv_fp8_e4m3 *, const float *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                ^           
+      |                                                                                                                                                                                                                                                                                                                cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastIfK13__nv_fp8_e4m3EEvPT_PT0_m(float*, const __nv_fp8_e4m3*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:33:299: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   33 | static void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelI6__halfEEvPT_mi(half *, const size_t, const int);
+      |                                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                                           cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_bfloat16K13__nv_fp8_e4m3EEvPT_PT0_m(__nv_bfloat16*, const __nv_fp8_e4m3*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:37:328: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   37 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIaaEEvPT0_PKT_m(int8_t *, const int8_t *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                        ^           
+      |                                                                                                                                                                                                                                                                                                                                        cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI6__halfK13__nv_fp8_e4m3EEvPT_PT0_m(half*, const __nv_fp8_e4m3*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:41:304: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   41 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIiiEEvPT0_PKT_m(int *, const int *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                ^           
+      |                                                                                                                                                                                                                                                                                                                cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_fp8_e4m3KfEEvPT_PT0_m(__nv_fp8_e4m3*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:45:299: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   45 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat16aEEvPT0_PKT_m(int8_t *, const struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                                           cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_fp8_e4m3K13__nv_bfloat16EEvPT_PT0_m(__nv_fp8_e4m3*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:49:328: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   49 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat1613__nv_fp8_e4m3EEvPT0_PKT_m(struct __nv_fp8_e4m3 *, const struct __nv_bfloat16 *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                        ^           
+      |                                                                                                                                                                                                                                                                                                                                        cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8cudaCastI13__nv_fp8_e4m3K6__halfEEvPT_PT0_m(__nv_fp8_e4m3*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:53:304: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   53 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIi6__halfEEvPT0_PKT_m(half *, const int *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                ^           
+      |                                                                                                                                                                                                                                                                                                                cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelIfEEvPT_mi(float*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:57:281: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   57 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIijEEvPT0_PKT_m(uint32_t *, const int *, const size_t);
+      |                                                                                                                                                                                                                                                                                         ^           
+      |                                                                                                                                                                                                                                                                                         cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelI6__halfEEvPT_mi(half*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:61:286: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   61 | static void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIf13__nv_bfloat16EEvPT0_PKT_m(struct __nv_bfloat16 *, const float *, const size_t);
+      |                                                                                                                                                                                                                                                                                              ^           
+      |                                                                                                                                                                                                                                                                                              cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelI13__nv_bfloat16EEvPT_mi(__nv_bfloat16*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:65:310: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   65 | static void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIifEEvPT0_PKT_PKfbm(float *, const int32_t *, const float *, bool, const size_t);
+      |                                                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common26cuda_random_uniform_kernelI13__nv_fp8_e4m3EEvPT_mi(__nv_fp8_e4m3*, size_t, int)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:69:310: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   69 | static void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIi13__nv_bfloat16EEvPT0_PKT_PKfbm(struct __nv_bfloat16 *, const int32_t *, const float *, bool, const size_t);
+      |                                                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI6__halfS2_EEvPT0_PKT_m(half*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:73:286: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   73 | static void __device_stub__ZN12tensorrt_llm6common9transposeI13__nv_bfloat16S2_EEvPT_PT0_mm(struct __nv_bfloat16 *, struct __nv_bfloat16 *, const size_t, const size_t);
+      |                                                                                                                                                                                                                                                                                              ^           
+      |                                                                                                                                                                                                                                                                                              cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIaaEEvPT0_PKT_m(int8_t*, const int8_t*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:77:282: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   77 | static void __device_stub__ZN12tensorrt_llm6common13transpose0213IffEEvPT_PT0_mmmm(float *, float *, const size_t, const size_t, const size_t, const size_t);
+      |                                                                                                                                                                                                                                                                                          ^           
+      |                                                                                                                                                                                                                                                                                          cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI6__half13__nv_bfloat16EEvPT0_PKT_m(__nv_bfloat16*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:81:314: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   81 | static void __device_stub__ZN12tensorrt_llm6common13multiplyScaleIfEEvPT_fm(float *, float, const size_t);
+      |                                                                                                                                                                                                                                                                                                                          ^           
+      |                                                                                                                                                                                                                                                                                                                          cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat166__halfEEvPT0_PKT_m(half*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:85:314: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   85 | static void __device_stub__ZN12tensorrt_llm6common11divideScaleIfEEvPT_fm(float *, float, const size_t);
+      |                                                                                                                                                                                                                                                                                                                          ^           
+      |                                                                                                                                                                                                                                                                                                                          cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat16S2_EEvPT0_PKT_m(__nv_bfloat16*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:89:326: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   89 | static void __device_stub__ZN12tensorrt_llm6common8fakeCastIf13__nv_bfloat16EEvPT_m(float *, const size_t);
+      |                                                                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                                                                      cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIiiEEvPT0_PKT_m(int*, const int*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:93:276: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   93 | static void __device_stub__ZN12tensorrt_llm6common8fakeCastIffEEvPT_m(float *, const size_t);
+      |                                                                                                                                                                                                                                                                                    ^           
+      |                                                                                                                                                                                                                                                                                    cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIf13__nv_fp8_e4m3EEvPT0_PKT_m(__nv_fp8_e4m3*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:97:309: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+   97 | static void __device_stub__ZN12tensorrt_llm6common11check_rangeIiEEvPKT_mS2_S2_Pb(const int *, size_t, int, int, bool *);
+      |                                                                                                                                                                                                                                                                                                                     ^           
+      |                                                                                                                                                                                                                                                                                                                     cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIa6__halfEEvPT0_PKT_m(half*, const int8_t*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:101:286: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  101 | namespace common{
+      |                                                                                                                                                                                                                                                                                              ^           
+      |                                                                                                                                                                                                                                                                                              cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI6__halfaEEvPT0_PKT_m(int8_t*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:105:286: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  105 | namespace common{
+      |                                                                                                                                                                                                                                                                                              ^           
+      |                                                                                                                                                                                                                                                                                              cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat16aEEvPT0_PKT_m(int8_t*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:109:310: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  109 | namespace common{
+      |                                                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIa13__nv_bfloat16EEvPT0_PKT_m(__nv_bfloat16*, const int8_t*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:113:310: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  113 | # 642 "/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/flashinfer/data/csrc/nv_internal/cpp/common/memoryUtils.cu"
+      |                                                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI6__half13__nv_fp8_e4m3EEvPT0_PKT_m(__nv_fp8_e4m3*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:117:314: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  117 | 
+      |                                                                                                                                                                                                                                                                                                                          ^           
+      |                                                                                                                                                                                                                                                                                                                          cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIa13__nv_fp8_e4m3EEvPT0_PKT_m(__nv_fp8_e4m3*, const int8_t*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:121:310: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  121 | }
+      |                                                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat1613__nv_fp8_e4m3EEvPT0_PKT_m(__nv_fp8_e4m3*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:125:338: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  125 | void tensorrt_llm::common::cudaD2Dcpyfp82Half( ::half *__cuda_0,struct ::__nv_fp8_e4m3 *__cuda_1,const ::size_t __cuda_2)
+      |                                                                                                                                                                                                                                                                                                                                                  ^           
+      |                                                                                                                                                                                                                                                                                                                                                  cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIfaEEvPT0_PKT_m(int8_t*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:129:281: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  129 | 
+      |                                                                                                                                                                                                                                                                                         ^           
+      |                                                                                                                                                                                                                                                                                         cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIafEEvPT0_PKT_m(float*, const int8_t*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:133:281: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  133 | # 1 "/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c"
+      |                                                                                                                                                                                                                                                                                         ^           
+      |                                                                                                                                                                                                                                                                                         cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIifEEvPT0_PKT_m(float*, const int*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:137:278: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  137 | # 666 "/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/flashinfer/data/csrc/nv_internal/cpp/common/memoryUtils.cu"
+      |                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIi6__halfEEvPT0_PKT_m(half*, const int*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:141:283: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  141 | 
+      |                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                           cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIffEEvPT0_PKT_m(float*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:145:280: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  145 | __attribute__((visibility("hidden"))) void __device_stub__ZN12tensorrt_llm6common18cudaD2DcpyHalf2fp8EP13__nv_fp8_e4m3P6__halfm( struct __nv_fp8_e4m3 *__par0,  half *__par1,  const size_t __par2) {  __cudaLaunchPrologue(3); __cudaSetupArgSimple(__par0, 0UL); __cudaSetupArgSimple(__par1, 8UL); __cudaSetupArgSimple(__par2, 16UL); __cudaLaunch(((char *)((void ( *)(struct __nv_fp8_e4m3 *, half *, const size_t))tensorrt_llm::common::cudaD2DcpyHalf2fp8)), 0U); }
+      |                                                                                                                                                                                                                                                                                        ^~~~~~~~~~~~
+      |                                                                                                                                                                                                                                                                                        cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIf6__halfEEvPT0_PKT_m(half*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:149:285: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  149 | {__device_stub__ZN12tensorrt_llm6common18cudaD2DcpyHalf2fp8EP13__nv_fp8_e4m3P6__halfm( __cuda_0,__cuda_1,__cuda_2);
+      |                                                                                                                                                                                                                                                                                             ^           
+      |                                                                                                                                                                                                                                                                                             cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI6__halffEEvPT0_PKT_m(float*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:153:285: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  153 | 
+      |                                                                                                                                                                                                                                                                                             ^           
+      |                                                                                                                                                                                                                                                                                             cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIijEEvPT0_PKT_m(uint32_t*, const int*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:157:281: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  157 | # 690 "/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/flashinfer/data/csrc/nv_internal/cpp/common/memoryUtils.cu"
+      |                                                                                                                                                                                                                                                                                         ^           
+      |                                                                                                                                                                                                                                                                                         cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIjiEEvPT0_PKT_m(int*, const uint32_t*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:161:281: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  161 | 
+      |                                                                                                                                                                                                                                                                                         ^           
+      |                                                                                                                                                                                                                                                                                         cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIfiEEvPT0_PKT_m(int*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:165:278: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  165 | }
+      |                                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI6__halfiEEvPT0_PKT_m(int*, const half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:169:283: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  169 | 
+      |                                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                                           cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIf13__nv_bfloat16EEvPT0_PKT_m(__nv_bfloat16*, const float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:173:309: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  173 | 
+      |                                                                                                                                                                                                                                                                                                                     ^           
+      |                                                                                                                                                                                                                                                                                                                     cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertIi13__nv_bfloat16EEvPT0_PKT_m(__nv_bfloat16*, const int*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:177:307: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  177 | 
+      |                                                                                                                                                                                                                                                                                                                   ^           
+      |                                                                                                                                                                                                                                                                                                                   cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat16fEEvPT0_PKT_m(float*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:181:309: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  181 | 
+      |                                                                                                                                                                                                                                                                                                                     ^           
+      |                                                                                                                                                                                                                                                                                                                     cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common17cudaD2DcpyConvertI13__nv_bfloat16iEEvPT0_PKT_m(int*, const __nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:185:307: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  185 | 
+      |                                                                                                                                                                                                                                                                                                                   ^           
+      |                                                                                                                                                                                                                                                                                                                   cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIifEEvPT0_PKT_PKfbm(float*, const int32_t*, const float*, bool, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:189:399: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  189 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                               ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                               cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIfiEEvPT0_PKT_PKfbm(int32_t*, const float*, const float*, bool, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:193:399: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  193 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                               ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                               cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIi6__halfEEvPT0_PKT_PKfbm(half*, const int32_t*, const float*, bool, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:197:404: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  197 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                    ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                    cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertI6__halfiEEvPT0_PKT_PKfbm(int32_t*, const half*, const float*, bool, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:201:404: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  201 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                    ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                    cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertIi13__nv_bfloat16EEvPT0_PKT_PKfbm(__nv_bfloat16*, const int32_t*, const float*, bool, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:205:428: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  205 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                            ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                            cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertI13__nv_bfloat16iEEvPT0_PKT_PKfbm(int32_t*, const __nv_bfloat16*, const float*, bool, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:209:428: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  209 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                            ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                            cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common22cudaD2DScaleCpyConvertI13__nv_fp8_e4m3fEEvPT0_PKT_PKfbm(float*, const __nv_fp8_e4m3*, const float*, bool, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:213:426: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  213 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                          ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                          cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common9transposeI13__nv_fp8_e4m3S2_EEvPT_PT0_mm(__nv_fp8_e4m3*, __nv_fp8_e4m3*, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:217:369: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  217 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                 ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                 cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common9transposeI13__nv_bfloat16S2_EEvPT_PT0_mm(__nv_bfloat16*, __nv_bfloat16*, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:221:369: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  221 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                 ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                 cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common9transposeIffEEvPT_PT0_mm(float*, float*, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:225:323: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  225 | 
+      |                                                                                                                                                                                                                                                                                                                                   ^           
+      |                                                                                                                                                                                                                                                                                                                                   cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common13transpose0213I13__nv_fp8_e4m3S2_EEvPT_PT0_mmmm(__nv_fp8_e4m3*, __nv_fp8_e4m3*, size_t, size_t, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:229:492: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  229 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common13transpose0213I13__nv_bfloat16S2_EEvPT_PT0_mmmm(__nv_bfloat16*, __nv_bfloat16*, size_t, size_t, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:233:492: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  233 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common13transpose0213IffEEvPT_PT0_mmmm(float*, float*, size_t, size_t, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:237:446: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  237 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                              cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common12transpose102I13__nv_fp8_e4m3S2_EEvPT_PT0_mmm(__nv_fp8_e4m3*, __nv_fp8_e4m3*, size_t, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:241:432: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  241 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common12transpose102I13__nv_bfloat16S2_EEvPT_PT0_mmm(__nv_bfloat16*, __nv_bfloat16*, size_t, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:245:432: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  245 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common12transpose102IffEEvPT_PT0_mmm(float*, float*, size_t, size_t, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:249:386: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  249 | 
+      |                                                                                                                                                                                                                                                                                                                                                                                                  ^           
+      |                                                                                                                                                                                                                                                                                                                                                                                                  cuLaunch
+In file included from tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:1:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common13multiplyScaleIfEEvPT_fm(float*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:253:264: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  253 | 
+      |                                                                                                                                                                                                                                                                        ^           
+      |                                                                                                                                                                                                                                                                        cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common13multiplyScaleI6__halfEEvPT_fm(half*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:257:269: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  257 | 
+      |                                                                                                                                                                                                                                                                             ^           
+      |                                                                                                                                                                                                                                                                             cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common13multiplyScaleI13__nv_bfloat16EEvPT_fm(__nv_bfloat16*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:261:293: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  261 | 
+      |                                                                                                                                                                                                                                                                                                     ^           
+      |                                                                                                                                                                                                                                                                                                     cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common13multiplyScaleI13__nv_fp8_e4m3EEvPT_fm(__nv_fp8_e4m3*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:265:293: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  265 | 
+      |                                                                                                                                                                                                                                                                                                     ^           
+      |                                                                                                                                                                                                                                                                                                     cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common11divideScaleIfEEvPT_fm(float*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:269:262: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  269 | 
+      |                                                                                                                                                                                                                                                                      ^           
+      |                                                                                                                                                                                                                                                                      cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common11divideScaleI6__halfEEvPT_fm(half*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:273:267: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  273 | 
+      |                                                                                                                                                                                                                                                                           ^           
+      |                                                                                                                                                                                                                                                                           cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common11divideScaleI13__nv_bfloat16EEvPT_fm(__nv_bfloat16*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:277:291: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  277 | 
+      |                                                                                                                                                                                                                                                                                                   ^           
+      |                                                                                                                                                                                                                                                                                                   cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common11divideScaleI13__nv_fp8_e4m3EEvPT_fm(__nv_fp8_e4m3*, float, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:281:291: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  281 | 
+      |                                                                                                                                                                                                                                                                                                   ^           
+      |                                                                                                                                                                                                                                                                                                   cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastIf13__nv_bfloat16EEvPT_m(float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:285:221: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  285 | 
+      |                                                                                                                                                                                                                             ^           
+      |                                                                                                                                                                                                                             cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastI13__nv_bfloat16S2_EEvPT_m(__nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:289:238: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  289 | 
+      |                                                                                                                                                                                                                                              ^           
+      |                                                                                                                                                                                                                                              cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastI6__half13__nv_bfloat16EEvPT_m(half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:293:226: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  293 | 
+      |                                                                                                                                                                                                                                  ^           
+      |                                                                                                                                                                                                                                  cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastIf6__halfEEvPT_m(float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:297:213: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  297 | 
+      |                                                                                                                                                                                                                     ^           
+      |                                                                                                                                                                                                                     cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastIffEEvPT_m(float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:301:207: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  301 | 
+      |                                                                                                                                                                                                               ^           
+      |                                                                                                                                                                                                               cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastIf13__nv_fp8_e4m3EEvPT_m(float*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:305:221: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  305 | 
+      |                                                                                                                                                                                                                             ^           
+      |                                                                                                                                                                                                                             cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastI6__half13__nv_fp8_e4m3EEvPT_m(half*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:309:226: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  309 | 
+      |                                                                                                                                                                                                                                  ^           
+      |                                                                                                                                                                                                                                  cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common8fakeCastI13__nv_bfloat1613__nv_fp8_e4m3EEvPT_m(__nv_bfloat16*, size_t)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:313:250: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  313 | 
+      |                                                                                                                                                                                                                                                          ^           
+      |                                                                                                                                                                                                                                                          cuLaunch
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c: In function ‘void __device_stub__ZN12tensorrt_llm6common11check_rangeIiEEvPKT_mS2_S2_Pb(const int*, size_t, int, int, bool*)’:
+/tmp/tmpxft_000083eb_00000000-6_memoryUtils.cudafe1.stub.c:317:366: error: ‘__cudaLaunch’ was not declared in this scope; did you mean ‘cuLaunch’?
+  317 | 
+      |                                                                                                                                                                                                                                                                                                                                                                              ^           
+      |                                                                                                                                                                                                                                                                                                                                                                              cuLaunch

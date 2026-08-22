@@ -1,0 +1,1 @@
+["/bin/bash", "-c", "cd /workspace/track_gpu; python3 measurement/parsers/component_eval_parser.py /workspace/runs/20260822T104829Z__track_gpu_target4_component_pcie/component_pcie.json --enforce-gap4"]

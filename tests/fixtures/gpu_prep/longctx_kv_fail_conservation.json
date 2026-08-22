@@ -3,12 +3,23 @@
   "target": "A6_long_context_offloaded_kv_attention",
   "backend": "hand_written_fixture",
   "evidence": "cpu_smoke_test_not_measurement",
+  "seq_lens_requested": [1048576],
+  "repeats": 3,
+  "primary_statistic": "arithmetic_mean",
+  "primary_statistic_fields": [
+    "kv_resident_bytes", "kv_offloaded_bytes", "kv_offloaded_blocks",
+    "ttft_ns", "decode_per_token_ns", "kv_move_ns", "kv_move_bytes"
+  ],
   "records": [
     {
       "seq_len": 1048576,
       "kv_total_bytes": 137438953472,
       "kv_resident_bytes": 8000000000,
       "kv_offloaded_bytes": 100000000000,
+      "kv_blocks_total": 65536,
+      "kv_offloaded_blocks": 47684,
+      "kv_move_ns": 35437000,
+      "kv_move_bytes": 100000000000,
       "offload_engaged": true,
       "ttft_ns": 42033664000,
       "decode_per_token_ns": 35437000

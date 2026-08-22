@@ -1,0 +1,26 @@
+Collecting nvidia-cuda-runtime==13.2.86
+  Downloading nvidia_cuda_runtime-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cuda-nvcc==13.2.86
+  Downloading nvidia_cuda_nvcc-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.9 kB)
+Collecting nvidia-cuda-nvrtc==13.2.86
+  Downloading nvidia_cuda_nvrtc-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cuda-crt==13.2.86
+  Downloading nvidia_cuda_crt-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-nvvm==13.2.86
+  Downloading nvidia_nvvm-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-nvjitlink==13.2.86
+  Downloading nvidia_nvjitlink-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.8 kB)
+Downloading nvidia_cuda_runtime-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 26.0 MB/s  0:00:00
+Downloading nvidia_cuda_nvcc-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (44.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.0/44.0 MB 84.3 MB/s  0:00:00
+Downloading nvidia_cuda_nvrtc-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (47.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.0/47.0 MB 23.6 MB/s  0:00:01
+Downloading nvidia_cuda_crt-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (133 kB)
+Downloading nvidia_nvvm-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (64.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.3/64.3 MB 50.8 MB/s  0:00:01
+Downloading nvidia_nvjitlink-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (41.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.4/41.4 MB 28.2 MB/s  0:00:01
+Installing collected packages: nvidia-nvvm, nvidia-nvjitlink, nvidia-cuda-runtime, nvidia-cuda-nvrtc, nvidia-cuda-nvcc, nvidia-cuda-crt
+
+Successfully installed nvidia-cuda-crt-13.2.86 nvidia-cuda-nvcc-13.2.86 nvidia-cuda-nvrtc-13.2.86 nvidia-cuda-runtime-13.2.86 nvidia-nvjitlink-13.2.86 nvidia-nvvm-13.2.86

@@ -1,0 +1,6 @@
+{
+  "duration_ns": 231288658286,
+  "failure_classification": "COMMAND_NONZERO",
+  "returncode": 1,
+  "status": "FAIL"
+}

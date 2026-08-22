@@ -1,0 +1,15 @@
+{
+  "schema_version": "track-gpu-postflight-v1",
+  "run_id": "20260822T121500Z__track_gpu_v2gapa_postflight",
+  "target": "target_v2_gap_a",
+  "status": "PASS_WITH_PRESERVED_FAILED_PREDECESSOR",
+  "evidence_scope": "FIT-side multi-object PCIe wait-all measurements",
+  "source_attempts": [
+    "20260822T120900Z__track_gpu_v2gapa_multistream",
+    "20260822T120900Z__track_gpu_v2gapa_multistream_validation",
+    "20260822T121400Z__track_gpu_v2gapa_multistream_attempt2",
+    "20260822T121400Z__track_gpu_v2gapa_multistream_attempt2_validation",
+    "20260822T121400Z__track_gpu_v2gapa_multistream_attempt2_grid_audit"
+  ],
+  "claim_boundary": "The 24-cell measured sweep and structural validation pass. IR projection and production S>1 semantics remain PENDING/UNSUPPORTED; this is not calibrated or held-out evidence."
+}

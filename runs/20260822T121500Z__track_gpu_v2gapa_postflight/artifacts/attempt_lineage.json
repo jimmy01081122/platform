@@ -1,0 +1,22 @@
+{
+  "attempt1_raw": {
+    "path": "../20260822T120900Z__track_gpu_v2gapa_multistream/v2gapa.json",
+    "sha256": "1e70ef48d19cb9642514e0e18c2944cdbb9a332b8b68f9adf1ca0f411a24a5b0",
+    "probe_status": "PASS",
+    "parser_status": "FAIL"
+  },
+  "attempt2_raw": {
+    "path": "../20260822T121400Z__track_gpu_v2gapa_multistream_attempt2/v2gapa.json",
+    "sha256": "3df6da0ec49c91596c758e6b579ba996bd60d195dd2e1dae70742fb9486b55ca",
+    "probe_status": "PASS",
+    "parser_status": "PASS",
+    "grid_audit_status": "PASS"
+  },
+  "source_sha256": {
+    "probe": "17fa86fcac1b4e9742ff5221356afb61eb396ed3e55fe2f10bb76975590844d1",
+    "backend_before": "ecaf1382260baa1e4d8eb46f5705275c392298a2ecc197d2b264fd883a940318",
+    "backend_after": "3c41cbc8ecd464ebcd5bd08d3ef0be34d14234cbc63dd23c16dd8691436c6bcd",
+    "parser_unchanged": "a0b1f08b0a2e7118efab7f5826ae075d43eef067755a980897ef469d994c12e0",
+    "attempt_wrapper": "72c570f7130117875397e9fbaeadded667931e0021c7cd1b0211a411b9bfbaad"
+  }
+}

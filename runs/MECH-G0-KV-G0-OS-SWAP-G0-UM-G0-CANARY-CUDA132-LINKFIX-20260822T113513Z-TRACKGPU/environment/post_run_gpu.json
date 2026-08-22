@@ -1,0 +1,23 @@
+{
+  "captured_at_utc": "2026-08-22T11:41:59Z",
+  "nvidia_compute_apps": {
+    "argv": [
+      "nvidia-smi",
+      "--query-compute-apps=pid,process_name,used_gpu_memory",
+      "--format=csv,noheader"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "nvidia_smi": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=name,uuid,memory.total,driver_version,compute_cap",
+      "--format=csv,noheader"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition, GPU-5b8e8466-02c1-74c6-b472-a1a725044a00, 97887 MiB, 580.95.05, 12.0"
+  }
+}

@@ -154,6 +154,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "cpu_smoke_test_not_measurement" if is_mock else "measured"
         ),
         "argv": _reconstruct_argv(args),
+        "runtime_identity": backend.runtime_identity,
         "runtime_variant_hash": runtime_variant_hash,
         "repeats": args.repeats,
         "concurrency_axis": "num_objects",   # multi-object; explicitly NOT copy_streams

@@ -6,6 +6,41 @@
 
 ---
 
+## 2026-08-22 · TRACK_GPU · Phase 1 HEADERFIX guard PASS；target_1 fail-closed
+
+```text
+TRACK: TRACK_GPU
+STATUS: IN_PROGRESS
+RAW_SAFETY: /workspace/runs/ 已 rsync 至本機 /home/a/platform/runs/，checksum dry-run 無差異；
+  workspace_is_volume=false，instance 僅 stop、絕不 destroy。
+PHASE0: owner-reviewed backend diff 已 commit 81baf2f。
+TARGET4: raw attempt 20260822T104829Z__track_gpu_target4_component_pcie 已保存；P-020
+  canonical converter 產 90 點（30 PCIe + 48 component + 12 replay；其中 48 component
+  stamp legacy_join_recovered），component_eval_parser --enforce-gap4 PASS；不可作新量測標準。
+HEADERFIX: canonical attempt MECH-G0-...-CANARY-HEADERFIX-PYINC-20260822T114227Z-TRACKGPU PASS。
+  無 header 改動；CUDA_HOME=/usr/local/cuda，nvcc 13.0.88，CPATH=matching nvrtc overlay
+  + /usr/include/python3.10。torch 2.11.0+cu130 / vLLM 0.23.0 / driver 580.95.05。
+  markers: FLASH_ATTN attention；FlashInfer CUTLASS Unquantized MoE；KernelConfig
+  enable_flashinfer_autotune=True。guard domain 32768/1/1024/.97/eager；KV cache 38,832 tokens。
+TARGET1: attempt1 保存部署缺檔；部署完整 measurement/ 後 attempt2 在缺
+  measurement.probes.vllm_runtime_adapter 處 BackendError，GPU engine 未啟動，沒有 mock/fallback。
+BLOCKER: worker-side T_prepare/T_queue/T_sync/T_move live adapter 尚未實作；target_1 未完成。
+V2_GAP_A: attempt1 probe rc0，但 strict parser 正確拒絕 N=1 aggregate 含 coordinator-event
+  scheduling delay而大於 serialized sum；失敗完整保存。未改 parser/門檻，backend 改以共同
+  start 下的 latest per-object completion 表示 frozen wait-all。attempt2 probe/parser/grid audit
+  全 PASS：24 unique cells、每 cell n=5、copy_streams=1、backend=gpu/evidence=measured；FIT-side，
+  IR 仍 PENDING_S_GT_1_SEMANTICS / UNSUPPORTED_UNTIL_MEASURED，不自行宣告 production mapping。
+TARGET2_P020: native only；size 16 canary / 140 formal；VLLM_USE_SIMPLE_KV_OFFLOAD 必須
+  unset 且 runtime identity 記 null；canary 僅證明機制可觸發，不證明效能。
+VALIDATION: make test-py = 424 passed,1 skipped；14 CTest passed；verify-evidence
+  4423/4423；doctor pass；targeted 44 passed；git diff --check pass。
+NEXT: FlashInfer 成功分支早於 60-min expiry，故未在 deadline stop；跑完唯一 ready 的
+  V2-GAP-A、全 raw checksum 拉回後才 stop instance 48381628（未 destroy）。本機完成
+  target_1/2 live adapter、target_4 三探針、target_5 獨立 arrival driver後再 start。
+```
+
+---
+
 ## 2026-08-20 · ORCHESTRATOR · PREP-3 驗收 CONFIRMED + 全專案提交/推送
 
 ```text

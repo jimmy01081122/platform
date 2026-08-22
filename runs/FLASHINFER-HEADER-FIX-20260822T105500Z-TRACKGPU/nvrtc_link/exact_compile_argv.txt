@@ -1,0 +1,1 @@
+g++ -std=c++17 -I/workspace/track_gpu/cuda_compat/nvrtc-13.0.88/include /workspace/track_gpu/header_fix_validation/20260822T105500Z-memoryUtils/nvrtc_link_probe.cc -L/usr/local/cuda-13.0/lib64 -Wl,-rpath,/usr/local/cuda-13.0/lib64 -lnvrtc -o /workspace/track_gpu/header_fix_validation/20260822T105500Z-memoryUtils/nvrtc_link/probe

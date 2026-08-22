@@ -664,7 +664,23 @@ stages:
 
   - id: TRACK_GPU
     title: GPU 量測軌
-    status: NOT_STARTED
+    status: IN_PROGRESS
+    status_note: >-
+      2026-08-22 Phase 1/2。target_4 raw 已拉回本機；P-020 canonical legacy converter
+      產生 90 points（48 component=legacy_join_recovered）並過 --enforce-gap4，非新標準。
+      FlashInfer canonical HEADERFIX-PYINC guard 在成本閘門前 PASS；無 header 修改，markers
+      為 FLASH_ATTN + FlashInfer CUTLASS MoE + FlashInfer KernelConfig。V2-GAP-A attempt1
+      instrumentation failure 完整保存；未放寬 parser，attempt2 24 unique cells×n=5、
+      strict parser、grid audit PASS（FIT-side；IR/production mapping 仍 PENDING/UNSUPPORTED）。
+      全 /workspace/runs checksum 拉回後 stop instance 48381628，不 destroy。
+      本機新增 strict vLLM runtime adapter、target_4 三探針、target_5 independent arrival
+      driver、full model identity manifest 與 hardened attempt wrapper。component probe 依 sealed
+      assignment 隔離 fit41/validation11/holdout12，holdout 需 A4 explicit authorization。
+      Adapter control path CPU-tested、live audit NOT_RUN；source audit 顯示 target_1 fused MoE
+      無法直接分離四項 decomposition，target_2 native stats 無 per-request residency gauge，
+      故兩者明確拒絕 measurement（無 parent timing/inference/fallback），待 owner 授權低層 hook。
+      target_2 另待 batching/prefix/canary-seq；GAP-1 待 weight grid/fixed tokens；實機 93.4-GB
+      model content hash 待下次 start。除 V2-GAP-A 外未新增 GPU measured 結果；本軌 IN_PROGRESS。
     guide: docs/session_guides/TRACK_GPU_MEASUREMENT.md
     guide_completeness: EXECUTABLE
     gpu_required: true
@@ -689,7 +705,10 @@ stages:
           系統層搬運與控制結構完全無量測。既有的 gather_scatter 探針
           (benchmark.py:463, evidence 內 56 筆) 是同裝置合成 proxy,
           只給 execute 項, 不含 T_prepare/T_queue/T_sync/T_move。
-        readiness: 需 PREP 寫 in-serving 儀測
+        readiness: >-
+          backend/config/worker-control adapter 已實作並 CPU 測試；live audit NOT_RUN。
+          Frozen decomposition 卡在 FlashInfer 單一 fused boundary，且須有 <=5%
+          uninstrumented control。BLOCKED_ON_OBSERVABILITY，待 owner 授權低層 hook。
       - id: 2
         target: 掛載點 A6 —— 長上下文 offloaded KV attention
         reason: >-
@@ -697,8 +716,9 @@ stages:
           第三方語料最長 query 約 721 tokens, 無法提供此區間 ——
           本軌是唯一來源 (見 P-010)。
         readiness: >-
-          最大缺口。全倉庫 grep max_model_len / cpu_offload_gb / swap_space /
-          kv_offload 零命中, runner 與 parser 全部要新寫。
+          probe/parser/backend/config/worker-control adapter 已實作；P-020 native 16/140 GiB
+          硬規則已鎖。Native connector stats 無 per-request residency gauge，故 strict refusal；
+          另待 owner 的 batching/prefix/canary-seq。BLOCKED_ON_OBSERVABILITY + OWNER_INPUT。
       - id: 3
         target: sealed held-out 驗證集
         reason: STAGE_A4 的前置
@@ -709,12 +729,15 @@ stages:
         target: component service model 缺的 operand shape 與 concurrency 掃描點
         reason: 依 A1 殘差決定, 規格見 calibration/fits/v2/measurement_gaps.json
         readiness: >-
-          今日即可執行, 6 項缺口皆已寫明要掃什麼。
-          GAP-5 可能由讀 harness 程式碼解決而不需 GPU, PREP 須先試。
+          三支新 probe/parser CPU-tested。component split 已 fail-closed 隔離 sealed
+          fit/validation/holdout；FIT 可跑，holdout 僅 A4。V2-GAP-C 可跑；GAP-1 仍待
+          owner weight_bytes grid + fixed_expert_tokens。
       - id: 5
         target: SERV-P0-25 tail-CI 補測
         reason: 須從 request 0 重跑完整 10K, 新 attempt ID, 不得接續舊進度
-        readiness: 今日即可執行, 只缺 run plan 與時間估計
+        readiness: >-
+          independent arrival driver CPU-tested；fresh 10K、raw hash/timestamp chain、streamed
+          logs、model re-attestation、runner hashes 全 fail-closed。GPU run NOT_RUN。
     verification:
       - assertion: canonical domain 相符, 或已建立獨立 platform profile 與獨立 calibration package
       - assertion: 未干擾任何既有 serving 或 GPU process

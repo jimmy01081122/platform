@@ -1,11 +1,11 @@
 # CURRENT_STATUS
 
 ```text
-updated       : 2026-08-20（統籌：PREP-3/V2-GAP-A 驗收 CONFIRMED，TRACK_GPU_PREP 全數完成）
+updated       : 2026-08-22（TRACK_GPU Phase 1/2：V2-GAP-A measured PASS；GPU stopped；本機探針、adapter 與證據閘門完成 hardening）
 platform      : /home/a/platform
 repo          : git@github.com:jimmy01081122/platform.git
 current stage : Stage 0 完成；A1 IN_PROGRESS（FIT 側殘差，closure blocked 在 GPU 量測 V2-GAP-B/C）；A2 COMPLETE；A3 COMPLETE；B2 COMPLETE（可掃描元件、六動詞 ABI、reference mock 五路徑、A1-A6 定義，全 ANALYTICAL/PROJECTED）；TRACK_GPU_PREP 全數完成（PREP-1/2/3，含 V2-GAP-A 前置，經統籌獨立 CONFIRMED）
-next dispatch : TRACK_GPU（以 gputw.ai 開始 GPU 量測，OD-1；runbook 見 docs/status/GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md v1.2，區塊 A 含 P4→V2-GAP-A→P1→P2）。前置已全備：contract 凍結（含 V2-GAP-A target_v2_gap_a=FROZEN_PREP3）、六探針、sealed split 封存、模型下載走 /vault。B1 由 owner 裁決 HELD 等 A4（OD-3）；C1/A4 gated 在 GPU endpoint。CPU 端可推進到 COMPLETE 的階段工作已用盡，瓶頸全部收斂到單一 GPU endpoint
+next dispatch : GPU instance 48381628 已 stop（未 destroy）。再次 start 前先由 owner 裁決 target_1/2 的低層 observability 路徑，並補 target_2 batching/prefix/canary-seq 與 GAP-1 weight grid；start 後第一件事是跑 93.4-GB model content manifest。target_4 FIT subset、V2-GAP-C 與 target_5 driver 已在本機 CPU 測試完成，尚未 GPU 執行。
 ```
 
 ## 一句話狀態
@@ -26,17 +26,17 @@ next dispatch : TRACK_GPU（以 gputw.ai 開始 GPU 量測，OD-1；runbook 見 
 | C1 co-design DSE | NOT_STARTED | 指引為 RULES_ONLY |
 | C2 HW0 + LM18 handoff | NOT_STARTED | 指引為 RULES_ONLY |
 | GPU 前置準備軌 | **COMPLETE** | PREP-1（P-014）＋ **PREP-2 完成**（P-016）：A2 完成後，依 A2 CalibrationIR schema 把探針依賴欄位全部填實，operand shape 直接進 evaluation_coordinate，探針輸出可**不經 join** 生成對 A2 schema 有效的 IR 評估點（GAP-4 類缺陷不重演）。無 GPU 主張 |
-| GPU 量測軌 | NOT_STARTED | 需前置軌完成（優先序 4/5 例外，見下）；contract 已凍結，priority 1/2 探針已備 |
+| GPU 量測軌 | **IN_PROGRESS** | target_4 legacy raw 已本機保存並以 canonical converter 救回 90 點（48 component 為 `legacy_join_recovered`；非新標準）。FlashInfer HEADERFIX guard 在成本閘門前 PASS。V2-GAP-A attempt1 instrumentation failure 完整保存；未放寬 parser，attempt2 的 24 unique cells×n=5、strict parser、grid audit 全 PASS。新 target_4 probes 已按 sealed assignment 隔離 fit=41/validation=11/holdout=12；例行 FIT run無明確 A4 授權不能碰 holdout。target_5 fresh 10K arrival driver、本機 model manifest generator 與 attempt wrapper 已備。target_1/2 adapter 的 engine-control path 已實作，但 source audit 發現 frozen measured fields 不可由 vLLM 0.23 現有 Python/metrics 邊界直接觀測，因此明確拒絕量測；live control audit NOT_RUN。全 raw 拉回後 instance stop、不 destroy |
 | 統籌 session | — | 排程與驗收，隨時可開 |
 
 權威狀態記錄為 `governance/stage_ledger.yaml`；本文件是人類可讀摘要，衝突時以 ledger 為準。
 
-## 已驗證的基線（2026-08-20 B2 session 實測）
+## 已驗證的基線（2026-08-22 TRACK_GPU Phase 1 本機重跑）
 
 ```text
 證據完整性   4423 / 4423 檔 SHA-256 通過（make verify-evidence）
-Python 測試  399 通過、1 skipped、0 失敗
-             tests 163 · simulator/tests 36 · phase1 16 · phase2 43 · phase7 141(+48 subtests)
+Python 測試  424 通過、1 skipped、0 失敗
+             tests 188 · simulator/tests 36 · phase1 16 · phase2 43 · phase7 141(+48 subtests)
 C++ CTest    14 通過、0 失敗（phase3 2/2 · phase4 3/3 · phase5 4/4 · phase6 5/5）
 workspace    make doctor -> workspace_contract: pass
 ```
@@ -99,7 +99,7 @@ cell 達標  1/11 -> 21/21   （專案自訂門檻 k* = 14）
 
 ## 已知缺口
 
-- **掛載點 A2（系統層 dispatch 搬運）與 A6（offloaded KV 上的 attention）沒有量測。** 兩者都在 GPU 軌的最高優先序；A6 因語料缺乏長上下文而升級為唯一可行來源，且全倉庫 grep `max_model_len`/`cpu_offload_gb`/`swap_space`/`kv_offload` **零命中**——runner 全部要新寫。
+- **掛載點 A2（系統層 dispatch 搬運）與 A6（offloaded KV 上的 attention）仍沒有量測。** backend/config/engine-control adapter 已存在，但不偽造不可觀測欄位：FlashInfer CUTLASS 的單一 fused MoE boundary 無法把 `T_move` 與 execute 分開；native offload stats 只有 transfer bytes/time、且讀取會 drain/reset，沒有 per-request GPU/CPU residency gauge。target_1/2 因此等待 owner 裁決低層 hook，而不是改用 parent wall time或推導 residency。
 - 長上下文與高並發區間沒有量測；目前所有 expert residency 結論都限於單請求、eager、159 tokens、`max_num_seqs=1`。
 - `accelerator/`、`dse/` 目前只有 README 骨架，無實作。`calibration/` 現有 `refit_v2.py` 與 `fits/v2/` 輸出（A1 產出），仍缺 A4 的 sealed held-out 實作。
 - A1 殘差分析發現的新缺口（見 `calibration/fits/v2/measurement_gaps.json`）：dequant 延遲的真正驅動變數是 expert 權重位元組數而非 token 數，本階段量測無法把兩者分離；小尺寸 PCIe 傳輸在多 stream 下仍有未建模的延遲成長（大尺寸區間已驗證修復，小尺寸區間相反方向的殘留效應是新發現，不在本階段四項缺陷登記範圍內）；moe_replay 的 `cpu_calls`/`expert_tokens` 兩種量測慣例之間有約 8 倍的正規化落差，尚未釐清換算關係。

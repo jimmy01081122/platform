@@ -1,0 +1,19 @@
+--- rejected-mixed-toolchain.env
++++ accepted-headerfix-pyinc.env
+@@
+-CUDA_HOME=/usr/local/cuda
+-CUDA_PATH=/usr/local/cuda
+-CUDACXX=/usr/local/cuda/bin/nvcc
+-CPATH=/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include
+-LIBRARY_PATH=/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/lib
+-LD_LIBRARY_PATH=/workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/lib
++CUDA_HOME=/usr/local/cuda
++CUDA_PATH=/usr/local/cuda
++CUDACXX=/usr/local/cuda/bin/nvcc
++CPATH=/workspace/track_gpu/cuda_compat/nvrtc-13.0.88/include:/usr/include/python3.10
++LIBRARY_PATH=/workspace/track_gpu/cuda_compat/nvrtc-13.0.88/lib
++LD_LIBRARY_PATH=<unset>
+
+No CUDA or FlashInfer header file was modified.  The accepted fix is only the
+environment assembly above: the system CUDA 13.0.88 compiler/header root, the
+narrow matching nvrtc overlay, and the installed Python 3.10 development include.

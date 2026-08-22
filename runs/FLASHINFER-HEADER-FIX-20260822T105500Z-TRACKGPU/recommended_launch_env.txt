@@ -1,0 +1,4 @@
+CPATH=/workspace/track_gpu/cuda_compat/nvrtc-13.0.88/include
+LIBRARY_PATH: no override
+LD_LIBRARY_PATH: no override
+CUDA compiler/header root: /usr/local/cuda-13.0

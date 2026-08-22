@@ -277,3 +277,136 @@
 - 新增：`accelerator/`（`__init__`、`fidelity`、`resource_model`、`abi`、`backends/`、`attachment_points`）、`configs/accelerator/resource_model_default.yaml`、`scripts/stage_b2_emit_model.py`、`tests/test_accelerator.py`（+34 tests）。`src/edgeflow/multifidelity.py` 未動（git diff 空），其防偽測試仍過。
 - run `runs/20260819T201446Z__stage_b2_accelerator_model/`（manifest + metrics + environment + artifacts 五份：resource_sweep / abi_registry / reference_mock_paths / attachment_points / fidelity_audit）。
 - 基線：**399 Python**（tests/ 129→163）+ 14 CTest、0 失敗；evidence 4423/4423 未動；`make doctor` pass。**純 CPU；無 accelerator 收益/break-even 主張；A2/A6 無效能結論；零元件標 MEASURED_SURROGATE**。
+
+## P-019 · TRACK_GPU 首個 GPU 窗口：endpoint 放寬、target_2 獨立 variant、成本閘門與兩項凍結發現
+
+**日期** 2026-08-22
+**前置** TRACK_GPU_PREP 全數 COMPLETE（PREP-1/2/3）；contract 凍結；GPU endpoint 取得（vast.ai `ssh1.vast.ai:21629`，RTX PRO 6000 Blackwell 96 GB）。本 session 為決策與監管角色，量測由獨立實作 session 執行。
+
+**OWNER 裁決 1（endpoint 與儲存放寬為軟性條件）** runbook `GPU_WINDOW_EXECUTION_PLAN_gputw_v1.md` 原假設 gputw.ai + `/vault` 持久儲存；owner 裁定兩者改為**軟性條件，以實際 server 狀態為準**。domain 判定仍為硬規則（照常 §9.2 preflight，不因「不是 gputw.ai」而自動判定不符）。代價已具體化：本機 `workspace_is_volume=false`、無 host volume，「權重只下載一次」的保證不成立（見發現 2）。
+
+**OWNER 裁決 2（target_2 獨立建立 + 照原規格）** A6 長上下文/KV-offload **允許獨立建立**，走**獨立 runtime variant**（非新 platform profile——硬體相同，差異在 engine 設定）：canonical M0 契約寫死 `cpu_offload_gb=0` / `swap_space_gb=0`，故 target_2 在 canonical domain 內**定義上不可執行**。裁定**照原規格**：完整 sweep 到 1,048,576、開 KV offload、**不縮減 sweep、不改門檻**；vLLM 0.23.0 若做不到單序列 KV offload，那是**可回報的量測結果**（contract target_2 `failure_condition` 明寫 OOM 本身是結果），不是改規格的理由。產出獨立命名存放，結論標註「適用 offload-on variant，不適用 canonical no-offload evidence」。
+
+**OWNER 裁決 3（成本閘門）** FlashInfer 修復**限時 60 分鐘**；逾時即 `stop` 機器（非 destroy）轉本機做純 CPU 工作，備妥後再 `start`。**不得無限期一邊付 GPU 費用一邊除錯。**
+
+**監管裁決 4（駁回 canary 改 `max_model_len=1024`）** 實作 session 觀察到 KV pool 僅 0.8 GiB，判定「32K domain 不合理」並提議 canary 凍結為 1024。**駁回**，三個理由：(a) `max_model_length: 32768` 出自 `explorations/moe_cycle_simulator/phase7/application/m0_execution_contract.json`，README 稱其為 immutable capacity-envelope and authority contract，改它屬結構性契約變更（owner 事項，前例 P-017/OD-2）；(b) 算術可滿足——97887 MiB × 0.97 = 94,950 MiB 預算 − 87.0 GiB 權重 = 5,862 MiB 剩餘，而 32768 × 128 KiB = 4,096 MiB 需求；(c) 0.8 GiB 是 **FlashInfer JIT 死在 KV allocation 之前**的症狀（實作 session 自述「尚未到達 KV allocation」），不能用未執行到的階段反推該階段不可行。**順序**：先修 FlashInfer → 讓 vLLM 真的走到 KV allocation → 再判斷 envelope。另查證 `gpu_memory_utilization=0.97` 為 canonical 值（evidence 902 筆），實作值正確。
+
+**監管裁決 5（FlashInfer header 修正條件放行）** 可修 header/NVRTC 路徑對齊，讓 FlashInfer 0.6.12 編出原本該編的 Blackwell kernel（環境組裝問題）。**紅線：不得為繞過編譯失敗而切換或停用 backend**（FLASH_ATTN / Triton / 任何 fallback）——現行為 FlashInfer CUTLASS MoE，而 target_1 量的就是 MoE dispatch 路徑本身，換 kernel 實作等於量到不同的東西、資料不可與既有 evidence 合併。必須產出：header 修正 before/after diff；vLLM 啟動 log 的 `attention_backend`/`fused_moe_backend`/`kernel_backend` 三個 marker（`runtime_variant.template.json` 的 `backend_evidence_contract` 要求，evidence 內無 JSON 記錄，本次為首次確立）。
+
+**發現 1（`gpu_run_package_v2` 為 checksum 凍結套件）** `checksums.txt` 234 筆 + `governance/lineage/CODE_SHA256SUMS` 238 筆，涵蓋 `scripts/benchmark.py` 與 `configs/benchmark_matrix.yaml`；`result.json` 本身記錄 `package_manifest_sha256`/`checksums_sha256`，量測證據綁定套件身分。**故 target_4 補齊不得修改此套件**（會同時破壞兩層 checksum，且新舊證據不可比），必須走**新增獨立探針**，與 PREP 既有做法一致。
+
+**發現 2（無持久儲存）** `vast-capabilities` 回報 `workspace_is_volume=false`，無 host volume 掛載。依 `/etc/vast-agents-guide.md` §3：`stop`/`start` 完整保留；`recycle`/`destroy` **清空整個 container 檔案系統**（87 GiB 權重 + cu130 stack + venv + 未拉回的 raw）。**硬規則：絕不 destroy/recycle；省費用一律用 stop。** raw 落 server 後應儘快拉回本機。
+
+**發現 3（模型下載抓錯檔案，已修正）** 原指令 `--exclude *.st` 過濾條件下錯（`.st` ≠ `consolidated*.pt`），實際抓 8 個 `consolidated.0X.pt`（約 93 GB 冗餘 PyTorch 整合權重，vLLM 不吃），磁碟一度剩 36 GB。已停止該 process、刪除半成品、以 `--exclude "consolidated*"` 重抓，取得 19/19 sharded safetensors（87 GiB），rev `eba92302…` 正確。
+
+**本輪量測狀態（未完成，不得解讀為 target_4 已達 contract）** target_4 以既有 harness 跑過兩次皆 PASS，各 91 筆 `raw_benchmarks`（`evidence: measured`）。對凍結 contract 的覆蓋：PCIe `bytes×streams×directions` 5×3×2=30 cells **齊全**（`bytes`/`copy_streams`/`direction` 皆為結構化欄位）；**component 軸不符**——凍結 harness 掃的是 `phase × concurrency`（實得 `expert_tokens` 僅 704/2816/8/32 四個點/op），而 contract 要求 `expert_tokens` 獨立掃 8 值 `[8,16,32,64,128,256,512,1024]`，**不是缺格數而是軸不同**；**V2-GAP-C sort/permute 未實作**（`window_replay` 6 筆但兩個 argsort 未單獨計時）；**GAP-1 dequant 掃錯軸**（沿 token 軸而非 weight-bytes）；**V2-GAP-A 0 筆**。target_1/2/5 全部 blocked 在 FlashInfer。
+
+**發現 4（GAP-4 在新量測中仍然存在，且凍結 harness 無法自行修復）** target_4 raw 的 component 記錄把 operand shape 只放在 `case` 字串（`"...,phase=prefill,concurrency=1,expert_tokens=704"`），結構化欄位 `expert_tokens` 為 `null` —— 正是 `measurement_gaps.json` GAP-4 描述的缺陷。且 `benchmark.py:88 build_evaluation_points()` 對 `split == "calibration"` **直接回傳空**（target_4 用的正是 calibration split），故本輪產出 **0 個 evaluation points**，`component_eval_parser.py` 以 `missing required key 'evaluation_points'` 拒絕；即使非 calibration split，其 component features 也只有 `cpu_calls/gpu_operations/memory_bytes/queue_depth/concurrency`，**不含 `expert_tokens`**。因套件為 checksum 凍結（發現 1），**不得在原地修復**。後果：Phase 2 的 component shape 探針必須把 `expert_tokens` 作為**獨立自變量並直接寫入結構化欄位**；既有 48 筆 component 量測若要保留，需一支一次性 converter 從 `case` 字串回復 shape 並標記為 legacy join 路徑（此路徑不得成為新量測的標準）——**該取捨待 owner 裁決**。
+
+**domain 對版差異（須隨資料傳遞）** GPU 型號/VRAM/torch 2.11.0+cu130/vLLM 0.23.0/Python 3.10.12/`gpu_memory_utilization` 0.97/`max_model_len` 32768 皆相符；**driver 580.95.05（evidence 為 595.71.05）、CUDA 13.0（evidence 為 13.2）不同**。非必然 domain 不符（向前相容），但必須寫入 run manifest 並在回報中明示，不得靜默視為相同。FlashInfer 0.6.12——evidence 內無版本記錄，無從對版。
+
+**後果**
+- 實作 session 新增 `measurement/probes/vllm_backend.py`（`VllmDispatchBackend`/`VllmLongContextBackend`，415 行）、`measurement/run_gpu_attempt.py`、`measurement/pull_gpu_attempt.sh`；修改 6 支 probe + `longctx_kv_parser.py` + `test_gpu_prep_v2gapa.py`（551+/85−）。監管逐檔審查：**OOM 硬規則完整保留**；parser 新增「terminal failure 必須為最後一筆」檢查、IR 點排除失敗記錄（兩者為**強化**）；`TorchAggregateBackend` 於 CUDA 不可用時明確拒絕、不替換 mock（規格 §6.3 防偽）；`DispatchRuntimeConfig.validate()` 對 `max_num_seqs=8`/`max_model_len=4096`/`enforce_eager=True`/`gpu_memory_utilization=0.97` 逐項硬比對。**未發現放寬凍結語意的改動。**
+- **Phase 5 前置待 owner 決定兩個值**：`--kv-offloading-size-gb`、`--kv-offloading-backend`。實作 session 正確地未猜測（設為必填，GAP-4 教訓）。參考：host RAM 186 GiB、可用 178 GiB；1M tokens 需約 128 GiB KV。
+- 基線：**421 Python passed**（tests/ 175→185，+10）+ **14 CTest**、0 failed（`make test-py` EXIT=0；獨立跑 tests/ 出現的 17 failed 為 stale `.pyc` 造成的既有現象，Makefile `test-py` 先執行 `clean-pyc`，見 A3 ledger 註記）。`evidence/` 本輪未動。
+- **TRACK_GPU 仍為 IN_PROGRESS，不得宣稱完成。** 無任何 calibrated / break-even / accelerator 主張；sealed held-out cells 未評分（屬 A4）；V2-GAP-A/B/C 屬 FIT-side，未與 sealed held-out 混用。
+
+## P-020 · TRACK_GPU：legacy component 點救回策略 + target_2 offload 參數定案
+
+**日期** 2026-08-22
+**前置** P-019 發現 4（GAP-4 在新量測中仍存在，凍結 harness 無法自行修復）；owner 已裁決 target_2 獨立 runtime variant + 照原規格。
+
+**OWNER 裁決 1（既有 component 量測採 (a)+(b) 並行）** target_4 既有 48 筆 component 記錄軸不符 contract（harness 掃 `phase × concurrency`，實得 `expert_tokens` 僅 704/2816/8/32 四點/op），且 `expert_tokens` 僅存在於 `case` 字串、結構化欄位為 `null`。裁定**兩路並行**：
+- **(a) 一次性 converter**：從 raw 的 `case` 字串回復 `expert_tokens`，產生符合 `component_eval_parser.py --enforce-gap4` 的 `evaluation_points`，標記為 **legacy join 回復路徑**（例如 `recovery=legacy_join_recovered`）。目的是不浪費已付的 GPU 時間。**此路徑不得成為新量測的標準**——它做的正是 GAP-4 要消滅的 join。
+- **(b) Phase 2 新探針重量正確的軸**：`expert_tokens` 為**獨立自變量**（`[8,16,32,64,128,256,512,1024]`），且**直接寫入結構化欄位**，不進 `case` 字串。
+合規評估點的最小要求（`component_eval_parser.validate()`）：`metric` ∈ METRICS、`source_record_id`、`measured`（數值）、`features` 為 mapping；`component_latency` 的 `features` **必須含 `expert_tokens`**（`--enforce-gap4` 下缺即 raise）；`pcie_transfer_latency` 需 `bytes` + `direction`。
+
+**監管裁決 2（target_2 offload 參數；依實機原始碼查證，非記憶推測）** vLLM 0.23.0 原生支援 KV offloading（`vllm/config/cache.py:168-177`、`vllm/config/vllm.py:774-800`），推翻先前「repo grep 零命中 ⇒ 能力未知」的不確定性。
+- **`kv_offloading_backend = native`**。合法值僅 `native` / `lmcache`。選 `native` 因：(i) `lmcache` 路徑的原始碼註解明載 `kv_offloading_size` **不會被傳遞**（容量由獨立 LMCache server 管理），設了不生效；(ii) `native` 為預設值，偏離 canonical 最少；(iii) `lmcache` 需外部 server process，增加 runtime identity、失敗模式與 non-interference 風險；(iv) LMCache 自有快取策略會混淆 target_2 要量的 offloaded KV attention 原始行為。`native` 解析為 `OffloadingConnector`，並把 size 傳為 `cpu_bytes_to_use = size * (1<<30)`（**單位為 GiB**）。
+- **`VLLM_USE_SIMPLE_KV_OFFLOAD` 維持未設**（設了會切成 `SimpleCPUOffloadConnector`）。此為隱藏開關，**必須明確寫進 runtime identity**：未設 → `OffloadingConnector`。
+- **`kv_offloading_size`：機制 canary 用 16 GiB，正式量測用 140 GiB。** 推算：1M tokens × 128 KiB = 128 GiB 總 KV；GPU 側約 5.7 GiB（95.6 × 0.97 − 87.0 權重）；host 需承接約 122–128 GiB；host 可用約 175–178 GiB。140 GiB 涵蓋保守解讀並留約 12 GiB 碎片餘裕，同時保留約 38 GiB 給 vLLM process / CUDA pinned staging / OS。**分兩步的理由**：若 `OffloadingConnector` 在啟動時 eager 配置或 pin 該緩衝，直接上 140 GiB 會在啟動瞬間失敗或拖垮主機、燒掉窗口；先以 16 GiB + 單一中等序列確認機制會觸發，再放大。
+
+**Claim boundary（重申）** 機制 canary 通過只證明「該機制存在且可被觸發」，**不得**表述為 offload 效能已驗證（指引 §8 明列禁止）。target_2 產出走獨立 runtime variant，結論標註「適用 offload-on variant，不適用 canonical no-offload evidence」；legacy 回復點必須與 (b) 的新量測點在下游可區分，不得混為同一證據等級。
+
+## P-021 · TRACK_GPU：target_5 採獨立 arrival driver，不修改既有 runner
+
+**日期** 2026-08-22
+**OWNER 裁決** target_5 走路徑 **(B)**：新增獨立 arrival driver 包裝既有 runner，且不得修改 `explorations/moe_cycle_simulator/phase7/real_run/gpu_campaign_runner.py`。arrival driver 必須從 request index 0 產生全新 attempt，以凍結的 Poisson open-loop rate `1.0472460793856333 rps`、seed `20260812`、concurrency 8、128-in/32-out 跑滿 10,000 requests；不得 resume partial。
+
+**理由** 與 target_4 採新探針而非修改 frozen harness 相同：現行 runner SHA-256 `30d3384a…` 已與 SERV-P0-25 evidence 記錄的 `304a7e2c…` 分歧；再修改會進一步削弱與原始 campaign 的可比性。獨立 driver 可把 arrival process、排程與 provenance 隔離，同時保持 runner 本體不再漂移。
+
+**後果／claim boundary** driver 必須記錄自身與 wrapped runner 的 SHA-256、exact argv、request-level planned/actual monotonic timestamps、input/output SHA-256 與 fresh-start 證據。runner hash 已分歧仍須明示；wrapper 不能把相容性描述為 byte-identical replay。target_5 仍未量測，無 tail-CI 主張。
+
+**實作稽核註記（不改 owner 的 arrival contract）** 原始碼核對顯示 `gpu_campaign_runner.py` 只提供同步 `LLM.generate` campaign，沒有 Poisson open-loop CLI 或 AsyncLLMEngine；歷史 SERV-P0-25 raw 的 schema、argv 與 scheduler 實際由既有 `serving_burst_runner.py` 產生。故獨立 driver 的**執行邊界**固定為未修改的 `serving_burst_runner.py`（SHA-256 `f948a292…`），`gpu_campaign_runner.py` 仍完全不修改並作**provenance/comparability 邊界**（current `30d3384a…`、archived `304a7e2c…`）。driver 同時 pin/記錄三個 hash；歷史 raw 沒有保存 serving runner hash，因此明寫無法證明 source-identical replay，不虛構可比性。
+
+## P-022 · V2-GAP-A：wait-all 以 latest constituent completion 實作；不放寬物理 parser
+
+**日期** 2026-08-22
+**發現** 第一個 GPU attempt 的 probe rc=0，但 strict parser 在首格即拒絕：N=1、64 KiB、H2D 的 aggregate `0.0147136 ms` 大於唯一 per-object serialized sum `0.0109376 ms`。根因是 backend 在所有 completion event 後，另於 coordinator stream 記一個 event；兩者差值含 CUDA event scheduling/record delay，不是 transfer wait-all 時間。
+
+**決定** 保留失敗 attempt，不改 parser、不加容差、不改軸。把 frozen「aggregate wait-all completion」實作為共同 start event 下 `max(per-object completion event)`；對 N=1 必然與唯一 constituent 相等，對 N>1 等於最後完成的 transfer。新增測試禁止額外 coordinator timing event，backend SHA 由 `ecaf1382…` 變為 `3c41cbc…`。
+
+**驗證與界線** 新 attempt 24 unique cells（N 1/2/4/8 × 64 KiB/2 MiB/336 MiB × H2D/D2H）各 n=5、`copy_streams=1`；原 strict parser PASS，另作 exact-grid/identity audit PASS。資料為 FIT-side；`ir_evaluation_point_fields=PENDING_S_GT_1_SEMANTICS`、`production_stream_semantics_status=UNSUPPORTED_UNTIL_MEASURED` 保持，不因量測成功自行定 production mapping。
+
+## P-023 · TRACK_GPU：vLLM adapter observability boundary + sealed/attempt fail-closed hardening
+
+**日期** 2026-08-22
+
+**性質** 這不是 owner 對 target_1/2 規格的變更，而是實作與 source audit 發現的能力邊界。原 sweep、門檻、backend 與 P-020 offload 決定全部維持。
+
+**target_1** `measurement.probes.vllm_runtime_adapter` 已實作 owner-frozen engine 建構、`worker_extension_cls` 注入、`LLM.collective_rpc` worker-control、resolved config audit 與三個 startup marker audit。CPU fake-bridge 測試通過；GPU live control audit 因 instance 已 stop 而 **NOT_RUN**。installed vLLM 0.23 source 的 `FlashInferExperts.apply` 只呼叫一次 `flashinfer_cutlass_fused_moe`，該 boundary 把 permutation / expert execution / unpermutation 融合；現有 Python hook 不能把 `T_move` 與 `T_execute` 分離。凍結 contract 又要求 instrumentation perturbation ≤5% 的 uninstrumented control。因此 adapter 只回報 control capability，對 measured fields 明確 `TARGET_1_MEASUREMENT_REFUSED`；禁止以 parent wall time、synthetic decomposition 或 backend fallback 補值。
+
+**target_2** native `OffloadingConnectorStats` 可觀測 completed transfer bytes/time，但 `get_kv_connector_stats` 會 drain/reset accumulator，且 vLLM 0.23 沒有 per-request GPU/CPU resident-byte gauge。這不足以直接填 `kv_resident_bytes` / `kv_offloaded_bytes` / blocks / engaged 的凍結欄位。adapter 因此明確 `TARGET_2_MEASUREMENT_REFUSED`，不推導 residency。P-020 的 full 1,048,576 sweep、native、16/140 GiB、hidden switch unset 完全不變。
+
+**owner 前置** 若要繼續 target_1/2 measured run，需 owner 授權低層 FlashInfer/OffloadingConnector instrumentation，或明示修改 output contract；目前不能把「engine-control adapter 已存在」說成量測 backend 已完成。target_2 另仍待 `max_num_batched_tokens`、prefix caching boolean、16-GiB canary medium sequence 三值。
+
+**sealed hardening** Phase-2 component probe 原型曾把全部 64 cells 標 FIT；audit 對照 sealed manifest 發現實際為 fit=41 / validation=11 / holdout=12。已在任何新 GPU 執行前修正：每個 attempt 必須載入並驗證 pinned assignment SHA、只跑一個 split；holdout 還需 `--authorize-holdout-measurement`，僅供 STAGE_A4。沒有 holdout 數值因此外洩或被 FIT 消費。
+
+**attempt hardening** generic GPU wrapper 現在拒絕既有 compute app、以 `CUDACXX → CUDA_HOME/bin/nvcc → PATH` 記錄實際工具鏈、強制 verified model identity/input fixture、串流 stdout/stderr、週期 telemetry、`--out` 留在 attempt 內，以及 rc=0 時 runtime identity + raw timing collection 齊備。`model_identity_manifest.py` 對 immutable revision 的 config/index/19 shards 做完整 content SHA-256；本機程式與 tiny fixture 已驗，實機 93.4-GB full hash 因 stop 而 NOT_RUN，列為下次 start 第一項。
+
+**claim boundary** 這些是 fail-closed plumbing/source-audit 結論，不是 GPU 效能資料。target_1/2/target_4 Phase-2/target_5 都仍未新增 measured 結果；唯一新 measured PASS 是 P-022 的 V2-GAP-A FIT-side attempt2。
+
+---
+
+## P-023 · target_5 runner 查證結果、target_2 三個 owner-recorded 值定案、V2-GAP-A/target_4 交叉分析發現新缺口
+
+**日期** 2026-08-22
+**前置** 監管對照 `serv_p0_25_arrival_driver.py`（實作 session 已完成，955 行）與 P-021 記錄的兩個 runner hash 出處。
+
+**查證 1（target_5 wrapped_runner 選擇經核實為正確,監管原先的疑慮不成立）** 監管原本查到 P-021 引用的 `304a7e2c…` 出自 `natural-v1-20260811T1541Z`（natural matrix）而非 SERV-P0-25,一度懷疑 contract 可能包錯 runner。查驗 `serv_p0_25_arrival_driver.py` 原始碼後確認**實作 session 已獨立做出相同判斷並修正**:driver 的 `execution_runner` 正確指向 `serving_burst_runner.py`(`EXPECTED_SERVING_RUNNER_SHA256 = f948a292…`,經本機 `sha256sum` 覆核相符),`gpu_campaign_runner.py` 僅留作 `provenance_runner`(`code_lineage()` 明確記錄兩者 `gpu_campaign_runner_source_identity_equal: False`,並註記其現行 hash 與 archived evidence hash 不同,不主張 source-identical)。比監管原先設想的修法更嚴謹——保留了 provenance 邊界說明而非單純刪除引用。**contract 的 `wrapped_runner`/`driver` 欄位（第 323/325/327 行一帶）現已與此一致,無需再改。**
+
+**裁決 2（target_2 三個 `owner_inputs_still_required` 值定案,直接寫入 contract）** 三值原標記待 owner 輸入,今以 evidence 全庫掃描與位元組算術定案:
+- **`max_num_batched_tokens = 32768`**——取 M0 canonical(`m0_execution_contract.json: max_batched_tokens=32768` 配 `max_sequences=1`)。**與 target_1 凍結的 1024 是不同理由,不衝突**:target_1 的 1024 是為了比對 SERV-P0-25 C8 serving 錨點;target_2 量的是單一超長序列(至 1,048,576 tokens)跨越 offload 邊界的行為,用 1024 會強迫大量額外 chunked-prefill 步驟,改變 TTFT 的意義,故取 M0 canonical 而非借用 target_1 的值。
+- **`enable_prefix_caching = false`**——evidence 掃描 288/288 筆 `enable_prefix_caching=False`,零例外。且為技術硬要求而非慣例比對:prefix caching 會跨請求去重 KV block,直接破壞 `_validate_longctx_record` 的守恆恆等式 `kv_total_bytes == seq_len × 131072`——這正是本 target 要量的不變量。
+- **`mechanism_canary_seq_len = 131072`**——算術:131072 tokens × 131072 B/token = 17,179,869,184 bytes = **恰好 16 GiB**,與 canary 容量 `kv_offloading_size_gb=16` 精確相等(兩者皆為 2¹⁷ × 2¹⁷ = 2³⁴)。同時也是掃描清單 7 點中的第 4 點(中位)。選它讓便宜的 canary 剛好在其宣告容量的邊界上驗證機制觸發,而非隨意大幅低估或高估。
+已將三值連同各自 provenance 註記寫入 `experiments/specs/gpu_measurement_contract_v1.yaml`(`independent_vars` 區塊)並修正 `exact_argv.mechanism_canary`/`gpu_run` 的殘留佔位符(`<single-owner-selected-medium-sequence>`/`<owner-recorded>`/`<--enable-prefix-caching-or---no-enable-prefix-caching>`)為具體值;`--no-enable-prefix-caching`/`--max-model-len`/`--max-num-batched-tokens` 三旗標經比對 `long_context_kv_probe.py` argparse 確認拼寫正確。YAML 語法與 6 個 target id 已驗證完整。
+
+**發現 3(V2-GAP-A 與 target_4 PCIe 交叉分析,兩條並發軸皆已測到零效益,凸顯新缺口)** 比對兩份既有 measured 資料:
+- V2-GAP-A(N 軸,多物件並發):`sum_per_object_ms / max_per_object_ms` 精確等於 `(N+1)/2`(N=2→1.500,N=4→2.501–2.506,N=8→4.498–4.525),`per_object_ms` 由 T₁ 排到 N·T₁ 完美階梯——**N 個獨立傳輸在各自 stream 上完全序列化,零重疊**,64 KiB 到 336 MiB、雙向皆然。
+- target_4(S 軸,單物件切分並發):S4/S1 = 3.65×(65536 B)、2.10×(1 MiB)、0.99–1.00×(≥22 MiB)——切分只在小尺寸增加額外開銷,大尺寸被頻寬掩蓋後與 S1 幾乎相等,重現 `measurement_gaps.json` GAP-6。
+- **交叉印證**:V2-GAP-A 的 N=1/65536B/h2d = 0.0108 ms,與 target_4 S=4 的每 16 KiB chunk(65536/4)almost 相等(≈0.0108 ms 量級)——兩個獨立探針、獨立軸,收斂到同一個 per-copy floor 常數,互相印證資料品質。
+兩軸皆確認**同方向**並發零重疊。**唯一尚未測的重疊機會是雙向並發(H2D ∥ D2H,不同 copy engine)**,而這正是 MoE offload 的真實形態(取 expert weight ∥ 逐出 KV)。另外 S 軸的 1 MiB→22 MiB 十倍程距(2.10×→0.99× 的轉折點)無任何測點,GAP-6 描述的「size-dependent stream interaction」目前只知道兩端、不知道轉折發生在哪。4 KiB cell(contract 宣告但凍結 harness 從未測)與 environment 未記錄 PCIe link generation/width(實測 336 MiB/6.30 ms = 55.9 GB/s,無 link 規格則無法判斷是否貼近理論頻寬,也無法確認新舊平台可比)同樣待補。四項合計 GPU 成本估計 ~6 分鐘,派入獨立 worktree session 執行(見下)。
+**界線**:以上皆 FIT-side 觀察,不構成 calibrated 或 production mapping 主張;V2-GAP-A 的 `production_stream_semantics_status` 仍為 `UNSUPPORTED_UNTIL_MEASURED`,不因此次交叉分析自行變更。
+
+**派工(worktree 隔離,CPU-only,不觸碰 GPU/SSH/evidence)** 監管以 `Agent(isolation: worktree)` 另開一個獨立 session,範圍嚴格限定於發現 3 的四項(PCIe 雙向並發探針、S 軸 1 MiB–22 MiB 密化、4 KiB cell、environment PCIe link 擷取),明確排除實作 session 目前正在動的所有檔案(target_1/2 相關 probe/parser/adapter、target_4 Phase-2 三支探針、`serv_p0_25_arrival_driver.py`)以避免與並行實作 session 衝突。完成後暫停回報,由監管審查 diff 後再決定是否併入主線;不自動 merge。
+
+---
+
+## P-024 · PCIe extension probe 到位;審查攔下 worktree session 重演 P-022 bug,已修正並併入主線
+
+**日期** 2026-08-22
+**前置** P-023 派工的獨立 worktree session(四項:雙向並發 H2D∥D2H、S 軸 1 MiB–22 MiB 密化、4096 B cell、PCIe link capture)完成回報:451 passed / 1 skipped / 0 failed,純新增檔案,未觸碰任何禁止路徑。
+
+**監管審查發現(未照單全收 agent 自報)** worktree 以 `git worktree` 建立,只能看見 HEAD 承諾(`81baf2f`),看不到主線當時尚未 commit 的 P-022 修正(`aggregate_backend.py` 的即時修改)。該 session 誠實地在自己的 docstring 與交付筆記中承認「引用不到 P-022,`git log` 也查無舊版 bug」,但因此**以 81baf2f 當時仍帶 bug 的 `aggregate_backend.py` 為範本**,把同一個反面模式原樣複製進新的雙向並發計時函式(`_measure_bidirectional_once`):等兩腿完成事件後,另在 coordinator stream 記一個獨立的 `joint_completion` event,以 `elapsed_time` 量到該獨立事件為「joint」值。
+
+**這正是 P-022 修的那個 bug 的重演,而且更隱蔽**:N=1 情境下 `max==sum`,包絡收斂成一個點,額外的 event-record delay 必然超出上界、被 parser 攔下;但雙向情境的包絡是 `[max(h2d,d2h), h2d+d2h]`,兩腿耗時通常不相等,留有實質空間,同樣的 record-delay 污染**不保證觸發 parser 的物理包絡檢查**,卻會系統性地把 `joint_completion_ms` 往上偏——恰好偏在這條軸最想分辨的小傳輸區間(64 KiB 量級,個位數到十位數 µs),足以左右「雙 copy engine 真重疊」與「單一 engine 序列化」的判讀方向。屬於會通過驗證、卻悄悄污染結論的一類錯誤。
+
+**修正**(直接在 worktree 內修改,重跑驗證後才併入主線)`_measure_bidirectional_once` 移除獨立 `joint_completion` event,改為 `joint_ms = max(h2d_ms, d2h_ms)`——與 `aggregate_backend.py` 已通過實機驗證的 P-022 修法同構(由已記錄的逐腿完成事件直接取值,不再多記一個事件)。同步修正模組 docstring 與 `docs/status/PCIE_EXTENSION_PROBE_NOTE.md` 的「Instrumentation discipline」段落,不再稱「查無 P-022」,改為誠實記錄:P-022 當時確實存在但只在主線未提交狀態,worktree 结構性看不到;新模組最初據此複製了修正前的模式;現已比對修正。
+
+**驗證** 修正後 worktree 內 `tests/test_gpu_prep_pcie_extension.py` 30/30 不變(該測試用 fake-CUDA-clock,`transfer_ms` 為固定值,本就無法模擬事件記錄延遲這個真實硬體現象——修正前後在假時鐘下的行為必然一致,測試通過**不代表** bug 不存在或已解決,已在筆記中明講,避免留下錯誤的信心來源)。`make test-py` 於 worktree 內外皆重跑:merge 前 worktree 451 passed/1 skipped;merge 後主線(含實作 session 同時新增的 6 支 in-flight 測試檔)**557 passed / 1 skipped / 0 failed**,零檔名衝突、零禁止路徑觸碰(`git status`/`git diff --stat HEAD` 核對)。
+
+**已併入主線** 8 個新檔:`measurement/probes/pcie_extension_backend.py`、`pcie_extension_probe.py`、`measurement/parsers/pcie_extension_parser.py`、`docs/status/PCIE_EXTENSION_PROBE_NOTE.md`、`tests/test_gpu_prep_pcie_extension.py` + 3 fixtures。四軸皆軸 exact_argv 已寫入該筆記,供下一個 GPU 窗口直接使用。
+
+**殘留認知邊界(寫入筆記,非本次修正可解)** 這類「CUDA event 自身記錄延遲污染量測值」的 bug,本質上**只有實機才能證偽**——本地 mock/fake-clock 測試不論修正前後都無法區分,P-022 原始 bug 當初也是在真實 GPU attempt 才被 strict parser 抓到。四軸就緒不等於已驗證正確;雙向並發軸的第一個 GPU attempt 完成前,`joint_over_max_ratio`/`joint_over_sum_ratio` 的判讀應保持謹慎。
+
+**claim boundary** 以上為 fail-closed 工程修正與 CPU-only 驗證,非 GPU 效能資料;四軸皆待下一個 GPU 窗口實測。

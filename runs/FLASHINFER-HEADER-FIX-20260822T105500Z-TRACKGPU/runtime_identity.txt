@@ -1,0 +1,12 @@
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2025 NVIDIA Corporation
+Built on Wed_Aug_20_01:58:59_PM_PDT_2025
+Cuda compilation tools, release 13.0, V13.0.88
+Build cuda_13.0.r13.0/compiler.36424714_0
+system include: /usr/local/cuda-13.0/targets/x86_64-linux/include
+overlay header: /workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/nvrtc.h
+4a2fb43bf85dff114387d78fbde4c16f02ab77c3936ec0606f380f2933f54604  /usr/local/cuda/include/crt/host_runtime.h
+0db6fe73f95ae49dbd3f74d174d3f1a1bd1f1908805a2f335cd5a372a178b947  /workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/include/crt/host_runtime.h
+9e4415b5ff5a2c58ec2b1a02eefcc743187c94ce48b00743c68092efe8c0f86e  /workspace/track_gpu/cuda_compat/nvrtc-13.0.88/include/nvrtc.h
+a49e67e8e74590f1e98de55c39c6287efd3f59e3c3797464d7bbe0fe01349b11  /usr/local/cuda-13.0/lib64/libnvrtc.so.13
+a49e67e8e74590f1e98de55c39c6287efd3f59e3c3797464d7bbe0fe01349b11  /workspace/venvs/track_gpu_vllm_0_23_py310/lib/python3.10/site-packages/nvidia/cu13/lib/libnvrtc.so.13

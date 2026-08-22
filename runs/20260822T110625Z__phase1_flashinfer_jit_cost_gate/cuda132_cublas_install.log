@@ -1,0 +1,6 @@
+Collecting nvidia-cublas==13.1.0.3
+  Downloading nvidia_cublas-13.1.0.3-py3-none-manylinux_2_27_x86_64.whl.metadata (1.7 kB)
+Downloading nvidia_cublas-13.1.0.3-py3-none-manylinux_2_27_x86_64.whl (423.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 423.1/423.1 MB 75.8 MB/s  0:00:05
+Installing collected packages: nvidia-cublas
+Successfully installed nvidia-cublas-13.1.0.3

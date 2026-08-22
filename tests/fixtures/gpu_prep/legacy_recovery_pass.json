@@ -1,0 +1,70 @@
+{
+  "schema_version": "gpu-benchmark-result-v1",
+  "status": "measured",
+  "evidence": "measured",
+  "split": "calibration",
+  "device": {
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "capability": [12, 0]
+  },
+  "runtime": {"python": "3.10.12", "torch": "2.11.0+cu130", "cuda_runtime": "13.0"},
+  "raw_benchmarks": [
+    {
+      "record_id": "calibration-fixture-h2d-0001",
+      "operation": "h2d_pinned",
+      "case": "bytes=65536,streams=1",
+      "direction": "h2d",
+      "bytes": 65536,
+      "copy_streams": 1,
+      "statistics": {"n": 5, "mean": 0.0281, "unit": "ms"}
+    },
+    {
+      "record_id": "calibration-fixture-d2h-0002",
+      "operation": "d2h_pinned",
+      "case": "bytes=1048576,streams=2",
+      "direction": "d2h",
+      "bytes": 1048576,
+      "copy_streams": 2,
+      "statistics": {"n": 5, "mean": 0.0714, "unit": "ms"}
+    },
+    {
+      "record_id": "calibration-fixture-gemm-0003",
+      "operation": "grouped_gemm",
+      "case": "calibration-fixture-q0,phase=prefill,concurrency=1,expert_tokens=704",
+      "calibration_role": "gpu_service",
+      "phase": "prefill",
+      "concurrency": 1,
+      "statistics": {"n": 5, "mean": 0.3312, "unit": "ms"}
+    },
+    {
+      "record_id": "calibration-fixture-sel-0004",
+      "operation": "selected_expert",
+      "case": "calibration-fixture-q0,phase=decode,concurrency=4,expert_tokens=32",
+      "calibration_role": "gpu_service",
+      "phase": "decode",
+      "concurrency": 4,
+      "statistics": {"n": 5, "mean": 0.0192, "unit": "ms"}
+    },
+    {
+      "record_id": "calibration-fixture-replay-0005",
+      "operation": "window_replay",
+      "case": "calibration-fixture-q0,concurrency=1",
+      "phase": "decode",
+      "concurrency": 1,
+      "tokens": 159,
+      "cpu_calls": 159,
+      "gpu_operations": {"grouped_gemm": 159, "gather_scatter": 159},
+      "memory_bytes": 0,
+      "queue_depth": 0,
+      "transfers": [],
+      "statistics": {"n": 5, "mean": 0.1712, "unit": "ms"},
+      "throughput_statistics": {"n": 5, "mean": 5841.1, "unit": "tokens_per_second"}
+    },
+    {
+      "record_id": "calibration-fixture-cpu-0006",
+      "operation": "cpu_runtime",
+      "case": "python_function_call",
+      "statistics": {"n": 5, "mean": 0.0000218, "unit": "ms"}
+    }
+  ]
+}
